@@ -1034,6 +1034,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 </div>
 
+<div id="statsBar" style="display:none"></div>
 
 <div class="container">
   <div class="tabs">
@@ -1333,7 +1334,7 @@ function renderStats(){
   if(movieCount) stats.push({num:movieCount, label:'películas', cls:'lav'});
   if(upcoming) stats.push({num:upcoming, label:'próximamente', cls:'lav'});
   if(bookBased) stats.push({num:bookBased, label:'basadas en libro', cls:'gold'});
-  document.getElementById('statsBar').innerHTML=stats.map(s=>
+  const sb=document.getElementById('statsBar');if(sb)sb.innerHTML=stats.map(s=>
     `<div class="hero-stat"><span class="hero-stat-num ${s.cls}">${s.num}</span><span class="hero-stat-label">${s.label}</span></div>`
   ).join('');
 }
