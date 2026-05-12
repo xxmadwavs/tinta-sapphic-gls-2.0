@@ -130,216 +130,63 @@ body::before{content:'';position:fixed;inset:0;background:
 }
 
 /* ═══ HERO ═══ */
-.hero{
-  position:relative;z-index:1;
-  min-height:340px;
-  overflow:hidden;
-  display:flex;align-items:flex-end;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:linear-gradient(150deg,rgba(201,79,124,0.12) 0%,rgba(139,114,190,0.1) 55%,rgba(74,173,160,0.06) 100%);
-  z-index:0;
-}
-.hero-poster-img{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;object-position:center top;
-  display:block;
-  opacity:0;
-  transition:opacity .6s ease;
-}
-.hero-poster-img.loaded{opacity:1}
-/* gradient over poster */
-.hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(
-    90deg,
-    rgba(20,8,18,0.92) 0%,
-    rgba(20,8,18,0.75) 40%,
-    rgba(20,8,18,0.25) 70%,
-    rgba(20,8,18,0.1) 100%
-  );
-  z-index:1;
-}
-/* bottom fade */
-.hero-overlay::after{
-  content:'';
-  position:absolute;bottom:0;left:0;right:0;
-  height:80px;
-  background:linear-gradient(to top,var(--bg) 0%,transparent 100%);
-}
-/* when no poster */
-.hero.no-poster .hero-bg{
-  background:linear-gradient(150deg,rgba(201,79,124,0.08) 0%,rgba(139,114,190,0.06) 55%,rgba(74,173,160,0.04) 100%);
-  border-bottom:1px solid var(--border);
-}
-.hero.no-poster .hero-overlay{background:none}
-.hero.no-poster .hero-overlay::after{background:none}
-.hero-inner{
-  max-width:1020px;margin:0 auto;
-  position:relative;z-index:2;
-  padding:3rem 2.5rem 2.2rem;
-  width:100%;
-}
-.hero.no-poster .hero-inner{padding:3rem 2.5rem 2.2rem}
-/* Marca de agua TS solo cuando no hay poster */
-.hero.no-poster::before{
-  content:'TS';
-  position:absolute;
-  right:-.02em;top:50%;
-  transform:translateY(-52%);
-  font-family:var(--font-display);
-  font-size:clamp(8rem,20vw,15rem);
-  font-weight:800;font-style:italic;line-height:1;letter-spacing:-.05em;
-  color:transparent;
-  -webkit-text-stroke:1px rgba(201,79,124,0.07);
-  pointer-events:none;user-select:none;z-index:0;
-}
-/* poster mode: light text */
-.hero.has-poster .hero-title-text{color:#fff}
-.hero.has-poster .hero-tinta{color:rgba(255,255,255,0.75)}
-.hero.has-poster .hero-title em{color:#f9b8d4}
-.hero.has-poster .hero-title::after{background:linear-gradient(90deg,rgba(249,184,212,0.8) 0%,rgba(249,184,212,0.3) 60%,transparent 100%)}
-.hero.has-poster .hero-desc{color:rgba(255,255,255,0.7)}
-
-/* hero now-on badge */
-.hero-now-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  padding:4px 12px;border-radius:20px;
-  margin-bottom:10px;
-}
-.hero.no-poster .hero-now-badge{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2)}
-.hero.has-poster .hero-now-badge{background:rgba(201,79,124,0.85);color:#fff;backdrop-filter:blur(4px)}
-
-/* poster series name */
-.hero.has-poster .hero-series-name{
-  font-family:var(--font-display);
-  font-size:clamp(1.6rem,4vw,3rem);
-  font-weight:700;color:#fff;
-  line-height:1.1;
-  margin-bottom:.4rem;
-  letter-spacing:-.02em;
-  text-shadow:0 2px 12px rgba(0,0,0,0.4);
-}
-.hero.no-poster .hero-series-name{display:none}
-
-/* hero meta chips */
-.hero-meta-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem;margin-top:.5rem}
-.hero-meta-chip{
-  font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;
-  backdrop-filter:blur(4px);
-}
-.hero.no-poster .hero-meta-chip{background:rgba(255,255,255,0.78);border:1px solid var(--border2);color:var(--muted)}
-.hero.has-poster .hero-meta-chip{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.2)}
-
-/* open series btn in hero */
-.hero-open-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:12px;font-weight:700;padding:7px 18px;border-radius:20px;
-  cursor:pointer;border:none;font-family:var(--font-body);
-  transition:all .18s;margin-bottom:.75rem;
-}
-.hero.no-poster .hero-open-btn{background:var(--accent);color:#fff}
-.hero.no-poster .hero-open-btn:hover{background:var(--accent2)}
-.hero.has-poster .hero-open-btn{background:rgba(255,255,255,0.95);color:var(--accent)}
-.hero.has-poster .hero-open-btn:hover{background:#fff;transform:translateY(-1px)}
-
-/* hero stats */
-.hero-stats{display:flex;flex-wrap:wrap;gap:8px}
-.hero-stat{display:flex;align-items:center;gap:7px;border-radius:30px;padding:5px 14px}
-.hero.no-poster .hero-stat{background:rgba(255,255,255,0.78);border:1px solid var(--border2);backdrop-filter:blur(8px)}
-.hero.has-poster .hero-stat{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.15);backdrop-filter:blur(8px)}
-.hero-stat-num{font-family:var(--font-display);font-size:18px;font-weight:700;line-height:1;color:var(--accent)}
-.hero.has-poster .hero-stat-num{color:#f9b8d4}
-.hero-stat-num.teal{color:var(--teal)}
-.hero.has-poster .hero-stat-num.teal{color:#7ee8de}
-.hero-stat-num.lav{color:var(--lavender)}
-.hero.has-poster .hero-stat-num.lav{color:#cbbff0}
-.hero-stat-num.gold{color:var(--gold)}
-.hero-stat-label{font-size:11px;font-weight:500;color:var(--muted)}
-.hero.has-poster .hero-stat-label{color:rgba(255,255,255,0.6)}
-
-/* Título del hero modo no-poster */
-.hero-title{
-  font-family:var(--font-display);
-  line-height:1;letter-spacing:-.01em;
-  margin-bottom:.5rem;display:inline-block;position:relative;
-}
-.hero-tinta{
-  display:block;font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;
-  letter-spacing:.38em;text-transform:uppercase;color:var(--text);margin-bottom:.05em;
-}
-.hero-title em{
-  display:block;font-style:italic;font-weight:700;
-  font-size:clamp(3rem,7vw,5rem);color:var(--accent);
-  letter-spacing:-.02em;line-height:.95;
-}
-.hero-title::after{
-  content:'';position:absolute;bottom:-8px;left:0;width:65%;height:3px;
-  background:linear-gradient(90deg,var(--accent) 0%,var(--lavender) 60%,transparent 100%);
-  border-radius:3px;
-}
-.hero-desc{font-size:13.5px;color:var(--muted);max-width:520px;line-height:1.7;margin-bottom:1.5rem;margin-top:1.2rem;}
-
-@media(max-width:600px){
-  .hero{min-height:260px}
-  .hero-inner{padding:1.75rem 1rem 1.5rem}
-  .hero-title em{font-size:3rem}
-  .hero-tinta{font-size:.8rem;letter-spacing:.35em}
-  .hero.no-poster::before{font-size:8rem}
-  .hero-stat{padding:4px 10px}
-  .hero-stat-num{font-size:15px}
-  .hero.has-poster .hero-series-name{font-size:1.5rem}
-  .hero-overlay{background:linear-gradient(180deg,rgba(20,8,18,0.5) 0%,rgba(20,8,18,0.9) 100%)}
-}
-
 /* ═══ WEEK VIEW ═══ */
 .week-view{display:flex;flex-direction:column;gap:0}
-.week-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:10px}
+.week-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.25rem;flex-wrap:wrap;gap:10px;
+}
+@media(max-width:600px){.week-nav{flex-direction:column;align-items:stretch;gap:8px}}
 .week-nav-title{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text);letter-spacing:-.01em}
 .week-nav-title span{color:var(--accent);font-style:italic}
+
+/* Columns — same structure as SapphicSignal */
 .week-days-strip{
   display:flex;
   gap:8px;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scroll-snap-type:x mandatory;
-  padding-bottom:6px;
-  scrollbar-width:none;
   margin-bottom:1.5rem;
 }
-.week-days-strip::-webkit-scrollbar{display:none}
+/* Scrollable on narrow screens */
+@media(max-width:1020px){
+  .week-days-strip{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    padding-bottom:4px;
+    scrollbar-width:none;
+  }
+  .week-days-strip::-webkit-scrollbar{display:none}
+}
+
 .week-day-col{
-  flex:0 0 150px;
-  min-height:100px;
+  flex:1 1 0;
+  min-width:0;
   background:var(--surface);
   border:1.5px solid var(--border);
   border-radius:var(--radius);
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  scroll-snap-align:start;
-  transition:border-color .15s;
 }
-/* On wide screens, fill evenly */
-@media(min-width:1100px){
-  .week-days-strip{overflow-x:visible;flex-wrap:nowrap}
-  .week-day-col{flex:1 1 0;min-width:0}
+@media(max-width:1020px){
+  .week-day-col{
+    flex:0 0 148px;
+    scroll-snap-align:start;
+  }
 }
+@media(max-width:480px){.week-day-col{flex:0 0 130px}}
+
 .week-day-col.is-today{
   border-color:var(--accent);
   border-width:2px;
   box-shadow:0 4px 20px rgba(201,79,124,0.18);
 }
-.week-day-col.is-past{opacity:.55}
-.week-day-col.is-empty{opacity:.38}
+.week-day-col.is-past{opacity:.5}
+.week-day-col.is-empty{opacity:.35}
+
 .week-day-header{
   padding:10px 10px 8px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  display:flex;flex-direction:column;align-items:center;
   border-bottom:1px solid var(--border);
   flex-shrink:0;
 }
@@ -348,7 +195,7 @@ body::before{content:'';position:fixed;inset:0;background:
 }
 .week-day-name{
   font-size:9px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.1em;color:var(--muted);margin-bottom:2px;
+  letter-spacing:.1em;color:var(--muted);margin-bottom:1px;
 }
 .week-day-col.is-today .week-day-name{color:rgba(255,255,255,.8)}
 .week-day-num{
@@ -358,58 +205,72 @@ body::before{content:'';position:fixed;inset:0;background:
 .week-day-col.is-today .week-day-num{color:#fff}
 .week-day-month{font-size:9px;color:var(--muted);font-weight:600;margin-top:1px}
 .week-day-col.is-today .week-day-month{color:rgba(255,255,255,.7)}
+
 .week-day-items{
   display:flex;flex-direction:column;gap:6px;
   padding:8px 7px;flex:1;
 }
 .week-item{
-  display:flex;align-items:center;gap:7px;
-  padding:5px 6px;border-radius:8px;
-  background:var(--surface2);border:1px solid var(--border);
-  cursor:pointer;transition:all .14s;
+  display:flex;flex-direction:column;
+  border-radius:9px;overflow:hidden;
+  cursor:pointer;transition:all .15s;
+  border:1.5px solid var(--border);
+  background:var(--surface);
 }
-.week-item:hover{border-color:var(--accent2);background:var(--accent-soft)}
+.week-item:hover{border-color:var(--accent2);transform:translateY(-2px);box-shadow:0 4px 14px rgba(201,79,124,0.14)}
+
+.week-item-poster-wrap{
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  flex-shrink:0;
+  background:var(--surface2);
+  position:relative;
+}
 .week-item-poster{
-  width:32px;height:46px;border-radius:5px;
-  object-fit:cover;object-position:center top;
-  flex-shrink:0;background:var(--accent-soft);
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 20%;
+  display:block;
 }
 .week-item-poster-ph{
-  width:32px;height:46px;border-radius:5px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:14px;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
 }
-.week-item-info{flex:1;min-width:0}
+.week-item-today-dot{
+  position:absolute;top:5px;right:5px;
+  background:var(--accent);color:#fff;
+  font-size:8px;font-weight:700;padding:2px 6px;
+  border-radius:20px;letter-spacing:.04em;
+}
+.week-item-body{padding:6px 7px 7px}
 .week-item-name{
-  font-size:10.5px;font-weight:700;color:var(--text);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  line-height:1.3;
+  font-size:11px;font-weight:700;color:var(--text);
+  line-height:1.3;margin-bottom:3px;
+  display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;
 }
-.week-item-ep{font-size:10px;font-weight:700;margin-top:2px;white-space:nowrap}
-.week-item-time{font-size:9px;color:var(--muted);margin-top:1px;white-space:nowrap}
-.week-item-badge{
-  font-size:9px;padding:2px 6px;border-radius:20px;font-weight:700;
-  white-space:nowrap;flex-shrink:0;display:inline-block;margin-top:2px;
+.week-item-ep{
+  font-size:10px;font-weight:700;
 }
 .week-empty-day{
-  padding:12px 8px;font-size:10px;color:var(--muted);
+  padding:16px 8px;font-size:10px;color:var(--muted);
   text-align:center;font-style:italic;flex:1;
   display:flex;align-items:center;justify-content:center;
 }
 
-/* Below week: month toggle */
+/* Month toggle */
 .month-toggle-wrap{margin-top:1.5rem}
 .month-toggle-btn{
   width:100%;padding:10px;border-radius:var(--radius);
   border:1.5px solid var(--border2);background:var(--surface);
   color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;
-  font-family:var(--font-body);display:flex;align-items:center;justify-content:center;gap:8px;
-  transition:all .15s;
+  font-family:var(--font-body);display:flex;align-items:center;
+  justify-content:center;gap:8px;transition:all .15s;
 }
 .month-toggle-btn:hover{background:var(--surface2);color:var(--text);border-color:var(--accent2)}
 .month-toggle-btn.open{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
 .month-cal-wrap{margin-top:12px;display:none}
 .month-cal-wrap.open{display:block}
-
 /* ═══ CONTAINER ═══ */
 .container{max-width:1020px;margin:0 auto;padding:2rem 1.5rem;position:relative;z-index:1}
 @media(max-width:600px){
@@ -1173,26 +1034,6 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 </div>
 
-<div class="hero no-poster" id="heroSection" onclick="" style="cursor:default">
-  <div class="hero-bg"></div>
-  <img class="hero-poster-img" id="heroPosterImg" src="" alt="" onerror="this.style.display='none'">
-  <div class="hero-overlay"></div>
-  <div class="hero-inner">
-    <!-- No-poster mode: logo title -->
-    <div id="heroNoPosterId">
-      <h1 class="hero-title"><span class="hero-tinta">TINTA</span><br><em>Sapphic</em></h1>
-      <p class="hero-desc">Calendario de series en emisión y películas GL — historias donde las protagonistas son sáficas, de cualquier país y plataforma</p>
-    </div>
-    <!-- Poster mode: series info -->
-    <div id="heroPosterInfo" style="display:none">
-      <div class="hero-now-badge" id="heroNowBadge">🌸 En emisión hoy</div>
-      <div class="hero-series-name" id="heroSeriesName"></div>
-      <div class="hero-meta-row" id="heroMetaRow"></div>
-      <button class="hero-open-btn" id="heroOpenBtn" onclick="">▶ Ver detalles</button>
-    </div>
-    <div class="hero-stats" id="statsBar"></div>
-  </div>
-</div>
 
 <div class="container">
   <div class="tabs">
@@ -1521,88 +1362,6 @@ function getEpMap(y,m){
   return map;
 }
 
-// ═══ HERO DINÁMICO ═══
-function renderHero(){
-  const now=new Date();
-  const todayStr=toStr(now.getFullYear(),now.getMonth(),now.getDate());
-  // 1. Buscar serie que emite HOY (no upcoming, con poster)
-  let featured=null, featuredSi=-1, featuredEp=null, isTodayHero=false;
-  state.series.filter(s=>!s.upcoming&&s.poster).forEach((s,_)=>{
-    const si=state.series.indexOf(s);
-    const eps=genEps(s);
-    const todayEp=eps.find(e=>e.date===todayStr&&!e.skipped);
-    if(todayEp&&!featured){featured=s;featuredSi=si;featuredEp=todayEp;isTodayHero=true;}
-  });
-  // 2. Si no hay hoy, buscar la próxima a emitir con poster
-  if(!featured){
-    state.series.filter(s=>!s.upcoming&&s.poster).forEach((s,_)=>{
-      const si=state.series.indexOf(s);
-      const eps=genEps(s);
-      const nextEp=eps.find(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
-      if(nextEp&&!featured){featured=s;featuredSi=si;featuredEp=nextEp;isTodayHero=false;}
-    });
-  }
-  // 3. Fallback: cualquier serie activa con poster
-  if(!featured){
-    const s=state.series.find(s=>!s.upcoming&&s.poster);
-    if(s){featured=s;featuredSi=state.series.indexOf(s);}
-  }
-
-  const hero=document.getElementById('heroSection');
-  const posterImg=document.getElementById('heroPosterImg');
-  const noPosterId=document.getElementById('heroNoPosterId');
-  const posterInfo=document.getElementById('heroPosterInfo');
-
-  if(!featured||!featured.poster){
-    hero.className='hero no-poster';
-    noPosterId.style.display='';
-    posterInfo.style.display='none';
-    return;
-  }
-
-  // Cargar poster
-  hero.className='hero has-poster';
-  noPosterId.style.display='none';
-  posterInfo.style.display='';
-  posterImg.style.display='block';
-  posterImg.classList.remove('loaded');
-  const tmpImg=new Image();
-  tmpImg.onload=()=>{posterImg.src=tmpImg.src;posterImg.classList.add('loaded');};
-  tmpImg.onerror=()=>{hero.className='hero no-poster';noPosterId.style.display='';posterInfo.style.display='none';};
-  tmpImg.src=featured.poster;
-
-  // Badge
-  const badge=document.getElementById('heroNowBadge');
-  if(isTodayHero){
-    badge.textContent='🌸 En emisión hoy';
-    badge.style.animation='todayPulse 2.2s ease-in-out infinite';
-  } else if(featuredEp){
-    const du=daysUntil(featuredEp.date);
-    badge.textContent=du===1?'⏳ Mañana':du===0?'🌸 Hoy':`⏳ En ${du} días`;
-    badge.style.animation='';
-  } else {
-    badge.textContent='🎬 Destacada';
-    badge.style.animation='';
-  }
-
-  document.getElementById('heroSeriesName').textContent=featured.name;
-
-  // Meta chips
-  const seasons=getSeasons(featured);
-  const metaItems=[];
-  if(featured.country) metaItems.push(countryFlag(featured.country)+' '+featured.country);
-  if(featured.network) metaItems.push(featured.network);
-  if(featuredEp){
-    const lbl=epLabel(featuredEp,seasons);
-    metaItems.push(lbl);
-  }
-  document.getElementById('heroMetaRow').innerHTML=metaItems.map(m=>`<span class="hero-meta-chip">${m}</span>`).join('');
-
-  // Open button
-  const openBtn=document.getElementById('heroOpenBtn');
-  openBtn.onclick=()=>openSeries(featuredSi);
-}
-
 // ═══ WEEK VIEW ═══
 let weekOffset=0; // 0=this week, 1=next, -1=prev
 
@@ -1640,7 +1399,6 @@ function renderWeekView(){
   // Build episode map — one entry per series per day (deduplicated)
   const epMap={};
   dates.forEach(d=>{epMap[d]=[];});
-
   state.series.filter(s=>!s.upcoming).forEach(s=>{
     const si=state.series.indexOf(s);
     const seenDates=new Set();
@@ -1659,7 +1417,7 @@ function renderWeekView(){
   dates.forEach((ds,i)=>{
     const d=new Date(ds+'T12:00:00');
     const isToday=ds===todayStr;
-    const isPast=ds<todayStr;
+    const isPast=ds<todayStr&&!isToday;
     const items=epMap[ds]||[];
 
     let itemsHtml='';
@@ -1667,37 +1425,34 @@ function renderWeekView(){
       itemsHtml=`<div class="week-empty-day">—</div>`;
     } else {
       items.forEach(({type,s,ep,si})=>{
-        if(type==='movie'){
-          const ph=`<div class="week-item-poster-ph" style="background:var(--lavender-soft)">🎥</div>`;
-          const poster=s.poster?`<img class="week-item-poster" src="${s.poster}" alt="" onerror="this.outerHTML='${ph}'">`  :ph;
-          itemsHtml+=`<div class="week-item" onclick="openMovie(${si})">
-            ${poster}
-            <div class="week-item-info">
-              <div class="week-item-name">${s.name}</div>
-              <div class="week-item-ep" style="color:var(--lavender)">🎥 Película</div>
-            </div>
-          </div>`;
-        } else {
-          const col=PALETTE[si%PALETTE.length];
-          const bg=PALETTE_SOFT[si%PALETTE_SOFT.length];
-          const seasons=getSeasons(s);
-          const lbl=epLabel(ep,seasons);
-          const ph=`<div class="week-item-poster-ph" style="background:${bg};color:${col}">🎬</div>`;
-          const poster=s.poster?`<img class="week-item-poster" src="${s.poster}" alt="" onerror="this.outerHTML='${ph}'">`  :ph;
-          const todayBadge=isToday?`<div><span class="week-item-badge" style="background:${col};color:#fff">HOY</span></div>`:'';
-          itemsHtml+=`<div class="week-item" onclick="openSeries(${si})" style="background:${bg};border-color:rgba(0,0,0,0.05)">
-            ${poster}
-            <div class="week-item-info">
-              <div class="week-item-name">${s.name}</div>
-              <div class="week-item-ep" style="color:${col}">${lbl}</div>
-              ${todayBadge}
-            </div>
-          </div>`;
-        }
+        const col=type==='movie'?'var(--lavender)':PALETTE[si%PALETTE.length];
+        const bg=type==='movie'?'var(--lavender-soft)':PALETTE_SOFT[si%PALETTE_SOFT.length];
+        const icon=type==='movie'?'🎥':'🎬';
+        const seasons=type==='series'?getSeasons(s):[];
+        const lbl=type==='series'?epLabel(ep,seasons):'🎥 Película';
+        const clickFn=type==='movie'?`openMovie(${si})`:`openSeries(${si})`;
+
+        const todayDot=isToday?`<div class="week-item-today-dot">HOY</div>`:'';
+
+        // Poster
+        const posterHtml=s.poster
+          ?`<img class="week-item-poster" src="${s.poster}" alt="${s.name}" onerror="this.parentElement.style.background='${bg}';this.style.display='none'">`
+          :`<div class="week-item-poster-ph" style="background:${bg}">${icon}</div>`;
+
+        itemsHtml+=`<div class="week-item" onclick="${clickFn}" style="border-color:${isToday?'rgba(201,79,124,0.3)':''}" title="${s.name}">
+          <div class="week-item-poster-wrap" style="background:${bg}">
+            ${posterHtml}
+            ${todayDot}
+          </div>
+          <div class="week-item-body">
+            <div class="week-item-name">${s.name}</div>
+            <div class="week-item-ep" style="color:${col}">${lbl}</div>
+          </div>
+        </div>`;
       });
     }
 
-    html+=`<div class="week-day-col${isToday?' is-today':''}${isPast&&!isToday?' is-past':''}${!items.length?' is-empty':''}">
+    html+=`<div class="week-day-col${isToday?' is-today':''}${isPast?' is-past':''}${!items.length?' is-empty':''}">
       <div class="week-day-header">
         <div class="week-day-name">${DAYS_SHORT[i]}</div>
         <div class="week-day-num">${d.getDate()}</div>
@@ -3738,7 +3493,7 @@ function switchTab(tab){
   });
   // Scroll to top of content on mobile
   if(window.innerWidth<=600) window.scrollTo({top:0,behavior:'smooth'});
-  if(tab==='cal'){renderWeekView();renderHero();}
+  if(tab==='cal'){renderWeekView();}
   if(tab==='list') renderList();
   if(tab==='movies') renderMovies();
   if(tab==='upcoming') renderUpcoming();
@@ -3839,7 +3594,6 @@ document.addEventListener('keydown',e=>{
       if(btn) btn.className='tab'+(savedTab===t?' active':'');
       if(view) view.style.display=savedTab===t?'':'none';
     });
-    renderHero(); // always render hero
     if(savedTab==='cal'){renderWeekView();}
     else if(savedTab==='list') renderList();
     else if(savedTab==='movies') renderMovies();
