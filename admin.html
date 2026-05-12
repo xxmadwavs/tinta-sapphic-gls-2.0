@@ -1,0 +1,2697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — GL Series Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fdf6f9; --surface: #fff; --surface2: #fdf0f5;
+  --border: rgba(220,150,180,0.2); --border2: rgba(220,150,180,0.4);
+  --text: #3a2535; --muted: #9c7a8a; --accent: #d4608a; --accent2: #e891b0;
+  --accent-soft: #f7dce9; --teal: #5bbcb0; --teal-soft: #d4f0ed;
+  --lavender: #9b82c9; --lavender-soft: #ede7f8;
+  --yellow: #e8c16a; --yellow-soft: #fdf3d8;
+  --danger: #d45c5c; --success: #5bb88a; --radius: 14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;font-size:14px;line-height:1.6;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(circle at 10% 20%,rgba(212,96,138,0.05) 0%,transparent 50%),
+  radial-gradient(circle at 90% 80%,rgba(155,130,201,0.07) 0%,transparent 50%);
+  pointer-events:none;z-index:0}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border2);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(212,96,138,0.06)}
+.logo{font-family:'Playfair Display',serif;font-size:20px;color:var(--accent);display:flex;align-items:center;gap:8px}
+.logo-badge{background:var(--accent-soft);color:var(--accent);font-family:'Nunito',sans-serif;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;letter-spacing:.05em}
+.topbar-actions{display:flex;gap:8px}
+.container{max-width:980px;margin:0 auto;padding:2rem 1.5rem;position:relative;z-index:1}
+.page-title{font-family:'Playfair Display',serif;font-size:30px;color:var(--text);margin-bottom:.2rem}
+.page-sub{color:var(--muted);font-size:13px;margin-bottom:2rem}
+.card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;box-shadow:0 2px 16px rgba(212,96,138,0.05)}
+.card-title{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:1rem;font-weight:600}
+.section-tabs{display:flex;gap:6px;margin-bottom:1rem}
+.stab{padding:6px 18px;border-radius:20px;border:1.5px solid var(--border2);cursor:pointer;font-size:13px;font-weight:600;background:transparent;color:var(--muted);font-family:'Nunito',sans-serif;transition:all .15s}
+.stab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.series-grid{display:grid;gap:10px}
+.series-item{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;transition:box-shadow .2s}
+.series-item:hover{box-shadow:0 4px 16px rgba(212,96,138,0.1)}
+.series-poster{width:40px;height:58px;border-radius:8px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.series-poster-ph{width:40px;height:58px;border-radius:8px;background:var(--accent-soft);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;color:var(--accent)}
+.series-info{flex:1;min-width:0}
+.series-name{font-size:15px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.series-meta{font-size:12px;color:var(--muted);margin-top:2px}
+.series-actions{display:flex;gap:6px;flex-shrink:0}
+.badge{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:700;white-space:nowrap}
+.badge-book{background:#fdf3d8;color:#b08a00;border:1px solid rgba(176,138,0,0.25)}
+.badge-upcoming{background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(155,130,201,0.3)}
+.btn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border2);cursor:pointer;font-size:13px;font-family:'Nunito',sans-serif;font-weight:600;background:transparent;color:var(--text);transition:all .15s}
+.btn:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.primary:hover{background:var(--accent2);border-color:var(--accent2)}
+.btn.danger{color:var(--danger);border-color:rgba(212,92,92,.3)}
+.btn.danger:hover{background:rgba(212,92,92,.08)}
+.btn.small{padding:5px 12px;font-size:12px}
+.btn.export{background:var(--teal);color:#fff;border-color:var(--teal)}
+.btn.export:hover{opacity:.88}
+.modal-bg{position:fixed;inset:0;background:rgba(58,37,53,.5);display:none;align-items:center;justify-content:center;z-index:200;padding:1.5rem 2rem;backdrop-filter:blur(2px)}
+.modal-bg.open{display:flex}
+.modal{background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;width:100%;max-width:1000px;max-height:92vh;overflow-y:auto;box-shadow:0 20px 60px rgba(212,96,138,0.15)}
+.modal-header{padding:1.25rem 1.75rem .75rem;border-bottom:1px solid var(--border2)}
+.modal-footer-btns{padding:.9rem 1.75rem;border-top:1px solid var(--border2);display:flex;gap:8px;justify-content:flex-end}
+.modal-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--text)}
+.form-row{margin-bottom:14px}
+.form-label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:9px 14px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:14px;font-family:'Nunito',sans-serif;outline:none;transition:border-color .15s}
+.form-row textarea{resize:vertical;min-height:70px;line-height:1.5}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--accent)}
+.form-row-half{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-row{display:flex;gap:8px;justify-content:flex-end;margin-top:1.25rem}
+.toggle-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);margin-bottom:8px;cursor:pointer}
+.toggle-row input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px}
+.toggle-label{font-size:13px;color:var(--text);font-weight:600;flex:1}
+.toggle-desc{font-size:11px;color:var(--muted)}
+.dow-selector{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.dow-chip{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border2);cursor:pointer;font-size:13px;font-weight:600;background:var(--surface2);color:var(--muted);transition:all .15s;user-select:none}
+.dow-chip.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+.dow-chip:hover:not(.selected){border-color:var(--accent2);color:var(--accent)}
+.poster-row{display:flex;align-items:flex-start;gap:14px;margin-top:8px}
+.poster-preview{width:58px;height:86px;border-radius:10px;object-fit:cover;border:1.5px solid var(--border2);flex-shrink:0;display:none;background:var(--surface2)}
+.poster-hint{font-size:12px;color:var(--muted);line-height:1.8}
+.poster-hint a{color:var(--accent);text-decoration:none;font-weight:600}
+.poster-hint a:hover{text-decoration:underline}
+.ep-list{display:grid;gap:5px;max-height:360px;overflow-y:auto;margin-top:8px}
+.ep-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;transition:all .15s}
+.ep-row:hover{border-color:var(--border2);background:var(--accent-soft)}
+.ep-num{font-size:12px;color:var(--muted);min-width:26px;font-weight:600}
+.ep-date{flex:1;font-size:13px;color:var(--text)}
+.ep-status{font-size:11px;padding:2px 10px;border-radius:20px;font-weight:600}
+.ep-status.aired{background:var(--teal-soft);color:var(--teal)}
+.ep-status.pending{background:var(--accent-soft);color:var(--accent)}
+.ep-status.skipped{background:#f0eeee;color:#aaa}
+.ep-status.modified{background:var(--yellow-soft);color:#b08a00}
+.notice{background:var(--accent-soft);border:1.5px solid var(--border2);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--text);margin-bottom:1.5rem;line-height:1.7}
+.notice strong{color:var(--accent)}
+.export-box{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+.export-instructions{font-size:13px;color:var(--muted);line-height:1.8}
+.export-instructions strong{color:var(--text)}
+.export-instructions ol{padding-left:1.25rem;margin-top:.5rem}
+.export-instructions li{margin-bottom:4px}
+code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;border-radius:6px;font-size:12px}
+.empty{text-align:center;color:var(--muted);padding:2.5rem;font-size:13px}
+.progress-wrap{margin-top:6px;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+
+/* Country multi-row list (like platforms) */
+.country-list{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+.country-row{display:flex;gap:7px;align-items:center}
+.country-row-select{
+  flex:1;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);
+  background:var(--surface2);color:var(--text);font-size:13px;
+  font-family:'Nunito',sans-serif;outline:none;transition:border-color .15s;cursor:pointer;
+}
+.country-row-select:focus{border-color:var(--accent)}
+.country-row-input{
+  flex:1;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);
+  background:var(--surface2);color:var(--text);font-size:13px;
+  font-family:'Nunito',sans-serif;outline:none;transition:border-color .15s;
+  display:none;
+}
+.country-row-input.visible{display:block}
+.country-row-input:focus{border-color:var(--accent)}
+.country-row-input::placeholder{color:var(--muted)}
+.progress-fill{height:100%;border-radius:2px;transition:width .3s}
+.ep-edit-info{font-size:13px;color:var(--muted);background:var(--surface2);border-radius:10px;padding:10px 14px;margin-bottom:1rem;line-height:1.6}
+.ep-edit-info strong{color:var(--text)}
+.divider{height:1px;background:var(--border);margin:14px 0}
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:600;margin-bottom:10px}
+/* Seasons */
+.seasons-list{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.season-block{border:1.5px solid var(--border2);border-radius:12px;padding:14px;background:var(--surface2);position:relative}
+.season-block-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px}
+.season-block-title{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;flex:1}
+.season-block-title input{font-size:13px;font-weight:700;color:var(--text);background:transparent;border:none;border-bottom:1.5px solid var(--border2);outline:none;font-family:'Nunito',sans-serif;width:100%;padding:2px 0;transition:border-color .15s}
+.season-block-title input:focus{border-color:var(--accent)}
+.season-del-btn{width:26px;height:26px;border-radius:7px;border:1.5px solid rgba(212,92,92,.3);background:transparent;color:var(--danger);cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-family:'Nunito',sans-serif}
+.season-del-btn:hover{background:rgba(212,92,92,.08);border-color:var(--danger)}
+.form-hint{font-size:11px;color:var(--muted);margin-top:4px}
+.unsaved-bar{position:sticky;top:58px;z-index:49;background:#fff8e1;border-bottom:2px solid #f0c030;padding:8px 2rem;display:none;align-items:center;justify-content:space-between;font-size:13px;color:#7a5a00;font-weight:600}
+.unsaved-bar.visible{display:flex}
+.unsaved-bar span{display:flex;align-items:center;gap:6px}
+.book-item{background:#fdf3d8;border:1px solid rgba(176,138,0,0.2);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem}
+.book-item-cover{width:40px;height:58px;border-radius:6px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.book-item-cover-ph{width:40px;height:58px;border-radius:6px;background:#f0e0a0;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.book-item-info{flex:1;min-width:0}
+.book-item-title{font-size:14px;font-weight:700;color:#7a5a00;line-height:1.3}
+.book-item-meta{font-size:12px;color:#b08a00;margin-top:2px}
+
+/* Admin toolbar */
+.admin-toolbar{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem}
+.admin-search-wrap{position:relative}
+.admin-search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none}
+.admin-search-input{width:100%;padding:9px 14px 9px 38px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:14px;font-family:'Nunito',sans-serif;outline:none;transition:border-color .15s}
+.admin-search-input:focus{border-color:var(--accent)}
+.admin-filter-pills{display:flex;gap:6px;flex-wrap:wrap}
+.admin-pill{padding:5px 14px;border-radius:20px;border:1.5px solid var(--border2);cursor:pointer;font-size:12px;font-weight:700;background:transparent;color:var(--muted);font-family:'Nunito',sans-serif;transition:all .15s;white-space:nowrap}
+.admin-pill:hover{border-color:var(--accent2);color:var(--accent)}
+.admin-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.series-count-label{font-size:12px;color:var(--muted);margin-bottom:.75rem}
+.series-count-label strong{color:var(--text)}
+
+/* Multiple platforms */
+.platforms-list{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+.platform-row{display:flex;gap:7px;align-items:center}
+.platform-row input{flex:1;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;outline:none;transition:border-color .15s}
+.platform-row input:focus{border-color:var(--accent)}
+.platform-row input::placeholder{color:var(--muted)}
+
+/* ═══ PLATFORM QUICK SELECT ═══ */
+.platform-net-wrap{display:flex;gap:6px;align-items:center}
+.platform-net-wrap input{flex:1}
+.platform-net-select{
+  background:var(--surface2);border:1.5px solid var(--border2);
+  border-radius:10px;padding:0 10px;height:40px;font-size:13px;
+  font-family:'Nunito',sans-serif;color:var(--text);cursor:pointer;
+  flex-shrink:0;transition:all .15s;min-width:120px;max-width:180px;width:auto;
+}
+.platform-net-select:focus{border-color:var(--accent);outline:none}
+.platform-row-sel{display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.platform-row-sel input{flex:1;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;outline:none;transition:border-color .15s}
+.platform-row-sel input:focus{border-color:var(--accent)}
+.platform-row-sel select{
+  background:var(--surface2);border:1.5px solid var(--border2);
+  border-radius:10px;padding:0 8px;height:40px;font-size:12px;
+  font-family:'Nunito',sans-serif;color:var(--text);cursor:pointer;
+  max-width:145px;flex-shrink:0;
+}
+.platform-row-sel select:focus{border-color:var(--accent);outline:none}
+
+/* ═══ GENRE CHIPS ═══ */
+.genre-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.genre-chip{
+  padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;
+  border:1.5px solid var(--border2);background:var(--surface2);
+  color:var(--muted);cursor:pointer;transition:all .15s;
+  font-family:'Nunito',sans-serif;user-select:none;
+}
+.genre-chip:hover{border-color:var(--accent2);color:var(--accent);background:var(--accent-soft)}
+.genre-chip.selected{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.platform-del-btn{width:30px;height:30px;border-radius:8px;border:1.5px solid rgba(212,92,92,.3);background:transparent;color:var(--danger);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-family:'Nunito',sans-serif}
+.platform-del-btn:hover{background:rgba(212,92,92,.08);border-color:var(--danger)}
+.platform-add-btn{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1.5px solid var(--border2);border-radius:20px;padding:4px 13px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:4px;transition:all .15s}
+.platform-add-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Status badges in admin list */
+.badge-airing{background:var(--accent-soft);color:var(--accent);border:1px solid var(--border2)}
+.badge-finished{background:var(--teal-soft);color:var(--teal);border:1px solid rgba(91,188,176,0.3)}
+
+/* ═══ PASTE AUTOFILL ═══ */
+.paste-bar{background:linear-gradient(135deg,rgba(212,96,138,0.07) 0%,rgba(155,130,201,0.07) 100%);border:1.5px solid rgba(155,130,201,0.3);border-radius:14px;padding:14px 16px;margin-bottom:18px;}
+.paste-bar-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--lavender);font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.paste-bar-hint{font-size:12px;color:var(--muted);margin-bottom:8px;line-height:1.6}
+.paste-bar-hint strong{color:var(--text)}
+.paste-bar-row{display:flex;gap:7px;align-items:flex-start}
+.paste-bar-textarea{flex:1;padding:9px 13px;border-radius:10px;border:1.5px solid rgba(155,130,201,0.35);background:var(--surface);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;outline:none;transition:border-color .15s;resize:vertical;min-height:72px;line-height:1.4;}
+.paste-bar-textarea:focus{border-color:var(--lavender)}
+.paste-bar-textarea::placeholder{color:var(--muted)}
+.paste-bar-btn{padding:9px 16px;border-radius:10px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--accent) 0%,var(--lavender) 100%);color:#fff;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;white-space:nowrap;transition:opacity .15s;flex-shrink:0;}
+.paste-bar-btn:hover{opacity:.88}
+.paste-bar-status{font-size:12px;margin-top:8px;color:var(--muted);min-height:16px}
+.paste-bar-status.ok{color:var(--success)}
+.paste-bar-status.err{color:var(--danger)}
+
+/* ═══ QUICK NAV BAR ═══ */
+.quicknav{
+  position:sticky;top:58px;z-index:48;
+  background:var(--surface);
+  border-bottom:1px solid var(--border2);
+  padding:0 2rem;
+  display:flex;align-items:center;gap:8px;
+  height:46px;
+  box-shadow:0 2px 8px rgba(212,96,138,0.06);
+}
+.quicknav-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-right:4px;white-space:nowrap}
+.quicknav-sep{width:1px;height:24px;background:var(--border2);margin:0 4px;flex-shrink:0}
+.qnav-btn{
+  display:flex;align-items:center;gap:5px;
+  padding:5px 14px;border-radius:20px;
+  border:1.5px solid var(--border2);
+  cursor:pointer;font-size:12px;font-weight:700;
+  background:transparent;color:var(--muted);
+  font-family:'Nunito',sans-serif;
+  transition:all .15s;white-space:nowrap;
+  text-decoration:none;
+}
+.qnav-btn:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent)}
+.qnav-btn.add{background:var(--accent);color:#fff;border-color:var(--accent)}
+.qnav-btn.add:hover{background:var(--accent2);border-color:var(--accent2)}
+.qnav-btn.add-movie{background:var(--teal);color:#fff;border-color:var(--teal)}
+.qnav-btn.add-movie:hover{opacity:.88}
+@media(max-width:600px){
+  .quicknav{padding:0 1rem;gap:5px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .quicknav-label{display:none}
+  .quicknav-sep{display:none}
+}
+
+#section-series,#section-movies,#section-books{scroll-margin-top:116px}
+
+/* Book editions widget */
+.book-editions-list{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.book-edition-row{display:grid;grid-template-columns:auto 110px 1fr auto;gap:6px;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+.book-edition-lang{font-size:20px;flex-shrink:0;cursor:default;user-select:none}
+.book-edition-row select,.book-edition-row input{padding:7px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;outline:none;transition:border-color .15s;width:100%}
+.book-edition-row select:focus,.book-edition-row input:focus{border-color:var(--accent)}
+@media(max-width:480px){
+  .book-edition-row{grid-template-columns:auto 1fr auto;grid-template-rows:auto auto}
+  .book-edition-row input{grid-column:1/-2;grid-row:2}
+  .book-edition-row .platform-del-btn{grid-row:1;grid-column:3}
+}
+
+/* ═══ CATEGORY BADGE ═══ */
+.badge-anime{background:#ede7f8;color:#7c5cbf;border:1px solid rgba(124,92,191,0.3)}
+.badge-reality{background:#d4f0ed;color:#3a9e94;border:1px solid rgba(58,158,148,0.3)}
+.badge-series{background:#f7dce9;color:#d4608a;border:1px solid rgba(212,96,138,0.3)}
+.badge-movie{background:#ede7f8;color:#9b82c9;border:1px solid rgba(155,130,201,0.3)}
+
+/* ═══ CATEGORY QUICK SELECTOR ═══ */
+.cat-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.cat-chip{
+  padding:7px 18px;border-radius:20px;font-size:13px;font-weight:700;
+  border:2px solid var(--border2);background:var(--surface2);
+  color:var(--muted);cursor:pointer;transition:all .18s;
+  font-family:'Nunito',sans-serif;user-select:none;display:flex;align-items:center;gap:6px;
+}
+.cat-chip:hover{border-color:var(--accent2);color:var(--accent)}
+.cat-chip.selected-series{background:#f7dce9;border-color:#d4608a;color:#d4608a}
+.cat-chip.selected-anime{background:#ede7f8;border-color:#7c5cbf;color:#7c5cbf}
+.cat-chip.selected-reality{background:#d4f0ed;border-color:#3a9e94;color:#3a9e94}
+
+/* ═══ QUICK FILL SHORTCUTS ═══ */
+.quickfill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.qf-chip{
+  padding:6px 12px;border-radius:10px;font-size:12px;font-weight:600;
+  border:1.5px solid var(--border2);background:var(--surface2);
+  color:var(--text);cursor:pointer;transition:all .14s;
+  font-family:'Nunito',sans-serif;display:flex;align-items:center;gap:5px;
+}
+.qf-chip:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent)}
+.qf-chip.qf-applied{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ═══ SECTION ANIME + REALITIES ═══ */
+.section-anime .card-title{color:#7c5cbf}
+.section-reality .card-title{color:#3a9e94}
+.qnav-btn.add-anime{background:#ede7f8;color:#7c5cbf;border-color:rgba(124,92,191,0.4)}
+.qnav-btn.add-anime:hover{background:#7c5cbf;color:#fff;border-color:#7c5cbf}
+.qnav-btn.add-reality{background:#d4f0ed;color:#3a9e94;border-color:rgba(58,158,148,0.4)}
+.qnav-btn.add-reality:hover{background:#3a9e94;color:#fff;border-color:#3a9e94}
+
+/* ═══ COMPACT FORM (faster fill) ═══ */
+.form-row-triple{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+.form-compact .form-row{margin-bottom:10px}
+.form-compact .form-row input,.form-compact .form-row select,.form-compact .form-row textarea{
+  padding:8px 12px;font-size:13px;
+}
+.poster-preview-inline{
+  width:54px;height:80px;border-radius:10px;object-fit:cover;
+  border:1.5px solid var(--border2);flex-shrink:0;
+  background:var(--surface2);display:none;
+}
+
+/* ═══ 2-COL FORM LAYOUT (like admin_books) ═══ */
+.form-2col-layout{display:grid;grid-template-columns:400px 1fr;gap:0}
+.form-col-left{padding:1.25rem 1.5rem;border-right:1px solid var(--border2)}
+.form-col-right{padding:1.25rem 1.5rem}
+.form-section-hd{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:.8rem;padding-bottom:.35rem;border-bottom:1px solid var(--border2)}
+@media(max-width:760px){
+  .form-2col-layout{grid-template-columns:1fr}
+  .form-col-left{border-right:none;border-bottom:1px solid var(--border2)}
+}
+
+/* ═══ SPECIAL PREMIERE SCHEDULE ═══ */
+.premiere-block{background:rgba(232,193,106,0.08);border:1.5px solid rgba(232,193,106,0.3);border-radius:12px;padding:12px 14px;margin-top:10px}
+.premiere-block-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#b08a00;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.premiere-ep-row{display:grid;grid-template-columns:28px 1fr;gap:6px;align-items:center;margin-bottom:7px}
+.premiere-ep-label{font-size:12px;font-weight:700;color:var(--text);text-align:center;background:var(--yellow-soft);border-radius:6px;padding:4px 0}
+.premiere-mode-tabs{display:flex;gap:5px;margin-bottom:10px}
+.pm-tab{padding:5px 12px;border-radius:20px;border:1.5px solid var(--border2);font-size:12px;font-weight:700;background:transparent;color:var(--muted);font-family:'Nunito',sans-serif;cursor:pointer;transition:all .14s}
+.pm-tab.active{background:var(--yellow-soft);border-color:var(--yellow);color:#7a5a00}
+/* Grupo de episodios especiales (nuevo sistema de rangos) */
+.pgroup-row{display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:6px;align-items:center;background:var(--yellow-soft);border:1px solid rgba(232,193,106,0.4);border-radius:10px;padding:8px 10px;margin-bottom:7px}
+.pgroup-row input[type=number]{padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;text-align:center;outline:none;width:60px}
+.pgroup-row input[type=number]:focus{border-color:var(--yellow)}
+.pgroup-row input[type=date]{padding:6px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;outline:none}
+.pgroup-row input[type=date]:focus{border-color:var(--yellow)}
+.pgroup-sep{font-size:11px;color:var(--muted);font-weight:700;white-space:nowrap}
+.pgroup-preview{font-size:10px;color:#b08a00;margin-top:3px;padding:0 2px}
+.premiere-continue-info{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;background:rgba(91,188,176,0.07);border:1px solid rgba(91,188,176,0.2);border-radius:8px;padding:7px 10px}
+
+/* ═══ PAGINATION ═══ */
+.pagination{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+.pg-btn{min-width:34px;height:34px;padding:0 10px;border-radius:10px;border:1.5px solid var(--border2);background:transparent;color:var(--muted);font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .14s;display:flex;align-items:center;justify-content:center}
+.pg-btn:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent2);color:var(--accent)}
+.pg-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pg-btn:disabled{opacity:.35;cursor:default}
+.pg-info{font-size:12px;color:var(--muted);font-weight:600;padding:0 6px;white-space:nowrap}
+
+/* ═══ ANIME SEASON SELECTOR ═══ */
+.anime-season-wrap{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.anime-season-chip{
+  padding:5px 13px;border-radius:20px;font-size:12px;font-weight:700;
+  border:1.5px solid var(--border2);background:var(--surface2);
+  color:var(--muted);cursor:pointer;transition:all .15s;
+  font-family:'Nunito',sans-serif;user-select:none;
+}
+.anime-season-chip:hover{border-color:#9b82c9;color:#7c5cbf;background:var(--lavender-soft)}
+.anime-season-chip.selected{background:var(--lavender-soft);border-color:#9b82c9;color:#7c5cbf}
+.anime-season-year{
+  padding:6px 10px;border-radius:10px;border:1.5px solid var(--border2);
+  background:var(--surface2);color:var(--text);font-size:13px;
+  font-family:'Nunito',sans-serif;outline:none;width:82px;
+  transition:border-color .15s;
+}
+.anime-season-year:focus{border-color:#9b82c9}
+.anime-season-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;padding:2px 8px;border-radius:20px;font-weight:700;
+  background:var(--lavender-soft);color:#7c5cbf;border:1px solid rgba(155,130,201,0.4);
+}
+
+/* ═══ COLLAPSE SECTION ═══ */
+.collapsible-header{
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;user-select:none;padding:4px 0;
+}
+.collapsible-arrow{font-size:12px;color:var(--muted);transition:transform .2s}
+.collapsible-header.open .collapsible-arrow{transform:rotate(180deg)}
+.collapsible-body{overflow:hidden;transition:max-height .25s ease}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="logo">🌸 GL Series Calendar <span class="logo-badge">ADMIN</span></span>
+  <div class="topbar-actions">
+    <button class="btn small" onclick="document.getElementById('importFile').click()">⬆ Importar data.json</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    <button class="btn small" onclick="window.open('index.html','_blank')">👁 Ver público</button>
+    <button class="btn export small" onclick="exportData()">⬇ Exportar data.json</button>
+  </div>
+</div>
+<div class="unsaved-bar" id="unsavedBar">
+  <span>⚠️ Tienes cambios sin exportar. Recuerda exportar <code>data.json</code> y subirlo a GitHub.</span>
+  <button class="btn small export" onclick="exportData()">⬇ Exportar ahora</button>
+</div>
+<!-- Quick navigation bar -->
+<nav class="quicknav" id="quicknav">
+  <span class="quicknav-label">Ir a →</span>
+  <a class="qnav-btn" href="#section-series" onclick="document.getElementById('section-series').scrollIntoView({behavior:'smooth'});return false;">🌷 Series</a>
+  <a class="qnav-btn" href="#section-movies" onclick="document.getElementById('section-movies').scrollIntoView({behavior:'smooth'});return false;">🎥 Películas</a>
+  <a class="qnav-btn" href="#section-anime" onclick="document.getElementById('section-anime').scrollIntoView({behavior:'smooth'});return false;">🌸 Anime</a>
+  <a class="qnav-btn" href="#section-realities" onclick="document.getElementById('section-realities').scrollIntoView({behavior:'smooth'});return false;">🎤 Realities</a>
+  <a class="qnav-btn" href="#section-books" onclick="document.getElementById('section-books').scrollIntoView({behavior:'smooth'});return false;">📚 Libros</a>
+  <div class="quicknav-sep"></div>
+  <button class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
+  <button class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
+  <button class="qnav-btn add-anime" onclick="openAddAnime()">+ Anime</button>
+  <button class="qnav-btn add-reality" onclick="openAddReality()">+ Reality</button>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">✦ Panel de administración</h1>
+  <p class="page-sub">Gestiona las series GL y exporta para actualizar la web.</p>
+  <div class="notice"><strong>¿Cómo funciona?</strong> Añade aquí todas las series. Cuando quieras que tus amig@s vean los cambios, pulsa <strong>"Exportar data.json"</strong> y súbelo a GitHub.</div>
+
+  <div class="card" id="section-series">
+    <div class="card-title">🌷 Series</div>
+    <div class="admin-toolbar">
+      <div class="admin-search-wrap">
+        <span class="admin-search-icon">🔍</span>
+        <input class="admin-search-input" id="adminSeriesQ" placeholder="Buscar por nombre, país, plataforma…" oninput="pages.series=1;render()">
+      </div>
+      <div class="admin-filter-pills" id="adminStatusPills">
+        <button class="admin-pill active" data-status="all" onclick="setAdminStatus('all',this)">Todas</button>
+        <button class="admin-pill" data-status="airing" onclick="setAdminStatus('airing',this)">🌸 Emisión</button>
+        <button class="admin-pill" data-status="finished" onclick="setAdminStatus('finished',this)">✓ Finalizadas</button>
+        <button class="admin-pill" data-status="upcoming" onclick="setAdminStatus('upcoming',this)">📅 Próximas</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
+        <select id="adminSeriesSort" onchange="pages.series=1;render()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="added">📋 Orden de añadido</option>
+          <option value="az">🔤 A → Z</option>
+          <option value="za">🔤 Z → A</option>
+          <option value="next">📅 Próximo episodio</option>
+          <option value="progress">📊 Progreso</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddSeries()">+ Añadir nueva serie</button>
+    <div class="series-count-label" id="seriesCountLabel"></div>
+    <div class="series-grid" id="seriesGrid"></div>
+  </div>
+
+  <div class="card" id="section-movies">
+    <div class="card-title">🎥 Películas</div>
+    <div class="admin-toolbar">
+      <div class="admin-search-wrap">
+        <span class="admin-search-icon">🔍</span>
+        <input class="admin-search-input" id="adminMoviesQ" placeholder="Buscar por nombre, país, plataforma…" oninput="pages.movies=1;renderMovies()">
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
+        <select id="adminMoviesSort" onchange="pages.movies=1;renderMovies()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="added">📋 Orden de añadido</option>
+          <option value="az">🔤 A → Z</option>
+          <option value="za">🔤 Z → A</option>
+          <option value="date">📅 Fecha estreno</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddMovie()">+ Añadir película</button>
+    <div class="series-count-label" id="moviesCountLabel"></div>
+    <div class="series-grid" id="moviesGrid"></div>
+  </div>
+
+  <div class="card section-anime" id="section-anime">
+    <div class="card-title">🌸 Anime GL</div>
+    <div class="admin-toolbar">
+      <div class="admin-search-wrap">
+        <span class="admin-search-icon">🔍</span>
+        <input class="admin-search-input" id="adminAnimeQ" placeholder="Buscar por nombre, país, plataforma…" oninput="pages.anime=1;renderAnimeGrid()">
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
+        <select id="adminAnimeSort" onchange="pages.anime=1;renderAnimeGrid()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="added">📋 Orden de añadido</option>
+          <option value="az">🔤 A → Z</option>
+          <option value="za">🔤 Z → A</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn primary" style="margin-bottom:1rem;width:100%;background:#7c5cbf;border-color:#7c5cbf" onclick="openAddAnime()">+ Añadir anime</button>
+    <div class="series-count-label" id="animeCountLabel"></div>
+    <div class="series-grid" id="animeGrid"></div>
+  </div>
+
+  <div class="card section-reality" id="section-realities">
+    <div class="card-title">🎤 Realities & Documentales GL</div>
+    <div class="admin-toolbar">
+      <div class="admin-search-wrap">
+        <span class="admin-search-icon">🔍</span>
+        <input class="admin-search-input" id="adminRealitiesQ" placeholder="Buscar por nombre, país, plataforma…" oninput="pages.realities=1;renderRealitiesGrid()">
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
+        <select id="adminRealitiesSort" onchange="pages.realities=1;renderRealitiesGrid()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="added">📋 Orden de añadido</option>
+          <option value="az">🔤 A → Z</option>
+          <option value="za">🔤 Z → A</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn primary" style="margin-bottom:1rem;width:100%;background:#3a9e94;border-color:#3a9e94" onclick="openAddReality()">+ Añadir reality / docuserie</button>
+    <div class="series-count-label" id="realitiesCountLabel"></div>
+    <div class="series-grid" id="realitiesGrid"></div>
+  </div>
+
+  <div class="card" id="section-books">
+    <div class="card-title">📚 Libros registrados</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Libros, novelas y manhwas enlazados desde series o películas marcadas como <strong>"Basada en libro"</strong>. Para añadir o editar, edita la serie/película correspondiente.</p>
+    <div class="series-grid" id="booksGrid"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📤 Cómo publicar cambios</div>
+    <div class="export-box"><div class="export-instructions">Cada vez que hagas cambios, sigue estos pasos:
+      <ol>
+        <li>Pulsa <strong>"Exportar data.json"</strong> arriba.</li>
+        <li>Ve a tu repositorio en <strong>github.com</strong>.</li>
+        <li>Haz clic en el archivo <code>data.json</code> y luego en el icono del lápiz ✏️</li>
+        <li>Borra todo el contenido y pega el del archivo descargado.</li>
+        <li>Pulsa <strong>"Commit changes"</strong>. En segundos tus amig@s verán los cambios.</li>
+      </ol>
+    </div></div>
+  </div>
+</div>
+
+<!-- Modal serie -->
+<div class="modal-bg" id="seriesModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="seriesModalTitle" style="margin-bottom:0"></div></div>
+    <div id="seriesModalBody"></div>
+  </div>
+</div>
+<!-- Modal película -->
+<div class="modal-bg" id="movieModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="movieModalTitle" style="margin-bottom:0"></div></div>
+    <div id="movieModalBody"></div>
+  </div>
+</div>
+<!-- Modal episodios -->
+<div class="modal-bg" id="epsModal">
+  <div class="modal">
+    <div class="modal-title" id="epsModalTitle"></div>
+    <div id="epsModalBody"></div>
+  </div>
+</div>
+<!-- Modal editar episodio -->
+<div class="modal-bg" id="epEditModal">
+  <div class="modal">
+    <div class="modal-title">✏️ Editar episodio</div>
+    <div id="epEditBody"></div>
+  </div>
+</div>
+
+<!-- Modal anime -->
+<div class="modal-bg" id="animeModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="animeModalTitle" style="margin-bottom:0"></div></div>
+    <div id="animeModalBody"></div>
+  </div>
+</div>
+<!-- Modal reality -->
+<div class="modal-bg" id="realityModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="realityModalTitle" style="margin-bottom:0"></div></div>
+    <div id="realityModalBody"></div>
+  </div>
+</div>
+
+<script>
+const DAYS_ES=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+const MONTHS_ES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const PALETTE=['#d4608a','#5bbcb0','#9b82c9','#e8a84a','#e06fa0','#4eadb5','#b07ad4','#d47a4e'];
+
+const PLATFORMS=[
+  {name:'GagaOOLala', url:'https://www.gagaoolala.com'},
+  {name:'WeTV',       url:'https://wetv.vip'},
+  {name:'iQIYI',      url:'https://www.iqiyi.com'},
+  {name:'Viki',       url:'https://www.viki.com'},
+  {name:'VIU',        url:'https://www.viu.com'},
+  {name:'YouTube',    url:'https://www.youtube.com'},
+  {name:'Netflix',    url:'https://www.netflix.com'},
+  {name:'Prime Video',url:'https://www.primevideo.com'},
+  {name:'HBO Max',    url:'https://www.max.com'},
+  {name:'CH3+',       url:'https://www.ch3plus.com'},
+  {name:'OneD',       url:'https://www.one31.net'},
+  {name:'Otros',      url:''},
+];
+
+const GENRES=[
+  // Géneros principales (MDL)
+  'Romance','Drama','Comedia','Acción','Thriller','Misterio','Terror',
+  'Fantasía','Ciencia Ficción','Sobrenatural','Aventura','Crimen',
+  // Géneros de ambientación
+  'Histórico','Médico','Legal','Político','Negocios',
+  'Deportes','Musical','Documental','Anime',
+  // Tags/subgéneros muy usados en MDL
+  'Slice of Life','Vida cotidiana','Melodrama','Psicológico',
+  'Escolar','Universitario','Coming of Age','Familia','Amistad',
+  'Artes marciales','Militar','Misterio sobrenatural',
+  // Específicos del drama asiático GL
+  'Reencarnación','Viaje en el tiempo',
+  'Idols / Entretenimiento','Oficina / Trabajo','Food / Cocina',
+];
+
+function genreChipsHtml(selected=[]){
+  return GENRES.map(g=>`<span class="genre-chip${selected.includes(g)?' selected':''}" onclick="this.classList.toggle('selected')">${g}</span>`).join('');
+}
+function getSelectedGenres(containerId){
+  return [...document.querySelectorAll(`#${containerId} .genre-chip.selected`)].map(c=>c.textContent);
+}
+function platformSelectHtml(){
+  return `<option value="">— Seleccionar —</option>`+PLATFORMS.map(p=>`<option value="${p.name}">${p.name}</option>`).join('');
+}
+
+const PRESET_COUNTRIES_ADMIN=[
+  {flag:'🇪🇸',name:'España'},
+  {flag:'🇺🇸',name:'Estados Unidos'},
+  {flag:'🇨🇳',name:'China'},
+  {flag:'🇹🇭',name:'Tailandia'},
+  {flag:'🇰🇷',name:'Corea del Sur'},
+  {flag:'🇯🇵',name:'Japón'},
+  {flag:'🇹🇼',name:'Taiwan'},
+  {flag:'🇸🇬',name:'Singapur'},
+  {flag:'🇵🇭',name:'Filipinas'},
+  {flag:'🇲🇽',name:'México'},
+  {flag:'🇦🇷',name:'Argentina'},
+  {flag:'🇧🇷',name:'Brasil'},
+];
+
+function countryPresetSelectHtml(){
+  return `<option value="">— Seleccionar país —</option>`
+    + PRESET_COUNTRIES_ADMIN.map(c=>`<option value="${c.name}">${c.flag} ${c.name}</option>`).join('')
+    + `<option value="__otro__">✏️ Otro…</option>`;
+}
+
+function _countrySelectChange(sel){
+  var inp=sel.nextElementSibling;
+  if(sel.value==='__otro__'){inp.classList.add('visible');inp.focus();}
+  else{inp.classList.remove('visible');inp.value='';}
+}
+function addCountryRow(listId, value=''){
+  const list=document.getElementById(listId);
+  if(!list) return;
+  const row=document.createElement('div');
+  row.className='country-row';
+  const isOther = value && !PRESET_COUNTRIES_ADMIN.some(c=>c.name===value);
+  row.innerHTML=`
+    <select class="country-row-select" onchange="_countrySelectChange(this)">${countryPresetSelectHtml()}</select>
+    <input class="country-row-input${isOther?' visible':''}" type="text" placeholder="Escribe el país…" value="${isOther?value.replace(/"/g,'&quot;'):''}">
+    <button type="button" class="platform-del-btn" onclick="this.parentElement.remove()" title="Eliminar">✕</button>`;
+  // Set select value if preset
+  if(value && !isOther) row.querySelector('select').value=value;
+  else if(isOther) row.querySelector('select').value='__otro__';
+  list.appendChild(row);
+}
+
+function initCountries(listId, countryStr){
+  const list=document.getElementById(listId);
+  if(!list) return;
+  list.innerHTML='';
+  // country may be stored as "España / Corea del Sur" or plain "España"
+  const parts=(countryStr||'').split('/').map(s=>s.trim()).filter(Boolean);
+  if(parts.length){ parts.forEach(p=>addCountryRow(listId,p)); }
+  else { addCountryRow(listId,''); }
+}
+
+function getCountries(listId){
+  const rows=document.querySelectorAll(`#${listId} .country-row`);
+  const result=[];
+  rows.forEach(r=>{
+    const sel=r.querySelector('select');
+    const inp=r.querySelector('input');
+    let val='';
+    if(sel.value==='__otro__') val=(inp?inp.value.trim():'');
+    else val=sel.value;
+    if(val) result.push(val);
+  });
+  return result.join(' / ');
+}
+
+let series = [];
+let movies = [];
+let currentStab = 'active';
+
+const PAGE_SIZE = 20;
+const pages = { series: 1, movies: 1, anime: 1, realities: 1 };
+
+function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+function paginate(items, section){
+  const total = items.length;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if(pages[section] > totalPages) pages[section] = totalPages;
+  const start = (pages[section]-1)*PAGE_SIZE;
+  return { items: items.slice(start, start+PAGE_SIZE), total, totalPages, page: pages[section] };
+}
+
+function paginationHtml(section, total, totalPages, page){
+  if(totalPages <= 1) return '';
+  let btns = '';
+  // Prev
+  btns += `<button class="pg-btn" onclick="goPage('${section}',${page-1})" ${page<=1?'disabled':''}>‹</button>`;
+  // Page numbers — show up to 7 buttons with ellipsis
+  const range = [];
+  for(let i=1;i<=totalPages;i++){
+    if(i===1||i===totalPages||Math.abs(i-page)<=2) range.push(i);
+    else if(range[range.length-1]!=='…') range.push('…');
+  }
+  range.forEach(r=>{
+    if(r==='…') btns+=`<span class="pg-btn" style="cursor:default;border-color:transparent;color:var(--muted)">…</span>`;
+    else btns+=`<button class="pg-btn${r===page?' active':''}" onclick="goPage('${section}',${r})">${r}</button>`;
+  });
+  // Next
+  btns += `<button class="pg-btn" onclick="goPage('${section}',${page+1})" ${page>=totalPages?'disabled':''}>›</button>`;
+  const start=(page-1)*PAGE_SIZE+1, end=Math.min(page*PAGE_SIZE,total);
+  return `<div class="pagination">${btns}<span class="pg-info">${start}–${end} de ${total}</span></div>`;
+}
+
+function goPage(section, p){
+  pages[section] = p;
+  if(section==='series') render();
+  else if(section==='movies') renderMovies();
+  else if(section==='anime') renderAnimeGrid();
+  else if(section==='realities') renderRealitiesGrid();
+  // Scroll section into view
+  const sectionEl = document.getElementById('section-'+section) || document.getElementById('section-'+{series:'series',movies:'movies',anime:'anime',realities:'realities'}[section]);
+  if(sectionEl) sectionEl.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function save(){
+  /* los datos viven solo en memoria; exporta data.json para guardar permanentemente */
+  document.getElementById('unsavedBar').classList.add('visible');
+}
+
+async function initData(){
+  // Si se abre como file://, fetch no funciona → mostrar aviso de importación
+  const isFileProtocol = location.protocol === 'file:';
+  if(!isFileProtocol){
+    try{
+      const r = await fetch('data.json?t='+Date.now());
+      if(r.ok){
+        const d = await r.json();
+        if(d.series) series = d.series;
+        if(d.movies) movies = d.movies;
+        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+        return;
+      }
+    } catch(e){ /* sin data.json accesible */ }
+  }
+  // Mostrar banner de importación y esperar a que el usuario cargue el archivo
+  render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+  if(isFileProtocol || series.length===0){
+    showImportBanner();
+  }
+}
+
+function showImportBanner(){
+  // Solo mostrar si no hay datos ya cargados
+  if(series.length > 0) return;
+  const banner = document.createElement('div');
+  banner.id = 'importBanner';
+  banner.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;background:var(--surface);border:2px solid var(--accent2);border-radius:16px;padding:14px 22px;box-shadow:0 8px 32px rgba(212,96,138,0.18);display:flex;align-items:center;gap:14px;max-width:520px;width:90%';
+  banner.innerHTML = `
+    <span style="font-size:22px">📂</span>
+    <div style="flex:1">
+      <div style="font-weight:700;color:var(--text);font-size:14px">Carga tu <code>data.json</code> para ver las series</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">Al abrir admin localmente el navegador no puede leer el archivo automáticamente.</div>
+    </div>
+    <button class="btn primary" onclick="document.getElementById('importFile').click();document.getElementById('importBanner').remove()">Importar</button>
+  `;
+  document.body.appendChild(banner);
+}
+
+function getDow(d){ return (new Date(d+'T12:00:00').getDay()+6)%7; }
+function addDays(d,n){ const x=new Date(d+'T12:00:00'); x.setDate(x.getDate()+n); return x.toISOString().slice(0,10); }
+function fmtDate(d){ const x=new Date(d+'T12:00:00'); return `${x.getDate()} ${MONTHS_ES[x.getMonth()].slice(0,3)} ${x.getFullYear()}`; }
+function getEmissionDays(s){ if(s.emissionDays&&s.emissionDays.length>0) return [...s.emissionDays].sort((a,b)=>a-b); if(s.dayOfWeek!==undefined) return [s.dayOfWeek]; return [0]; }
+
+function getSeasons(s){
+  if(s.seasons&&s.seasons.length) return s.seasons;
+  if(s.startDate&&s.totalEpisodes) return [{
+    label:'Temporada 1', startDate:s.startDate, totalEpisodes:s.totalEpisodes,
+    emissionDays:s.emissionDays||[s.dayOfWeek||0], skipDates:s.skipDates||[], episodes:s.episodes||[]
+  }];
+  return [];
+}
+
+function genEpisodes(s){
+  // Generates all episodes flat across seasons
+  const seasons=getSeasons(s);
+  if(!seasons.length) return [];
+  const all=[]; let offset=0;
+  seasons.forEach((season,idx)=>{
+    const epOverrides=season.episodes||[];
+
+    // ── Modo estreno completo en un día ──────────────────────────────────────
+    if(season.allInOneDay){
+      for(let i=0;i<season.totalEpisodes;i++){
+        const epNum=i+1, globalNum=offset+epNum;
+        const ov=epOverrides.find(e=>e.num===epNum);
+        all.push(ov?{...ov,num:globalNum,seasonNum:epNum,season:idx+1}:{num:globalNum,seasonNum:epNum,season:idx+1,date:season.startDate,skipped:false});
+      }
+      offset+=season.totalEpisodes;
+      return;
+    }
+
+    // ── Modo emisión con posible programación especial por grupos ────────────
+    const days=(season.emissionDays&&season.emissionDays.length)?[...season.emissionDays].sort((a,b)=>a-b):[season.dayOfWeek||0];
+    const skipDates=new Set(season.skipDates||[]);
+    // premiereSchedule nuevo: [{fromEp, toEp, date}, ...]  (rangos de episodios con fecha fija)
+    // También compatible con formato viejo: [{date, count}]
+    const premiereSchedule=season.premiereSchedule||[];
+
+    // Construir mapa epNum→fecha para los grupos especiales
+    const specialDateMap={};
+    const usedSpecialDates=new Set();
+    if(premiereSchedule.length){
+      // Detectar formato nuevo (tiene fromEp) vs viejo (tiene count)
+      const isNewFormat=premiereSchedule[0]&&premiereSchedule[0].fromEp!==undefined;
+      if(isNewFormat){
+        for(const gr of premiereSchedule){
+          const from=parseInt(gr.fromEp)||1, to=parseInt(gr.toEp)||from;
+          for(let n=from;n<=to&&n<=season.totalEpisodes;n++){
+            specialDateMap[n]=gr.date;
+            usedSpecialDates.add(gr.date);
+          }
+        }
+      } else {
+        // Formato viejo: [{date, count}]
+        let epCursor=0;
+        for(const pr of premiereSchedule){
+          const count=pr.count||1;
+          for(let c=0;c<count;c++){
+            epCursor++;
+            specialDateMap[epCursor]=pr.date;
+            usedSpecialDates.add(pr.date);
+          }
+        }
+      }
+    }
+
+    // Calcular la fecha de inicio del patrón semanal
+    // = primera fecha de emisión regular DESPUÉS del último grupo especial (o desde startDate si no hay grupos)
+    let weekRefDate=season.startDate;
+    let regularSearchStart=0; // sin premiereSchedule: startDate puede ser día de emisión
+    if(premiereSchedule.length){
+      // La última fecha especial usada
+      const allSpecialDates=[...usedSpecialDates].sort();
+      weekRefDate=allSpecialDates[allSpecialDates.length-1]||season.startDate;
+      regularSearchStart=1; // buscar DESPUÉS del último grupo especial
+    }
+    let firstRegularDate=null;
+    for(let o=regularSearchStart;o<60;o++){
+      const c=addDays(weekRefDate,o);
+      if(days.includes(getDow(c))&&!usedSpecialDates.has(c)){firstRegularDate=c;break;}
+    }
+    if(!firstRegularDate){
+      // Fallback: buscar desde startDate
+      for(let o=0;o<60;o++){const c=addDays(season.startDate,o);if(days.includes(getDow(c))&&!usedSpecialDates.has(c)){firstRegularDate=c;break;}}
+    }
+    if(!firstRegularDate) firstRegularDate=weekRefDate;
+
+    // Generar slots regulares
+    const weekStart=addDays(firstRegularDate,-getDow(firstRegularDate));
+    const totalRegular=season.totalEpisodes-Object.keys(specialDateMap).length;
+    const slots=[];
+    const wn=Math.ceil((Math.max(totalRegular,1)+(skipDates.size||0))/days.length)+8;
+    for(let w=0;w<wn&&slots.length<totalRegular+skipDates.size+12;w++){
+      for(const d of days){const date=addDays(weekStart,d+w*7);if(date>=firstRegularDate)slots.push(date);}
+    }
+    const regularSlots=slots.filter(d=>!skipDates.has(d)&&!usedSpecialDates.has(d));
+
+    // Asignar fechas a cada episodio
+    let regularIdx=0;
+    for(let epNum=1;epNum<=season.totalEpisodes;epNum++){
+      const globalNum=offset+epNum;
+      const ov=epOverrides.find(e=>e.num===epNum);
+      if(ov){
+        // Override manual: usa la fecha guardada directamente
+        all.push({...ov,num:globalNum,seasonNum:epNum,season:idx+1});
+      } else if(specialDateMap[epNum]!==undefined){
+        // Grupo especial
+        all.push({num:globalNum,seasonNum:epNum,season:idx+1,date:specialDateMap[epNum],skipped:false});
+      } else {
+        // Patrón semanal regular
+        const base=regularSlots[regularIdx]||addDays(firstRegularDate,regularIdx*7);
+        regularIdx++;
+        all.push({num:globalNum,seasonNum:epNum,season:idx+1,date:base,skipped:false});
+      }
+    }
+
+    offset+=season.totalEpisodes;
+  });
+  return all;
+}
+
+let adminSeriesStatus = 'all';
+function setAdminStatus(status, btn){
+  adminSeriesStatus = status;
+  pages.series = 1;
+  document.querySelectorAll('.admin-pill').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function getSeriesStatus(s){
+  if(s.upcoming) return 'upcoming';
+  const now=new Date();
+  const eps=genEpisodes(s);
+  return eps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped)?'airing':'finished';
+}
+
+function switchStab(tab){
+  const map={active:'all',upcoming:'upcoming'};
+  adminSeriesStatus=map[tab]||'all';
+  pages.series = 1;
+  document.querySelectorAll('.admin-pill').forEach(p=>{
+    p.classList.toggle('active', p.dataset.status===adminSeriesStatus);
+  });
+  render();
+}
+
+function render(){
+  const grid=document.getElementById('seriesGrid');
+  const q=(document.getElementById('adminSeriesQ')?.value||'').toLowerCase().trim();
+  let filtered=series.filter(s=>s.category!=='anime'&&s.category!=='reality').filter(s=>{
+    if(adminSeriesStatus!=='all'){
+      const st=getSeriesStatus(s);
+      if(adminSeriesStatus!==st) return false;
+    }
+    if(q){
+      return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q)||
+        (s.watchLinks||[]).some(l=>(l.name||'').toLowerCase().includes(q)||(l.url||'').toLowerCase().includes(q));
+    }
+    return true;
+  });
+
+  // Ordenación
+  const sort=(document.getElementById('adminSeriesSort')?.value)||'added';
+  const now2=new Date();
+  if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+  else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
+  else if(sort==='next'){
+    filtered.sort((a,b)=>{
+      const nextEp=s=>{ if(s.upcoming) return null; const ep=genEpisodes(s).find(e=>new Date(e.date+'T12:00:00')>now2&&!e.skipped); return ep?ep.date:null; };
+      const da=nextEp(a), db=nextEp(b);
+      if(!da&&!db) return a.name.localeCompare(b.name,'es');
+      if(!da) return 1; if(!db) return -1;
+      return da<db?-1:da>db?1:0;
+    });
+  } else if(sort==='progress'){
+    filtered.sort((a,b)=>{
+      const pct=s=>{ if(s.upcoming) return -1; const seasons=getSeasons(s),tot=seasons.reduce((a,t)=>a+t.totalEpisodes,0); if(!tot) return -1; const aired=genEpisodes(s).filter(e=>new Date(e.date+'T12:00:00')<=now2&&!e.skipped).length; return aired/tot; };
+      return pct(b)-pct(a);
+    });
+  }
+
+  const countLabel=document.getElementById('seriesCountLabel');
+  if(countLabel){
+    const total=series.filter(s=>s.category!=='anime'&&s.category!=='reality').length;
+    countLabel.innerHTML=filtered.length===total
+      ?`<strong>${total}</strong> series en total`
+      :`Mostrando <strong>${filtered.length}</strong> de <strong>${total}</strong> series`;
+  }
+
+  if(!filtered.length){
+    pages.series = 1;
+    grid.innerHTML=`<div class="empty">${q?'🔍 No se encontró ninguna serie con esa búsqueda.':adminSeriesStatus==='upcoming'?'📅 No hay series próximamente.':'🌸 No hay series todavía.'}</div>`;
+  } else {
+    const {items, total, totalPages, page} = paginate(filtered, 'series');
+    grid.innerHTML='';
+    items.forEach((s)=>{
+      const si=series.indexOf(s);
+      const col=PALETTE[si%PALETTE.length];
+      const status=getSeriesStatus(s);
+      const div=document.createElement('div'); div.className='series-item';
+      if(s.poster){
+        const img=document.createElement('img');
+        img.className='series-poster'; img.src=s.poster; img.alt=s.name;
+        img.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex';};
+        div.appendChild(img);
+      }
+      const ph=document.createElement('div'); ph.className='series-poster-ph'; ph.textContent='🎬';
+      if(s.poster) ph.style.display='none';
+      div.appendChild(ph);
+      let metaStr='';
+      const statusBadge=s.upcoming
+        ?'<span class="badge badge-upcoming">📅 Próximamente</span>'
+        :status==='airing'?'<span class="badge badge-airing">🌸 En emisión</span>'
+        :'<span class="badge badge-finished">✓ Finalizada</span>';
+      if(s.upcoming){
+        metaStr=`${s.year?escapeHtml(String(s.year))+' · ':''}${escapeHtml(s.country||'')}`;
+      } else {
+        const eps=genEpisodes(s), now=new Date();
+        const seasons=getSeasons(s);
+        const totalEps=seasons.reduce((a,t)=>a+t.totalEpisodes,0);
+        const aired=eps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
+        const pct=Math.round(aired/Math.max(totalEps,1)*100);
+        const lastSeason=seasons[seasons.length-1];
+        const daysLabel=((lastSeason?.emissionDays&&lastSeason.emissionDays.length)?lastSeason.emissionDays:[lastSeason?.dayOfWeek||0]).map(d=>DAYS_ES[d]).join(' y ');
+        metaStr=`${s.network?escapeHtml(s.network)+' · ':''}${totalEps} ep${seasons.length>1?' · '+seasons.length+'T':''} · ${daysLabel}`;
+      }
+      const bookBadge=s.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':'';
+      const genrePills=s.genres&&s.genres.length
+        ?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">${s.genres.map(g=>`<span style="font-size:10px;padding:2px 8px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--muted);font-weight:600">${escapeHtml(g)}</span>`).join('')}</div>`:'';
+      const info=document.createElement('div'); info.className='series-info';
+      info.innerHTML=`<div class="series-name">${escapeHtml(s.name)} ${statusBadge}${bookBadge}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.category==="anime"?'<span class="badge badge-anime">🌸 Anime</span>':s.category==="reality"?'<span class="badge badge-reality">🎤 Reality</span>':''}</div>
+        <div class="series-meta">${metaStr}</div>
+        ${genrePills}
+        ${!s.upcoming?`<div class="progress-wrap" style="margin-top:6px;height:4px;background:var(--border);border-radius:2px;overflow:hidden"><div class="progress-fill" style="width:${(()=>{const eps2=genEpisodes(s),now2=new Date(),seasons2=getSeasons(s),tot=seasons2.reduce((a,t)=>a+t.totalEpisodes,0),a=eps2.filter(e=>new Date(e.date+'T12:00:00')<=now2&&!e.skipped).length;return Math.round(a/Math.max(tot,1)*100)})()}%;background:${col}"></div></div>`:''}`;
+      div.appendChild(info);
+      const actions=document.createElement('div'); actions.className='series-actions';
+      actions.innerHTML=`${!s.upcoming?`<button class="btn small" onclick="openEps(${si})">Episodios</button>`:''}
+        <button class="btn small" onclick="openEdit(${si})">Editar</button>
+        <button class="btn small danger" onclick="delSeries(${si})">✕</button>`;
+      div.appendChild(actions);
+      grid.appendChild(div);
+    });
+    grid.insertAdjacentHTML('beforeend', paginationHtml('series', total, totalPages, page));
+  }
+}
+
+function renderMovies(){
+  const grid=document.getElementById('moviesGrid');
+  const q=(document.getElementById('adminMoviesQ')?.value||'').toLowerCase().trim();
+  const sort=(document.getElementById('adminMoviesSort')?.value)||'added';
+
+  let filtered=movies.filter(mv=>{
+    if(!q) return true;
+    return mv.name.toLowerCase().includes(q)||(mv.country||'').toLowerCase().includes(q)||(mv.network||'').toLowerCase().includes(q)||
+      (mv.watchLinks||[]).some(l=>(l.name||'').toLowerCase().includes(q)||(l.url||'').toLowerCase().includes(q));
+  });
+
+  if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+  else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
+  else if(sort==='date') filtered.sort((a,b)=>{
+    if(!a.date&&!b.date) return 0; if(!a.date) return 1; if(!b.date) return -1;
+    return a.date<b.date?-1:a.date>b.date?1:0;
+  });
+
+  const total=movies.length;
+  const lbl=document.getElementById('moviesCountLabel');
+  if(lbl) lbl.innerHTML=filtered.length===total
+    ?`<strong>${total}</strong> películas en total`
+    :`Mostrando <strong>${filtered.length}</strong> de <strong>${total}</strong> películas`;
+
+  if(!filtered.length){
+    pages.movies=1;
+    grid.innerHTML=`<div class="empty">${q?'🔍 No se encontró ninguna película con esa búsqueda.':'🎥 No hay películas todavía.'}</div>`;
+    return;
+  }
+
+  const {items, totalPages, page} = paginate(filtered, 'movies');
+  grid.innerHTML='';
+  items.forEach((mv)=>{
+    const mi=movies.indexOf(mv);
+    const div=document.createElement('div'); div.className='series-item';
+    const safeName=escapeHtml(mv.name);
+    const safePoster=escapeHtml(mv.poster||'');
+    if(mv.poster){
+      const img=document.createElement('img');
+      img.className='series-poster'; img.src=mv.poster; img.alt=mv.name;
+      img.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex';};
+      div.appendChild(img);
+    }
+    const ph=document.createElement('div');
+    ph.className='series-poster-ph'; ph.textContent='🎥';
+    if(mv.poster) ph.style.display='none';
+    div.appendChild(ph);
+    const bookBadge=mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':'';
+    const now=new Date();
+    const isPast=mv.date&&new Date(mv.date+'T12:00:00')<=now;
+    const statusBadge=mv.date?(isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge badge-upcoming">📅 Pendiente</span>'):'<span class="badge" style="background:var(--surface2);color:var(--muted)">Sin fecha</span>';
+    const metaStr=`${mv.network?escapeHtml(mv.network)+' · ':''}${mv.date?fmtDate(mv.date):'Fecha por confirmar'}`;
+    const mvGenrePills=mv.genres&&mv.genres.length
+      ?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">${mv.genres.map(g=>`<span style="font-size:10px;padding:2px 8px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--muted);font-weight:600">${escapeHtml(g)}</span>`).join('')}</div>`:'';
+    const info=document.createElement('div'); info.className='series-info';
+    info.innerHTML=`<div class="series-name">${safeName} ${bookBadge}${statusBadge}</div><div class="series-meta">${metaStr}</div>${mvGenrePills}`;
+    const actions=document.createElement('div'); actions.className='series-actions';
+    const editBtn=document.createElement('button'); editBtn.className='btn small'; editBtn.textContent='Editar';
+    editBtn.onclick=()=>openEditMovie(mi);
+    const delBtn=document.createElement('button'); delBtn.className='btn small danger'; delBtn.textContent='✕';
+    delBtn.onclick=()=>delMovie(mi);
+    actions.appendChild(editBtn); actions.appendChild(delBtn);
+    div.appendChild(info); div.appendChild(actions);
+    grid.appendChild(div);
+  });
+  grid.insertAdjacentHTML('beforeend', paginationHtml('movies', filtered.length, totalPages, page));
+}
+
+function closeAll(){ document.querySelectorAll('.modal-bg').forEach(m=>m.classList.remove('open')); 
+  document.getElementById('animeModal')?.classList.remove('open');
+  document.getElementById('realityModal')?.classList.remove('open');
+}
+document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{ if(e.target===m)closeAll(); }));
+
+function bindPoster(){
+  const inp=document.getElementById('f_poster'),prev=document.getElementById('posterPreview');
+  if(!inp||!prev) return;
+  inp.addEventListener('input',()=>{ if(inp.value.trim()){prev.src=inp.value.trim();prev.style.display='block';}else{prev.style.display='none';} });
+  if(inp.value.trim()){prev.src=inp.value.trim();prev.style.display='block';}
+  const bcInp=document.getElementById('f_bookcoverurl'),bcPrev=document.getElementById('bookCoverPreview');
+  if(bcInp&&bcPrev){
+    bcInp.addEventListener('input',()=>{ if(bcInp.value.trim()){bcPrev.src=bcInp.value.trim();bcPrev.style.display='block';}else{bcPrev.style.display='none';} });
+  }
+}
+function toggleBookFields(){
+  const checked=document.getElementById('f_book')?.checked;
+  const el=document.getElementById('bookExtraFields');
+  if(el) el.style.display=checked?'':'none';
+}
+function bindDowChips(){ document.querySelectorAll('.dow-chip').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('selected'))); }
+function getSelectedDays(){ return [...document.querySelectorAll('.dow-chip.selected')].map(c=>parseInt(c.dataset.dow)).sort((a,b)=>a-b); }
+function toggleAllInOneDay(cb){
+  const block=cb.closest('.season-block');
+  const dowWrap=block.querySelector('.s-dow-wrap');
+  if(cb.checked){ dowWrap.style.display='none'; }
+  else { dowWrap.style.display=''; }
+}
+function toggleUpcomingFields(){
+  const up=document.getElementById('f_upcoming')?.checked;
+  const schedFields=document.getElementById('schedFields');
+  const schedHidden=document.getElementById('schedFieldsHidden');
+  const renewedRow=document.getElementById('f_renewed')?.closest('.toggle-row');
+  if(schedFields) schedFields.style.display=up?'none':'';
+  if(schedHidden) schedHidden.style.display=up?'':'none';
+  if(renewedRow) renewedRow.style.display=up?'none':'';
+}
+
+function dowChipsHtml(selectedDays=[]){
+  return DAYS_ES.map((d,i)=>`<div class="dow-chip${selectedDays.includes(i)?' selected':''}" data-dow="${i}" onclick="this.classList.toggle('selected')">${d}</div>`).join('');
+}
+
+function addSeasonBlock(seasonData=null, idx=null){
+  const list=document.getElementById('seasonsList');
+  if(!list) return;
+  const blockIdx=list.children.length;
+  const label=seasonData?.label||(blockIdx===0?'Temporada 1':`Temporada ${blockIdx+1}`);
+  const startDate=(seasonData?.startDate!=null&&seasonData.startDate!=='')?seasonData.startDate:new Date().toISOString().slice(0,10);
+  const totalEps=(seasonData?.totalEpisodes!=null&&seasonData.totalEpisodes>0)?seasonData.totalEpisodes:12;
+  const emDays=seasonData?.emissionDays??(seasonData?.dayOfWeek!=null?[seasonData.dayOfWeek]:[0]);
+  // Special premiere: premiereSchedule = [{fromEp, toEp, date}, ...]  OR legacy [{date, count}]
+  const hasSpecial=seasonData?.premiereSchedule&&seasonData.premiereSchedule.length>0;
+  // Normalise to new format for rendering
+  let premiereGroups=[];
+  if(hasSpecial){
+    const ps=seasonData.premiereSchedule;
+    const isNew=ps[0]&&ps[0].fromEp!==undefined;
+    if(isNew){
+      premiereGroups=ps;
+    } else {
+      // Convert legacy [{date, count}] to [{fromEp, toEp, date}]
+      let cur=0;
+      ps.forEach(pr=>{
+        const from=cur+1, to=cur+(pr.count||1);
+        premiereGroups.push({fromEp:from,toEp:to,date:pr.date});
+        cur=to;
+      });
+    }
+  }
+  const block=document.createElement('div');
+  block.className='season-block';
+  block.dataset.seasonIdx=blockIdx;
+  block.innerHTML=`
+    <div class="season-block-header">
+      <div class="season-block-title">
+        <input type="text" value="${label}" placeholder="Ej: Temporada 1">
+      </div>
+      <button type="button" class="season-del-btn" onclick="this.closest('.season-block').remove();renumberSeasons()" title="Eliminar temporada">✕</button>
+    </div>
+    <div class="form-row" style="margin-bottom:10px">
+      <label class="form-label">Fecha del primer episodio *</label>
+      <input type="date" class="s-start" value="${startDate}"/>
+    </div>
+    <div class="form-row" style="margin-bottom:10px">
+      <label class="toggle-row s-allday-toggle" style="margin-bottom:8px;cursor:pointer">
+        <input type="checkbox" class="s-allday" ${seasonData?.allInOneDay?'checked':''} style="width:auto;accent-color:var(--accent)" onchange="toggleAllInOneDay(this)">
+        <div><div class="toggle-label">📦 Estreno completo en un día</div><div class="toggle-desc">Todos los episodios se emiten el mismo día (ej: Netflix drop)</div></div>
+      </label>
+      <div class="s-dow-wrap" style="${seasonData?.allInOneDay?'display:none':''}">
+        <label class="form-label">Días de emisión regular *</label>
+        <div class="dow-selector s-dow">${dowChipsHtml(emDays)}</div>
+        <div class="form-hint" style="margin-top:5px">Días de emisión regular. Si hay grupos de eps en fechas distintas, activa ↓</div>
+      </div>
+    </div>
+    <div class="form-row" style="margin-bottom:10px;${seasonData?.allInOneDay?'display:none':''}">
+      <label class="toggle-row" style="cursor:pointer;margin-bottom:0">
+        <input type="checkbox" class="s-special-toggle" ${hasSpecial?'checked':''} style="width:auto;accent-color:var(--yellow)" onchange="toggleSpecialSchedule(this)">
+        <div><div class="toggle-label" style="color:#7a5a00">⚡ Emisión irregular (fechas especiales)</div><div class="toggle-desc">Ej: eps 1-3 el sábado, eps 4-6 una semana después, luego semanal</div></div>
+      </label>
+      <div class="s-special-wrap" style="${hasSpecial?'':'display:none'}">
+        <div class="premiere-block">
+          <div class="premiere-block-title">⚡ Grupos de episodios con fechas fijas</div>
+          <div style="font-size:11px;color:#b08a00;margin-bottom:10px;line-height:1.6">
+            Define qué episodios se emiten en qué fecha. El resto seguirá el patrón semanal de arriba empezando justo después del último grupo.
+          </div>
+          <div style="display:grid;grid-template-columns:60px 60px 1fr auto;gap:5px;align-items:center;margin-bottom:5px;padding:0 2px">
+            <span style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em">Desde ep</span>
+            <span style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em">Hasta ep</span>
+            <span style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em">Fecha de emisión</span>
+            <span></span>
+          </div>
+          <div class="s-premiere-rows">
+            ${hasSpecial?premiereGroups.map((gr,i)=>`
+              <div class="premiere-ep-row" data-pidx="${i}" style="display:grid;grid-template-columns:60px 60px 1fr auto;gap:5px;align-items:center;background:var(--yellow-soft);border:1px solid rgba(232,193,106,0.4);border-radius:10px;padding:8px 10px;margin-bottom:6px">
+                <input type="number" class="pr-from" min="1" max="500" value="${gr.fromEp||1}" placeholder="Ep" style="padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;text-align:center;outline:none;width:100%"/>
+                <input type="number" class="pr-to" min="1" max="500" value="${gr.toEp||gr.fromEp||1}" placeholder="Ep" style="padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;text-align:center;outline:none;width:100%"/>
+                <input type="date" class="pr-date" value="${gr.date||''}"/>
+                <button type="button" class="platform-del-btn" onclick="this.closest('.premiere-ep-row').remove()" title="Eliminar">✕</button>
+              </div>`).join(''):''}
+          </div>
+          <button type="button" class="platform-add-btn" style="margin-top:8px" onclick="addPremiereRow(this.closest('.season-block'))">+ Añadir grupo</button>
+          <div class="premiere-continue-info">✅ El patrón semanal continuará automáticamente desde el primer día de emisión regular <strong>después del último grupo</strong>.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row" style="margin-bottom:0">
+      <label class="form-label">Número de episodios *</label>
+      <input type="number" class="s-eps" min="1" max="500" value="${totalEps}"/>
+    </div>`;
+  list.appendChild(block);
+}
+
+function renumberSeasons(){
+  const list=document.getElementById('seasonsList');
+  if(!list) return;
+  [...list.children].forEach((block,i)=>{
+    const inp=block.querySelector('.season-block-title input');
+    if(inp&&(inp.value===`Temporada ${i+2}`||inp.value===`Temporada ${i}`)){
+      inp.value=`Temporada ${i+1}`;
+    }
+  });
+}
+
+function initSeasons(seasonsData){
+  const list=document.getElementById('seasonsList');
+  if(!list) return;
+  list.innerHTML='';
+  if(seasonsData&&seasonsData.length){
+    seasonsData.forEach((s,i)=>addSeasonBlock(s,i));
+  } else {
+    addSeasonBlock();
+  }
+}
+
+function toggleSpecialSchedule(cb){
+  const wrap=cb.closest('.form-row').querySelector('.s-special-wrap');
+  if(wrap) wrap.style.display=cb.checked?'':'none';
+  if(cb.checked){
+    const block=cb.closest('.season-block');
+    const rows=block.querySelectorAll('.s-premiere-rows .premiere-ep-row');
+    if(!rows.length) addPremiereRow(block);
+  }
+}
+
+function addPremiereRow(block){
+  const container=block.querySelector('.s-premiere-rows');
+  const existingRows=container.querySelectorAll('.premiere-ep-row');
+  // Suggest fromEp: after last toEp
+  let nextFrom=1;
+  if(existingRows.length){
+    const lastRow=existingRows[existingRows.length-1];
+    const lastTo=parseInt(lastRow.querySelector('.pr-to')?.value)||1;
+    nextFrom=lastTo+1;
+  }
+  const nextTo=nextFrom;
+  // Suggest date: startDate + idx weeks or day after last date
+  let suggestedDate='';
+  if(existingRows.length){
+    const lastDate=existingRows[existingRows.length-1].querySelector('.pr-date')?.value;
+    if(lastDate) suggestedDate=addDays(lastDate,7);
+  } else {
+    const startInp=block.querySelector('.s-start');
+    suggestedDate=startInp?.value||new Date().toISOString().slice(0,10);
+  }
+  const row=document.createElement('div');
+  row.className='premiere-ep-row';
+  row.style.cssText='display:grid;grid-template-columns:60px 60px 1fr auto;gap:5px;align-items:center;background:var(--yellow-soft);border:1px solid rgba(232,193,106,0.4);border-radius:10px;padding:8px 10px;margin-bottom:6px';
+  row.innerHTML=`
+    <input type="number" class="pr-from" min="1" max="500" value="${nextFrom}" placeholder="Ep" style="padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;text-align:center;outline:none;width:100%"/>
+    <input type="number" class="pr-to" min="1" max="500" value="${nextTo}" placeholder="Ep" style="padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;text-align:center;outline:none;width:100%"/>
+    <input type="date" class="pr-date" value="${suggestedDate}"/>
+    <button type="button" class="platform-del-btn" onclick="this.closest('.premiere-ep-row').remove()" title="Eliminar">✕</button>`;
+  container.appendChild(row);
+}
+
+function updatePremiereLabels(block){
+  // No longer needed (groups don't have sequential labels), kept for compatibility
+}
+
+function getSeasonsData(){
+  const list=document.getElementById('seasonsList');
+  if(!list) return [];
+  const seasons=[];
+  const blocks=[...list.children];
+  for(let idx=0;idx<blocks.length;idx++){
+    const block=blocks[idx];
+    const label=block.querySelector('.season-block-title input').value.trim()||`Temporada ${idx+1}`;
+    const startDate=block.querySelector('.s-start').value;
+    const totalEps=parseInt(block.querySelector('.s-eps').value);
+    const allInOneDay=block.querySelector('.s-allday')?.checked||false;
+    const emissionDays=allInOneDay?[getDow(startDate)]:[...block.querySelectorAll('.s-dow .dow-chip.selected')].map(c=>parseInt(c.dataset.dow)).sort((a,b)=>a-b);
+    if(!startDate||isNaN(totalEps)||totalEps<1){
+      alert(`Temporada "${label}": rellena la fecha de inicio y el número de episodios.`);
+      return null;
+    }
+    if(!allInOneDay&&!emissionDays.length){
+      alert(`Temporada "${label}": selecciona al menos un día de emisión (Lunes, Martes…)`);
+      return null;
+    }
+    const hasSpecial=block.querySelector('.s-special-toggle')?.checked||false;
+    let premiereSchedule=[];
+    if(hasSpecial&&!allInOneDay){
+      block.querySelectorAll('.s-premiere-rows .premiere-ep-row').forEach(row=>{
+        const fromEp=parseInt(row.querySelector('.pr-from')?.value)||1;
+        const toEp=parseInt(row.querySelector('.pr-to')?.value)||fromEp;
+        const date=row.querySelector('.pr-date')?.value;
+        if(date&&fromEp>=1&&toEp>=fromEp) premiereSchedule.push({fromEp,toEp,date});
+      });
+      premiereSchedule.sort((a,b)=>a.fromEp-b.fromEp);
+    }
+    seasons.push({label,startDate,totalEpisodes:totalEps,emissionDays,allInOneDay,skipDates:[],episodes:[],premiereSchedule});
+  }
+  return seasons;
+}
+
+function formHtml(s, forcedCategory=null){
+  const today=new Date().toISOString().slice(0,10);
+  const isUpcoming=s&&s.upcoming;
+  const cat=forcedCategory||(s&&s.category)||'series';
+  return `
+  <div class="form-2col-layout">
+
+    <!-- ══ COLUMNA IZQUIERDA: datos básicos ══ -->
+    <div class="form-col-left">
+      <div class="form-section-hd">📋 Datos básicos</div>
+
+      <div class="form-row">
+        <label class="form-label">Nombre *</label>
+        <input id="f_name" placeholder="Ej: Bloom Into You" value="${s?s.name:''}" data-original="${s?s.name.replace(/"/g,'&quot;'):''}" oninput="checkDupName(this)"/>
+        <div id="f_name_dup_warn" style="display:none;margin-top:6px;padding:8px 12px;border-radius:10px;background:#fff3cd;border:1.5px solid #f0c040;font-size:12px;color:#7a5a00;line-height:1.6"></div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Portada (URL)</label>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <img id="posterPreview" class="poster-preview" alt="Portada" style="${s&&s.poster?'display:block':'display:none'};width:54px;height:80px;border-radius:10px;object-fit:cover;border:1.5px solid var(--border2);flex-shrink:0" src="${s&&s.poster?s.poster:''}">
+          <div style="flex:1">
+            <input id="f_poster" placeholder="https://image.tmdb.org/..." value="${s&&s.poster?s.poster:''}"/>
+            <div class="poster-hint" style="font-size:11px;margin-top:4px"><a href="https://www.themoviedb.org" target="_blank">TMDB</a> o <a href="https://myanimelist.net" target="_blank">MAL</a> → clic derecho → <strong>Copiar dirección</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Sinopsis</label>
+        <textarea id="f_synopsis" placeholder="Breve descripción…" style="min-height:75px">${s&&s.synopsis?s.synopsis:''}</textarea>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">▶ Trailer (YouTube URL)</label>
+        <input id="f_trailer" placeholder="https://youtu.be/..." value="${s&&s.trailerUrl?s.trailerUrl:''}"/>
+      </div>
+
+      <div class="form-section-hd" style="margin-top:14px">🏷 Info adicional</div>
+
+      <div class="form-row">
+        <label class="form-label">Categoría</label>
+        <div class="cat-chips" id="f_cat_chips">
+          <div class="cat-chip${cat==='series'?' selected-series':''}" onclick="selectCategory('series')" data-cat="series">🌷 Serie GL</div>
+          <div class="cat-chip${cat==='anime'?' selected-anime':''}" onclick="selectCategory('anime')" data-cat="anime">🌸 Anime</div>
+          <div class="cat-chip${cat==='reality'?' selected-reality':''}" onclick="selectCategory('reality')" data-cat="reality">🎤 Reality</div>
+        </div>
+        <input type="hidden" id="f_category" value="${cat}">
+      </div>
+
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:10px">
+        <div class="form-row" style="margin-bottom:0">
+          <label class="form-label">Año</label>
+          <input id="f_year" type="number" placeholder="${new Date().getFullYear()}" min="1990" max="2035" value="${s&&s.year?s.year:''}"/>
+        </div>
+        <div class="form-row" style="margin-bottom:0">
+          <label class="form-label">Plataforma principal</label>
+          <div class="platform-net-wrap">
+            <input id="f_net" placeholder="Netflix, WeTV…" value="${s&&s.network?s.network:''}"/>
+            <select class="platform-net-select" onchange="if(this.value){document.getElementById('f_net').value=this.value;this.value=''}">
+              ${platformSelectHtml()}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row" style="margin-top:10px">
+        <label class="form-label">País</label>
+        <div class="country-list" id="countriesList"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:5px">
+          <span class="qf-chip" onclick="quickSetCountry('Corea del Sur')" style="justify-content:flex-start">🇰🇷 Corea</span>
+          <span class="qf-chip" onclick="quickSetCountry('Japón')" style="justify-content:flex-start">🇯🇵 Japón</span>
+          <span class="qf-chip" onclick="quickSetCountry('Tailandia')" style="justify-content:flex-start">🇹🇭 Tailandia</span>
+          <span class="qf-chip" onclick="quickSetCountry('China')" style="justify-content:flex-start">🇨🇳 China</span>
+          <span class="qf-chip" onclick="quickSetCountry('Taiwán')" style="justify-content:flex-start">🇹🇼 Taiwán</span>
+          <span class="qf-chip" onclick="quickSetCountry('España')" style="justify-content:flex-start">🇪🇸 España</span>
+          <span class="qf-chip" onclick="quickSetCountry('Estados Unidos')" style="justify-content:flex-start">🇺🇸 EEUU</span>
+          <span class="qf-chip" onclick="quickSetCountry('Filipinas')" style="justify-content:flex-start">🇵🇭 Filipinas</span>
+        </div>
+        <button type="button" class="platform-add-btn" onclick="addCountryRow('countriesList')" style="margin-top:5px">+ País</button>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">🔗 Dónde ver</label>
+        <div class="platforms-list" id="platformsList"></div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">
+          <span class="qf-chip" onclick="quickAddPlatform('GagaOOLala','https://www.gagaoolala.com')">Gaga</span>
+          <span class="qf-chip" onclick="quickAddPlatform('WeTV','https://wetv.vip')">WeTV</span>
+          <span class="qf-chip" onclick="quickAddPlatform('Viki','https://www.viki.com')">Viki</span>
+          <span class="qf-chip" onclick="quickAddPlatform('Netflix','https://www.netflix.com')">Netflix</span>
+          <span class="qf-chip" onclick="quickAddPlatform('iQIYI','https://www.iqiyi.com')">iQIYI</span>
+          <span class="qf-chip" onclick="quickAddPlatform('Crunchyroll','https://www.crunchyroll.com')">Crunchyroll</span>
+          <span class="qf-chip" onclick="quickAddPlatform('YouTube','https://www.youtube.com')">YouTube</span>
+          <span class="qf-chip" onclick="quickAddPlatform('VIU','https://www.viu.com')">VIU</span>
+        </div>
+        <button type="button" class="platform-add-btn" onclick="addPlatformRow()" style="margin-top:4px">+ Plataforma</button>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Géneros <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona los que apliquen)</span></label>
+        <div class="genre-chips" id="f_genres">${genreChipsHtml(s&&s.genres?s.genres:[])}</div>
+      </div>
+
+      <div class="divider"></div>
+      <label class="toggle-row" onclick="">
+        <input type="checkbox" id="f_book" ${s&&s.basedOnBook?'checked':''} style="width:auto;accent-color:var(--accent)" onchange="toggleBookFields()">
+        <div><div class="toggle-label">📖 Basada en libro / novela / manhwa</div><div class="toggle-desc">Se mostrará una etiqueta especial</div></div>
+      </label>
+      <div id="bookExtraFields" style="${s&&s.basedOnBook?'':'display:none'}">
+        <div class="form-row" style="margin-top:8px">
+          <label class="form-label">Título del libro / fuente</label>
+          <input id="f_booksource" placeholder="Ej: Título de la novela o manhwa" value="${s&&s.bookSource?s.bookSource:''}"/>
+        </div>
+        <div class="form-row">
+          <label class="form-label">URL portada del libro</label>
+          <input id="f_bookcoverurl" placeholder="https://..." value="${s&&s.bookCoverUrl?s.bookCoverUrl:''}"/>
+          <div style="margin-top:6px;display:flex;gap:8px;align-items:flex-start">
+            <img id="bookCoverPreview" class="poster-preview" alt="Portada libro" style="${s&&s.bookCoverUrl?'display:block':'display:none'};width:40px;height:58px;border-radius:8px;object-fit:cover;border:1.5px solid var(--border2);flex-shrink:0" src="${s&&s.bookCoverUrl?s.bookCoverUrl:''}">
+            <div class="poster-hint" style="font-size:11px">Clic derecho → <strong>Copiar dirección</strong></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Ediciones <span style="text-transform:none;font-weight:400;font-size:11px">(idioma · tienda · enlace)</span></label>
+          <div class="book-editions-list" id="bookEditionsList"></div>
+          <button type="button" class="platform-add-btn" onclick="addBookEditionRow()" style="margin-top:6px">+ Añadir edición</button>
+        </div>
+      </div>
+      <label class="toggle-row" style="margin-top:8px">
+        <input type="checkbox" id="f_upcoming" ${isUpcoming?'checked':''} style="width:auto;accent-color:var(--lavender)" onchange="toggleUpcomingFields()">
+        <div><div class="toggle-label">📅 Próximamente (sin fecha de emisión)</div><div class="toggle-desc">Aparece en la sección "Próximamente"</div></div>
+      </label>
+      <label class="toggle-row" style="margin-top:6px;${isUpcoming?'display:none':''}">
+        <input type="checkbox" id="f_renewed" ${s&&s.renewedNextSeason?'checked':''} style="width:auto;accent-color:var(--teal)">
+        <div><div class="toggle-label" style="color:var(--teal)">🔄 Renovada para nueva temporada</div><div class="toggle-desc">Muestra el badge "Renovada" en index cuando la serie finaliza</div></div>
+      </label>
+    </div>
+
+    <!-- ══ COLUMNA DERECHA: temporadas ══ -->
+    <div class="form-col-right" id="schedFields" style="${isUpcoming?'display:none':''}">
+      <div class="form-section-hd">📅 Temporadas y emisión</div>
+
+      <!-- Temporada anime / documental -->
+      <div class="form-row" id="animeSeason_wrap" style="margin-bottom:14px;${(cat!=='anime'&&cat!=='reality')?'display:none':''}">
+        <label class="form-label">${cat==='reality'?'📅 Temporada documental':'🌸 Temporada anime'}</label>
+        <div class="anime-season-wrap">
+          ${['Invierno','Primavera','Verano','Otoño'].map(st=>`<div class="anime-season-chip${(s&&s.animeSeason&&s.animeSeason.startsWith(st))?' selected':''}" data-season="${st}" onclick="selectAnimeSeason(this)">${st==='Invierno'?'❄️ ':st==='Primavera'?'🌸 ':st==='Verano'?'☀️ ':'🍂 '}${st}</div>`).join('')}
+          <input type="number" id="f_anime_year" class="anime-season-year" placeholder="${new Date().getFullYear()}" min="2000" max="2040" value="${s&&s.animeSeason?s.animeSeason.split(' ').pop():''}">
+          <input type="hidden" id="f_anime_season_name" value="${s&&s.animeSeason?s.animeSeason.split(' ').slice(0,-1).join(' '):''}">
+        </div>
+        <div class="form-hint">Ej: Primavera 2025. Aparece en la ficha.</div>
+      </div>
+
+      <div class="seasons-list" id="seasonsList"></div>
+      <button type="button" class="platform-add-btn" onclick="addSeasonBlock()" style="margin-top:8px">+ Añadir temporada</button>
+    </div>
+    <div class="form-col-right" id="schedFieldsHidden" style="${isUpcoming?'':'display:none'}">
+      ${(cat==='anime'||cat==='reality')?`
+      <div class="form-row" id="animeSeason_wrap_upcoming" style="margin-bottom:14px">
+        <label class="form-label">${cat==='reality'?'📅 Temporada documental':'🌸 Temporada anime'}</label>
+        <div class="anime-season-wrap">
+          ${['Invierno','Primavera','Verano','Otoño'].map(st=>`<div class="anime-season-chip${(s&&s.animeSeason&&s.animeSeason.startsWith(st))?' selected':''}" data-season="${st}" onclick="selectAnimeSeason(this)">${st==='Invierno'?'❄️ ':st==='Primavera'?'🌸 ':st==='Verano'?'☀️ ':'🍂 '}${st}</div>`).join('')}
+          <input type="number" id="f_anime_year_upcoming" class="anime-season-year" placeholder="${new Date().getFullYear()}" min="2000" max="2040" value="${s&&s.animeSeason?s.animeSeason.split(' ').pop():''}">
+          <input type="hidden" id="f_anime_season_name_upcoming" value="${s&&s.animeSeason?s.animeSeason.split(' ').slice(0,-1).join(' '):''}">
+        </div>
+        <div class="form-hint">Ej: Primavera 2025.</div>
+      </div>`:''}
+      <div style="text-align:center;padding:3rem 1rem;color:var(--muted);font-size:13px">
+        <div style="font-size:2rem;margin-bottom:8px">📅</div>
+        Las temporadas se configuran<br>cuando la serie tenga fecha confirmada.
+      </div>
+    </div>
+
+  </div><!-- fin form-2col-layout -->`;
+}
+
+
+function openAddSeries(){
+  document.getElementById('seriesModalTitle').textContent='🌸 Añadir serie GL';
+  document.getElementById('seriesModalBody').innerHTML=
+    `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
+    formHtml(null)+
+    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" onclick="saveSeries(-1)">Guardar</button></div>`;
+  document.getElementById('seriesModal').classList.add('open');
+  bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
+  initCountries('countriesList','');
+  initSeasons(null);
+}
+function openEdit(si){
+  document.getElementById('seriesModalTitle').textContent='✏️ Editar serie';
+  document.getElementById('seriesModalBody').innerHTML=
+    formHtml(series[si])+
+    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" onclick="saveSeries(${si})">Guardar cambios</button></div>`;
+  document.getElementById('seriesModal').classList.add('open');
+  bindPoster();
+  const links=series[si].watchLinks||(series[si].networkUrl?[{name:series[si].network||'Ver serie',url:series[si].networkUrl}]:[]);
+  initPlatforms(links);
+  initBookEditions('bookEditionsList', series[si].bookLinks||[], series[si].bookUrl||'');
+  initCountries('countriesList', series[si].country||'');
+  initSeasons(getSeasons(series[si]));
+}
+
+function initPlatforms(links){
+  const list=document.getElementById('platformsList');
+  if(!list) return;
+  list.innerHTML='';
+  if(!links.length){ addPlatformRow('',''); return; }
+  links.forEach(l=>addPlatformRow(l.name,l.url));
+}
+function addPlatformRow(name='',url='', listId='platformsList'){
+  const list=document.getElementById('platformsList');
+  if(!list) return;
+  const row=document.createElement('div'); row.className='platform-row-sel';
+  row.innerHTML=`
+    <select onchange="if(this.value){const p=PLATFORMS.find(x=>x.name===this.value);const ni=this.nextElementSibling;const ui=ni.nextElementSibling;ni.value=this.value;if(p&&p.url&&!ui.value)ui.value=p.url;this.value=''}">
+      ${platformSelectHtml()}
+    </select>
+    <input placeholder="Nombre visible" value="${name}">
+    <input placeholder="https://…" value="${url}" style="flex:2">
+    <button type="button" class="platform-del-btn" onclick="this.parentElement.remove()" title="Eliminar">✕</button>`;
+  // Fix: reorder so select → name → url → del
+  list.appendChild(row);
+}
+function getWatchLinks(){
+  const rows=document.querySelectorAll('#platformsList .platform-row-sel');
+  const links=[];
+  rows.forEach(r=>{
+    const inputs=r.querySelectorAll('input');
+    const name=inputs[0].value.trim(), url=inputs[1].value.trim();
+    if(url) links.push({name:name||'Ver serie',url});
+  });
+  return links;
+}
+
+/* Book editions */
+const LANG_OPTIONS=[
+  {val:'es',flag:'🇪🇸',label:'Español'},
+  {val:'en',flag:'🇬🇧',label:'English'},
+  {val:'pt',flag:'🇧🇷',label:'Português'},
+  {val:'th',flag:'🇹🇭',label:'ภาษาไทย'},
+  {val:'ko',flag:'🇰🇷',label:'한국어'},
+  {val:'ja',flag:'🇯🇵',label:'日本語'},
+  {val:'zh',flag:'🇨🇳',label:'中文'},
+  {val:'fr',flag:'🇫🇷',label:'Français'},
+  {val:'de',flag:'🇩🇪',label:'Deutsch'},
+  {val:'it',flag:'🇮🇹',label:'Italiano'},
+  {val:'other',flag:'🌐',label:'Otro'},
+];
+const STORE_OPTIONS=['Amazon','MEB','Fnac','BookDepository','Kobo','Apple Books','Google Play','Web oficial','Otro'];
+
+function langFlag(val){ return (LANG_OPTIONS.find(l=>l.val===val)||{flag:'🌐'}).flag; }
+
+function buildEditionRow(listId, lang='es', store='Amazon', url=''){
+  const list=document.getElementById(listId); if(!list) return;
+  const row=document.createElement('div'); row.className='book-edition-row';
+  const langOpts=LANG_OPTIONS.map(l=>`<option value="${l.val}"${l.val===lang?' selected':''}>${l.flag} ${l.label}</option>`).join('');
+  const storeOpts=STORE_OPTIONS.map(s=>`<option${s===store?' selected':''}>${s}</option>`).join('');
+  row.innerHTML=`
+    <select class="edition-lang" onchange="this.previousElementSibling&&(this.previousElementSibling.textContent=langFlag(this.value))" title="Idioma" style="grid-column:1/3">${langOpts}</select>
+    <select class="edition-store" title="Tienda">${storeOpts}</select>
+    <input class="edition-url" placeholder="https://…" value="${url}">
+    <button type="button" class="platform-del-btn" onclick="this.parentElement.remove()" title="Eliminar">✕</button>`;
+  list.appendChild(row);
+}
+
+function addBookEditionRow(){ buildEditionRow('bookEditionsList'); }
+function addMovieBookEditionRow(){ buildEditionRow('movieBookEditionsList'); }
+
+function initBookEditions(listId, editions, legacyUrl){
+  const list=document.getElementById(listId); if(!list) return;
+  list.innerHTML='';
+  if(editions&&editions.length){
+    editions.forEach(e=>buildEditionRow(listId, e.lang||'es', e.store||'Amazon', e.url||''));
+  } else if(legacyUrl){
+    buildEditionRow(listId, 'es', 'Amazon', legacyUrl);
+  }
+}
+
+function getBookEditions(listId){
+  const rows=document.querySelectorAll(`#${listId} .book-edition-row`);
+  const editions=[];
+  rows.forEach(r=>{
+    const lang=r.querySelector('.edition-lang')?.value||'es';
+    const store=r.querySelector('.edition-store')?.value||'Amazon';
+    const url=r.querySelector('.edition-url')?.value.trim()||'';
+    if(url) editions.push({lang,store,url});
+  });
+  return editions;
+}
+
+
+
+function quickSetCountry(country){
+  const list=document.getElementById('countriesList');
+  if(!list) return;
+  list.innerHTML='';
+  addCountryRow('countriesList', country);
+  // Flash the chips
+  document.querySelectorAll('.qf-chip').forEach(c=>{
+    if(c.textContent.includes(country.split(' ')[0].replace('🇰🇷','').replace('🇯🇵','').replace('🇹🇭',''))){
+      c.classList.add('qf-applied');
+      setTimeout(()=>c.classList.remove('qf-applied'),1200);
+    }
+  });
+}
+
+
+function quickAddPlatform(name, url){
+  const list=document.getElementById('platformsList');
+  if(!list) return;
+  // Check if already added
+  const existing=[...list.querySelectorAll('input[placeholder*="nombre"]')].map(i=>i.value.toLowerCase());
+  if(existing.includes(name.toLowerCase())) return;
+  addPlatformRow(name, url);
+}
+
+/* ═══ DUPLICATE TITLE CHECK ═══ */
+function checkDupName(inp){
+  const warn=document.getElementById('f_name_dup_warn');
+  if(!warn) return;
+  const q=(inp.value||'').trim().toLowerCase();
+  const originalName=(inp.dataset.original||'').toLowerCase();
+  if(!q||q.length<2){warn.style.display='none';return;}
+  // Skip warning if user is just editing and name hasn't changed
+  if(originalName&&q===originalName){warn.style.display='none';return;}
+
+  const catLabels={series:'🌷 Serie GL',anime:'🌸 Anime',reality:'🎤 Reality / Docuserie'};
+  const matches=[];
+
+  series.forEach(s=>{
+    if(s.name.trim().toLowerCase()===q){
+      const cat=catLabels[s.category||'series']||'Serie';
+      const section=s.category==='anime'?'Anime':s.category==='reality'?'Realities':'Series';
+      matches.push({section, cat, name:s.name, type:'serie'});
+    }
+  });
+  (movies||[]).forEach(mv=>{
+    if(mv.name.trim().toLowerCase()===q){
+      const cat=mv.category==='anime'?'🌸 Anime Película':mv.category==='reality'?'🎤 Documental':'🎥 Película';
+      matches.push({section:'Películas', cat, name:mv.name, type:'película'});
+    }
+  });
+
+  if(!matches.length){warn.style.display='none';return;}
+
+  const lines=matches.map(m=>`<strong>${m.name}</strong> — ${m.cat} (sección <em>${m.section}</em>)`).join('<br>');
+  warn.style.display='block';
+  warn.innerHTML=`⚠️ Este título ya existe en la base de datos:<br>${lines}<br><span style="font-size:11px;color:#b08a00">Comprueba que no sea un duplicado antes de guardar.</span>`;
+}
+
+
+function openEditByCat(si){
+  const s=series[si];
+  const cat=s.category||'series';
+  if(cat==='anime') openEditAnime(si);
+  else if(cat==='reality') openEditReality(si);
+  else openEdit(si);
+}
+
+/* ═══ ANIME SEASON CHIP SELECTOR ═══ */
+function selectAnimeSeason(chip){
+  const season=chip.dataset.season||'';
+  // Deselect all chips in both possible wrappers
+  document.querySelectorAll('.anime-season-chip').forEach(c=>c.classList.remove('selected'));
+  // Select all chips with same season (covers both wrappers)
+  document.querySelectorAll(`.anime-season-chip[data-season="${season}"]`).forEach(c=>c.classList.add('selected'));
+  // Update both hidden inputs
+  const n1=document.getElementById('f_anime_season_name');
+  const n2=document.getElementById('f_anime_season_name_upcoming');
+  if(n1) n1.value=season;
+  if(n2) n2.value=season;
+}
+
+function getAnimeSeason(){
+  // Try main fields first, fall back to upcoming fields
+  const name=(document.getElementById('f_anime_season_name')?.value.trim())||
+             (document.getElementById('f_anime_season_name_upcoming')?.value.trim())||'';
+  const year=(document.getElementById('f_anime_year')?.value.trim())||
+             (document.getElementById('f_anime_year_upcoming')?.value.trim())||'';
+  // Also check chips in both wrappers
+  let chipName=name;
+  if(!chipName){
+    const chip=document.querySelector('#animeSeason_wrap .anime-season-chip.selected, #animeSeason_wrap_upcoming .anime-season-chip.selected');
+    if(chip) chipName=chip.dataset.season||'';
+  }
+  if(!chipName&&!year) return '';
+  if(chipName&&year) return `${chipName} ${year}`;
+  return chipName||year;
+}
+
+/* ═══ CATEGORY SELECTOR ═══ */
+function selectCategory(cat){
+  const input=document.getElementById('f_category');
+  if(input) input.value=cat;
+  document.querySelectorAll('#f_cat_chips .cat-chip').forEach(c=>{
+    c.className='cat-chip'+(c.dataset.cat===cat?` selected-${cat}`:'');
+  });
+  // Show/hide anime season field
+  const asWrap=document.getElementById('animeSeason_wrap');
+  if(asWrap) asWrap.style.display=(cat==='anime'||cat==='reality')?'':'none';
+}
+
+/* ═══ ANIME FUNCTIONS ═══ */
+function openAddAnime(){
+  document.getElementById('animeModalTitle').textContent='🌸 Añadir anime GL';
+  document.getElementById('animeModalBody').innerHTML=
+    `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
+    formHtml(null,'anime')+
+    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(-1,'anime')">Guardar anime</button></div>`;
+  document.getElementById('animeModal').classList.add('open');
+  bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
+  initCountries('countriesList','Japón');
+  initSeasons(null);
+}
+function openEditAnime(si){
+  document.getElementById('animeModalTitle').textContent='✏️ Editar anime';
+  document.getElementById('animeModalBody').innerHTML=
+    formHtml(series[si],'anime')+
+    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si},'anime')">Guardar cambios</button></div>`;
+  document.getElementById('animeModal').classList.add('open');
+  bindPoster();
+  const s=series[si];
+  const links=s.watchLinks||(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
+  initPlatforms(links);
+  initBookEditions('bookEditionsList', s.bookLinks||[], s.bookUrl||'');
+  initCountries('countriesList', s.country||'');
+  initSeasons(getSeasons(s));
+}
+function openEpsAnime(si){ openEps(si); } // reuse same modal
+
+/* ═══ REALITY FUNCTIONS ═══ */
+function openAddReality(){
+  document.getElementById('realityModalTitle').textContent='🎤 Añadir reality / docuserie GL';
+  document.getElementById('realityModalBody').innerHTML=
+    `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
+    formHtml(null,'reality')+
+    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(-1,'reality')">Guardar</button></div>`;
+  document.getElementById('realityModal').classList.add('open');
+  bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
+  initCountries('countriesList','');
+  initSeasons(null);
+}
+function openEditReality(si){
+  document.getElementById('realityModalTitle').textContent='✏️ Editar reality';
+  document.getElementById('realityModalBody').innerHTML=
+    formHtml(series[si],'reality')+
+    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si},'reality')">Guardar cambios</button></div>`;
+  document.getElementById('realityModal').classList.add('open');
+  bindPoster();
+  const s=series[si];
+  const links=s.watchLinks||(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
+  initPlatforms(links);
+  initBookEditions('bookEditionsList', s.bookLinks||[], s.bookUrl||'');
+  initCountries('countriesList', s.country||'');
+  initSeasons(getSeasons(s));
+}
+
+/* ═══ RENDER ANIME GRID ═══ */
+function renderAnimeGrid(){
+  const grid=document.getElementById('animeGrid');
+  if(!grid) return;
+  const q=(document.getElementById('adminAnimeQ')?.value||'').toLowerCase().trim();
+  const sort=(document.getElementById('adminAnimeSort')?.value)||'added';
+
+  let animes=series.filter(s=>s.category==='anime');
+  let filtered=animes.filter(s=>{
+    if(!q) return true;
+    return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q);
+  });
+
+  if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+  else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
+
+  const lbl=document.getElementById('animeCountLabel');
+  if(lbl) lbl.innerHTML=filtered.length===animes.length
+    ?`<strong>${animes.length}</strong> animes en total`
+    :`Mostrando <strong>${filtered.length}</strong> de <strong>${animes.length}</strong> animes`;
+
+  if(!filtered.length){
+    pages.anime=1;
+    grid.innerHTML=`<div class="empty">${q?'🔍 No se encontró ningún anime con esa búsqueda.':'🌸 Ningún anime todavía. Pulsa "+ Añadir anime".'}</div>`;
+    return;
+  }
+  const {items, totalPages, page} = paginate(filtered, 'anime');
+  grid.innerHTML='';
+  items.forEach(s=>{
+    const si=series.indexOf(s);
+    const now=new Date();
+    const eps=genEpisodes(s);
+    const aired=eps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
+    const total2=s.seasons?s.seasons.reduce((a,t)=>a+t.totalEpisodes,0):(s.totalEpisodes||0);
+    const pct=Math.round(aired/Math.max(total2,1)*100);
+    const cover=s.poster?`<img class="series-poster" src="${escapeHtml(s.poster)}" alt="" onerror="this.outerHTML='<div class=series-poster-ph>🌸</div>'">`:`<div class="series-poster-ph">🌸</div>`;
+    const div=document.createElement('div'); div.className='series-item';
+    div.innerHTML=`${cover}
+      <div class="series-info">
+        <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-anime">Anime</span>${s.basedOnBook?'<span class="badge badge-book">📖</span>':''}${s.animeSeason?`<span class="anime-season-badge">🌸 ${escapeHtml(s.animeSeason)}</span>`:''}</div>
+        <div class="series-meta">${[s.country,s.network,s.year].filter(Boolean).map(escapeHtml).join(' · ')} · ${total2} eps</div>
+        <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:#7c5cbf"></div></div>
+      </div>
+      <div class="series-actions">
+        <button class="btn small" onclick="openEpsAnime(${si})">📋 Eps</button>
+        <button class="btn small" onclick="openEditAnime(${si})">✏️</button>
+        <button class="btn small danger" onclick="delSeries(${si})">🗑</button>
+      </div>`;
+    grid.appendChild(div);
+  });
+  grid.insertAdjacentHTML('beforeend', paginationHtml('anime', filtered.length, totalPages, page));
+}
+
+/* ═══ RENDER REALITIES GRID ═══ */
+function renderRealitiesGrid(){
+  const grid=document.getElementById('realitiesGrid');
+  if(!grid) return;
+  const q=(document.getElementById('adminRealitiesQ')?.value||'').toLowerCase().trim();
+  const sort=(document.getElementById('adminRealitiesSort')?.value)||'added';
+
+  let realities=series.filter(s=>s.category==='reality');
+  let filtered=realities.filter(s=>{
+    if(!q) return true;
+    return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q);
+  });
+
+  if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+  else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
+
+  const lbl=document.getElementById('realitiesCountLabel');
+  if(lbl) lbl.innerHTML=filtered.length===realities.length
+    ?`<strong>${realities.length}</strong> realities en total`
+    :`Mostrando <strong>${filtered.length}</strong> de <strong>${realities.length}</strong> realities`;
+
+  if(!filtered.length){
+    pages.realities=1;
+    grid.innerHTML=`<div class="empty">${q?'🔍 No se encontró ningún reality con esa búsqueda.':'🎤 Ningún reality todavía. Pulsa "+ Añadir reality".'}</div>`;
+    return;
+  }
+  const {items, totalPages, page} = paginate(filtered, 'realities');
+  grid.innerHTML='';
+  items.forEach(s=>{
+    const si=series.indexOf(s);
+    const now=new Date();
+    const eps=genEpisodes(s);
+    const aired=eps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
+    const total2=s.seasons?s.seasons.reduce((a,t)=>a+t.totalEpisodes,0):(s.totalEpisodes||0);
+    const pct=Math.round(aired/Math.max(total2,1)*100);
+    const cover=s.poster?`<img class="series-poster" src="${escapeHtml(s.poster)}" alt="" onerror="this.outerHTML='<div class=series-poster-ph>🎤</div>'">`:`<div class="series-poster-ph">🎤</div>`;
+    const div=document.createElement('div'); div.className='series-item';
+    div.innerHTML=`${cover}
+      <div class="series-info">
+        <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-reality">Reality</span>${s.basedOnBook?'<span class="badge badge-book">📖</span>':''}${s.animeSeason?`<span class="anime-season-badge">📅 ${escapeHtml(s.animeSeason)}</span>`:''}</div>
+        <div class="series-meta">${[s.country,s.network,s.year].filter(Boolean).map(escapeHtml).join(' · ')} · ${total2} eps</div>
+        <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:#3a9e94"></div></div>
+      </div>
+      <div class="series-actions">
+        <button class="btn small" onclick="openEps(${si})">📋 Eps</button>
+        <button class="btn small" onclick="openEditReality(${si})">✏️</button>
+        <button class="btn small danger" onclick="delSeries(${si})">🗑</button>
+      </div>`;
+    grid.appendChild(div);
+  });
+  grid.insertAdjacentHTML('beforeend', paginationHtml('realities', filtered.length, totalPages, page));
+}
+
+function saveSeries(si, forcedCategory=null){
+  const name=document.getElementById('f_name').value.trim();
+  const poster=document.getElementById('f_poster').value.trim();
+  const synopsis=document.getElementById('f_synopsis').value.trim();
+  const year=document.getElementById('f_year').value.trim();
+  const country=getCountries('countriesList');
+  const net=document.getElementById('f_net').value.trim();
+  const watchLinks=getWatchLinks();
+  const networkUrl=watchLinks.length?watchLinks[0].url:'';
+  const bookSource=document.getElementById('f_booksource').value.trim();
+  const basedOnBook=document.getElementById('f_book').checked;
+  const bookCoverUrl=document.getElementById('f_bookcoverurl')?.value.trim()||'';
+  const upcoming=document.getElementById('f_upcoming').checked;
+  if(!name){alert('El nombre es obligatorio');return;}
+  // Comprobación de duplicados
+  const dupSeries=series.find((s,i)=>i!==si&&s.name.trim().toLowerCase()===name.toLowerCase());
+  const dupMovie=(movies||[]).find(mv=>mv.name.trim().toLowerCase()===name.toLowerCase());
+  if(dupSeries){
+    if(!confirm(`⚠️ Ya existe una serie llamada "${dupSeries.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
+  } else if(dupMovie){
+    if(!confirm(`⚠️ Ya existe una película llamada "${dupMovie.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
+  }
+  const trailerUrl=document.getElementById('f_trailer')?.value.trim()||'';
+  const bookLinks=getBookEditions('bookEditionsList');
+  const bookUrl=bookLinks.length?bookLinks[0].url:'';
+  const genres=getSelectedGenres('f_genres');
+  const category=document.getElementById('f_category')?.value||'series';
+  const animeSeason=(category==='anime'||category==='reality')?getAnimeSeason():'';
+  const renewedNextSeason=document.getElementById('f_renewed')?.checked||false;
+  let payload={name,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,animeSeason,renewedNextSeason};
+  if(!upcoming){
+    const seasons=getSeasonsData();
+    if(!seasons) return;
+    if(!seasons.length){alert('Añade al menos una temporada');return;}
+    const existing=si>=0?getSeasons(series[si]):[];
+    seasons.forEach((s,i)=>{
+      const prev=existing[i];
+      if(prev){s.skipDates=prev.skipDates||[];s.episodes=prev.episodes||[];}
+    });
+    payload={...payload,seasons};
+  }
+  const updatedAt=new Date().toISOString();
+  if(si===-1) series.push({id:Date.now().toString(),...payload,updatedAt});
+  else series[si]={...series[si],...payload,updatedAt};
+  save(); closeAll(); render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+}
+
+function delSeries(si){
+  if(!confirm(`¿Eliminar "${series[si].name}"?`)) return;
+  series.splice(si,1); save(); render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+}
+
+function openEps(si){
+  // Cerrar modal de edición de episodio si estaba abierto
+  document.getElementById('epEditModal').classList.remove('open');
+  const s=series[si], allEps=genEpisodes(s), now=new Date();
+  const seasons=getSeasons(s);
+  document.getElementById('epsModalTitle').textContent=`📋 ${s.name}`;
+  let html=`<p style="font-size:12px;color:var(--muted);margin-bottom:10px">Pulsa un episodio para editar su fecha o marcarlo como no emitido.</p>`;
+  seasons.forEach((season,sIdx)=>{
+    const seasonEps=allEps.filter(e=>e.season===sIdx+1);
+    const skipDates=new Set(season.skipDates||[]);
+    if(seasons.length>1) html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:${sIdx>0?'14px':0} 0 8px">${season.label||`Temporada ${sIdx+1}`}</div>`;
+    if(!season.allInOneDay){
+      html+=`<button class="btn small" style="margin-bottom:8px;width:100%" onclick="openAddSkip(${si},${sIdx})">+ Añadir descanso en ${season.label||'T'+(sIdx+1)}</button>`;
+    } else {
+      html+=`<div style="font-size:12px;color:var(--teal);background:var(--teal-soft);border-radius:8px;padding:6px 12px;margin-bottom:8px">📦 Estreno completo — todos los eps el ${fmtDate(season.startDate)}</div>`;
+    }
+    html+=`<div class="ep-list" style="margin-bottom:8px">`;
+    if(season.allInOneDay){
+      // Todos los eps el mismo día
+      for(let i=0;i<season.totalEpisodes;i++){
+        const epNum=i+1;
+        const ep=seasonEps.find(e=>e.seasonNum===epNum);
+        if(!ep) continue;
+        const isPast=new Date(ep.date+'T12:00:00')<=now;
+        const hasOv=(season.episodes||[]).some(e=>e.num===epNum);
+        let st,lb;
+        if(ep.skipped){st='skipped';lb='No emitido';}
+        else if(hasOv){st='modified';lb='Fecha cambiada';}
+        else if(isPast){st='aired';lb='Emitido';}
+        else{st='pending';lb='Pendiente';}
+        html+=`<div class="ep-row" onclick="openEpEdit(${si},${sIdx},${epNum})"><span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
+      }
+    } else {
+    // Use genEpisodes results directly — they already account for special groups and overrides
+    // Show skip rows interleaved at the correct calendar slots
+    const days=(season.emissionDays&&season.emissionDays.length)?[...season.emissionDays].sort((a,b)=>a-b):[season.dayOfWeek||0];
+    const premiereSchedule=season.premiereSchedule||[];
+
+    // Build a sorted list of all episode dates + skip dates to display chronologically
+    const epMap={}; // date → [ep, ...]  (may have multiple eps same day)
+    seasonEps.forEach(ep=>{ if(!ep.date) return; (epMap[ep.date]=epMap[ep.date]||[]).push(ep); });
+    // Collect all dates (eps + skips), sort
+    const allDates=[...new Set([...Object.keys(epMap),...[...skipDates]])].sort();
+
+    // Also show skip dates that fall in the regular slots
+    allDates.forEach(date=>{
+      if(skipDates.has(date)){
+        html+=`<div class="ep-row" style="background:#f5f5f5;border-color:#e0e0e0;cursor:default;justify-content:space-between">
+          <span style="font-size:12px;color:#aaa">🚫 Descanso</span>
+          <span class="ep-date" style="color:#aaa">${fmtDate(date)}</span>
+          <button class="btn small danger" onclick="removeSkip(${si},${sIdx},'${date}')">✕</button>
+        </div>`;
+      } else if(epMap[date]){
+        epMap[date].forEach(ep=>{
+          const epNum=ep.seasonNum;
+          const isPast=new Date(ep.date+'T12:00:00')<=now;
+          const hasOv=(season.episodes||[]).some(e=>e.num===epNum);
+          const isSpecialGroup=premiereSchedule.length>0&&premiereSchedule.some(gr=>{
+            if(gr.fromEp!==undefined) return epNum>=gr.fromEp&&epNum<=gr.toEp;
+            return false;
+          });
+          let st,lb;
+          if(ep.skipped){st='skipped';lb='No emitido';}
+          else if(hasOv){st='modified';lb='Fecha cambiada';}
+          else if(isSpecialGroup&&!hasOv){st='modified';lb='Grupo especial';}
+          else if(isPast){st='aired';lb='Emitido';}
+          else{st='pending';lb='Pendiente';}
+          html+=`<div class="ep-row" onclick="openEpEdit(${si},${sIdx},${epNum})"><span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
+        });
+      }
+    });
+    } // end else (not allInOneDay)
+    html+=`</div>`;
+  });
+  html+=`<div class="btn-row" style="margin-top:1rem"><button class="btn" onclick="closeAll()">Cerrar</button></div>`;
+  document.getElementById('epsModalBody').innerHTML=html;
+  document.getElementById('epsModal').classList.add('open');
+}
+
+function openAddSkip(si, sIdx){
+  const s=series[si];
+  const season=getSeasons(s)[sIdx];
+  const days=(season.emissionDays&&season.emissionDays.length)?[...season.emissionDays].sort((a,b)=>a-b):[season.dayOfWeek||0];
+  const skipDates=new Set(season.skipDates||[]);
+  let suggestion='', firstDate=null;
+  for(let o=0;o<14;o++){const c=addDays(season.startDate,o);if(days.includes(getDow(c))){firstDate=c;break;}}
+  if(firstDate){
+    const ws=addDays(firstDate,-getDow(firstDate)), now=new Date().toISOString().slice(0,10);
+    for(let w=0;w<104&&!suggestion;w++){
+      for(const d of days){const date=addDays(ws,d+w*7);if(date>=now&&!skipDates.has(date)){suggestion=date;break;}}
+    }
+  }
+  document.getElementById('epEditBody').innerHTML=`
+    <div class="ep-edit-info"><strong>${s.name}</strong> · ${season.label||'Temporada '+(sIdx+1)}<br>Elige la fecha del slot que <strong>no se emite</strong>.</div>
+    <div class="form-row"><label class="form-label">Fecha del descanso *</label><input id="skip_date" type="date" value="${suggestion}"/></div>
+    <div class="btn-row"><button class="btn" onclick="openEps(${si})">← Volver</button><button class="btn primary" onclick="saveSkip(${si},${sIdx})">Añadir descanso</button></div>`;
+  document.getElementById('epEditModal').classList.add('open');
+}
+
+function saveSkip(si, sIdx){
+  const date=document.getElementById('skip_date').value;
+  if(!date){alert('Selecciona una fecha');return;}
+  const seasons=getSeasons(series[si]);
+  if(!series[si].seasons) series[si].seasons=seasons;
+  if(!series[si].seasons[sIdx].skipDates) series[si].seasons[sIdx].skipDates=[];
+  if(!series[si].seasons[sIdx].skipDates.includes(date)){
+    series[si].seasons[sIdx].skipDates.push(date);
+    series[si].seasons[sIdx].skipDates.sort();
+  }
+  save(); openEps(si);
+}
+
+function removeSkip(si, sIdx, date){
+  const seasons=getSeasons(series[si]);
+  if(!series[si].seasons) series[si].seasons=seasons;
+  series[si].seasons[sIdx].skipDates=(series[si].seasons[sIdx].skipDates||[]).filter(d=>d!==date);
+  save(); openEps(si);
+}
+
+function openEpEdit(si, sIdx, epNum){
+  const s=series[si];
+  const season=getSeasons(s)[sIdx];
+  const allEps=genEpisodes(s);
+  const globalEps=allEps.filter(e=>e.season===sIdx+1);
+  const ep=globalEps.find(e=>e.seasonNum===epNum);
+  const hasOv=(season.episodes||[]).some(e=>e.num===epNum);
+  const premiereSchedule=season.premiereSchedule||[];
+  const isInGroup=premiereSchedule.length&&premiereSchedule.some(gr=>gr.fromEp!==undefined&&epNum>=gr.fromEp&&epNum<=gr.toEp);
+  const totalEps=season.totalEpisodes;
+  const isLastSpecial=premiereSchedule.length&&premiereSchedule.some(gr=>gr.fromEp!==undefined&&epNum===gr.toEp);
+  document.getElementById('epEditBody').innerHTML=`
+    <div class="ep-edit-info">
+      <strong>${s.name}</strong> · ${season.label||'T'+(sIdx+1)} · Episodio ${epNum}<br>
+      Fecha actual: <strong>${fmtDate(ep.date)}</strong>
+      ${hasOv?'<br><span style="color:#b08a00;font-weight:600">⚠ Fecha cambiada manualmente</span>':''}
+      ${isInGroup?'<br><span style="color:#b08a00">📦 Parte de un grupo especial</span>':''}
+    </div>
+    <div class="section-label">Cambiar fecha de este episodio</div>
+    <div class="form-row"><label class="form-label">Nueva fecha</label><input id="fe_date" type="date" value="${ep.date}"/>
+      <div class="form-hint">Solo afecta a este episodio. Si quieres que los episodios siguientes también cambien, usa los <strong>grupos especiales</strong> en la configuración de la temporada.</div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-label">Estado</div>
+    <div class="form-row"><label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:var(--text)">
+      <input type="checkbox" id="fe_skip" ${ep.skipped?'checked':''} style="width:auto;accent-color:var(--accent)"/>
+      Marcar como no emitido (semana de descanso)
+    </label></div>
+    ${hasOv?`<div class="divider"></div><div style="text-align:center"><button class="btn danger small" onclick="resetEp(${si},${sIdx},${epNum})">↩ Restablecer fecha automática</button></div>`:''}
+    <div class="btn-row" style="margin-top:1rem"><button class="btn" onclick="openEps(${si})">← Volver</button><button class="btn primary" onclick="saveEp(${si},${sIdx},${epNum})">Guardar</button></div>`;
+  document.getElementById('epEditModal').classList.add('open');
+}
+
+function saveEp(si, sIdx, epNum){
+  const date=document.getElementById('fe_date').value, skipped=document.getElementById('fe_skip').checked;
+  const seasons=getSeasons(series[si]);
+  if(!series[si].seasons) series[si].seasons=seasons;
+  if(!series[si].seasons[sIdx].episodes) series[si].seasons[sIdx].episodes=[];
+  const eps=series[si].seasons[sIdx].episodes;
+  const idx=eps.findIndex(e=>e.num===epNum);
+  if(idx>=0) eps[idx]={num:epNum,date,skipped};
+  else eps.push({num:epNum,date,skipped});
+  save();
+  document.getElementById('epEditModal').classList.remove('open');
+  openEps(si);
+}
+
+function resetEp(si, sIdx, epNum){
+  const seasons=getSeasons(series[si]);
+  if(!series[si].seasons) series[si].seasons=seasons;
+  series[si].seasons[sIdx].episodes=(series[si].seasons[sIdx].episodes||[]).filter(e=>e.num!==epNum);
+  save();
+  document.getElementById('epEditModal').classList.remove('open');
+  openEps(si);
+}
+
+function movieFormHtml(mv){
+  const today=new Date().toISOString().slice(0,10);
+  return `
+  <div style="padding:1.25rem 1.75rem">
+  <div class="form-row"><label class="form-label">Nombre *</label><input id="mf_name" placeholder="Ej: The Hidden Moon" value="${mv?mv.name:''}" data-original="${mv?mv.name.replace(/"/g,'&quot;'):''}" oninput="checkDupName(this)"/>
+  <div id="f_name_dup_warn" style="display:none;margin-top:6px;padding:8px 12px;border-radius:10px;background:#fff3cd;border:1.5px solid #f0c040;font-size:12px;color:#7a5a00;line-height:1.6"></div>
+  </div>
+  <div class="form-row">
+    <label class="form-label">URL de la portada</label>
+    <input id="mf_poster" placeholder="https://image.tmdb.org/..." value="${mv&&mv.poster?mv.poster:''}"/>
+    <div class="poster-row"><img id="moviePosterPreview" class="poster-preview" alt="Portada" style="${mv&&mv.poster?'display:block':'display:none'}" src="${mv&&mv.poster?mv.poster:''}">
+      <div class="poster-hint">Clic derecho en la portada → <strong>"Copiar dirección de imagen"</strong></div>
+    </div>
+  </div>
+  <div class="form-row"><label class="form-label">Sinopsis / Descripción</label><textarea id="mf_synopsis" placeholder="Breve descripción…">${mv&&mv.synopsis?mv.synopsis:''}</textarea></div>
+  <div class="form-row-half">
+    <div class="form-row" style="margin-bottom:0"><label class="form-label">Año</label><input id="mf_year" type="number" placeholder="2026" min="2000" max="2030" value="${mv&&mv.year?mv.year:''}"/></div>
+    <div class="form-row" style="margin-bottom:0"><label class="form-label">País</label>
+      <div class="country-list" id="movieCountriesList"></div>
+      <button type="button" class="platform-add-btn" onclick="addCountryRow('movieCountriesList')">+ Añadir país</button>
+    </div>
+  </div>
+  <div class="form-row" style="margin-top:14px">
+    <label class="form-label">Plataforma / Canal principal</label>
+    <div class="platform-net-wrap">
+      <input id="mf_net" placeholder="Ej: Netflix, iQIYI…" value="${mv&&mv.network?mv.network:''}"/>
+      <select class="platform-net-select" onchange="if(this.value){document.getElementById('mf_net').value=this.value;this.value=''}">
+        ${platformSelectHtml()}
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <label class="form-label">Categoría</label>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+      <div class="cat-chip${mv&&mv.category==='anime'?' selected-anime':(!mv||!mv.category||mv.category==='movie'?'':'')} movie-cat-chip${mv&&mv.category==='anime'?' selected-anime':''}" onclick="selectMovieCat('anime',this)" data-cat="anime" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(124,92,191,0.4);font-size:12px;font-weight:700;background:${mv&&mv.category==='anime'?'#ede7f8':'transparent'};color:${mv&&mv.category==='anime'?'#7c5cbf':'#888'}">🌸 Anime</div>
+      <div class="cat-chip${mv&&mv.category==='reality'?' selected-reality':''} movie-cat-chip${mv&&mv.category==='reality'?' selected-reality':''}" onclick="selectMovieCat('reality',this)" data-cat="reality" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(58,158,148,0.4);font-size:12px;font-weight:700;background:${mv&&mv.category==='reality'?'#d4f0ed':'transparent'};color:${mv&&mv.category==='reality'?'#3a9e94':'#888'}">🎞️ Documental/Reality</div>
+      <div class="movie-cat-chip${!mv||!mv.category||mv.category==='movie'?' movie-cat-active':''}" onclick="selectMovieCat('movie',this)" data-cat="movie" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(139,114,190,0.4);font-size:12px;font-weight:700;background:${!mv||!mv.category||mv.category==='movie'?'var(--lavender-soft)':'transparent'};color:${!mv||!mv.category||mv.category==='movie'?'var(--lavender)':'#888'}">🎥 Película GL (por defecto)</div>
+    </div>
+    <input type="hidden" id="mf_category" value="${mv&&mv.category?mv.category:'movie'}">
+    <div class="form-hint">Elige "Anime" si es una película anime, "Documental/Reality" si es un documental o reality, o déjalo en Película GL por defecto.</div>
+  </div>
+  <div class="form-row">
+    <label class="form-label">Géneros <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona todos los que apliquen)</span></label>
+    <div class="genre-chips" id="mf_genres">${genreChipsHtml(mv&&mv.genres?mv.genres:[])}</div>
+  </div>
+  <div class="form-row">
+    <label class="form-label">🔗 Dónde ver <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(puedes añadir varias)</span></label>
+    <div class="platforms-list" id="moviePlatformsList"></div>
+    <button type="button" class="platform-add-btn" onclick="addMoviePlatformRow()">+ Añadir plataforma</button>
+  </div>
+  <div class="form-row"><label class="form-label">▶ URL del trailer (YouTube)</label><input id="mf_trailer" placeholder="https://www.youtube.com/watch?v=..." value="${mv&&mv.trailerUrl?mv.trailerUrl:''}"/>
+    <div class="form-hint">Pega la URL normal de YouTube. Si no tiene trailer, déjalo vacío.</div>
+  </div>
+  <div class="form-row"><label class="form-label">Fecha de estreno</label><input id="mf_date" type="date" value="${mv&&mv.date?mv.date:''}"/>
+    <div class="form-hint">Déjalo vacío si aún no tiene fecha confirmada.</div>
+  </div>
+  <div class="divider"></div>
+  <label class="toggle-row">
+    <input type="checkbox" id="mf_book" ${mv&&mv.basedOnBook?'checked':''} style="width:auto;accent-color:var(--accent)" onchange="toggleMovieBookFields()">
+    <div><div class="toggle-label">📖 Basada en libro / novela / manhwa</div><div class="toggle-desc">Se mostrará una etiqueta especial y la info del libro</div></div>
+  </label>
+  <div id="movieBookFields" style="${mv&&mv.basedOnBook?'':'display:none'}">
+    <div class="form-row"><label class="form-label">Título del libro</label><input id="mf_booksource" placeholder="Ej: Título de la novela o manhwa" value="${mv&&mv.bookSource?mv.bookSource:''}"/></div>
+    <div class="form-row"><label class="form-label">URL portada del libro</label>
+      <input id="mf_bookcoverurl" placeholder="https://..." value="${mv&&mv.bookCoverUrl?mv.bookCoverUrl:''}"/>
+      <div class="poster-row" style="margin-top:6px"><img id="movieBookCoverPreview" class="poster-preview" alt="Portada libro" style="${mv&&mv.bookCoverUrl?'display:block':'display:none'}" src="${mv&&mv.bookCoverUrl?mv.bookCoverUrl:''}">
+        <div class="poster-hint">Clic derecho en la portada del libro → <strong>"Copiar dirección de imagen"</strong></div>
+      </div>
+    </div>
+    <div class="form-row"><label class="form-label">Ediciones disponibles <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(idioma · tienda · enlace)</span></label>
+      <div class="book-editions-list" id="movieBookEditionsList"></div>
+      <button type="button" class="platform-add-btn" onclick="addMovieBookEditionRow()" style="margin-top:6px">+ Añadir edición</button>
+      <div class="form-hint">Ej: 🇪🇸 Español en Amazon, 🇬🇧 English en MEB…</div>
+    </div>
+  </div>
+  </div>`;
+}
+
+function bindMovieForm(){
+  const p=document.getElementById('mf_poster'),pp=document.getElementById('moviePosterPreview');
+  if(p&&pp){ p.addEventListener('input',()=>{ if(p.value.trim()){pp.src=p.value.trim();pp.style.display='block';}else{pp.style.display='none';} }); }
+  const bc=document.getElementById('mf_bookcoverurl'),bcp=document.getElementById('movieBookCoverPreview');
+  if(bc&&bcp){ bc.addEventListener('input',()=>{ if(bc.value.trim()){bcp.src=bc.value.trim();bcp.style.display='block';}else{bcp.style.display='none';} }); }
+}
+function toggleMovieBookFields(){
+  const checked=document.getElementById('mf_book')?.checked;
+  const el=document.getElementById('movieBookFields');
+  if(el) el.style.display=checked?'':'none';
+}
+
+function selectMovieCat(cat, el){
+  // Reset all movie-cat-chip styles
+  const chips=document.querySelectorAll('.movie-cat-chip');
+  chips.forEach(c=>{
+    const cc=c.getAttribute('data-cat');
+    c.style.background='transparent';
+    c.style.color='#888';
+    if(cc==='anime') c.style.borderColor='rgba(124,92,191,0.4)';
+    else if(cc==='reality') c.style.borderColor='rgba(58,158,148,0.4)';
+    else c.style.borderColor='rgba(139,114,190,0.4)';
+  });
+  // Activate selected
+  if(cat==='anime'){ el.style.background='#ede7f8'; el.style.color='#7c5cbf'; el.style.borderColor='#7c5cbf'; }
+  else if(cat==='reality'){ el.style.background='#d4f0ed'; el.style.color='#3a9e94'; el.style.borderColor='#3a9e94'; }
+  else { el.style.background='var(--lavender-soft)'; el.style.color='var(--lavender)'; el.style.borderColor='var(--lavender)'; }
+  const hidden=document.getElementById('mf_category');
+  if(hidden) hidden.value=cat;
+}
+
+function openAddMovie(){
+  document.getElementById('movieModalTitle').textContent='🎥 Añadir película';
+  document.getElementById('movieModalBody').innerHTML=
+    `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('movie')}</div>`+
+    movieFormHtml(null)+
+    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" onclick="saveMovie(-1)">Guardar</button></div>`;
+  document.getElementById('movieModal').classList.add('open');
+  bindMovieForm(); initMoviePlatforms([]); initBookEditions('movieBookEditionsList',[],null);
+  initCountries('movieCountriesList','');
+}
+function openEditMovie(mi){
+  document.getElementById('movieModalTitle').textContent='✏️ Editar película';
+  document.getElementById('movieModalBody').innerHTML=movieFormHtml(movies[mi])+
+    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" onclick="saveMovie(${mi})">Guardar cambios</button></div>`;
+  document.getElementById('movieModal').classList.add('open');
+  bindMovieForm();
+  const mv=movies[mi];
+  const links=mv.watchLinks||(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);
+  initMoviePlatforms(links);
+  initBookEditions('movieBookEditionsList', mv.bookLinks||[], mv.bookUrl||'');
+  initCountries('movieCountriesList', mv.country||'');
+}
+function initMoviePlatforms(links){
+  const list=document.getElementById('moviePlatformsList'); if(!list) return;
+  list.innerHTML='';
+  if(!links.length){ addMoviePlatformRow('',''); return; }
+  links.forEach(l=>addMoviePlatformRow(l.name,l.url));
+}
+function addMoviePlatformRow(name='',url=''){
+  const list=document.getElementById('moviePlatformsList'); if(!list) return;
+  const row=document.createElement('div'); row.className='platform-row-sel';
+  row.innerHTML=`
+    <select onchange="if(this.value){const p=PLATFORMS.find(x=>x.name===this.value);const ni=this.nextElementSibling;const ui=ni.nextElementSibling;ni.value=this.value;if(p&&p.url&&!ui.value)ui.value=p.url;this.value=''}">
+      ${platformSelectHtml()}
+    </select>
+    <input placeholder="Nombre visible" value="${name}">
+    <input placeholder="https://…" value="${url}" style="flex:2">
+    <button type="button" class="platform-del-btn" onclick="this.parentElement.remove()" title="Eliminar">✕</button>`;
+  list.appendChild(row);
+}
+function getMovieWatchLinks(){
+  const rows=document.querySelectorAll('#moviePlatformsList .platform-row-sel'); const links=[];
+  rows.forEach(r=>{ const inputs=r.querySelectorAll('input'); const name=inputs[0].value.trim(),url=inputs[1].value.trim(); if(url) links.push({name:name||'Ver película',url}); });
+  return links;
+}
+function saveMovie(mi){
+  const name=document.getElementById('mf_name').value.trim();
+  if(!name){alert('El nombre es obligatorio');return;}
+  const dupMovie=movies.find((mv,i)=>i!==mi&&mv.name.trim().toLowerCase()===name.toLowerCase());
+  const dupSeries=(series||[]).find(s=>s.name.trim().toLowerCase()===name.toLowerCase());
+  if(dupMovie){
+    if(!confirm(`⚠️ Ya existe una película llamada "${dupMovie.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
+  } else if(dupSeries){
+    if(!confirm(`⚠️ Ya existe una serie llamada "${dupSeries.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
+  }
+  const watchLinks=getMovieWatchLinks();
+  const bookLinks=getBookEditions('movieBookEditionsList');
+  const genres=getSelectedGenres('mf_genres');
+  const movieCategory=document.getElementById('mf_category')?.value||'movie';
+  const payload={
+    name,
+    poster:document.getElementById('mf_poster').value.trim(),
+    synopsis:document.getElementById('mf_synopsis').value.trim(),
+    year:document.getElementById('mf_year').value?parseInt(document.getElementById('mf_year').value):'',
+    country:getCountries('movieCountriesList'),
+    network:document.getElementById('mf_net').value.trim(),
+    networkUrl:watchLinks.length?watchLinks[0].url:'',
+    watchLinks,
+    trailerUrl:document.getElementById('mf_trailer')?.value.trim()||'',
+    date:document.getElementById('mf_date').value||'',
+    basedOnBook:document.getElementById('mf_book').checked,
+    bookSource:document.getElementById('mf_booksource')?.value.trim()||'',
+    bookCoverUrl:document.getElementById('mf_bookcoverurl')?.value.trim()||'',
+    bookLinks,
+    bookUrl:bookLinks.length?bookLinks[0].url:'',
+    genres,
+    category:movieCategory,
+  };
+  const movieUpdatedAt=new Date().toISOString();
+  if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
+  else movies[mi]={...movies[mi],...payload,updatedAt:movieUpdatedAt};
+  save(); closeAll(); render(); renderMovies(); renderBooks();
+}
+function delMovie(mi){
+  if(!confirm(`¿Eliminar "${movies[mi].name}"?`)) return;
+  movies.splice(mi,1); save(); render(); renderMovies(); renderBooks();
+}
+
+function renderBooks(){
+  const grid=document.getElementById('booksGrid');
+  if(!grid) return;
+  const books=[];
+  series.forEach(s=>{
+    if(s.basedOnBook&&(s.bookSource||s.bookCoverUrl)){
+      const editions=s.bookLinks&&s.bookLinks.length?s.bookLinks:(s.bookUrl?[{lang:'es',store:'Amazon',url:s.bookUrl}]:[]);
+      books.push({title:s.bookSource||'Libro sin título',cover:s.bookCoverUrl||'',editions,from:s.name,fromType:'serie'});
+    }
+  });
+  movies.forEach(mv=>{
+    if(mv.basedOnBook&&(mv.bookSource||mv.bookCoverUrl)){
+      const editions=mv.bookLinks&&mv.bookLinks.length?mv.bookLinks:(mv.bookUrl?[{lang:'es',store:'Amazon',url:mv.bookUrl}]:[]);
+      books.push({title:mv.bookSource||'Libro sin título',cover:mv.bookCoverUrl||'',editions,from:mv.name,fromType:'película'});
+    }
+  });
+  if(!books.length){
+    grid.innerHTML='<div class="empty">📚 Ninguna serie o película marcada como "Basada en libro" con datos de libro todavía.</div>';
+    return;
+  }
+  grid.innerHTML=books.map(b=>{
+    const coverEl=b.cover?`<img class="book-item-cover" src="${escapeHtml(b.cover)}" alt="${escapeHtml(b.title)}" onerror="this.outerHTML='<div class=book-item-cover-ph>📖</div>'">`:`<div class="book-item-cover-ph">📖</div>`;
+    const editionLinks=b.editions.map(e=>`<a href="${escapeHtml(e.url)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;color:#b08a00;text-decoration:none;background:rgba(176,138,0,0.1);border-radius:20px;padding:2px 9px;border:1px solid rgba(176,138,0,0.25);white-space:nowrap">${langFlag(e.lang)} ${escapeHtml(e.store)} →</a>`).join('');
+    return `<div class="book-item">${coverEl}
+      <div class="book-item-info">
+        <div class="book-item-title">📖 ${escapeHtml(b.title)}</div>
+        <div class="book-item-meta" style="margin-bottom:5px">Adaptada en <strong>${escapeHtml(b.from)}</strong> · ${escapeHtml(b.fromType)}</div>
+        ${b.editions.length?`<div style="display:flex;flex-wrap:wrap;gap:4px">${editionLinks}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function exportData(){
+  document.getElementById('unsavedBar').classList.remove('visible');
+  const blob=new Blob([JSON.stringify({series,movies,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
+}
+
+function importData(e){
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    try{
+      const d=JSON.parse(ev.target.result);
+      if(d.series) series=d.series;
+      if(d.movies) movies=d.movies;
+      const ib=document.getElementById('importBanner'); if(ib) ib.remove();
+      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+      alert('✓ Datos importados correctamente');
+    }catch(err){ alert('Error al leer el archivo: '+err.message); }
+  };
+  reader.readAsText(file);
+  e.target.value='';
+}
+
+/* ═══ PASTE AUTOFILL ═══ */
+function pasteBarHtml(type){
+  window._pasteType = type;
+  return '<div class="paste-bar">'
+    +'<div class="paste-bar-label">✦ Autocompletar desde ficha</div>'
+    +'<div class="paste-bar-hint">Pega tu ficha completa (formato propio o bloque de MyDramaList). Las URLs entre <strong>__ __</strong> se detectan como imagen o enlace.</div>'
+    +'<div class="paste-bar-row">'
+    +'<textarea class="paste-bar-textarea" id="pasteInput" placeholder="Pega aquí la ficha..."></textarea>'
+    +'<button class="paste-bar-btn" onclick="runPasteAutofill(window._pasteType)">Rellenar</button>'
+    +'</div>'
+    +'<div class="paste-bar-status" id="pasteStatus"></div>'
+    +'</div>';
+}
+
+function runPasteAutofill(type){
+  var ta = document.getElementById('pasteInput');
+  var status = document.getElementById('pasteStatus');
+  var raw = ta ? ta.value.trim() : '';
+  if(!raw){ status.className='paste-bar-status err'; status.textContent='\u26a0 Pega primero la ficha.'; return; }
+  var isSeries = type === 'series';
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // PASO 1 — Separar los dos bloques
+  // Bloque A: desde el inicio hasta la primera etiqueta MDL en inglés (Title:, Type:, etc.)
+  // Bloque B: desde esa primera línea MDL en adelante
+  // ══════════════════════════════════════════════════════════════════════════
+  var rawLines = raw.split(/\n/);
+  var splitIdx = rawLines.length;
+  for(var i=0; i<rawLines.length; i++){
+    if(/^\s*(?:Title|Type|Format|Country|Episodes|Aired)\s*:/i.test(rawLines[i])){
+      splitIdx = i; break;
+    }
+  }
+  var blockA = rawLines.slice(0, splitIdx).join('\n').trim();  // tu formato propio
+  var blockB = rawLines.slice(splitIdx).join('\n').trim();     // bloque MDL inglés
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // PASO 2 — URLs marcadas con __ __ (de todo el texto)
+  // Imagen: URL con extensión de imagen o "thumb" en la ruta → va al poster
+  // Enlace: el resto → va a watchLinks / trailerUrl
+  // ══════════════════════════════════════════════════════════════════════════
+  var posterUrl    = null;
+  var watchLinks   = [];
+  var markedUrls   = [];
+  raw.replace(/__\s*(https?:\/\/\S+?)\s*__/g, function(_, u){ markedUrls.push(u); });
+  for(var ui=0; ui<markedUrls.length; ui++){
+    var u = markedUrls[ui];
+    if(/\.(jpg|jpeg|png|webp|gif|bmp)/i.test(u) || /thumb|_thumb|poster|cover/i.test(u)){
+      if(!posterUrl) posterUrl = u;
+    } else {
+      watchLinks.push(u);
+    }
+  }
+  // Imagen suelta sin __ __ (fallback)
+  if(!posterUrl){
+    var imgM = raw.match(/https?:\/\/[^\s]+\.(?:jpg|jpeg|png|webp|gif)(?:\?[^\s]*)?/i);
+    if(imgM) posterUrl = imgM[0];
+  }
+  var trailerUrl = watchLinks.length ? watchLinks[0] : '';
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // PASO 3 — Helper: extraer etiqueta de un bloque de texto
+  // Inserta \n antes de cada etiqueta conocida para manejar el formato inline
+  // y luego extrae el valor parando en la siguiente etiqueta
+  // ══════════════════════════════════════════════════════════════════════════
+  var LABEL_ES = 'T[\\xed\\x69]tulo|Nombre|Tipo|Formato|Pa[\\xed\\x69]s|'
+               + 'Fecha de lanzamiento|Fecha|Duraci[o\\xf3]n|Clasificaci[o\\xf3]n[^:]{0,20}';
+  var LABEL_EN = 'Title|Name|Type|Format|Country|Episodes|Aired On|Aired|'
+               + 'Content Rating|Original Network|Network|Platform|Streaming';
+  var LABEL_ALL = LABEL_ES + '|' + LABEL_EN;
+
+  function normalizeBlock(block){
+    // Inserta \n antes de etiquetas que están inline
+    return block.replace(
+      new RegExp('(?<!\\n)(' + LABEL_ALL + ')\\s*:', 'gi'),
+      function(m){ return '\n' + m; }
+    );
+  }
+
+  function extractFromBlock(block, keys){
+    var normBlock = normalizeBlock(block);
+    var blines = normBlock.split(/\n/);
+    var pat = new RegExp('^\\s*(?:' + keys.join('|') + ')\\s*:\\s*(.+)$', 'i');
+    for(var bi=0; bi<blines.length; bi++){
+      var m2 = blines[bi].match(pat);
+      if(m2){
+        var val = m2[1];
+        // Cortar en __ (inicio de URL marcada)
+        val = val.replace(/__.*$/, '').trim();
+        // Cortar en la siguiente etiqueta conocida dentro del valor
+        val = val.split(new RegExp('\\s+(?:' + LABEL_ALL + ')\\s*:', 'i'))[0].trim();
+        return val || null;
+      }
+    }
+    return null;
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // PASO 4 — Extraer datos
+  // Prioridad para cada campo:
+  //   Película (isSeries=false): bloque A en español > bloque B en inglés
+  //   Serie    (isSeries=true):  bloque B en inglés > bloque A en español
+  // ══════════════════════════════════════════════════════════════════════════
+  var info = { emissionDays: [] };
+
+  // — Nombre —
+  var nameA = extractFromBlock(blockA, ['T[\\xed\\x69]tulo','Nombre']);
+  var nameB = extractFromBlock(blockB, ['Title','Name']);
+  info.name = isSeries ? (nameB || nameA) : (nameA || nameB);
+
+  // — País —
+  var countryA = extractFromBlock(blockA, ['Pa[\\xed\\x69]s']);
+  var countryB = extractFromBlock(blockB, ['Country']);
+  var rawCountry = isSeries ? (countryB || countryA) : (countryA || countryB);
+  if(rawCountry) info.country = mapCountry(rawCountry);
+
+  // — Episodios (solo en bloque B) —
+  var epsRaw = extractFromBlock(blockB, ['Episodes?','Episodios?']);
+  if(epsRaw){ var em=epsRaw.match(/\d+/); if(em) info.totalEpisodes=parseInt(em[0]); }
+
+  // — Duración —
+  var durA = extractFromBlock(blockA, ['Duraci[o\\xf3]n','Duration']);
+  if(!durA){ var dm0=blockA.match(/(\d+)\s*(?:minutos?|MIN)\b/i); if(dm0) durA=dm0[0]; }
+  var durRaw = durA;
+  if(durRaw){ var dm=durRaw.match(/(\d+)/); if(dm) info.duration=parseInt(dm[1]); }
+
+  // — Plataforma / Canal —
+  // Primero: detectar plataformas conocidas en la línea compacta del bloque A
+  var networkFromCompact = null;
+  var compactLine = null;
+  var aLines = blockA.split(/\n/);
+  for(var li=0; li<aLines.length; li++){
+    if(/^\d{4}\b/.test(aLines[li].trim()) && !/:/.test(aLines[li])){ compactLine=aLines[li].trim(); break; }
+  }
+  if(compactLine){
+    var plist=['NETFLIX','YOUTUBE','IQIYI','WETV','VIKI','BILIBILI','LINE TV','GMM25','ONE31',
+               'GMMTV','PRIME VIDEO','AMAZON','HBO','DISNEY','WEVERSE','WATCHA','TVING','WAVVE',
+               'NAVER','KAKAO','SBS','KBS','MBC','TVN','JTBC','MBS','TBS','NTV','FUJI',
+               'TV ASAHI','CTITV','FTV','PTS','BBC','ITV','YOUKU','MANGO','VIUTV'];
+    var found=[]; var clUp=compactLine.toUpperCase();
+    for(var pi=0;pi<plist.length;pi++){ if(clUp.indexOf(plist[pi])>=0) found.push(plist[pi]); }
+    if(!found.length){ var tcm=compactLine.match(/\b([A-Z]{2,6}(?:[-][A-Z]{2,6})?TV)\b/); if(tcm) found.push(tcm[1]); }
+    if(found.length) networkFromCompact=found.join(', ');
+  }
+  var netB = extractFromBlock(blockB, ['Original Network','Network','Platform','Streaming']);
+  info.network = networkFromCompact || netB || null;
+
+  // — Fecha de estreno —
+  var airedA = extractFromBlock(blockA, ['Fecha de lanzamiento','Fecha','Estreno']);
+  var airedB = extractFromBlock(blockB, ['Aired']);
+  var airedRaw = isSeries ? (airedB||airedA) : (airedA||airedB);
+  if(airedRaw){
+    // Inglés: "Nov 5, 2024"
+    var dateM=airedRaw.match(/(\w+ \d{1,2},?\s*\d{4})/);
+    if(dateM){ var dd=new Date(dateM[1]); if(!isNaN(dd)) info.startDate=dd.toISOString().slice(0,10); }
+    // Español: "21 de junio de 2019"
+    var esM=airedRaw.match(/(\d{1,2})\s+de\s+(\w+)\s+de\s+(\d{4})/i);
+    if(esM){
+      var meses={'enero':0,'febrero':1,'marzo':2,'abril':3,'mayo':4,'junio':5,'julio':6,
+                 'agosto':7,'septiembre':8,'octubre':9,'noviembre':10,'diciembre':11};
+      var mes=meses[esM[2].toLowerCase()];
+      if(mes!==undefined){ var dd2=new Date(parseInt(esM[3]),mes,parseInt(esM[1])); info.startDate=dd2.toISOString().slice(0,10); }
+    }
+  }
+
+  // — Días de emisión (solo en bloque B) —
+  var airedOnRaw = extractFromBlock(blockB, ['Aired On']);
+  if(airedOnRaw){
+    var dmapD={Monday:1,Tuesday:2,Wednesday:3,Thursday:4,Friday:5,Saturday:6,Sunday:0,
+               Lunes:1,Martes:2,Jueves:4,Viernes:5,Domingo:0};
+    dmapD['Mi\u00e9rcoles']=3; dmapD['Miercoles']=3;
+    dmapD['S\u00e1bado']=6;    dmapD['Sabado']=6;
+    for(var dk in dmapD){ if(airedOnRaw.indexOf(dk)>=0) info.emissionDays.push(dmapD[dk]); }
+  }
+  if(!info.emissionDays.length) info.emissionDays=[1];
+
+  // — Año —
+  var ym = raw.match(/\b(20\d{2}|19\d{2})\b/);
+  if(ym) info.year = parseInt(ym[1]);
+
+  // — Estado de producción (solo en bloque A / línea compacta) —
+  if(compactLine){
+    var stMap={'FINALIZADA':'finished','FINALIZADAS':'finished','EMITIENDOSE':'airing',
+      'EMITI\u00c9NDOSE':'airing','EMITIENDO':'airing','CAST':'cast',
+      'PRODUCCION':'production','PRODUCCI\u00d3N':'production',
+      'ANUNCIADO':'announced','ANUNCIADA':'announced','CANCELADO':'cancelled','CANCELADA':'cancelled'};
+    for(var sk in stMap){ if(compactLine.toUpperCase().indexOf(sk)>=0){ info.productionStatus=stMap[sk]; break; } }
+
+    // País desde línea compacta (si no se extrajo por etiqueta)
+    if(!info.country){
+      var cpairs=[['COREA DEL SUR','Corea del Sur'],['SOUTH KOREA','Corea del Sur'],
+        ['TAILANDIA','Tailandia'],['THAILAND','Tailandia'],['CHINA','China'],
+        ['JAP\u00d3N','Jap\u00f3n'],['JAPON','Jap\u00f3n'],['JAPAN','Jap\u00f3n'],
+        ['TAIW\u00c1N','Taiw\u00e1n'],['TAIWAN','Taiw\u00e1n'],['FILIPINAS','Filipinas'],
+        ['PHILIPPINES','Filipinas'],['VIETNAM','Vietnam'],['INDONESIA','Indonesia'],
+        ['ESPA\u00d1A','Espa\u00f1a'],['SPAIN','Espa\u00f1a'],
+        ['ESTADOS UNIDOS','Estados Unidos'],['UNITED STATES','Estados Unidos'],['USA','Estados Unidos'],
+        ['HONG KONG','Hong Kong'],['MALASIA','Malasia'],['MALAYSIA','Malasia']];
+      var clUp2=compactLine.toUpperCase();
+      for(var ci=0;ci<cpairs.length;ci++){
+        if(clUp2.indexOf(cpairs[ci][0])>=0){ info.country=cpairs[ci][1]; break; }
+      }
+    }
+
+    // Actrices: NOMBRE-NOMBRE en mayúsculas
+    var actm=compactLine.match(/\b([A-Z\u00c0-\u00dc]{3,}(?:-[A-Z\u00c0-\u00dc]{3,})+)\b/);
+    if(actm) info.actresses=actm[1].replace(/-/g,' / ');
+
+    // Nombre desde línea compacta (si no se obtuvo por etiqueta)
+    if(!info.name){
+      var nameM=compactLine.match(/^\d{4}\s+(.+?)(?:\s+(?:FINALIZADA|FINALIZADAS|EMITIENDOSE|EMITI\u00c9NDOSE|EMITIENDO|CAST|PRODUCCION|PRODUCCI\u00d3N|ANUNCIADO|ANUNCIADA|CANCELADO|CANCELADA)\b)/i);
+      if(nameM) info.name=nameM[1].trim();
+    }
+  }
+
+  // — Libro / Manga / Manhwa / Webtoon —
+  if(/\b(MANGA|MANHWA|WEBTOON|COMIC|NOVEL)\b/i.test(raw)){
+    info.basedOnBook=true;
+    var bookM=raw.match(/\b(?:MANGA|MANHWA|WEBTOON|COMIC|NOVEL|NOVELA|BOOK)\b[:\s]+([^\n_]{2,60})/i);
+    if(bookM && !/^https?/.test(bookM[1].trim())) info.bookSource=bookM[1].trim();
+  }
+
+  // — Sinopsis: texto libre en el bloque A entre la imagen y las etiquetas —
+  var synParts = blockA.split(/__\s*https?:\/\/\S+?\s*__/);
+  if(synParts.length > 1){
+    var freeText = synParts[1];
+    // Cortar en la primera etiqueta
+    freeText = freeText.split(new RegExp('\\s*(?:' + LABEL_ES + ')\\s*:', 'i'))[0].trim();
+    if(freeText.length > 10) info.synopsis = freeText;
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // PASO 5 — Volcar al formulario
+  // ══════════════════════════════════════════════════════════════════════════
+  var filled=0;
+  function setVal(id,val){
+    var el=document.getElementById(id);
+    if(el && val!==null && val!==undefined && String(val)!==''){el.value=val; filled++;}
+  }
+
+  if(isSeries){
+    setVal('f_name',     info.name);
+    setVal('f_synopsis', info.synopsis);
+    setVal('f_year',     info.year);
+    setVal('f_net',      info.network);
+    setVal('f_poster',   posterUrl);
+    setVal('f_trailer',  trailerUrl);
+    if(posterUrl){var pp=document.getElementById('seriesPosterPreview');if(pp){pp.src=posterUrl;pp.style.display='block';}}
+    if(info.country){initCountries('countriesList',info.country);filled++;}
+    if(info.basedOnBook){
+      var cb=document.getElementById('f_book');
+      if(cb){cb.checked=true;toggleBookFields();}
+      if(info.bookSource) setVal('f_booksource',info.bookSource);
+      filled++;
+    }
+    if(info.totalEpisodes||info.startDate){
+      var sl=document.getElementById('seasonsList');
+      if(sl){sl.innerHTML='';addSeasonBlock({label:'Temporada 1',startDate:info.startDate||'',totalEpisodes:info.totalEpisodes||12,emissionDays:info.emissionDays,skipDates:[],episodes:[]});filled++;}
+    }
+    if(watchLinks.length){
+      var wl=document.getElementById('platformsList');
+      if(wl&&!wl.children.length){addPlatformRow({name:info.network||'Ver',url:watchLinks[0]});filled++;}
+    }
+  } else {
+    setVal('mf_name',    info.name);
+    setVal('mf_synopsis',info.synopsis);
+    setVal('mf_year',    info.year);
+    setVal('mf_net',     info.network);
+    setVal('mf_poster',  posterUrl);
+    setVal('mf_trailer', trailerUrl);
+    if(posterUrl){var mpp=document.getElementById('moviePosterPreview');if(mpp){mpp.src=posterUrl;mpp.style.display='block';}}
+    if(info.country){initCountries('movieCountriesList',info.country);filled++;}
+    if(info.basedOnBook){
+      var cb2=document.getElementById('mf_book');
+      if(cb2){cb2.checked=true;toggleMovieBookFields();}
+      if(info.bookSource) setVal('mf_booksource',info.bookSource);
+      filled++;
+    }
+    if(info.startDate) setVal('mf_date',info.startDate);
+    if(watchLinks.length){
+      var mwl=document.getElementById('moviePlatformsList');
+      if(mwl&&!mwl.children.length){addMoviePlatformRow({name:info.network||'Ver',url:watchLinks[0]});filled++;}
+    }
+  }
+
+  if(filled>0){
+    var det=[];
+    if(info.name)          det.push('nombre');
+    if(info.year)          det.push('a\u00f1o');
+    if(info.country)       det.push('pa\u00eds');
+    if(info.network)       det.push('plataforma');
+    if(posterUrl)          det.push('imagen');
+    if(info.synopsis)      det.push('descripci\u00f3n');
+    if(trailerUrl)         det.push('enlace');
+    if(info.startDate)     det.push('fecha');
+    if(info.totalEpisodes) det.push('episodios');
+    if(info.duration)      det.push('duraci\u00f3n');
+    if(info.basedOnBook)   det.push('libro/manga');
+    status.className='paste-bar-status ok';
+    status.textContent='\u2713 Rellenados: '+det.join(', ')+'. Revisa y completa lo que falte.';
+    ta.value='';
+  } else {
+    status.className='paste-bar-status err';
+    status.textContent='\u2715 No se detectaron datos. Comprueba el formato de la ficha.';
+  }
+}
+function mapCountry(c){
+  var cm={
+    'Thailand':'Tailandia','South Korea':'Corea del Sur','Korea':'Corea del Sur',
+    'China':'China','Japan':'Jap\u00f3n','Taiwan':'Taiw\u00e1n','Philippines':'Filipinas',
+    'Vietnam':'Vietnam','Indonesia':'Indonesia','Spain':'Espa\u00f1a',
+    'United States':'Estados Unidos','Hong Kong':'Hong Kong','Malaysia':'Malasia',
+    'Tailandia':'Tailandia','Corea del Sur':'Corea del Sur','Jap\u00f3n':'Jap\u00f3n'
+  };
+  return cm[c]||c;
+}
+initData();
+</script>
+</body>
+</html>
