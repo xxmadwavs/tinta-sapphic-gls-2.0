@@ -145,22 +145,18 @@ body::before{content:'';position:fixed;inset:0;background:
   display:flex;
   gap:8px;
   margin-bottom:1.5rem;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x mandatory;
+  padding-bottom:4px;
+  scrollbar-width:none;
 }
-/* Scrollable on narrow screens */
-@media(max-width:1020px){
-  .week-days-strip{
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    scroll-snap-type:x mandatory;
-    padding-bottom:4px;
-    scrollbar-width:none;
-  }
-  .week-days-strip::-webkit-scrollbar{display:none}
-}
+.week-days-strip::-webkit-scrollbar{display:none}
 
 .week-day-col{
-  flex:1 1 0;
-  min-width:0;
+  /* Fixed width always — scroll handles overflow */
+  flex:0 0 148px;
+  scroll-snap-align:start;
   background:var(--surface);
   border:1.5px solid var(--border);
   border-radius:var(--radius);
@@ -168,13 +164,12 @@ body::before{content:'';position:fixed;inset:0;background:
   display:flex;
   flex-direction:column;
 }
-@media(max-width:1020px){
-  .week-day-col{
-    flex:0 0 148px;
-    scroll-snap-align:start;
-  }
+/* On very wide screens, expand to fill */
+@media(min-width:1200px){
+  .week-days-strip{overflow-x:visible}
+  .week-day-col{flex:1 1 0;min-width:0}
 }
-@media(max-width:480px){.week-day-col{flex:0 0 130px}}
+@media(max-width:480px){.week-day-col{flex:0 0 120px}}
 
 .week-day-col.is-today{
   border-color:var(--accent);
