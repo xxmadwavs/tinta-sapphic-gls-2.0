@@ -69,6 +69,8 @@ body::before{content:'';position:fixed;inset:0;background:
   align-items:baseline;
   gap:.3em;
   position:relative;
+  text-decoration:none;
+  cursor:pointer;
 }
 /* TINTA en versalitas con tracking abierto */
 .logo-tinta{
@@ -1118,7 +1120,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
 <div class="topbar">
   <div class="logo-wrap">
-    <span class="logo"><span class="logo-tinta">TINTA</span> <em>Sapphic</em></span>
+    <a href="." class="logo" style="text-decoration:none"><span class="logo-tinta">TINTA</span> <em>Sapphic</em></a>
     <span class="logo-divider"></span>
     <span class="logo-sub">GL Series & Películas</span>
   </div>
@@ -1135,26 +1137,20 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 </div>
 
-<div class="hero no-poster" id="heroSection" onclick="" style="cursor:default">
-  <div class="hero-bg"></div>
-  <img class="hero-poster-img" id="heroPosterImg" src="" alt="" onerror="this.style.display='none'">
-  <div class="hero-overlay"></div>
-  <div class="hero-inner">
-    <!-- No-poster mode: logo title -->
-    <div id="heroNoPosterId">
-      <h1 class="hero-title"><span class="hero-tinta">TINTA</span><br><em>Sapphic</em></h1>
-      <p class="hero-desc">Calendario de series en emisión y películas GL — historias donde las protagonistas son sáficas, de cualquier país y plataforma</p>
-    </div>
-    <!-- Poster mode: series info -->
-    <div id="heroPosterInfo" style="display:none">
-      <div class="hero-now-badge" id="heroNowBadge">🌸 En emisión hoy</div>
-      <div class="hero-series-name" id="heroSeriesName"></div>
-      <div class="hero-meta-row" id="heroMetaRow"></div>
-      <button class="hero-open-btn" id="heroOpenBtn" onclick="">▶ Ver detalles</button>
-    </div>
-    <div class="hero-stats" id="statsBar"></div>
+<!-- hidden statsBar kept for JS compatibility -->
+<div id="statsBar" style="display:none"></div>
+<!-- hidden hero elements kept for JS compatibility -->
+<div id="heroSection" style="display:none">
+  <img id="heroPosterImg" src="" alt="">
+  <div id="heroNoPosterId"></div>
+  <div id="heroPosterInfo">
+    <div id="heroNowBadge"></div>
+    <div id="heroSeriesName"></div>
+    <div id="heroMetaRow"></div>
+    <button id="heroOpenBtn"></button>
   </div>
 </div>
+
 
 <div class="container">
   <div class="tabs">
