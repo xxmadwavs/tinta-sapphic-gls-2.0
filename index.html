@@ -852,14 +852,38 @@ body::before{content:'';position:fixed;inset:0;background:
 .modal-tab{font-size:12.5px;font-weight:700;padding:7px 16px;cursor:pointer;color:var(--muted);border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s}
 .modal-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
 .modal-tab:hover:not(.active){color:var(--text)}
-.cast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:14px;margin-top:4px}
-.cast-card{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;cursor:pointer;padding:8px 4px;border-radius:12px;transition:background .15s}
-.cast-card:hover{background:var(--surface2)}
-.cast-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;object-position:top;border:2.5px solid var(--border2);background:var(--surface2);flex-shrink:0}
-.cast-photo-ph{width:68px;height:68px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;border:2.5px solid var(--border2)}
-.cast-name{font-size:11.5px;font-weight:700;color:var(--text);line-height:1.2}
-.cast-char{font-size:10.5px;color:var(--muted);line-height:1.2}
-.cast-couple-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:12px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border2);grid-column:1/-1}
+/* ── Cast: secciones y tarjetas de pareja ── */
+.cast-section{margin-bottom:18px}
+.cast-section:last-child{margin-bottom:0}
+.cast-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid var(--border2)}
+.cast-couples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+/* Tarjeta de pareja */
+.couple-card{background:var(--surface2);border:1px solid var(--border2);border-radius:14px;padding:14px 10px 12px;display:flex;align-items:flex-start;justify-content:center;gap:0;position:relative;transition:box-shadow .18s}
+.couple-card:hover{box-shadow:0 4px 18px rgba(212,96,138,0.13)}
+.couple-card.main-couple{border-color:rgba(212,96,138,0.25)}
+.couple-card.sec-couple{border-color:rgba(155,130,201,0.25)}
+/* Cada actriz dentro de la tarjeta */
+.cast-card{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;cursor:pointer;padding:6px 8px;border-radius:10px;transition:background .15s;flex:1;min-width:0}
+.cast-card:hover{background:rgba(212,96,138,0.06)}
+.cast-photo{width:76px;height:76px;border-radius:50%;object-fit:cover;object-position:top;border:2.5px solid var(--border2);background:var(--surface2);flex-shrink:0}
+.cast-photo-ph{width:76px;height:76px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;border:2.5px solid var(--border2)}
+.cast-name{font-size:11.5px;font-weight:700;color:var(--text);line-height:1.25;word-break:break-word}
+.cast-char{font-size:10.5px;color:var(--muted);line-height:1.2;margin-top:1px}
+/* Separador de corazón entre las dos actrices */
+.couple-sep{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 2px;flex-shrink:0;margin-top:22px;gap:4px}
+.couple-sep-heart{font-size:13px;line-height:1}
+.couple-sep-line{width:1px;height:28px;background:var(--border2)}
+/* Solitario (actriz sin pareja definida) */
+.cast-solo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-top:2px}
+.cast-solo-grid .cast-card{padding:8px 4px}
+.cast-solo-grid .cast-photo,.cast-solo-grid .cast-photo-ph{width:64px;height:64px}
+@media(max-width:600px){
+  .cast-couples-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .couple-card{padding:10px 6px 10px}
+  .cast-photo,.cast-photo-ph{width:62px;height:62px}
+  .cast-name{font-size:10.5px}
+  .cast-char{font-size:9.5px}
+}
 /* Actress profile modal */
 .actress-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
 .actress-modal-bg.open{opacity:1;pointer-events:all}
@@ -2258,53 +2282,80 @@ function daysUntil(dateStr){
 function buildCastHtml(cast){
   if(!cast||!cast.length) return '<div style="color:var(--muted);font-size:13px;padding:8px 0">Sin información de reparto.</div>';
   const actresses=state.actresses||[];
-  // Group by coupleNum then coupleType
+
+  // Agrupar por clave
   const grouped={};
   cast.forEach(m=>{
     const key=m.coupleType==='other'?'other':(m.coupleType+'_'+(m.coupleNum||1));
     if(!grouped[key]) grouped[key]=[];
     grouped[key].push(m);
   });
-  let html='<div class="cast-grid">';
-  // Main couples first (sorted by num), then secondary, then other
+
   const mainKeys=Object.keys(grouped).filter(k=>k.startsWith('main_')).sort();
   const secKeys=Object.keys(grouped).filter(k=>k.startsWith('secondary_')).sort();
-  const otherKey=grouped['other'];
-  const totalMain=mainKeys.length, totalSec=secKeys.length;
+  const otherMembers=grouped['other']||[];
 
-  mainKeys.forEach((key,ki)=>{
-    const num=key.split('_')[1];
-    const label=totalMain>1?`💕 Pareja principal ${num}`:'💕 Pareja principal';
-    html+=`<div class="cast-couple-header">${label}</div>`;
-    grouped[key].forEach(m=>{
-      const a=actresses.find(x=>x.id===m.actressId);
-      if(!a) return;
+  // Construye la tarjeta de una pareja (o actriz solitaria si solo hay 1)
+  function coupleCardHtml(members, cardClass){
+    const valid=members.map(m=>({m, a:actresses.find(x=>x.id===m.actressId)})).filter(x=>x.a);
+    if(!valid.length) return '';
+    if(valid.length===1){
+      const {m,a}=valid[0];
       const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
-      html+=`<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
-    });
-  });
-  secKeys.forEach((key,ki)=>{
-    const num=key.split('_')[1];
-    const label=totalSec>1?`🌸 Pareja secundaria ${num}`:'🌸 Pareja secundaria';
-    html+=`<div class="cast-couple-header">${label}</div>`;
-    grouped[key].forEach(m=>{
-      const a=actresses.find(x=>x.id===m.actressId);
-      if(!a) return;
+      return `<div class="couple-card ${cardClass}">
+        <div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>
+      </div>`;
+    }
+    // Dos o más: mostrar las dos primeras juntas con separador, el resto debajo
+    const pair=valid.slice(0,2);
+    const extra=valid.slice(2);
+    const heart=cardClass==='main-couple'?'💕':'🌸';
+    let inner=pair.map(({m,a})=>{
       const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
-      html+=`<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
-    });
-  });
-  if(otherKey){
-    if(mainKeys.length||secKeys.length) html+='<div class="cast-couple-header">Reparto</div>';
-    otherKey.forEach(m=>{
-      const a=actresses.find(x=>x.id===m.actressId);
-      if(!a) return;
-      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
-      html+=`<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
-    });
+      return `<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
+    }).join(`<div class="couple-sep"><div class="couple-sep-line"></div><div class="couple-sep-heart">${heart}</div><div class="couple-sep-line"></div></div>`);
+    // Actrices extra (raras veces habrá más de 2 en una pareja)
+    if(extra.length){
+      const extraHtml=extra.map(({m,a})=>{
+        const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
+        return `<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
+      }).join('');
+      inner+=`<div style="display:flex;flex-wrap:wrap;justify-content:center;width:100%;margin-top:6px">${extraHtml}</div>`;
+    }
+    return `<div class="couple-card ${cardClass}">${inner}</div>`;
   }
-  html+='</div>';
-  return html;
+
+  let html='';
+
+  // ── Parejas principales ──
+  if(mainKeys.length){
+    const title=mainKeys.length>1?'💕 Parejas principales':'💕 Pareja principal';
+    html+=`<div class="cast-section"><div class="cast-section-title">${title}</div><div class="cast-couples-grid">`;
+    mainKeys.forEach(key=>{ html+=coupleCardHtml(grouped[key],'main-couple'); });
+    html+=`</div></div>`;
+  }
+
+  // ── Parejas secundarias ──
+  if(secKeys.length){
+    const title=secKeys.length>1?'🌸 Parejas secundarias':'🌸 Pareja secundaria';
+    html+=`<div class="cast-section"><div class="cast-section-title">${title}</div><div class="cast-couples-grid">`;
+    secKeys.forEach(key=>{ html+=coupleCardHtml(grouped[key],'sec-couple'); });
+    html+=`</div></div>`;
+  }
+
+  // ── Reparto adicional ──
+  if(otherMembers.length){
+    html+=`<div class="cast-section"><div class="cast-section-title">Reparto</div><div class="cast-solo-grid">`;
+    otherMembers.forEach(m=>{
+      const a=actresses.find(x=>x.id===m.actressId);
+      if(!a) return;
+      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
+      html+=`<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
+    });
+    html+=`</div></div>`;
+  }
+
+  return html||'<div style="color:var(--muted);font-size:13px;padding:8px 0">Sin información de reparto.</div>';
 }
 
 function openActressProfile(actressId){
