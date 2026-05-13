@@ -1012,7 +1012,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
 <div class="topbar">
   <div class="logo-wrap">
-    <span class="logo"><span class="logo-tinta">TINTA</span> <em>Sapphic</em></span>
+    <span class="logo" style="cursor:pointer" onclick="switchTab('cal')" title="Volver al inicio"><span class="logo-tinta">TINTA</span> <em>Sapphic</em></span>
     <span class="logo-divider"></span>
     <span class="logo-sub">GL Series & Películas</span>
   </div>
@@ -2618,17 +2618,17 @@ function renderMoviesResults(){
     <button class="subtab${moviesSubtab==='all'?' active':''}" onclick="switchMoviesSubtab('all')">
       🎬 Todas<span class="subtab-count">${filtered.length}</span>
     </button>
+    <button class="subtab${moviesSubtab==='soon'?' active':''}" onclick="switchMoviesSubtab('soon')">
+      📅 Próximos estrenos<span class="subtab-count">${comingSoon.length}</span>
+    </button>
     <button class="subtab${moviesSubtab==='films'?' active':''}" onclick="switchMoviesSubtab('films')">
-      🎥 Largometrajes<span class="subtab-count">${films.length}</span>
+      🎥 Película<span class="subtab-count">${films.length}</span>
     </button>
     <button class="subtab${moviesSubtab==='shorts'?' active':''}" onclick="switchMoviesSubtab('shorts')">
       🎞️ Cortos<span class="subtab-count">${shorts.length}</span>
     </button>
     <button class="subtab${moviesSubtab==='theaters'?' active':''}" onclick="switchMoviesSubtab('theaters')">
       ✓ Ya estrenadas<span class="subtab-count">${inTheaters.length}</span>
-    </button>
-    <button class="subtab${moviesSubtab==='soon'?' active':''}" onclick="switchMoviesSubtab('soon')">
-      📅 Próximos estrenos<span class="subtab-count">${comingSoon.length}</span>
     </button>
     <button class="subtab" onclick="switchTab('anime');setTimeout(()=>{animeSubtab='movies';renderAnimeResults();},50)">
       🌸 Anime<span class="subtab-count">${getAnimeMoviesData().length}</span>

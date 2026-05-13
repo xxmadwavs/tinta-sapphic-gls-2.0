@@ -2183,7 +2183,7 @@ function movieFormHtml(mv){
     <div class="form-row" style="margin-bottom:0">
       <label class="form-label">Tipo de película</label>
       <select id="mf_movieType" style="width:100%;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;font-weight:600;outline:none">
-        <option value="film" ${!mv||!mv.movieType||mv.movieType==='film'?'selected':''}>🎥 Largometraje</option>
+        <option value="film" ${!mv||!mv.movieType||mv.movieType==='film'?'selected':''}>🎥 Película</option>
         <option value="short" ${mv&&mv.movieType==='short'?'selected':''}>🎞️ Cortometraje</option>
       </select>
       <div class="form-hint">Cortometraje si dura menos de ~40 min.</div>
