@@ -137,6 +137,14 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .unsaved-bar{position:sticky;top:58px;z-index:49;background:#fff8e1;border-bottom:2px solid #f0c030;padding:8px 2rem;display:none;align-items:center;justify-content:space-between;font-size:13px;color:#7a5a00;font-weight:600}
 .unsaved-bar.visible{display:flex}
 .unsaved-bar span{display:flex;align-items:center;gap:6px}
+/* ── Toast de confirmación ── */
+.toast{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--border2);border-radius:14px;padding:12px 18px;box-shadow:0 6px 28px rgba(212,96,138,0.18);font-size:13.5px;font-weight:600;color:var(--text);pointer-events:none;opacity:0;transform:translateY(14px) scale(.97);transition:opacity .22s ease,transform .22s ease}
+.toast.show{opacity:1;transform:translateY(0) scale(1)}
+.toast-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:top;border:1.5px solid var(--border2);flex-shrink:0}
+.toast-avatar-ph{width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.toast-text{display:flex;flex-direction:column;gap:1px}
+.toast-text strong{color:var(--accent)}
+.toast-text span{font-size:11.5px;color:var(--muted);font-weight:400}
 .book-item{background:#fdf3d8;border:1px solid rgba(176,138,0,0.2);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem}
 .book-item-cover{width:40px;height:58px;border-radius:6px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
 .book-item-cover-ph{width:40px;height:58px;border-radius:6px;background:#f0e0a0;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
@@ -1580,6 +1588,7 @@ function openAddSeries(){
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   initCountries('countriesList','');
   initSeasons(null);
+  initCast([]);
 }
 function openEdit(si){
   document.getElementById('seriesModalTitle').textContent='✏️ Editar serie';
@@ -1593,6 +1602,7 @@ function openEdit(si){
   initBookEditions('bookEditionsList', series[si].bookLinks||[], series[si].bookUrl||'');
   initCountries('countriesList', series[si].country||'');
   initSeasons(getSeasons(series[si]));
+  initCast(series[si].cast||[]);
 }
 
 function initPlatforms(links){
@@ -2299,8 +2309,8 @@ function movieFormHtml(mv){
   <div class="divider" style="margin:14px 0 10px"></div>
   <div class="form-section-hd" style="padding:0 0 8px">🎭 Reparto GL</div>
   <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas. Indica el personaje si quieres.</div>
-  <div id="castList" style="margin-bottom:8px"></div>
-  <button type="button" class="platform-add-btn" onclick="addCastMember(null)">+ Añadir actriz</button>
+  <div id="movieCastList" style="margin-bottom:8px"></div>
+  <button type="button" class="platform-add-btn" onclick="addMovieCastMember(null)">+ Añadir actriz</button>
   </div>`;
 }
 
@@ -2386,7 +2396,7 @@ function openAddMovie(){
   document.getElementById('movieModal').classList.add('open');
   bindMovieForm(); initMoviePlatforms([]); initBookEditions('movieBookEditionsList',[],null);
   initCountries('movieCountriesList','');
-  initCast([]);
+  initMovieCast([]);
 }
 function openEditMovie(mi){
   document.getElementById('movieModalTitle').textContent='✏️ Editar película';
@@ -2399,7 +2409,7 @@ function openEditMovie(mi){
   initMoviePlatforms(links);
   initBookEditions('movieBookEditionsList', mv.bookLinks||[], mv.bookUrl||'');
   initCountries('movieCountriesList', mv.country||'');
-  initCast(mv.cast||[]);
+  initMovieCast(mv.cast||[]);
 }
 function initMoviePlatforms(links){
   const list=document.getElementById('moviePlatformsList'); if(!list) return;
@@ -2458,7 +2468,7 @@ function saveMovie(mi){
     category:movieCategory,
     movieType:document.getElementById('mf_movieType')?.value||'film',
     duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
-    cast:getCastData(),
+    cast:getMovieCastData(),
   };
   const movieUpdatedAt=new Date().toISOString();
   if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
@@ -2919,18 +2929,20 @@ function openEditActress(ai){
 function saveActress(ai){
   const name=document.getElementById('af_name').value.trim();
   if(!name){alert('El nombre es obligatorio');return;}
+  const isNew=ai===-1;
   const payload={
-    id:ai===-1?Date.now().toString():(actresses[ai].id||Date.now().toString()),
+    id:isNew?Date.now().toString():(actresses[ai].id||Date.now().toString()),
     name,
     photo:document.getElementById('af_photo').value.trim(),
     country:document.getElementById('af_country').value.trim(),
     notes:document.getElementById('af_notes').value.trim(),
   };
-  if(ai===-1) actresses.push(payload);
+  if(isNew) actresses.push(payload);
   else actresses[ai]={...actresses[ai],...payload};
   save();
   document.getElementById('actressModal').classList.remove('open');
   renderActressesGrid();
+  showActressToast(payload.name, payload.photo, isNew);
 }
 
 function delActress(ai){
@@ -3003,12 +3015,24 @@ function filterCastDropdown(inp, uid){
   } else {
     dd.innerHTML=matches.map(a=>{
       const photo=a.photo?`<img src="${escapeHtml(a.photo)}" onerror="this.outerHTML='<span style=\'font-size:16px\'>🎭</span>'">`:'<span style="font-size:16px">🎭</span>';
-      return `<div class="cast-dropdown-item" onmousedown="selectCastActress('${uid}','${a.id}',\`${escapeHtml(a.name)}${a.country?' ('+a.country+')':''}\`)">${photo}<span>${escapeHtml(a.name)}${a.country?` <span style='font-size:10px;color:var(--muted)'>${a.country}</span>`:''}</span></div>`;
+      const ai=actresses.indexOf(a);
+      return `<div class="cast-dropdown-item" onmousedown="selectCastActressById('${uid}','${a.id}',${ai})">${photo}<span>${escapeHtml(a.name)}${a.country?` <span style='font-size:10px;color:var(--muted)'>${a.country}</span>`:''}</span></div>`;
     }).join('');
   }
   dd.classList.add('open');
 }
 
+function selectCastActressById(uid, actressId, ai){
+  const a=actresses[ai]||actresses.find(x=>x.id===actressId);
+  if(!a) return;
+  const label=a.name+(a.country?' ('+a.country+')':'');
+  const row=document.getElementById(uid+'_dd')?.closest('.cast-admin-row');
+  if(!row) return;
+  row.querySelector('.cast-actress-sel').value=actressId;
+  row.querySelector('.cast-search-input').value=label;
+  document.getElementById(uid+'_thumb').innerHTML=getActressThumb(actressId);
+  closeCastDropdown(uid);
+}
 function selectCastActress(uid, actressId, label){
   const row=document.getElementById(uid+'_dd')?.closest('.cast-admin-row');
   if(!row) return;
@@ -3045,6 +3069,74 @@ function getCastData(){
   return cast;
 }
 
+/* ─── Cast functions for MOVIES (uses #movieCastList) ─── */
+function initMovieCast(castData){
+  const list=document.getElementById('movieCastList');
+  if(!list) return;
+  list.innerHTML='';
+  (castData||[]).forEach(m=>addMovieCastMember(m));
+}
+
+function addMovieCastMember(data){
+  const list=document.getElementById('movieCastList');
+  if(!list) return;
+  if(!actresses.length){
+    alert('Primero añade actrices en la sección "🎭 Actrices".');
+    return;
+  }
+  const actressId=data&&data.actressId?data.actressId:'';
+  const char=data&&data.character?data.character:'';
+  const coupleType=data&&data.coupleType?data.coupleType:'main';
+  const coupleNum=data&&data.coupleNum?data.coupleNum:1;
+  const uid='mcp_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
+  const selectedA=actressId?actresses.find(a=>a.id===actressId):null;
+
+  const row=document.createElement('div');
+  row.className='cast-admin-row';
+  row.style.cssText='border:1.5px solid var(--border2);border-radius:12px;padding:10px 12px;margin-bottom:8px;background:var(--surface2);display:flex;gap:8px;align-items:flex-start';
+  row.innerHTML=`
+    <div id="${uid}_thumb" style="flex-shrink:0;margin-top:2px">${getActressThumb(actressId)}</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+      <input type="hidden" class="cast-actress-sel" value="${actressId}">
+      <div class="cast-search-wrap">
+        <input type="text" class="cast-search-input" placeholder="Buscar actriz…" value="${selectedA?escapeHtml(selectedA.name)+(selectedA.country?' ('+selectedA.country+')':''):''}" autocomplete="off"
+          oninput="filterCastDropdown(this,'${uid}')"
+          onfocus="filterCastDropdown(this,'${uid}')"
+          onblur="setTimeout(()=>closeCastDropdown('${uid}'),150)">
+        <div class="cast-dropdown" id="${uid}_dd"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:5px">
+        <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif">
+        <select class="cast-type-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600">
+          <option value="main" ${coupleType==='main'?'selected':''}>💕 Principal</option>
+          <option value="secondary" ${coupleType==='secondary'?'selected':''}>🌸 Secundaria</option>
+          <option value="other" ${coupleType==='other'?'selected':''}>Otro</option>
+        </select>
+        <select class="cast-num-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600">
+          ${[1,2,3,4].map(n=>`<option value="${n}" ${coupleNum===n?'selected':''}>P${n}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <button type="button" onclick="this.closest('.cast-admin-row').remove()" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:0 2px;flex-shrink:0;margin-top:2px">✕</button>`;
+  list.appendChild(row);
+}
+
+function getMovieCastData(){
+  const rows=document.querySelectorAll('#movieCastList .cast-admin-row');
+  const cast=[];
+  rows.forEach(row=>{
+    const actressId=row.querySelector('.cast-actress-sel')?.value;
+    if(!actressId) return;
+    cast.push({
+      actressId,
+      character:row.querySelector('.cast-char-inp')?.value.trim()||'',
+      coupleType:row.querySelector('.cast-type-sel')?.value||'main',
+      coupleNum:parseInt(row.querySelector('.cast-num-sel')?.value)||1,
+    });
+  });
+  return cast;
+}
+
 function mapCountry(c){
   var cm={
     'Thailand':'Tailandia','South Korea':'Corea del Sur','Korea':'Corea del Sur',
@@ -3056,6 +3148,29 @@ function mapCountry(c){
   return cm[c]||c;
 }
 initData();
+
+/* ── Toast de confirmación de actriz ── */
+function showActressToast(name, photo, isNew){
+  let t=document.getElementById('actressToast');
+  if(!t){
+    t=document.createElement('div');
+    t.id='actressToast';
+    t.className='toast';
+    document.body.appendChild(t);
+  }
+  const avatarHtml=photo
+    ?`<img class="toast-avatar" src="${escapeHtml(photo)}" onerror="this.outerHTML='<div class=\\'toast-avatar-ph\\'>🎭</div>'">`
+    :`<div class="toast-avatar-ph">🎭</div>`;
+  const label=isNew?'Actriz añadida ✓':'Actriz actualizada ✓';
+  const sub=isNew?`Ya hay <strong style="color:var(--accent)">${actresses.length}</strong> actrices en total`:'Los cambios se han guardado';
+  t.innerHTML=`${avatarHtml}<div class="toast-text"><strong>${escapeHtml(name)}</strong><span>${sub}</span></div>`;
+  t.classList.remove('show');
+  clearTimeout(t._hideTimer);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    t.classList.add('show');
+    t._hideTimer=setTimeout(()=>t.classList.remove('show'),3800);
+  }));
+}
 </script>
 </body>
 </html>

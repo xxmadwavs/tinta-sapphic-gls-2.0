@@ -51,7 +51,7 @@
       ],
       "synopsis": "Un grupo de amigas se sume en el caos cuando sus lazos se ponen a prueba de diversas maneras, comenzando con el regreso de una exnovia. \n\nPrim y Min dirigen juntas una agencia de publicidad cuando aparece Bambi, la exnovia de Prim, una nueva clienta que quiere volver con ella. A su círculo se suman Gorya, la joven estilista de Prim, que busca una conexión más profunda; Shasha, la modelo promiscua y encantadora; y Praew, la fotógrafa lesbiana del bar que frecuenta Min, quien siente curiosidad por la bisexualidad.",
       "year": 2026,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "bookSource": "Girl Rules",
       "basedOnBook": true,
       "bookCoverUrl": "https://preview.redd.it/girl-rules-the-novel-v0-p1zg66s1tfcg1.png?auto=webp&s=ed337025810143dcf977b35bef6f27b4a1cd9860",
@@ -124,7 +124,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T10:59:57.165Z",
+      "updatedAt": "2026-05-13T20:23:30.995Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -142,25 +142,25 @@
           "actressId": "1778667975177",
           "character": "Shasha",
           "coupleType": "main",
-          "coupleNum": 1
+          "coupleNum": 2
         },
         {
           "actressId": "1778668043254",
           "character": "Gorya",
           "coupleType": "main",
-          "coupleNum": 1
+          "coupleNum": 2
         },
         {
           "actressId": "1778668061135",
           "character": "Min",
           "coupleType": "main",
-          "coupleNum": 1
+          "coupleNum": 3
         },
         {
           "actressId": "1778668089762",
           "character": "Praew",
           "coupleType": "main",
-          "coupleNum": 1
+          "coupleNum": 3
         },
         {
           "actressId": "1778667585326",
@@ -203,7 +203,7 @@
       "episodes": [],
       "synopsis": "De novias universitarias a compañeras de vida, Pafun y Aioon construyen una vida juntas llena de amor y devoción, soñando con una familia que parece inalcanzable. Cuando el anhelo de Pafun por la maternidad se intensifica, su esperanza crece ante la promesa de adoptar un hijo algún día.\n\nTodo cambia cuando su mejor amiga, Nubnueng, regresa inesperadamente y les trae una oportunidad que les cambiará la vida. Mientras el amor, la pérdida y la responsabilidad se entrelazan, la pareja debe afrontar el desamor, la resiliencia y los desafíos de convertirse en madres primerizas.\n\nFulfill es un viaje tierno y emotivo que celebra la familia elegida y el poder del amor para completar lo que la vida deja inconcluso.",
       "year": 2026,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -247,26 +247,26 @@
         {
           "actressId": "1778672828977",
           "character": "Lalin",
-          "coupleType": "other",
+          "coupleType": "secondary",
           "coupleNum": 1
         },
         {
           "actressId": "1778672885792",
           "character": "Nubdao",
-          "coupleType": "other",
+          "coupleType": "secondary",
           "coupleNum": 1
         },
         {
           "actressId": "1778668951822",
           "character": "Anda",
-          "coupleType": "other",
-          "coupleNum": 1
+          "coupleType": "secondary",
+          "coupleNum": 2
         },
         {
           "actressId": "1778669037769",
           "character": "Gorya",
-          "coupleType": "other",
-          "coupleNum": 1
+          "coupleType": "secondary",
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
@@ -285,7 +285,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T11:57:26.047Z"
+      "updatedAt": "2026-05-13T20:23:52.605Z"
     },
     {
       "id": "1776889264943",
@@ -1155,10 +1155,19 @@
       "poster": "https://i.mydramalist.com/Dk6veD_4f.jpg",
       "synopsis": "",
       "year": 2026,
-      "country": "Tailandia",
-      "network": "Youtube",
-      "networkUrl": "",
-      "watchLinks": [],
+      "country": "Tailandia / Japón",
+      "network": "Youtube, iQiyi",
+      "networkUrl": "https://youtube.com/playlist?list=PLFnFjT24wVPX7gxcGvZV89N6h7PASbnPc&si=HaWbMW1rivdphb6d",
+      "watchLinks": [
+        {
+          "name": "YouTube",
+          "url": "https://youtube.com/playlist?list=PLFnFjT24wVPX7gxcGvZV89N6h7PASbnPc&si=HaWbMW1rivdphb6d"
+        },
+        {
+          "name": "iQIYI (UNCUT)",
+          "url": "https://www.iq.com/album/love-beyond-dreams-2026-q65t1dl2u9?"
+        }
+      ],
       "trailerUrl": "https://youtu.be/YXBdhxza8Es?si=uujrgNFbGI9Z9n6t",
       "bookSource": "",
       "basedOnBook": false,
@@ -1210,7 +1219,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T10:57:10.053Z"
+      "updatedAt": "2026-05-13T20:28:03.102Z"
     },
     {
       "id": "1776965794937",
@@ -4600,7 +4609,7 @@
       "poster": "https://i.mydramalist.com/Lwb8xg_4f.jpg",
       "synopsis": "Claire y Bell se conocen en un lugar al que nadie entra por voluntad propia: la cárcel. Condenada injustamente por posesión de drogas, Bell comienza su condena de quince meses solo para descubrir que un poderoso grupo dentro del recinto penitenciario la tiene en la mira. Incluso el alcaide hace la vista gorda ante sus acciones. Su única vía de escape es acudir a Claire, una reclusa violenta con la que nadie se atreve a meterse. Nada es tan fácil como esperaba. A medida que su vínculo se profundiza, su camino llega a una encrucijada y deben elegir entre la vida y el amor.",
       "year": 2024,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
@@ -4630,10 +4639,31 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778705363188",
+          "character": "\"Claire\" Koraphat Kultharaksa",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778705395423",
+          "character": "\"Bell\" Lalita Pianmas",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T20:50:36.599Z"
     },
     {
       "id": "1777236702067",
@@ -18290,7 +18320,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:24:01.036Z"
+      "updatedAt": "2026-05-13T20:25:05.685Z",
+      "movieType": "film",
+      "duration": 92,
+      "cast": []
     },
     {
       "id": "1700000000114",
@@ -18318,7 +18351,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:56:17.164Z"
+      "updatedAt": "2026-05-13T20:25:11.536Z",
+      "movieType": "film",
+      "duration": 121,
+      "cast": []
     },
     {
       "id": "1700000000115",
@@ -18350,7 +18386,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:56:34.987Z"
+      "updatedAt": "2026-05-13T20:25:19.529Z",
+      "movieType": "film",
+      "duration": 109,
+      "cast": []
     },
     {
       "id": "1700000000116",
@@ -18373,7 +18412,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:24:41.133Z"
+      "updatedAt": "2026-05-13T20:25:28.504Z",
+      "movieType": "short",
+      "duration": 22,
+      "cast": []
     },
     {
       "id": "1700000000117",
@@ -18396,7 +18438,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:24:54.208Z"
+      "updatedAt": "2026-05-13T20:25:36.149Z",
+      "movieType": "film",
+      "duration": 87,
+      "cast": []
     },
     {
       "id": "1700000000118",
@@ -18419,7 +18464,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:25:33.740Z"
+      "updatedAt": "2026-05-13T20:25:48.399Z",
+      "movieType": "film",
+      "duration": 135,
+      "cast": []
     },
     {
       "id": "1700000000119",
@@ -18447,7 +18495,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:56:57.541Z"
+      "updatedAt": "2026-05-13T20:25:54.957Z",
+      "movieType": "film",
+      "duration": 84,
+      "cast": []
     },
     {
       "id": "1700000000120",
@@ -18476,7 +18527,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:57:07.157Z"
+      "updatedAt": "2026-05-13T20:26:02.481Z",
+      "movieType": "film",
+      "duration": 83,
+      "cast": []
     },
     {
       "id": "1700000000121",
@@ -18500,7 +18554,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:26:10.338Z"
+      "updatedAt": "2026-05-13T20:26:12.133Z",
+      "movieType": "film",
+      "duration": 107,
+      "cast": []
     },
     {
       "id": "1700000000122",
@@ -18523,7 +18580,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:26:21.112Z"
+      "updatedAt": "2026-05-13T20:28:16.564Z",
+      "movieType": "film",
+      "duration": 81,
+      "cast": []
     },
     {
       "id": "1700000000123",
@@ -18547,7 +18607,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:26:31.563Z"
+      "updatedAt": "2026-05-13T20:28:26.445Z",
+      "movieType": "film",
+      "duration": 95,
+      "cast": []
     },
     {
       "id": "1700000000124",
@@ -18576,7 +18639,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:57:21.912Z"
+      "updatedAt": "2026-05-13T20:28:31.843Z",
+      "movieType": "short",
+      "duration": 7,
+      "cast": []
     },
     {
       "id": "1700000000125",
@@ -18600,7 +18666,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:27:26.256Z"
+      "updatedAt": "2026-05-13T20:28:40.680Z",
+      "movieType": "short",
+      "duration": 23,
+      "cast": []
     },
     {
       "id": "1700000000126",
@@ -18628,7 +18697,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:57:36.965Z"
+      "updatedAt": "2026-05-13T20:28:47.203Z",
+      "movieType": "short",
+      "duration": 16,
+      "cast": []
     },
     {
       "id": "1700000000127",
@@ -18656,7 +18728,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:57:46.359Z"
+      "updatedAt": "2026-05-13T20:28:53.285Z",
+      "movieType": "film",
+      "duration": 90,
+      "cast": []
     },
     {
       "id": "1700000000128",
@@ -18679,7 +18754,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:28:08.249Z"
+      "updatedAt": "2026-05-13T20:29:02.627Z",
+      "movieType": "short",
+      "duration": 17,
+      "cast": []
     },
     {
       "id": "1700000000129",
@@ -18703,7 +18781,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:28:19.767Z"
+      "updatedAt": "2026-05-13T20:29:16.738Z",
+      "movieType": "film",
+      "duration": 107,
+      "cast": []
     },
     {
       "id": "1700000000130",
@@ -18731,7 +18812,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:57:56.927Z"
+      "updatedAt": "2026-05-13T20:29:23.641Z",
+      "movieType": "film",
+      "duration": 90,
+      "cast": []
     },
     {
       "id": "1700000000131",
@@ -18754,7 +18838,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:29:35.904Z"
+      "updatedAt": "2026-05-13T20:29:31.373Z",
+      "movieType": "short",
+      "duration": 28,
+      "cast": []
     },
     {
       "id": "1700000000132",
@@ -18782,7 +18869,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:58:06.095Z"
+      "updatedAt": "2026-05-13T20:29:38.968Z",
+      "movieType": "film",
+      "duration": 93,
+      "cast": []
     },
     {
       "id": "1700000000133",
@@ -18810,7 +18900,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:58:42.269Z"
+      "updatedAt": "2026-05-13T20:29:48.682Z",
+      "movieType": "short",
+      "duration": 30,
+      "cast": []
     },
     {
       "id": "1700000000134",
@@ -18833,7 +18926,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:30:35.934Z"
+      "updatedAt": "2026-05-13T20:29:59.663Z",
+      "movieType": "film",
+      "duration": 95,
+      "cast": []
     },
     {
       "id": "1700000000135",
@@ -18857,7 +18953,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:30:45.476Z"
+      "updatedAt": "2026-05-13T20:30:42.343Z",
+      "movieType": "film",
+      "duration": 119,
+      "cast": []
     },
     {
       "id": "1700000000136",
@@ -18878,7 +18977,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:32:00.594Z"
+      "updatedAt": "2026-05-13T20:30:53.023Z",
+      "movieType": "film",
+      "duration": 88,
+      "cast": []
     },
     {
       "id": "1700000000137",
@@ -18907,7 +19009,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:58:51.082Z"
+      "updatedAt": "2026-05-13T20:31:22.798Z",
+      "movieType": "short",
+      "duration": 8,
+      "cast": []
     },
     {
       "id": "1700000000138",
@@ -18936,7 +19041,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:58:59.608Z"
+      "updatedAt": "2026-05-13T20:31:20.070Z",
+      "movieType": "short",
+      "duration": 15,
+      "cast": []
     },
     {
       "id": "1700000000139",
@@ -18964,7 +19072,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:59:07.063Z"
+      "updatedAt": "2026-05-13T20:31:14.914Z",
+      "movieType": "film",
+      "duration": 91,
+      "cast": []
     },
     {
       "id": "1700000000140",
@@ -18987,7 +19098,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:32:30.892Z"
+      "updatedAt": "2026-05-13T20:31:36.087Z",
+      "movieType": "film",
+      "duration": 97,
+      "cast": []
     },
     {
       "id": "1700000000141",
@@ -19010,7 +19124,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:32:40.406Z"
+      "updatedAt": "2026-05-13T20:31:43.091Z",
+      "movieType": "film",
+      "duration": 106,
+      "cast": []
     },
     {
       "id": "1700000000142",
@@ -19034,7 +19151,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:32:49.613Z"
+      "updatedAt": "2026-05-13T20:32:07.541Z",
+      "movieType": "film",
+      "duration": 110,
+      "cast": []
     },
     {
       "id": "1700000000143",
@@ -19062,7 +19182,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:59:48.178Z"
+      "updatedAt": "2026-05-13T20:32:01.592Z",
+      "movieType": "film",
+      "duration": 105,
+      "cast": []
     },
     {
       "id": "1700000000144",
@@ -19085,7 +19208,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:34:12.447Z"
+      "updatedAt": "2026-05-13T20:33:35.366Z",
+      "movieType": "short",
+      "duration": 17,
+      "cast": []
     },
     {
       "id": "1700000000145",
@@ -19118,7 +19244,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:00:09.477Z"
+      "updatedAt": "2026-05-13T20:33:48.344Z",
+      "movieType": "film",
+      "duration": 105,
+      "cast": []
     },
     {
       "id": "1700000000146",
@@ -19147,7 +19276,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:00:21.956Z"
+      "updatedAt": "2026-05-13T20:34:04.306Z",
+      "movieType": "film",
+      "duration": 106,
+      "cast": []
     },
     {
       "id": "1700000000147",
@@ -19176,7 +19308,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:00:31.177Z"
+      "updatedAt": "2026-05-13T20:34:10.243Z",
+      "movieType": "film",
+      "duration": 120,
+      "cast": []
     },
     {
       "id": "1700000000148",
@@ -19205,7 +19340,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:00:40.785Z"
+      "updatedAt": "2026-05-13T20:34:17.294Z",
+      "movieType": "film",
+      "duration": 118,
+      "cast": []
     },
     {
       "id": "1700000000149",
@@ -19228,7 +19366,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:35:57.089Z"
+      "updatedAt": "2026-05-13T20:34:27.611Z",
+      "movieType": "short",
+      "duration": 7,
+      "cast": []
     },
     {
       "id": "1700000000150",
@@ -19254,7 +19395,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:00:48.434Z"
+      "updatedAt": "2026-05-13T20:34:37.677Z",
+      "movieType": "film",
+      "duration": 107,
+      "cast": []
     },
     {
       "id": "1700000000151",
@@ -19278,7 +19422,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:36:18.667Z"
+      "updatedAt": "2026-05-13T20:34:46.107Z",
+      "movieType": "film",
+      "duration": 111,
+      "cast": []
     },
     {
       "id": "1700000000152",
@@ -19304,7 +19451,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:01:02.047Z"
+      "updatedAt": "2026-05-13T20:34:59.164Z",
+      "movieType": "film",
+      "duration": 78,
+      "cast": []
     },
     {
       "id": "1700000000153",
@@ -19332,7 +19482,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:49:24.867Z"
+      "updatedAt": "2026-05-13T20:35:09.038Z",
+      "movieType": "short",
+      "duration": 27,
+      "cast": []
     },
     {
       "id": "1700000000154",
@@ -19360,7 +19513,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:49:13.074Z"
+      "updatedAt": "2026-05-13T20:35:15.148Z",
+      "movieType": "film",
+      "duration": 130,
+      "cast": []
     },
     {
       "id": "1700000000155",
@@ -19389,7 +19545,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:49:05.163Z"
+      "updatedAt": "2026-05-13T20:35:23.310Z",
+      "movieType": "short",
+      "duration": 8,
+      "cast": []
     },
     {
       "id": "1700000000156",
@@ -19413,7 +19572,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:38:23.041Z"
+      "updatedAt": "2026-05-13T20:35:32.599Z",
+      "movieType": "short",
+      "duration": 28,
+      "cast": []
     },
     {
       "id": "1700000000157",
@@ -19442,7 +19604,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:48:53.757Z"
+      "updatedAt": "2026-05-13T20:35:37.973Z",
+      "movieType": "short",
+      "duration": 6,
+      "cast": []
     },
     {
       "id": "1700000000158",
@@ -19466,7 +19631,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:38:44.267Z"
+      "updatedAt": "2026-05-13T20:35:49.814Z",
+      "movieType": "film",
+      "duration": 98,
+      "cast": []
     },
     {
       "id": "1700000000159",
@@ -19490,7 +19658,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:38:53.952Z"
+      "updatedAt": "2026-05-13T20:35:54.901Z",
+      "movieType": "film",
+      "duration": 105,
+      "cast": []
     },
     {
       "id": "1700000000160",
@@ -19516,7 +19687,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:48:44.056Z"
+      "updatedAt": "2026-05-13T20:36:02.264Z",
+      "movieType": "film",
+      "duration": 94,
+      "cast": []
     },
     {
       "id": "1700000000161",
@@ -19545,7 +19719,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:48:33.686Z"
+      "updatedAt": "2026-05-13T20:36:10.970Z",
+      "movieType": "film",
+      "duration": 96,
+      "cast": []
     },
     {
       "id": "1700000000162",
@@ -19569,7 +19746,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:40:35.597Z"
+      "updatedAt": "2026-05-13T20:36:20.207Z",
+      "movieType": "short",
+      "duration": 20,
+      "cast": []
     },
     {
       "id": "1700000000163",
@@ -19597,7 +19777,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:48:19.791Z"
+      "updatedAt": "2026-05-13T20:36:29.433Z",
+      "movieType": "short",
+      "duration": 18,
+      "cast": []
     },
     {
       "id": "1700000000164",
@@ -19625,7 +19808,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:48:14.213Z"
+      "updatedAt": "2026-05-13T20:36:38.275Z",
+      "movieType": "short",
+      "duration": 21,
+      "cast": []
     },
     {
       "id": "1700000000165",
@@ -19648,7 +19834,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:41:19.157Z"
+      "updatedAt": "2026-05-13T20:36:47.368Z",
+      "movieType": "film",
+      "duration": 105,
+      "cast": []
     },
     {
       "id": "1700000000166",
@@ -19671,7 +19860,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "anime",
-      "updatedAt": "2026-05-10T16:41:33.045Z"
+      "updatedAt": "2026-05-13T20:36:55.711Z",
+      "movieType": "film",
+      "duration": 61,
+      "cast": []
     },
     {
       "id": "1700000000167",
@@ -19699,7 +19891,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:47:56.269Z"
+      "updatedAt": "2026-05-13T20:37:07.360Z",
+      "movieType": "short",
+      "duration": 23,
+      "cast": []
     },
     {
       "id": "1700000000168",
@@ -19722,7 +19917,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:42:11.853Z"
+      "updatedAt": "2026-05-13T20:37:13.727Z",
+      "movieType": "short",
+      "duration": 13,
+      "cast": []
     },
     {
       "id": "1700000000169",
@@ -19751,7 +19949,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:47:41.272Z"
+      "updatedAt": "2026-05-13T20:37:20.818Z",
+      "movieType": "film",
+      "duration": 114,
+      "cast": []
     },
     {
       "id": "1700000000170",
@@ -19779,7 +19980,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:47:30.833Z"
+      "updatedAt": "2026-05-13T20:37:33.674Z",
+      "movieType": "short",
+      "duration": 7,
+      "cast": []
     },
     {
       "id": "1700000000171",
@@ -19803,7 +20007,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:43:09.604Z"
+      "updatedAt": "2026-05-13T20:37:41.868Z",
+      "movieType": "film",
+      "duration": 116,
+      "cast": []
     },
     {
       "id": "1700000000172",
@@ -19831,7 +20038,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:47:18.379Z"
+      "updatedAt": "2026-05-13T20:37:48.322Z",
+      "movieType": "short",
+      "duration": 15,
+      "cast": []
     },
     {
       "id": "1700000000173",
@@ -19860,7 +20070,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:46:36.281Z"
+      "updatedAt": "2026-05-13T20:37:57.129Z",
+      "movieType": "film",
+      "duration": 87,
+      "cast": []
     },
     {
       "id": "1700000000174",
@@ -19889,7 +20102,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:46:22.593Z"
+      "updatedAt": "2026-05-13T20:38:03.778Z",
+      "movieType": "short",
+      "duration": 15,
+      "cast": []
     },
     {
       "id": "1700000000175",
@@ -19918,7 +20134,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:46:13.014Z"
+      "updatedAt": "2026-05-13T20:38:14.711Z",
+      "movieType": "film",
+      "duration": 121,
+      "cast": []
     },
     {
       "id": "1700000000176",
@@ -19941,7 +20160,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:44:24.604Z"
+      "updatedAt": "2026-05-13T20:38:19.922Z",
+      "movieType": "short",
+      "duration": 5,
+      "cast": []
     },
     {
       "id": "1700000000177",
@@ -19966,7 +20188,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:44:37.229Z"
+      "updatedAt": "2026-05-13T20:38:28.008Z",
+      "movieType": "film",
+      "duration": 120,
+      "cast": []
     },
     {
       "id": "1700000000178",
@@ -19990,7 +20215,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:44:48.784Z"
+      "updatedAt": "2026-05-13T20:38:36.125Z",
+      "movieType": "film",
+      "duration": 99,
+      "cast": []
     },
     {
       "id": "1700000000179",
@@ -20019,7 +20247,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:45:58.819Z"
+      "updatedAt": "2026-05-13T20:38:41.991Z",
+      "movieType": "film",
+      "duration": 104,
+      "cast": []
     },
     {
       "id": "1700000000180",
@@ -20047,7 +20278,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:45:52.383Z"
+      "updatedAt": "2026-05-13T20:38:49.809Z",
+      "movieType": "short",
+      "duration": 4,
+      "cast": []
     },
     {
       "id": "1700000000181",
@@ -20075,7 +20309,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:45:46.091Z"
+      "updatedAt": "2026-05-13T20:39:01.390Z",
+      "movieType": "film",
+      "duration": 127,
+      "cast": []
     },
     {
       "id": "1700000000182",
@@ -20104,7 +20341,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:02:21.120Z"
+      "updatedAt": "2026-05-13T20:39:07.130Z",
+      "movieType": "short",
+      "duration": 9,
+      "cast": []
     },
     {
       "id": "1700000000183",
@@ -20128,7 +20368,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:02:34.341Z"
+      "updatedAt": "2026-05-13T20:39:13.122Z",
+      "movieType": "film",
+      "duration": 76,
+      "cast": []
     },
     {
       "id": "1700000000184",
@@ -20152,7 +20395,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:02:57.792Z"
+      "updatedAt": "2026-05-13T20:39:24.004Z",
+      "movieType": "short",
+      "duration": 13,
+      "cast": []
     },
     {
       "id": "1700000000185",
@@ -20181,7 +20427,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:03:21.169Z"
+      "updatedAt": "2026-05-13T20:39:43.233Z",
+      "movieType": "short",
+      "duration": 24,
+      "cast": []
     },
     {
       "id": "1700000000186",
@@ -20209,7 +20458,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:03:41.397Z"
+      "updatedAt": "2026-05-13T20:39:52.489Z",
+      "movieType": "short",
+      "duration": 22,
+      "cast": []
     },
     {
       "id": "1700000000187",
@@ -20233,7 +20485,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:04:34.730Z"
+      "updatedAt": "2026-05-13T20:39:57.800Z",
+      "movieType": "film",
+      "duration": 92,
+      "cast": []
     },
     {
       "id": "1700000000188",
@@ -20257,7 +20512,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:05:02.430Z"
+      "updatedAt": "2026-05-13T20:40:07.462Z",
+      "movieType": "film",
+      "duration": 99,
+      "cast": []
     },
     {
       "id": "1700000000189",
@@ -20285,7 +20543,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:03:58.821Z"
+      "updatedAt": "2026-05-13T20:40:15.096Z",
+      "movieType": "short",
+      "duration": 9,
+      "cast": []
     },
     {
       "id": "1700000000190",
@@ -20308,7 +20569,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:05:14.406Z"
+      "updatedAt": "2026-05-13T20:40:19.978Z",
+      "movieType": "short",
+      "duration": 3,
+      "cast": []
     },
     {
       "id": "1700000000191",
@@ -20332,7 +20596,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:05:30.752Z"
+      "updatedAt": "2026-05-13T20:40:28.093Z",
+      "movieType": "film",
+      "duration": 80,
+      "cast": []
     },
     {
       "id": "1700000000192",
@@ -20360,7 +20627,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:04:21.665Z"
+      "updatedAt": "2026-05-13T20:40:35.184Z",
+      "movieType": "short",
+      "duration": 6,
+      "cast": []
     },
     {
       "id": "1700000000193",
@@ -22919,7 +23189,29 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:10:27.600Z"
+      "updatedAt": "2026-05-13T20:46:34.806Z",
+      "movieType": "film",
+      "duration": "",
+      "cast": [
+        {
+          "actressId": "1778668868889",
+          "character": "\"Lin\" Linlada Sasinpimon",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668798059",
+          "character": "",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778705135312",
+          "character": "Prim",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ]
     },
     {
       "id": "1700000000295",
@@ -23878,7 +24170,91 @@
       "photo": "https://i.redd.it/miu-natsha-photo-drop-shes-in-an-upcoming-show-called-my-v0-rwg5ud6cj5bf1.jpg?width=1170&format=pjpg&auto=webp&s=d5c1f40907a43051a6621cac4875eb3410c8e0e9",
       "country": "Tailandia",
       "notes": "Actriz"
+    },
+    {
+      "id": "1778704935711",
+      "name": "\"Pitcha\" Pitchatorn Santinatornkul",
+      "photo": "https://1.vikiplatform.com/pr/26709pr/c6e3d8f828.jpg?x=b",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778704997832",
+      "name": "\"Natt\" Nattamon Chokejindachai",
+      "photo": "https://pbs.twimg.com/profile_images/1887090461413867520/YDtsr8t-_400x400.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778705034390",
+      "name": "\"Kao\" Supassrathip Akkrathaweepatch",
+      "photo": "https://i.mydramalist.com/R6Q06_5f.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz y modelo"
+    },
+    {
+      "id": "1778705070874",
+      "name": "\"Jane\" Methika Jiranorraphat",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/8/80/Jane_Methika_Jiranorraphat_2025-11-08_%281%29.jpg",
+      "country": "Tailandia, Taiwán",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778705100123",
+      "name": "\"Palm\" Paramee Luengnaruemitchai",
+      "photo": "https://girlsloveinfo.com/wp-content/uploads/2025/08/Palm-Paramee.png",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778705135312",
+      "name": "\"Friend\" Torfan Taweema",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKpm1Zk8hxX9W4KUJvfpwLciahryewlLqMyQ&s",
+      "country": "Tailandia",
+      "notes": "Actriz y cantante"
+    },
+    {
+      "id": "1778705238403",
+      "name": "\"Christine\" Gulasatree Michalsky",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6TST2GG8LUAntC5cxunVhmCdehytDIJUhyg&s",
+      "country": "Tailandia",
+      "notes": "Actriz y modelo"
+    },
+    {
+      "id": "1778705285700",
+      "name": "\"Mae\" Methakarn Anektanasuwan",
+      "photo": "https://artworks.thetvdb.com/banners/v4/actor/9130615/photo/66cde45ad5290.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778705363188",
+      "name": "\"Mable\" Siriwalee Siriwibool",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpf7qgttu0A-sRXpd0MjHGk7iC4duF5s-rw&s",
+      "country": "Tailandia",
+      "notes": "Actriz y modelo"
+    },
+    {
+      "id": "1778705395423",
+      "name": "\"Pangjie\" Paphavarin Sawasdiwech",
+      "photo": "https://www.nautiljon.com/images/people/02/36/paphavarin_sawasdiwech_205963.webp",
+      "country": "Tailandia",
+      "notes": "Actriz y modelo"
+    },
+    {
+      "id": "1778705490259",
+      "name": "\"Tungpang\" Pattarawadee Laosa",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBRzFUJizkRqM2MUaLvgBaTDR-ZzUfPRtuKg&s",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778705516438",
+      "name": "\"Jessie\" Natsiya Prommart",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN61pou88WU9xiMAwqzEpKe5IZWeAxSADhrg&s",
+      "country": "Tailandia",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-13T12:18:35.099Z"
+  "exportedAt": "2026-05-13T20:51:58.919Z"
 }
