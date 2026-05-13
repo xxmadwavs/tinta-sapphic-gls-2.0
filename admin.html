@@ -383,6 +383,17 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .collapsible-arrow{font-size:12px;color:var(--muted);transition:transform .2s}
 .collapsible-header.open .collapsible-arrow{transform:rotate(180deg)}
 .collapsible-body{overflow:hidden;transition:max-height .25s ease}
+
+/* Cast actress search dropdown */
+.cast-search-wrap{position:relative}
+.cast-search-input{width:100%;padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;box-sizing:border-box}
+.cast-search-input:focus{border-color:var(--accent);outline:none}
+.cast-dropdown{position:absolute;top:calc(100% + 3px);left:0;right:0;background:var(--surface);border:1.5px solid var(--border2);border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.12);z-index:200;max-height:220px;overflow-y:auto;display:none}
+.cast-dropdown.open{display:block}
+.cast-dropdown-item{display:flex;align-items:center;gap:8px;padding:7px 10px;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--text)}
+.cast-dropdown-item:hover,.cast-dropdown-item.focused{background:var(--accent-soft);color:var(--accent)}
+.cast-dropdown-item img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0}
+.cast-dropdown-empty{padding:10px;font-size:12px;color:var(--muted);text-align:center}
 </style>
 </head>
 <body>
@@ -2520,8 +2531,9 @@ function importData(e){
       const d=JSON.parse(ev.target.result);
       if(d.series) series=d.series;
       if(d.movies) movies=d.movies;
+      if(d.actresses) actresses=d.actresses;
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
-      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid();
       alert('✓ Datos importados correctamente');
     }catch(err){ alert('Error al leer el archivo: '+err.message); }
   };
@@ -2944,22 +2956,27 @@ function addCastMember(data){
     alert('Primero añade actrices en la sección "🎭 Actrices".');
     return;
   }
-  const row=document.createElement('div');
-  row.className='cast-admin-row';
-  row.style.cssText='border:1.5px solid var(--border2);border-radius:12px;padding:10px 12px;margin-bottom:8px;background:var(--surface2);display:flex;gap:8px;align-items:center';
   const actressId=data&&data.actressId?data.actressId:'';
   const char=data&&data.character?data.character:'';
   const coupleType=data&&data.coupleType?data.coupleType:'main';
   const coupleNum=data&&data.coupleNum?data.coupleNum:1;
   const uid='cp_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
-  const selOpts=actresses.map(a=>`<option value="${a.id}" ${a.id===actressId?'selected':''}>${escapeHtml(a.name)}${a.country?' ('+a.country+')':''}</option>`).join('');
+  const selectedA=actressId?actresses.find(a=>a.id===actressId):null;
+
+  const row=document.createElement('div');
+  row.className='cast-admin-row';
+  row.style.cssText='border:1.5px solid var(--border2);border-radius:12px;padding:10px 12px;margin-bottom:8px;background:var(--surface2);display:flex;gap:8px;align-items:flex-start';
   row.innerHTML=`
-    <div id="${uid}" style="flex-shrink:0">${getActressThumb(actressId)}</div>
+    <div id="${uid}_thumb" style="flex-shrink:0;margin-top:2px">${getActressThumb(actressId)}</div>
     <div style="flex:1;display:flex;flex-direction:column;gap:5px">
-      <select class="cast-actress-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600" onchange="document.getElementById('${uid}').innerHTML=getActressThumb(this.value)">
-        <option value="">— Selecciona actriz —</option>
-        ${selOpts}
-      </select>
+      <input type="hidden" class="cast-actress-sel" value="${actressId}">
+      <div class="cast-search-wrap">
+        <input type="text" class="cast-search-input" placeholder="Buscar actriz…" value="${selectedA?escapeHtml(selectedA.name)+( selectedA.country?' ('+selectedA.country+')':''):''}" autocomplete="off"
+          oninput="filterCastDropdown(this,'${uid}')"
+          onfocus="filterCastDropdown(this,'${uid}')"
+          onblur="setTimeout(()=>closeCastDropdown('${uid}'),150)">
+        <div class="cast-dropdown" id="${uid}_dd"></div>
+      </div>
       <div style="display:grid;grid-template-columns:1fr auto auto;gap:5px">
         <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif">
         <select class="cast-type-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600">
@@ -2972,8 +2989,38 @@ function addCastMember(data){
         </select>
       </div>
     </div>
-    <button type="button" onclick="this.closest('.cast-admin-row').remove()" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:0 2px;flex-shrink:0">✕</button>`;
+    <button type="button" onclick="this.closest('.cast-admin-row').remove()" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:0 2px;flex-shrink:0;margin-top:2px">✕</button>`;
   list.appendChild(row);
+}
+
+function filterCastDropdown(inp, uid){
+  const q=inp.value.toLowerCase();
+  const dd=document.getElementById(uid+'_dd');
+  if(!dd) return;
+  const matches=actresses.filter(a=>!q||a.name.toLowerCase().includes(q)||(a.country&&a.country.toLowerCase().includes(q)));
+  if(!matches.length){
+    dd.innerHTML='<div class="cast-dropdown-empty">Sin resultados</div>';
+  } else {
+    dd.innerHTML=matches.map(a=>{
+      const photo=a.photo?`<img src="${escapeHtml(a.photo)}" onerror="this.outerHTML='<span style=\'font-size:16px\'>🎭</span>'">`:'<span style="font-size:16px">🎭</span>';
+      return `<div class="cast-dropdown-item" onmousedown="selectCastActress('${uid}','${a.id}',\`${escapeHtml(a.name)}${a.country?' ('+a.country+')':''}\`)">${photo}<span>${escapeHtml(a.name)}${a.country?` <span style='font-size:10px;color:var(--muted)'>${a.country}</span>`:''}</span></div>`;
+    }).join('');
+  }
+  dd.classList.add('open');
+}
+
+function selectCastActress(uid, actressId, label){
+  const row=document.getElementById(uid+'_dd')?.closest('.cast-admin-row');
+  if(!row) return;
+  row.querySelector('.cast-actress-sel').value=actressId;
+  row.querySelector('.cast-search-input').value=label;
+  document.getElementById(uid+'_thumb').innerHTML=getActressThumb(actressId);
+  closeCastDropdown(uid);
+}
+
+function closeCastDropdown(uid){
+  const dd=document.getElementById(uid+'_dd');
+  if(dd) dd.classList.remove('open');
 }
 
 function getActressThumb(actressId){
