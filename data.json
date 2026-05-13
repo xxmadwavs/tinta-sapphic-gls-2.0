@@ -222,7 +222,70 @@
         "Romance",
         "Drama",
         "Comedia"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778672754370",
+          "character": "Pafun / \"Fun\"",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778672794035",
+          "character": "Aioon / \"Oon\"",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669135059",
+          "character": "Risa",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778672828977",
+          "character": "Lalin",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778672885792",
+          "character": "Nubdao",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668951822",
+          "character": "Anda",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669037769",
+          "character": "Gorya",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-04-24",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            4
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T11:57:26.047Z"
     },
     {
       "id": "1776889264943",
@@ -398,7 +461,70 @@
       ],
       "genres": [
         "Romance"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669290609",
+          "character": "Nam/Apo",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669334143",
+          "character": "Lada",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669226549",
+          "character": "Din/Kasama",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669263021",
+          "character": "Rose",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668868889",
+          "character": "Lom/Wayo",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669459675",
+          "character": "Fai/Atjima",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669368232",
+          "character": "\"Fah\" Farin",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-03-21",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T11:51:42.170Z"
     },
     {
       "id": "1776889415383",
@@ -440,7 +566,82 @@
         "Romance",
         "Comedia",
         "Acción"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778668798059",
+          "character": "Princess Blew / Catherine  | Helena",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668868889",
+          "character": "Lom / Wayo",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669226549",
+          "character": "Din/Kasama",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669263021",
+          "character": "Rose",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669290609",
+          "character": "Nam/Apo",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669334143",
+          "character": "Lada",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669459675",
+          "character": "\"Fai\" Atjima",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669589925",
+          "character": "Bua",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669414651",
+          "character": "Grace",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-05-16",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T11:55:40.368Z"
     },
     {
       "id": "1776889447326",
@@ -645,7 +846,62 @@
       ],
       "genres": [
         "Romance"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669459675",
+          "character": "Fai/Atjima",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669499657",
+          "character": "Kaphrao",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669226549",
+          "character": "Din/Kasama",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669263021",
+          "character": "Rose",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669290609",
+          "character": "Nam/Apo",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669334143",
+          "character": "Lada",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668868889",
+          "character": "Lom/Wayo",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668798059",
+          "character": "Princess Blew / Catherine  | Helena",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T11:55:44.994Z"
     },
     {
       "id": "1776931938317",
@@ -733,7 +989,26 @@
       ],
       "genres": [
         "Romance"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778672828977",
+          "character": "Pheem",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778672885792",
+          "character": "Pan",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T11:56:12.011Z"
     },
     {
       "id": "1776932289648",
@@ -1125,7 +1400,58 @@
       ],
       "genres": [
         "Romance"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669226549",
+          "character": "Din/Kasama",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669263021",
+          "character": "Rose",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668868889",
+          "character": "Lom/Wayo",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669290609",
+          "character": "Nam/Apo",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669459675",
+          "character": "Fai/Atjima",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-01-24",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T11:58:49.306Z"
     },
     {
       "id": "1776966975487",
@@ -1331,7 +1657,32 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778667533099",
+          "character": "Key",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667585326",
+          "character": "Jan",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667631376",
+          "character": "Jay",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T12:00:06.248Z"
     },
     {
       "id": "1776971628835",
@@ -1470,7 +1821,44 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778668043254",
+          "character": "Rafah / \"Fah\"",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667975177",
+          "character": "Rafah Pinseekaew / Dear",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668360946",
+          "character": "Anya",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668259606",
+          "character": "Lalin",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668336253",
+          "character": "Kongkaew",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T12:02:57.918Z"
     },
     {
       "id": "1776972424986",
@@ -1496,7 +1884,26 @@
         "Drama",
         "Escolar",
         "Viaje en el tiempo"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778668241744",
+          "character": "Dao / \"Dao Thiam\"",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667559702",
+          "character": "Dao / \"Dao Suay\"",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T12:03:32.383Z"
     },
     {
       "id": "1776972733396",
@@ -1550,7 +1957,26 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778668109244",
+          "character": "Clara",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668288034",
+          "character": "New",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T12:04:06.810Z"
     },
     {
       "id": "1776973104361",
@@ -1591,7 +2017,38 @@
         "Romance",
         "Drama",
         "Comedia"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778668089762",
+          "character": "Cheese",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668061135",
+          "character": "Noey",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667427357",
+          "character": "Lal",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667475076",
+          "character": "Wine",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T12:04:56.824Z"
     },
     {
       "id": "1776973507673",
@@ -1646,7 +2103,64 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778668043254",
+          "character": "\"Maewnam\" Sudteerak",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667975177",
+          "character": "\"Wan\" Thantara",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668109244",
+          "character": "Tonnam",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668288034",
+          "character": "Chomphu / \"Chom\"",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667475076",
+          "character": "\"Manmuk\" Manatsanan",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668360946",
+          "character": "Noey",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-06-25",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T12:06:29.019Z"
     },
     {
       "id": "1776974136082",
@@ -1819,7 +2333,52 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778667533099",
+          "character": "Dokrak",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667585326",
+          "character": "Pam",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668061135",
+          "character": "Oat",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668089762",
+          "character": "Nene",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-01-18",
+          "totalEpisodes": 12,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T12:07:35.458Z"
     },
     {
       "id": "1776976209757",
@@ -23171,7 +23730,35 @@
       "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR9TRShyixcSUL1a_8QcL3kXWojU6gWJZ-bA&s",
       "country": "Tailandia",
       "notes": "Actriz"
+    },
+    {
+      "id": "1778672754370",
+      "name": "\"Bam\" Saralee Prasitdumrong",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRZiLyYC_2Qh_RMAVdzYULPDruvOKyCEDX4Q&s",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778672794035",
+      "name": "\"Oom\" Eisaya Hosuwan",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbBJCOzVVO3pqgN5IsfVSZvjMQz_GYRs5RUA&s",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778672828977",
+      "name": "\"Lena\" Lalina Lorena Schuett",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStxAy7Uvmfib5OVFMNB2Ohh-_RXyZErH2rDA&s",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778672885792",
+      "name": "\"Miu\" Natasha Taechamongkalapiwat",
+      "photo": "https://i.redd.it/miu-natsha-photo-drop-shes-in-an-upcoming-show-called-my-v0-rwg5ud6cj5bf1.jpg?width=1170&format=pjpg&auto=webp&s=d5c1f40907a43051a6621cac4875eb3410c8e0e9",
+      "country": "Tailandia",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-13T11:00:32.538Z"
+  "exportedAt": "2026-05-13T12:08:57.026Z"
 }
