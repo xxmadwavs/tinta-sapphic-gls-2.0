@@ -514,9 +514,19 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 
   <div class="card" id="section-books">
-    <div class="card-title">📚 Libros registrados</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Libros, novelas y manhwas enlazados desde series o películas marcadas como <strong>"Basada en libro"</strong>. Para añadir o editar, edita la serie/película correspondiente.</p>
-    <div class="series-grid" id="booksGrid"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem">
+      <div class="card-title" style="margin-bottom:0">📚 Libros registrados</div>
+      <button onclick="toggleBooksSection()" id="booksSectionToggle" style="background:none;border:1.5px solid var(--border2);border-radius:20px;padding:3px 12px;font-size:11.5px;font-weight:700;color:var(--muted);cursor:pointer">▼ Mostrar</button>
+    </div>
+    <div id="booksContent" style="display:none">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Libros enlazados desde series o películas marcadas como <strong>"Basada en libro"</strong>.</p>
+      <div class="admin-search-wrap" style="margin-bottom:1rem">
+        <span class="admin-search-icon">🔍</span>
+        <input class="admin-search-input" id="adminBooksQ" placeholder="Buscar libro o serie…" oninput="renderBooks()">
+      </div>
+      <div class="series-count-label" id="booksCountLabel"></div>
+      <div class="series-grid" id="booksGrid"></div>
+    </div>
   </div>
 
   <div class="card" id="section-actresses">
@@ -529,7 +539,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     </div>
     <button class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddActress()">+ Añadir actriz</button>
     <div class="series-count-label" id="actressCountLabel"></div>
-    <div id="actressesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px"></div>
+    <div id="actressesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:8px"></div>
   </div>
 
   <div class="card">
@@ -774,7 +784,6 @@ async function initData(){
         if(d.series) series = d.series;
         if(d.movies) movies = d.movies;
         if(d.actresses) actresses = d.actresses;
-        renderActressesGrid();
         render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid();
         return;
       }
@@ -1735,11 +1744,13 @@ function openEditByCat(si){
 /* ═══ ANIME SEASON CHIP SELECTOR ═══ */
 function selectAnimeSeason(chip){
   const season=chip.dataset.season||'';
-  // Deselect all chips in both possible wrappers
-  document.querySelectorAll('.anime-season-chip').forEach(c=>c.classList.remove('selected'));
-  // Select all chips with same season (covers both wrappers)
-  document.querySelectorAll(`.anime-season-chip[data-season="${season}"]`).forEach(c=>c.classList.add('selected'));
-  // Update both hidden inputs
+  // Only affect chips in the same wrapper as the clicked chip
+  const wrap=chip.closest('.anime-season-wrap');
+  if(wrap){
+    wrap.querySelectorAll('.anime-season-chip').forEach(c=>c.classList.remove('selected'));
+    wrap.querySelectorAll(`.anime-season-chip[data-season="${season}"]`).forEach(c=>c.classList.add('selected'));
+  }
+  // Update the hidden name inputs in both wrappers (in case both exist)
   const n1=document.getElementById('f_anime_season_name');
   const n2=document.getElementById('f_anime_season_name_upcoming');
   if(n1) n1.value=season;
@@ -1801,6 +1812,7 @@ function openAddAnime(){
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   initCountries('countriesList','Japón');
   initSeasons(null);
+  initCast([]);
 }
 function openEditAnime(si){
   document.getElementById('animeModalTitle').textContent='✏️ Editar anime';
@@ -1815,6 +1827,7 @@ function openEditAnime(si){
   initBookEditions('bookEditionsList', s.bookLinks||[], s.bookUrl||'');
   initCountries('countriesList', s.country||'');
   initSeasons(getSeasons(s));
+  initCast(s.cast||[]);
 }
 function openEpsAnime(si){ openEps(si); } // reuse same modal
 
@@ -1829,6 +1842,7 @@ function openAddReality(){
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   initCountries('countriesList','');
   initSeasons(null);
+  initCast([]);
 }
 function openEditReality(si){
   document.getElementById('realityModalTitle').textContent='✏️ Editar reality';
@@ -1843,6 +1857,7 @@ function openEditReality(si){
   initBookEditions('bookEditionsList', s.bookLinks||[], s.bookUrl||'');
   initCountries('countriesList', s.country||'');
   initSeasons(getSeasons(s));
+  initCast(s.cast||[]);
 }
 
 /* ═══ RENDER ANIME GRID ═══ */
@@ -1979,9 +1994,10 @@ function saveSeries(si, forcedCategory=null){
   const genres=getSelectedGenres('f_genres');
   const category=document.getElementById('f_category')?.value||'series';
   const seriesType=document.getElementById('f_seriesType')?.value||'serie';
+  const cast=getCastData();
   const animeSeason=(category==='anime'||category==='reality')?getAnimeSeason():'';
   const renewedNextSeason=document.getElementById('f_renewed')?.checked||false;
-  let payload={name,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,animeSeason,renewedNextSeason};
+  let payload={name,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -2271,7 +2287,7 @@ function movieFormHtml(mv){
   </div>
   <div class="divider" style="margin:14px 0 10px"></div>
   <div class="form-section-hd" style="padding:0 0 8px">🎭 Reparto GL</div>
-  <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas. Para películas puedes indicar el personaje.</div>
+  <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas. Indica el personaje si quieres.</div>
   <div id="castList" style="margin-bottom:8px"></div>
   <button type="button" class="platform-add-btn" onclick="addCastMember(null)">+ Añadir actriz</button>
   </div>`;
@@ -2443,9 +2459,21 @@ function delMovie(mi){
   movies.splice(mi,1); save(); render(); renderMovies(); renderBooks();
 }
 
+function toggleBooksSection(){
+  const content=document.getElementById('booksContent');
+  const btn=document.getElementById('booksSectionToggle');
+  if(!content) return;
+  const open=content.style.display!=='none';
+  content.style.display=open?'none':'';
+  btn.textContent=open?'▼ Mostrar':'▲ Ocultar';
+  if(!open) renderBooks();
+}
+
 function renderBooks(){
   const grid=document.getElementById('booksGrid');
   if(!grid) return;
+  const q=(document.getElementById('adminBooksQ')?.value||'').toLowerCase();
+  const lbl=document.getElementById('booksCountLabel');
   const books=[];
   series.forEach(s=>{
     if(s.basedOnBook&&(s.bookSource||s.bookCoverUrl)){
@@ -2459,11 +2487,13 @@ function renderBooks(){
       books.push({title:mv.bookSource||'Libro sin título',cover:mv.bookCoverUrl||'',editions,from:mv.name,fromType:'película'});
     }
   });
-  if(!books.length){
-    grid.innerHTML='<div class="empty">📚 Ninguna serie o película marcada como "Basada en libro" con datos de libro todavía.</div>';
+  const filtered=q?books.filter(b=>b.title.toLowerCase().includes(q)||b.from.toLowerCase().includes(q)):books;
+  if(lbl) lbl.textContent=filtered.length+' libros'+(q?' encontrados':'');
+  if(!filtered.length){
+    grid.innerHTML=q?'<div class="empty">Sin resultados para esa búsqueda.</div>':'<div class="empty">📚 Ninguna serie o película marcada como "Basada en libro" todavía.</div>';
     return;
   }
-  grid.innerHTML=books.map(b=>{
+  grid.innerHTML=filtered.map(b=>{
     const coverEl=b.cover?`<img class="book-item-cover" src="${escapeHtml(b.cover)}" alt="${escapeHtml(b.title)}" onerror="this.outerHTML='<div class=book-item-cover-ph>📖</div>'">`:`<div class="book-item-cover-ph">📖</div>`;
     const editionLinks=b.editions.map(e=>`<a href="${escapeHtml(e.url)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;color:#b08a00;text-decoration:none;background:rgba(176,138,0,0.1);border-radius:20px;padding:2px 9px;border:1px solid rgba(176,138,0,0.25);white-space:nowrap">${langFlag(e.lang)} ${escapeHtml(e.store)} →</a>`).join('');
     return `<div class="book-item">${coverEl}
@@ -2809,7 +2839,7 @@ function runPasteAutofill(type){
 }
 
 /* ══════════════════════════════════════
-   ACTRESSES
+   ACTRESSES & CAST
 ══════════════════════════════════════ */
 function renderActressesGrid(){
   const grid=document.getElementById('actressesGrid');
@@ -2818,22 +2848,21 @@ function renderActressesGrid(){
   const q=(document.getElementById('adminActressQ')?.value||'').toLowerCase();
   const list=actresses.filter(a=>!q||a.name.toLowerCase().includes(q));
   if(lbl) lbl.textContent=list.length+' actrices';
-  if(!list.length){grid.innerHTML='<div style="color:var(--muted);font-size:13px">No hay actrices.</div>';return;}
-  grid.innerHTML=list.map((a,i)=>{
+  if(!list.length){grid.innerHTML='<div style="color:var(--muted);font-size:13px">No hay actrices. Pulsa "+ Añadir actriz" para empezar.</div>';return;}
+  grid.innerHTML=list.map(a=>{
     const ai=actresses.indexOf(a);
     const photo=a.photo?`<img src="${escapeHtml(a.photo)}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;border:2.5px solid var(--border2);margin-bottom:6px" onerror="this.outerHTML='<div style=\'width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px\'>🎭</div>'">`:'<div style="width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px">🎭</div>';
-    // count appearances
     const seriesCount=series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===a.id)).length;
     const moviesCount=movies.filter(m=>m.cast&&m.cast.some(m2=>m2.actressId===a.id)).length;
     const total=seriesCount+moviesCount;
-    return `<div style="display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--surface2);border:1.5px solid var(--border2);border-radius:14px;padding:12px 8px;cursor:pointer;gap:2px" onclick="openEditActress(${ai})">
+    return `<div style="display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--surface2);border:1.5px solid var(--border2);border-radius:14px;padding:12px 8px;gap:2px">
       ${photo}
       <div style="font-size:12.5px;font-weight:700;color:var(--text);line-height:1.2">${escapeHtml(a.name)}</div>
       ${a.country?`<div style="font-size:10.5px;color:var(--muted)">${escapeHtml(a.country)}</div>`:''}
       <div style="font-size:10px;color:var(--accent);font-weight:600;margin-top:3px">${total?total+' aparición'+(total!==1?'es':''):'Sin apariciones'}</div>
-      <div style="display:flex;gap:4px;margin-top:4px">
-        <button type="button" class="btn small" onclick="event.stopPropagation();openEditActress(${ai})" style="font-size:10px;padding:2px 8px">✏️</button>
-        <button type="button" class="btn small" onclick="event.stopPropagation();delActress(${ai})" style="font-size:10px;padding:2px 8px;color:#c0392b">🗑</button>
+      <div style="display:flex;gap:4px;margin-top:6px">
+        <button type="button" class="btn small" onclick="openEditActress(${ai})" style="font-size:10px;padding:2px 8px">✏️ Editar</button>
+        <button type="button" class="btn small" onclick="delActress(${ai})" style="font-size:10px;padding:2px 8px;color:#c0392b">🗑</button>
       </div>
     </div>`;
   }).join('');
@@ -2849,7 +2878,12 @@ function actressFormHtml(a){
         <input id="af_photo" placeholder="https://..." value="${a&&a.photo?escapeHtml(a.photo):''}" oninput="const p=document.getElementById('af_photo_prev');if(this.value){p.src=this.value;p.style.display='block';}else p.style.display='none'"/>
       </div>
     </div>
-    <div class="form-row"><label class="form-label">País / Origen</label><input id="af_country" placeholder="Ej: Corea del Sur" value="${a&&a.country?escapeHtml(a.country):''}"/></div>
+    <div class="form-row"><label class="form-label">País / Origen</label>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px">
+        ${['🇰🇷 Corea del Sur','🇹🇭 Tailandia','🇨🇳 China','🇯🇵 Japón','🇹🇼 Taiwán','🇵🇭 Filipinas','🇻🇳 Vietnam','🇺🇸 Estados Unidos','🇪🇸 España','🇬🇧 Reino Unido'].map(p=>{const val=p.replace(/^.{1,4}\s/,'');return `<span onclick="document.getElementById('af_country').value='${val}';document.querySelectorAll('.af-country-chip').forEach(c=>c.style.background='');this.style.background='var(--accent-soft)'" class="af-country-chip" style="cursor:pointer;padding:3px 10px;border-radius:20px;border:1.5px solid var(--border2);font-size:11.5px;font-weight:600;color:var(--text);background:${a&&a.country===val?'var(--accent-soft)':'var(--surface2)'};transition:background .15s">${p}</span>`;}).join('')}
+      </div>
+      <input id="af_country" placeholder="O escribe el país…" value="${a&&a.country?escapeHtml(a.country):''}"/>
+    </div>
     <div class="form-row"><label class="form-label">Notas (opcional)</label><input id="af_notes" placeholder="Ej: Cantante y actriz" value="${a&&a.notes?escapeHtml(a.notes):''}"/></div>
   </div>`;
 }
@@ -2888,16 +2922,14 @@ function saveActress(ai){
 }
 
 function delActress(ai){
-  if(!confirm(`¿Eliminar a "${actresses[ai].name}"? Se borrará de todas las series y películas donde aparezca.`)) return;
+  if(!confirm(`¿Eliminar a "${actresses[ai].name}"? Se borrará de todas las series y películas.`)) return;
   const id=actresses[ai].id;
-  // Remove from series and movies
   series.forEach(s=>{if(s.cast) s.cast=s.cast.filter(m=>m.actressId!==id);});
   movies.forEach(m=>{if(m.cast) m.cast=m.cast.filter(m2=>m2.actressId!==id);});
   actresses.splice(ai,1);
   save(); renderActressesGrid();
 }
 
-/* ── Cast picker in series/movie forms ── */
 function initCast(castData){
   const list=document.getElementById('castList');
   if(!list) return;
@@ -2909,7 +2941,7 @@ function addCastMember(data){
   const list=document.getElementById('castList');
   if(!list) return;
   if(!actresses.length){
-    alert('Primero añade actrices en la sección "🎭 Actrices" del admin.');
+    alert('Primero añade actrices en la sección "🎭 Actrices".');
     return;
   }
   const row=document.createElement('div');
@@ -2919,11 +2951,12 @@ function addCastMember(data){
   const char=data&&data.character?data.character:'';
   const coupleType=data&&data.coupleType?data.coupleType:'main';
   const coupleNum=data&&data.coupleNum?data.coupleNum:1;
+  const uid='cp_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
   const selOpts=actresses.map(a=>`<option value="${a.id}" ${a.id===actressId?'selected':''}>${escapeHtml(a.name)}${a.country?' ('+a.country+')':''}</option>`).join('');
   row.innerHTML=`
-    <div id="cast_photo_${Date.now()}" style="flex-shrink:0">${getActressThumb(actressId)}</div>
+    <div id="${uid}" style="flex-shrink:0">${getActressThumb(actressId)}</div>
     <div style="flex:1;display:flex;flex-direction:column;gap:5px">
-      <select class="cast-actress-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600" onchange="updateCastPhoto(this)">
+      <select class="cast-actress-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600" onchange="document.getElementById('${uid}').innerHTML=getActressThumb(this.value)">
         <option value="">— Selecciona actriz —</option>
         ${selOpts}
       </select>
@@ -2947,12 +2980,6 @@ function getActressThumb(actressId){
   const a=actresses.find(x=>x.id===actressId);
   if(a&&a.photo) return `<img src="${escapeHtml(a.photo)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:top;border:1.5px solid var(--border2)">`;
   return `<div style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px">🎭</div>`;
-}
-
-function updateCastPhoto(sel){
-  const row=sel.closest('.cast-admin-row');
-  const thumbDiv=row.querySelector('[id^="cast_photo_"]');
-  if(thumbDiv) thumbDiv.innerHTML=getActressThumb(sel.value);
 }
 
 function getCastData(){

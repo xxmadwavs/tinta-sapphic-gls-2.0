@@ -2573,6 +2573,8 @@ function openMovie(mi){
     </div></div>`;
   })();
   const watchLinksHtml=(()=>{const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);if(!links.length)return '';return `<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" style="background:var(--lavender-soft);color:var(--lavender);border-color:rgba(155,130,201,.35)"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`;})();
+  const castHtml=buildCastHtml(mv.cast||[]);
+  const castCount=mv.cast&&mv.cast.length?mv.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
   let html=`${posterEl}<div class="modal-body">
   <div class="modal-badges">${mvModalTypeBadge}${mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge" style="background:var(--accent-soft);color:var(--accent)">⏳ Próximamente</span>'}</div>
   <div class="modal-title">${mv.name}</div>
@@ -2583,6 +2585,13 @@ function openMovie(mi){
   ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
   ${mv.synopsis?`<div class="synopsis">${mv.synopsis}</div>`:''}
   ${bookBlock}
+  ${castCount?`<div class="divider"></div>
+  <div class="modal-tabs">
+    <button class="modal-tab active" id="mvtab_info" onclick="switchMovieModalTab('info')">ℹ️ Info</button>
+    <button class="modal-tab" id="mvtab_cast" onclick="switchMovieModalTab('cast')">🎭 Cast <span style="font-size:10px;background:var(--lavender-soft);color:var(--lavender);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span></button>
+  </div>
+  <div id="mvpanel_info" style="display:none"></div>
+  <div id="mvpanel_cast">${castHtml}</div>`:''}
   <div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div></div>`;
   document.getElementById('modalBox').innerHTML=html;
   document.getElementById('modalBg').classList.add('open');
@@ -2792,6 +2801,14 @@ function renderMoviesResults(){
   resultsEl.innerHTML=html;
 }
 
+function switchMovieModalTab(tab){
+  ['info','cast'].forEach(p=>{
+    const panel=document.getElementById('mvpanel_'+p);
+    const btn=document.getElementById('mvtab_'+p);
+    if(panel) panel.style.display=p===tab?'':'none';
+    if(btn) btn.classList.toggle('active',p===tab);
+  });
+}
 function closeModal(){ document.getElementById('modalBg').classList.remove('open'); }
 
 function getYoutubeId(url){
