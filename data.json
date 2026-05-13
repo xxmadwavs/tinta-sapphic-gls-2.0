@@ -196,7 +196,28 @@
       "bookLinks": [],
       "genres": [
         "Romance"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-03-24",
+          "totalEpisodes": 24,
+          "emissionDays": [
+            1,
+            2,
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T08:55:20.447Z"
     },
     {
       "id": "1776889333282",
@@ -668,6 +689,7 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
           "episodes": [
             {
@@ -695,9 +717,15 @@
               "date": "2026-04-24",
               "skipped": true
             }
-          ]
+          ],
+          "premiereSchedule": []
         }
-      ]
+      ],
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T08:55:30.306Z"
     },
     {
       "id": "1776965675311",
@@ -792,7 +820,12 @@
       ],
       "genres": [
         "Romance"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T08:55:36.464Z"
     },
     {
       "id": "1776966161759",
@@ -2067,7 +2100,27 @@
       "genres": [
         "Romance",
         "Idols / Entretenimiento"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-04-08",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            2,
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T08:56:00.183Z"
     },
     {
       "id": "1777065549680",
@@ -2102,7 +2155,26 @@
       "genres": [
         "Romance",
         "Comedia"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2024-09-11",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T08:56:04.774Z"
     },
     {
       "id": "1777068097582",
@@ -2175,7 +2247,26 @@
       ],
       "totalEpisodes": 5,
       "skipDates": [],
-      "episodes": []
+      "episodes": [],
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2023-10-28",
+          "totalEpisodes": 5,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T08:56:09.054Z"
     },
     {
       "id": "1777105535961",
@@ -2680,10 +2771,17 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
-      ]
+      ],
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T08:56:17.948Z"
     },
     {
       "id": "1777116358969",
@@ -2719,10 +2817,17 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
-      ]
+      ],
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T08:56:22.709Z"
     },
     {
       "id": "1777123893340",
@@ -4252,11 +4357,17 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T10:11:26.364Z"
+      "updatedAt": "2026-05-13T08:56:56.547Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777451543042",
@@ -4292,8 +4403,10 @@
           "emissionDays": [
             2
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -4302,11 +4415,17 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T08:33:59.661Z"
+      "updatedAt": "2026-05-13T08:56:48.332Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777452069135",
@@ -4343,11 +4462,17 @@
           "emissionDays": [
             2
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T08:41:09.135Z"
+      "updatedAt": "2026-05-13T08:56:52.236Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777452134155",
@@ -4382,11 +4507,17 @@
           "emissionDays": [
             0
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T08:47:20.144Z"
+      "updatedAt": "2026-05-13T08:57:01.998Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777452192081",
@@ -4422,11 +4553,17 @@
             0,
             1
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T08:47:44.618Z"
+      "updatedAt": "2026-05-13T08:57:05.594Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777452242978",
@@ -4461,11 +4598,17 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T08:48:18.014Z"
+      "updatedAt": "2026-05-13T08:57:10.759Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777452345325",
@@ -4501,11 +4644,17 @@
             3,
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T08:48:55.720Z"
+      "updatedAt": "2026-05-13T08:57:15.760Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777452411955",
@@ -4541,11 +4690,17 @@
             0,
             1
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T08:49:06.910Z"
+      "updatedAt": "2026-05-13T08:57:20.668Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777452700876",
@@ -4581,11 +4736,17 @@
             2,
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T09:49:04.800Z"
+      "updatedAt": "2026-05-13T08:57:26.092Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777452828468",
@@ -4621,11 +4782,17 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T09:47:19.682Z"
+      "updatedAt": "2026-05-13T08:57:30.105Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777453272580",
@@ -4661,11 +4828,17 @@
             3,
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T09:46:35.636Z"
+      "updatedAt": "2026-05-13T08:57:43.744Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777455153369",
@@ -4701,11 +4874,17 @@
           "emissionDays": [
             0
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T09:46:09.962Z"
+      "updatedAt": "2026-05-13T08:57:48.027Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777455453113",
@@ -5142,11 +5321,17 @@
             5,
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T11:02:52.035Z"
+      "updatedAt": "2026-05-13T08:58:03.029Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777460603023",
@@ -5282,11 +5467,17 @@
             2,
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:13:59.678Z"
+      "updatedAt": "2026-05-13T08:58:10.039Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777583796655",
@@ -5321,11 +5512,17 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:18:30.571Z"
+      "updatedAt": "2026-05-13T08:58:13.750Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777583871451",
@@ -5353,11 +5550,17 @@
           "emissionDays": [
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:17:51.451Z"
+      "updatedAt": "2026-05-13T08:58:18.252Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777584066900",
@@ -5469,11 +5672,17 @@
             0,
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:25:55.784Z"
+      "updatedAt": "2026-05-13T08:58:24.216Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777584451615",
@@ -5547,11 +5756,17 @@
           "emissionDays": [
             1
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:29:28.429Z"
+      "updatedAt": "2026-05-13T08:58:28.554Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777584720366",
@@ -5626,11 +5841,17 @@
             3,
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:33:11.238Z"
+      "updatedAt": "2026-05-13T08:58:33.051Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777584943726",
@@ -5666,11 +5887,17 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:35:43.726Z"
+      "updatedAt": "2026-05-13T08:58:37.174Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777585010770",
@@ -5707,11 +5934,17 @@
             2,
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:36:50.770Z"
+      "updatedAt": "2026-05-13T08:58:41.954Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777622150204",
@@ -5746,11 +5979,17 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-01T07:55:50.204Z"
+      "updatedAt": "2026-05-13T08:58:48.230Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777669299119",
@@ -6270,7 +6509,8 @@
               "date": "2022-10-27",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -6302,7 +6542,8 @@
               "date": "2023-08-31",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 3",
@@ -6339,10 +6580,15 @@
               "date": "2024-04-03",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-02T13:15:58.315Z"
+      "updatedAt": "2026-05-13T08:59:18.911Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777728203386",
@@ -6947,7 +7193,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -6958,10 +7205,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-02T19:47:34.463Z"
+      "updatedAt": "2026-05-13T08:59:25.757Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777751376726",
@@ -6998,7 +7250,8 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -7009,10 +7262,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-02T19:49:36.726Z"
+      "updatedAt": "2026-05-13T08:59:29.787Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1777751530698",
@@ -7087,10 +7345,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-02T19:53:24.849Z"
+      "updatedAt": "2026-05-13T08:59:33.081Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000017",
@@ -7643,7 +7906,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -7654,7 +7918,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 3",
@@ -7665,10 +7930,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T12:34:15.412Z"
+      "updatedAt": "2026-05-13T08:59:41.624Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000066",
@@ -7923,10 +8193,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T11:46:33.198Z"
+      "updatedAt": "2026-05-13T08:59:47.615Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000091",
@@ -8082,7 +8357,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -8093,7 +8369,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 3",
@@ -8104,7 +8381,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 4",
@@ -8115,10 +8393,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T12:19:48.694Z"
+      "updatedAt": "2026-05-13T08:59:54.336Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000107",
@@ -8405,7 +8688,7 @@
     },
     {
       "id": "1700000000121",
-      "name": "Do You \"Truth or Dare\" with Me?",
+      "name": "Do You",
       "poster": "https://i.mydramalist.com/Z0wEjc.jpg?v=1",
       "synopsis": "\"Oye, ¿quieres jugar a verdad o reto conmigo? Yo también te gusto, ¿verdad?\"\n \n (Fuente: Stylelife Contents Lab, Youtube)",
       "year": 2019,
@@ -8434,10 +8717,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T13:36:36.651Z"
+      "updatedAt": "2026-05-13T09:00:00.585Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000122",
@@ -8470,10 +8758,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T15:25:18.363Z"
+      "updatedAt": "2026-05-13T09:00:08.244Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000123",
@@ -8511,10 +8804,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T15:25:39.835Z"
+      "updatedAt": "2026-05-13T09:00:13.411Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000125",
@@ -8551,10 +8849,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T15:26:21.506Z"
+      "updatedAt": "2026-05-13T09:00:22.239Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000132",
@@ -8633,10 +8936,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T15:27:15.779Z"
+      "updatedAt": "2026-05-13T09:00:26.554Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000137",
@@ -9003,10 +9311,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:50:45.948Z"
+      "updatedAt": "2026-05-13T09:00:35.037Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000148",
@@ -9211,7 +9524,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -9223,10 +9537,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:58:34.752Z"
+      "updatedAt": "2026-05-13T09:00:44.791Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000159",
@@ -9261,10 +9580,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:58:56.639Z"
+      "updatedAt": "2026-05-13T09:00:48.730Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000164",
@@ -9342,10 +9666,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:59:40.058Z"
+      "updatedAt": "2026-05-13T09:00:53.224Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000168",
@@ -9422,10 +9751,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T08:13:10.334Z"
+      "updatedAt": "2026-05-13T09:00:58.743Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000174",
@@ -9463,10 +9797,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T08:13:45.706Z"
+      "updatedAt": "2026-05-13T09:01:02.575Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000178",
@@ -9608,10 +9947,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T08:16:24.263Z"
+      "updatedAt": "2026-05-13T09:01:19.503Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000185",
@@ -9857,10 +10201,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T08:23:22.391Z"
+      "updatedAt": "2026-05-13T09:01:25.888Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000195",
@@ -9898,10 +10247,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T08:24:07.627Z"
+      "updatedAt": "2026-05-13T09:01:31.324Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000196",
@@ -10062,10 +10416,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:29:12.372Z"
+      "updatedAt": "2026-05-13T09:01:40.695Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000204",
@@ -10102,10 +10461,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:29:23.554Z"
+      "updatedAt": "2026-05-13T09:01:44.575Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000208",
@@ -10143,10 +10507,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:29:45.450Z"
+      "updatedAt": "2026-05-13T09:01:49.397Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000209",
@@ -10185,10 +10554,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:30:25.573Z"
+      "updatedAt": "2026-05-13T09:01:55.434Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000213",
@@ -10226,10 +10600,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:30:43.504Z"
+      "updatedAt": "2026-05-13T09:02:00.553Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000215",
@@ -10266,10 +10645,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:31:26.368Z"
+      "updatedAt": "2026-05-13T09:02:05.375Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000217",
@@ -10353,10 +10737,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:32:46.264Z"
+      "updatedAt": "2026-05-13T09:02:10.010Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000219",
@@ -10388,10 +10777,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:33:04.212Z"
+      "updatedAt": "2026-05-13T09:02:15.492Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000230",
@@ -10471,10 +10865,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:33:55.808Z"
+      "updatedAt": "2026-05-13T09:02:24.224Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000232",
@@ -10512,10 +10911,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:34:08.322Z"
+      "updatedAt": "2026-05-13T09:02:29.167Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000233",
@@ -10552,10 +10956,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:34:31.918Z"
+      "updatedAt": "2026-05-13T09:02:33.003Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000234",
@@ -10592,10 +11001,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:45:20.511Z"
+      "updatedAt": "2026-05-13T09:02:37.356Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000235",
@@ -10633,10 +11047,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:45:33.210Z"
+      "updatedAt": "2026-05-13T09:02:43.514Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000236",
@@ -10674,10 +11093,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:45:41.106Z"
+      "updatedAt": "2026-05-13T09:02:47.602Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000237",
@@ -10715,10 +11139,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:46:45.656Z"
+      "updatedAt": "2026-05-13T09:02:51.791Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000239",
@@ -10756,10 +11185,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T12:00:44.504Z"
+      "updatedAt": "2026-05-13T09:02:56.570Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000240",
@@ -10798,10 +11232,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T12:01:14.500Z"
+      "updatedAt": "2026-05-13T09:03:00.532Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000243",
@@ -10924,10 +11363,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T12:02:42.311Z"
+      "updatedAt": "2026-05-13T09:03:11.422Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000247",
@@ -10965,7 +11409,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -10976,7 +11421,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 3",
@@ -10987,10 +11433,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T12:04:25.394Z"
+      "updatedAt": "2026-05-13T09:03:16.897Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000263",
@@ -11028,10 +11479,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T12:04:53.542Z"
+      "updatedAt": "2026-05-13T09:03:25.778Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000265",
@@ -11068,10 +11524,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T12:05:32.711Z"
+      "updatedAt": "2026-05-13T09:03:21.312Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000266",
@@ -11109,10 +11570,15 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T12:06:14.505Z"
+      "updatedAt": "2026-05-13T09:03:30.299Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000267",
@@ -11224,7 +11690,11 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:08:51.405Z"
+      "updatedAt": "2026-05-13T09:03:42.648Z",
+      "category": "series",
+      "seriesType": "serie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1700000000280",
@@ -11546,10 +12016,15 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:55:35.962Z"
+      "updatedAt": "2026-05-13T09:03:55.003Z",
+      "category": "series",
+      "seriesType": "webserie",
+      "animeSeason": "",
+      "renewedNextSeason": false
     },
     {
       "id": "1778360721543",
@@ -13253,7 +13728,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-11T11:36:41.369Z"
+      "updatedAt": "2026-05-13T09:04:07.191Z",
+      "seriesType": "webserie",
+      "renewedNextSeason": false
     },
     {
       "id": "1778499566113",
@@ -13309,7 +13786,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-11T11:39:26.113Z"
+      "updatedAt": "2026-05-13T09:04:12.579Z",
+      "seriesType": "webserie",
+      "renewedNextSeason": false
     },
     {
       "id": "1778501007371",
@@ -13567,7 +14046,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-12T18:42:03.065Z"
+      "updatedAt": "2026-05-13T09:04:18.691Z",
+      "seriesType": "webserie",
+      "renewedNextSeason": false
     },
     {
       "id": "1778611572508",
@@ -13612,7 +14093,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-12T18:46:12.508Z"
+      "updatedAt": "2026-05-13T09:04:24.091Z",
+      "seriesType": "webserie",
+      "renewedNextSeason": false
     },
     {
       "id": "1778611750440",
@@ -13639,7 +14122,9 @@
       "genres": [],
       "category": "series",
       "animeSeason": "",
-      "updatedAt": "2026-05-12T18:49:10.440Z"
+      "updatedAt": "2026-05-13T09:04:27.405Z",
+      "seriesType": "webserie",
+      "renewedNextSeason": false
     },
     {
       "id": "1778611826641",
@@ -13682,7 +14167,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-12T18:50:26.641Z"
+      "updatedAt": "2026-05-13T09:04:31.993Z",
+      "seriesType": "webserie",
+      "renewedNextSeason": false
     },
     {
       "id": "1778611905507",
@@ -13726,7 +14213,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-12T18:51:45.507Z"
+      "updatedAt": "2026-05-13T09:04:36.542Z",
+      "seriesType": "webserie",
+      "renewedNextSeason": false
     },
     {
       "id": "1778612143601",
@@ -13769,7 +14258,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-12T18:55:43.601Z"
+      "updatedAt": "2026-05-13T09:04:40.626Z",
+      "seriesType": "webserie",
+      "renewedNextSeason": false
     }
   ],
   "movies": [
@@ -21991,5 +22482,5 @@
       "updatedAt": "2026-05-12T18:53:47.313Z"
     }
   ],
-  "exportedAt": "2026-05-13T08:29:15.087Z"
+  "exportedAt": "2026-05-13T09:04:42.271Z"
 }
