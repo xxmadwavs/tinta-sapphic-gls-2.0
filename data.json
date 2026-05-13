@@ -124,7 +124,69 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T08:29:03.852Z"
+      "updatedAt": "2026-05-13T10:59:57.165Z",
+      "cast": [
+        {
+          "actressId": "1778667608624",
+          "character": "Prim",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667631376",
+          "character": "Bambi",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667975177",
+          "character": "Shasha",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668043254",
+          "character": "Gorya",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668061135",
+          "character": "Min",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668089762",
+          "character": "Praew",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667585326",
+          "character": "Kris",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667533099",
+          "character": "Baipor",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668312492",
+          "character": "zee",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668259606",
+          "character": "Airy",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ]
     },
     {
       "id": "1776889141176",
@@ -267,10 +329,31 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669672693",
+          "character": "\"Klao\" Klaokawi",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669706067",
+          "character": "\"Si\" Sujinthra",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T11:00:30.670Z"
     },
     {
       "id": "1776889365998",
@@ -602,7 +685,26 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778668951822",
+          "character": "Ran",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669037769",
+          "character": "Neen",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T10:58:00.550Z"
     },
     {
       "id": "1776932166717",
@@ -800,7 +902,40 @@
       "genres": [
         "Romance",
         "Viaje en el tiempo"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669744880",
+          "character": "Aran / \"Ran\"",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669789813",
+          "character": "Lene / Ledarin",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-05-06",
+          "totalEpisodes": 7,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T10:57:10.053Z"
     },
     {
       "id": "1776965794937",
@@ -22868,7 +23003,175 @@
       "photo": "https://static.wikia.nocookie.net/gmmtv/images/c/c8/Piploy_Kanyarat_Ruangrung_GMMTV_2026.png/revision/latest?cb=20251230041651",
       "country": "Tailandia",
       "notes": "Actriz"
+    },
+    {
+      "id": "1778668798059",
+      "name": "\"Becky\" Rebecca Armstrong",
+      "photo": "https://pics.filmaffinity.com/rebecca_armstrong-250227701367356-nm_200.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz y cantante"
+    },
+    {
+      "id": "1778668868889",
+      "name": "\"Freen\" Sarocha Chankimha",
+      "photo": "https://preview.redd.it/ceo-of-solenn-freen-sarocha-v0-patucwjj80vf1.jpg?width=640&crop=smart&auto=webp&s=db0fb17d45d96acee5e66db9819f238c76d7bbbf",
+      "country": "Tailandia",
+      "notes": ""
+    },
+    {
+      "id": "1778668951822",
+      "name": "\"Lingling\" Sirilak Kwong",
+      "photo": "https://static.wikia.nocookie.net/drama/images/0/0d/Sirilak_Kwong-1.jpg/revision/latest?cb=20240716172819&path-prefix=es",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669037769",
+      "name": "\"Orm\" Kornnaphat Sethratanapong",
+      "photo": "https://i.mydramalist.com/2w5WKR_5c.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669089219",
+      "name": "\"Yada\" Narilya Gulmongkolpech",
+      "photo": "https://yt3.googleusercontent.com/zYFFy-mUSHHM_GMnhN5_H-N2VF9pktuxjLsEymaWOtGbMXvdvpuk6Z_2O5TwJIbsW7nlzprJMg=s900-c-k-c0x00ffffff-no-rj",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669135059",
+      "name": "\"Tan\" Duangkaew Piyaoui",
+      "photo": "https://artworks.thetvdb.com/banners/v4/actor/9150098/photo/6949573da190f.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669177371",
+      "name": "\"Ying\" Anada Prakobkit",
+      "photo": "https://i.mydramalist.com/NdNbBo_5c.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669191128",
+      "name": "\"Aom\" Punyawee Jungcharoen",
+      "photo": "https://i.mydramalist.com/0rXQK_5c.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669226549",
+      "name": "\"Apple\" Lapisara Intarasut",
+      "photo": "https://asiapillars.com/wp-content/uploads/2025/01/Lapisara-Intarasut-.png",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669263021",
+      "name": "\"Mim\" Panthita Jencharoentham",
+      "photo": "https://artworks.thetvdb.com/banners/v4/actor/9140685/photo/681ae7d2710e1.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669290609",
+      "name": "Engfa Waraha",
+      "photo": "https://i.mydramalist.com/RB8WqR_5c.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz, cantante y modelo"
+    },
+    {
+      "id": "1778669334143",
+      "name": "Charlotte Austin",
+      "photo": "https://static.wikia.nocookie.net/drama/images/3/3c/Charlotte_Austin-1.jpg/revision/latest/scale-to-width-down/250?cb=20230928172541&path-prefix=es",
+      "country": "Tailandia",
+      "notes": "Actriz y modelo"
+    },
+    {
+      "id": "1778669368232",
+      "name": "\"Mew\" Thanthip Thaweesinthat",
+      "photo": "https://tvtime.com/_next/image?url=https%3A%2F%2Fartworks.thetvdb.com%2Fbanners%2Fv4%2Factor%2F9112157%2Fphoto%2F6922d356edd84.jpg&w=640&q=75",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669414651",
+      "name": "Renée Veronica Pagano",
+      "photo": "https://girlsloveinfo.com/wp-content/uploads/elementor/thumbs/Renee-Veronica-rc57pnbhwkz128jy0imeo8nm4tsoc30xvfj7lugc48.png",
+      "country": "Tailandia",
+      "notes": "Actriz y modelo"
+    },
+    {
+      "id": "1778669459675",
+      "name": "\"Namneung\" Milin Watinthanakit",
+      "photo": "https://static.wikia.nocookie.net/drama/images/1/15/Milin_Watinthanakit_01.jpg/revision/latest?cb=20260503210738&path-prefix=es",
+      "country": "Tailandia",
+      "notes": "Actriz y cantante"
+    },
+    {
+      "id": "1778669499657",
+      "name": "\"Noey\" Kanteera Wadcharathadsanakul",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMJn1F6z1A095xQhdI_OKWc9gnRG7ztjhvVQ&s",
+      "country": "Tailandia",
+      "notes": "Actriz y cantante"
+    },
+    {
+      "id": "1778669536770",
+      "name": "\"Fay\" Kunyaphat Na Nakorn",
+      "photo": "https://static.wikia.nocookie.net/drama/images/3/32/497448489_18503503291013224_1398283264972130002_n.jpg/revision/latest?cb=20250607005900&path-prefix=es",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669564288",
+      "name": "\"May\" Yada Watcharamusik",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD9PX1QIgQidD1Lpk3-oDNRNyQwyCp6uoKAg&s",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669589925",
+      "name": "\"Nam\" Orntara Poolsak",
+      "photo": "https://media.themoviedb.org/t/p/w500/2NCajalThmdHkqdzYNO3T79SAT0.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669620854",
+      "name": "\"Frung\" Prompatcha Sanitwong Na Ayutthaya",
+      "photo": "https://thailansawadee.com/wp-content/uploads/2025/12/ly-lich-frung-prompatcha-sanitwong.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669672693",
+      "name": "\"Lookmhee\" Punyapat Wangpongsathaporn",
+      "photo": "https://artworks.thetvdb.com/banners/v4/actor/9128346/photo/6672d89f3fa54.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669706067",
+      "name": "\"Sonya\" Saranphat Pedersen",
+      "photo": "https://image.tmdb.org/t/p/w500/bgHyNB4QL4Qx4WDBJhiJ7e5IJ1d.jpg",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669744880",
+      "name": "\"Aya\" Orapan Phongmaykin",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleNctfbLcZEZnPLyGDh1_WBioGnFQM_kEWQ&s",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778669789813",
+      "name": "\"Mie\" Phattharanan Padpai",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR9TRShyixcSUL1a_8QcL3kXWojU6gWJZ-bA&s",
+      "country": "Tailandia",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-13T10:37:02.690Z"
+  "exportedAt": "2026-05-13T11:00:32.538Z"
 }
