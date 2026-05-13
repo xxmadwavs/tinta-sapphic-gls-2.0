@@ -78,6 +78,7 @@
           "emissionDays": [
             0
           ],
+          "allInOneDay": false,
           "skipDates": [],
           "episodes": [
             {
@@ -115,9 +116,15 @@
               "date": "2026-05-11",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         }
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T08:29:03.852Z"
     },
     {
       "id": "1776889141176",
@@ -21984,5 +21991,5 @@
       "updatedAt": "2026-05-12T18:53:47.313Z"
     }
   ],
-  "exportedAt": "2026-05-12T19:22:31.453Z"
+  "exportedAt": "2026-05-13T08:29:15.087Z"
 }
