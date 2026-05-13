@@ -848,6 +848,22 @@ body::before{content:'';position:fixed;inset:0;background:
 }
 .divider{height:1px;background:var(--border);margin:14px 0}
 .ep-detail-list{display:grid;gap:5px}
+.modal-tabs{display:flex;gap:0;margin-bottom:14px;border-bottom:2px solid var(--border2)}
+.modal-tab{font-size:12.5px;font-weight:700;padding:7px 16px;cursor:pointer;color:var(--muted);border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s}
+.modal-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.modal-tab:hover:not(.active){color:var(--text)}
+.cast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:14px;margin-top:4px}
+.cast-card{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;cursor:pointer;padding:8px 4px;border-radius:12px;transition:background .15s}
+.cast-card:hover{background:var(--surface2)}
+.cast-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;object-position:top;border:2.5px solid var(--border2);background:var(--surface2);flex-shrink:0}
+.cast-photo-ph{width:68px;height:68px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;border:2.5px solid var(--border2)}
+.cast-name{font-size:11.5px;font-weight:700;color:var(--text);line-height:1.2}
+.cast-char{font-size:10.5px;color:var(--muted);line-height:1.2}
+.cast-couple-header{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:12px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border2);grid-column:1/-1}
+/* Actress profile modal */
+.actress-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
+.actress-modal-bg.open{opacity:1;pointer-events:all}
+.actress-modal{background:var(--surface);border-radius:var(--radius-lg);max-width:480px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 16px 48px rgba(0,0,0,.25)}
 .ep-detail-row{
   display:flex;align-items:center;gap:10px;
   padding:8px 12px;border-radius:10px;
@@ -1099,6 +1115,10 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     <button class="modal-close-btn" onclick="closeModal()" title="Cerrar">✕</button>
   </div>
 </div>
+<!-- Actress profile modal -->
+<div class="actress-modal-bg" id="actressModalBg" onclick="if(event.target===this)closeActressModal()">
+  <div class="actress-modal" id="actressModalBox"></div>
+</div>
 
 <script>
 const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
@@ -1123,7 +1143,7 @@ const GENRES=[
   'Reencarnación','Viaje en el tiempo','Idols / Entretenimiento','Oficina / Trabajo','Food / Cocina',
 ];
 
-let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[]};
+let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[]};
 
 // ═══ SESSION PERSISTENCE ═══
 const SS_KEY='tintaSapphicState';
@@ -1303,6 +1323,7 @@ async function loadData(){
     const d=await r.json();
     state.series=d.series||[];
     state.movies=d.movies||[];
+    state.actresses=d.actresses||[];
     if(d.exportedAt){
       const dt=new Date(d.exportedAt);
       const badge=document.getElementById('updateBadge'); if(badge){badge.textContent='✓ Act. '+dt.toLocaleDateString('es-ES',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});badge.style.display='';}
@@ -2234,6 +2255,110 @@ function daysUntil(dateStr){
   return Math.round((target-now)/(1000*60*60*24));
 }
 
+function buildCastHtml(cast){
+  if(!cast||!cast.length) return '<div style="color:var(--muted);font-size:13px;padding:8px 0">Sin información de reparto.</div>';
+  const actresses=state.actresses||[];
+  // Group by coupleNum then coupleType
+  const grouped={};
+  cast.forEach(m=>{
+    const key=m.coupleType==='other'?'other':(m.coupleType+'_'+(m.coupleNum||1));
+    if(!grouped[key]) grouped[key]=[];
+    grouped[key].push(m);
+  });
+  let html='<div class="cast-grid">';
+  // Main couples first (sorted by num), then secondary, then other
+  const mainKeys=Object.keys(grouped).filter(k=>k.startsWith('main_')).sort();
+  const secKeys=Object.keys(grouped).filter(k=>k.startsWith('secondary_')).sort();
+  const otherKey=grouped['other'];
+  const totalMain=mainKeys.length, totalSec=secKeys.length;
+
+  mainKeys.forEach((key,ki)=>{
+    const num=key.split('_')[1];
+    const label=totalMain>1?`💕 Pareja principal ${num}`:'💕 Pareja principal';
+    html+=`<div class="cast-couple-header">${label}</div>`;
+    grouped[key].forEach(m=>{
+      const a=actresses.find(x=>x.id===m.actressId);
+      if(!a) return;
+      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
+      html+=`<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
+    });
+  });
+  secKeys.forEach((key,ki)=>{
+    const num=key.split('_')[1];
+    const label=totalSec>1?`🌸 Pareja secundaria ${num}`:'🌸 Pareja secundaria';
+    html+=`<div class="cast-couple-header">${label}</div>`;
+    grouped[key].forEach(m=>{
+      const a=actresses.find(x=>x.id===m.actressId);
+      if(!a) return;
+      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
+      html+=`<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
+    });
+  });
+  if(otherKey){
+    if(mainKeys.length||secKeys.length) html+='<div class="cast-couple-header">Reparto</div>';
+    otherKey.forEach(m=>{
+      const a=actresses.find(x=>x.id===m.actressId);
+      if(!a) return;
+      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
+      html+=`<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
+    });
+  }
+  html+='</div>';
+  return html;
+}
+
+function openActressProfile(actressId){
+  const a=(state.actresses||[]).find(x=>x.id===actressId);
+  if(!a) return;
+  // Find all series and movies with this actress
+  const inSeries=state.series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===actressId));
+  const inMovies=state.movies.filter(mv=>mv.cast&&mv.cast.some(m=>m.actressId===actressId));
+  const photo=a.photo?`<img src="${a.photo}" style="width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--border2);margin-bottom:10px" onerror="this.outerHTML='<div style=\'width:90px;height:90px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:10px\'>🎭</div>'">`:'<div style="width:90px;height:90px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:10px">🎭</div>';
+
+  let seriesHtml='';
+  if(inSeries.length){
+    seriesHtml='<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:14px 0 8px">Series</div>';
+    seriesHtml+='<div style="display:flex;flex-direction:column;gap:8px">';
+    inSeries.forEach(s=>{
+      const si=state.series.indexOf(s);
+      const member=s.cast.find(m=>m.actressId===actressId);
+      const char=member&&member.character?`<span style="font-size:11px;color:var(--muted)"> · ${member.character}</span>`:'';
+      const thumb=s.poster?`<img src="${s.poster}" style="width:36px;height:54px;border-radius:6px;object-fit:cover;flex-shrink:0" onerror="this.style.display='none'">`:'';
+      seriesHtml+=`<div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:var(--surface2);cursor:pointer" onclick="closeActressModal();openSeries(${si})">${thumb}<div><div style="font-size:13px;font-weight:700;color:var(--text)">${s.name}${char}</div>${s.year?`<div style="font-size:11px;color:var(--muted)">${s.year}${s.country?' · '+s.country:''}</div>`:''}</div></div>`;
+    });
+    seriesHtml+='</div>';
+  }
+  let moviesHtml='';
+  if(inMovies.length){
+    moviesHtml='<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:14px 0 8px">Películas</div>';
+    moviesHtml+='<div style="display:flex;flex-direction:column;gap:8px">';
+    inMovies.forEach(mv=>{
+      const mi=state.movies.indexOf(mv);
+      const member=mv.cast.find(m=>m.actressId===actressId);
+      const char=member&&member.character?`<span style="font-size:11px;color:var(--muted)"> · ${member.character}</span>`:'';
+      const thumb=mv.poster?`<img src="${mv.poster}" style="width:36px;height:54px;border-radius:6px;object-fit:cover;flex-shrink:0" onerror="this.style.display='none'">`:'';
+      moviesHtml+=`<div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:var(--surface2);cursor:pointer" onclick="closeActressModal();openMovie(${mi})">${thumb}<div><div style="font-size:13px;font-weight:700;color:var(--text)">${mv.name}${char}</div>${mv.year?`<div style="font-size:11px;color:var(--muted)">${mv.year}${mv.country?' · '+mv.country:''}</div>`:''}</div></div>`;
+    });
+    moviesHtml+='</div>';
+  }
+
+  const html=`<div style="padding:1.5rem;text-align:center">
+    ${photo}
+    <div style="font-size:18px;font-weight:800;color:var(--text)">${a.name}</div>
+    ${a.country?`<div style="font-size:12px;color:var(--muted);margin-top:2px">${countryFlag(a.country)} ${a.country}</div>`:''}
+    ${a.notes?`<div style="font-size:12px;color:var(--muted);margin-top:4px;font-style:italic">${a.notes}</div>`:''}
+  </div>
+  ${seriesHtml||moviesHtml?`<div style="padding:0 1.25rem 1.5rem">${seriesHtml}${moviesHtml}</div>`:'<div style="padding:0 1.25rem 1.5rem;color:var(--muted);font-size:13px">Sin series ni películas registradas.</div>'}
+  <div style="padding:0 1.25rem 1.25rem;display:flex;justify-content:flex-end"><button class="btn" onclick="closeActressModal()">Cerrar</button></div>`;
+
+  document.getElementById('actressModalBox').innerHTML=html;
+  document.getElementById('actressModalBg').classList.add('open');
+}
+
+function closeActressModal(){
+  document.getElementById('actressModalBg').classList.remove('open');
+}
+
 function openSeries(si){
   const s=state.series[si], allEps=genEps(s), now=new Date();
   const seasons=getSeasons(s);
@@ -2284,8 +2409,40 @@ function openSeries(si){
       <div style="width:${pct}%;height:100%;background:${col};border-radius:3px;transition:width .4s"></div>
     </div>
   </div>`;
+
+  // Episodes HTML
+  let epsHtml='';
+  if(seasons.length===1){
+    epsHtml='<div class="ep-detail-list">';
+    allEps.forEach(ep=>{
+      const isPast=new Date(ep.date+'T12:00:00')<=now;
+      const isEpToday=ep.date===todayStr;
+      const st=ep.skipped?'skipped':isPast?'aired':'pending',lb=ep.skipped?'No emitido':isEpToday?'¡Hoy!':isPast?'Emitido':'Pendiente';
+      epsHtml+=`<div class="ep-detail-row"><span class="ep-detail-num" style="color:${col}">E${ep.seasonNum}</span><span class="ep-detail-date">${fmtDate(ep.date)}</span><span class="chip ${isEpToday&&!ep.skipped?'pending':st}" style="${isEpToday&&!ep.skipped?'background:var(--accent);color:#fff':''}">${lb}</span></div>`;
+    });
+    epsHtml+='</div>';
+  } else {
+    seasons.forEach((season,idx)=>{
+      const seasonEps=allEps.filter(e=>e.season===idx+1);
+      const sAired=seasonEps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
+      const sPct=Math.round(sAired/Math.max(season.totalEpisodes,1)*100);
+      epsHtml+=`<div style="margin-bottom:1rem"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><span style="font-size:12px;font-weight:700;color:var(--text)">${season.label||`Temporada ${idx+1}`}</span><span style="font-size:11px;color:var(--muted)">${sAired}/${season.totalEpisodes} · ${sPct}%</span></div><div style="height:3px;background:var(--border);border-radius:2px;margin-bottom:8px;overflow:hidden"><div style="width:${sPct}%;height:100%;background:${col};border-radius:2px"></div></div><div class="ep-detail-list">`;
+      seasonEps.forEach(ep=>{
+        const isPast=new Date(ep.date+'T12:00:00')<=now;
+        const isEpToday=ep.date===todayStr;
+        const st=ep.skipped?'skipped':isPast?'aired':'pending',lb=ep.skipped?'No emitido':isEpToday?'¡Hoy!':isPast?'Emitido':'Pendiente';
+        epsHtml+=`<div class="ep-detail-row"><span class="ep-detail-num" style="color:${col}">E${ep.seasonNum}</span><span class="ep-detail-date">${fmtDate(ep.date)}</span><span class="chip ${isEpToday&&!ep.skipped?'pending':st}" style="${isEpToday&&!ep.skipped?'background:var(--accent);color:#fff':''}">${lb}</span></div>`;
+      });
+      epsHtml+='</div></div>';
+    });
+  }
+
+  const castHtml=buildCastHtml(s.cast||[]);
+  const hasCast=s.cast&&s.cast.length>0;
+  const castCount=hasCast?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
+
   let html=`${posterEl}<div class="modal-body">
-  <div class="modal-badges">${s.basedOnBook?'<span class="badge badge-book">📖 Basada en libro</span>':''}${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''  }${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}</div>
+  <div class="modal-badges">${s.basedOnBook?'<span class="badge badge-book">📖 Basada en libro</span>':''}${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}</div>
   <div class="modal-title">${s.name}</div>
   ${datesRowHtml}
   ${nextBadgeHtml}
@@ -2301,50 +2458,29 @@ function openSeries(si){
     if(!hasCover&&!hasTitle&&!editions.length) return '';
     const coverEl=hasCover?`<img class="book-cover" src="${s.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph>📖</div>'">`:`<div class="book-cover-ph">📖</div>`;
     const edPills=editions.map(e=>`<a class="book-edition-pill" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`).join('');
-    return `<div class="book-block">${coverEl}<div class="book-info">
-      ${hasTitle?`<div class="book-title-text">📖 ${s.bookSource}</div>`:'<div class="book-title-text">📖 Basada en libro</div>'}
-      ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
-    </div></div>`;
+    return `<div class="book-block">${coverEl}<div class="book-info">${hasTitle?`<div class="book-title-text">📖 ${s.bookSource}</div>`:'<div class="book-title-text">📖 Basada en libro</div>'}${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}</div></div>`;
   })():''}
-  <div class="divider"></div>`;
-
-  // Episodes grouped by season
-  if(seasons.length===1){
-    html+=`<div class="ep-detail-list">`;
-    allEps.forEach(ep=>{
-      const isPast=new Date(ep.date+'T12:00:00')<=now;
-      const isEpToday=ep.date===todayStr;
-      const st=ep.skipped?'skipped':isPast?'aired':'pending', lb=ep.skipped?'No emitido':isEpToday?'¡Hoy!':isPast?'Emitido':'Pendiente';
-      html+=`<div class="ep-detail-row"><span class="ep-detail-num" style="color:${col}">E${ep.seasonNum}</span><span class="ep-detail-date">${fmtDate(ep.date)}</span><span class="chip ${isEpToday&&!ep.skipped?'pending':st}" style="${isEpToday&&!ep.skipped?'background:var(--accent);color:#fff':''}">${lb}</span></div>`;
-    });
-    html+=`</div>`;
-  } else {
-    seasons.forEach((season,idx)=>{
-      const seasonEps=allEps.filter(e=>e.season===idx+1);
-      const sAired=seasonEps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
-      const sPct=Math.round(sAired/Math.max(season.totalEpisodes,1)*100);
-      html+=`<div style="margin-bottom:1rem">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-          <span style="font-size:12px;font-weight:700;color:var(--text)">${season.label||`Temporada ${idx+1}`}</span>
-          <span style="font-size:11px;color:var(--muted)">${sAired}/${season.totalEpisodes} · ${sPct}%</span>
-        </div>
-        <div style="height:3px;background:var(--border);border-radius:2px;margin-bottom:8px;overflow:hidden">
-          <div style="width:${sPct}%;height:100%;background:${col};border-radius:2px"></div>
-        </div>
-        <div class="ep-detail-list">`;
-      seasonEps.forEach(ep=>{
-        const isPast=new Date(ep.date+'T12:00:00')<=now;
-        const isEpToday=ep.date===todayStr;
-        const st=ep.skipped?'skipped':isPast?'aired':'pending', lb=ep.skipped?'No emitido':isEpToday?'¡Hoy!':isPast?'Emitido':'Pendiente';
-        html+=`<div class="ep-detail-row"><span class="ep-detail-num" style="color:${col}">E${ep.seasonNum}</span><span class="ep-detail-date">${fmtDate(ep.date)}</span><span class="chip ${isEpToday&&!ep.skipped?'pending':st}" style="${isEpToday&&!ep.skipped?'background:var(--accent);color:#fff':''}">${lb}</span></div>`;
-      });
-      html+=`</div></div>`;
-    });
-  }
-
-  html+=`<div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div></div>`;
+  <div class="divider"></div>
+  <div class="modal-tabs">
+    <button class="modal-tab active" id="stab_eps" onclick="switchSeriesModalTab('eps')">📋 Episodios</button>
+    <button class="modal-tab" id="stab_cast" onclick="switchSeriesModalTab('cast')">🎭 Cast${castCount?` <span style="font-size:10px;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span>`:''}
+    </button>
+  </div>
+  <div id="spanel_eps">${epsHtml}</div>
+  <div id="spanel_cast" style="display:none">${castHtml}</div>
+  <div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div>
+  </div>`;
   document.getElementById('modalBox').innerHTML=html;
   document.getElementById('modalBg').classList.add('open');
+}
+
+function switchSeriesModalTab(tab){
+  ['eps','cast'].forEach(p=>{
+    const panel=document.getElementById('spanel_'+p);
+    const btn=document.getElementById('stab_'+p);
+    if(panel) panel.style.display=p===tab?'':'none';
+    if(btn) btn.classList.toggle('active',p===tab);
+  });
 }
 
 function openUpcoming(si){

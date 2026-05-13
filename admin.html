@@ -252,7 +252,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   .quicknav-sep{display:none}
 }
 
-#section-series,#section-movies,#section-books{scroll-margin-top:116px}
+#section-series,#section-movies,#section-books,#section-actresses{scroll-margin-top:116px}
 
 /* Book editions widget */
 .book-editions-list{display:flex;flex-direction:column;gap:8px;margin-top:6px}
@@ -407,6 +407,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <a class="qnav-btn" href="#section-anime" onclick="document.getElementById('section-anime').scrollIntoView({behavior:'smooth'});return false;">🌸 Anime</a>
   <a class="qnav-btn" href="#section-realities" onclick="document.getElementById('section-realities').scrollIntoView({behavior:'smooth'});return false;">🎤 Realities</a>
   <a class="qnav-btn" href="#section-books" onclick="document.getElementById('section-books').scrollIntoView({behavior:'smooth'});return false;">📚 Libros</a>
+  <a class="qnav-btn" href="#section-actresses" onclick="document.getElementById('section-actresses').scrollIntoView({behavior:'smooth'});return false;">🎭 Actrices</a>
   <div class="quicknav-sep"></div>
   <button class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
   <button class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
@@ -518,6 +519,19 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     <div class="series-grid" id="booksGrid"></div>
   </div>
 
+  <div class="card" id="section-actresses">
+    <div class="card-title">🎭 Actrices</div>
+    <div class="admin-toolbar">
+      <div class="admin-search-wrap">
+        <span class="admin-search-icon">🔍</span>
+        <input class="admin-search-input" id="adminActressQ" placeholder="Buscar actriz…" oninput="renderActressesGrid()">
+      </div>
+    </div>
+    <button class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddActress()">+ Añadir actriz</button>
+    <div class="series-count-label" id="actressCountLabel"></div>
+    <div id="actressesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px"></div>
+  </div>
+
   <div class="card">
     <div class="card-title">📤 Cómo publicar cambios</div>
     <div class="export-box"><div class="export-instructions">Cada vez que hagas cambios, sigue estos pasos:
@@ -533,6 +547,13 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 </div>
 
 <!-- Modal serie -->
+<!-- Modal actriz -->
+<div class="modal-bg" id="actressModal">
+  <div class="modal" style="max-width:480px">
+    <div class="modal-header"><div class="modal-title" id="actressModalTitle" style="margin-bottom:0"></div><button class="modal-close" onclick="document.getElementById('actressModal').classList.remove('open')">✕</button></div>
+    <div id="actressModalBody"></div>
+  </div>
+</div>
 <div class="modal-bg" id="seriesModal">
   <div class="modal">
     <div class="modal-header"><div class="modal-title" id="seriesModalTitle" style="margin-bottom:0"></div></div>
@@ -690,6 +711,7 @@ function getCountries(listId){
 
 let series = [];
 let movies = [];
+let actresses = [];
 let currentStab = 'active';
 
 const PAGE_SIZE = 20;
@@ -751,7 +773,9 @@ async function initData(){
         const d = await r.json();
         if(d.series) series = d.series;
         if(d.movies) movies = d.movies;
-        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+        if(d.actresses) actresses = d.actresses;
+        renderActressesGrid();
+        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid();
         return;
       }
     } catch(e){ /* sin data.json accesible */ }
@@ -1470,6 +1494,13 @@ function formHtml(s, forcedCategory=null){
           <button type="button" class="platform-add-btn" onclick="addBookEditionRow()" style="margin-top:6px">+ Añadir edición</button>
         </div>
       </div>
+
+      <div class="divider"></div>
+      <div class="form-section-hd">🎭 Reparto GL</div>
+      <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas en la sección Actrices. Indica el personaje y a qué pareja pertenece (P1, P2…)</div>
+      <div id="castList" style="margin-bottom:8px"></div>
+      <button type="button" class="platform-add-btn" onclick="addCastMember(null)">+ Añadir actriz al reparto</button>
+
       <label class="toggle-row" style="margin-top:8px">
         <input type="checkbox" id="f_upcoming" ${isUpcoming?'checked':''} style="width:auto;accent-color:var(--lavender)" onchange="toggleUpcomingFields()">
         <div><div class="toggle-label">📅 Próximamente (sin fecha de emisión)</div><div class="toggle-desc">Aparece en la sección "Próximamente"</div></div>
@@ -2238,6 +2269,11 @@ function movieFormHtml(mv){
       <div class="form-hint">Ej: 🇪🇸 Español en Amazon, 🇬🇧 English en MEB…</div>
     </div>
   </div>
+  <div class="divider" style="margin:14px 0 10px"></div>
+  <div class="form-section-hd" style="padding:0 0 8px">🎭 Reparto GL</div>
+  <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas. Para películas puedes indicar el personaje.</div>
+  <div id="castList" style="margin-bottom:8px"></div>
+  <button type="button" class="platform-add-btn" onclick="addCastMember(null)">+ Añadir actriz</button>
   </div>`;
 }
 
@@ -2323,6 +2359,7 @@ function openAddMovie(){
   document.getElementById('movieModal').classList.add('open');
   bindMovieForm(); initMoviePlatforms([]); initBookEditions('movieBookEditionsList',[],null);
   initCountries('movieCountriesList','');
+  initCast([]);
 }
 function openEditMovie(mi){
   document.getElementById('movieModalTitle').textContent='✏️ Editar película';
@@ -2335,6 +2372,7 @@ function openEditMovie(mi){
   initMoviePlatforms(links);
   initBookEditions('movieBookEditionsList', mv.bookLinks||[], mv.bookUrl||'');
   initCountries('movieCountriesList', mv.country||'');
+  initCast(mv.cast||[]);
 }
 function initMoviePlatforms(links){
   const list=document.getElementById('moviePlatformsList'); if(!list) return;
@@ -2393,6 +2431,7 @@ function saveMovie(mi){
     category:movieCategory,
     movieType:document.getElementById('mf_movieType')?.value||'film',
     duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
+    cast:getCastData(),
   };
   const movieUpdatedAt=new Date().toISOString();
   if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
@@ -2439,7 +2478,7 @@ function renderBooks(){
 
 function exportData(){
   document.getElementById('unsavedBar').classList.remove('visible');
-  const blob=new Blob([JSON.stringify({series,movies,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({series,movies,actresses,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
 }
 
@@ -2768,6 +2807,170 @@ function runPasteAutofill(type){
     status.textContent='\u2715 No se detectaron datos. Comprueba el formato de la ficha.';
   }
 }
+
+/* ══════════════════════════════════════
+   ACTRESSES
+══════════════════════════════════════ */
+function renderActressesGrid(){
+  const grid=document.getElementById('actressesGrid');
+  const lbl=document.getElementById('actressCountLabel');
+  if(!grid) return;
+  const q=(document.getElementById('adminActressQ')?.value||'').toLowerCase();
+  const list=actresses.filter(a=>!q||a.name.toLowerCase().includes(q));
+  if(lbl) lbl.textContent=list.length+' actrices';
+  if(!list.length){grid.innerHTML='<div style="color:var(--muted);font-size:13px">No hay actrices.</div>';return;}
+  grid.innerHTML=list.map((a,i)=>{
+    const ai=actresses.indexOf(a);
+    const photo=a.photo?`<img src="${escapeHtml(a.photo)}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;border:2.5px solid var(--border2);margin-bottom:6px" onerror="this.outerHTML='<div style=\'width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px\'>🎭</div>'">`:'<div style="width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px">🎭</div>';
+    // count appearances
+    const seriesCount=series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===a.id)).length;
+    const moviesCount=movies.filter(m=>m.cast&&m.cast.some(m2=>m2.actressId===a.id)).length;
+    const total=seriesCount+moviesCount;
+    return `<div style="display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--surface2);border:1.5px solid var(--border2);border-radius:14px;padding:12px 8px;cursor:pointer;gap:2px" onclick="openEditActress(${ai})">
+      ${photo}
+      <div style="font-size:12.5px;font-weight:700;color:var(--text);line-height:1.2">${escapeHtml(a.name)}</div>
+      ${a.country?`<div style="font-size:10.5px;color:var(--muted)">${escapeHtml(a.country)}</div>`:''}
+      <div style="font-size:10px;color:var(--accent);font-weight:600;margin-top:3px">${total?total+' aparición'+(total!==1?'es':''):'Sin apariciones'}</div>
+      <div style="display:flex;gap:4px;margin-top:4px">
+        <button type="button" class="btn small" onclick="event.stopPropagation();openEditActress(${ai})" style="font-size:10px;padding:2px 8px">✏️</button>
+        <button type="button" class="btn small" onclick="event.stopPropagation();delActress(${ai})" style="font-size:10px;padding:2px 8px;color:#c0392b">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function actressFormHtml(a){
+  return `<div style="padding:1.25rem 1.75rem">
+    <div class="form-row"><label class="form-label">Nombre *</label><input id="af_name" placeholder="Ej: Kim Sejeong" value="${a?escapeHtml(a.name):''}"/></div>
+    <div class="form-row">
+      <label class="form-label">Foto (URL)</label>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <img id="af_photo_prev" style="width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:top;border:1.5px solid var(--border2);flex-shrink:0;${a&&a.photo?'':'display:none'}" src="${a&&a.photo?a.photo:''}">
+        <input id="af_photo" placeholder="https://..." value="${a&&a.photo?escapeHtml(a.photo):''}" oninput="const p=document.getElementById('af_photo_prev');if(this.value){p.src=this.value;p.style.display='block';}else p.style.display='none'"/>
+      </div>
+    </div>
+    <div class="form-row"><label class="form-label">País / Origen</label><input id="af_country" placeholder="Ej: Corea del Sur" value="${a&&a.country?escapeHtml(a.country):''}"/></div>
+    <div class="form-row"><label class="form-label">Notas (opcional)</label><input id="af_notes" placeholder="Ej: Cantante y actriz" value="${a&&a.notes?escapeHtml(a.notes):''}"/></div>
+  </div>`;
+}
+
+function openAddActress(){
+  document.getElementById('actressModalTitle').textContent='🎭 Nueva actriz';
+  document.getElementById('actressModalBody').innerHTML=
+    actressFormHtml(null)+
+    `<div class="modal-footer-btns"><button class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button><button class="btn primary" onclick="saveActress(-1)">Guardar</button></div>`;
+  document.getElementById('actressModal').classList.add('open');
+}
+
+function openEditActress(ai){
+  document.getElementById('actressModalTitle').textContent='✏️ Editar actriz';
+  document.getElementById('actressModalBody').innerHTML=
+    actressFormHtml(actresses[ai])+
+    `<div class="modal-footer-btns"><button class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button><button class="btn primary" onclick="saveActress(${ai})">Guardar cambios</button></div>`;
+  document.getElementById('actressModal').classList.add('open');
+}
+
+function saveActress(ai){
+  const name=document.getElementById('af_name').value.trim();
+  if(!name){alert('El nombre es obligatorio');return;}
+  const payload={
+    id:ai===-1?Date.now().toString():(actresses[ai].id||Date.now().toString()),
+    name,
+    photo:document.getElementById('af_photo').value.trim(),
+    country:document.getElementById('af_country').value.trim(),
+    notes:document.getElementById('af_notes').value.trim(),
+  };
+  if(ai===-1) actresses.push(payload);
+  else actresses[ai]={...actresses[ai],...payload};
+  save();
+  document.getElementById('actressModal').classList.remove('open');
+  renderActressesGrid();
+}
+
+function delActress(ai){
+  if(!confirm(`¿Eliminar a "${actresses[ai].name}"? Se borrará de todas las series y películas donde aparezca.`)) return;
+  const id=actresses[ai].id;
+  // Remove from series and movies
+  series.forEach(s=>{if(s.cast) s.cast=s.cast.filter(m=>m.actressId!==id);});
+  movies.forEach(m=>{if(m.cast) m.cast=m.cast.filter(m2=>m2.actressId!==id);});
+  actresses.splice(ai,1);
+  save(); renderActressesGrid();
+}
+
+/* ── Cast picker in series/movie forms ── */
+function initCast(castData){
+  const list=document.getElementById('castList');
+  if(!list) return;
+  list.innerHTML='';
+  (castData||[]).forEach(m=>addCastMember(m));
+}
+
+function addCastMember(data){
+  const list=document.getElementById('castList');
+  if(!list) return;
+  if(!actresses.length){
+    alert('Primero añade actrices en la sección "🎭 Actrices" del admin.');
+    return;
+  }
+  const row=document.createElement('div');
+  row.className='cast-admin-row';
+  row.style.cssText='border:1.5px solid var(--border2);border-radius:12px;padding:10px 12px;margin-bottom:8px;background:var(--surface2);display:flex;gap:8px;align-items:center';
+  const actressId=data&&data.actressId?data.actressId:'';
+  const char=data&&data.character?data.character:'';
+  const coupleType=data&&data.coupleType?data.coupleType:'main';
+  const coupleNum=data&&data.coupleNum?data.coupleNum:1;
+  const selOpts=actresses.map(a=>`<option value="${a.id}" ${a.id===actressId?'selected':''}>${escapeHtml(a.name)}${a.country?' ('+a.country+')':''}</option>`).join('');
+  row.innerHTML=`
+    <div id="cast_photo_${Date.now()}" style="flex-shrink:0">${getActressThumb(actressId)}</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+      <select class="cast-actress-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600" onchange="updateCastPhoto(this)">
+        <option value="">— Selecciona actriz —</option>
+        ${selOpts}
+      </select>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:5px">
+        <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif">
+        <select class="cast-type-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600">
+          <option value="main" ${coupleType==='main'?'selected':''}>💕 Principal</option>
+          <option value="secondary" ${coupleType==='secondary'?'selected':''}>🌸 Secundaria</option>
+          <option value="other" ${coupleType==='other'?'selected':''}>Otro</option>
+        </select>
+        <select class="cast-num-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600">
+          ${[1,2,3,4].map(n=>`<option value="${n}" ${coupleNum===n?'selected':''}>P${n}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <button type="button" onclick="this.closest('.cast-admin-row').remove()" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:0 2px;flex-shrink:0">✕</button>`;
+  list.appendChild(row);
+}
+
+function getActressThumb(actressId){
+  const a=actresses.find(x=>x.id===actressId);
+  if(a&&a.photo) return `<img src="${escapeHtml(a.photo)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:top;border:1.5px solid var(--border2)">`;
+  return `<div style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px">🎭</div>`;
+}
+
+function updateCastPhoto(sel){
+  const row=sel.closest('.cast-admin-row');
+  const thumbDiv=row.querySelector('[id^="cast_photo_"]');
+  if(thumbDiv) thumbDiv.innerHTML=getActressThumb(sel.value);
+}
+
+function getCastData(){
+  const rows=document.querySelectorAll('#castList .cast-admin-row');
+  const cast=[];
+  rows.forEach(row=>{
+    const actressId=row.querySelector('.cast-actress-sel')?.value;
+    if(!actressId) return;
+    cast.push({
+      actressId,
+      character:row.querySelector('.cast-char-inp')?.value.trim()||'',
+      coupleType:row.querySelector('.cast-type-sel')?.value||'main',
+      coupleNum:parseInt(row.querySelector('.cast-num-sel')?.value)||1,
+    });
+  });
+  return cast;
+}
+
 function mapCountry(c){
   var cm={
     'Thailand':'Tailandia','South Korea':'Corea del Sur','Korea':'Corea del Sur',
