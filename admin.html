@@ -2189,9 +2189,9 @@ function movieFormHtml(mv){
       <div class="form-hint">Cortometraje si dura menos de ~40 min.</div>
     </div>
     <div class="form-row" style="margin-bottom:0">
-      <label class="form-label">Duración (minutos)</label>
-      <input id="mf_duration" type="number" placeholder="Ej: 92" min="1" max="600" value="${mv&&mv.duration?mv.duration:''}"/>
-      <div class="form-hint">En minutos. Opcional pero recomendado para cortos.</div>
+      <label class="form-label">Duración</label>
+      <input id="mf_duration" type="text" placeholder="Ej: 92  ó  1h 35min  ó  1h35" value="${mv&&mv.duration?formatDurationDisplay(mv.duration):''}" oninput="previewDuration(this)"/>
+      <div class="form-hint" id="mf_duration_hint">Escribe en minutos (92) o en horas y minutos (1h 35min). Opcional pero recomendado para cortos.</div>
     </div>
   </div>
   <div class="form-row">
@@ -2241,6 +2241,48 @@ function movieFormHtml(mv){
   </div>`;
 }
 
+function parseDurationInput(val){
+  if(!val||!val.trim()) return '';
+  val=val.trim();
+  // Pure number → minutes
+  if(/^\d+$/.test(val)) return parseInt(val);
+  // Formats: 1h35, 1h 35, 1h35min, 1h 35min, 1h35m, 90min, 90m
+  var h=0,m=0;
+  var hMatch=val.match(/(\d+)\s*h/i);
+  var mMatch=val.match(/(\d+)\s*(?:min|m)\b/i);
+  if(hMatch) h=parseInt(hMatch[1]);
+  if(mMatch) m=parseInt(mMatch[1]);
+  if(!hMatch&&!mMatch){
+    // fallback: try to grab any number
+    var n=val.match(/\d+/); if(n) return parseInt(n[0]);
+    return '';
+  }
+  var total=h*60+m;
+  return total>0?total:'';
+}
+function formatDurationDisplay(mins){
+  if(!mins) return '';
+  if(mins<60) return mins+'min';
+  var h=Math.floor(mins/60), m=mins%60;
+  return m?h+'h '+m+'min':h+'h';
+}
+function previewDuration(input){
+  const hint=document.getElementById('mf_duration_hint');
+  if(!hint) return;
+  const mins=parseDurationInput(input.value);
+  if(mins&&mins>0){
+    const h=Math.floor(mins/60),m=mins%60;
+    const label=h?(m?h+'h '+m+'min':h+'h'):m+'min';
+    hint.textContent='→ '+label+' ('+mins+' min)';
+    hint.style.color='var(--teal)';
+  } else if(input.value.trim()){
+    hint.textContent='Formato no reconocido. Prueba: 92, 1h 35min, 1h35…';
+    hint.style.color='#c0392b';
+  } else {
+    hint.textContent='Escribe en minutos (92) o en horas y minutos (1h 35min). Opcional pero recomendado para cortos.';
+    hint.style.color='';
+  }
+}
 function bindMovieForm(){
   const p=document.getElementById('mf_poster'),pp=document.getElementById('moviePosterPreview');
   if(p&&pp){ p.addEventListener('input',()=>{ if(p.value.trim()){pp.src=p.value.trim();pp.style.display='block';}else{pp.style.display='none';} }); }
@@ -2350,7 +2392,7 @@ function saveMovie(mi){
     genres,
     category:movieCategory,
     movieType:document.getElementById('mf_movieType')?.value||'film',
-    duration:document.getElementById('mf_duration')?.value?parseInt(document.getElementById('mf_duration').value):'',
+    duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
   };
   const movieUpdatedAt=new Date().toISOString();
   if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
@@ -2697,7 +2739,7 @@ function runPasteAutofill(type){
       filled++;
     }
     if(info.startDate) setVal('mf_date',info.startDate);
-    if(info.duration){setVal('mf_duration',info.duration);filled++;}
+    if(info.duration){setVal('mf_duration',formatDurationDisplay(info.duration));filled++;}
     if(info.detectedType==='short'){var mt=document.getElementById('mf_movieType');if(mt)mt.value='short';filled++;}
     if(watchLinks.length){
       var mwl=document.getElementById('moviePlatformsList');
