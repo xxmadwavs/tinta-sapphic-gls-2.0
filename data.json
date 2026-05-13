@@ -403,7 +403,52 @@
       "genres": [
         "Romance",
         "Comedia"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778667427357",
+          "character": "\"Lal\" Lallalin",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667475076",
+          "character": "\"Wine\" Vethaka",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668312492",
+          "character": "Tangkwa",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668259606",
+          "character": "Proud",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-05-03",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            6
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-13T10:36:48.002Z"
     },
     {
       "id": "1776889488147",
@@ -22825,5 +22870,5 @@
       "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-13T10:34:59.709Z"
+  "exportedAt": "2026-05-13T10:37:02.690Z"
 }
