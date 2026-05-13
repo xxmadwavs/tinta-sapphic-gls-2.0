@@ -3715,10 +3715,55 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778667975177",
+          "character": "Ongsa",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668043254",
+          "character": "Sun",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668061135",
+          "character": "Aylin",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668109244",
+          "character": "Luna",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668259606",
+          "character": "Alpha",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778668336253",
+          "character": "Charoen",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-13T10:34:57.842Z"
     },
     {
       "id": "1777236063170",
@@ -22652,5 +22697,133 @@
       "updatedAt": "2026-05-12T18:53:47.313Z"
     }
   ],
-  "exportedAt": "2026-05-13T09:47:02.519Z"
+  "actresses": [
+    {
+      "id": "1778667427357",
+      "name": "\"Janhae\" Jan Ployshompoo Supasap",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/4/4c/Jan_Ployshompoo_Supasap_GMMTV_2026.png/revision/latest/scale-to-width-down/250?cb=20260101181029",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778667475076",
+      "name": "JingJing Prariyapit Yu",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/6/6f/Jingjing_Prariyapit_Yu_GMMTV_2026.png/revision/latest?cb=20260101174316",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778667533099",
+      "name": "\"Bonnie\" Pattraphus Borattasuwan",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/6/67/Bonnie_Pattraphus_Borattasuwan_GMMTV_2026.png/revision/latest?cb=20260103172059",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778667559702",
+      "name": "\"Pahn\" Pathitta Pornchumroenrut",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/f/fe/Pahn_Pathitta_Pornchumroenrut_GMMTV_2026.png/revision/latest?cb=20251230043405",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778667585326",
+      "name": "\"Emi\" Thasorn Klinnium",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/3/3d/Emi_Thasorn_Klinnium_GMMTV_2026.png/revision/latest?cb=20260102172656",
+      "country": "Tailandia",
+      "notes": "Actriz y cantante"
+    },
+    {
+      "id": "1778667608624",
+      "name": "\"Namtan\" Tipnaree Weerawatnodom",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/8/8a/Namtan_Tipnaree_Weerawatnodom_GMMTV_2026.png/revision/latest?cb=20251230050755",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778667631376",
+      "name": "\"Film\" Rachanun Mahawan",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/b/ba/Film_Rachanun_Mahawan_GMMTV_2026.png/revision/latest?cb=20260102171505",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778667975177",
+      "name": "\"Milk\" Pansa Vosbein",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/c/c8/Milk_Pansa_Vosbein_GMMTV_2026.png/revision/latest?cb=20251230052612",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668043254",
+      "name": "\"Love\" Pattranite Limpatiyakorn",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/0/0e/Love_Pattranite_Limpatiyakorn_GMMTV_2026.png/revision/latest?cb=20251231203109",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668061135",
+      "name": "\"View\" Benyapa Jeenprasom",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/b/bb/View_Benyapa_Jeenprasom_GMMTV_2026.png/revision/latest?cb=20251224065620",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668089762",
+      "name": "\"Mim\" Rattanawadee Wongthong",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/0/0a/Mim_Rattanawadee_Wongthong_GMMTV_2026.png/revision/latest?cb=20251230052556",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668109244",
+      "name": "\"June\" Wanwimol Jaenasavamethee",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/6/6f/June_Wanwimol_Jaenasavamethee_GMMTV_2026.png/revision/latest?cb=20260101174224",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668241744",
+      "name": "\"Fond\" Natticha Chantaravareelekha",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/d/d7/Fond_Natticha_Chantaravareelekha_GMMTV_2026.png/revision/latest?cb=20260102171415",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668259606",
+      "name": "\"Ciize\" Rutricha Phapakithi",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/3/38/Ciize_Rutricha_Phapakithi_GMMTV_2026.png/revision/latest?cb=20260102174051",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668288034",
+      "name": "\"Mewnich\" Nannaphas Loetnamchoetsakun",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/b/be/Mewnich_Nannaphas_Loetnamchoetsakun_GMMTV_2026.png/revision/latest?cb=20251230054448",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668312492",
+      "name": "\"Kapook\" Ploynira Hiruntaveesin",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/b/b0/Kapook_Ploynira_Hiruntaveesin_GMMTV_2026.png/revision/latest?cb=20260101172121",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668336253",
+      "name": "\"Earn\" Preeyaphat Lawsuwansiri",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/b/be/Earn_Preeyaphat_Lawsuwansiri_GMMTV_2026.png/revision/latest?cb=20260102172725",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778668360946",
+      "name": "\"Piploy\" Kanyarat Ruangrung",
+      "photo": "https://static.wikia.nocookie.net/gmmtv/images/c/c8/Piploy_Kanyarat_Ruangrung_GMMTV_2026.png/revision/latest?cb=20251230041651",
+      "country": "Tailandia",
+      "notes": "Actriz"
+    }
+  ],
+  "exportedAt": "2026-05-13T10:34:59.709Z"
 }
