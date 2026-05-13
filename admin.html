@@ -2153,6 +2153,21 @@ function movieFormHtml(mv){
       </select>
     </div>
   </div>
+  <div class="form-row-half">
+    <div class="form-row" style="margin-bottom:0">
+      <label class="form-label">Tipo de película</label>
+      <select id="mf_movieType" style="width:100%;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;font-weight:600;outline:none">
+        <option value="film" ${!mv||!mv.movieType||mv.movieType==='film'?'selected':''}>🎥 Largometraje</option>
+        <option value="short" ${mv&&mv.movieType==='short'?'selected':''}>🎞️ Cortometraje</option>
+      </select>
+      <div class="form-hint">Cortometraje si dura menos de ~40 min.</div>
+    </div>
+    <div class="form-row" style="margin-bottom:0">
+      <label class="form-label">Duración (minutos)</label>
+      <input id="mf_duration" type="number" placeholder="Ej: 92" min="1" max="600" value="${mv&&mv.duration?mv.duration:''}"/>
+      <div class="form-hint">En minutos. Opcional pero recomendado para cortos.</div>
+    </div>
+  </div>
   <div class="form-row">
     <label class="form-label">Categoría</label>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
@@ -2308,6 +2323,8 @@ function saveMovie(mi){
     bookUrl:bookLinks.length?bookLinks[0].url:'',
     genres,
     category:movieCategory,
+    movieType:document.getElementById('mf_movieType')?.value||'film',
+    duration:document.getElementById('mf_duration')?.value?parseInt(document.getElementById('mf_duration').value):'',
   };
   const movieUpdatedAt=new Date().toISOString();
   if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
@@ -2654,6 +2671,8 @@ function runPasteAutofill(type){
       filled++;
     }
     if(info.startDate) setVal('mf_date',info.startDate);
+    if(info.duration){setVal('mf_duration',info.duration);filled++;}
+    if(info.detectedType==='short'){var mt=document.getElementById('mf_movieType');if(mt)mt.value='short';filled++;}
     if(watchLinks.length){
       var mwl=document.getElementById('moviePlatformsList');
       if(mwl&&!mwl.children.length){addMoviePlatformRow({name:info.network||'Ver',url:watchLinks[0]});filled++;}

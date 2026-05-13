@@ -2391,6 +2391,10 @@ function openMovie(mi){
   if(mv.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(mv.country)} ${mv.country}</div></div>`;
   if(mv.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Plataforma</div><div class="meta-val">${mv.network}</div></div>`;
   if(mv.date) metaGrid+=`<div class="meta-item"><div class="meta-key">Estreno</div><div class="meta-val">${fmtDate(mv.date)}</div></div>`;
+  if(mv.duration) metaGrid+=`<div class="meta-item"><div class="meta-key">Duración</div><div class="meta-val">⏱ ${mv.duration} min</div></div>`;
+  const mvModalTypeBadge=mv.movieType==='short'
+    ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">🎞️ Cortometraje</span>`
+    :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">🎥 Película</span>`;
   const bookBlock=(()=>{
     if(!mv.basedOnBook) return '';
     const hasCover=mv.bookCoverUrl&&mv.bookCoverUrl.trim();
@@ -2406,7 +2410,7 @@ function openMovie(mi){
   })();
   const watchLinksHtml=(()=>{const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);if(!links.length)return '';return `<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" style="background:var(--lavender-soft);color:var(--lavender);border-color:rgba(155,130,201,.35)"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`;})();
   let html=`${posterEl}<div class="modal-body">
-  <div class="modal-badges"><span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">🎥 Película</span>${mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge" style="background:var(--accent-soft);color:var(--accent)">⏳ Próximamente</span>'}</div>
+  <div class="modal-badges">${mvModalTypeBadge}${mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge" style="background:var(--accent-soft);color:var(--accent)">⏳ Próximamente</span>'}</div>
   <div class="modal-title">${mv.name}</div>
   ${chipsHtml}
   ${releaseBadgeHtml}
@@ -2472,11 +2476,15 @@ function movieCardHtml(mv){
     :'<div class="movie-card-date" style="color:var(--muted)">Fecha por confirmar</div>';
   const mvGenrePills=mv.genres&&mv.genres.length
     ?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-weight:600;cursor:pointer" onclick="event.stopPropagation();moviesFilters.genre='${g}';renderMoviesResults()">${g}</span>`).join('')}${mv.genres.length>3?`<span style="font-size:9.5px;padding:2px 6px;border-radius:20px;background:var(--surface2);color:var(--muted)">+${mv.genres.length-3}</span>`:''}</div>`:'';
+  const typeBadge=mv.movieType==='short'
+    ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">🎞️ Corto</span>`
+    :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">🎥 Película</span>`;
+  const durationEl=mv.duration?`<span style="font-size:10.5px;color:var(--muted);font-weight:600">⏱ ${mv.duration} min</span>`:'';
   return `<div class="movie-card" onclick="openMovie(${mi})">${posterEl}
     <div class="movie-card-body">
-      <div class="card-badges">${mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
+      <div class="card-badges">${typeBadge}${mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
       <div class="movie-card-name">${mv.name}</div>
-      <div class="movie-card-meta">${mv.network||''}</div>
+      <div class="movie-card-meta" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${mv.network?`<span>${mv.network}</span>`:''}${durationEl}</div>
       ${mvGenrePills}
       ${dateEl}
       ${watchRow}
@@ -2570,9 +2578,13 @@ function renderMoviesResults(){
   const filtered=applyMoviesFilters(state.movies.filter(m=>m.category!=='anime'&&m.category!=='reality'));
   const inTheaters=filtered.filter(mv=>mv.date&&new Date(mv.date+'T12:00:00')<=now);
   const comingSoon=filtered.filter(mv=>!mv.date||new Date(mv.date+'T12:00:00')>now);
+  const shorts=filtered.filter(mv=>mv.movieType==='short');
+  const films=filtered.filter(mv=>!mv.movieType||mv.movieType==='film');
   if(moviesSubtab==='theaters'&&!inTheaters.length) moviesSubtab='all';
   if(moviesSubtab==='soon'&&!comingSoon.length) moviesSubtab='all';
-  const shown=moviesSubtab==='theaters'?inTheaters:moviesSubtab==='soon'?comingSoon:filtered;
+  if(moviesSubtab==='shorts'&&!shorts.length) moviesSubtab='all';
+  if(moviesSubtab==='films'&&!films.length) moviesSubtab='all';
+  const shown=moviesSubtab==='theaters'?inTheaters:moviesSubtab==='soon'?comingSoon:moviesSubtab==='shorts'?shorts:moviesSubtab==='films'?films:filtered;
 
   if(!filtered.length){
     resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna película con esos filtros.</div>';
@@ -2580,7 +2592,13 @@ function renderMoviesResults(){
   }
   let html=`<div class="subtabs" style="margin-bottom:1.25rem">
     <button class="subtab${moviesSubtab==='all'?' active':''}" onclick="switchMoviesSubtab('all')">
-      🎥 Todas<span class="subtab-count">${filtered.length}</span>
+      🎬 Todas<span class="subtab-count">${filtered.length}</span>
+    </button>
+    <button class="subtab${moviesSubtab==='films'?' active':''}" onclick="switchMoviesSubtab('films')">
+      🎥 Largometrajes<span class="subtab-count">${films.length}</span>
+    </button>
+    <button class="subtab${moviesSubtab==='shorts'?' active':''}" onclick="switchMoviesSubtab('shorts')">
+      🎞️ Cortos<span class="subtab-count">${shorts.length}</span>
     </button>
     <button class="subtab${moviesSubtab==='theaters'?' active':''}" onclick="switchMoviesSubtab('theaters')">
       ✓ Ya estrenadas<span class="subtab-count">${inTheaters.length}</span>
