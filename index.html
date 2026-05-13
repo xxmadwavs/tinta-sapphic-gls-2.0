@@ -1165,6 +1165,12 @@ function loadSession(){
 
 function getDow(d){return(new Date(d+'T12:00:00').getDay()+6)%7}
 function addDays(d,n){const x=new Date(d+'T12:00:00');x.setDate(x.getDate()+n);return x.toISOString().slice(0,10)}
+function fmtDuration(mins){
+  if(!mins) return '';
+  if(mins<60) return mins+'min';
+  var h=Math.floor(mins/60),m=mins%60;
+  return m?h+'h '+m+'min':h+'h';
+}
 function fmtDate(d){const x=new Date(d+'T12:00:00');return`${x.getDate()} ${MONTHS[x.getMonth()].slice(0,3)} ${x.getFullYear()}`}
 function toStr(y,m,d){return`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
 function getEmissionDays(s){if(s.emissionDays&&s.emissionDays.length>0)return[...s.emissionDays].sort((a,b)=>a-b);if(s.dayOfWeek!==undefined)return[s.dayOfWeek];return[0]}
@@ -2413,7 +2419,7 @@ function openMovie(mi){
   if(mv.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(mv.country)} ${mv.country}</div></div>`;
   if(mv.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Plataforma</div><div class="meta-val">${mv.network}</div></div>`;
   if(mv.date) metaGrid+=`<div class="meta-item"><div class="meta-key">Estreno</div><div class="meta-val">${fmtDate(mv.date)}</div></div>`;
-  if(mv.duration) metaGrid+=`<div class="meta-item"><div class="meta-key">Duración</div><div class="meta-val">⏱ ${mv.duration} min</div></div>`;
+  if(mv.duration) metaGrid+=`<div class="meta-item"><div class="meta-key">Duración</div><div class="meta-val">⏱ ${fmtDuration(mv.duration)}</div></div>`;
   const mvModalTypeBadge=mv.movieType==='short'
     ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">🎞️ Cortometraje</span>`
     :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">🎥 Película</span>`;
@@ -2501,7 +2507,7 @@ function movieCardHtml(mv){
   const typeBadge=mv.movieType==='short'
     ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">🎞️ Corto</span>`
     :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">🎥 Película</span>`;
-  const durationEl=mv.duration?`<span style="font-size:10.5px;color:var(--muted);font-weight:600">⏱ ${mv.duration} min</span>`:'';
+  const durationEl=mv.duration?`<span style="font-size:10.5px;color:var(--muted);font-weight:600">⏱ ${fmtDuration(mv.duration)}</span>`:'';
   return `<div class="movie-card" onclick="openMovie(${mi})">${posterEl}
     <div class="movie-card-body">
       <div class="card-badges">${typeBadge}${mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
