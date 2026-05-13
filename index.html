@@ -1932,22 +1932,20 @@ function renderListResults(){
   } else if(seriesSubtab==='notstarted'){
     html+=renderSubtabGrid(notStarted,'No hay series con estreno próximo con esos filtros.','notstarted');
   } else {
-    // Finalizadas: sub-subtabs Serie / Web Serie si hay de ambos tipos
-    if(finishedSeries.length&&finishedWebseries.length){
-      if(seriesFinishedSubtab==='webserie'&&!finishedWebseries.length) seriesFinishedSubtab='all';
-      if(seriesFinishedSubtab==='serie'&&!finishedSeries.length) seriesFinishedSubtab='all';
-      html+=`<div class="subtabs" style="margin-top:10px;margin-bottom:14px">
-        <button class="subtab${seriesFinishedSubtab==='all'?' active':''}" onclick="seriesFinishedSubtab='all';saveSession();renderListResults()">
-          Todas<span class="subtab-count">${finished.length}</span>
-        </button>
-        <button class="subtab${seriesFinishedSubtab==='serie'?' active':''}" onclick="seriesFinishedSubtab='serie';saveSession();renderListResults()">
-          📺 Serie<span class="subtab-count">${finishedSeries.length}</span>
-        </button>
-        <button class="subtab${seriesFinishedSubtab==='webserie'?' active':''}" onclick="seriesFinishedSubtab='webserie';saveSession();renderListResults()">
-          🌐 Web Serie<span class="subtab-count">${finishedWebseries.length}</span>
-        </button>
-      </div>`;
-    }
+    // Finalizadas: sub-subtabs Serie / Web Serie siempre visibles
+    if(seriesFinishedSubtab==='webserie'&&!finishedWebseries.length) seriesFinishedSubtab='all';
+    if(seriesFinishedSubtab==='serie'&&!finishedSeries.length) seriesFinishedSubtab='all';
+    html+=`<div class="subtabs" style="margin-top:10px;margin-bottom:14px">
+      <button class="subtab${seriesFinishedSubtab==='all'?' active':''}" onclick="seriesFinishedSubtab='all';saveSession();renderListResults()">
+        Todas<span class="subtab-count">${finished.length}</span>
+      </button>
+      <button class="subtab${seriesFinishedSubtab==='serie'?' active':''}" onclick="seriesFinishedSubtab='serie';saveSession();renderListResults()">
+        📺 Serie<span class="subtab-count">${finishedSeries.length}</span>
+      </button>
+      <button class="subtab${seriesFinishedSubtab==='webserie'?' active':''}" onclick="seriesFinishedSubtab='webserie';saveSession();renderListResults()">
+        🌐 Web Serie<span class="subtab-count">${finishedWebseries.length}</span>
+      </button>
+    </div>`;
     const shownFinished=seriesFinishedSubtab==='serie'?finishedSeries:seriesFinishedSubtab==='webserie'?finishedWebseries:finished;
     const finishedKey=seriesFinishedSubtab==='serie'?'finished_serie':seriesFinishedSubtab==='webserie'?'finished_webserie':'finished';
     html+=renderSubtabGrid(shownFinished,'No hay series finalizadas con esos filtros.',finishedKey);
