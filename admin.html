@@ -1374,6 +1374,16 @@ function formHtml(s, forcedCategory=null){
       <div class="form-section-hd" style="margin-top:14px">🏷 Info adicional</div>
 
       <div class="form-row">
+        <label class="form-label">Tipo de serie</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+          <div class="cat-chip${!s||!s.seriesType||s.seriesType==='serie'?' selected-series':''}" onclick="selectSeriesType('serie',this)" data-stype="serie" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(93,138,210,0.4);font-size:12px;font-weight:700;background:${!s||!s.seriesType||s.seriesType==='serie'?'#deeafa':'transparent'};color:${!s||!s.seriesType||s.seriesType==='serie'?'#2a5ea8':'#888'}">📺 Serie (por defecto)</div>
+          <div class="cat-chip${s&&s.seriesType==='webserie'?' selected-series':''}" onclick="selectSeriesType('webserie',this)" data-stype="webserie" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(42,125,191,0.4);font-size:12px;font-weight:700;background:${s&&s.seriesType==='webserie'?'#e8f4fd':'transparent'};color:${s&&s.seriesType==='webserie'?'#2a7dbf':'#888'}">🌐 Web Serie</div>
+        </div>
+        <input type="hidden" id="f_seriesType" value="${s&&s.seriesType?s.seriesType:'serie'}">
+        <div class="form-hint">Elige "Web Serie" para series que ya terminaron y se publicaron solo online (YouTube, etc.).</div>
+      </div>
+
+      <div class="form-row">
         <label class="form-label">Categoría</label>
         <div class="cat-chips" id="f_cat_chips">
           <div class="cat-chip${cat==='series'?' selected-series':''}" onclick="selectCategory('series')" data-cat="series">🌷 Serie GL</div>
@@ -1734,6 +1744,21 @@ function selectCategory(cat){
   if(asWrap) asWrap.style.display=(cat==='anime'||cat==='reality')?'':'none';
 }
 
+function selectSeriesType(type, el){
+  const input=document.getElementById('f_seriesType');
+  if(input) input.value=type;
+  document.querySelectorAll('[data-stype]').forEach(c=>{
+    const isSelected=c.dataset.stype===type;
+    if(type==='webserie'){
+      c.style.background=isSelected?'#e8f4fd':'transparent';
+      c.style.color=isSelected?'#2a7dbf':'#888';
+    } else {
+      c.style.background=isSelected?'#deeafa':'transparent';
+      c.style.color=isSelected?'#2a5ea8':'#888';
+    }
+  });
+}
+
 /* ═══ ANIME FUNCTIONS ═══ */
 function openAddAnime(){
   document.getElementById('animeModalTitle').textContent='🌸 Añadir anime GL';
@@ -1922,9 +1947,10 @@ function saveSeries(si, forcedCategory=null){
   const bookUrl=bookLinks.length?bookLinks[0].url:'';
   const genres=getSelectedGenres('f_genres');
   const category=document.getElementById('f_category')?.value||'series';
+  const seriesType=document.getElementById('f_seriesType')?.value||'serie';
   const animeSeason=(category==='anime'||category==='reality')?getAnimeSeason():'';
   const renewedNextSeason=document.getElementById('f_renewed')?.checked||false;
-  let payload={name,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,animeSeason,renewedNextSeason};
+  let payload={name,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,animeSeason,renewedNextSeason};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
