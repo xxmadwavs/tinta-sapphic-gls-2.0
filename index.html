@@ -1662,13 +1662,11 @@ function seriesCardHtml(s, si){
   </div>`;
   const genrePills=s.genres&&s.genres.length
     ?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${s.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-weight:600;cursor:pointer" onclick="event.stopPropagation();seriesFilters.genre='${g}';renderListResults()">${g}</span>`).join('')}${s.genres.length>3?`<span style="font-size:9.5px;padding:2px 6px;border-radius:20px;background:var(--surface2);color:var(--muted)">+${s.genres.length-3}</span>`:''}</div>`:'';
-  const seriesTypeBadge=s.seriesType==='webserie'
-    ?`<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">🌐 Web Serie</span>`
-    :'';
+  const webSerieBadge=s.seriesType==='webserie'?`<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">🌐 Web Serie</span>`:'';
   return `<div class="series-card" onclick="openSeries(${si})">
     ${posterEl}
     <div class="series-card-body">
-      <div class="card-badges">${seriesTypeBadge}${s.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${seasonsBadge}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(s.country)} ${s.country}</span>`:''}</div>
+      <div class="card-badges">${webSerieBadge}${s.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${seasonsBadge}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(s.country)} ${s.country}</span>`:''}</div>
       <div class="series-card-name">${s.name}</div>
       <div class="series-card-meta">${s.network?s.network+' · ':''}${activeDays}</div>
       ${genrePills}
@@ -1798,7 +1796,7 @@ function buildCountryPicker(id, onChange, availableCountries){
 }
 
 let seriesSubtab='airing';
-let seriesFinishedSubtab='all'; // 'all' | 'serie' | 'webserie'
+let seriesFinishedSubtab='all';
 let seriesFilters={q:'',countries:[],sort:'recent',book:'all',year:'',genre:''};
 // Pagination state
 const PAGE_SIZE=20;
@@ -1934,7 +1932,7 @@ function renderListResults(){
   } else if(seriesSubtab==='notstarted'){
     html+=renderSubtabGrid(notStarted,'No hay series con estreno próximo con esos filtros.','notstarted');
   } else {
-    // Finalizadas: mostrar sub-subtabs Serie / Web Serie si hay de ambos tipos
+    // Finalizadas: sub-subtabs Serie / Web Serie si hay de ambos tipos
     if(finishedSeries.length&&finishedWebseries.length){
       if(seriesFinishedSubtab==='webserie'&&!finishedWebseries.length) seriesFinishedSubtab='all';
       if(seriesFinishedSubtab==='serie'&&!finishedSeries.length) seriesFinishedSubtab='all';
@@ -2620,9 +2618,6 @@ function renderMoviesResults(){
     <button class="subtab${moviesSubtab==='all'?' active':''}" onclick="switchMoviesSubtab('all')">
       🎬 Todas<span class="subtab-count">${filtered.length}</span>
     </button>
-    <button class="subtab${moviesSubtab==='soon'?' active':''}" onclick="switchMoviesSubtab('soon')">
-      📅 Próximos estrenos<span class="subtab-count">${comingSoon.length}</span>
-    </button>
     <button class="subtab${moviesSubtab==='films'?' active':''}" onclick="switchMoviesSubtab('films')">
       🎥 Largometrajes<span class="subtab-count">${films.length}</span>
     </button>
@@ -2631,6 +2626,9 @@ function renderMoviesResults(){
     </button>
     <button class="subtab${moviesSubtab==='theaters'?' active':''}" onclick="switchMoviesSubtab('theaters')">
       ✓ Ya estrenadas<span class="subtab-count">${inTheaters.length}</span>
+    </button>
+    <button class="subtab${moviesSubtab==='soon'?' active':''}" onclick="switchMoviesSubtab('soon')">
+      📅 Próximos estrenos<span class="subtab-count">${comingSoon.length}</span>
     </button>
     <button class="subtab" onclick="switchTab('anime');setTimeout(()=>{animeSubtab='movies';renderAnimeResults();},50)">
       🌸 Anime<span class="subtab-count">${getAnimeMoviesData().length}</span>

@@ -1376,11 +1376,11 @@ function formHtml(s, forcedCategory=null){
       <div class="form-row">
         <label class="form-label">Tipo de serie</label>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-          <div class="cat-chip${!s||!s.seriesType||s.seriesType==='serie'?' selected-series':''}" onclick="selectSeriesType('serie',this)" data-stype="serie" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(93,138,210,0.4);font-size:12px;font-weight:700;background:${!s||!s.seriesType||s.seriesType==='serie'?'#deeafa':'transparent'};color:${!s||!s.seriesType||s.seriesType==='serie'?'#2a5ea8':'#888'}">📺 Serie (por defecto)</div>
-          <div class="cat-chip${s&&s.seriesType==='webserie'?' selected-series':''}" onclick="selectSeriesType('webserie',this)" data-stype="webserie" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(42,125,191,0.4);font-size:12px;font-weight:700;background:${s&&s.seriesType==='webserie'?'#e8f4fd':'transparent'};color:${s&&s.seriesType==='webserie'?'#2a7dbf':'#888'}">🌐 Web Serie</div>
+          <div data-stype="serie" onclick="selectSeriesType('serie',this)" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(93,138,210,0.4);font-size:12px;font-weight:700;background:${!s||!s.seriesType||s.seriesType==='serie'?'#deeafa':'transparent'};color:${!s||!s.seriesType||s.seriesType==='serie'?'#2a5ea8':'#888'}">📺 Serie (por defecto)</div>
+          <div data-stype="webserie" onclick="selectSeriesType('webserie',this)" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(42,125,191,0.4);font-size:12px;font-weight:700;background:${s&&s.seriesType==='webserie'?'#e8f4fd':'transparent'};color:${s&&s.seriesType==='webserie'?'#2a7dbf':'#888'}">🌐 Web Serie</div>
         </div>
         <input type="hidden" id="f_seriesType" value="${s&&s.seriesType?s.seriesType:'serie'}">
-        <div class="form-hint">Elige "Web Serie" para series que ya terminaron y se publicaron solo online (YouTube, etc.).</div>
+        <div class="form-hint">Web Serie: publicada solo online (YouTube, etc.) y ya finalizada.</div>
       </div>
 
       <div class="form-row">
@@ -1748,13 +1748,13 @@ function selectSeriesType(type, el){
   const input=document.getElementById('f_seriesType');
   if(input) input.value=type;
   document.querySelectorAll('[data-stype]').forEach(c=>{
-    const isSelected=c.dataset.stype===type;
-    if(type==='webserie'){
-      c.style.background=isSelected?'#e8f4fd':'transparent';
-      c.style.color=isSelected?'#2a7dbf':'#888';
+    const sel=c.dataset.stype===type;
+    if(c.dataset.stype==='webserie'){
+      c.style.background=sel?'#e8f4fd':'transparent';
+      c.style.color=sel?'#2a7dbf':'#888';
     } else {
-      c.style.background=isSelected?'#deeafa':'transparent';
-      c.style.color=isSelected?'#2a5ea8':'#888';
+      c.style.background=sel?'#deeafa':'transparent';
+      c.style.color=sel?'#2a5ea8':'#888';
     }
   });
 }
