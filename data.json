@@ -23854,7 +23854,9 @@
       "name": "\"Janhae\" Jan Ployshompoo Supasap",
       "photo": "https://static.wikia.nocookie.net/gmmtv/images/4/4c/Jan_Ployshompoo_Supasap_GMMTV_2026.png/revision/latest/scale-to-width-down/250?cb=20260101181029",
       "country": "Tailandia",
-      "notes": "Actriz"
+      "notes": "Actriz",
+      "birthdate": "1995-01-05",
+      "height": 170
     },
     {
       "id": "1778667475076",
@@ -24256,5 +24258,5 @@
       "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-13T20:51:58.919Z"
+  "exportedAt": "2026-05-14T08:05:51.417Z"
 }
