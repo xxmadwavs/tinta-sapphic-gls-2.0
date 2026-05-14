@@ -2393,11 +2393,30 @@ function openActressProfile(actressId){
     moviesHtml+='</div>';
   }
 
+  // Calculate age from birthdate
+  let ageStr='';
+  if(a.birthdate){
+    const bd=new Date(a.birthdate+'T00:00:00');
+    const now2=new Date();
+    let age=now2.getFullYear()-bd.getFullYear();
+    const m=now2.getMonth()-bd.getMonth();
+    if(m<0||(m===0&&now2.getDate()<bd.getDate())) age--;
+    const day=bd.getDate();
+    const monthNames=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    ageStr=`${day} de ${monthNames[bd.getMonth()]} de ${bd.getFullYear()} · ${age} años`;
+  }
+
+  // Build info pills
+  const infoPills=[];
+  if(ageStr) infoPills.push(`<div style="display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:10px;background:var(--surface2);border:1px solid var(--border)"><span style="font-size:14px">🎂</span><div><div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)">Nacimiento</div><div style="font-size:12.5px;font-weight:600;color:var(--text)">${ageStr}</div></div></div>`);
+  if(a.height) infoPills.push(`<div style="display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:10px;background:var(--surface2);border:1px solid var(--border)"><span style="font-size:14px">📏</span><div><div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)">Altura</div><div style="font-size:12.5px;font-weight:600;color:var(--text)">${a.height} cm</div></div></div>`);
+
   const html=`<div style="padding:1.5rem;text-align:center">
     ${photo}
     <div style="font-size:18px;font-weight:800;color:var(--text)">${a.name}</div>
     ${a.country?`<div style="font-size:12px;color:var(--muted);margin-top:2px">${countryFlag(a.country)} ${a.country}</div>`:''}
-    ${a.notes?`<div style="font-size:12px;color:var(--muted);margin-top:4px;font-style:italic">${a.notes}</div>`:''}
+    ${a.notes?`<div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:8px">${a.notes.split(',').map(r=>r.trim()).filter(Boolean).map(r=>`<span style="font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2)">${r}</span>`).join('')}</div>`:''}
+    ${infoPills.length?`<div style="display:flex;flex-direction:column;gap:6px;margin-top:12px;text-align:left">${infoPills.join('')}</div>`:''}
   </div>
   ${seriesHtml||moviesHtml?`<div style="padding:0 1.25rem 1.5rem">${seriesHtml}${moviesHtml}</div>`:'<div style="padding:0 1.25rem 1.5rem;color:var(--muted);font-size:13px">Sin series ni películas registradas.</div>'}
   <div style="padding:0 1.25rem 1.25rem;display:flex;justify-content:flex-end"><button class="btn" onclick="closeActressModal()">Cerrar</button></div>`;

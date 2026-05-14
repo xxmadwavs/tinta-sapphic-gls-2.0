@@ -2906,7 +2906,24 @@ function actressFormHtml(a){
       </div>
       <input id="af_country" placeholder="O escribe el país…" value="${a&&a.country?escapeHtml(a.country):''}"/>
     </div>
-    <div class="form-row"><label class="form-label">Notas (opcional)</label><input id="af_notes" placeholder="Ej: Cantante y actriz" value="${a&&a.notes?escapeHtml(a.notes):''}"/></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="form-row" style="margin:0"><label class="form-label">Fecha de nacimiento</label><input id="af_birthdate" type="date" value="${a&&a.birthdate?escapeHtml(a.birthdate):''}" style="width:100%"/></div>
+      <div class="form-row" style="margin:0"><label class="form-label">Altura (cm)</label><input id="af_height" type="number" min="130" max="210" placeholder="Ej: 165" value="${a&&a.height?escapeHtml(String(a.height)):''}" style="width:100%"/></div>
+    </div>
+    <div class="form-row" style="margin-top:10px"><label class="form-label">Roles (opcional)</label>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+        ${['Actriz','Cantante','Modelo'].map(role=>{
+          const currentRoles=(a&&a.notes?a.notes.split(',').map(r=>r.trim()):[]);
+          const active=currentRoles.includes(role);
+          return `<span
+            class="af-role-chip${active?' af-role-active':''}"
+            data-role="${role}"
+            onclick="this.classList.toggle('af-role-active');const on=this.classList.contains('af-role-active');this.style.background=on?'var(--accent-soft)':'var(--surface2)';this.style.borderColor=on?'var(--accent2)':'var(--border2)';this.style.color=on?'var(--accent)':'var(--text)'"
+            style="cursor:pointer;padding:4px 13px;border-radius:20px;border:1.5px solid ${active?'var(--accent2)':'var(--border2)'};font-size:12px;font-weight:600;color:${active?'var(--accent)':'var(--text)'};background:${active?'var(--accent-soft)':'var(--surface2)'};transition:all .15s;user-select:none"
+          >${role}</span>`;
+        }).join('')}
+      </div>
+    </div>
   </div>`;
 }
 
@@ -2935,7 +2952,9 @@ function saveActress(ai){
     name,
     photo:document.getElementById('af_photo').value.trim(),
     country:document.getElementById('af_country').value.trim(),
-    notes:document.getElementById('af_notes').value.trim(),
+    birthdate:document.getElementById('af_birthdate').value.trim(),
+    height:document.getElementById('af_height').value.trim()?Number(document.getElementById('af_height').value.trim()):undefined,
+    notes:[...document.querySelectorAll('.af-role-chip.af-role-active')].map(c=>c.dataset.role).join(', '),
   };
   if(isNew) actresses.push(payload);
   else actresses[ai]={...actresses[ai],...payload};
