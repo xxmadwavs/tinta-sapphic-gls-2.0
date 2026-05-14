@@ -525,7 +525,7 @@ body::before{content:'';position:fixed;inset:0;background:
 .day-cell.is-past .ep-pill{opacity:.55}
 .day-cell.is-future{background:#fff}
 .day-cell.today{border-color:var(--accent)!important;border-width:2px!important;background:rgba(252,232,241,0.5)!important}
-.card-badges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:4px}
+.card-badges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:4px;min-height:20px;align-items:center}
 .badge{font-size:9.5px;padding:2px 8px;border-radius:20px;font-weight:700;letter-spacing:.02em}
 .badge-book{background:var(--gold-soft);color:var(--gold)}
 .badge-upcoming{background:var(--lavender-soft);color:var(--lavender)}
@@ -1890,7 +1890,7 @@ function seriesCardHtml(s, si){
   if(s.seriesType==='webserie') badges.push(`<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">🌐 Web</span>`);
   if(s.basedOnBook) badges.push(`<span class="badge badge-book">📖</span>`);
   if(seasons.length>1) badges.push(`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">T${seasons.length}</span>`);
-  const badgesHtml=badges.length?`<div class="card-badges">${badges.join('')}</div>`:'';
+  const badgesHtml=`<div class="card-badges">${badges.join('')}</div>`;
 
   // ── Estado y próximo episodio (línea principal de info)
   let statusPill='';
@@ -2852,30 +2852,9 @@ function openUpcoming(si){
       ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
     </div></div>`;
   })():''}
-  ${(()=>{
-    const castHtml=buildCastHtml(s.cast||[]);
-    const castCount=s.cast&&s.cast.length?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
-    if(!castCount) return '';
-    return `<div class="divider"></div>
-    <div class="modal-tabs">
-      <button class="modal-tab active" id="utab_info" onclick="switchUpcomingModalTab('info')">ℹ️ Info</button>
-      <button class="modal-tab" id="utab_cast" onclick="switchUpcomingModalTab('cast')">🎭 Cast <span style="font-size:10px;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span></button>
-    </div>
-    <div id="upanel_info" style="display:none"></div>
-    <div id="upanel_cast">${castHtml}</div>`;
-  })()}
   <div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div></div>`;
   document.getElementById('modalBox').innerHTML=html;
   document.getElementById('modalBg').classList.add('open');
-}
-
-function switchUpcomingModalTab(tab){
-  ['info','cast'].forEach(p=>{
-    const panel=document.getElementById('upanel_'+p);
-    const btn=document.getElementById('utab_'+p);
-    if(panel) panel.style.display=p===tab?'':'none';
-    if(btn) btn.classList.toggle('active',p===tab);
-  });
 }
 
 function openMovie(mi){
