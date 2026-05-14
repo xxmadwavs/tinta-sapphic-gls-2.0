@@ -1317,10 +1317,10 @@
       "episodes": [],
       "bookLinks": [],
       "genres": [
-        "Romance",
-        "Drama",
         "Comedia",
-        "Escolar"
+        "Drama",
+        "Escolar",
+        "Romance"
       ],
       "seasons": [
         {
@@ -1330,6 +1330,7 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
           "episodes": [
             {
@@ -1362,9 +1363,53 @@
               "date": "2026-05-23",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         }
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778762184220",
+          "character": "Nano",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778762225918",
+          "character": "Jane",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778762257833",
+          "character": "Amy",
+          "coupleType": "main",
+          "coupleNum": 2
+        },
+        {
+          "actressId": "1778762295071",
+          "character": "Sophie",
+          "coupleType": "main",
+          "coupleNum": 2
+        },
+        {
+          "actressId": "1778762358088",
+          "character": "Belle",
+          "coupleType": "main",
+          "coupleNum": 3
+        },
+        {
+          "actressId": "1778762396463",
+          "character": "Earn",
+          "coupleType": "main",
+          "coupleNum": 3
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-14T12:42:01.504Z"
     },
     {
       "id": "1776966800863",
@@ -1488,11 +1533,30 @@
         }
       ],
       "genres": [
-        "Romance",
         "Drama",
-        "Terror",
-        "Fantasía"
-      ]
+        "Fantasía",
+        "Romance",
+        "Terror"
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778762094028",
+          "character": "Pan",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778762128045",
+          "character": "Sydney",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-14T12:40:37.648Z"
     },
     {
       "id": "1776967103985",
@@ -1547,14 +1611,14 @@
     {
       "id": "1776971232987",
       "name": "Chasing Love",
-      "poster": "https://i.mydramalist.com/JB8R1y_4f.jpg",
+      "poster": "https://i.mydramalist.com/AB60Zq_4c.jpg?v=1",
       "synopsis": "Tres mujeres que huyen del amor se cruzan con otras tres que se niegan a renunciar a perseguir sus corazones, demostrando que el amor es lo que mantiene vivo el espíritu humano. No importa cuánto intentemos escapar, al final, todas queremos amar y ser amadas.",
       "year": 2026,
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/6ToICrwha9Y?si=uBNNNek5enWWT_-O",
+      "trailerUrl": "https://youtu.be/YVECcuW7swA?si=s-DGs0eGSjgLXn6m",
       "bookSource": "Chasing Love",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/344632/Thumbnail/book_detail_large.gif?8",
@@ -1582,7 +1646,27 @@
       "totalEpisodes": 8,
       "genres": [
         "Romance"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-05-29",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            4
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-14T12:43:46.012Z"
     },
     {
       "id": "1776971297117",
@@ -1795,7 +1879,32 @@
       "episodes": [],
       "genres": [
         "Romance"
-      ]
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778761992984",
+          "character": "Alice",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778762052809",
+          "character": "Nannalin",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669290609",
+          "character": "Rinlada",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-14T12:44:28.398Z"
     },
     {
       "id": "1776972237357",
@@ -24576,7 +24685,295 @@
       "country": "Tailandia",
       "birthdate": "1992-10-15",
       "notes": "Actriz"
+    },
+    {
+      "id": "1778760564161",
+      "name": "\"Aom\" Pundao Panyabaramee",
+      "photo": "https://image.tmdb.org/t/p/w500/jAKqHsiihiVTaPDImtZuVCv0puC.jpg",
+      "country": "Tailandia",
+      "birthdate": "1999-06-18",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778760606088",
+      "name": "\"Neko\" Naerunchara Lertprasert",
+      "photo": "https://static.wikia.nocookie.net/drama/images/d/d1/Naerunchara_Lertprasert-01.jpg/revision/latest?cb=20240319000121&path-prefix=es",
+      "country": "Tailandia",
+      "birthdate": "1997-11-18",
+      "height": 160,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778760689825",
+      "name": "\"Shelly\" Phetsai Chanrueang",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuxX74Vj69pQXT8L1gZuLAXTPOqY99M3eSaw&s",
+      "country": "Tailandia",
+      "birthdate": "2003-07-21",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778760735020",
+      "name": "\"Lilly\" Ladapa Thongkham",
+      "photo": "https://thailansawadee.com/wp-content/uploads/2025/12/tieu-su-lilly-ladapa-thongkham.jpg",
+      "country": "Tailandia",
+      "birthdate": "2002-05-23",
+      "height": 177,
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778760773120",
+      "name": "\"Belle\" Jiratchaya Kittavornsakul",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFpJijw5KnccgbxkcRlLeqBHBVLW0HYP0aUw&s",
+      "country": "Tailandia",
+      "birthdate": "2005-05-01",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778760802641",
+      "name": "\"Fay\" Apisara Lertwisettheerakul",
+      "photo": "https://image.tmdb.org/t/p/w500/pkLROUEwRPNMqrGdeQq2RdyTAsB.jpg",
+      "country": "Tailandia",
+      "birthdate": "1999-12-08",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778760850305",
+      "name": "\"Gene\" Ornalin Leelaburanathanakul",
+      "photo": "https://i.mydramalist.com/Bdr2jA_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2002-03-10",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778760904100",
+      "name": "\"Faye\" Peraya Malisorn,",
+      "photo": "https://static.wikia.nocookie.net/drama/images/3/36/Peraya-Malisorn-02.jpg/revision/latest/scale-to-width-down/250?cb=20240304210518&path-prefix=es",
+      "country": "Tailandia",
+      "birthdate": "1994-10-14",
+      "height": 175,
+      "notes": ""
+    },
+    {
+      "id": "1778760957217",
+      "name": "\"Atom\" Pariya Piyapanopas",
+      "photo": "https://static.wikia.nocookie.net/drama/images/b/b9/Atom_6.jpg/revision/latest?cb=20250617121216&path-prefix=es",
+      "country": "Tailandia",
+      "birthdate": "2001-11-13",
+      "height": 166,
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778760989113",
+      "name": "\"Yoko\" Apasra Lertprasert",
+      "photo": "https://static.wikia.nocookie.net/drama/images/3/30/Apasra-Lertprasert-02.jpg/revision/latest?cb=20240304213944&path-prefix=es",
+      "country": "Tailandia",
+      "birthdate": "2001-07-18",
+      "height": 165,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761040196",
+      "name": "\"Ice\" Papichaya Pattaralikitsakul",
+      "photo": "https://static.wikia.nocookie.net/heart-pop-studio/images/0/0f/IcePapichaya.jpg/revision/latest?cb=20250404151406",
+      "country": "Tailandia",
+      "birthdate": "1993-07-05",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761114502",
+      "name": "\"Marissa\" Marissa Lloyd",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRznedExYB3k1IaNNIiZSpw0WUO2P6TozKx1g&s",
+      "country": "Tailandia",
+      "birthdate": "2004-06-01",
+      "notes": ""
+    },
+    {
+      "id": "1778761175235",
+      "name": "\"June\" Nannirin Varokornwatcharakool",
+      "photo": "https://www.tvtime.com/_next/image?url=https%3A%2F%2Fartworks.thetvdb.com%2Fbanners%2Fv4%2Factor%2F9141212%2Fphoto%2F68e596f1626f0.jpg&w=640&q=75",
+      "country": "Tailandia",
+      "birthdate": "1995-08-18",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761227248",
+      "name": "\"Enjoy\" Thidarat Puerthong",
+      "photo": "https://girlsloveinfo.com/wp-content/uploads/2025/07/Thidarat-Puerthong.jpeg",
+      "country": "Tailandia",
+      "birthdate": "1997-10-13",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761265957",
+      "name": "\"TK\" Phinyanech Aungsuwan",
+      "photo": "https://bio.linkcdn.cc/upload/7111907ymh5g0/2026013017/176979385800025684.jpg",
+      "country": "Tailandia",
+      "birthdate": "2003-11-13",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778761294678",
+      "name": "\"Nur\" Desoraya Techapaibul",
+      "photo": "https://sharerice.com/images/thumb/3/36/NurDesoraya1.jpg/300px-NurDesoraya1.jpg",
+      "country": "Tailandia",
+      "birthdate": "2000-12-09",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761329922",
+      "name": "\"Thongfah\" Alicha Sripratak",
+      "photo": "https://artworks.thetvdb.com/banners/v4/actor/9130617/photo/691bb5847aa54.jpg",
+      "country": "Tailandia",
+      "birthdate": "2003-03-15",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761375325",
+      "name": "\"Prigkhing\" Sureeyares Yakares",
+      "photo": "https://static.wikia.nocookie.net/drama/images/2/2b/Prigkhing_Sureeyares_Yakares.jpg/revision/latest?cb=20230916024814",
+      "country": "Tailandia",
+      "birthdate": "2002-11-24",
+      "height": 170,
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778761514836",
+      "name": "\"Memi\" Muanfun Baesakul",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRn_265qxUfzHiM-EDvWH6Ve1CulVJj07NRg&s",
+      "country": "Tailandia",
+      "birthdate": "1998-04-11",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761562883",
+      "name": "\"Ice\" Amena Gul",
+      "photo": "https://static.wikia.nocookie.net/drama/images/2/26/Amena_Gul10.jpg/revision/latest?cb=20210304043306&path-prefix=es",
+      "country": "Tailandia",
+      "birthdate": "1993-04-27",
+      "height": 172,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761762611",
+      "name": "\"Grace\" Grace Harper",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49TNy3SeFEWtn6UkpYIq84yy73xCfh_3__w&s",
+      "country": "Tailandia",
+      "birthdate": "1998-04-20",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761797385",
+      "name": "\"NingNing\" Marika Paekiatchalorn",
+      "photo": "https://pic3.iqiyipic.com/image/20251008/23/08/p_5350947557925905_m_601_600_600.jpg",
+      "country": "Tailandia",
+      "birthdate": "1996-11-06",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778761852669",
+      "name": "\"Miusic\" Praewa Suthamphong",
+      "photo": "https://static.wikia.nocookie.net/akb48/images/7/79/Miusic2026.jpg/revision/latest/scale-to-width/360?cb=20260109134958",
+      "country": "Tailandia",
+      "birthdate": "2001-02-24",
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778761884699",
+      "name": "\"Plaifah\" Plaifah Siraacha",
+      "photo": "https://pic1.iqiyipic.com/image/20250604/f4/f1/p_4997192419089305_m_601_600_600.jpg",
+      "country": "Tailandia",
+      "birthdate": "2000-12-28",
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778761913700",
+      "name": "\"Piano\" Nichapat Numsapanan",
+      "photo": "https://i.mydramalist.com/yWww8R_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2002-06-23",
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778761992984",
+      "name": "\"Meena\" Rina Chatamonchai",
+      "photo": "https://preview.redd.it/about-galaxy-secondary-couple-v0-6bw60vl089tb1.jpg?width=749&format=pjpg&auto=webp&s=e66ad465fe07ac3260acab719db8edef6915c3af",
+      "country": "Tailandia",
+      "birthdate": "1997-10-13",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778762052809",
+      "name": "\"Aoom\" Thaweeporn Phingchamrat",
+      "photo": "https://i.mydramalist.com/E5J6zz_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1996-03-17",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778762094028",
+      "name": "\"Fahsai\" Paweensuda Drouin",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKYTlTMAnJPY6I4S_VuEYivDuoZC339UiPAg&s",
+      "country": "Tailandia",
+      "birthdate": "1993-10-12",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778762128045",
+      "name": "\"Seya\" Nichada Thongchua",
+      "photo": "https://www.nautiljon.com/images/people/02/41/nichada_thongchua_161814.webp",
+      "country": "Tailandia",
+      "birthdate": "2004-10-12",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778762184220",
+      "name": "\"Ploy\" Jhutamas Pakonworrawong",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVZASKTNuDTKtiDn88rR4JCwOP22TKuhT0sQ&s",
+      "country": "Tailandia",
+      "birthdate": "1998-01-09",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778762225918",
+      "name": "\"Puyfai\" Tharathip Baisaeng",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ13AWo3ad1kBfRWR8rVclejRWM88R_6ct-TQ&s",
+      "country": "Tailandia",
+      "birthdate": "2001-12-11",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778762257833",
+      "name": "\"Opal\" Kulwipa Ngamsukkasemsri",
+      "photo": "https://image.tmdb.org/t/p/w500/57vKlTMiQUJtRRfaMNX7v4F2Wc4.jpg",
+      "country": "Tailandia",
+      "birthdate": "2003-04-24",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778762295071",
+      "name": "\"Mint\" Benjanee Watcharavasoontara",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmtfksxUIO9A5vdR-jXV5mjLAZPNELwfbWkQ&s",
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778762358088",
+      "name": "\"Niky\" Warinrat Yolprasong",
+      "photo": "https://static.wikia.nocookie.net/drama/images/3/3a/NikyBNK48June2021.jpg/revision/latest?cb=20210718194315&path-prefix=es",
+      "country": "Tailandia",
+      "birthdate": "2005-01-26",
+      "height": 159,
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778762396463",
+      "name": "\"Eng\" Ladamanee Rattanapornvareesakul",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROKSs_IBRZZjf8NOsioITa-17nxr0JOFNNUw&s",
+      "country": "Tailandia",
+      "birthdate": "2004-08-04",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-14T09:00:46.071Z"
+  "exportedAt": "2026-05-14T12:44:29.360Z"
 }
