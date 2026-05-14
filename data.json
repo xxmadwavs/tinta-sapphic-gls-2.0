@@ -16711,6 +16711,56 @@
         }
       ],
       "updatedAt": "2026-05-14T20:31:43.263Z"
+    },
+    {
+      "id": "1778794257224",
+      "name": "There's No Freaking Way I'll Be Your Lover! Unless...",
+      "nameEn": "わたしが恋人になれるわけないじゃん、ムリムリ！",
+      "poster": "https://pics.filmaffinity.com/There_s_No_Freaking_Way_I_ll_Be_Your_Lover_Unless_Serie_de_TV-193806957-mmed.jpg",
+      "synopsis": "Renako, una chica tímida, entra a preparatoria buscando amigos normales. Se hace amiga de Mai, una modelo segura, pero los sentimientos románticos de Mai crean tensión.",
+      "year": 2025,
+      "country": "Japón",
+      "network": "Prime Video",
+      "networkUrl": "https://www.primevideo.com/detail/0THKAIIRIBLP37SJIY934F03MY",
+      "watchLinks": [
+        {
+          "name": "Prime Video",
+          "url": "https://www.primevideo.com/detail/0THKAIIRIBLP37SJIY934F03MY"
+        }
+      ],
+      "trailerUrl": "https://www.youtube.com/watch?v=uKm1-1WP9-s",
+      "bookSource": "",
+      "basedOnBook": false,
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Romance"
+      ],
+      "category": "anime",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "Verano 2025",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-07-07",
+          "totalEpisodes": 17,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-14T21:30:57.224Z"
     }
   ],
   "movies": [
@@ -25348,6 +25398,7 @@
       "watchLinks": [],
       "trailerUrl": "https://youtu.be/H1x9rixjg5s",
       "genres": [
+        "Navidad",
         "Romance"
       ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/ewoUfKevP5A7x4GyJ6nhw3BbjlQ.jpg",
@@ -25357,7 +25408,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:10:48.066Z"
+      "updatedAt": "2026-05-14T21:17:04.126Z",
+      "nameEn": "",
+      "movieType": "film",
+      "duration": 84,
+      "cast": []
     },
     {
       "id": "1700000000296",
@@ -25380,7 +25435,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:14:07.024Z"
+      "updatedAt": "2026-05-14T21:17:11.271Z",
+      "nameEn": "",
+      "movieType": "short",
+      "duration": 22,
+      "cast": []
     },
     {
       "id": "1700000000297",
@@ -25403,7 +25462,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:14:24.691Z"
+      "updatedAt": "2026-05-14T21:17:18.402Z",
+      "nameEn": "",
+      "movieType": "film",
+      "duration": 91,
+      "cast": []
     },
     {
       "id": "1700000000298",
@@ -25426,7 +25489,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:14:42.393Z"
+      "updatedAt": "2026-05-14T21:17:30.143Z",
+      "nameEn": "왓츠 인 마이 백",
+      "movieType": "short",
+      "duration": 12,
+      "cast": []
     },
     {
       "id": "1700000000299",
@@ -25447,7 +25514,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:12:26.550Z"
+      "updatedAt": "2026-05-14T21:17:40.267Z",
+      "nameEn": "",
+      "movieType": "film",
+      "duration": 91,
+      "cast": []
     },
     {
       "id": "1700000000300",
@@ -25468,7 +25539,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:12:06.995Z"
+      "updatedAt": "2026-05-14T21:17:54.903Z",
+      "nameEn": "รักซ่อนเลส",
+      "movieType": "short",
+      "duration": 15,
+      "cast": []
     },
     {
       "id": "1700000000301",
@@ -25482,8 +25557,8 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://m.media-amazon.com/images/M/MV5BMGEwYmFkNDEtMDZmYS00MDMwLTlmM2MtNGYwZjk1MTM0NTY3XkEyXkFqcGc@._V1_.jpg",
       "basedOnBook": false,
@@ -25492,7 +25567,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:11:53.106Z"
+      "updatedAt": "2026-05-14T21:18:08.777Z",
+      "nameEn": "Langue étrangère",
+      "movieType": "film",
+      "duration": 105,
+      "cast": []
     },
     {
       "id": "1700000000302",
@@ -25506,8 +25585,8 @@
       "watchLinks": [],
       "trailerUrl": "https://youtu.be/2MW146Iezoo",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/l36KTC7nvXeXI1YooMiIcsb1Ou3.jpg",
       "basedOnBook": false,
@@ -25516,7 +25595,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:11:25.010Z"
+      "updatedAt": "2026-05-14T21:18:41.015Z",
+      "nameEn": "",
+      "movieType": "film",
+      "duration": 117,
+      "cast": []
     },
     {
       "id": "1700000000303",
@@ -25540,7 +25623,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:09:59.842Z"
+      "updatedAt": "2026-05-14T21:18:47.469Z",
+      "movieType": "short",
+      "duration": 19,
+      "cast": []
     },
     {
       "id": "1700000000304",
@@ -25563,7 +25649,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:09:33.273Z"
+      "updatedAt": "2026-05-14T21:19:01.496Z",
+      "nameEn": "失明",
+      "movieType": "film",
+      "duration": 158,
+      "cast": []
     },
     {
       "id": "1700000000305",
@@ -25591,7 +25681,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:09:11.056Z"
+      "updatedAt": "2026-05-14T21:19:16.575Z",
+      "nameEn": "เด็กแฟลต",
+      "movieType": "film",
+      "duration": 130,
+      "cast": []
     },
     {
       "id": "1700000000306",
@@ -25604,7 +25698,11 @@
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "https://youtu.be/2FaVAEjWoxM",
-      "genres": [],
+      "genres": [
+        "Animación",
+        "Ciencia Ficción",
+        "Comedia"
+      ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/bmf6spk0WZ10lz4eAK95P1zRB4F.jpg",
       "basedOnBook": false,
       "bookSource": "",
@@ -25612,7 +25710,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:08:34.528Z"
+      "updatedAt": "2026-05-14T21:19:35.397Z",
+      "nameEn": "",
+      "movieType": "film",
+      "duration": 90,
+      "cast": []
     },
     {
       "id": "1700000000307",
@@ -25658,7 +25760,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:07:58.231Z"
+      "updatedAt": "2026-05-14T21:19:47.375Z",
+      "nameEn": "",
+      "movieType": "film",
+      "duration": 102,
+      "cast": []
     },
     {
       "id": "1700000000309",
@@ -25681,7 +25787,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:07:35.583Z"
+      "updatedAt": "2026-05-14T21:20:06.940Z",
+      "nameEn": "女孩不平凡",
+      "movieType": "film",
+      "duration": 100,
+      "cast": []
     },
     {
       "id": "1700000000310",
@@ -25704,7 +25814,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:07:11.387Z"
+      "updatedAt": "2026-05-14T21:20:15.041Z",
+      "nameEn": "",
+      "movieType": "short",
+      "duration": 44,
+      "cast": []
     },
     {
       "id": "1700000000311",
@@ -25728,10 +25842,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T08:53:45.586Z",
+      "updatedAt": "2026-05-14T21:20:28.308Z",
       "movieType": "short",
       "duration": 30,
-      "cast": []
+      "cast": [],
+      "nameEn": "가을 말고 봄에"
     },
     {
       "id": "1700000000312",
@@ -25774,11 +25889,15 @@
       "bookLinks": [],
       "bookUrl": "",
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "category": "movie",
-      "updatedAt": "2026-05-11T11:52:30.313Z"
+      "updatedAt": "2026-05-14T21:20:49.457Z",
+      "nameEn": "",
+      "movieType": "film",
+      "duration": 94,
+      "cast": []
     },
     {
       "id": "1778500339493",
@@ -25801,7 +25920,11 @@
         "Romance"
       ],
       "category": "movie",
-      "updatedAt": "2026-05-11T11:52:19.493Z"
+      "updatedAt": "2026-05-14T21:21:06.506Z",
+      "nameEn": "",
+      "movieType": "short",
+      "duration": 2,
+      "cast": []
     },
     {
       "id": "1778500428113",
@@ -25822,7 +25945,11 @@
       "bookUrl": "",
       "genres": [],
       "category": "movie",
-      "updatedAt": "2026-05-11T11:53:48.113Z"
+      "updatedAt": "2026-05-14T21:21:27.434Z",
+      "nameEn": "มายเอ็กซ์ เวดดิ้ง... ปิ๊งรักคนที่เลิก",
+      "movieType": "film",
+      "duration": 95,
+      "cast": []
     },
     {
       "id": "1778500575662",
@@ -25851,7 +25978,11 @@
         "Thriller"
       ],
       "category": "movie",
-      "updatedAt": "2026-05-11T11:56:15.662Z"
+      "updatedAt": "2026-05-14T21:21:51.384Z",
+      "nameEn": "अक्यूज़्ड",
+      "movieType": "film",
+      "duration": 107,
+      "cast": []
     },
     {
       "id": "1778500640877",
@@ -25871,12 +26002,16 @@
       "bookLinks": [],
       "bookUrl": "",
       "genres": [
+        "Histórico",
         "Romance",
-        "Sobrenatural",
-        "Histórico"
+        "Sobrenatural"
       ],
       "category": "movie",
-      "updatedAt": "2026-05-11T11:57:20.877Z"
+      "updatedAt": "2026-05-14T21:22:08.688Z",
+      "nameEn": "东宫吸猫",
+      "movieType": "short",
+      "duration": 7,
+      "cast": []
     },
     {
       "id": "1778500729613",
@@ -25896,11 +26031,15 @@
       "bookLinks": [],
       "bookUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "category": "movie",
-      "updatedAt": "2026-05-11T11:58:49.613Z"
+      "updatedAt": "2026-05-14T21:22:26.483Z",
+      "nameEn": "फायर",
+      "movieType": "film",
+      "duration": 108,
+      "cast": []
     },
     {
       "id": "1778500875179",
@@ -25924,10 +26063,11 @@
         "Anime"
       ],
       "category": "anime",
-      "updatedAt": "2026-05-14T08:50:29.195Z",
+      "updatedAt": "2026-05-14T21:22:44.376Z",
       "movieType": "film",
-      "duration": "",
-      "cast": []
+      "duration": 58,
+      "cast": [],
+      "nameEn": "あさがおと加瀬さん。"
     },
     {
       "id": "1778611963184",
@@ -25947,11 +26087,15 @@
       "bookLinks": [],
       "bookUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "category": "movie",
-      "updatedAt": "2026-05-12T18:52:43.184Z"
+      "updatedAt": "2026-05-14T21:23:17.795Z",
+      "nameEn": "チェイサーゲームW 水魚の交わり",
+      "movieType": "film",
+      "duration": 84,
+      "cast": []
     },
     {
       "id": "1778612027313",
@@ -25977,7 +26121,75 @@
       "bookUrl": "",
       "genres": [],
       "category": "movie",
-      "updatedAt": "2026-05-12T18:53:47.313Z"
+      "updatedAt": "2026-05-14T21:23:38.115Z",
+      "nameEn": "รัก เคียงข้าง สัญญา เฝ้ารอ…เพื่อน?",
+      "movieType": "short",
+      "duration": 29,
+      "cast": []
+    },
+    {
+      "id": "1778793966200",
+      "name": "Light Light Light",
+      "nameEn": "Valoa valoa valoa",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/6/5/0/0/7/8/650078-light-light-light-0-1000-0-1500-crop.jpg?v=1e034822e4",
+      "synopsis": "Mariia visita la casa de su infancia y rememora el verano de 1986, cuando una niña llamada Mimi llegó al pequeño pueblo y llenó de luz la vida de Mariia, que entonces tenía 15 años.",
+      "year": 2023,
+      "country": "Finlandia",
+      "network": "Filmin",
+      "networkUrl": "https://www.filmin.es/pelicula/luz-del-86?awinaffid=400165&awinmid=82863",
+      "watchLinks": [
+        {
+          "name": "Filmin",
+          "url": "https://www.filmin.es/pelicula/luz-del-86?awinaffid=400165&awinmid=82863"
+        }
+      ],
+      "trailerUrl": "https://youtu.be/mx5iTgT6b98?si=78e1U2q2KP3s_ZaY",
+      "date": "2023-08-23",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "category": "movie",
+      "movieType": "film",
+      "duration": 87,
+      "cast": [],
+      "updatedAt": "2026-05-14T21:26:06.200Z"
+    },
+    {
+      "id": "1778794593156",
+      "name": "Utena, la chica revolucionaria: Apocalipsis adolescente",
+      "nameEn": "少女革命ウテナ",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/3/9/4/4/3/39443-revolutionary-girl-utena-the-adolescence-of-utena-0-1000-0-1500-crop.jpg?v=e2247c96ed",
+      "synopsis": "En una adaptación libre de la serie de televisión Revolutionary Girl Utena, Utena Tenjou llega a la Academia Ohtori, solo para verse inmediatamente envuelta en una serie de duelos por la mano de su compañera de clase Anthy Himemiya y el poder que supuestamente posee. Al mismo tiempo, Utena se reencuentra con Touga Kiryuu, un amigo de su infancia que parece conocer los secretos detrás de los duelos. Utena debe descubrir esos secretos por sí misma, antes de que el poder que gobierna Ohtori la reclame a ella y a sus amigos, nuevos y antiguos.",
+      "year": 1999,
+      "country": "Japón",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://youtu.be/kQCmlHeC6vg?si=bN6_aMMISxqvIB-Z",
+      "date": "1999-08-14",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Animación",
+        "Anime",
+        "Drama",
+        "Fantasía",
+        "Romance"
+      ],
+      "category": "anime",
+      "movieType": "film",
+      "duration": 85,
+      "cast": [],
+      "updatedAt": "2026-05-14T21:36:33.156Z"
     }
   ],
   "actresses": [
@@ -27223,5 +27435,5 @@
       "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-14T21:16:18.862Z"
+  "exportedAt": "2026-05-14T21:36:50.795Z"
 }
