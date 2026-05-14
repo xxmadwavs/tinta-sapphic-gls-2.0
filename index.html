@@ -1031,6 +1031,78 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .container>div[id^="view"]{animation:fadeIn .25s ease}
+
+/* ═══ FOOTER ═══ */
+footer {
+  margin-top:3rem; padding:1.5rem 2rem 2rem;
+  border-top:1px solid var(--border);
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(8px);
+  text-align:center;
+  position:relative; z-index:1;
+}
+.footer-inner {
+  max-width:1020px; margin:0 auto;
+  display:flex; flex-direction:column; align-items:center; gap:16px;
+}
+.footer-brand-row {
+  display:flex; align-items:center; justify-content:space-between;
+  width:100%; flex-wrap:wrap; gap:8px;
+}
+.footer-logo {
+  font-family:var(--font-display); font-size:14px;
+  font-weight:600; color:var(--muted);
+}
+.footer-logo strong { color:var(--text); font-weight:700; letter-spacing:.06em; }
+.footer-logo em { color:var(--accent); }
+.footer-tagline { font-size:11.5px; color:var(--muted); }
+.footer-x-link {
+  font-size:11.5px; color:var(--muted); text-decoration:none;
+  font-weight:600; transition:color .15s;
+}
+.footer-x-link:hover { color:var(--accent); }
+.footer-nav-row {
+  display:flex; align-items:center; justify-content:center;
+  flex-wrap:wrap; gap:8px;
+}
+.footer-nav-btn {
+  font-size:12px; color:var(--muted); cursor:pointer; font-weight:500;
+  padding:6px 14px; border:1.5px solid var(--border2); border-radius:20px;
+  transition:all .18s; background:var(--surface); font-family:var(--font-body);
+}
+.footer-nav-btn:hover {
+  background:var(--surface2); color:var(--accent); border-color:var(--accent2);
+}
+.footer-nav-x {
+  font-size:12px; color:var(--muted); text-decoration:none; font-weight:500;
+  padding:6px 14px; border:1.5px solid var(--border2); border-radius:20px;
+  transition:all .18s; background:var(--surface);
+  display:flex; align-items:center; gap:5px;
+}
+.footer-nav-x:hover { background:#000; color:#fff; border-color:#000; }
+
+.info-modal-close{
+  position:sticky;top:1rem;float:right;margin:1rem 1rem 0 0;
+  width:30px;height:30px;border-radius:50%;
+  border:1.5px solid var(--border2);background:var(--surface);
+  color:var(--muted);font-size:13px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  z-index:10;transition:all .15s;
+}
+.info-modal-close:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.info-modal-bg{
+  display:none;position:fixed;inset:0;
+  background:rgba(30,10,25,0.55);z-index:200;
+  align-items:center;justify-content:center;
+  padding:1.5rem;backdrop-filter:blur(6px);
+  opacity:0;transition:opacity .2s;
+}
+.info-modal-bg.open{display:flex;opacity:1}
+.info-modal-box{
+  background:var(--surface);border-radius:var(--radius-lg);
+  max-width:560px;width:100%;max-height:80vh;overflow-y:auto;
+  position:relative;box-shadow:var(--shadow-lg);border:1px solid var(--border2);
+}
 </style>
 </head>
 <body>
@@ -3875,29 +3947,21 @@ document.addEventListener('keydown',e=>{
 
 </script>
 
-<footer style="
-  margin-top:3rem;padding:1.5rem 2rem 2rem;
-  border-top:1px solid var(--border);
-  background:rgba(255,255,255,0.6);
-  backdrop-filter:blur(8px);
-  text-align:center;
-  position:relative;z-index:1;
-">
-  <div style="max-width:1020px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px">
-    <!-- Logo + tagline row -->
-    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:8px">
-      <span style="font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--muted)">
-        <span style="color:var(--text);font-weight:700;letter-spacing:.06em">TINTA</span> <em style="color:var(--accent)">Sapphic</em>
-      </span>
-      <span style="font-size:11.5px;color:var(--muted)">Series & películas GL de todo el mundo 🌸</span>
-      <a href="https://x.com/xxmadwavs" target="_blank" rel="noopener" style="font-size:11.5px;color:var(--muted);text-decoration:none;font-weight:600;transition:color .15s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">@xxmadwavs en X</a>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-row">
+      <span class="footer-logo"><strong>TINTA</strong> <em>Sapphic</em></span>
+      <span class="footer-tagline">Series &amp; películas GL de todo el mundo 🌸</span>
+      <a href="https://x.com/xxmadwavs" target="_blank" rel="noopener" class="footer-x-link">@xxmadwavs en X</a>
     </div>
-    <!-- Nav links row -->
-    <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px">
-      <button onclick="openInfoModal('sobre')" style="font-size:12px;color:var(--muted);cursor:pointer;font-weight:500;padding:6px 14px;border:1.5px solid var(--border2);border-radius:20px;transition:all .18s;background:var(--surface);font-family:var(--font-body)" onmouseover="this.style.background='var(--surface2)';this.style.color='var(--accent)';this.style.borderColor='var(--accent2)'" onmouseout="this.style.background='var(--surface)';this.style.color='var(--muted)';this.style.borderColor='var(--border2)'">Sobre nosotras</button>
-      <a href="https://x.com/xxmadwavs" target="_blank" rel="noopener" style="font-size:12px;color:var(--muted);text-decoration:none;font-weight:500;padding:6px 14px;border:1.5px solid var(--border2);border-radius:20px;transition:all .18s;background:var(--surface);display:flex;align-items:center;gap:5px" onmouseover="this.style.background='#000';this.style.color='#fff';this.style.borderColor='#000'" onmouseout="this.style.background='var(--surface)';this.style.color='var(--muted)';this.style.borderColor='var(--border2)'"><svg width="12" height="12" viewBox="0 0 1200 1227" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>Contáctanos</a>
-      <button onclick="openInfoModal('privacidad')" style="font-size:12px;color:var(--muted);cursor:pointer;font-weight:500;padding:6px 14px;border:1.5px solid var(--border2);border-radius:20px;transition:all .18s;background:var(--surface);font-family:var(--font-body)" onmouseover="this.style.background='var(--surface2)';this.style.color='var(--accent)';this.style.borderColor='var(--accent2)'" onmouseout="this.style.background='var(--surface)';this.style.color='var(--muted)';this.style.borderColor='var(--border2)'">Política de privacidad</button>
-      <button onclick="openInfoModal('terminos')" style="font-size:12px;color:var(--muted);cursor:pointer;font-weight:500;padding:6px 14px;border:1.5px solid var(--border2);border-radius:20px;transition:all .18s;background:var(--surface);font-family:var(--font-body)" onmouseover="this.style.background='var(--surface2)';this.style.color='var(--accent)';this.style.borderColor='var(--accent2)'" onmouseout="this.style.background='var(--surface)';this.style.color='var(--muted)';this.style.borderColor='var(--border2)'">Términos de uso</button>
+    <div class="footer-nav-row">
+      <button type="button" class="footer-nav-btn" onclick="openInfoModal('sobre')">Sobre nosotras</button>
+      <a href="https://x.com/xxmadwavs" target="_blank" rel="noopener" class="footer-nav-x">
+        <svg width="12" height="12" viewBox="0 0 1200 1227" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
+        Contáctanos
+      </a>
+      <button type="button" class="footer-nav-btn" onclick="openInfoModal('privacidad')">Política de privacidad</button>
+      <button type="button" class="footer-nav-btn" onclick="openInfoModal('terminos')">Términos de uso</button>
     </div>
   </div>
 </footer>
@@ -3905,9 +3969,9 @@ document.addEventListener('keydown',e=>{
 
 
 <!-- ═══ INFO MODALS (Sobre nosotras / Privacidad / Términos) ═══ -->
-<div id="infoModalBg" onclick="if(event.target===this)closeInfoModal()" style="display:none;position:fixed;inset:0;background:rgba(30,10,25,0.55);z-index:200;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px)">
-  <div id="infoModalBox" style="background:var(--surface);border-radius:var(--radius-lg);max-width:560px;width:100%;max-height:80vh;overflow-y:auto;position:relative;box-shadow:var(--shadow-lg);border:1px solid var(--border2)">
-    <button onclick="closeInfoModal()" style="position:sticky;top:1rem;float:right;margin:1rem 1rem 0 0;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border2);background:var(--surface);color:var(--muted);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all .15s" onmouseover="this.style.background='var(--accent)';this.style.color='#fff';this.style.borderColor='var(--accent)'" onmouseout="this.style.background='var(--surface)';this.style.color='var(--muted)';this.style.borderColor='var(--border2)'">✕</button>
+<div id="infoModalBg" onclick="if(event.target===this)closeInfoModal()" class="info-modal-bg">
+  <div id="infoModalBox" class="info-modal-box">
+    <button type="button" class="info-modal-close" onclick="closeInfoModal()" aria-label="Cerrar">✕</button>
     <div id="infoModalContent" style="padding:1.75rem 1.75rem 2rem;clear:both"></div>
   </div>
 </div>
@@ -3959,7 +4023,7 @@ const INFO_CONTENT = {
           Algunas imágenes de portadas y enlaces de streaming son externos. Al acceder a plataformas de terceros (Netflix, Crunchyroll, etc.) quedarás sujeta a sus propias políticas de privacidad.
         </p>
       </div>
-      <p style="font-size:12px;color:var(--muted);margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">Última actualización: mayo 2025. ¿Dudas? Escríbenos por <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">X (@xxmadwavs)</a>.</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">Última actualización: mayo 2026. ¿Dudas? Escríbenos por <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">X (@xxmadwavs)</a>.</p>
     `
   },
   terminos: {
@@ -4004,16 +4068,17 @@ function openInfoModal(key) {
     ${data.html}
   `;
   const bg = document.getElementById('infoModalBg');
-  bg.style.display = 'flex';
-  setTimeout(() => bg.style.opacity = '1', 10);
+  bg.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeInfoModal() {
-  document.getElementById('infoModalBg').style.display = 'none';
+  document.getElementById('infoModalBg').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && document.getElementById('infoModalBg').style.display !== 'none') {
+  if (e.key === 'Escape' && document.getElementById('infoModalBg').classList.contains('open')) {
     closeInfoModal();
   }
 });

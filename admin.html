@@ -402,21 +402,40 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .cast-dropdown-item:hover,.cast-dropdown-item.focused{background:var(--accent-soft);color:var(--accent)}
 .cast-dropdown-item img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0}
 .cast-dropdown-empty{padding:10px;font-size:12px;color:var(--muted);text-align:center}
+
+/* ─── Confirm Modal ─── */
+.confirm-modal-bg{
+  position:fixed;inset:0;background:rgba(58,37,53,.55);
+  display:none;align-items:center;justify-content:center;
+  z-index:300;padding:1.5rem;backdrop-filter:blur(3px);
+}
+.confirm-modal-bg.open{display:flex}
+.confirm-modal{
+  background:var(--surface);border:1.5px solid var(--border2);
+  border-radius:16px;width:100%;max-width:380px;
+  box-shadow:0 20px 50px rgba(212,96,138,0.2);
+  padding:1.5rem;text-align:center;
+}
+.confirm-modal-icon{font-size:36px;margin-bottom:.75rem}
+.confirm-modal-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--text);margin-bottom:.5rem}
+.confirm-modal-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:1.25rem}
+.confirm-modal-btns{display:flex;gap:8px;justify-content:center}
+
 </style>
 </head>
 <body>
 <div class="topbar">
   <span class="logo">🌸 GL Series Calendar <span class="logo-badge">ADMIN</span></span>
   <div class="topbar-actions">
-    <button class="btn small" onclick="document.getElementById('importFile').click()">⬆ Importar data.json</button>
+    <button type="button" class="btn small" onclick="document.getElementById('importFile').click()">⬆ Importar data.json</button>
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
-    <button class="btn small" onclick="window.open('index.html','_blank')">👁 Ver público</button>
-    <button class="btn export small" onclick="exportData()">⬇ Exportar data.json</button>
+    <button type="button" class="btn small" onclick="window.open('index.html','_blank')">👁 Ver público</button>
+    <button type="button" class="btn export small" onclick="exportData()">⬇ Exportar data.json</button>
   </div>
 </div>
 <div class="unsaved-bar" id="unsavedBar">
   <span>⚠️ Tienes cambios sin exportar. Recuerda exportar <code>data.json</code> y subirlo a GitHub.</span>
-  <button class="btn small export" onclick="exportData()">⬇ Exportar ahora</button>
+  <button type="button" class="btn small export" onclick="exportData()">⬇ Exportar ahora</button>
 </div>
 <!-- Quick navigation bar -->
 <nav class="quicknav" id="quicknav">
@@ -428,10 +447,10 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <a class="qnav-btn" href="#section-books" onclick="document.getElementById('section-books').scrollIntoView({behavior:'smooth'});return false;">📚 Libros</a>
   <a class="qnav-btn" href="#section-actresses" onclick="document.getElementById('section-actresses').scrollIntoView({behavior:'smooth'});return false;">🎭 Actrices</a>
   <div class="quicknav-sep"></div>
-  <button class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
-  <button class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
-  <button class="qnav-btn add-anime" onclick="openAddAnime()">+ Anime</button>
-  <button class="qnav-btn add-reality" onclick="openAddReality()">+ Reality</button>
+  <button type="button" class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
+  <button type="button" class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
+  <button type="button" class="qnav-btn add-anime" onclick="openAddAnime()">+ Anime</button>
+  <button type="button" class="qnav-btn add-reality" onclick="openAddReality()">+ Reality</button>
 </nav>
 
 <div class="container">
@@ -447,10 +466,10 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
         <input class="admin-search-input" id="adminSeriesQ" placeholder="Buscar por nombre, país, plataforma…" oninput="pages.series=1;render()">
       </div>
       <div class="admin-filter-pills" id="adminStatusPills">
-        <button class="admin-pill active" data-status="all" onclick="setAdminStatus('all',this)">Todas</button>
-        <button class="admin-pill" data-status="airing" onclick="setAdminStatus('airing',this)">🌸 Emisión</button>
-        <button class="admin-pill" data-status="finished" onclick="setAdminStatus('finished',this)">✓ Finalizadas</button>
-        <button class="admin-pill" data-status="upcoming" onclick="setAdminStatus('upcoming',this)">📅 Próximas</button>
+        <button type="button" class="admin-pill active" data-status="all" onclick="setAdminStatus('all',this)">Todas</button>
+        <button type="button" class="admin-pill" data-status="airing" onclick="setAdminStatus('airing',this)">🌸 Emisión</button>
+        <button type="button" class="admin-pill" data-status="finished" onclick="setAdminStatus('finished',this)">✓ Finalizadas</button>
+        <button type="button" class="admin-pill" data-status="upcoming" onclick="setAdminStatus('upcoming',this)">📅 Próximas</button>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
@@ -463,7 +482,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
         </select>
       </div>
     </div>
-    <button class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddSeries()">+ Añadir nueva serie</button>
+    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddSeries()">+ Añadir nueva serie</button>
     <div class="series-count-label" id="seriesCountLabel"></div>
     <div class="series-grid" id="seriesGrid"></div>
   </div>
@@ -485,7 +504,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
         </select>
       </div>
     </div>
-    <button class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddMovie()">+ Añadir película</button>
+    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddMovie()">+ Añadir película</button>
     <div class="series-count-label" id="moviesCountLabel"></div>
     <div class="series-grid" id="moviesGrid"></div>
   </div>
@@ -506,7 +525,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
         </select>
       </div>
     </div>
-    <button class="btn primary" style="margin-bottom:1rem;width:100%;background:#7c5cbf;border-color:#7c5cbf" onclick="openAddAnime()">+ Añadir anime</button>
+    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:#7c5cbf;border-color:#7c5cbf" onclick="openAddAnime()">+ Añadir anime</button>
     <div class="series-count-label" id="animeCountLabel"></div>
     <div class="series-grid" id="animeGrid"></div>
   </div>
@@ -527,7 +546,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
         </select>
       </div>
     </div>
-    <button class="btn primary" style="margin-bottom:1rem;width:100%;background:#3a9e94;border-color:#3a9e94" onclick="openAddReality()">+ Añadir reality / docuserie</button>
+    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:#3a9e94;border-color:#3a9e94" onclick="openAddReality()">+ Añadir reality / docuserie</button>
     <div class="series-count-label" id="realitiesCountLabel"></div>
     <div class="series-grid" id="realitiesGrid"></div>
   </div>
@@ -535,7 +554,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <div class="card" id="section-books">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem">
       <div class="card-title" style="margin-bottom:0">📚 Libros registrados</div>
-      <button onclick="toggleBooksSection()" id="booksSectionToggle" style="background:none;border:1.5px solid var(--border2);border-radius:20px;padding:3px 12px;font-size:11.5px;font-weight:700;color:var(--muted);cursor:pointer">▼ Mostrar</button>
+      <button type="button" onclick="toggleBooksSection()" id="booksSectionToggle" style="background:none;border:1.5px solid var(--border2);border-radius:20px;padding:3px 12px;font-size:11.5px;font-weight:700;color:var(--muted);cursor:pointer">▼ Mostrar</button>
     </div>
     <div id="booksContent" style="display:none">
       <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Libros enlazados desde series o películas marcadas como <strong>"Basada en libro"</strong>.</p>
@@ -556,7 +575,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
         <input class="admin-search-input" id="adminActressQ" placeholder="Buscar actriz…" oninput="renderActressesGrid()">
       </div>
     </div>
-    <button class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddActress()">+ Añadir actriz</button>
+    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddActress()">+ Añadir actriz</button>
     <div class="series-count-label" id="actressCountLabel"></div>
     <div id="actressesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:8px"></div>
   </div>
@@ -579,7 +598,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 <!-- Modal actriz -->
 <div class="modal-bg" id="actressModal">
   <div class="modal" style="max-width:480px">
-    <div class="modal-header"><div class="modal-title" id="actressModalTitle" style="margin-bottom:0"></div><button class="modal-close" onclick="document.getElementById('actressModal').classList.remove('open')">✕</button></div>
+    <div class="modal-header"><div class="modal-title" id="actressModalTitle" style="margin-bottom:0"></div><button type="button" class="modal-close" onclick="document.getElementById('actressModal').classList.remove('open')">✕</button></div>
     <div id="actressModalBody"></div>
   </div>
 </div>
@@ -758,7 +777,7 @@ function paginationHtml(section, total, totalPages, page){
   if(totalPages <= 1) return '';
   let btns = '';
   // Prev
-  btns += `<button class="pg-btn" onclick="goPage('${section}',${page-1})" ${page<=1?'disabled':''}>‹</button>`;
+  btns += `<button type="button" class="pg-btn" onclick="goPage('${section}',${page-1})" ${page<=1?'disabled':''}>‹</button>`;
   // Page numbers — show up to 7 buttons with ellipsis
   const range = [];
   for(let i=1;i<=totalPages;i++){
@@ -767,10 +786,10 @@ function paginationHtml(section, total, totalPages, page){
   }
   range.forEach(r=>{
     if(r==='…') btns+=`<span class="pg-btn" style="cursor:default;border-color:transparent;color:var(--muted)">…</span>`;
-    else btns+=`<button class="pg-btn${r===page?' active':''}" onclick="goPage('${section}',${r})">${r}</button>`;
+    else btns+=`<button type="button" class="pg-btn${r===page?' active':''}" onclick="goPage('${section}',${r})">${r}</button>`;
   });
   // Next
-  btns += `<button class="pg-btn" onclick="goPage('${section}',${page+1})" ${page>=totalPages?'disabled':''}>›</button>`;
+  btns += `<button type="button" class="pg-btn" onclick="goPage('${section}',${page+1})" ${page>=totalPages?'disabled':''}>›</button>`;
   const start=(page-1)*PAGE_SIZE+1, end=Math.min(page*PAGE_SIZE,total);
   return `<div class="pagination">${btns}<span class="pg-info">${start}–${end} de ${total}</span></div>`;
 }
@@ -825,7 +844,7 @@ function showImportBanner(){
       <div style="font-weight:700;color:var(--text);font-size:14px">Carga tu <code>data.json</code> para ver las series</div>
       <div style="font-size:12px;color:var(--muted);margin-top:2px">Al abrir admin localmente el navegador no puede leer el archivo automáticamente.</div>
     </div>
-    <button class="btn primary" onclick="document.getElementById('importFile').click();document.getElementById('importBanner').remove()">Importar</button>
+    <button type="button" class="btn primary" onclick="document.getElementById('importFile').click();document.getElementById('importBanner').remove()">Importar</button>
   `;
   document.body.appendChild(banner);
 }
@@ -1069,9 +1088,9 @@ function render(){
         ${!s.upcoming?`<div class="progress-wrap" style="margin-top:6px;height:4px;background:var(--border);border-radius:2px;overflow:hidden"><div class="progress-fill" style="width:${(()=>{const eps2=genEpisodes(s),now2=new Date(),seasons2=getSeasons(s),tot=seasons2.reduce((a,t)=>a+t.totalEpisodes,0),a=eps2.filter(e=>new Date(e.date+'T12:00:00')<=now2&&!e.skipped).length;return Math.round(a/Math.max(tot,1)*100)})()}%;background:${col}"></div></div>`:''}`;
       div.appendChild(info);
       const actions=document.createElement('div'); actions.className='series-actions';
-      actions.innerHTML=`${!s.upcoming?`<button class="btn small" onclick="openEps(${si})">Episodios</button>`:''}
-        <button class="btn small" onclick="openEdit(${si})">Editar</button>
-        <button class="btn small danger" onclick="delSeries(${si})">✕</button>`;
+      actions.innerHTML=`${!s.upcoming?`<button type="button" class="btn small" onclick="openEps(${si})">Episodios</button>`:''}
+        <button type="button" class="btn small" onclick="openEdit(${si})">Editar</button>
+        <button type="button" class="btn small danger" onclick="delSeries(${si})">✕</button>`;
       div.appendChild(actions);
       grid.appendChild(div);
     });
@@ -1581,7 +1600,7 @@ function openAddSeries(){
   document.getElementById('seriesModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null)+
-    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" onclick="saveSeries(-1)">Guardar</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(-1)">Guardar</button></div>`;
   document.getElementById('seriesModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   initCountries('countriesList','');
@@ -1592,7 +1611,7 @@ function openEdit(si){
   document.getElementById('seriesModalTitle').textContent='✏️ Editar serie';
   document.getElementById('seriesModalBody').innerHTML=
     formHtml(series[si])+
-    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" onclick="saveSeries(${si})">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(${si})">Guardar cambios</button></div>`;
   document.getElementById('seriesModal').classList.add('open');
   bindPoster();
   const links=series[si].watchLinks||(series[si].networkUrl?[{name:series[si].network||'Ver serie',url:series[si].networkUrl}]:[]);
@@ -1826,7 +1845,7 @@ function openAddAnime(){
   document.getElementById('animeModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null,'anime')+
-    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(-1,'anime')">Guardar anime</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(-1,'anime')">Guardar anime</button></div>`;
   document.getElementById('animeModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   initCountries('countriesList','Japón');
@@ -1837,7 +1856,7 @@ function openEditAnime(si){
   document.getElementById('animeModalTitle').textContent='✏️ Editar anime';
   document.getElementById('animeModalBody').innerHTML=
     formHtml(series[si],'anime')+
-    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si},'anime')">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si},'anime')">Guardar cambios</button></div>`;
   document.getElementById('animeModal').classList.add('open');
   bindPoster();
   const s=series[si];
@@ -1856,7 +1875,7 @@ function openAddReality(){
   document.getElementById('realityModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null,'reality')+
-    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(-1,'reality')">Guardar</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(-1,'reality')">Guardar</button></div>`;
   document.getElementById('realityModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   initCountries('countriesList','');
@@ -1867,7 +1886,7 @@ function openEditReality(si){
   document.getElementById('realityModalTitle').textContent='✏️ Editar reality';
   document.getElementById('realityModalBody').innerHTML=
     formHtml(series[si],'reality')+
-    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si},'reality')">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si},'reality')">Guardar cambios</button></div>`;
   document.getElementById('realityModal').classList.add('open');
   bindPoster();
   const s=series[si];
@@ -1923,9 +1942,9 @@ function renderAnimeGrid(){
         <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:#7c5cbf"></div></div>
       </div>
       <div class="series-actions">
-        <button class="btn small" onclick="openEpsAnime(${si})">📋 Eps</button>
-        <button class="btn small" onclick="openEditAnime(${si})">✏️</button>
-        <button class="btn small danger" onclick="delSeries(${si})">🗑</button>
+        <button type="button" class="btn small" onclick="openEpsAnime(${si})">📋 Eps</button>
+        <button type="button" class="btn small" onclick="openEditAnime(${si})">✏️</button>
+        <button type="button" class="btn small danger" onclick="delSeries(${si})">🗑</button>
       </div>`;
     grid.appendChild(div);
   });
@@ -1976,9 +1995,9 @@ function renderRealitiesGrid(){
         <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:#3a9e94"></div></div>
       </div>
       <div class="series-actions">
-        <button class="btn small" onclick="openEps(${si})">📋 Eps</button>
-        <button class="btn small" onclick="openEditReality(${si})">✏️</button>
-        <button class="btn small danger" onclick="delSeries(${si})">🗑</button>
+        <button type="button" class="btn small" onclick="openEps(${si})">📋 Eps</button>
+        <button type="button" class="btn small" onclick="openEditReality(${si})">✏️</button>
+        <button type="button" class="btn small danger" onclick="delSeries(${si})">🗑</button>
       </div>`;
     grid.appendChild(div);
   });
@@ -2034,8 +2053,9 @@ function saveSeries(si, forcedCategory=null){
   save(); closeAll(); render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
 }
 
-function delSeries(si){
-  if(!confirm(`¿Eliminar "${series[si].name}"?`)) return;
+async function delSeries(si){
+  const ok = await showConfirm({title:`¿Eliminar "${series[si].name}"?`, desc:'Se eliminará permanentemente. Esta acción no se puede deshacer.', icon:'🗑️'});
+  if(!ok) return;
   series.splice(si,1); save(); render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
 }
 
@@ -2051,7 +2071,7 @@ function openEps(si){
     const skipDates=new Set(season.skipDates||[]);
     if(seasons.length>1) html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:${sIdx>0?'14px':0} 0 8px">${season.label||`Temporada ${sIdx+1}`}</div>`;
     if(!season.allInOneDay){
-      html+=`<button class="btn small" style="margin-bottom:8px;width:100%" onclick="openAddSkip(${si},${sIdx})">+ Añadir descanso en ${season.label||'T'+(sIdx+1)}</button>`;
+      html+=`<button type="button" class="btn small" style="margin-bottom:8px;width:100%" onclick="openAddSkip(${si},${sIdx})">+ Añadir descanso en ${season.label||'T'+(sIdx+1)}</button>`;
     } else {
       html+=`<div style="font-size:12px;color:var(--teal);background:var(--teal-soft);border-radius:8px;padding:6px 12px;margin-bottom:8px">📦 Estreno completo — todos los eps el ${fmtDate(season.startDate)}</div>`;
     }
@@ -2089,7 +2109,7 @@ function openEps(si){
         html+=`<div class="ep-row" style="background:#f5f5f5;border-color:#e0e0e0;cursor:default;justify-content:space-between">
           <span style="font-size:12px;color:#aaa">🚫 Descanso</span>
           <span class="ep-date" style="color:#aaa">${fmtDate(date)}</span>
-          <button class="btn small danger" onclick="removeSkip(${si},${sIdx},'${date}')">✕</button>
+          <button type="button" class="btn small danger" onclick="removeSkip(${si},${sIdx},'${date}')">✕</button>
         </div>`;
       } else if(epMap[date]){
         epMap[date].forEach(ep=>{
@@ -2113,7 +2133,7 @@ function openEps(si){
     } // end else (not allInOneDay)
     html+=`</div>`;
   });
-  html+=`<div class="btn-row" style="margin-top:1rem"><button class="btn" onclick="closeAll()">Cerrar</button></div>`;
+  html+=`<div class="btn-row" style="margin-top:1rem"><button type="button" class="btn" onclick="closeAll()">Cerrar</button></div>`;
   document.getElementById('epsModalBody').innerHTML=html;
   document.getElementById('epsModal').classList.add('open');
 }
@@ -2134,7 +2154,7 @@ function openAddSkip(si, sIdx){
   document.getElementById('epEditBody').innerHTML=`
     <div class="ep-edit-info"><strong>${s.name}</strong> · ${season.label||'Temporada '+(sIdx+1)}<br>Elige la fecha del slot que <strong>no se emite</strong>.</div>
     <div class="form-row"><label class="form-label">Fecha del descanso *</label><input id="skip_date" type="date" value="${suggestion}"/></div>
-    <div class="btn-row"><button class="btn" onclick="openEps(${si})">← Volver</button><button class="btn primary" onclick="saveSkip(${si},${sIdx})">Añadir descanso</button></div>`;
+    <div class="btn-row"><button type="button" class="btn" onclick="openEps(${si})">← Volver</button><button type="button" class="btn primary" onclick="saveSkip(${si},${sIdx})">Añadir descanso</button></div>`;
   document.getElementById('epEditModal').classList.add('open');
 }
 
@@ -2186,8 +2206,8 @@ function openEpEdit(si, sIdx, epNum){
       <input type="checkbox" id="fe_skip" ${ep.skipped?'checked':''} style="width:auto;accent-color:var(--accent)"/>
       Marcar como no emitido (semana de descanso)
     </label></div>
-    ${hasOv?`<div class="divider"></div><div style="text-align:center"><button class="btn danger small" onclick="resetEp(${si},${sIdx},${epNum})">↩ Restablecer fecha automática</button></div>`:''}
-    <div class="btn-row" style="margin-top:1rem"><button class="btn" onclick="openEps(${si})">← Volver</button><button class="btn primary" onclick="saveEp(${si},${sIdx},${epNum})">Guardar</button></div>`;
+    ${hasOv?`<div class="divider"></div><div style="text-align:center"><button type="button" class="btn danger small" onclick="resetEp(${si},${sIdx},${epNum})">↩ Restablecer fecha automática</button></div>`:''}
+    <div class="btn-row" style="margin-top:1rem"><button type="button" class="btn" onclick="openEps(${si})">← Volver</button><button type="button" class="btn primary" onclick="saveEp(${si},${sIdx},${epNum})">Guardar</button></div>`;
   document.getElementById('epEditModal').classList.add('open');
 }
 
@@ -2390,7 +2410,7 @@ function openAddMovie(){
   document.getElementById('movieModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('movie')}</div>`+
     movieFormHtml(null)+
-    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" onclick="saveMovie(-1)">Guardar</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(-1)">Guardar</button></div>`;
   document.getElementById('movieModal').classList.add('open');
   bindMovieForm(); initMoviePlatforms([]); initBookEditions('movieBookEditionsList',[],null);
   initCountries('movieCountriesList','');
@@ -2399,7 +2419,7 @@ function openAddMovie(){
 function openEditMovie(mi){
   document.getElementById('movieModalTitle').textContent='✏️ Editar película';
   document.getElementById('movieModalBody').innerHTML=movieFormHtml(movies[mi])+
-    `<div class="modal-footer-btns"><button class="btn" onclick="closeAll()">Cancelar</button><button class="btn primary" onclick="saveMovie(${mi})">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(${mi})">Guardar cambios</button></div>`;
   document.getElementById('movieModal').classList.add('open');
   bindMovieForm();
   const mv=movies[mi];
@@ -2473,8 +2493,9 @@ function saveMovie(mi){
   else movies[mi]={...movies[mi],...payload,updatedAt:movieUpdatedAt};
   save(); closeAll(); render(); renderMovies(); renderBooks();
 }
-function delMovie(mi){
-  if(!confirm(`¿Eliminar "${movies[mi].name}"?`)) return;
+async function delMovie(mi){
+  const ok = await showConfirm({title:`¿Eliminar "${movies[mi].name}"?`, desc:'Se eliminará permanentemente. Esta acción no se puede deshacer.', icon:'🗑️'});
+  if(!ok) return;
   movies.splice(mi,1); save(); render(); renderMovies(); renderBooks();
 }
 
@@ -2526,6 +2547,14 @@ function renderBooks(){
 }
 
 function exportData(){
+  try {
+    // Validate before exporting
+    const testJson = JSON.stringify({series, movies, actresses, exportedAt: new Date().toISOString()});
+    JSON.parse(testJson); // verify roundtrip
+  } catch(e) {
+    alert('Error al validar los datos antes de exportar: ' + e.message);
+    return;
+  }
   document.getElementById('unsavedBar').classList.remove('visible');
   const blob=new Blob([JSON.stringify({series,movies,actresses,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
@@ -2557,7 +2586,7 @@ function pasteBarHtml(type){
     +'<div class="paste-bar-hint">Pega tu ficha completa (formato propio o bloque de MyDramaList). Las URLs entre <strong>__ __</strong> se detectan como imagen o enlace.</div>'
     +'<div class="paste-bar-row">'
     +'<textarea class="paste-bar-textarea" id="pasteInput" placeholder="Pega aquí la ficha..."></textarea>'
-    +'<button class="paste-bar-btn" onclick="runPasteAutofill(window._pasteType)">Rellenar</button>'
+    +'<button type="button" class="paste-bar-btn" onclick="runPasteAutofill(window._pasteType)">Rellenar</button>'
     +'</div>'
     +'<div class="paste-bar-status" id="pasteStatus"></div>'
     +'</div>';
@@ -2929,7 +2958,7 @@ function openAddActress(){
   document.getElementById('actressModalTitle').textContent='🎭 Nueva actriz';
   document.getElementById('actressModalBody').innerHTML=
     actressFormHtml(null)+
-    `<div class="modal-footer-btns"><button class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button><button class="btn primary" onclick="saveActress(-1)">Guardar</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button><button type="button" class="btn primary" onclick="saveActress(-1)">Guardar</button></div>`;
   document.getElementById('actressModal').classList.add('open');
 }
 
@@ -2937,7 +2966,7 @@ function openEditActress(ai){
   document.getElementById('actressModalTitle').textContent='✏️ Editar actriz';
   document.getElementById('actressModalBody').innerHTML=
     actressFormHtml(actresses[ai])+
-    `<div class="modal-footer-btns"><button class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button><button class="btn primary" onclick="saveActress(${ai})">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button><button type="button" class="btn primary" onclick="saveActress(${ai})">Guardar cambios</button></div>`;
   document.getElementById('actressModal').classList.add('open');
 }
 
@@ -2962,8 +2991,9 @@ function saveActress(ai){
   showActressToast(payload.name, payload.photo, isNew);
 }
 
-function delActress(ai){
-  if(!confirm(`¿Eliminar a "${actresses[ai].name}"? Se borrará de todas las series y películas.`)) return;
+async function delActress(ai){
+  const ok = await showConfirm({title:`¿Eliminar a "${actresses[ai].name}"?`, desc:'Se borrará de todas las series y películas donde aparezca. Esta acción no se puede deshacer.', icon:'🎭'});
+  if(!ok) return;
   const id=actresses[ai].id;
   series.forEach(s=>{if(s.cast) s.cast=s.cast.filter(m=>m.actressId!==id);});
   movies.forEach(m=>{if(m.cast) m.cast=m.cast.filter(m2=>m2.actressId!==id);});
@@ -3189,5 +3219,43 @@ function showActressToast(name, photo, isNew){
   }));
 }
 </script>
+
+<!-- ─── Confirm Modal ─── -->
+<div class="confirm-modal-bg" id="confirmModalBg">
+  <div class="confirm-modal">
+    <div class="confirm-modal-icon" id="confirmModalIcon">⚠️</div>
+    <div class="confirm-modal-title" id="confirmModalTitle">¿Confirmar acción?</div>
+    <div class="confirm-modal-desc" id="confirmModalDesc">Esta acción no se puede deshacer.</div>
+    <div class="confirm-modal-btns">
+      <button type="button" class="btn" onclick="confirmModalResolve(false)">Cancelar</button>
+      <button type="button" class="btn danger" id="confirmModalOkBtn" onclick="confirmModalResolve(true)">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── Confirm Dialog helper ───
+let _confirmResolve = null;
+function showConfirm({title='¿Eliminar?', desc='Esta acción no se puede deshacer.', okLabel='Eliminar', icon='⚠️'}={}){
+  document.getElementById('confirmModalTitle').textContent = title;
+  document.getElementById('confirmModalDesc').textContent = desc;
+  document.getElementById('confirmModalOkBtn').textContent = okLabel;
+  document.getElementById('confirmModalIcon').textContent = icon;
+  document.getElementById('confirmModalBg').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  return new Promise(resolve => { _confirmResolve = resolve; });
+}
+function confirmModalResolve(val){
+  document.getElementById('confirmModalBg').classList.remove('open');
+  document.body.style.overflow = '';
+  if(_confirmResolve){ _confirmResolve(val); _confirmResolve=null; }
+}
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape' && document.getElementById('confirmModalBg').classList.contains('open')){
+    confirmModalResolve(false);
+  }
+});
+</script>
+
 </body>
 </html>
