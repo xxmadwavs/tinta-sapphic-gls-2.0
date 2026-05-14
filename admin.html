@@ -421,6 +421,10 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .cast-dropdown-item:hover,.cast-dropdown-item.focused{background:var(--accent-soft);color:var(--accent)}
 .cast-dropdown-item img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0}
 .cast-dropdown-empty{padding:10px;font-size:12px;color:var(--muted);text-align:center}
+.cast-del-btn{background:none;border:1.5px solid rgba(212,92,92,.3);border-radius:8px;color:var(--danger);font-size:14px;cursor:pointer;padding:0;width:30px;height:30px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'Nunito',sans-serif}
+.cast-del-btn:hover{background:rgba(212,92,92,.1);border-color:var(--danger)}
+.cast-create-btn{width:100%;padding:6px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;text-align:left;transition:all .15s}
+.cast-create-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 
 /* ─── Confirm Modal ─── */
 .confirm-modal-bg{
@@ -3125,19 +3129,19 @@ function addCastMember(data){
           onblur="setTimeout(()=>closeCastDropdown('${uid}'),150)">
         <div class="cast-dropdown" id="${uid}_dd"></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr auto auto;gap:5px">
+      <div style="display:grid;grid-template-columns:1fr 112px 48px;gap:5px">
         <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif">
-        <select class="cast-type-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600">
+        <select class="cast-type-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:10px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
           <option value="main" ${coupleType==='main'?'selected':''}>💕 Principal</option>
           <option value="secondary" ${coupleType==='secondary'?'selected':''}>🌸 Secundaria</option>
           <option value="other" ${coupleType==='other'?'selected':''}>Otro</option>
         </select>
-        <select class="cast-num-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600">
+        <select class="cast-num-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
           ${[1,2,3,4].map(n=>`<option value="${n}" ${coupleNum===n?'selected':''}>P${n}</option>`).join('')}
         </select>
       </div>
     </div>
-    <button type="button" onclick="this.closest('.cast-admin-row').remove()" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:0 2px;flex-shrink:0;margin-top:2px">✕</button>`;
+    <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Eliminar">✕</button>`;
   list.appendChild(row);
 }
 
@@ -3146,9 +3150,11 @@ function filterCastDropdown(inp, uid){
   const dd=document.getElementById(uid+'_dd');
   if(!dd) return;
   const matches=actresses.filter(a=>!q||a.name.toLowerCase().includes(q)||(a.country&&a.country.toLowerCase().includes(q)));
-  const createBtn=`<div class="cast-dropdown-item" style="border-top:1px solid var(--border);color:var(--accent);font-style:italic"
-    onmousedown="quickCreateActress(${JSON.stringify(inp.value.trim()).replace(/'/g,"\\'")}, '${uid}')">
-    ✚ Crear actriz "${escapeHtml(inp.value.trim()||'nueva')}"…
+  const namePrefill=inp.value.trim();
+  const createBtn=`<div style="padding:6px 8px;border-top:1px solid var(--border);background:var(--surface2)">
+    <button type="button" class="cast-create-btn" onmousedown="quickCreateActress(${JSON.stringify(namePrefill).replace(/'/g,"\\'")}, '${uid}')">
+      ✚ Crear actriz${namePrefill?` "${escapeHtml(namePrefill)}"`:' nueva'}…
+    </button>
   </div>`;
   if(!matches.length){
     dd.innerHTML=`<div class="cast-dropdown-empty">Sin resultados</div>${createBtn}`;
@@ -3284,19 +3290,19 @@ function addMovieCastMember(data){
           onblur="setTimeout(()=>closeCastDropdown('${uid}'),150)">
         <div class="cast-dropdown" id="${uid}_dd"></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr auto auto;gap:5px">
+      <div style="display:grid;grid-template-columns:1fr 112px 48px;gap:5px">
         <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif">
-        <select class="cast-type-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600">
+        <select class="cast-type-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:10px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
           <option value="main" ${coupleType==='main'?'selected':''}>💕 Principal</option>
           <option value="secondary" ${coupleType==='secondary'?'selected':''}>🌸 Secundaria</option>
           <option value="other" ${coupleType==='other'?'selected':''}>Otro</option>
         </select>
-        <select class="cast-num-sel" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600">
+        <select class="cast-num-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
           ${[1,2,3,4].map(n=>`<option value="${n}" ${coupleNum===n?'selected':''}>P${n}</option>`).join('')}
         </select>
       </div>
     </div>
-    <button type="button" onclick="this.closest('.cast-admin-row').remove()" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:0 2px;flex-shrink:0;margin-top:2px">✕</button>`;
+    <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Eliminar">✕</button>`;
   list.appendChild(row);
 }
 
