@@ -1916,6 +1916,7 @@ function seriesCardHtml(s, si){
     <div class="series-card-body">
       ${badgesHtml}
       <div class="series-card-name">${s.name}</div>
+      ${s.nameEn?`<div style="font-size:10px;color:var(--muted);font-style:italic;line-height:1.3;margin-top:1px;margin-bottom:1px">${s.nameEn}</div>`:''}
       <div class="series-card-meta">${s.network||''}</div>
       ${statusPill}
       ${progressBar}
@@ -2765,6 +2766,7 @@ function openSeries(si){
   let html=`${posterEl}<div class="modal-body">
   <div class="modal-badges">${s.basedOnBook?'<span class="badge badge-book">📖 Basada en libro</span>':''}${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}</div>
   <div class="modal-title">${s.name}</div>
+  ${s.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${s.nameEn}</div>`:''}
   ${datesRowHtml}
   ${nextBadgeHtml}
   ${progressBlock}
@@ -2772,7 +2774,6 @@ function openSeries(si){
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
   ${s.synopsis?`<div class="synopsis">${s.synopsis}</div>`:''}
-  ${s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;margin-bottom:4px">${s.genres.map(g=>`<span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--accent-soft);color:var(--accent);font-weight:600;border:1px solid var(--border2)">${g}</span>`).join('')}</div>`:''}
   ${s.basedOnBook?(()=>{
     const hasCover=s.bookCoverUrl&&s.bookCoverUrl.trim();
     const hasTitle=s.bookSource&&s.bookSource.trim();
@@ -2831,6 +2832,7 @@ function openUpcoming(si){
   let html=`${posterEl}<div class="modal-body">
   <div class="modal-badges"><span class="badge badge-upcoming">📅 Próximamente</span>${s.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}</div>
   <div class="modal-title">${s.name}</div>
+  ${s.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${s.nameEn}</div>`:''}
   <div class="modal-completeness">
     <span style="font-weight:700;color:var(--text);white-space:nowrap">${infoLabel}</span>
     <div class="modal-completeness-bar"><div class="modal-completeness-fill" style="width:${pctInfo}%"></div></div>
@@ -2841,7 +2843,6 @@ function openUpcoming(si){
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
   ${s.synopsis?`<div class="synopsis">${s.synopsis}</div>`:`<div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:13px;font-style:italic">📝 Sinopsis no disponible aún</div>`}
-  ${s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;margin-bottom:4px">${s.genres.map(g=>`<span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--accent-soft);color:var(--accent);font-weight:600;border:1px solid var(--border2)">${g}</span>`).join('')}</div>`:''}
   ${s.basedOnBook?(()=>{
     const hasCover=s.bookCoverUrl&&s.bookCoverUrl.trim();
     const hasTitle=s.bookSource&&s.bookSource.trim();
@@ -2910,13 +2911,13 @@ function openMovie(mi){
   let html=`${posterEl}<div class="modal-body">
   <div class="modal-badges">${mvModalTypeBadge}${mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge" style="background:var(--accent-soft);color:var(--accent)">⏳ Próximamente</span>'}</div>
   <div class="modal-title">${mv.name}</div>
+  ${mv.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${mv.nameEn}</div>`:''}
   ${chipsHtml}
   ${releaseBadgeHtml}
   ${watchLinksHtml}
   ${mv.trailerUrl?trailerHtml(mv.trailerUrl):''}
   ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
   ${mv.synopsis?`<div class="synopsis">${mv.synopsis}</div>`:''}
-  ${mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;margin-bottom:4px">${mv.genres.map(g=>`<span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--accent-soft);color:var(--accent);font-weight:600;border:1px solid var(--border2)">${g}</span>`).join('')}</div>`:''}
   ${bookBlock}
   ${castCount?`<div class="divider"></div>
   <div class="modal-tabs">
@@ -2990,6 +2991,7 @@ function movieCardHtml(mv){
     <div class="movie-card-body">
       <div class="card-badges">${typeBadge}${mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
       <div class="movie-card-name">${mv.name}</div>
+      ${mv.nameEn?`<div style="font-size:10px;color:var(--muted);font-style:italic;line-height:1.3;margin-top:1px;margin-bottom:1px">${mv.nameEn}</div>`:''}
       <div class="movie-card-meta" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${mv.network?`<span>${mv.network}</span>`:''}${durationEl}</div>
       ${mvGenrePills}
       ${dateEl}
@@ -3666,6 +3668,7 @@ function openRichDetail(item, opts){
     <div class="modal-body">
       <div class="modal-badges">${badgeHtml}</div>
       <div class="modal-title">${item.name}</div>
+      ${item.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${item.nameEn}</div>`:''}
       <div class="modal-dates-row">
         ${(() => { const startDate=item.startDate||item.date||''; return startDate?`<span class="modal-date-chip">🎬 ${startDate.substring(0,4)}</span>`:''; })()}
         ${item.country?`<span class="modal-date-chip">${countryFlag(item.country)} ${item.country}</span>`:''}

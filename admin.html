@@ -1493,8 +1493,8 @@ function formHtml(s, forcedCategory=null){
       </div>
 
       <div class="form-row">
-        <label class="form-label">Nombre en inglés <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(opcional — mejora la búsqueda)</span></label>
-        <input id="f_nameEn" placeholder="Ej: Girl Rules (dejar vacío si el nombre ya es en inglés)" value="${s?s.nameEn||'':''}"/>
+        <label class="form-label">Título original <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(opcional — si el nombre principal ya es el original, déjalo vacío)</span></label>
+        <input id="f_nameEn" placeholder="Ej: 이태원 클라쓰 / Itaewon Class / 深夜食堂…" value="${s?s.nameEn||'':''}"/>
       </div>
 
       <div class="form-row">
@@ -2327,6 +2327,10 @@ function movieFormHtml(mv){
   <div id="f_name_dup_warn" style="display:none;margin-top:6px;padding:8px 12px;border-radius:10px;background:#fff3cd;border:1.5px solid #f0c040;font-size:12px;color:#7a5a00;line-height:1.6"></div>
   </div>
   <div class="form-row">
+    <label class="form-label">Título original <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(opcional — si el nombre principal ya es el original, déjalo vacío)</span></label>
+    <input id="mf_nameEn" placeholder="Ej: 이태원 클라쓰 / Itaewon Class / 深夜食堂…" value="${mv&&mv.nameEn?mv.nameEn:''}"/>
+  </div>
+  <div class="form-row">
     <label class="form-label">URL de la portada</label>
     <input id="mf_poster" placeholder="https://image.tmdb.org/..." value="${mv&&mv.poster?mv.poster:''}"/>
     <div class="poster-row"><img id="moviePosterPreview" class="poster-preview" alt="Portada" style="${mv&&mv.poster?'display:block':'display:none'}" src="${mv&&mv.poster?mv.poster:''}">
@@ -2553,6 +2557,7 @@ function saveMovie(mi){
   const movieCategory=document.getElementById('mf_category')?.value||'movie';
   const payload={
     name,
+    nameEn:document.getElementById('mf_nameEn')?.value.trim()||'',
     poster:document.getElementById('mf_poster').value.trim(),
     synopsis:document.getElementById('mf_synopsis').value.trim(),
     year:document.getElementById('mf_year').value?parseInt(document.getElementById('mf_year').value):'',

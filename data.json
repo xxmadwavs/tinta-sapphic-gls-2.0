@@ -24833,7 +24833,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:17:57.636Z"
+      "updatedAt": "2026-05-14T20:43:30.692Z",
+      "movieType": "film",
+      "duration": 82,
+      "cast": []
     },
     {
       "id": "1700000000282",
@@ -24847,8 +24850,8 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/qxIWdBekEMPKil2C1rzE9xeDY30.jpg",
       "basedOnBook": false,
@@ -24857,7 +24860,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:18:17.893Z"
+      "updatedAt": "2026-05-14T20:43:37.620Z",
+      "movieType": "short",
+      "duration": 12,
+      "cast": []
     },
     {
       "id": "1700000000283",
@@ -24871,8 +24877,11 @@
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=odS6pOfx2TU",
       "genres": [
-        "Romance",
-        "Drama"
+        "Comedia",
+        "Comedia romántica",
+        "Drama",
+        "Navidad",
+        "Romance"
       ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/dwgYDpqIzYEjEnl2OnXldPt4B32.jpg",
       "basedOnBook": false,
@@ -24881,7 +24890,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:18:30.639Z"
+      "updatedAt": "2026-05-14T20:43:56.861Z",
+      "movieType": "film",
+      "duration": 94,
+      "cast": []
     },
     {
       "id": "1700000000284",
@@ -24904,7 +24916,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:19:44.977Z"
+      "updatedAt": "2026-05-14T20:44:05.966Z",
+      "movieType": "film",
+      "duration": 100,
+      "cast": []
     },
     {
       "id": "1700000000285",
@@ -24917,7 +24932,9 @@
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=vH5NAahf76s",
-      "genres": [],
+      "genres": [
+        "Comedia"
+      ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/zAPPIeqB4cjXiS5qPFgeifndunG.jpg",
       "basedOnBook": false,
       "bookSource": "",
@@ -24925,7 +24942,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:20:01.254Z"
+      "updatedAt": "2026-05-14T20:44:15.257Z",
+      "movieType": "film",
+      "duration": 91,
+      "cast": []
     },
     {
       "id": "1700000000286",
@@ -24939,6 +24959,7 @@
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=K05BJm3XVAg",
       "genres": [
+        "Navidad",
         "Romance"
       ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/naLwVZJKN1G4OQatuoMNcHwQDRw.jpg",
@@ -24948,7 +24969,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:20:19.332Z"
+      "updatedAt": "2026-05-14T20:44:23.781Z",
+      "movieType": "film",
+      "duration": 84,
+      "cast": []
     },
     {
       "id": "1700000000287",
@@ -24971,7 +24995,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:20:38.772Z"
+      "updatedAt": "2026-05-14T20:44:38.508Z",
+      "movieType": "film",
+      "duration": 90,
+      "cast": []
     },
     {
       "id": "1700000000289",
@@ -24994,7 +25021,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T18:16:05.668Z"
+      "updatedAt": "2026-05-14T20:44:58.754Z",
+      "movieType": "film",
+      "duration": 118,
+      "cast": []
     },
     {
       "id": "1700000000290",
@@ -25040,7 +25070,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T18:16:45.729Z"
+      "updatedAt": "2026-05-14T20:45:11.986Z",
+      "movieType": "short",
+      "duration": 17,
+      "cast": []
     },
     {
       "id": "1700000000292",
@@ -25054,8 +25087,8 @@
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=01ACPCwY0sk",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://pics.filmaffinity.com/Historias-491563160-large.jpg",
       "basedOnBook": false,
@@ -25064,7 +25097,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T18:16:58.730Z"
+      "updatedAt": "2026-05-14T20:45:18.965Z",
+      "movieType": "film",
+      "duration": 90,
+      "cast": []
     },
     {
       "id": "1700000000293",
@@ -25087,7 +25123,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T18:17:08.874Z"
+      "updatedAt": "2026-05-14T20:45:30.146Z",
+      "movieType": "film",
+      "duration": 123,
+      "cast": []
     },
     {
       "id": "1700000000294",
@@ -25106,8 +25145,8 @@
       ],
       "trailerUrl": "https://youtu.be/E_3Dw4oxaqM",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://i.mydramalist.com/E538ZQ_4f.jpg",
       "basedOnBook": false,
@@ -25116,9 +25155,9 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T20:46:34.806Z",
+      "updatedAt": "2026-05-14T20:45:38.542Z",
       "movieType": "film",
-      "duration": "",
+      "duration": 130,
       "cast": [
         {
           "actressId": "1778668868889",
@@ -27027,5 +27066,5 @@
       "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-14T20:42:56.230Z"
+  "exportedAt": "2026-05-14T20:46:10.429Z"
 }
