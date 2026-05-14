@@ -16995,8 +16995,8 @@
       "watchLinks": [],
       "trailerUrl": "https://youtu.be/QfmO-f9i_dc",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/97SaWndhni3iao5aHBzSpTB7xfn.jpg",
       "basedOnBook": false,
@@ -17005,9 +17005,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:26:01.537Z",
+      "updatedAt": "2026-05-14T20:48:32.010Z",
       "movieType": "film",
-      "duration": 105
+      "duration": 105,
+      "nameEn": "風たちの午後",
+      "cast": []
     },
     {
       "id": "1700000000004",
@@ -17149,8 +17151,8 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/eh0Sn4fytCJDrS9ALyBX4t415Da.jpg",
       "basedOnBook": false,
@@ -17159,9 +17161,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:27:33.874Z",
+      "updatedAt": "2026-05-14T20:48:55.940Z",
       "movieType": "film",
-      "duration": 117
+      "duration": 117,
+      "nameEn": "自梳",
+      "cast": []
     },
     {
       "id": "1700000000010",
@@ -17422,8 +17426,8 @@
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=3l42ambm69s",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://m.media-amazon.com/images/M/MV5BM2U5Mjg2N2QtMjM4MC00M2NhLTgxNjgtZDk2YTJjZDU1Y2I4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
       "basedOnBook": false,
@@ -17432,9 +17436,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:29:05.307Z",
+      "updatedAt": "2026-05-14T20:49:46.920Z",
       "movieType": "film",
-      "duration": 116
+      "duration": 116,
+      "nameEn": "ブルー",
+      "cast": []
     },
     {
       "id": "1700000000020",
@@ -17713,9 +17719,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:30:55.137Z",
+      "updatedAt": "2026-05-14T20:50:35.660Z",
       "movieType": "film",
-      "duration": 85
+      "duration": 85,
+      "nameEn": "Naissance des pieuvres",
+      "cast": []
     },
     {
       "id": "1700000000031",
@@ -17755,8 +17763,8 @@
       "watchLinks": [],
       "trailerUrl": "https://youtu.be/4NpzREY7xhI",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://m.media-amazon.com/images/M/MV5BZTA5NmFhYzItMjE3ZC00YWEwLTlmMmMtMjM2NDhiNjY0YTI4XkEyXkFqcGc@._V1_QL75_UY281_CR4,0,190,281_.jpg",
       "basedOnBook": false,
@@ -17765,9 +17773,11 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:31:19.612Z",
+      "updatedAt": "2026-05-14T20:50:49.585Z",
       "movieType": "film",
-      "duration": 108
+      "duration": 108,
+      "nameEn": "トップレス",
+      "cast": []
     },
     {
       "id": "1700000000033",
@@ -27066,5 +27076,5 @@
       "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-14T20:46:10.429Z"
+  "exportedAt": "2026-05-14T20:50:50.992Z"
 }
