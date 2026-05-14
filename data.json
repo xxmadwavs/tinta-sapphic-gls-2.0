@@ -186,7 +186,8 @@
           "coupleType": "other",
           "coupleNum": 1
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776889141176",
@@ -285,7 +286,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T20:23:52.605Z"
+      "updatedAt": "2026-05-13T20:23:52.605Z",
+      "nameEn": ""
     },
     {
       "id": "1776889264943",
@@ -342,7 +344,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:55:20.447Z"
+      "updatedAt": "2026-05-13T08:55:20.447Z",
+      "nameEn": ""
     },
     {
       "id": "1776889333282",
@@ -416,7 +419,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T11:00:30.670Z"
+      "updatedAt": "2026-05-13T11:00:30.670Z",
+      "nameEn": ""
     },
     {
       "id": "1776889365998",
@@ -524,7 +528,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T11:51:42.170Z"
+      "updatedAt": "2026-05-13T11:51:42.170Z",
+      "nameEn": ""
     },
     {
       "id": "1776889415383",
@@ -641,7 +646,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T11:55:40.368Z"
+      "updatedAt": "2026-05-13T11:55:40.368Z",
+      "nameEn": ""
     },
     {
       "id": "1776889447326",
@@ -732,7 +738,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T10:36:48.002Z"
+      "updatedAt": "2026-05-13T10:36:48.002Z",
+      "nameEn": ""
     },
     {
       "id": "1776889488147",
@@ -768,7 +775,8 @@
         "Romance",
         "Drama",
         "Psicológico"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776889550180",
@@ -812,7 +820,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776930878872",
@@ -901,7 +910,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T11:55:44.994Z"
+      "updatedAt": "2026-05-13T11:55:44.994Z",
+      "nameEn": ""
     },
     {
       "id": "1776931938317",
@@ -960,7 +970,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T10:58:00.550Z"
+      "updatedAt": "2026-05-13T10:58:00.550Z",
+      "nameEn": ""
     },
     {
       "id": "1776932166717",
@@ -1008,7 +1019,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T11:56:12.011Z"
+      "updatedAt": "2026-05-13T11:56:12.011Z",
+      "nameEn": ""
     },
     {
       "id": "1776932289648",
@@ -1042,7 +1054,8 @@
       ],
       "genres": [
         "Romance"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776932412578",
@@ -1147,7 +1160,8 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T08:55:30.306Z"
+      "updatedAt": "2026-05-13T08:55:30.306Z",
+      "nameEn": ""
     },
     {
       "id": "1776965675311",
@@ -1219,7 +1233,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T20:28:03.102Z"
+      "updatedAt": "2026-05-13T20:28:03.102Z",
+      "nameEn": ""
     },
     {
       "id": "1776965794937",
@@ -1250,7 +1265,8 @@
         "Romance",
         "Comedia",
         "Ciencia Ficción"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776966024996",
@@ -1289,7 +1305,8 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T08:55:36.464Z"
+      "updatedAt": "2026-05-13T08:55:36.464Z",
+      "nameEn": ""
     },
     {
       "id": "1776966161759",
@@ -1409,7 +1426,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T12:42:01.504Z"
+      "updatedAt": "2026-05-14T12:42:01.504Z",
+      "nameEn": ""
     },
     {
       "id": "1776966800863",
@@ -1505,7 +1523,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T11:58:49.306Z"
+      "updatedAt": "2026-05-13T11:58:49.306Z",
+      "nameEn": ""
     },
     {
       "id": "1776966975487",
@@ -1556,7 +1575,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T12:40:37.648Z"
+      "updatedAt": "2026-05-14T12:40:37.648Z",
+      "nameEn": ""
     },
     {
       "id": "1776967103985",
@@ -1606,7 +1626,8 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776971232987",
@@ -1666,7 +1687,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T12:43:46.012Z"
+      "updatedAt": "2026-05-14T12:43:46.012Z",
+      "nameEn": ""
     },
     {
       "id": "1776971297117",
@@ -1691,7 +1713,8 @@
         "Romance",
         "Drama",
         "Escolar"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776971352334",
@@ -1715,7 +1738,8 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776971502360",
@@ -1775,7 +1799,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:00:06.248Z"
+      "updatedAt": "2026-05-13T12:00:06.248Z",
+      "nameEn": ""
     },
     {
       "id": "1776971628835",
@@ -1820,7 +1845,8 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776972053631",
@@ -1856,7 +1882,8 @@
         "Romance",
         "Drama",
         "Oficina / Trabajo"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776972122133",
@@ -1904,7 +1931,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T12:44:28.398Z"
+      "updatedAt": "2026-05-14T12:44:28.398Z",
+      "nameEn": ""
     },
     {
       "id": "1776972237357",
@@ -1976,7 +2004,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:02:57.918Z"
+      "updatedAt": "2026-05-13T12:02:57.918Z",
+      "nameEn": ""
     },
     {
       "id": "1776972424986",
@@ -2021,7 +2050,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:03:32.383Z"
+      "updatedAt": "2026-05-13T12:03:32.383Z",
+      "nameEn": ""
     },
     {
       "id": "1776972733396",
@@ -2051,7 +2081,8 @@
         "Romance",
         "Drama",
         "Histórico"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776972993462",
@@ -2094,7 +2125,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:04:06.810Z"
+      "updatedAt": "2026-05-13T12:04:06.810Z",
+      "nameEn": ""
     },
     {
       "id": "1776973104361",
@@ -2166,7 +2198,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:04:56.824Z"
+      "updatedAt": "2026-05-13T12:04:56.824Z",
+      "nameEn": ""
     },
     {
       "id": "1776973507673",
@@ -2278,7 +2311,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T12:06:29.019Z"
+      "updatedAt": "2026-05-13T12:06:29.019Z",
+      "nameEn": ""
     },
     {
       "id": "1776974136082",
@@ -2319,7 +2353,8 @@
         "Romance",
         "Misterio",
         "Terror"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776974252950",
@@ -2348,7 +2383,8 @@
       "episodes": [],
       "genres": [
         "Romance"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776974479970",
@@ -2405,7 +2441,8 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776976144217",
@@ -2496,7 +2533,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T12:07:35.458Z"
+      "updatedAt": "2026-05-13T12:07:35.458Z",
+      "nameEn": ""
     },
     {
       "id": "1776976209757",
@@ -2519,7 +2557,8 @@
       "episodes": [],
       "genres": [
         "Romance"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776976249517",
@@ -2544,7 +2583,8 @@
         "Romance",
         "Comedia",
         "Acción"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776976364805",
@@ -2579,7 +2619,8 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776976452500",
@@ -2613,7 +2654,8 @@
       "episodes": [],
       "genres": [
         "Romance"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776976491416",
@@ -2637,7 +2679,8 @@
       "genres": [
         "Romance",
         "Drama"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1776976636268",
@@ -2674,7 +2717,8 @@
         "Drama",
         "Acción",
         "Misterio"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777017936367",
@@ -2705,7 +2749,8 @@
         "Romance",
         "Drama",
         "Acción"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777017989605",
@@ -2734,7 +2779,8 @@
       "episodes": [],
       "genres": [
         "Romance"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777018102689",
@@ -2774,7 +2820,8 @@
       "genres": [
         "Romance",
         "Oficina / Trabajo"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777018271372",
@@ -2805,7 +2852,8 @@
       "bookUrl": "https://www.mebmarket.com/ebook-384696-Wind-of-Love-%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%AB%E0%B9%8C%E0%B8%A5%E0%B8%A1%E0%B8%AB%E0%B8%A7%E0%B8%99-English-Version",
       "upcoming": true,
       "skipDates": [],
-      "episodes": []
+      "episodes": [],
+      "nameEn": ""
     },
     {
       "id": "1777032925125",
@@ -2835,7 +2883,8 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-04-28T19:48:17.953Z"
+      "updatedAt": "2026-04-28T19:48:17.953Z",
+      "nameEn": ""
     },
     {
       "id": "1777033081952",
@@ -2865,7 +2914,8 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-04-28T19:46:08.635Z"
+      "updatedAt": "2026-04-28T19:46:08.635Z",
+      "nameEn": ""
     },
     {
       "id": "1777048197930",
@@ -2921,7 +2971,8 @@
       "genres": [
         "Romance",
         "Histórico"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777048586253",
@@ -2977,7 +3028,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:56:00.183Z"
+      "updatedAt": "2026-05-13T08:56:00.183Z",
+      "nameEn": ""
     },
     {
       "id": "1777065549680",
@@ -3031,7 +3083,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:56:04.774Z"
+      "updatedAt": "2026-05-13T08:56:04.774Z",
+      "nameEn": ""
     },
     {
       "id": "1777068097582",
@@ -3069,7 +3122,8 @@
       ],
       "totalEpisodes": 10,
       "skipDates": [],
-      "episodes": []
+      "episodes": [],
+      "nameEn": ""
     },
     {
       "id": "1777102056290",
@@ -3123,7 +3177,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:56:09.054Z"
+      "updatedAt": "2026-05-13T08:56:09.054Z",
+      "nameEn": ""
     },
     {
       "id": "1777105535961",
@@ -3163,7 +3218,8 @@
       ],
       "totalEpisodes": 8,
       "skipDates": [],
-      "episodes": []
+      "episodes": [],
+      "nameEn": ""
     },
     {
       "id": "1777105656547",
@@ -3203,7 +3259,8 @@
       ],
       "totalEpisodes": 8,
       "skipDates": [],
-      "episodes": []
+      "episodes": [],
+      "nameEn": ""
     },
     {
       "id": "1777105780897",
@@ -3239,7 +3296,8 @@
       ],
       "totalEpisodes": 14,
       "skipDates": [],
-      "episodes": []
+      "episodes": [],
+      "nameEn": ""
     },
     {
       "id": "1777106011444",
@@ -3296,7 +3354,8 @@
       ],
       "totalEpisodes": 8,
       "skipDates": [],
-      "episodes": []
+      "episodes": [],
+      "nameEn": ""
     },
     {
       "id": "1777106235834",
@@ -3345,7 +3404,8 @@
       ],
       "totalEpisodes": 6,
       "skipDates": [],
-      "episodes": []
+      "episodes": [],
+      "nameEn": ""
     },
     {
       "id": "1777106609486",
@@ -3381,7 +3441,8 @@
       ],
       "totalEpisodes": 33,
       "skipDates": [],
-      "episodes": []
+      "episodes": [],
+      "nameEn": ""
     },
     {
       "id": "1777107997520",
@@ -3515,7 +3576,8 @@
             }
           ]
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777115712295",
@@ -3524,7 +3586,7 @@
       "synopsis": "Una escritora se enfrenta a una misión crucial: debe impedir que el mundo sucumba ante una epidemia que amenaza con cambiar la humanidad para siempre.",
       "year": 2025,
       "country": "Estados Unidos",
-      "network": "Apple Tv",
+      "network": "Apple TV+",
       "networkUrl": "https://tv.apple.com/es/episode/nosotros-es-nosotros/umc.cmc.3qfbkp7tcby9ylcjpx2km05p7?at=1000l3V2&ct=tmdb_tvplus&itscg=30200&itsct=justwatch_tv&playableId=tvs.sbd.4000%3AA0152501001&showId=umc.cmc.37axgovs2yozlyh3c2cmwzlza",
       "watchLinks": [
         {
@@ -3592,7 +3654,8 @@
             }
           ]
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777116291060",
@@ -3638,7 +3701,8 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T08:56:17.948Z"
+      "updatedAt": "2026-05-13T08:56:17.948Z",
+      "nameEn": ""
     },
     {
       "id": "1777116358969",
@@ -3684,7 +3748,8 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T08:56:22.709Z"
+      "updatedAt": "2026-05-13T08:56:22.709Z",
+      "nameEn": ""
     },
     {
       "id": "1777123893340",
@@ -3736,7 +3801,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777149248949",
@@ -3770,7 +3836,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777149412505",
@@ -3809,7 +3876,8 @@
             }
           ]
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777149797784",
@@ -3865,7 +3933,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777150051367",
@@ -3920,7 +3989,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777222930712",
@@ -3959,7 +4029,8 @@
         "Romance",
         "Drama",
         "Misterio"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777223129027",
@@ -4009,7 +4080,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777223788983",
@@ -4063,7 +4135,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777224670901",
@@ -4099,7 +4172,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777224996688",
@@ -4150,7 +4224,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777225431592",
@@ -4206,7 +4281,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777225577567",
@@ -4255,7 +4331,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777225946260",
@@ -4289,7 +4366,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777226456284",
@@ -4342,7 +4420,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777226679219",
@@ -4378,7 +4457,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777226881602",
@@ -4411,7 +4491,8 @@
       "genres": [
         "Romance",
         "Sobrenatural"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777227405202",
@@ -4461,7 +4542,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777228963657",
@@ -4521,7 +4603,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777235903416",
@@ -4620,7 +4703,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T10:34:57.842Z"
+      "updatedAt": "2026-05-13T10:34:57.842Z",
+      "nameEn": ""
     },
     {
       "id": "1777236063170",
@@ -4658,7 +4742,8 @@
       "genres": [
         "Romance",
         "Fantasía"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777236404711",
@@ -4710,7 +4795,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777236582381",
@@ -4772,7 +4858,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T20:50:36.599Z"
+      "updatedAt": "2026-05-13T20:50:36.599Z",
+      "nameEn": ""
     },
     {
       "id": "1777236702067",
@@ -4818,7 +4905,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777236873444",
@@ -4874,7 +4962,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777237026617",
@@ -4923,7 +5012,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777237182173",
@@ -4973,7 +5063,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777278523920",
@@ -5032,7 +5123,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777278660998",
@@ -5053,7 +5145,8 @@
       "upcoming": true,
       "genres": [
         "Romance"
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777278827017",
@@ -5104,7 +5197,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777279117292",
@@ -5149,7 +5243,8 @@
           "skipDates": [],
           "episodes": []
         }
-      ]
+      ],
+      "nameEn": ""
     },
     {
       "id": "1777449004515",
@@ -5190,7 +5285,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-29T07:50:04.515Z"
+      "updatedAt": "2026-04-29T07:50:04.515Z",
+      "nameEn": ""
     },
     {
       "id": "1777449810549",
@@ -5239,7 +5335,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-29T08:04:03.896Z"
+      "updatedAt": "2026-04-29T08:04:03.896Z",
+      "nameEn": ""
     },
     {
       "id": "1777449955163",
@@ -5290,7 +5387,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777451543042",
@@ -5348,7 +5446,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777452069135",
@@ -5395,7 +5494,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777452134155",
@@ -5440,7 +5540,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777452192081",
@@ -5486,7 +5587,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777452242978",
@@ -5531,7 +5633,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777452345325",
@@ -5577,7 +5680,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777452411955",
@@ -5623,7 +5727,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777452700876",
@@ -5669,7 +5774,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777452828468",
@@ -5715,7 +5821,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777453272580",
@@ -5761,7 +5868,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777455153369",
@@ -5807,7 +5915,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777455453113",
@@ -5848,7 +5957,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-29T09:37:33.113Z"
+      "updatedAt": "2026-04-29T09:37:33.113Z",
+      "nameEn": ""
     },
     {
       "id": "1777455862847",
@@ -5899,7 +6009,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-29T09:44:22.847Z"
+      "updatedAt": "2026-04-29T09:44:22.847Z",
+      "nameEn": ""
     },
     {
       "id": "1777455928497",
@@ -5939,7 +6050,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-29T09:45:28.497Z"
+      "updatedAt": "2026-04-29T09:45:28.497Z",
+      "nameEn": ""
     },
     {
       "id": "1777458910642",
@@ -5967,7 +6079,8 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-04-29T10:35:10.642Z"
+      "updatedAt": "2026-04-29T10:35:10.642Z",
+      "nameEn": ""
     },
     {
       "id": "1777459145338",
@@ -6021,7 +6134,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-29T10:39:05.338Z"
+      "updatedAt": "2026-04-29T10:39:05.338Z",
+      "nameEn": ""
     },
     {
       "id": "1777459217758",
@@ -6054,7 +6168,8 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-04-29T10:40:17.758Z"
+      "updatedAt": "2026-04-29T10:40:17.758Z",
+      "nameEn": ""
     },
     {
       "id": "1777459342439",
@@ -6105,7 +6220,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-29T10:42:22.439Z"
+      "updatedAt": "2026-04-29T10:42:22.439Z",
+      "nameEn": ""
     },
     {
       "id": "1777459392058",
@@ -6133,7 +6249,8 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-04-29T10:44:32.738Z"
+      "updatedAt": "2026-04-29T10:44:32.738Z",
+      "nameEn": ""
     },
     {
       "id": "1777459455348",
@@ -6167,7 +6284,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-29T10:44:15.348Z"
+      "updatedAt": "2026-04-29T10:44:15.348Z",
+      "nameEn": ""
     },
     {
       "id": "1777460464400",
@@ -6187,7 +6305,8 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-04-29T11:01:04.400Z"
+      "updatedAt": "2026-04-29T11:01:04.400Z",
+      "nameEn": ""
     },
     {
       "id": "1777460506708",
@@ -6207,7 +6326,8 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-04-29T11:01:46.708Z"
+      "updatedAt": "2026-04-29T11:01:46.708Z",
+      "nameEn": ""
     },
     {
       "id": "1777460572035",
@@ -6254,7 +6374,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777460603023",
@@ -6274,7 +6395,8 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-04-29T11:03:23.023Z"
+      "updatedAt": "2026-04-29T11:03:23.023Z",
+      "nameEn": ""
     },
     {
       "id": "1777581394711",
@@ -6310,7 +6432,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-30T20:36:34.711Z"
+      "updatedAt": "2026-04-30T20:36:34.711Z",
+      "nameEn": ""
     },
     {
       "id": "1777581846393",
@@ -6354,7 +6477,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-30T20:44:06.393Z"
+      "updatedAt": "2026-04-30T20:44:06.393Z",
+      "nameEn": ""
     },
     {
       "id": "1777583639678",
@@ -6400,7 +6524,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777583796655",
@@ -6445,7 +6570,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777583871451",
@@ -6483,7 +6609,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777584066900",
@@ -6522,7 +6649,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-30T21:23:28.064Z"
+      "updatedAt": "2026-04-30T21:23:28.064Z",
+      "nameEn": ""
     },
     {
       "id": "1777584138652",
@@ -6561,7 +6689,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-30T21:22:18.652Z"
+      "updatedAt": "2026-04-30T21:22:18.652Z",
+      "nameEn": ""
     },
     {
       "id": "1777584355784",
@@ -6605,7 +6734,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777584451615",
@@ -6643,7 +6773,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-30T21:27:31.615Z"
+      "updatedAt": "2026-04-30T21:27:31.615Z",
+      "nameEn": ""
     },
     {
       "id": "1777584568429",
@@ -6689,7 +6820,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777584720366",
@@ -6731,7 +6863,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-04-30T21:33:47.519Z"
+      "updatedAt": "2026-04-30T21:33:47.519Z",
+      "nameEn": ""
     },
     {
       "id": "1777584791238",
@@ -6774,7 +6907,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777584943726",
@@ -6820,7 +6954,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777585010770",
@@ -6867,7 +7002,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777622150204",
@@ -6912,7 +7048,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777669299119",
@@ -6972,7 +7109,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-01T21:01:39.119Z"
+      "updatedAt": "2026-05-01T21:01:39.119Z",
+      "nameEn": ""
     },
     {
       "id": "1777669724978",
@@ -7062,7 +7200,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-01T21:08:44.978Z"
+      "updatedAt": "2026-05-01T21:08:44.978Z",
+      "nameEn": ""
     },
     {
       "id": "1777670118261",
@@ -7133,7 +7272,8 @@
           ]
         }
       ],
-      "updatedAt": "2026-05-01T21:15:38.736Z"
+      "updatedAt": "2026-05-01T21:15:38.736Z",
+      "nameEn": ""
     },
     {
       "id": "1777726039958",
@@ -7141,7 +7281,7 @@
       "poster": "https://pics.filmaffinity.com/feel_good-675254638-mmed.jpg",
       "synopsis": "Mae, adicta y comediante en recuperación, trata de controlar los comportamientos adictivos y el intenso romanticismo que ocupan cada faceta de su vida.",
       "year": 2020,
-      "country": "Inglaterra",
+      "country": "Reino Unido",
       "network": "Netflix",
       "networkUrl": "https://www.netflix.com/es/title/80241545?source=imdb&fromWatch=true",
       "watchLinks": [
@@ -7238,7 +7378,8 @@
           ]
         }
       ],
-      "updatedAt": "2026-05-02T13:10:05.140Z"
+      "updatedAt": "2026-05-02T13:10:05.140Z",
+      "nameEn": ""
     },
     {
       "id": "1777726945205",
@@ -7326,7 +7467,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-02T13:09:58.752Z"
+      "updatedAt": "2026-05-02T13:09:58.752Z",
+      "nameEn": ""
     },
     {
       "id": "1777727593627",
@@ -7368,7 +7510,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-02T13:13:13.627Z"
+      "updatedAt": "2026-05-02T13:13:13.627Z",
+      "nameEn": ""
     },
     {
       "id": "1777727758315",
@@ -7511,7 +7654,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777728203386",
@@ -7620,7 +7764,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-02T13:32:19.312Z"
+      "updatedAt": "2026-05-02T13:32:19.312Z",
+      "nameEn": ""
     },
     {
       "id": "1777728316920",
@@ -7662,7 +7807,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-02T13:25:16.920Z"
+      "updatedAt": "2026-05-02T13:25:16.920Z",
+      "nameEn": ""
     },
     {
       "id": "1777728556747",
@@ -7740,7 +7886,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-02T13:29:16.747Z"
+      "updatedAt": "2026-05-02T13:29:16.747Z",
+      "nameEn": ""
     },
     {
       "id": "1777750223833",
@@ -7943,7 +8090,8 @@
           ]
         }
       ],
-      "updatedAt": "2026-05-02T19:34:38.266Z"
+      "updatedAt": "2026-05-02T19:34:38.266Z",
+      "nameEn": ""
     },
     {
       "id": "1777750880982",
@@ -7952,7 +8100,7 @@
       "synopsis": "La historia se ubica en el siglo XIX donde a través de la mirada y perspectiva de la joven y rebelde poeta Emily Dickinson se explorarán las limitaciones de la sociedad, el género y la familia de su tiempo.",
       "year": 2019,
       "country": "Estados Unidos",
-      "network": "AppleTv",
+      "network": "Apple TV+",
       "networkUrl": "https://tv.apple.com/es/episode/porque-no-pude-parar/umc.cmc.7ce71s408rqgrnsgtkmilevzw?showId=umc.cmc.1ogyy5s2agasxa5qztabrlykn&playableId=tvs.sbd.4000%3AVDKSN0560101",
       "watchLinks": [
         {
@@ -8078,7 +8226,8 @@
           ]
         }
       ],
-      "updatedAt": "2026-05-02T19:41:20.982Z"
+      "updatedAt": "2026-05-02T19:41:20.982Z",
+      "nameEn": ""
     },
     {
       "id": "1777751254463",
@@ -8136,7 +8285,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777751376726",
@@ -8193,7 +8343,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1777751530698",
@@ -8230,7 +8381,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-02T19:52:10.698Z"
+      "updatedAt": "2026-05-02T19:52:10.698Z",
+      "nameEn": ""
     },
     {
       "id": "1777751604849",
@@ -8276,7 +8428,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000017",
@@ -8334,7 +8487,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:09:31.451Z"
+      "updatedAt": "2026-05-03T11:09:31.451Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000018",
@@ -8371,7 +8525,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:10:31.524Z"
+      "updatedAt": "2026-05-03T11:10:31.524Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000021",
@@ -8422,7 +8577,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:12:52.748Z"
+      "updatedAt": "2026-05-03T11:12:52.748Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000033",
@@ -8503,7 +8659,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:15:26.423Z"
+      "updatedAt": "2026-05-03T11:15:26.423Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000045",
@@ -8568,7 +8725,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:17:34.032Z"
+      "updatedAt": "2026-05-03T11:17:34.032Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000047",
@@ -8682,7 +8840,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:32:07.527Z"
+      "updatedAt": "2026-05-03T11:32:07.527Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000052",
@@ -8790,7 +8949,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:35:50.236Z"
+      "updatedAt": "2026-05-03T11:35:50.236Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000055",
@@ -8861,7 +9021,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000066",
@@ -8935,7 +9096,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:39:40.774Z"
+      "updatedAt": "2026-05-03T11:39:40.774Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000068",
@@ -8976,7 +9138,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:42:05.383Z"
+      "updatedAt": "2026-05-03T11:42:05.383Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000072",
@@ -8985,7 +9148,7 @@
       "synopsis": "El pícaro viajero en el tiempo Rip Hunter debe reclutar un equipo heterogéneo de héroes y villanos para ayudar a prevenir un apocalipsis que podría afectar no solo a la Tierra, sino a todo el tiempo.\n \n (Fuente: IMDb)",
       "year": 2016,
       "country": "Estados Unidos",
-      "network": "HBO Max",
+      "network": "Max",
       "networkUrl": "https://play.hbomax.com/series/urn:hbo:series:GYT4P_gKceKrCfQEAAAWP?source=googleHBOMAX&action=open",
       "watchLinks": [
         {
@@ -9084,7 +9247,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:45:09.385Z"
+      "updatedAt": "2026-05-03T11:45:09.385Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000073",
@@ -9124,7 +9288,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000091",
@@ -9164,7 +9329,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:47:16.844Z"
+      "updatedAt": "2026-05-03T11:47:16.844Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000103",
@@ -9211,7 +9377,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T11:48:32.178Z"
+      "updatedAt": "2026-05-03T11:48:32.178Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000104",
@@ -9247,7 +9414,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T12:16:53.708Z"
+      "updatedAt": "2026-05-03T12:16:53.708Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000106",
@@ -9255,7 +9423,7 @@
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/uVBrUmYyQOhAqXJFFfxL3BYELdK.jpg",
       "synopsis": "Programa de webTV polaco que sigue la relación entre dos mujeres, Natalia y Majka.\n \n (Fuente: IMDb)",
       "year": 2018,
-      "country": "Poland",
+      "country": "Polonia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
@@ -9324,7 +9492,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000107",
@@ -9371,7 +9540,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T13:24:51.637Z"
+      "updatedAt": "2026-05-03T13:24:51.637Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000111",
@@ -9407,7 +9577,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T13:26:15.267Z"
+      "updatedAt": "2026-05-03T13:26:15.267Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000115",
@@ -9416,7 +9587,7 @@
       "synopsis": "Una mirada a la vida de un grupo de estudiantes de secundaria mientras lidian con problemas de drogas, sexo y violencia.\n \n (Fuente: IMDb)",
       "year": 2019,
       "country": "Estados Unidos",
-      "network": "HBO Max",
+      "network": "Max",
       "networkUrl": "https://play.hbomax.com/series/urn:hbo:series:GXKN_xQX5csPDwwEAAABj?source=googleHBOMAX&action=open",
       "watchLinks": [
         {
@@ -9469,7 +9640,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T13:29:10.481Z"
+      "updatedAt": "2026-05-03T13:29:10.481Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000117",
@@ -9556,7 +9728,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T13:32:58.680Z"
+      "updatedAt": "2026-05-03T13:32:58.680Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000119",
@@ -9565,7 +9738,7 @@
       "synopsis": "Una dramatización de la vida de la pionera lesbiana, estudiante voraz y diarista críptica Anne Lister.\n \n (Fuente: IMDb)",
       "year": 2019,
       "country": "Reino Unido",
-      "network": "HBO Max",
+      "network": "Max",
       "networkUrl": "https://play.hbomax.com/series/urn:hbo:series:GXI-WvQqTfKuWIwEAAAAC?source=googleHBOMAX&action=open",
       "watchLinks": [
         {
@@ -9607,7 +9780,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T13:34:05.283Z"
+      "updatedAt": "2026-05-03T13:34:05.283Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000121",
@@ -9648,7 +9822,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000122",
@@ -9689,7 +9864,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000123",
@@ -9735,7 +9911,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000125",
@@ -9780,7 +9957,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000132",
@@ -9821,7 +9999,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T15:26:49.983Z"
+      "updatedAt": "2026-05-03T15:26:49.983Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000136",
@@ -9867,7 +10046,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000137",
@@ -9902,7 +10082,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T15:27:32.125Z"
+      "updatedAt": "2026-05-03T15:27:32.125Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000139",
@@ -9944,7 +10125,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-03T15:28:03.133Z"
+      "updatedAt": "2026-05-03T15:28:03.133Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000141",
@@ -10013,7 +10195,8 @@
       "updatedAt": "2026-05-12T19:21:05.416Z",
       "category": "series",
       "animeSeason": "",
-      "renewedNextSeason": true
+      "renewedNextSeason": true,
+      "nameEn": ""
     },
     {
       "id": "1700000000142",
@@ -10076,7 +10259,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T07:47:05.142Z"
+      "updatedAt": "2026-05-07T07:47:05.142Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000143",
@@ -10129,7 +10313,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T07:48:32.166Z"
+      "updatedAt": "2026-05-07T07:48:32.166Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000144",
@@ -10138,7 +10323,7 @@
       "synopsis": "Los detectives Sarah Collins y Steve Bradshaw encuentran dos cuerpos: un policía veterano, Hadley Matthews, y Farah Mehenni, una joven refugiada.\n\n(Source: HBO Max)",
       "year": 2021,
       "country": "Reino Unido",
-      "network": "HBO Max",
+      "network": "Max",
       "networkUrl": "https://www.hbomax.com/es/es/shows/la-torre/4059260c-1d10-46ec-ad65-8b1e3c46b361",
       "watchLinks": [
         {
@@ -10197,7 +10382,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T07:50:20.150Z"
+      "updatedAt": "2026-05-07T07:50:20.150Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000147",
@@ -10242,7 +10428,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000148",
@@ -10285,7 +10472,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T07:52:28.995Z"
+      "updatedAt": "2026-05-07T07:52:28.995Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000149",
@@ -10337,7 +10525,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T07:56:37.161Z"
+      "updatedAt": "2026-05-07T07:56:37.161Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000155",
@@ -10377,7 +10566,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T07:56:54.632Z"
+      "updatedAt": "2026-05-07T07:56:54.632Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000156",
@@ -10412,7 +10602,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T07:57:37.635Z"
+      "updatedAt": "2026-05-07T07:57:37.635Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000158",
@@ -10468,7 +10659,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000159",
@@ -10511,7 +10703,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000164",
@@ -10551,7 +10744,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T07:59:15.458Z"
+      "updatedAt": "2026-05-07T07:59:15.458Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000165",
@@ -10597,7 +10791,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000168",
@@ -10637,7 +10832,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T08:11:07.154Z"
+      "updatedAt": "2026-05-07T08:11:07.154Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000169",
@@ -10682,7 +10878,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000174",
@@ -10728,7 +10925,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000178",
@@ -10779,7 +10977,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T08:14:36.437Z"
+      "updatedAt": "2026-05-07T08:14:36.437Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000179",
@@ -10831,7 +11030,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T08:16:03.137Z"
+      "updatedAt": "2026-05-07T08:16:03.137Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000180",
@@ -10878,7 +11078,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000185",
@@ -10930,7 +11131,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T08:17:34.947Z"
+      "updatedAt": "2026-05-07T08:17:34.947Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000186",
@@ -10988,7 +11190,8 @@
       "updatedAt": "2026-05-12T19:16:02.062Z",
       "category": "series",
       "animeSeason": "",
-      "renewedNextSeason": true
+      "renewedNextSeason": true,
+      "nameEn": ""
     },
     {
       "id": "1700000000188",
@@ -11045,7 +11248,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T08:21:50.617Z"
+      "updatedAt": "2026-05-07T08:21:50.617Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000192",
@@ -11086,7 +11290,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T08:22:22.101Z"
+      "updatedAt": "2026-05-07T08:22:22.101Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000193",
@@ -11094,7 +11299,7 @@
       "poster": "https://i.ytimg.com/vi/SraXtx1ey3s/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDVHx1n6dU7kgfOfvn-QUiSlR1QHg",
       "synopsis": "Hnin Su vivía con un marido que antepone su ego a la vida doméstica y la maltrata, y tuvo mala suerte en su matrimonio y trató de suicidarse para salir de su vida actual. Después de eso, una joven llamada \"Nge\" llegó a la cafetería donde Hnin Su era el dueño, y nació entre los dos un amor difícil de interpretar. ¿Cómo describirán su amor, que está solo y ha perdido el sentido de la vida, y que siempre viste de marrón y es infantil? ¿Es así de simple el encuentro entre los dos?\n \n (Fuente: MHC Vision)",
       "year": 2023,
-      "country": "Myanmmar",
+      "country": "Myanmar",
       "network": "Youtube",
       "networkUrl": "https://youtube.com/playlist?list=PLACgzM2kfj4UajP00hZACwpLwGLuZ9H_F&si=SvXtfoj7RWKAzuyA",
       "watchLinks": [
@@ -11132,7 +11337,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000195",
@@ -11178,7 +11384,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000196",
@@ -11218,7 +11425,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T08:24:50.860Z"
+      "updatedAt": "2026-05-07T08:24:50.860Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000198",
@@ -11227,7 +11435,7 @@
       "synopsis": "Reena Virk, una joven de catorce años, fue a una fiesta con sus amigos y nunca regresó a casa. Siete chicas adolescentes y un chico fueron acusados ​​del brutal asesinato.\n\n(Source: TMDB)",
       "year": 2024,
       "country": "Estados Unidos",
-      "network": "HuluDisney+",
+      "network": "Hulu / Disney+",
       "networkUrl": "https://www.hulu.com/series/under-the-bridge-9f6e597e-1e0a-4b07-8837-7f0f7c7be158",
       "watchLinks": [
         {
@@ -11261,7 +11469,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T08:27:08.094Z"
+      "updatedAt": "2026-05-07T08:27:08.094Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000199",
@@ -11302,7 +11511,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T08:27:44.087Z"
+      "updatedAt": "2026-05-07T08:27:44.087Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000203",
@@ -11347,7 +11557,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000204",
@@ -11392,7 +11603,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000208",
@@ -11438,7 +11650,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000209",
@@ -11485,7 +11698,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000213",
@@ -11531,7 +11745,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000215",
@@ -11576,7 +11791,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000217",
@@ -11622,7 +11838,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T11:32:24.045Z"
+      "updatedAt": "2026-05-07T11:32:24.045Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000218",
@@ -11668,7 +11885,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000219",
@@ -11708,7 +11926,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000230",
@@ -11750,7 +11969,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T11:33:32.098Z"
+      "updatedAt": "2026-05-07T11:33:32.098Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000231",
@@ -11796,7 +12016,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000232",
@@ -11842,7 +12063,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000233",
@@ -11887,7 +12109,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000234",
@@ -11932,7 +12155,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000235",
@@ -11978,7 +12202,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000236",
@@ -12024,7 +12249,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000237",
@@ -12070,7 +12296,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000239",
@@ -12116,7 +12343,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000240",
@@ -12163,7 +12391,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000243",
@@ -12216,7 +12445,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:01:53.481Z"
+      "updatedAt": "2026-05-07T12:01:53.481Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000244",
@@ -12251,7 +12481,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:02:11.731Z"
+      "updatedAt": "2026-05-07T12:02:11.731Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000245",
@@ -12294,7 +12525,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000247",
@@ -12364,7 +12596,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000263",
@@ -12410,7 +12643,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000265",
@@ -12455,7 +12689,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000266",
@@ -12501,7 +12736,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000267",
@@ -12536,7 +12772,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:07:54.901Z"
+      "updatedAt": "2026-05-07T12:07:54.901Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000268",
@@ -12576,7 +12813,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:08:13.604Z"
+      "updatedAt": "2026-05-07T12:08:13.604Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000273",
@@ -12617,7 +12855,8 @@
       "category": "series",
       "seriesType": "serie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1700000000280",
@@ -12654,7 +12893,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:09:28.326Z"
+      "updatedAt": "2026-05-07T12:09:28.326Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000288",
@@ -12689,7 +12929,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:09:45.157Z"
+      "updatedAt": "2026-05-07T12:09:45.157Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000289",
@@ -12724,7 +12965,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:09:57.171Z"
+      "updatedAt": "2026-05-07T12:09:57.171Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000296",
@@ -12760,7 +13002,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:10:15.874Z"
+      "updatedAt": "2026-05-07T12:10:15.874Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000298",
@@ -12796,7 +13039,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:10:26.489Z"
+      "updatedAt": "2026-05-07T12:10:26.489Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000300",
@@ -12833,7 +13077,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:10:39.383Z"
+      "updatedAt": "2026-05-07T12:10:39.383Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000304",
@@ -12869,7 +13114,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:10:50.995Z"
+      "updatedAt": "2026-05-07T12:10:50.995Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000305",
@@ -12904,7 +13150,8 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:11:14.393Z"
+      "updatedAt": "2026-05-07T12:11:14.393Z",
+      "nameEn": ""
     },
     {
       "id": "1700000000307",
@@ -12912,7 +13159,7 @@
       "poster": "https://i.ytimg.com/vi/EwocdbM7rMY/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDSPQF-FYyDs5sx8x0yrl_ne74jRw",
       "synopsis": "",
       "year": 2024,
-      "country": "Myanmmar",
+      "country": "Myanmar",
       "network": "",
       "networkUrl": "https://youtube.com/playlist?list=PLACgzM2kfj4UajP00hZACwpLwGLuZ9H_F&si=8_je9zEZHZllk1Yd",
       "watchLinks": [
@@ -12947,7 +13194,8 @@
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778360721543",
@@ -13053,7 +13301,8 @@
           ]
         }
       ],
-      "updatedAt": "2026-05-09T21:14:21.952Z"
+      "updatedAt": "2026-05-09T21:14:21.952Z",
+      "nameEn": ""
     },
     {
       "id": "1778361220781",
@@ -13061,7 +13310,7 @@
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/tjFYkWMafg71sihs1aa7IDx17aS.jpg",
       "synopsis": "Nos encontramos con Sarah, una joven huérfana sin ningún sitio donde caerse muerta que es testigo del suicidio de una chica que es idéntica a ella. Sarah decidirá asumir su identidad, cuenta bancaría, hogar y demás solo para encontrarse en medio de una tremenda conspiración con clones de por medio.",
       "year": 2013,
-      "country": "Cánada",
+      "country": "Canadá",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
@@ -13140,7 +13389,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-09T21:13:40.781Z"
+      "updatedAt": "2026-05-09T21:13:40.781Z",
+      "nameEn": ""
     },
     {
       "id": "1778362124405",
@@ -13230,7 +13480,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-09T21:28:44.405Z"
+      "updatedAt": "2026-05-09T21:28:44.405Z",
+      "nameEn": ""
     },
     {
       "id": "1778362313804",
@@ -13274,7 +13525,8 @@
           ]
         }
       ],
-      "updatedAt": "2026-05-09T21:31:53.804Z"
+      "updatedAt": "2026-05-09T21:31:53.804Z",
+      "nameEn": ""
     },
     {
       "id": "1778362448719",
@@ -13314,7 +13566,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-09T21:34:08.719Z"
+      "updatedAt": "2026-05-09T21:34:08.719Z",
+      "nameEn": ""
     },
     {
       "id": "1778362627525",
@@ -13364,7 +13617,8 @@
       "animeSeason": "Otoño 2018",
       "seriesType": "serie",
       "cast": [],
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778396322251",
@@ -13419,7 +13673,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T06:58:42.251Z"
+      "updatedAt": "2026-05-10T06:58:42.251Z",
+      "nameEn": ""
     },
     {
       "id": "1778396529538",
@@ -13494,7 +13749,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T07:02:09.538Z"
+      "updatedAt": "2026-05-10T07:02:09.538Z",
+      "nameEn": ""
     },
     {
       "id": "1778396856737",
@@ -13503,7 +13759,7 @@
       "synopsis": "Explora la oscura tutoría que se forma entre Deborah Vance, una comediante legendaria de Las Vegas, y una marginada de 25 años con privilegios.",
       "year": 2021,
       "country": "Estados Unidos",
-      "network": "HBO Max",
+      "network": "Max",
       "networkUrl": "https://www.max.com",
       "watchLinks": [
         {
@@ -13664,7 +13920,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T07:07:36.737Z"
+      "updatedAt": "2026-05-10T07:07:36.737Z",
+      "nameEn": ""
     },
     {
       "id": "1778397225013",
@@ -13719,7 +13976,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T07:13:45.013Z"
+      "updatedAt": "2026-05-10T07:13:45.013Z",
+      "nameEn": ""
     },
     {
       "id": "1778398696587",
@@ -13783,7 +14041,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T07:38:16.587Z"
+      "updatedAt": "2026-05-10T07:38:16.587Z",
+      "nameEn": ""
     },
     {
       "id": "1778398840377",
@@ -13846,7 +14105,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T07:40:40.377Z"
+      "updatedAt": "2026-05-10T07:40:40.377Z",
+      "nameEn": ""
     },
     {
       "id": "1778402515248",
@@ -13907,7 +14167,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T08:41:55.248Z"
+      "updatedAt": "2026-05-10T08:41:55.248Z",
+      "nameEn": ""
     },
     {
       "id": "1778402648665",
@@ -13998,7 +14259,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T08:44:08.665Z"
+      "updatedAt": "2026-05-10T08:44:08.665Z",
+      "nameEn": ""
     },
     {
       "id": "1778402853203",
@@ -14076,7 +14338,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T09:12:42.450Z"
+      "updatedAt": "2026-05-10T09:12:42.450Z",
+      "nameEn": ""
     },
     {
       "id": "1778403375094",
@@ -14238,7 +14501,8 @@
           ]
         }
       ],
-      "updatedAt": "2026-05-10T08:56:15.094Z"
+      "updatedAt": "2026-05-10T08:56:15.094Z",
+      "nameEn": ""
     },
     {
       "id": "1778404949218",
@@ -14288,7 +14552,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T09:22:29.218Z"
+      "updatedAt": "2026-05-10T09:22:29.218Z",
+      "nameEn": ""
     },
     {
       "id": "1778405111719",
@@ -14356,7 +14621,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T09:25:11.719Z"
+      "updatedAt": "2026-05-10T09:25:11.719Z",
+      "nameEn": ""
     },
     {
       "id": "1778405237229",
@@ -14411,7 +14677,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T09:27:17.229Z"
+      "updatedAt": "2026-05-10T09:27:17.229Z",
+      "nameEn": ""
     },
     {
       "id": "1778405690996",
@@ -14460,7 +14727,8 @@
       "updatedAt": "2026-05-14T08:49:34.954Z",
       "seriesType": "serie",
       "cast": [],
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778406327495",
@@ -14504,7 +14772,8 @@
       "updatedAt": "2026-05-14T08:49:38.250Z",
       "seriesType": "serie",
       "cast": [],
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778406423279",
@@ -14553,7 +14822,8 @@
       "updatedAt": "2026-05-14T08:49:43.197Z",
       "seriesType": "serie",
       "cast": [],
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778406629965",
@@ -14601,7 +14871,8 @@
       "updatedAt": "2026-05-14T08:49:47.957Z",
       "seriesType": "serie",
       "cast": [],
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778408041578",
@@ -14640,7 +14911,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T10:14:01.578Z"
+      "updatedAt": "2026-05-10T10:14:01.578Z",
+      "nameEn": ""
     },
     {
       "id": "1778499401369",
@@ -14678,7 +14950,8 @@
       ],
       "updatedAt": "2026-05-13T09:04:07.191Z",
       "seriesType": "webserie",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778499566113",
@@ -14736,7 +15009,8 @@
       ],
       "updatedAt": "2026-05-13T09:04:12.579Z",
       "seriesType": "webserie",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778501007371",
@@ -14779,7 +15053,8 @@
       "updatedAt": "2026-05-14T08:49:56.427Z",
       "seriesType": "serie",
       "cast": [],
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778501119595",
@@ -14827,7 +15102,8 @@
       "updatedAt": "2026-05-14T08:50:04.440Z",
       "seriesType": "serie",
       "cast": [],
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778501225180",
@@ -14876,7 +15152,8 @@
       "updatedAt": "2026-05-14T08:50:08.708Z",
       "seriesType": "serie",
       "cast": [],
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778610979789",
@@ -14923,7 +15200,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-12T18:36:19.789Z"
+      "updatedAt": "2026-05-12T18:36:19.789Z",
+      "nameEn": ""
     },
     {
       "id": "1778611225963",
@@ -14966,7 +15244,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-12T18:40:25.963Z"
+      "updatedAt": "2026-05-12T18:40:25.963Z",
+      "nameEn": ""
     },
     {
       "id": "1778611323065",
@@ -15011,7 +15290,8 @@
       ],
       "updatedAt": "2026-05-13T09:04:18.691Z",
       "seriesType": "webserie",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778611572508",
@@ -15058,7 +15338,8 @@
       ],
       "updatedAt": "2026-05-13T09:04:24.091Z",
       "seriesType": "webserie",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778611750440",
@@ -15087,7 +15368,8 @@
       "animeSeason": "",
       "updatedAt": "2026-05-13T09:04:27.405Z",
       "seriesType": "webserie",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778611826641",
@@ -15132,7 +15414,8 @@
       ],
       "updatedAt": "2026-05-13T09:04:31.993Z",
       "seriesType": "webserie",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778611905507",
@@ -15178,7 +15461,8 @@
       ],
       "updatedAt": "2026-05-13T09:04:36.542Z",
       "seriesType": "webserie",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     },
     {
       "id": "1778612143601",
@@ -15223,7 +15507,8 @@
       ],
       "updatedAt": "2026-05-13T09:04:40.626Z",
       "seriesType": "webserie",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "nameEn": ""
     }
   ],
   "movies": [
@@ -17401,7 +17686,7 @@
       "name": "Summertime",
       "synopsis": "La historia comienza en París en 1971. Delphine conoce a Carole. La primera, hija de campesinos, se muda a la capital para ganarse su independencia financiera y sueña con estar al mando de su propia vida, algo impensable en la época. La segunda, pareja de Alexandre, vive felizmente los comienzos de la revuelta feminista. Una es misteriosa, reservada, pero sabe que le gustan las mujeres. La segunda ignora totalmente que pueda sentir tal atracción. Su encuentro desequilibra sus vidas, pero su historia de amor naciente va a tropezarse con la realidad.\n\n(Source: TMDB)",
       "year": 2015,
-      "country": "Francia, Bélgica",
+      "country": "Francia / Bélgica",
       "date": "2015-08-19",
       "network": "",
       "networkUrl": "",
@@ -18099,7 +18384,7 @@
       "name": "We Are Gamily",
       "synopsis": "Un hombre gay y una lesbiana acuerdan tener un matrimonio \"falso\" para apaciguar a sus familias. Se producen travesuras. La lesbiana se enamora de la hermana gemela de su \"marido\" y las cosas empiezan a complicarse aún más.\n\n(Source: TMDB)",
       "year": 2017,
-      "country": "Taiwan",
+      "country": "Taiwán",
       "date": "2017-07-01",
       "network": "",
       "networkUrl": "",
@@ -18599,7 +18884,7 @@
       "name": "Good Manners",
       "synopsis": "Clara, una enfermera solitaria de las afueras de São Paulo, es contratada por la misteriosa y rica Ana como niñera de su hijo. Las dos mujeres desarrollan un fuerte vínculo, pero una fatídica noche cambia sus planes.\n\n(Source: TMDB)",
       "year": 2017,
-      "country": "Brasil, Francia",
+      "country": "Brasil / Francia",
       "date": "2017-08-04",
       "network": "",
       "networkUrl": "",
@@ -18889,7 +19174,7 @@
       "name": "Huajiang Girls",
       "synopsis": "K está en el último año de secundaria y la clase de tutoría que recibe una vez por semana es el momento más privado para ella. Su profesora tutora, Xian-xian, es una estudiante universitaria que se especializa en literatura inglesa. Durante la clase, Xian-xian ayuda a K a progresar en la comprensión lectora y, sin querer, la lleva a descubrir su yo interior.\n\n(Fuente: TMDB)",
       "year": 2018,
-      "country": "Taiwan",
+      "country": "Taiwán",
       "date": "2018-11-20",
       "network": "",
       "networkUrl": "",
@@ -19501,7 +19786,7 @@
       "name": "Smoke",
       "synopsis": "Días lluviosos, parques, chicas, secretos surgieron silenciosamente en su corazón.\n\n(Fuente: TMDB)",
       "year": 2019,
-      "country": "Taiwan",
+      "country": "Taiwán",
       "date": "2019-03-08",
       "network": "",
       "networkUrl": "",
@@ -19938,7 +20223,7 @@
       "name": "Like Father, Like Daughter",
       "synopsis": "El día en que Taiwán aprueba su ley sobre el matrimonio entre personas del mismo sexo, la hija de Wen-de está en casa celebrando su nuevo compromiso con su novia.\n\n(Fuente: TMDB)",
       "year": 2019,
-      "country": "Taiwan",
+      "country": "Taiwán",
       "date": "2019-11-08",
       "network": "GagaOOLala",
       "networkUrl": "https://www.gagaoolala.com/en/videos/2675/like-father-like-daughter-2019",
@@ -20110,7 +20395,7 @@
       "name": "Shall We Dance",
       "synopsis": "Hanni y Ziyou están enamorados el uno del otro hasta el punto más intenso. Hanni está inseparablemente unida a Ziyou y se ocupa de todo en su vida, pero un malentendido hace que Ziyou quiera evitar a Hanni. Como en un vals silencioso, los dos entran en un juego sin palabras. De un lado a otro, uno da un paso adelante mientras el otro retrocede. ¿Podrán alguna vez compartir un día más brillante?\n\n(Fuente: TMDB)",
       "year": 2019,
-      "country": "Taiwan",
+      "country": "Taiwán",
       "date": "2019-08-25",
       "network": "GagaOOLala",
       "networkUrl": "https://www.gagaoolala.com/en/videos/1300/shall-we-dance-2019",
@@ -20556,7 +20841,7 @@
       "name": "One Summer's Day",
       "synopsis": "Cada verano, Hsuan, Yei y Chi saltan juntos a la piscina. Yei siempre es más rápida que Hsuan, pero a Hsuan no le importa ganar o perder. Todo lo que quiere es quedarse con Chi, lentamente, naturalmente, hasta que lleguen a Taipei.\n\n(Fuente: TMDB)",
       "year": 2020,
-      "country": "Taiwan",
+      "country": "Taiwán",
       "date": "2020-06-20",
       "network": "GagaOOLala",
       "networkUrl": "https://www.gagaoolala.com/en/videos/2448/one-summers-day-2020",
@@ -22713,7 +22998,7 @@
       "year": 2022,
       "country": "Estados Unidos",
       "date": "2022-01-24",
-      "network": "HBO Max",
+      "network": "Max",
       "networkUrl": "https://www.hbomax.com/es/es/movies/todo-bien/ac037e4c-0b87-4865-9235-c86b98f806c2?utm_source=universal_search",
       "watchLinks": [
         {
@@ -22797,7 +23082,7 @@
       "name": "Mom, If I Were A Vampire",
       "synopsis": "ES UNA MALDICIÓN.\nUna adolescente insegura no le gusta su madre, que la desaprueba, y jura no ser como ella. Cuando conoce a una colegiala genial con esa actitud despreocupada, se enamora perdidamente de ella y la sigue por un camino sinuoso.\n\n(Source: TMDB)",
       "year": 2022,
-      "country": "Taiwan",
+      "country": "Taiwán",
       "date": "2022-09-29",
       "network": "",
       "networkUrl": "",
@@ -25025,5 +25310,5 @@
       "height": null
     }
   ],
-  "exportedAt": "2026-05-14T16:51:32.908000Z"
+  "exportedAt": "2026-05-14T17:12:52.356557Z"
 }

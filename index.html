@@ -1804,27 +1804,50 @@ function seriesCardHtml(s, si){
 
 /* ═══ COUNTRY FLAG + REGION HELPERS ═══ */
 const COUNTRY_FLAGS={
+  // Asia
   'Corea del Sur':'🇰🇷','Corea':'🇰🇷','Japón':'🇯🇵','China':'🇨🇳','Taiwán':'🇹🇼','Tailandia':'🇹🇭',
   'Filipinas':'🇵🇭','Hong Kong':'🇭🇰','Indonesia':'🇮🇩','Vietnam':'🇻🇳','Singapur':'🇸🇬','India':'🇮🇳',
-  'Malasia':'🇲🇾','Mongolia':'🇲🇳',
+  'Malasia':'🇲🇾','Mongolia':'🇲🇳','Myanmar':'🇲🇲',
+  // Europa
   'España':'🇪🇸','Francia':'🇫🇷','Italia':'🇮🇹','Reino Unido':'🇬🇧','Alemania':'🇩🇪','Portugal':'🇵🇹',
-  'Suecia':'🇸🇪','Noruega':'🇳🇴','Dinamarca':'🇩🇰','Finlandia':'🇫🇮','Países Bajos':'🇳🇱','Bélgica':'🇧🇪',
-  'Polonia':'🇵🇱','Rusia':'🇷🇺','Grecia':'🇬🇷','Turquía':'🇹🇷','Israel':'🇮🇱',
+  'Suecia':'🇸🇪','Noruega':'🇳🇴','Dinamarca':'🇩🇰','Finlandia':'🇫🇮','Países Bajos':'🇳🇱','Holanda':'🇳🇱',
+  'Bélgica':'🇧🇪','Polonia':'🇵🇱','Rusia':'🇷🇺','Grecia':'🇬🇷','Turquía':'🇹🇷','Israel':'🇮🇱',
+  'Irlanda':'🇮🇪','Georgia':'🇬🇪','Lituania':'🇱🇹',
+  // América
   'EE.UU.':'🇺🇸','EEUU':'🇺🇸','Estados Unidos':'🇺🇸','Canadá':'🇨🇦','México':'🇲🇽','Brasil':'🇧🇷',
-  'Argentina':'🇦🇷','Colombia':'🇨🇴','Chile':'🇨🇱','Perú':'🇵🇪',
+  'Argentina':'🇦🇷','Colombia':'🇨🇴','Chile':'🇨🇱','Perú':'🇵🇪','Venezuela':'🇻🇪',
+  // Oceanía
   'Australia':'🇦🇺','Nueva Zelanda':'🇳🇿',
 };
 const COUNTRY_REGIONS={
-  asia:['Corea del Sur','Corea','Japón','China','Taiwán','Tailandia','Filipinas','Hong Kong','Indonesia','Vietnam','Singapur','India','Malasia','Mongolia'],
-  europa:['España','Francia','Italia','Reino Unido','Alemania','Portugal','Suecia','Noruega','Dinamarca','Finlandia','Países Bajos','Bélgica','Polonia','Rusia','Grecia','Turquía','Israel'],
-  america:['EE.UU.','EEUU','Estados Unidos','Canadá','México','Brasil','Argentina','Colombia','Chile','Perú'],
+  asia:['Corea del Sur','Corea','Japón','China','Taiwán','Tailandia','Filipinas','Hong Kong','Indonesia','Vietnam','Singapur','India','Malasia','Mongolia','Myanmar'],
+  europa:['España','Francia','Italia','Reino Unido','Alemania','Portugal','Suecia','Noruega','Dinamarca','Finlandia','Países Bajos','Holanda','Bélgica','Polonia','Rusia','Grecia','Turquía','Israel','Irlanda','Georgia','Lituania'],
+  america:['EE.UU.','EEUU','Estados Unidos','Canadá','México','Brasil','Argentina','Colombia','Chile','Perú','Venezuela'],
   oceania:['Australia','Nueva Zelanda'],
 };
 const REGION_LABELS={'asia':'🌏 Asia','europa':'🌍 Europa','america':'🌎 América','oceania':'🌏 Oceanía','otros':'🌐 Otros'};
 
-function countryFlag(country){return COUNTRY_FLAGS[country]||'🌐';}
+/** Dado un string de país (puede ser 'A / B'), devuelve los fragmentos atómicos. */
+function parseCountryParts(country){
+  if(!country) return [];
+  return country.split('/').map(s=>s.trim()).filter(Boolean);
+}
+
+/**
+ * countryFlag(country) — acepta valores simples ('Tailandia') o compuestos ('Tailandia / Japón').
+ * Devuelve las banderas de todos los países concatenadas, o 🌐 si ninguno se reconoce.
+ */
+function countryFlag(country){
+  const parts=parseCountryParts(country);
+  if(!parts.length) return '🌐';
+  const flags=parts.map(p=>COUNTRY_FLAGS[p]||'').filter(Boolean);
+  return flags.length?flags.join(''):'🌐';
+}
+
 function getRegion(country){
-  for(const [r,list] of Object.entries(COUNTRY_REGIONS)){if(list.includes(country))return r;}
+  // Si es multi-país ('A / B'), clasificar por el primer país
+  const primary=parseCountryParts(country)[0]||country;
+  for(const [r,list] of Object.entries(COUNTRY_REGIONS)){if(list.includes(primary))return r;}
   return 'otros';
 }
 function groupByRegion(countries){
@@ -2081,7 +2104,14 @@ function scrollToResults(id){
   if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-function getCountries(arr){ return [...new Set(arr.map(s=>s.country).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es')); }
+function getCountries(arr){
+  // Expandir países compuestos ('A / B') en atómicos para el picker
+  const atomic=[];
+  arr.forEach(s=>{
+    parseCountryParts(s.country||'').forEach(p=>{if(p&&!atomic.includes(p))atomic.push(p);});
+  });
+  return atomic.sort((a,b)=>a.localeCompare(b,'es'));
+}
 
 function getSeriesLastActivity(s){
   const eps=genEps(s);
@@ -2094,11 +2124,21 @@ function getSeriesLastActivity(s){
   return (seasons[0]&&seasons[0].startDate)||s.startDate||'';
 }
 
+
+/** Comprueba si un item (con campo country) pertenece a alguno de los países seleccionados.
+ *  Funciona con valores compuestos: 'Tailandia / Japón' matchea tanto 'Tailandia' como 'Japón'.
+ */
+function itemMatchesCountries(item, selectedCountries){
+  if(!selectedCountries||!selectedCountries.length) return true;
+  const parts=parseCountryParts(item.country||'');
+  return selectedCountries.some(c=>parts.includes(c));
+}
+
 function applySeriesFilters(arr){
   let r=[...arr];
   const q=seriesFilters.q.toLowerCase().trim();
-  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
-  if(seriesFilters.countries&&seriesFilters.countries.length) r=r.filter(s=>seriesFilters.countries.includes(s.country));
+  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.nameEn||'').toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
+  if(seriesFilters.countries&&seriesFilters.countries.length) r=r.filter(s=>itemMatchesCountries(s,seriesFilters.countries));
   if(seriesFilters.book==='yes') r=r.filter(s=>s.basedOnBook);
   if(seriesFilters.book==='no') r=r.filter(s=>!s.basedOnBook);
   if(seriesFilters.year) r=r.filter(s=>{ const seasons=getSeasons(s); return seasons.some(t=>t.startDate&&t.startDate.startsWith(seriesFilters.year))||(s.startDate&&s.startDate.startsWith(seriesFilters.year)); });
@@ -2184,8 +2224,8 @@ let upcomingFilters={q:'',countries:[],sort:'az',book:'all',year:'',genre:''};
 function applyUpcomingFilters(arr){
   let r=[...arr];
   const q=upcomingFilters.q.toLowerCase().trim();
-  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
-  if(upcomingFilters.countries&&upcomingFilters.countries.length) r=r.filter(s=>upcomingFilters.countries.includes(s.country));
+  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.nameEn||'').toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
+  if(upcomingFilters.countries&&upcomingFilters.countries.length) r=r.filter(s=>itemMatchesCountries(s,upcomingFilters.countries));
   if(upcomingFilters.book==='yes') r=r.filter(s=>s.basedOnBook);
   if(upcomingFilters.book==='no') r=r.filter(s=>!s.basedOnBook);
   if(upcomingFilters.year) r=r.filter(s=>s.startDate&&s.startDate.startsWith(upcomingFilters.year));
@@ -2764,8 +2804,8 @@ function handleMoviesGenreChange(val){
 function applyMoviesFilters(arr){
   let r=[...arr];
   const q=moviesFilters.q.toLowerCase().trim();
-  if(q) r=r.filter(mv=>mv.name.toLowerCase().includes(q)||(mv.country||'').toLowerCase().includes(q)||(mv.network||'').toLowerCase().includes(q));
-  if(moviesFilters.countries&&moviesFilters.countries.length) r=r.filter(mv=>moviesFilters.countries.includes(mv.country));
+  if(q) r=r.filter(mv=>mv.name.toLowerCase().includes(q)||(mv.nameEn||'').toLowerCase().includes(q)||(mv.country||'').toLowerCase().includes(q)||(mv.network||'').toLowerCase().includes(q));
+  if(moviesFilters.countries&&moviesFilters.countries.length) r=r.filter(mv=>itemMatchesCountries(mv,moviesFilters.countries));
   if(moviesFilters.book==='yes') r=r.filter(mv=>mv.basedOnBook);
   if(moviesFilters.book==='no') r=r.filter(mv=>!mv.basedOnBook);
   if(moviesFilters.year) r=r.filter(mv=>mv.date&&mv.date.startsWith(moviesFilters.year));
@@ -3163,8 +3203,8 @@ function getAnimeMoviesData(){
 function applyAnimeFilters(arr){
   let r=[...arr];
   const q=animeFilters.q.toLowerCase().trim();
-  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
-  if(animeFilters.countries&&animeFilters.countries.length) r=r.filter(s=>animeFilters.countries.includes(s.country));
+  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.nameEn||'').toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
+  if(animeFilters.countries&&animeFilters.countries.length) r=r.filter(s=>itemMatchesCountries(s,animeFilters.countries));
   if(animeFilters.book==='yes') r=r.filter(s=>s.basedOnBook);
   if(animeFilters.book==='no') r=r.filter(s=>!s.basedOnBook);
   if(animeFilters.year) r=r.filter(s=>{ const y=(s.startDate||s.date||'').substring(0,4); return y===animeFilters.year||(s.year&&String(s.year)===animeFilters.year); });
@@ -3526,8 +3566,8 @@ function getRealitiesMoviesData(){
 function applyRealitiesFilters(arr){
   let r=[...arr];
   const q=realitiesFilters.q.toLowerCase().trim();
-  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
-  if(realitiesFilters.countries&&realitiesFilters.countries.length) r=r.filter(s=>realitiesFilters.countries.includes(s.country));
+  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.nameEn||'').toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
+  if(realitiesFilters.countries&&realitiesFilters.countries.length) r=r.filter(s=>itemMatchesCountries(s,realitiesFilters.countries));
   if(realitiesFilters.year) r=r.filter(s=>{ const y=(s.startDate||s.date||'').substring(0,4); return y===realitiesFilters.year||(s.year&&String(s.year)===realitiesFilters.year); });
   if(realitiesFilters.genre) r=r.filter(s=>s.genres&&s.genres.includes(realitiesFilters.genre));
   if(realitiesFilters.sort==='az') r.sort((a,b)=>a.name.localeCompare(b.name,'es'));
@@ -3706,7 +3746,7 @@ function getDocumentalesData(){
 function applyDocumentalesFilters(arr){
   let r=[...arr];
   const q=documentalesFilters.q.toLowerCase().trim();
-  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
+  if(q) r=r.filter(s=>s.name.toLowerCase().includes(q)||(s.nameEn||'').toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q));
   if(documentalesFilters.countries&&documentalesFilters.countries.length) r=r.filter(s=>documentalesFilters.countries.includes(s.country));
   if(documentalesFilters.year) r=r.filter(s=>{ const y=(s.startDate||s.date||'').substring(0,4); return y===documentalesFilters.year||(s.year&&String(s.year)===documentalesFilters.year); });
   if(documentalesFilters.genre) r=r.filter(s=>s.genres&&s.genres.includes(documentalesFilters.genre));
@@ -3864,11 +3904,11 @@ function renderSearchResults(q){
   if(!term){box.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:1rem">Escribe para buscar series o películas</div>';return;}
   const results=[];
   state.series.forEach((s,si)=>{
-    if(s.name.toLowerCase().includes(term)||(s.network||'').toLowerCase().includes(term)||(s.country||'').toLowerCase().includes(term))
+    if(s.name.toLowerCase().includes(term)||(s.nameEn||'').toLowerCase().includes(term)||(s.network||'').toLowerCase().includes(term)||(s.country||'').toLowerCase().includes(term))
       results.push({type:'serie',s,si});
   });
   state.movies.forEach((mv,mi)=>{
-    if(mv.name.toLowerCase().includes(term)||(mv.network||'').toLowerCase().includes(term)||(mv.country||'').toLowerCase().includes(term))
+    if(mv.name.toLowerCase().includes(term)||(mv.nameEn||'').toLowerCase().includes(term)||(mv.network||'').toLowerCase().includes(term)||(mv.country||'').toLowerCase().includes(term))
       results.push({type:'pelicula',s:mv,si:mi});
   });
   getAnimeSeriesData().forEach((s,si)=>{

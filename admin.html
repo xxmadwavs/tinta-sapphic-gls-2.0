@@ -690,18 +690,51 @@ function platformSelectHtml(){
 }
 
 const PRESET_COUNTRIES_ADMIN=[
-  {flag:'🇪🇸',name:'España'},
-  {flag:'🇺🇸',name:'Estados Unidos'},
-  {flag:'🇨🇳',name:'China'},
+  // Asia
   {flag:'🇹🇭',name:'Tailandia'},
   {flag:'🇰🇷',name:'Corea del Sur'},
   {flag:'🇯🇵',name:'Japón'},
-  {flag:'🇹🇼',name:'Taiwan'},
-  {flag:'🇸🇬',name:'Singapur'},
+  {flag:'🇨🇳',name:'China'},
+  {flag:'🇹🇼',name:'Taiwán'},
   {flag:'🇵🇭',name:'Filipinas'},
+  {flag:'🇸🇬',name:'Singapur'},
+  {flag:'🇲🇲',name:'Myanmar'},
+  {flag:'🇻🇳',name:'Vietnam'},
+  {flag:'🇮🇩',name:'Indonesia'},
+  {flag:'🇮🇳',name:'India'},
+  {flag:'🇭🇰',name:'Hong Kong'},
+  // Europa
+  {flag:'🇪🇸',name:'España'},
+  {flag:'🇬🇧',name:'Reino Unido'},
+  {flag:'🇫🇷',name:'Francia'},
+  {flag:'🇩🇪',name:'Alemania'},
+  {flag:'🇵🇹',name:'Portugal'},
+  {flag:'🇮🇹',name:'Italia'},
+  {flag:'🇸🇪',name:'Suecia'},
+  {flag:'🇳🇴',name:'Noruega'},
+  {flag:'🇩🇰',name:'Dinamarca'},
+  {flag:'🇵🇱',name:'Polonia'},
+  {flag:'🇧🇪',name:'Bélgica'},
+  {flag:'🇳🇱',name:'Países Bajos'},
+  {flag:'🇮🇪',name:'Irlanda'},
+  {flag:'🇷🇺',name:'Rusia'},
+  {flag:'🇹🇷',name:'Turquía'},
+  {flag:'🇬🇪',name:'Georgia'},
+  {flag:'🇱🇹',name:'Lituania'},
+  {flag:'🇫🇮',name:'Finlandia'},
+  // América
+  {flag:'🇺🇸',name:'Estados Unidos'},
+  {flag:'🇨🇦',name:'Canadá'},
   {flag:'🇲🇽',name:'México'},
   {flag:'🇦🇷',name:'Argentina'},
   {flag:'🇧🇷',name:'Brasil'},
+  {flag:'🇨🇴',name:'Colombia'},
+  {flag:'🇨🇱',name:'Chile'},
+  {flag:'🇻🇪',name:'Venezuela'},
+  {flag:'🇵🇪',name:'Perú'},
+  // Oceanía
+  {flag:'🇦🇺',name:'Australia'},
+  {flag:'🇳🇿',name:'Nueva Zelanda'},
 ];
 
 function countryPresetSelectHtml(){
@@ -1420,6 +1453,11 @@ function formHtml(s, forcedCategory=null){
       </div>
 
       <div class="form-row">
+        <label class="form-label">Nombre en inglés <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(opcional — mejora la búsqueda)</span></label>
+        <input id="f_nameEn" placeholder="Ej: Girl Rules (dejar vacío si el nombre ya es en inglés)" value="${s?s.nameEn||'':''}"/>
+      </div>
+
+      <div class="form-row">
         <label class="form-label">Portada (URL)</label>
         <div style="display:flex;gap:10px;align-items:flex-start">
           <img id="posterPreview" class="poster-preview" alt="Portada" style="${s&&s.poster?'display:block':'display:none'};width:54px;height:80px;border-radius:10px;object-fit:cover;border:1.5px solid var(--border2);flex-shrink:0" src="${s&&s.poster?s.poster:''}">
@@ -2035,7 +2073,8 @@ function saveSeries(si, forcedCategory=null){
   const cast=getCastData();
   const animeSeason=(category==='anime'||category==='reality')?getAnimeSeason():'';
   const renewedNextSeason=document.getElementById('f_renewed')?.checked||false;
-  let payload={name,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason};
+  const nameEn=document.getElementById('f_nameEn')?.value.trim()||'';
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -3185,15 +3224,38 @@ function getMovieCastData(){
 }
 
 function mapCountry(c){
-  var cm={
+  if(!c) return c;
+  const cm={
+    // Inglés → Español
     'Thailand':'Tailandia','South Korea':'Corea del Sur','Korea':'Corea del Sur',
-    'China':'China','Japan':'Jap\u00f3n','Taiwan':'Taiw\u00e1n','Philippines':'Filipinas',
-    'Vietnam':'Vietnam','Indonesia':'Indonesia','Spain':'Espa\u00f1a',
-    'United States':'Estados Unidos','Hong Kong':'Hong Kong','Malaysia':'Malasia',
-    'Tailandia':'Tailandia','Corea del Sur':'Corea del Sur','Jap\u00f3n':'Jap\u00f3n'
+    'Japan':'Japón','China':'China','Taiwan':'Taiwán','Philippines':'Filipinas',
+    'Vietnam':'Vietnam','Indonesia':'Indonesia','Spain':'España',
+    'United States':'Estados Unidos','US':'Estados Unidos','USA':'Estados Unidos',
+    'Hong Kong':'Hong Kong','Malaysia':'Malasia','Singapore':'Singapur',
+    'France':'Francia','Germany':'Alemania','United Kingdom':'Reino Unido',
+    'UK':'Reino Unido','England':'Reino Unido','Ireland':'Irlanda',
+    'Sweden':'Suecia','Norway':'Noruega','Denmark':'Dinamarca','Finland':'Finlandia',
+    'Belgium':'Bélgica','Netherlands':'Países Bajos','Poland':'Polonia',
+    'Russia':'Rusia','Italy':'Italia','Portugal':'Portugal','Greece':'Grecia',
+    'Turkey':'Turquía','Israel':'Israel','Georgia':'Georgia','Lithuania':'Lituania',
+    'Canada':'Canadá','Mexico':'México','Brazil':'Brasil','Argentina':'Argentina',
+    'Colombia':'Colombia','Chile':'Chile','Peru':'Perú','Venezuela':'Venezuela',
+    'Australia':'Australia','New Zealand':'Nueva Zelanda',
+    // Typos conocidos
+    'Cánada':'Canadá','Inglaterra':'Reino Unido','Myanmmar':'Myanmar',
   };
   return cm[c]||c;
 }
+
+function mapNetwork(n){
+  if(!n) return n;
+  const nm={
+    'Apple Tv':'Apple TV+','AppleTv':'Apple TV+','Apple TV':'Apple TV+',
+    'HBO Max':'Max','HuluDisney+':'Hulu / Disney+',
+  };
+  return nm[n]||n;
+}
+
 initData();
 
 /* ── Toast de confirmación de actriz ── */
