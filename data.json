@@ -15255,9 +15255,10 @@
       "bookUrl": "",
       "genres": [],
       "category": "reality",
-      "updatedAt": "2026-05-13T09:24:59.725Z",
+      "updatedAt": "2026-05-14T08:40:20.809Z",
       "movieType": "film",
-      "duration": 82
+      "duration": 82,
+      "cast": []
     },
     {
       "id": "1700000000000",
@@ -20654,7 +20655,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:09:31.919Z"
+      "updatedAt": "2026-05-14T08:39:08.041Z",
+      "movieType": "film",
+      "duration": 117,
+      "cast": []
     },
     {
       "id": "1700000000194",
@@ -20683,7 +20687,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:06:21.010Z"
+      "updatedAt": "2026-05-14T08:39:22.697Z",
+      "movieType": "short",
+      "duration": 15,
+      "cast": []
     },
     {
       "id": "1700000000195",
@@ -20711,7 +20718,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:06:04.884Z"
+      "updatedAt": "2026-05-14T08:39:34.416Z",
+      "movieType": "film",
+      "duration": 102,
+      "cast": []
     },
     {
       "id": "1700000000196",
@@ -20735,7 +20745,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:09:41.015Z"
+      "updatedAt": "2026-05-14T08:39:56.811Z",
+      "movieType": "film",
+      "duration": 101,
+      "cast": []
     },
     {
       "id": "1700000000198",
@@ -20759,7 +20772,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:09:50.001Z"
+      "updatedAt": "2026-05-14T08:40:41.857Z",
+      "movieType": "film",
+      "duration": 98,
+      "cast": []
     },
     {
       "id": "1700000000199",
@@ -20782,7 +20798,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:09:59.164Z"
+      "updatedAt": "2026-05-14T08:40:48.253Z",
+      "movieType": "film",
+      "duration": 84,
+      "cast": []
     },
     {
       "id": "1700000000200",
@@ -20803,7 +20822,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:10:07.364Z"
+      "updatedAt": "2026-05-14T08:40:56.416Z",
+      "movieType": "film",
+      "duration": 88,
+      "cast": []
     },
     {
       "id": "1700000000201",
@@ -20827,7 +20849,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:10:18.491Z"
+      "updatedAt": "2026-05-14T08:41:02.981Z",
+      "movieType": "short",
+      "duration": 19,
+      "cast": []
     },
     {
       "id": "1700000000202",
@@ -20857,7 +20882,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:06:57.006Z"
+      "updatedAt": "2026-05-14T08:41:10.237Z",
+      "movieType": "film",
+      "duration": 130,
+      "cast": []
     },
     {
       "id": "1700000000203",
@@ -20878,7 +20906,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:07:23.646Z"
+      "updatedAt": "2026-05-14T08:41:21.533Z",
+      "movieType": "short",
+      "duration": 14,
+      "cast": []
     },
     {
       "id": "1700000000204",
@@ -20907,7 +20938,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:07:39.431Z"
+      "updatedAt": "2026-05-14T08:41:28.204Z",
+      "movieType": "short",
+      "duration": 35,
+      "cast": []
     },
     {
       "id": "1700000000205",
@@ -20935,7 +20969,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:07:55.668Z"
+      "updatedAt": "2026-05-14T08:41:36.392Z",
+      "movieType": "short",
+      "duration": 10,
+      "cast": []
     },
     {
       "id": "1700000000206",
@@ -20963,7 +21000,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:08:13.994Z"
+      "updatedAt": "2026-05-14T08:41:44.443Z",
+      "movieType": "film",
+      "duration": 104,
+      "cast": []
     },
     {
       "id": "1700000000207",
@@ -20986,7 +21026,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:10:28.872Z"
+      "updatedAt": "2026-05-14T08:41:49.696Z",
+      "movieType": "short",
+      "duration": 21,
+      "cast": []
     },
     {
       "id": "1700000000208",
@@ -21015,7 +21058,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:09:05.662Z"
+      "updatedAt": "2026-05-14T08:41:55.402Z",
+      "movieType": "short",
+      "duration": 18,
+      "cast": []
     },
     {
       "id": "1700000000209",
@@ -21039,7 +21085,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:10:52.250Z"
+      "updatedAt": "2026-05-14T08:42:02.696Z",
+      "movieType": "film",
+      "duration": 118,
+      "cast": []
     },
     {
       "id": "1700000000210",
@@ -21062,7 +21111,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:10:38.408Z"
+      "updatedAt": "2026-05-14T08:42:15.183Z",
+      "movieType": "film",
+      "duration": 105,
+      "cast": []
     },
     {
       "id": "1700000000211",
@@ -21091,7 +21143,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:08:55.632Z"
+      "updatedAt": "2026-05-14T08:42:30.151Z",
+      "movieType": "short",
+      "duration": 8,
+      "cast": []
     },
     {
       "id": "1700000000212",
@@ -21120,7 +21175,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:09:18.461Z"
+      "updatedAt": "2026-05-14T08:42:36.861Z",
+      "movieType": "short",
+      "duration": 9,
+      "cast": []
     },
     {
       "id": "1700000000213",
@@ -21148,7 +21206,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:11:32.203Z"
+      "updatedAt": "2026-05-14T08:42:44.866Z",
+      "movieType": "film",
+      "duration": 7,
+      "cast": []
     },
     {
       "id": "1700000000214",
@@ -21174,7 +21235,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:11:48.522Z"
+      "updatedAt": "2026-05-14T08:42:57.642Z",
+      "movieType": "film",
+      "duration": 82,
+      "cast": []
     },
     {
       "id": "1700000000215",
@@ -21197,7 +21261,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:16:30.982Z"
+      "updatedAt": "2026-05-14T08:43:03.942Z",
+      "movieType": "short",
+      "duration": 5,
+      "cast": []
     },
     {
       "id": "1700000000216",
@@ -21218,7 +21285,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:16:52.980Z"
+      "updatedAt": "2026-05-14T08:43:10.105Z",
+      "movieType": "film",
+      "duration": 107,
+      "cast": []
     },
     {
       "id": "1700000000217",
@@ -21246,7 +21316,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:12:08.422Z"
+      "updatedAt": "2026-05-14T08:43:18.117Z",
+      "movieType": "film",
+      "duration": 60,
+      "cast": []
     },
     {
       "id": "1700000000218",
@@ -21274,7 +21347,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:12:26.613Z"
+      "updatedAt": "2026-05-14T08:43:25.207Z",
+      "movieType": "film",
+      "duration": 110,
+      "cast": []
     },
     {
       "id": "1700000000219",
@@ -21303,7 +21379,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:12:49.023Z"
+      "updatedAt": "2026-05-14T08:43:36.516Z",
+      "movieType": "short",
+      "duration": 30,
+      "cast": []
     },
     {
       "id": "1700000000220",
@@ -21332,7 +21411,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:13:03.505Z"
+      "updatedAt": "2026-05-14T08:43:42.390Z",
+      "movieType": "short",
+      "duration": 13,
+      "cast": []
     },
     {
       "id": "1700000000221",
@@ -21360,7 +21442,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:13:15.450Z"
+      "updatedAt": "2026-05-14T08:43:49.395Z",
+      "movieType": "film",
+      "duration": 114,
+      "cast": []
     },
     {
       "id": "1700000000222",
@@ -21389,7 +21474,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:13:47.667Z"
+      "updatedAt": "2026-05-14T08:43:55.262Z",
+      "movieType": "film",
+      "duration": 103,
+      "cast": []
     },
     {
       "id": "1700000000223",
@@ -21417,7 +21505,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:14:02.897Z"
+      "updatedAt": "2026-05-14T08:44:00.985Z",
+      "movieType": "short",
+      "duration": 17,
+      "cast": []
     },
     {
       "id": "1700000000224",
@@ -21446,7 +21537,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:14:30.520Z"
+      "updatedAt": "2026-05-14T08:44:08.832Z",
+      "movieType": "short",
+      "duration": 25,
+      "cast": []
     },
     {
       "id": "1700000000225",
@@ -21475,7 +21569,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:14:43.511Z"
+      "updatedAt": "2026-05-14T08:44:15.171Z",
+      "movieType": "short",
+      "duration": 7,
+      "cast": []
     },
     {
       "id": "1700000000226",
@@ -21499,7 +21596,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T16:15:45.800Z"
+      "updatedAt": "2026-05-14T08:44:31.939Z",
+      "movieType": "film",
+      "duration": 95,
+      "cast": []
     },
     {
       "id": "1700000000227",
@@ -21522,7 +21622,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:22:23.464Z"
+      "updatedAt": "2026-05-14T08:44:50.178Z",
+      "movieType": "film",
+      "duration": 84,
+      "cast": []
     },
     {
       "id": "1700000000228",
@@ -21546,7 +21649,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:15:10.764Z"
+      "updatedAt": "2026-05-14T08:44:57.610Z",
+      "movieType": "short",
+      "duration": 18,
+      "cast": []
     },
     {
       "id": "1700000000229",
@@ -21575,7 +21681,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:15:28.031Z"
+      "updatedAt": "2026-05-14T08:45:04.375Z",
+      "movieType": "film",
+      "duration": 142,
+      "cast": []
     },
     {
       "id": "1700000000230",
@@ -21593,7 +21702,9 @@
         }
       ],
       "trailerUrl": "https://youtu.be/_ak5dFt8Ar0",
-      "genres": [],
+      "genres": [
+        "Familia"
+      ],
       "poster": "https://m.media-amazon.com/images/M/MV5BNzAyOWNiMjAtNWUzMi00ZDk1LWE5NzYtNDUzMWE1Y2M0NDM2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
       "basedOnBook": false,
       "bookSource": "",
@@ -21601,7 +21712,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:15:47.877Z"
+      "updatedAt": "2026-05-14T08:45:29.230Z",
+      "movieType": "film",
+      "duration": 114,
+      "cast": []
     },
     {
       "id": "1700000000231",
@@ -21624,7 +21738,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:22:48.422Z"
+      "updatedAt": "2026-05-14T08:46:07.778Z",
+      "movieType": "film",
+      "duration": 115,
+      "cast": []
     },
     {
       "id": "1700000000232",
@@ -21648,7 +21765,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:23:03.924Z"
+      "updatedAt": "2026-05-14T08:46:14.703Z",
+      "movieType": "film",
+      "duration": 80,
+      "cast": []
     },
     {
       "id": "1700000000233",
@@ -21672,7 +21792,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T17:16:20.257Z"
+      "updatedAt": "2026-05-14T08:46:21.313Z",
+      "movieType": "short",
+      "duration": 10,
+      "cast": []
     },
     {
       "id": "1700000000234",
@@ -24354,5 +24477,5 @@
       "birthdate": "2001-03-30"
     }
   ],
-  "exportedAt": "2026-05-14T08:36:42.336Z"
+  "exportedAt": "2026-05-14T08:46:28.620Z"
 }
