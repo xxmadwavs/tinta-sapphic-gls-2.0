@@ -2772,6 +2772,7 @@ function openSeries(si){
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
   ${s.synopsis?`<div class="synopsis">${s.synopsis}</div>`:''}
+  ${s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;margin-bottom:4px">${s.genres.map(g=>`<span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--accent-soft);color:var(--accent);font-weight:600;border:1px solid var(--border2)">${g}</span>`).join('')}</div>`:''}
   ${s.basedOnBook?(()=>{
     const hasCover=s.bookCoverUrl&&s.bookCoverUrl.trim();
     const hasTitle=s.bookSource&&s.bookSource.trim();
@@ -2840,6 +2841,7 @@ function openUpcoming(si){
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
   ${s.synopsis?`<div class="synopsis">${s.synopsis}</div>`:`<div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:13px;font-style:italic">📝 Sinopsis no disponible aún</div>`}
+  ${s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;margin-bottom:4px">${s.genres.map(g=>`<span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--accent-soft);color:var(--accent);font-weight:600;border:1px solid var(--border2)">${g}</span>`).join('')}</div>`:''}
   ${s.basedOnBook?(()=>{
     const hasCover=s.bookCoverUrl&&s.bookCoverUrl.trim();
     const hasTitle=s.bookSource&&s.bookSource.trim();
@@ -2914,6 +2916,7 @@ function openMovie(mi){
   ${mv.trailerUrl?trailerHtml(mv.trailerUrl):''}
   ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
   ${mv.synopsis?`<div class="synopsis">${mv.synopsis}</div>`:''}
+  ${mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;margin-bottom:4px">${mv.genres.map(g=>`<span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--accent-soft);color:var(--accent);font-weight:600;border:1px solid var(--border2)">${g}</span>`).join('')}</div>`:''}
   ${bookBlock}
   ${castCount?`<div class="divider"></div>
   <div class="modal-tabs">
