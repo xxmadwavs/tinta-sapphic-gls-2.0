@@ -51,7 +51,7 @@
       ],
       "synopsis": "Un grupo de amigas se sume en el caos cuando sus lazos se ponen a prueba de diversas maneras, comenzando con el regreso de una exnovia. \n\nPrim y Min dirigen juntas una agencia de publicidad cuando aparece Bambi, la exnovia de Prim, una nueva clienta que quiere volver con ella. A su círculo se suman Gorya, la joven estilista de Prim, que busca una conexión más profunda; Shasha, la modelo promiscua y encantadora; y Praew, la fotógrafa lesbiana del bar que frecuenta Min, quien siente curiosidad por la bisexualidad.",
       "year": 2026,
-      "country": "Tailandia / Japón",
+      "country": "Tailandia",
       "bookSource": "Girl Rules",
       "basedOnBook": true,
       "bookCoverUrl": "https://preview.redd.it/girl-rules-the-novel-v0-p1zg66s1tfcg1.png?auto=webp&s=ed337025810143dcf977b35bef6f27b4a1cd9860",
@@ -67,8 +67,8 @@
       ],
       "bookLinks": [],
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -124,7 +124,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T20:23:30.995Z",
+      "updatedAt": "2026-05-14T17:39:20.041Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -204,7 +204,7 @@
       "episodes": [],
       "synopsis": "De novias universitarias a compañeras de vida, Pafun y Aioon construyen una vida juntas llena de amor y devoción, soñando con una familia que parece inalcanzable. Cuando el anhelo de Pafun por la maternidad se intensifica, su esperanza crece ante la promesa de adoptar un hijo algún día.\n\nTodo cambia cuando su mejor amiga, Nubnueng, regresa inesperadamente y les trae una oportunidad que les cambiará la vida. Mientras el amor, la pérdida y la responsabilidad se entrelazan, la pareja debe afrontar el desamor, la resiliencia y los desafíos de convertirse en madres primerizas.\n\nFulfill es un viaje tierno y emotivo que celebra la familia elegida y el poder del amor para completar lo que la vida deja inconcluso.",
       "year": 2026,
-      "country": "Tailandia / Japón",
+      "country": "Tailandia",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -220,9 +220,9 @@
       "trailerUrl": "https://youtu.be/D0-qfBPHrqA",
       "bookLinks": [],
       "genres": [
-        "Romance",
+        "Comedia",
         "Drama",
-        "Comedia"
+        "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -286,7 +286,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T20:23:52.605Z",
+      "updatedAt": "2026-05-14T17:39:38.184Z",
       "nameEn": ""
     },
     {
@@ -772,11 +772,44 @@
       "trailerUrl": "",
       "bookLinks": [],
       "genres": [
-        "Romance",
         "Drama",
-        "Psicológico"
+        "Psicológico",
+        "Romance"
       ],
-      "nameEn": ""
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778760904100",
+          "character": "Arisa Kulnavee / Keetraphat",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760957217",
+          "character": "Lalin / Lyla",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-03-28",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-14T17:40:54.990Z"
     },
     {
       "id": "1776889550180",
@@ -1019,7 +1052,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T11:56:12.011Z",
+      "updatedAt": "2026-05-14T17:38:34.546Z",
       "nameEn": ""
     },
     {
@@ -1169,7 +1202,7 @@
       "poster": "https://i.mydramalist.com/Dk6veD_4f.jpg",
       "synopsis": "",
       "year": 2026,
-      "country": "Tailandia / Japón",
+      "country": "Tailandia",
       "network": "Youtube, iQiyi",
       "networkUrl": "https://youtube.com/playlist?list=PLFnFjT24wVPX7gxcGvZV89N6h7PASbnPc&si=HaWbMW1rivdphb6d",
       "watchLinks": [
@@ -1233,7 +1266,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T20:28:03.102Z",
+      "updatedAt": "2026-05-14T17:39:51.057Z",
       "nameEn": ""
     },
     {
@@ -4804,7 +4837,7 @@
       "poster": "https://i.mydramalist.com/Lwb8xg_4f.jpg",
       "synopsis": "Claire y Bell se conocen en un lugar al que nadie entra por voluntad propia: la cárcel. Condenada injustamente por posesión de drogas, Bell comienza su condena de quince meses solo para descubrir que un poderoso grupo dentro del recinto penitenciario la tiene en la mira. Incluso el alcaide hace la vista gorda ante sus acciones. Su única vía de escape es acudir a Claire, una reclusa violenta con la que nadie se atreve a meterse. Nada es tan fácil como esperaba. A medida que su vínculo se profundiza, su camino llega a una encrucijada y deben elegir entre la vida y el amor.",
       "year": 2024,
-      "country": "Tailandia / Japón",
+      "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
@@ -4822,9 +4855,9 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=372308",
       "upcoming": false,
       "genres": [
-        "Romance",
+        "Crimen",
         "Drama",
-        "Crimen"
+        "Romance"
       ],
       "seasons": [
         {
@@ -4858,7 +4891,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T20:50:36.599Z",
+      "updatedAt": "2026-05-14T17:39:45.359Z",
       "nameEn": ""
     },
     {
@@ -25310,5 +25343,5 @@
       "height": null
     }
   ],
-  "exportedAt": "2026-05-14T17:12:52.356557Z"
+  "exportedAt": "2026-05-14T17:42:02.860Z"
 }
