@@ -421,7 +421,8 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .cast-dropdown-list{max-height:200px;overflow-y:auto}
 .cast-dropdown-item{display:flex;align-items:center;gap:8px;padding:7px 10px;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--text)}
 .cast-dropdown-item:hover,.cast-dropdown-item.focused{background:var(--accent-soft);color:var(--accent)}
-.cast-dropdown-item img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0}
+.cast-dropdown-item img{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.cast-dropdown-item>div{flex-shrink:0}
 .cast-dropdown-empty{padding:10px;font-size:12px;color:var(--muted);text-align:center}
 .cast-del-btn{background:none;border:1.5px solid rgba(212,92,92,.3);border-radius:8px;color:var(--danger);font-size:14px;cursor:pointer;padding:0;width:30px;height:30px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'Nunito',sans-serif}
 .cast-del-btn:hover{background:rgba(212,92,92,.1);border-color:var(--danger)}
@@ -2988,7 +2989,8 @@ function renderActressesGrid(){
   if(!list.length){grid.innerHTML='<div style="color:var(--muted);font-size:13px">No hay actrices. Pulsa "+ Añadir actriz" para empezar.</div>';return;}
   grid.innerHTML=list.map(a=>{
     const ai=actresses.indexOf(a);
-    const photo=a.photo?`<img src="${escapeHtml(a.photo)}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;border:2.5px solid var(--border2);margin-bottom:6px" onerror="this.outerHTML='<div style=\'width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px\'>🎭</div>'">`:'<div style="width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px">🎭</div>';
+    const _aw=actressImgWrap(a,72);
+    const photo='<div style="margin-bottom:6px">'+_aw+'</div>';
     const seriesCount=series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===a.id)).length;
     const moviesCount=movies.filter(m=>m.cast&&m.cast.some(m2=>m2.actressId===a.id)).length;
     const total=seriesCount+moviesCount;
@@ -3006,13 +3008,38 @@ function renderActressesGrid(){
 }
 
 function actressFormHtml(a){
+  const initX=a&&a.photoX!=null?a.photoX:50;
+  const initY=a&&a.photoY!=null?a.photoY:20;
+  const initZ=a&&a.photoZoom!=null?a.photoZoom:100;
   return `<div style="padding:1.25rem 1.75rem">
     <div class="form-row"><label class="form-label">Nombre *</label><input id="af_name" placeholder="Ej: Kim Sejeong" value="${a?escapeHtml(a.name):''}"/></div>
     <div class="form-row">
       <label class="form-label">Foto (URL)</label>
-      <div style="display:flex;gap:10px;align-items:flex-start">
-        <img id="af_photo_prev" style="width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:top;border:1.5px solid var(--border2);flex-shrink:0;${a&&a.photo?'':'display:none'}" src="${a&&a.photo?a.photo:''}">
-        <input id="af_photo" placeholder="https://..." value="${a&&a.photo?escapeHtml(a.photo):''}" oninput="const p=document.getElementById('af_photo_prev');if(this.value){p.src=this.value;p.style.display='block';}else p.style.display='none'"/>
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;border:2px solid var(--border2);background:var(--surface2);flex-shrink:0;${a&&a.photo?'':'opacity:.35'}">
+            <img id="af_photo_prev" style="width:100%;height:100%;object-fit:cover;transform-origin:center center;transform:scale(${initZ/100}) translate(${initX-50}%,${initY-50}%);" src="${a&&a.photo?escapeHtml(a.photo):''}" onerror="this.style.display='none'">
+          </div>
+          <span style="font-size:10px;color:var(--muted);font-weight:600">Vista previa</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+          <input id="af_photo" placeholder="https://..." value="${a&&a.photo?escapeHtml(a.photo):''}" oninput="afPhotoChange(this.value)"/>
+          <div style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px">
+            <span style="font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap">↕ Pos Y</span>
+            <input id="af_pos_y" type="range" min="0" max="100" value="${initY}" oninput="afUpdatePreview()" style="width:100%;accent-color:var(--accent)">
+            <span id="af_pos_y_val" style="font-size:10px;color:var(--muted);font-weight:700;min-width:28px;text-align:right">${initY}%</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px">
+            <span style="font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap">↔ Pos X</span>
+            <input id="af_pos_x" type="range" min="0" max="100" value="${initX}" oninput="afUpdatePreview()" style="width:100%;accent-color:var(--accent)">
+            <span id="af_pos_x_val" style="font-size:10px;color:var(--muted);font-weight:700;min-width:28px;text-align:right">${initX}%</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px">
+            <span style="font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap">🔍 Zoom</span>
+            <input id="af_zoom" type="range" min="100" max="250" value="${initZ}" oninput="afUpdatePreview()" style="width:100%;accent-color:var(--accent)">
+            <span id="af_zoom_val" style="font-size:10px;color:var(--muted);font-weight:700;min-width:28px;text-align:right">${initZ}%</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-row"><label class="form-label">País / Origen</label>
@@ -3058,6 +3085,28 @@ function openEditActress(ai){
   document.getElementById('actressModal').classList.add('open');
 }
 
+function afPhotoChange(url){
+  const p=document.getElementById('af_photo_prev');
+  if(!p) return;
+  if(url){ p.src=url; p.style.display=''; p.closest('div').style.opacity='1'; }
+  else { p.src=''; p.style.display='none'; p.closest('div').style.opacity='.35'; }
+  afUpdatePreview();
+}
+function afUpdatePreview(){
+  const p=document.getElementById('af_photo_prev');
+  if(!p) return;
+  const x=document.getElementById('af_pos_x')?.value||50;
+  const y=document.getElementById('af_pos_y')?.value||20;
+  const z=document.getElementById('af_zoom')?.value||100;
+  document.getElementById('af_pos_x_val').textContent=x+'%';
+  document.getElementById('af_pos_y_val').textContent=y+'%';
+  document.getElementById('af_zoom_val').textContent=z+'%';
+  // Use transform for zoom + translate for position offset from center
+  const tx=Number(x)-50;
+  const ty=Number(y)-50;
+  p.style.transform='scale('+z/100+') translate('+tx+'%,'+ty+'%)';
+}
+
 function saveActress(ai){
   const name=document.getElementById('af_name').value.trim();
   if(!name){alert('El nombre es obligatorio');return;}
@@ -3066,6 +3115,9 @@ function saveActress(ai){
     id:isNew?Date.now().toString():(actresses[ai].id||Date.now().toString()),
     name,
     photo:document.getElementById('af_photo').value.trim(),
+    photoX:Number(document.getElementById('af_pos_x')?.value||50),
+    photoY:Number(document.getElementById('af_pos_y')?.value||20),
+    photoZoom:Number(document.getElementById('af_zoom')?.value||100),
     country:document.getElementById('af_country').value.trim(),
     birthdate:document.getElementById('af_birthdate').value.trim(),
     height:document.getElementById('af_height').value.trim()?Number(document.getElementById('af_height').value.trim()):undefined,
@@ -3154,7 +3206,7 @@ function filterCastDropdown(inp, uid){
   let listHtml='';
   if(matches.length){
     matches.forEach(function(a){
-      const photo=a.photo?'<img src="'+escapeHtml(a.photo)+'" onerror="this.style.display=\'none\'">':'<span style="font-size:16px">&#127917;</span>';
+            const photo=actressImgWrap(a,28);
       const ai=actresses.indexOf(a);
       const country=a.country?' <span style="font-size:10px;color:var(--muted)">'+a.country+'</span>':'';
       listHtml+='<div class="cast-dropdown-item" onmousedown="selectCastActressById(\''+uid+'\',\''+a.id+'\','+ai+')">'+photo+'<span>'+escapeHtml(a.name)+country+'</span></div>';
@@ -3190,6 +3242,9 @@ function saveActressAndSelect(ai, castUid){
   const payload={
     id:Date.now().toString(), name,
     photo:document.getElementById('af_photo').value.trim(),
+    photoX:Number(document.getElementById('af_pos_x')?.value||50),
+    photoY:Number(document.getElementById('af_pos_y')?.value||20),
+    photoZoom:Number(document.getElementById('af_zoom')?.value||100),
     country:document.getElementById('af_country').value.trim(),
     birthdate:document.getElementById('af_birthdate').value.trim(),
     height:document.getElementById('af_height').value.trim()?Number(document.getElementById('af_height').value.trim()):undefined,
@@ -3230,10 +3285,23 @@ function closeCastDropdown(uid){
   if(dd) dd.classList.remove('open');
 }
 
+function actressImgStyle(a, size){
+  if(!a||!a.photo) return '';
+  const x=a.photoX!=null?a.photoX:50;
+  const y=a.photoY!=null?a.photoY:20;
+  const z=a.photoZoom!=null?a.photoZoom:100;
+  const tx=x-50; const ty=y-50;
+  return 'width:'+size+'px;height:'+size+'px;border-radius:50%;object-fit:cover;transform-origin:center center;transform:scale('+z/100+') translate('+tx+'%,'+ty+'%);border:1.5px solid var(--border2);flex-shrink:0';
+}
+function actressImgWrap(a, size){
+  if(!a||!a.photo) return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:'+(size*0.45)+'px;flex-shrink:0">&#127917;</div>';
+  return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;overflow:hidden;flex-shrink:0;border:1.5px solid var(--border2)">'
+    +'<img src="'+escapeHtml(a.photo)+'" style="'+actressImgStyle(a,size)+'" onerror="this.parentNode.innerHTML=String.fromCodePoint(127917)">'
+    +'</div>';
+}
 function getActressThumb(actressId){
   const a=actresses.find(x=>x.id===actressId);
-  if(a&&a.photo) return `<img src="${escapeHtml(a.photo)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:top;border:1.5px solid var(--border2)">`;
-  return `<div style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px">🎭</div>`;
+  return actressImgWrap(a, 38);
 }
 
 function getCastData(){
@@ -3364,9 +3432,8 @@ function showActressToast(name, photo, isNew){
     t.className='toast';
     document.body.appendChild(t);
   }
-  const avatarHtml=photo
-    ?`<img class="toast-avatar" src="${escapeHtml(photo)}" onerror="this.outerHTML='<div class=\\'toast-avatar-ph\\'>🎭</div>'">`
-    :`<div class="toast-avatar-ph">🎭</div>`;
+  const _ta=actresses.find(x=>x.photo===photo)||{photo,photoX:50,photoY:20,photoZoom:100};
+  const avatarHtml=photo?actressImgWrap(_ta,38):'<div class="toast-avatar-ph">&#127917;</div>';
   const label=isNew?'Actriz añadida ✓':'Actriz actualizada ✓';
   const sub=isNew?`Ya hay <strong style="color:var(--accent)">${actresses.length}</strong> actrices en total`:'Los cambios se han guardado';
   t.innerHTML=`${avatarHtml}<div class="toast-text"><strong>${escapeHtml(name)}</strong><span>${sub}</span></div>`;

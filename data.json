@@ -1088,7 +1088,26 @@
       "genres": [
         "Romance"
       ],
-      "nameEn": ""
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778781830314",
+          "character": "Whiskey",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778781856216",
+          "character": "Pim",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-14T18:22:19.911Z"
     },
     {
       "id": "1776932412578",
@@ -1295,11 +1314,44 @@
       "episodes": [],
       "bookLinks": [],
       "genres": [
-        "Romance",
+        "Ciencia Ficción",
         "Comedia",
-        "Ciencia Ficción"
+        "Romance"
       ],
-      "nameEn": ""
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778781896148",
+          "character": "Gen",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778781926481",
+          "character": "Ai",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-06-24",
+          "totalEpisodes": 7,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-14T18:21:32.989Z"
     },
     {
       "id": "1776966024996",
@@ -1657,10 +1709,41 @@
         }
       ],
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "nameEn": ""
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778782042599",
+          "character": "Soul",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778782073689",
+          "character": "Xinxin",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778782115526",
+          "character": "Lada",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778782155854",
+          "character": "Mim",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "updatedAt": "2026-05-14T18:23:15.440Z"
     },
     {
       "id": "1776971232987",
@@ -1703,7 +1786,44 @@
       ],
       "category": "series",
       "seriesType": "serie",
-      "cast": [],
+      "cast": [
+        {
+          "actressId": "1778782214788",
+          "character": "Song",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778783160921",
+          "character": "\"Piang\" Piangrawin",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760802641",
+          "character": "Ploy",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760850305",
+          "character": "Ple",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778783211856",
+          "character": "\"Matmi\" Matika",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778783243230",
+          "character": "Khwanrin",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
       "animeSeason": "",
       "renewedNextSeason": false,
       "seasons": [
@@ -1720,7 +1840,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T12:43:46.012Z",
+      "updatedAt": "2026-05-14T18:27:40.273Z",
       "nameEn": ""
     },
     {
@@ -25341,7 +25461,103 @@
       "birthdate": "2004-08-04",
       "notes": "Actriz",
       "height": null
+    },
+    {
+      "id": "1778781830314",
+      "name": "\"Orm\" Ormsin Supitcha",
+      "photo": "https://static.wikia.nocookie.net/drama/images/c/c7/Supitcha_Limsommut12.jpg/revision/latest?cb=20200422033019&path-prefix=es",
+      "country": "Tailandia",
+      "birthdate": "1995-05-30",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778781856216",
+      "name": "\"Folk\" Sutima Korkiatvanich",
+      "photo": "https://image.tmdb.org/t/p/w500/rl027YbkbwMzXDbh4mErt8CO63s.jpg",
+      "country": "Tailandia",
+      "birthdate": "2000-05-16",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778781896148",
+      "name": "\"Myyu\" Khawisara Singplod",
+      "photo": "https://i.mydramalist.com/b3RQkj_5f.jpg",
+      "country": "Tailandia",
+      "birthdate": "1999-10-28",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778781926481",
+      "name": "\"Chanya\" Chanya Amarit Duval",
+      "photo": "https://www.memindy.com/wp-content/uploads/2023/11/Pic_8-Chanya-scaled.jpg",
+      "country": "Tailandia",
+      "birthdate": "1996-07-11",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778782042599",
+      "name": "\"Pim\" Pimjira Jaroenlak",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Pimjira_Jaroenlak.jpg/250px-Pimjira_Jaroenlak.jpg",
+      "country": "Tailandia",
+      "birthdate": "1991-09-02",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778782073689",
+      "name": "\"Pineare\" Pannin Charnmanoon",
+      "photo": "https://static.wikia.nocookie.net/drama/images/5/5a/Pannin_Charnmanoon-7.jpg/revision/latest/scale-to-width-down/250?cb=20200122223538&path-prefix=es",
+      "country": "Tailandia",
+      "birthdate": "1998-03-03",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778782115526",
+      "name": "\"Jara\" Jennifer Roberts",
+      "photo": "https://static.wikia.nocookie.net/thai_entertainment/images/1/13/MASCARA_Jara_profile_photo_%28July_2021%29.png/revision/latest?cb=20240901193744",
+      "country": "",
+      "birthdate": "1996-09-28",
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778782155854",
+      "name": "\"Jennie\" Naruemon Khampan",
+      "photo": "https://pbs.twimg.com/media/GkStZPjWcAIYtEA.jpg",
+      "country": "Tailandia",
+      "birthdate": "1997-09-19",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778782214788",
+      "name": "\"Nile\" Chanidapa Sommitthanakul",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCAMbEDwi3nkA6HmyEQ-XWWzbvhLzhJbtnGQ&s",
+      "country": "Tailandia",
+      "birthdate": "1998-02-06",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778783160921",
+      "name": "\"Namwan\" Natchaya Vongbut",
+      "photo": "https://i.mydramalist.com/DkAb3n_5f.jpg",
+      "country": "Tailandia",
+      "birthdate": "2003-01-16",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778783211856",
+      "name": "\"Gift\" Sirinart Sugandharat",
+      "photo": "https://1.vikiplatform.com/pr/26151pr/53d102aefd.jpg?x=b",
+      "country": "Tailandia",
+      "birthdate": "1995-10-10",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778783243230",
+      "name": "\"Aomsin\" Nuttharat Papirom",
+      "photo": "https://i.mydramalist.com/YY1npQ_5f.jpg",
+      "country": "Tailandia",
+      "birthdate": "1998-11-01",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-14T17:42:02.860Z"
+  "exportedAt": "2026-05-14T18:27:41.786Z"
 }
