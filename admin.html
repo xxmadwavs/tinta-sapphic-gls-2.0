@@ -80,16 +80,35 @@ body::before{content:'';position:fixed;inset:0;background:
 .poster-hint{font-size:12px;color:var(--muted);line-height:1.8}
 .poster-hint a{color:var(--accent);text-decoration:none;font-weight:600}
 .poster-hint a:hover{text-decoration:underline}
-.ep-list{display:grid;gap:5px;max-height:360px;overflow-y:auto;margin-top:8px}
-.ep-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;transition:all .15s}
-.ep-row:hover{border-color:var(--border2);background:var(--accent-soft)}
-.ep-num{font-size:12px;color:var(--muted);min-width:26px;font-weight:600}
-.ep-date{flex:1;font-size:13px;color:var(--text)}
-.ep-status{font-size:11px;padding:2px 10px;border-radius:20px;font-weight:600}
-.ep-status.aired{background:var(--teal-soft);color:var(--teal)}
-.ep-status.pending{background:var(--accent-soft);color:var(--accent)}
-.ep-status.skipped{background:#f0eeee;color:#aaa}
-.ep-status.modified{background:var(--yellow-soft);color:#b08a00}
+.ep-list{display:grid;gap:3px;max-height:400px;overflow-y:auto;margin-top:8px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.ep-row{
+  display:flex;align-items:center;gap:10px;padding:8px 12px;
+  border-bottom:1px solid var(--border);cursor:pointer;
+  transition:filter .12s;
+}
+.ep-row:last-child{border-bottom:none}
+.ep-row:hover{filter:brightness(.96)}
+/* Color-coded backgrounds by state */
+.ep-row.ep-aired{background:#f0fdf8}
+.ep-row.ep-pending{background:#fff8fb}
+.ep-row.ep-skipped{background:#f8f8f8}
+.ep-row.ep-modified{background:#fffdf0}
+.ep-row.ep-today{background:linear-gradient(90deg,rgba(201,79,124,.08),rgba(224,122,160,.04))}
+.ep-num{
+  font-size:11.5px;color:var(--muted);min-width:30px;
+  font-weight:700;font-variant-numeric:tabular-nums;
+}
+.ep-date{flex:1;font-size:12.5px;color:var(--text);font-variant-numeric:tabular-nums}
+.ep-status{font-size:10.5px;padding:2px 9px;border-radius:20px;font-weight:700;white-space:nowrap}
+.ep-status.aired{background:rgba(91,188,176,.15);color:var(--teal);border:1px solid rgba(91,188,176,.3)}
+.ep-status.pending{background:rgba(201,79,124,.1);color:var(--accent);border:1px solid rgba(201,79,124,.2)}
+.ep-status.skipped{background:#eee;color:#999;border:1px solid #ddd}
+.ep-status.modified{background:var(--yellow-soft);color:#b08a00;border:1px solid rgba(232,193,106,.4)}
+.ep-status.today-ep{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none}
+/* State legend strip at top of ep list */
+.ep-legend{display:flex;gap:8px;padding:6px 12px;background:var(--surface2);border-bottom:1px solid var(--border);font-size:10px;flex-wrap:wrap}
+.ep-legend-item{display:flex;align-items:center;gap:4px;color:var(--muted);font-weight:600}
+.ep-legend-dot{width:7px;height:7px;border-radius:50%}
 .notice{background:var(--accent-soft);border:1.5px solid var(--border2);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--text);margin-bottom:1.5rem;line-height:1.7}
 .notice strong{color:var(--accent)}
 .export-box{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
@@ -421,6 +440,18 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .confirm-modal-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:1.25rem}
 .confirm-modal-btns{display:flex;gap:8px;justify-content:center}
 
+
+/* ─── Unsaved indicator dot on export button ─── */
+.export-dot{
+  display:none;width:8px;height:8px;border-radius:50%;
+  background:#e53935;position:absolute;top:-2px;right:-2px;
+  box-shadow:0 0 0 2px var(--surface);
+  animation:pulse-dot 1.5s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:.7}}
+.export-btn-wrap{position:relative;display:inline-block}
+.export-btn-wrap .export-dot.visible{display:block}
+
 </style>
 </head>
 <body>
@@ -430,7 +461,10 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     <button type="button" class="btn small" onclick="document.getElementById('importFile').click()">⬆ Importar data.json</button>
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
     <button type="button" class="btn small" onclick="window.open('index.html','_blank')">👁 Ver público</button>
-    <button type="button" class="btn export small" onclick="exportData()">⬇ Exportar data.json</button>
+    <div class="export-btn-wrap">
+      <button type="button" class="btn export small" id="exportTopBtn" onclick="exportData()">⬇ Exportar data.json</button>
+      <span class="export-dot" id="exportDot"></span>
+    </div>
   </div>
 </div>
 <div class="unsaved-bar" id="unsavedBar">
@@ -837,9 +871,16 @@ function goPage(section, p){
   const sectionEl = document.getElementById('section-'+section) || document.getElementById('section-'+{series:'series',movies:'movies',anime:'anime',realities:'realities'}[section]);
   if(sectionEl) sectionEl.scrollIntoView({behavior:'smooth', block:'start'});
 }
+let _unsavedCount=0;
 function save(){
   /* los datos viven solo en memoria; exporta data.json para guardar permanentemente */
+  _unsavedCount++;
   document.getElementById('unsavedBar').classList.add('visible');
+  const dot=document.getElementById('exportDot');
+  if(dot) dot.classList.add('visible');
+  // Update bar text with change count
+  const barSpan=document.querySelector('#unsavedBar span');
+  if(barSpan) barSpan.innerHTML=`⚠️ <strong>${_unsavedCount} cambio${_unsavedCount!==1?'s':''}</strong> sin exportar. Recuerda exportar <code>data.json</code> y subirlo.`;
 }
 
 async function initData(){
@@ -2114,7 +2155,13 @@ function openEps(si){
     } else {
       html+=`<div style="font-size:12px;color:var(--teal);background:var(--teal-soft);border-radius:8px;padding:6px 12px;margin-bottom:8px">📦 Estreno completo — todos los eps el ${fmtDate(season.startDate)}</div>`;
     }
-    html+=`<div class="ep-list" style="margin-bottom:8px">`;
+    const legendHtml=`<div class="ep-legend">
+      <span class="ep-legend-item"><span class="ep-legend-dot" style="background:var(--teal)"></span>Emitido</span>
+      <span class="ep-legend-item"><span class="ep-legend-dot" style="background:var(--accent)"></span>Pendiente</span>
+      <span class="ep-legend-item"><span class="ep-legend-dot" style="background:#b08a00"></span>Editado</span>
+      <span class="ep-legend-item"><span class="ep-legend-dot" style="background:#ccc"></span>Saltado</span>
+    </div>`;
+    html+=`<div class="ep-list" style="margin-bottom:8px">${legendHtml}`;
     if(season.allInOneDay){
       // Todos los eps el mismo día
       for(let i=0;i<season.totalEpisodes;i++){
@@ -2128,7 +2175,7 @@ function openEps(si){
         else if(hasOv){st='modified';lb='Fecha cambiada';}
         else if(isPast){st='aired';lb='Emitido';}
         else{st='pending';lb='Pendiente';}
-        html+=`<div class="ep-row" onclick="openEpEdit(${si},${sIdx},${epNum})"><span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
+        html+=`<div class="ep-row ep-${st==="aired"?"aired":st==="skipped"?"skipped":st==="modified"?"modified":"pending"}" onclick="openEpEdit(${si},${sIdx},${epNum})"><span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
       }
     } else {
     // Use genEpisodes results directly — they already account for special groups and overrides
@@ -2165,7 +2212,7 @@ function openEps(si){
           else if(isSpecialGroup&&!hasOv){st='modified';lb='Grupo especial';}
           else if(isPast){st='aired';lb='Emitido';}
           else{st='pending';lb='Pendiente';}
-          html+=`<div class="ep-row" onclick="openEpEdit(${si},${sIdx},${epNum})"><span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
+          html+=`<div class="ep-row ep-${st==="aired"?"aired":st==="skipped"?"skipped":st==="modified"?"modified":"pending"}" onclick="openEpEdit(${si},${sIdx},${epNum})"><span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
         });
       }
     });
@@ -2595,6 +2642,9 @@ function exportData(){
     return;
   }
   document.getElementById('unsavedBar').classList.remove('visible');
+  _unsavedCount=0;
+  const dot=document.getElementById('exportDot');
+  if(dot) dot.classList.remove('visible');
   const blob=new Blob([JSON.stringify({series,movies,actresses,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
 }
@@ -3096,16 +3146,59 @@ function filterCastDropdown(inp, uid){
   const dd=document.getElementById(uid+'_dd');
   if(!dd) return;
   const matches=actresses.filter(a=>!q||a.name.toLowerCase().includes(q)||(a.country&&a.country.toLowerCase().includes(q)));
+  const createBtn=`<div class="cast-dropdown-item" style="border-top:1px solid var(--border);color:var(--accent);font-style:italic"
+    onmousedown="quickCreateActress(${JSON.stringify(inp.value.trim()).replace(/'/g,"\\'")}, '${uid}')">
+    ✚ Crear actriz "${escapeHtml(inp.value.trim()||'nueva')}"…
+  </div>`;
   if(!matches.length){
-    dd.innerHTML='<div class="cast-dropdown-empty">Sin resultados</div>';
+    dd.innerHTML=`<div class="cast-dropdown-empty">Sin resultados</div>${createBtn}`;
   } else {
     dd.innerHTML=matches.map(a=>{
       const photo=a.photo?`<img src="${escapeHtml(a.photo)}" onerror="this.outerHTML='<span style=\'font-size:16px\'>🎭</span>'">`:'<span style="font-size:16px">🎭</span>';
       const ai=actresses.indexOf(a);
       return `<div class="cast-dropdown-item" onmousedown="selectCastActressById('${uid}','${a.id}',${ai})">${photo}<span>${escapeHtml(a.name)}${a.country?` <span style='font-size:10px;color:var(--muted)'>${a.country}</span>`:''}</span></div>`;
-    }).join('');
+    }).join('')+createBtn;
   }
   dd.classList.add('open');
+}
+
+/** Abre el modal de nueva actriz con el nombre prellenado y,
+ *  al guardar, selecciona automáticamente la actriz en el campo de cast. */
+function quickCreateActress(prefillName, castUid){
+  closeCastDropdown(castUid);
+  document.getElementById('actressModalTitle').textContent='🎭 Nueva actriz';
+  document.getElementById('actressModalBody').innerHTML=
+    actressFormHtml(null)+
+    `<div class="modal-footer-btns">
+      <button type="button" class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button>
+      <button type="button" class="btn primary" onclick="saveActressAndSelect(-1,'${castUid}')">Guardar y añadir al reparto</button>
+    </div>`;
+  // Prellenar el nombre con lo que había escrito
+  const nameInp=document.getElementById('af_name');
+  if(nameInp&&prefillName) nameInp.value=prefillName;
+  document.getElementById('actressModal').classList.add('open');
+}
+
+/** Guarda la actriz y, en caso de éxito, la selecciona en el campo de cast. */
+function saveActressAndSelect(ai, castUid){
+  const name=document.getElementById('af_name').value.trim();
+  if(!name){alert('El nombre es obligatorio');return;}
+  const payload={
+    id:Date.now().toString(), name,
+    photo:document.getElementById('af_photo').value.trim(),
+    country:document.getElementById('af_country').value.trim(),
+    birthdate:document.getElementById('af_birthdate').value.trim(),
+    height:document.getElementById('af_height').value.trim()?Number(document.getElementById('af_height').value.trim()):undefined,
+    notes:[...document.querySelectorAll('.af-role-chip.af-role-active')].map(c=>c.dataset.role).join(', '),
+  };
+  actresses.push(payload);
+  save();
+  document.getElementById('actressModal').classList.remove('open');
+  renderActressesGrid();
+  showActressToast(payload.name, payload.photo, true);
+  // Seleccionar en el campo de cast que disparó la creación
+  const ai2=actresses.length-1;
+  selectCastActressById(castUid, payload.id, ai2);
 }
 
 function selectCastActressById(uid, actressId, ai){
