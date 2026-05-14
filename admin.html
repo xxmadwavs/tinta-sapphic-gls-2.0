@@ -159,7 +159,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 /* ── Toast de confirmación ── */
 .toast{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--border2);border-radius:14px;padding:12px 18px;box-shadow:0 6px 28px rgba(212,96,138,0.18);font-size:13.5px;font-weight:600;color:var(--text);pointer-events:none;opacity:0;transform:translateY(14px) scale(.97);transition:opacity .22s ease,transform .22s ease}
 .toast.show{opacity:1;transform:translateY(0) scale(1)}
-.toast-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:top;border:1.5px solid var(--border2);flex-shrink:0}
+.toast-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:center 15%;border:1.5px solid var(--border2);flex-shrink:0}
 .toast-avatar-ph{width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .toast-text{display:flex;flex-direction:column;gap:1px}
 .toast-text strong{color:var(--accent)}
@@ -421,7 +421,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .cast-dropdown-list{max-height:200px;overflow-y:auto}
 .cast-dropdown-item{display:flex;align-items:center;gap:8px;padding:7px 10px;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--text)}
 .cast-dropdown-item:hover,.cast-dropdown-item.focused{background:var(--accent-soft);color:var(--accent)}
-.cast-dropdown-item img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0}
+.cast-dropdown-item img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:center 15%;flex-shrink:0}
 .cast-dropdown-empty{padding:10px;font-size:12px;color:var(--muted);text-align:center}
 .cast-del-btn{background:none;border:1.5px solid rgba(212,92,92,.3);border-radius:8px;color:var(--danger);font-size:14px;cursor:pointer;padding:0;width:30px;height:30px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'Nunito',sans-serif}
 .cast-del-btn:hover{background:rgba(212,92,92,.1);border-color:var(--danger)}
@@ -2988,7 +2988,8 @@ function renderActressesGrid(){
   if(!list.length){grid.innerHTML='<div style="color:var(--muted);font-size:13px">No hay actrices. Pulsa "+ Añadir actriz" para empezar.</div>';return;}
   grid.innerHTML=list.map(a=>{
     const ai=actresses.indexOf(a);
-    const photo=a.photo?`<img src="${escapeHtml(a.photo)}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;border:2.5px solid var(--border2);margin-bottom:6px" onerror="this.outerHTML='<div style=\'width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px\'>🎭</div>'">`:'<div style="width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px">🎭</div>';
+    const photoPos=a.photoPosition||'center 15%';
+    const photo=a.photo?`<img src="${escapeHtml(a.photo)}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(photoPos)};border:2.5px solid var(--border2);margin-bottom:6px" onerror="this.outerHTML='<div style=\'width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px\'>🎭</div>'">`:'<div style="width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px">🎭</div>';
     const seriesCount=series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===a.id)).length;
     const moviesCount=movies.filter(m=>m.cast&&m.cast.some(m2=>m2.actressId===a.id)).length;
     const total=seriesCount+moviesCount;
@@ -3011,9 +3012,16 @@ function actressFormHtml(a){
     <div class="form-row">
       <label class="form-label">Foto (URL)</label>
       <div style="display:flex;gap:10px;align-items:flex-start">
-        <img id="af_photo_prev" style="width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:top;border:1.5px solid var(--border2);flex-shrink:0;${a&&a.photo?'':'display:none'}" src="${a&&a.photo?a.photo:''}">
+        <img id="af_photo_prev" style="width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:${a&&a.photoPosition?escapeHtml(a.photoPosition):'center 15%'};border:1.5px solid var(--border2);flex-shrink:0;${a&&a.photo?'':'display:none'}" src="${a&&a.photo?a.photo:''}">
         <input id="af_photo" placeholder="https://..." value="${a&&a.photo?escapeHtml(a.photo):''}" oninput="const p=document.getElementById('af_photo_prev');if(this.value){p.src=this.value;p.style.display='block';}else p.style.display='none'"/>
       </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Posición de foto <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(si la cara sale cortada)</span></label>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+        ${[['center 5%','⬆ Muy arriba'],['center 15%','↑ Arriba (defecto)'],['center 35%','⬆ Centro-arriba'],['center 50%','· Centro'],['center 65%','↓ Centro-abajo'],['center 80%','⬇ Abajo']].map(([val,label])=>`<span onclick="document.getElementById('af_photoPos').value='${val}';document.querySelectorAll('.af-pos-chip').forEach(c=>{c.style.background='var(--surface2)';c.style.borderColor='var(--border2)';c.style.color='var(--text)'});this.style.background='var(--accent-soft)';this.style.borderColor='var(--accent2)';this.style.color='var(--accent)';document.getElementById('af_photo_prev').style.objectPosition='${val}'" class="af-pos-chip" style="cursor:pointer;padding:4px 11px;border-radius:20px;border:1.5px solid ${(a&&a.photoPosition===val)?'var(--accent2)':'var(--border2)'};font-size:12px;font-weight:600;color:${(a&&a.photoPosition===val)?'var(--accent)':'var(--text)'};background:${(a&&a.photoPosition===val)?'var(--accent-soft)':'var(--surface2)'};transition:all .15s;user-select:none">${label}</span>`).join('')}
+      </div>
+      <input id="af_photoPos" placeholder="O escribe valor CSS, ej: center 20%" value="${a&&a.photoPosition?escapeHtml(a.photoPosition):'center 15%'}" oninput="document.getElementById('af_photo_prev').style.objectPosition=this.value" style="font-size:12px"/>
     </div>
     <div class="form-row"><label class="form-label">País / Origen</label>
       <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px">
@@ -3066,6 +3074,7 @@ function saveActress(ai){
     id:isNew?Date.now().toString():(actresses[ai].id||Date.now().toString()),
     name,
     photo:document.getElementById('af_photo').value.trim(),
+    photoPosition:document.getElementById('af_photoPos').value.trim()||'center 15%',
     country:document.getElementById('af_country').value.trim(),
     birthdate:document.getElementById('af_birthdate').value.trim(),
     height:document.getElementById('af_height').value.trim()?Number(document.getElementById('af_height').value.trim()):undefined,
@@ -3154,7 +3163,7 @@ function filterCastDropdown(inp, uid){
   let listHtml='';
   if(matches.length){
     matches.forEach(function(a){
-            const photo=a.photo?'<img src="'+escapeHtml(a.photo)+'" style="width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0">'+'':'<span style="font-size:16px">&#127917;</span>';
+            const photo=a.photo?'<img src="'+escapeHtml(a.photo)+'" style="width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:'+escapeHtml(a.photoPosition||'center 15%')+';flex-shrink:0">'+'':'<span style="font-size:16px">&#127917;</span>';
       const ai=actresses.indexOf(a);
       const country=a.country?' <span style="font-size:10px;color:var(--muted)">'+a.country+'</span>':'';
       listHtml+='<div class="cast-dropdown-item" onmousedown="selectCastActressById(\''+uid+'\',\''+a.id+'\','+ai+')">'+photo+'<span>'+escapeHtml(a.name)+country+'</span></div>';
@@ -3232,7 +3241,7 @@ function closeCastDropdown(uid){
 
 function getActressThumb(actressId){
   const a=actresses.find(x=>x.id===actressId);
-  if(a&&a.photo) return `<img src="${escapeHtml(a.photo)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:top;border:1.5px solid var(--border2)">`;
+  if(a&&a.photo) return `<img src="${escapeHtml(a.photo)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(a.photoPosition||'center 15%')};border:1.5px solid var(--border2)">`;
   return `<div style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px">🎭</div>`;
 }
 
