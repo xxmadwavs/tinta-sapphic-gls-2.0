@@ -13231,8 +13231,10 @@
       "bookUrl": "https://www.amazon.es/Bloom-Into-You-Manga-Yuri/dp/8491736689",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Animación",
+        "Anime",
+        "Drama",
+        "Romance"
       ],
       "category": "anime",
       "seasons": [
@@ -13249,8 +13251,11 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T09:52:28.018Z",
-      "animeSeason": "Otoño 2018"
+      "updatedAt": "2026-05-14T08:49:31.585Z",
+      "animeSeason": "Otoño 2018",
+      "seriesType": "serie",
+      "cast": [],
+      "renewedNextSeason": false
     },
     {
       "id": "1778396322251",
@@ -14322,6 +14327,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
+        "Animación",
+        "Anime",
         "Comedia",
         "Fantasía"
       ],
@@ -14341,7 +14348,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T09:52:00.343Z"
+      "updatedAt": "2026-05-14T08:49:34.954Z",
+      "seriesType": "serie",
+      "cast": [],
+      "renewedNextSeason": false
     },
     {
       "id": "1778406327495",
@@ -14361,8 +14371,10 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Drama",
-        "Comedia"
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "category": "anime",
       "animeSeason": "Primavera 2024",
@@ -14380,7 +14392,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T09:51:21.465Z"
+      "updatedAt": "2026-05-14T08:49:38.250Z",
+      "seriesType": "serie",
+      "cast": [],
+      "renewedNextSeason": false
     },
     {
       "id": "1778406423279",
@@ -14405,8 +14420,10 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Drama",
-        "Comedia"
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "category": "anime",
       "animeSeason": "Invierno 2018",
@@ -14424,7 +14441,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T09:50:54.693Z"
+      "updatedAt": "2026-05-14T08:49:43.197Z",
+      "seriesType": "serie",
+      "cast": [],
+      "renewedNextSeason": false
     },
     {
       "id": "1778406629965",
@@ -14449,6 +14469,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
+        "Animación",
+        "Anime",
         "Comedia"
       ],
       "category": "anime",
@@ -14467,7 +14489,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T09:50:29.965Z"
+      "updatedAt": "2026-05-14T08:49:47.957Z",
+      "seriesType": "serie",
+      "cast": [],
+      "renewedNextSeason": false
     },
     {
       "id": "1778408041578",
@@ -14622,6 +14647,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
+        "Animación",
+        "Anime",
         "Romance"
       ],
       "category": "anime",
@@ -14640,7 +14667,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-11T12:03:27.371Z"
+      "updatedAt": "2026-05-14T08:49:56.427Z",
+      "seriesType": "serie",
+      "cast": [],
+      "renewedNextSeason": false
     },
     {
       "id": "1778501119595",
@@ -14665,6 +14695,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
+        "Animación",
+        "Anime",
         "Drama"
       ],
       "category": "anime",
@@ -14683,7 +14715,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-11T12:05:19.595Z"
+      "updatedAt": "2026-05-14T08:50:04.440Z",
+      "seriesType": "serie",
+      "cast": [],
+      "renewedNextSeason": false
     },
     {
       "id": "1778501225180",
@@ -14708,8 +14743,10 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Drama",
-        "Comedia"
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "category": "anime",
       "animeSeason": "Otoño 2020",
@@ -14727,7 +14764,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-11T12:07:05.180Z"
+      "updatedAt": "2026-05-14T08:50:08.708Z",
+      "seriesType": "serie",
+      "cast": [],
+      "renewedNextSeason": false
     },
     {
       "id": "1778610979789",
@@ -16930,14 +16970,14 @@
       "synopsis": "Yoo-Hee y Joo-Yeon se enamoraron en la escuela secundaria, pero la persecución de los homosexuales en su escuela los separó. Cuando se reencuentran años después, saltan chispas.\n\n(Source: TMDB)",
       "year": 2014,
       "country": "Corea del Sur",
-      "date": "",
+      "date": "2014-01-01",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=p4apGtSZFIQ&pp=ygULcHJhZ21hIDIwMTQ%3D",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://m.media-amazon.com/images/M/MV5BYzczMjM3MjMtNjE5ZS00OWE5LWIxNGYtNGJhOTEwZDY3M2RjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
       "basedOnBook": false,
@@ -16946,9 +16986,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:45:34.726Z",
+      "updatedAt": "2026-05-14T08:51:46.250Z",
       "movieType": "short",
-      "duration": 16
+      "duration": 16,
+      "cast": []
     },
     {
       "id": "1700000000064",
@@ -18167,14 +18208,14 @@
       "synopsis": "Woo Jeong está ocupado preparándose para ir a la ceremonia fúnebre de Su Yeon, su primer amor en la escuela secundaria.\n\n(Source: TMDB)",
       "year": 2017,
       "country": "Corea del Sur",
-      "date": "",
+      "date": "2017-01-01",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=wGBIZJy12rs&pp=ygUSTWlzcyBZZW9uIHRyYWlsZXIg",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://m.media-amazon.com/images/S/pv-target-images/67aeabd8182185eca04bbde1b6bee2e50959601fc30c981e4efa878e54511a22.jpg",
       "basedOnBook": false,
@@ -18183,7 +18224,7 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T12:17:50.914Z",
+      "updatedAt": "2026-05-14T08:52:08.722Z",
       "movieType": "short",
       "duration": 15,
       "cast": []
@@ -18194,14 +18235,14 @@
       "synopsis": "Ji Sun y Chae Yeon son pareja desde la secundaria y fueron a la misma universidad. Al final de la fiesta de la clase, el presidente estudiantil, un compañero de clase, le pide a Ji Sun que lo ponga en contacto con Chae Yeon.\n\n(Source: GagaOOLala)",
       "year": 2017,
       "country": "Corea del Sur",
-      "date": "",
+      "date": "2017-01-01",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://i.mydramalist.com/j8xObc.jpg",
       "basedOnBook": false,
@@ -18210,7 +18251,7 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T12:17:57.901Z",
+      "updatedAt": "2026-05-14T08:52:28.048Z",
       "movieType": "short",
       "duration": 13,
       "cast": []
@@ -19872,7 +19913,7 @@
       "synopsis": "Hyeong Suk visita la habitación de su hija Hyun Seo para darle un poco de kimchi y allí se encuentra con Min Jin, la amiga de su hija. Hyeong Suk se disgusta con Min Jin viviendo en la casa de su hija como si fuera su propia casa. Pero mientras habla con Min Jin un rato, se le abre la mente y le cocina una comida. Y entonces, Hyun Seo entra borracha en la habitación...\n\n(Fuente: GagaOOLala)",
       "year": 2019,
       "country": "Corea del Sur",
-      "date": "",
+      "date": "2019-01-01",
       "network": "GagaOOLala",
       "networkUrl": "https://www.gagaoolala.com/en/videos/2576/mother-in-law-2019",
       "watchLinks": [
@@ -19892,7 +19933,7 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T20:37:07.360Z",
+      "updatedAt": "2026-05-14T08:52:42.265Z",
       "movieType": "short",
       "duration": 23,
       "cast": []
@@ -19903,7 +19944,7 @@
       "synopsis": "Su-min, que finalmente logró ingresar en la residencia universitaria, y Han-byul, que no lo logró. El abuso de poder del padre de Hanbyul cambia la situación entre los dos. Su-min, que proviene de una familia de bajos ingresos que no tiene a dónde ir, y Han-byul, que no quiere vivir en residencias universitarias, solicitarán ingresar al Programa de Intercambio de Estudiantes de Hawái y competirán por el último lugar.\n\n(Fuente: TMDB)",
       "year": 2019,
       "country": "Corea del Sur",
-      "date": "",
+      "date": "2019-01-01",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
@@ -19918,7 +19959,7 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T20:37:13.727Z",
+      "updatedAt": "2026-05-14T08:53:01.919Z",
       "movieType": "short",
       "duration": 13,
       "cast": []
@@ -21613,6 +21654,7 @@
       "watchLinks": [],
       "trailerUrl": "https://youtu.be/0lVB42jP47I?si=U_p0jMM84foggCXD",
       "genres": [
+        "Navidad",
         "Romance"
       ],
       "poster": "https://m.media-amazon.com/images/M/MV5BNDNiYzE4MTktMzgxYy00NTJhLTgyY2YtZWZhNWM0YzQzNzQ1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
@@ -21622,7 +21664,7 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T08:44:50.178Z",
+      "updatedAt": "2026-05-14T08:50:53.478Z",
       "movieType": "film",
       "duration": 84,
       "cast": []
@@ -21633,14 +21675,14 @@
       "synopsis": "Una pareja de lesbianas en Japón está deseando tener una sesión de fotos al estilo de una boda para celebrar su quinto aniversario. Pero no es fácil encontrar un salón de fotografía que atienda a parejas LGBTQ por igual.\n\n(Fuente: TMDB)",
       "year": 2021,
       "country": "Japón",
-      "date": "",
+      "date": "2021-01-01",
       "network": "GagaOOLala",
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://i.mydramalist.com/4eylZw_4c.jpg?v=1",
       "basedOnBook": false,
@@ -21649,7 +21691,7 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T08:44:57.610Z",
+      "updatedAt": "2026-05-14T08:53:14.433Z",
       "movieType": "short",
       "duration": 18,
       "cast": []
@@ -21703,6 +21745,7 @@
       ],
       "trailerUrl": "https://youtu.be/_ak5dFt8Ar0",
       "genres": [
+        "Animación",
         "Familia"
       ],
       "poster": "https://m.media-amazon.com/images/M/MV5BNzAyOWNiMjAtNWUzMi00ZDk1LWE5NzYtNDUzMWE1Y2M0NDM2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
@@ -21712,7 +21755,7 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T08:45:29.230Z",
+      "updatedAt": "2026-05-14T08:50:44.512Z",
       "movieType": "film",
       "duration": 114,
       "cast": []
@@ -23718,8 +23761,8 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/luAhseyP0LcFeqACbmTTvYLo0jD.jpg",
       "basedOnBook": false,
@@ -23728,7 +23771,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:06:55.339Z"
+      "updatedAt": "2026-05-14T08:53:45.586Z",
+      "movieType": "short",
+      "duration": 30,
+      "cast": []
     },
     {
       "id": "1700000000312",
@@ -23916,9 +23962,15 @@
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
-      "genres": [],
+      "genres": [
+        "Animación",
+        "Anime"
+      ],
       "category": "anime",
-      "updatedAt": "2026-05-11T12:01:15.179Z"
+      "updatedAt": "2026-05-14T08:50:29.195Z",
+      "movieType": "film",
+      "duration": "",
+      "cast": []
     },
     {
       "id": "1778611963184",
@@ -24475,7 +24527,56 @@
       "country": "Tailandia",
       "notes": "Actriz",
       "birthdate": "2001-03-30"
+    },
+    {
+      "id": "1778748865971",
+      "name": "\"Jayna\" Angelina Stevens",
+      "photo": "https://static.wikia.nocookie.net/thai_entertainment/images/c/c2/Jayna_Instagram_post_%28March_14%2C_2024%29.png/revision/latest?cb=20240518195133",
+      "country": "Tailandia",
+      "birthdate": "2006-02-17",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778748946306",
+      "name": "\"Ginny\" Natnicha Pratipnatsri",
+      "photo": "https://image.tmdb.org/t/p/w500/a2aVzsK9NEPlP4Stwa2v07MptkW.jpg",
+      "country": "Tailandia",
+      "birthdate": "2000-12-17",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778749053691",
+      "name": "\"Arhoung\" Nattawadee Pipobpornchai",
+      "photo": "https://www.tvtime.com/_next/image?url=https%3A%2F%2Fartworks.thetvdb.com%2Fbanners%2Fv4%2Factor%2F9114077%2Fphoto%2F67bd5b8e09bf8.jpg&w=640&q=75",
+      "country": "Tailandia",
+      "birthdate": "2004-09-05",
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778749084232",
+      "name": "\"Pam\" Tarradee Watancharoen",
+      "photo": "https://media.themoviedb.org/t/p/w500/wDaikwrnmDQL8FwsXkcgtkJmOwf.jpg",
+      "country": "Tailandia",
+      "birthdate": "2002-01-08",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778749121827",
+      "name": "\"Linn\" Mashannoad Suvanamas",
+      "photo": "https://yt3.googleusercontent.com/yMe2jBcINrTOVC4xDVSxm7Bautawbd5gw16KHfXhbhQmH2RCWCVRFNIHNt1DIIMi0Mk1Auy6=s900-c-k-c0x00ffffff-no-rj",
+      "country": "Tailandia",
+      "birthdate": "1992-08-03",
+      "height": 175,
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778749245112",
+      "name": "\"Praew\" Chermawee Suwanpanuchoke",
+      "photo": "https://artworks.thetvdb.com/banners/v4/actor/7978269/photo/67baaf86f3ea0.jpg",
+      "country": "Tailandia",
+      "birthdate": "1992-10-15",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-14T08:46:28.620Z"
+  "exportedAt": "2026-05-14T09:00:46.071Z"
 }
