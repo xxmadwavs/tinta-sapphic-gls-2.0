@@ -4873,13 +4873,17 @@
       "poster": "https://i.mydramalist.com/3oRzJe_4c.jpg?v=1",
       "synopsis": "Esas miradas intensas, esa tensión... ¿De verdad me estás diciendo que no hay nada entre ellas? ¡La sutil corriente subterránea que fluye entre ellas crea un suspenso impresionante! ¿Compañeras? ¿Rivales? ¿Amantes? Los límites se están desdibujando.",
       "year": 2025,
-      "country": "Corea del Sur",
+      "country": "Corea del Sur / Japón",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/h9u5l8ZtHgg?si=hLmCweftPXczOu5Z",
       "watchLinks": [
         {
           "name": "YouTube",
           "url": "https://youtu.be/h9u5l8ZtHgg?si=hLmCweftPXczOu5Z"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "",
@@ -4891,7 +4895,11 @@
       "upcoming": false,
       "genres": [
         "Drama",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -4911,8 +4919,8 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:47:58.498Z",
-      "nameEn": "",
+      "updatedAt": "2026-05-15T08:34:51.979Z",
+      "nameEn": "온앤오프",
       "cast": [
         {
           "actressId": "1778788012484",
@@ -4926,7 +4934,8 @@
           "coupleType": "main",
           "coupleNum": 1
         }
-      ]
+      ],
+      "episodeDuration": 10
     },
     {
       "id": "1777116358969",
@@ -4934,13 +4943,17 @@
       "poster": "https://i.mydramalist.com/NdJY5Y_4c.jpg?v=1",
       "synopsis": "",
       "year": 2025,
-      "country": "Corea del Sur",
+      "country": "Corea del Sur / Japón",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/EKgy5EM-Vhw?si=nimAyKDOR74-lBCt",
       "watchLinks": [
         {
           "name": "YouTube",
           "url": "https://youtu.be/EKgy5EM-Vhw?si=nimAyKDOR74-lBCt"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "",
@@ -4952,7 +4965,11 @@
       "upcoming": false,
       "genres": [
         "Drama",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -4972,8 +4989,8 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:48:19.907Z",
-      "nameEn": "",
+      "updatedAt": "2026-05-15T08:35:02.083Z",
+      "nameEn": "온앤오프 시즌2",
       "cast": [
         {
           "actressId": "1778788012484",
@@ -4987,7 +5004,8 @@
           "coupleType": "main",
           "coupleNum": 1
         }
-      ]
+      ],
+      "episodeDuration": 10
     },
     {
       "id": "1777123893340",
@@ -4995,13 +5013,17 @@
       "poster": "https://static.wikia.nocookie.net/drama/images/8/8a/GAP-8.jpg/revision/latest?cb=20221119105123&path-prefix=es",
       "synopsis": "Mucho después de que Sam rescatara a Mon cuando eran niñas, Sam se convirtió, sin duda, en el ídolo de Mon. Con el firme deseo de estar cerca de ella, Mon consigue un trabajo bajo su supervisión.\n\nCuando finalmente se reencuentran en la oficina, Mon se sorprende por la actitud fría y distante de Sam, una faceta tan diferente de la imagen idealizada que guardaba y de la persona que ella misma aspira a ser.\n\nMon y Sam no solo son polos opuestos en su comportamiento; también pertenecen a clases sociales distintas y las separa una brecha de ocho años, factores que pondrán a prueba la admiración de Mon y la coraza emocional de Sam.",
       "year": 2022,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/o3gZsuz8w8o?si=HBAziAgulsuN7b8I",
       "watchLinks": [
         {
           "name": "YouTube",
           "url": "https://youtu.be/o3gZsuz8w8o?si=HBAziAgulsuN7b8I"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/f7Kso0QOaiE",
@@ -5027,7 +5049,12 @@
       ],
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=181426",
       "upcoming": false,
-      "genres": [],
+      "genres": [
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
+      ],
       "seasons": [
         {
           "label": "Temporada 1",
@@ -5042,7 +5069,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "ทฤษฎีสีชมพู",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5067,7 +5094,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:51:42.198Z"
+      "updatedAt": "2026-05-15T08:35:26.411Z",
+      "episodeDuration": 55
     },
     {
       "id": "1777149248949",
@@ -5075,10 +5103,15 @@
       "poster": "https://i.mydramalist.com/2yYvO_4f.jpg",
       "synopsis": "Thongkwao se encuentra en una encrucijada emocional. A pesar de tener un novio desde hace mucho tiempo, la estabilidad de su relación se ve sacudida por una sensación desconocida: cada vez que se acerca a cierta mujer, su corazón da un vuelco que no puede ignorar.\n\nConfundida acerca de sus preferencias, Thongkwao se embarca en un viaje introspectivo para entender si lo que siente es una simple curiosidad o el despertar de sus verdaderos sentimientos.\n\nEn este proceso de autodescubrimiento, deberá decidir si se aferra a la seguridad de lo que conoce o si se atreve a explorar la atracción que está revolucionando su mundo.",
       "year": 2022,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1",
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
+        }
+      ],
       "trailerUrl": "",
       "bookSource": "",
       "basedOnBook": false,
@@ -5087,7 +5120,11 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
+        "Drama",
         "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
         "Drama"
       ],
       "seasons": [
@@ -5098,11 +5135,27 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "เสน่หาสตอรี่ 4 ปรารถนา l เสน่หา",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778749121827",
+          "character": "Thongkwao",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 40,
+      "updatedAt": "2026-05-15T08:35:58.207Z"
     },
     {
       "id": "1777149412505",
@@ -5110,10 +5163,15 @@
       "poster": "https://i.mydramalist.com/eY075E_4f.jpg",
       "synopsis": "Meena, una chica de pueblo, se muda a Bangkok para cumplir sus sueños. Allí conoce a Cherine, quien le propone unirse a una agencia para competir en el certamen de belleza Miss Grand. Al principio, Meena se niega porque no le interesa. Sin embargo, acepta tras recibir una oferta de una generosa suma mensual durante toda la competición. Comienza la aventura de Meena por la corona y surge un romance inesperado con Cherine.",
       "year": 2023,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1",
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
+        }
+      ],
       "trailerUrl": "",
       "bookSource": "",
       "basedOnBook": false,
@@ -5122,7 +5180,11 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -5144,7 +5206,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "แค่อยากบอกรัก",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5163,7 +5225,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:52:27.809Z"
+      "updatedAt": "2026-05-15T08:36:14.002Z",
+      "episodeDuration": 43
     },
     {
       "id": "1777149797784",
@@ -5171,13 +5234,17 @@
       "poster": "https://i.mydramalist.com/x4WDdz_4f.jpg",
       "synopsis": "Jattawa, de diecinueve años, parece una estudiante de derecho común y corriente de primer año, pero guarda un secreto extraordinario: tiene la habilidad de controlar el tiempo. Por su parte, su hermana menor, Vivi, posee el don de ver el futuro.\n\nSin embargo, las visiones de Vivi han comenzado a fallar últimamente, lo que lleva a Jattawa a dudar profundamente de su última y más inquietante predicción: que su alma gemela es P'Four, una estudiante de cuarto año de negocios internacionales conocida por su mala reputación y carácter difícil.\n\nA pesar del escepticismo inicial, cuando las piezas del destino comienzan a encajar y su amor prometido parece estar condenado a la tragedia, Jattawa y P'Four se verán obligadas a unir fuerzas. En una carrera contra lo inevitable, ambas se disponen a luchar contra el tiempo y el destino para cambiar el final de su propia historia.",
       "year": 2024,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "Netflix",
       "networkUrl": "https://www.netflix.com/es/title/81925635",
       "watchLinks": [
         {
           "name": "Netflix",
           "url": "https://www.netflix.com/es/title/81925635"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/ThWo_Kf41DQ",
@@ -5206,7 +5273,11 @@
       "genres": [
         "Fantasía",
         "Romance",
-        "Sobrenatural"
+        "Sobrenatural",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -5222,7 +5293,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "Reverse 4 You ดาวบริวาร",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5241,7 +5312,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:53:17.605Z"
+      "updatedAt": "2026-05-15T08:36:29.499Z",
+      "episodeDuration": 40
     },
     {
       "id": "1777150051367",
@@ -5249,13 +5321,17 @@
       "poster": "https://i.mydramalist.com/x4XONj_4c.jpg?v=1",
       "synopsis": "Khun Nueng, bajo la identidad de ML Sippakorn, es una mujer de una belleza serena que creció bajo la asfixiante presión de su abuela. Nunca se le permitió ser ella misma, viviendo en un entorno donde el amor y la valía personal parecían conceptos inalcanzables.\n\nTodo cambia cuando conoce a Anueng, una joven alegre y radiante. Sin embargo, tras esa energía desbordante, Nueng percibe una tristeza oculta en sus ojos que la atrae irremediablemente. Por primera vez en su vida, siente que su corazón se acelera de una manera que nunca antes había experimentado.\n\nDesafortunadamente, su camino no es sencillo: la diferencia de edad de dieciséis años, junto con las rígidas normas familiares y sociales, se levantan como muros que impiden que su amor florezca con libertad.",
       "year": 2024,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "YouTube",
       "networkUrl": "https://youtube.com/playlist?list=PLc6EfuKFtZrLLHsGgC9yUTRNQxqB8mffk&si=aGM-XIKPoILtOc8W",
       "watchLinks": [
         {
           "name": "YouTube",
           "url": "https://youtube.com/playlist?list=PLc6EfuKFtZrLLHsGgC9yUTRNQxqB8mffk&si=aGM-XIKPoILtOc8W"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/bQSU74hRedU",
@@ -5273,7 +5349,11 @@
       "upcoming": false,
       "genres": [
         "Drama",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -5301,7 +5381,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "เติมคำว่ารักลงในช่องว่าง",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5320,7 +5400,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:53:48.287Z"
+      "updatedAt": "2026-05-15T08:36:44.762Z",
+      "episodeDuration": 47
     },
     {
       "id": "1777222930712",
@@ -5328,10 +5409,15 @@
       "poster": "https://i.mydramalist.com/Kp0JoD_4f.jpg",
       "synopsis": "omo dos de los pocos antropólogos biológicos del país, un catastrófico accidente aéreo obliga a dos médicos y antiguos rivales universitarios, Bussaya y Phinya, a trabajar juntos. Mientras identifican a las víctimas, el descubrimiento de un cráneo inesperado añade un nuevo misterio a la investigación. En algún momento de su trabajo, se produce un cambio en su relación, normalmente antagónica.",
       "year": "",
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1",
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
+        }
+      ],
       "trailerUrl": "https://youtu.be/lgbQKzoliY4",
       "bookSource": "Cranium",
       "basedOnBook": true,
@@ -5358,9 +5444,13 @@
       "genres": [
         "Drama",
         "Misterio",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
-      "nameEn": "",
+      "nameEn": "ปริศนาซากมรณะ",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5385,7 +5475,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:54:32.521Z"
+      "updatedAt": "2026-05-15T08:37:00.823Z",
+      "episodeDuration": ""
     },
     {
       "id": "1777223129027",
@@ -5393,7 +5484,7 @@
       "poster": "https://i.mydramalist.com/73X4eD_4f.jpg",
       "synopsis": "Ai-oon es la gemela decepcionante de la exitosa y querida Ob-oom. No son cercanas. En la noche de bodas de Ob-oom, ella aparta a Ai-oon y le hace una petición. Ob-oom y su esposo Paul se irán de luna de miel y ella dejará algo importante atrás: una amante, May, con quien no ha terminado su relación, y quiere que Ai-oon lo haga por ella. A la mañana siguiente de la boda, Ai-oon se entera de que los recién casados ​​sufrieron un accidente. Paul falleció y Ob-oom está en coma. Cuando Ai-oon decide cumplir la petición de su hermana, se sorprende al descubrir que May es ciega y mujer. Se da cuenta de que no está preparada para la tarea",
       "year": 2024,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "YouTube",
       "networkUrl": "https://www.youtube.com/playlist?list=PLszepnkojZI6L1DHV2vEaGdjo_QkQizF_",
       "watchLinks": [
@@ -5404,6 +5495,10 @@
         {
           "name": "iQIYI",
           "url": "https://www.iq.com/album/pluto-2025-10twowz4bwd?lang=en_us"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/cBq6p5lMxvg",
@@ -5422,7 +5517,11 @@
       "genres": [
         "Drama",
         "Misterio",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -5438,7 +5537,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "Pluto นิทาน ดวงดาว ความรัก",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5475,7 +5574,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:56:19.035Z"
+      "updatedAt": "2026-05-15T08:37:18.974Z",
+      "episodeDuration": 57
     },
     {
       "id": "1777223788983",
@@ -5483,7 +5583,7 @@
       "poster": "https://i.mydramalist.com/81ZlJK_4f.jpg",
       "synopsis": "Soy Kenlong, una mujer nacida con belleza, riqueza y una gran inteligencia. Todo en mí tiene que ser perfecto, especialmente mi persona especial. Nada me había conmovido hasta que conocí a mi amiga de la infancia, una niña inocente e infantil como Oengoei, quien me contagió piojos cuando éramos pequeñas. ¿Por qué me entrego a una chica así? Quizás fueron esos dulces ojos los que me distrajeron. Me molestaba sentirme sensible hacia mi amiga más cercana, ¡y encima es una chica!",
       "year": 2024,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "WeTV",
       "networkUrl": "https://wetv.vip/en/play/5otuxjhuyyf07zc/l41002p1dbd-EP01%3A_Mate_the_series_(Uncut_Ver.)",
       "watchLinks": [
@@ -5494,6 +5594,10 @@
         {
           "name": "YouTube",
           "url": "https://www.youtube.com/playlist?list=PL-GesbDOxBcjTgdHiZsCSi9QUJQ6WBBbY"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/geaToaLds0c",
@@ -5516,7 +5620,11 @@
       "upcoming": false,
       "genres": [
         "Drama",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -5532,7 +5640,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "เมท เดอะ ซีรีส์",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5551,7 +5659,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:57:31.609Z"
+      "updatedAt": "2026-05-15T08:37:32.718Z",
+      "episodeDuration": 44
     },
     {
       "id": "1777224670901",
@@ -5559,13 +5668,17 @@
       "poster": "https://i.mydramalist.com/738kon_4f.jpg",
       "synopsis": "La teniente Tul, una oficial novata del Departamento de Investigación Criminal, enfrenta desafíos durante su primer despliegue en el campo cuando conoce al Dr. Cherran, un médico del Instituto de Ciencias Forenses. Sus diferentes estilos de trabajo crean tensión, pero a medida que analizan las pruebas juntos, comienzan a confiar el uno en el otro. En medio de las presiones sociales y un sistema que favorece a los influyentes, Tul se mantiene comprometida con la justicia, trabajando junto a Cherran para identificar a los culpables y proteger a los inocentes. A través de su colaboración, se esfuerzan por brindar justicia a las familias de las víctimas.",
       "year": 2024,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "iQIYI",
       "networkUrl": "https://www.iq.com/album/petrichor-2024-ar002mup45",
       "watchLinks": [
         {
           "name": "iQIYI",
           "url": "https://www.iq.com/album/petrichor-2024-ar002mup45"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/8_2YiYGvkR8",
@@ -5575,7 +5688,12 @@
       "bookLinks": [],
       "bookUrl": "",
       "upcoming": false,
-      "genres": [],
+      "genres": [
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
+      ],
       "seasons": [
         {
           "label": "Temporada 1",
@@ -5590,7 +5708,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "หยดฝนกลิ่นสนิม",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5621,7 +5739,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:59:23.622Z"
+      "updatedAt": "2026-05-15T08:37:51.127Z",
+      "episodeDuration": 70
     },
     {
       "id": "1777224996688",
@@ -5629,13 +5748,17 @@
       "poster": "https://i.mydramalist.com/vXzw88_4f.jpg",
       "synopsis": "En el año budista 2456 (1913), el rango social y la tradición impiden el amor entre dos princesas. Su Alteza Serenísima la Princesa Phiangrawi y Su Alteza Serenísima la Princesa Sasinapha son como el sol y la luna; quizás nunca puedan estar juntas. Sin embargo, su amor no correspondido y los anhelos de sus corazones las unen. Para el año budista 2564 (2021), una nueva era amanece cuando sus caminos se cruzan de nuevo. Katsakorn y Athitthan se encuentran y el amor florece en sus corazones una vez más. El camino hacia el amor, sin embargo, nunca es fácil. Ambos deben unir fuerzas para luchar por él. Incluso sin el velo de la tradición que los separa, la traicionera historia del pasado aún influye en su presente.",
       "year": 2025,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "iQIYI",
       "networkUrl": "https://www.iq.com/album/i-m-your-moon-2025-x1y0b7cfb1?lang=en_us",
       "watchLinks": [
         {
           "name": "iQIYI",
           "url": "https://www.iq.com/album/i-m-your-moon-2025-x1y0b7cfb1?lang=en_us"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/KsdtiHlHdzc",
@@ -5657,8 +5780,12 @@
       "bookUrl": "https://www.mebmarket.com/ebook-358801-Kassatithan-Spanish-Version",
       "upcoming": false,
       "genres": [
+        "Fantasía",
         "Romance",
-        "Fantasía"
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -5669,11 +5796,45 @@
             4,
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "กัษธิษฐาน",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778834313116",
+          "character": "\"Earl\" Katsakorn Sitalaras | Phiangrawi Ussanakorn",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778834345836",
+          "character": "\"Pray\" Athitthan Ussanakorn | Sasinapha Sitalaras",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669789813",
+          "character": "\"Thian\" Tawannil Rattikul",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778834372262",
+          "character": "Milin Chen",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 43,
+      "updatedAt": "2026-05-15T08:39:52.219Z"
     },
     {
       "id": "1777225431592",
@@ -5681,7 +5842,7 @@
       "poster": "https://i.mydramalist.com/ABRZXZ_4f.jpg",
       "synopsis": "En medio del intrincado vaivén del tiempo, la vida de Kliaokhluen fue salvada hace siete años por un misterioso estudiante de medicina llamado Karan, quien posee el extraordinario poder de manipular el tiempo. Rescatada de la muerte, Kliaokhluen encontró el propósito de su vida, pero el único recuerdo de su salvador era su nombre. Atormentada por una conexión inconclusa, Kliaokhluen se embarca en una búsqueda incansable de Karan. Estudia medicina para seguir los pasos de su enigmático salvador, hasta que el destino da un giro inesperado cuando, en medio de la frenética urgencia de la sala de emergencias, sus caminos convergen una vez más. Karan emerge, no como un compañero de estudios, sino como un cirujano cardiotorácico frío y distante. Kliaokhluen, ahora una experimentada estudiante de sexto año de medicina, lucha por superar la distancia, anhelando reconocimiento y comprensión. A medida que las fronteras entre el pasado y el presente se desdibujan, los secretos salen a la luz, revelando un complejo accidente ocurrido años atrás y la gélida actitud de la mujer que posee la clave para las preguntas sin respuesta de Kliaokhluen. ¿Permanecerá Karan indiferente, negándose a reconocer su singular habilidad para controlar el tiempo, o sus destinos entrelazados finalmente se desenredarán?",
       "year": 2025,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "iQIYI",
       "networkUrl": "https://www.iq.com/album/reverse-with-me-2025-24lp7m293hd?lang=en_us",
       "watchLinks": [
@@ -5692,6 +5853,10 @@
         {
           "name": "YouTube",
           "url": "https://youtu.be/0qqjgW7bd6c?si=lDBv0gEEc7Y5PZZY"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/bbx54tKBPn8",
@@ -5716,7 +5881,11 @@
         "Fantasía",
         "Misterio",
         "Romance",
-        "Viaje en el tiempo"
+        "Viaje en el tiempo",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -5732,7 +5901,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "ล้านวงโคจร",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5751,7 +5920,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T20:00:00.984Z"
+      "updatedAt": "2026-05-15T08:40:15.231Z",
+      "episodeDuration": 49
     },
     {
       "id": "1777225577567",
@@ -5759,13 +5929,17 @@
       "poster": "https://i.mydramalist.com/wJe8Bk_4f.jpg",
       "synopsis": "Mientras su hijo Khemthis alardea abiertamente de su amor por Wela, la estrella y presentadora principal del club, Madame Freya explora su propia relación con su amiga Meiji.",
       "year": 2024,
-      "country": "",
+      "country": "Japón",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/KAWGg7yfKD8?si=i6qDWv0eA-s2fkn7",
       "watchLinks": [
         {
           "name": "YouTube",
           "url": "https://youtu.be/KAWGg7yfKD8?si=i6qDWv0eA-s2fkn7"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/u9_hU9ywrE8",
@@ -5776,7 +5950,11 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
+        "Drama",
         "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
         "Drama"
       ],
       "seasons": [
@@ -5787,8 +5965,10 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -5797,11 +5977,20 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "Deep Night รักนี้มีแค่เรา",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 16,
+      "updatedAt": "2026-05-15T08:40:33.217Z"
     },
     {
       "id": "1777225946260",
@@ -5809,10 +5998,15 @@
       "poster": "https://i.mydramalist.com/0wK1VO_4f.jpg",
       "synopsis": "n la era de las redes sociales, cualquiera puede expresar libremente su opinión sobre los demás. Pueden usar palabras hirientes sin pensarlo mucho, sin considerar las consecuencias ni verificar la verdad. En una relación entre dos mujeres, una se preocupa demasiado por la opinión ajena, lo que la hace vulnerable a alguien que no conoce y que termina lastimándola. A la otra nunca le ha importado mucho, creyendo firmemente en el dicho \" cada quien con lo suyo\". Sin embargo, a veces, puede ser sorprendentemente ajena a los sentimientos de quienes la rodean. Con su amor en el centro de atención, ojos de todo el país escudriñan cada uno de sus movimientos, juzgando cada acción.",
       "year": 2024,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1",
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
+        }
+      ],
       "trailerUrl": "https://youtu.be/IrlTr9GljhY",
       "bookSource": "",
       "basedOnBook": false,
@@ -5821,7 +6015,11 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
+        "Drama",
         "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
         "Drama"
       ],
       "seasons": [
@@ -5832,11 +6030,33 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "คลับฟรายเดย์เดอะซีรีส์ Hot Love Issue เรื่องรัก เรื่องร้อน ตอน Love Bully รักให้ร้าย",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669290609",
+          "character": "Night",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669334143",
+          "character": "Irene",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 46,
+      "updatedAt": "2026-05-15T08:41:13.171Z"
     },
     {
       "id": "1777226456284",
@@ -5844,7 +6064,7 @@
       "poster": "https://i.mydramalist.com/XdOP4w_4f.jpg",
       "synopsis": "Siang Plaing y Wan Wanviwah crecieron en la misma familia, pero tienen estatus diferentes. Plaing es hijo del dueño de la casa, mientras que Wan trabaja en casa. Aunque nunca pensaron en la separación, un día Wan le dijo a Plaing que eventualmente se casaría. Plaing planea encontrar un buen hombre para Wan para evitar que se quede sola. Sin embargo, este plan hizo que Plaing se diera cuenta de sus sentimientos por Wan. A medida que su amor se hizo más fuerte, Plaing perdió a sus padres debido a un fracaso comercial y se escapó, dejando solo una carta de amor a Wan. Más tarde se reencuentran, pero Wan está comprometido.",
       "year": 2024,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/EMxZVIaYktU?si=oXHP2MP061IZX9-Z",
       "watchLinks": [
@@ -5859,6 +6079,10 @@
         {
           "name": "Netflix",
           "url": "https://www.netflix.com/es/title/82761812"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/jYg7FL4yqmo",
@@ -5876,7 +6100,11 @@
       "upcoming": false,
       "genres": [
         "Melodrama",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -5892,7 +6120,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "รักเล่นกล",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5911,7 +6139,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T20:00:45.287Z"
+      "updatedAt": "2026-05-15T08:41:38.285Z",
+      "episodeDuration": 60
     },
     {
       "id": "1777226679219",
@@ -5919,10 +6148,15 @@
       "poster": "https://i.mydramalist.com/jQbyLw_4f.jpg",
       "synopsis": "Khun Kham y Khut Sut, concubinas del Príncipe del Palacio Frontal, ocultan sentimientos que van más allá de la amistad. Solo pueden cuidarse desde la distancia hasta que el Palacio Frontal pasa a mejor vida y Sut es requerida para servir en el gran palacio de la Princesa Vilas, hermana mayor del Príncipe Sang. Solo Kham queda a la deriva y finalmente debe regresar a su ciudad natal de Amphawa con su padre Khram. Al final, ¿cómo les irá a cada una en asuntos del corazón?",
       "year": 2024,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1",
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
+        }
+      ],
       "trailerUrl": "https://youtu.be/muKtGRxxlw0",
       "bookSource": "",
       "basedOnBook": false,
@@ -5931,8 +6165,12 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
+        "Histórico",
         "Romance",
-        "Histórico"
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -5944,11 +6182,33 @@
             5,
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "หม่อมเป็ดสวรรค์",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778834551536",
+          "character": "Mhom Kham / Mhom Ped",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778834581607",
+          "character": "Mhom Sut / Khun Mong",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 55,
+      "updatedAt": "2026-05-15T08:43:03.380Z"
     },
     {
       "id": "1777226881602",
@@ -28040,7 +28300,47 @@
       "birthdate": "1998-01-17",
       "height": 165,
       "notes": "Actriz"
+    },
+    {
+      "id": "1778834313116",
+      "name": "\"Sprite\" Itsaree Jarupangomon",
+      "photo": "https://i.mydramalist.com/qrx1D_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1993-05-13",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778834345836",
+      "name": "\"Piano\" Pronyanee Pornpishayawasin",
+      "photo": "https://i.mydramalist.com/XdOe8x_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2005-05-03",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778834372262",
+      "name": "\"Belle\" Ploynapus Praephunnapa",
+      "photo": "https://i.mydramalist.com/E5Q8w0_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1999-08-23",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778834551536",
+      "name": "\"Tubtim\" Anyarin Terathananpat",
+      "photo": "https://i.mydramalist.com/vXXwrW_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1990-10-21",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778834581607",
+      "name": "\"Film\" Cherlisa Seriwibunkit",
+      "photo": "https://i.mydramalist.com/Zg5gqc.jpg",
+      "country": "Tailandia",
+      "birthdate": "1992-12-05",
+      "notes": "Actriz, Modelo"
     }
   ],
-  "exportedAt": "2026-05-15T08:33:44.118Z"
+  "exportedAt": "2026-05-15T08:43:30.450Z"
 }
