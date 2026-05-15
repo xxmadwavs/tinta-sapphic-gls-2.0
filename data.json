@@ -9066,8 +9066,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -9077,12 +9077,33 @@
           "emissionDays": [
             0
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T20:44:06.393Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T11:17:16.509Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778843798646",
+          "character": "Harry",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778843818376",
+          "character": "Luna",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 23
     },
     {
       "id": "1777583639678",
@@ -29279,7 +29300,25 @@
       "country": "Corea del Sur",
       "birthdate": "1984-10-29",
       "notes": "Actriz"
+    },
+    {
+      "id": "1778843798646",
+      "name": "Janine Gutierrez",
+      "photo": "https://i.mydramalist.com/Bkvzq_5f.jpg",
+      "country": "Filipinas",
+      "birthdate": "1989-10-02",
+      "notes": "Actriz, Modelo",
+      "photoPosition": "center 15%"
+    },
+    {
+      "id": "1778843818376",
+      "name": "Lourdes Virginia \"Lovi\" Moran Poe",
+      "photo": "https://i.mydramalist.com/kpggO_5c.jpg",
+      "country": "Filipinas",
+      "birthdate": "1989-02-11",
+      "notes": "Actriz, Modelo",
+      "photoPosition": "center 80%"
     }
   ],
-  "exportedAt": "2026-05-15T11:13:37.351Z"
+  "exportedAt": "2026-05-15T11:18:06.887Z"
 }
