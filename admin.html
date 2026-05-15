@@ -3180,7 +3180,9 @@ function addCastMember(data){
   const actressId=data&&data.actressId?data.actressId:'';
   const char=data&&data.character?data.character:'';
   const coupleType=data&&data.coupleType?data.coupleType:'main';
-  const coupleNum=data&&data.coupleNum?data.coupleNum:1;
+  // Si no hay datos (fila nueva), calcular pareja automáticamente según posición
+  const existingRows=list.querySelectorAll('.cast-admin-row').length;
+  const coupleNum=data&&data.coupleNum?data.coupleNum:Math.floor(existingRows/2)+1;
   const uid='cp_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
   const selectedA=actressId?actresses.find(a=>a.id===actressId):null;
 
@@ -3344,7 +3346,9 @@ function addMovieCastMember(data){
   const actressId=data&&data.actressId?data.actressId:'';
   const char=data&&data.character?data.character:'';
   const coupleType=data&&data.coupleType?data.coupleType:'main';
-  const coupleNum=data&&data.coupleNum?data.coupleNum:1;
+  // Si no hay datos (fila nueva), calcular pareja automáticamente según posición
+  const existingRows=list.querySelectorAll('.cast-admin-row').length;
+  const coupleNum=data&&data.coupleNum?data.coupleNum:Math.floor(existingRows/2)+1;
   const uid='mcp_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
   const selectedA=actressId?actresses.find(a=>a.id===actressId):null;
 
