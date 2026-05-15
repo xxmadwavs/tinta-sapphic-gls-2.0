@@ -6797,8 +6797,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T20:03:23.027Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T09:21:33.845Z",
+      "nameEn": "ClaireBell คลั่ง/รัก/นักโทษ",
+      "episodeDuration": 65
     },
     {
       "id": "1777236702067",
@@ -6847,7 +6848,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "รับ (รัก) ออกแบบ",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -6884,7 +6885,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T20:04:58.973Z"
+      "updatedAt": "2026-05-15T09:22:00.171Z",
+      "episodeDuration": 64
     },
     {
       "id": "1777236873444",
@@ -6925,9 +6927,9 @@
       "bookUrl": "https://en.mebmarket.com/ebook-329300-QUEENDOM-Spanish-Version",
       "upcoming": false,
       "genres": [
-        "Romance",
         "Drama",
-        "Fantasía"
+        "Fantasía",
+        "Romance"
       ],
       "seasons": [
         {
@@ -6937,11 +6939,45 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "ซ่อนใจไว้ที่เธอ",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778749053691",
+          "character": "Rey",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778749084232",
+          "character": "Print",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778749121827",
+          "character": "Wanmai",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778749245112",
+          "character": "Saifon",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 51,
+      "updatedAt": "2026-05-15T09:24:04.892Z"
     },
     {
       "id": "1777237026617",
@@ -6987,11 +7023,33 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "รินไม่มีวันรัก",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778761175235",
+          "character": "\"Rin\" Phraenarin",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778761227248",
+          "character": "\"Khem\" Khemjira",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 53,
+      "updatedAt": "2026-05-15T09:23:04.136Z"
     },
     {
       "id": "1777237182173",
@@ -7027,8 +7085,8 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=398548",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -7038,11 +7096,39 @@
           "emissionDays": [
             2
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "Roller Coaster The Series: รักขบวนนี้ หัวใจเกือบวาย",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778760564161",
+          "character": "Pure",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760689825",
+          "character": "Loft",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760606088",
+          "character": "Air",
+          "coupleType": "main",
+          "coupleNum": 2
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 46,
+      "updatedAt": "2026-05-15T09:25:02.122Z"
     },
     {
       "id": "1777278523920",
@@ -7087,8 +7173,8 @@
       "bookUrl": "https://www.mebmarket.com/ebook-361288-Harmony-Secret-Spanish-Version",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -7098,11 +7184,45 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "Harmony Secret ดีลลับฉบับเล่นเล่ห์",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669672693",
+          "character": "\"Ai\" Aiwarin",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669706067",
+          "character": "\"Maple\" Mewika / \"May\"",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760735020",
+          "character": "\"G\" Jirana",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760773120",
+          "character": "\"Jam\" Yolada",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 58,
+      "updatedAt": "2026-05-15T09:26:14.714Z"
     },
     {
       "id": "1777278660998",
@@ -28444,5 +28564,5 @@
       "notes": "Actriz, Modelo"
     }
   ],
-  "exportedAt": "2026-05-15T09:11:27.302Z"
+  "exportedAt": "2026-05-15T09:26:16.181Z"
 }
