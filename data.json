@@ -4547,13 +4547,17 @@
       "poster": "https://i.mydramalist.com/ABAOP8_4f.jpg",
       "synopsis": "Un año después de estar juntas y con Karn cada vez más famosa, ¿qué tipo de desafíos enfrentará la relación de Kris y Karn?",
       "year": 2025,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/TwvTk7EB5lA?si=TB-G7X4qV2MgICqH",
       "watchLinks": [
         {
           "name": "YouTube",
           "url": "https://youtu.be/TwvTk7EB5lA?si=TB-G7X4qV2MgICqH"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/uveE3s7qjBc",
@@ -4564,7 +4568,11 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "startDate": "2025-04-04",
       "dayOfWeek": 4,
@@ -4576,7 +4584,7 @@
       "totalEpisodes": 33,
       "skipDates": [],
       "episodes": [],
-      "nameEn": "",
+      "nameEn": "(Your) Apple เธอที่รักของฉัน",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -4611,7 +4619,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T19:45:20.090Z"
+      "updatedAt": "2026-05-15T08:30:01.417Z",
+      "episodeDuration": 11
     },
     {
       "id": "1777107997520",
@@ -4619,13 +4628,17 @@
       "poster": "https://m.media-amazon.com/images/M/MV5BNWNmYjRiOGEtMDRiZS00ZTYwLThhNmUtYWQ1MmQzZDdjNTczXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
       "synopsis": "Una joven huérfana despierta en una morgue y descubre que una secta secreta de monjas cazademonios le ha conferido superpoderes. Es la elegida: la portadora del halo.",
       "year": 2020,
-      "country": "Estados Unidos",
+      "country": "Estados Unidos / Japón",
       "network": "Netflix",
       "networkUrl": "https://www.netflix.com/es/title/80242724",
       "watchLinks": [
         {
           "name": "Netflix",
           "url": "https://www.netflix.com/es/title/80242724"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/cwa6iQSFJkM",
@@ -4636,11 +4649,15 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Drama",
         "Acción",
-        "Fantasía",
         "Ciencia Ficción",
-        "Sobrenatural"
+        "Drama",
+        "Fantasía",
+        "Sobrenatural",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -4650,6 +4667,7 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
           "episodes": [
             {
@@ -4697,7 +4715,8 @@
               "date": "2020-07-02",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -4706,6 +4725,7 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
           "episodes": [
             {
@@ -4743,10 +4763,31 @@
               "date": "2022-11-10",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778833874442",
+          "character": "Ava",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778833957230",
+          "character": "Sister Beatrice",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 41,
+      "updatedAt": "2026-05-15T08:32:43.506Z"
     },
     {
       "id": "1777115712295",
@@ -27982,7 +28023,24 @@
       "country": "Tailandia",
       "birthdate": "2006-11-11",
       "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778833874442",
+      "name": "Alba Baptista",
+      "photo": "https://media.themoviedb.org/t/p/w300_and_h450_face/gV5LYhN7BRc7xjySFek9gdm5tNA.jpg",
+      "country": "Portugal",
+      "birthdate": "1997-08-10",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778833957230",
+      "name": "Kristina Tonteri-Young",
+      "photo": "https://pics.filmaffinity.com/129219298826043-nm_200.jpg",
+      "country": "Finlandia",
+      "birthdate": "1998-01-17",
+      "height": 165,
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-15T08:27:35.446Z"
+  "exportedAt": "2026-05-15T08:33:44.118Z"
 }
