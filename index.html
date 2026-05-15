@@ -301,6 +301,29 @@ body::before{content:'';position:fixed;inset:0;background:
   box-shadow:0 3px 12px rgba(201,79,124,0.3);
 }
 .tab:hover:not(.active){color:var(--text);background:var(--surface2)}
+.tab-more-wrap{position:relative;flex-shrink:0}
+.tab-more-drop{
+  position:absolute;top:calc(100% + 6px);left:50%;
+  transform:translateX(-50%);
+  background:var(--surface);border:1.5px solid var(--border2);
+  border-radius:var(--radius);box-shadow:var(--shadow-md);
+  min-width:160px;z-index:100;
+  display:none;flex-direction:column;overflow:hidden;
+}
+.tab-more-drop.open{display:flex}
+.tab-more-item{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 16px;font-size:13px;font-weight:600;
+  color:var(--text);cursor:pointer;transition:background .15s;
+  border:none;background:transparent;font-family:var(--font-body);
+  text-align:left;width:100%;
+}
+.tab-more-item:hover{background:var(--surface2);color:var(--accent)}
+.tab-more-item.active{background:var(--accent-soft);color:var(--accent)}
+@media(max-width:900px){
+  .tab-more-wrap{width:100%}
+  .tab-more-drop{left:0;transform:none;width:100%}
+}
 
 /* Móvil: tabs en grid, sin scroll horizontal */
 @media(max-width:900px) and (min-width:701px){
@@ -544,6 +567,46 @@ body::before{content:'';position:fixed;inset:0;background:
   .series-card-name{font-size:12.5px}
 }
 
+/* ── Series card: hover synopsis overlay ── */
+.series-card-poster-wrap{position:relative;overflow:hidden}
+.sc-synopsis-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(20,8,28,0.97) 0%,rgba(20,8,28,0.82) 55%,rgba(20,8,28,0.3) 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:12px;opacity:0;transition:opacity .22s;pointer-events:none;
+}
+.series-card:hover .sc-synopsis-overlay{opacity:1}
+.sc-synopsis-text{
+  font-size:10.5px;line-height:1.55;color:rgba(255,255,255,0.88);
+  display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;
+  font-family:var(--font-body);
+}
+.sc-synopsis-more{font-size:9.5px;color:var(--accent2);font-weight:700;margin-top:4px}
+
+/* Genre pills on card */
+.sc-genres{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px}
+.sc-genre-pill{
+  font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:20px;
+  background:var(--surface3);color:var(--muted);border:1px solid var(--border2);
+  line-height:1.4;
+}
+
+/* ── Series card status pill ── */
+.sc-status-pill{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:20px;margin-top:5px;display:inline-block}
+.sc-status-pill.today{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;animation:todayPulse 2.2s ease-in-out infinite}
+.sc-status-pill.airing{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2)}
+.sc-status-pill.finished{background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.2)}
+
+/* ── Region quick-filter pills ── */
+.region-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.region-pill{
+  padding:5px 13px;border-radius:20px;font-size:12px;font-weight:700;
+  border:1.5px solid var(--border2);background:var(--surface);
+  color:var(--muted);cursor:pointer;transition:all .15s;font-family:var(--font-body);
+}
+.region-pill:hover{border-color:var(--accent2);color:var(--accent);background:var(--accent-soft)}
+.region-pill.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 2px 10px rgba(201,79,124,.3)}
+
 /* Upcoming */
 .upcoming-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:16px}
 .upcoming-card{
@@ -628,6 +691,41 @@ body::before{content:'';position:fixed;inset:0;background:
 
 /* Stats bar (kept as fallback hidden) */
 .stats-bar{display:none}
+
+/* Stats banner — visible strip above tabs */
+.stats-banner{
+  display:flex;flex-wrap:wrap;gap:0;
+  margin-bottom:1.25rem;
+  background:var(--surface);
+  border:1.5px solid var(--border2);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.hero-stat{
+  flex:1;min-width:80px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:12px 8px;gap:2px;
+  border-right:1px solid var(--border);
+  transition:background .15s;
+}
+.hero-stat:last-child{border-right:none}
+.hero-stat:hover{background:var(--surface2)}
+.hero-stat-num{
+  font-family:var(--font-display);
+  font-size:22px;font-weight:800;line-height:1;
+  color:var(--accent);
+}
+.hero-stat-num.lav{color:var(--lavender)}
+.hero-stat-num.teal{color:var(--teal)}
+.hero-stat-num.gold{color:var(--gold)}
+.hero-stat-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;text-align:center}
+@media(max-width:600px){
+  .stats-banner{gap:0}
+  .hero-stat{padding:10px 4px;min-width:60px}
+  .hero-stat-num{font-size:18px}
+  .hero-stat-label{font-size:9px}
+}
 
 /* Search */
 .search-wrap{margin-bottom:1.25rem;position:relative}
@@ -1141,29 +1239,7 @@ footer {
 
 
 /* ═══ TAB MÁS DROPDOWN ═══ */
-.tab-more-wrap{position:relative;flex-shrink:0}
-.tab-more-drop{
-  position:absolute;top:calc(100% + 6px);left:50%;
-  transform:translateX(-50%);
-  background:var(--surface);border:1.5px solid var(--border2);
-  border-radius:var(--radius);box-shadow:var(--shadow-md);
-  min-width:180px;z-index:100;
-  display:none;flex-direction:column;overflow:hidden;
-}
-.tab-more-drop.open{display:flex}
-.tab-more-item{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 16px;font-size:13px;font-weight:600;
-  color:var(--text);cursor:pointer;transition:background .15s;
-  border:none;background:transparent;font-family:var(--font-body);
-  text-align:left;width:100%;
-}
-.tab-more-item:hover{background:var(--surface2);color:var(--accent)}
-.tab-more-item.active{background:var(--accent-soft);color:var(--accent)}
-@media(max-width:900px){
-  .tab-more-wrap{width:100%}
-  .tab-more-drop{left:0;transform:none;width:100%}
-}
+
 
 
 /* ═══ SERIES CARD — SIMPLIFIED ═══ */
@@ -1257,18 +1333,21 @@ footer {
 </div>
 
 <div class="container" id="mainContainer" style="display:none">
+  <!-- ── Stats banner ── -->
+  <div id="statsBarInner" class="stats-banner"></div>
+
   <div class="tabs">
     <button class="tab active" id="tabCal" onclick="switchTab('cal')">📅 Esta semana</button>
     <button class="tab" id="tabList" onclick="switchTab('list')">🎬 Series</button>
     <button class="tab" id="tabMovies" onclick="switchTab('movies')">🎥 Películas</button>
     <button class="tab" id="tabUpcoming" onclick="switchTab('upcoming')">✨ Próximamente</button>
-    <button class="tab" id="tabBooks" onclick="switchTab('books')">📚 Libros</button>
+    <button class="tab" id="tabAnime" onclick="switchTab('anime')">🌸 Anime</button>
+    <button class="tab" id="tabRealities" onclick="switchTab('realities')">🎤 Realities</button>
+    <button class="tab" id="tabDocumentales" onclick="switchTab('documentales')">🎞️ Documentales</button>
     <div class="tab-more-wrap" id="tabMoreWrap">
       <button class="tab" id="tabMore" type="button" onclick="toggleMoreDrop(event)" aria-haspopup="true" aria-expanded="false">Más ▾</button>
       <div class="tab-more-drop" id="tabMoreDrop" role="menu">
-        <button class="tab-more-item" id="tabAnime" role="menuitem" onclick="closeMoreDrop();switchTab('anime')">🌸 Anime</button>
-        <button class="tab-more-item" id="tabRealities" role="menuitem" onclick="closeMoreDrop();switchTab('realities')">🎤 Realities</button>
-        <button class="tab-more-item" id="tabDocumentales" role="menuitem" onclick="closeMoreDrop();switchTab('documentales')">🎞️ Documentales</button>
+        <button class="tab-more-item" id="tabBooks" role="menuitem" onclick="closeMoreDrop();switchTab('books')">📚 Libros</button>
       </div>
     </div>
   </div>
@@ -1552,27 +1631,32 @@ async function loadData(){
 }
 
 function renderStats(){
-  const activeSeries=state.series.filter(s=>!s.upcoming);
+  const allSeries=state.series;
+  const activeSeries=allSeries.filter(s=>!s.upcoming);
   const now=new Date();
-  // Solo las que tienen ≥1 ep emitido Y episodios futuros pendientes (= realmente en emisión)
   const airingNow=activeSeries.filter(s=>{
     const eps=genEps(s);
     const hasAired=eps.some(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped);
     const hasFuture=eps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
     return hasAired&&hasFuture;
   });
-  const totalEps=activeSeries.reduce((a,s)=>{ return a+getSeasons(s).reduce((b,t)=>b+t.totalEpisodes,0); },0);
-  const airedEps=activeSeries.reduce((a,s)=>{ const eps=genEps(s); return a+eps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length; },0);
-  const upcoming=state.series.filter(s=>s.upcoming).length;
-  const bookBased=state.series.filter(s=>s.basedOnBook).length;
+  const upcoming=allSeries.filter(s=>s.upcoming).length;
+  const bookBased=allSeries.filter(s=>s.basedOnBook).length;
   const movieCount=state.movies.length;
+  // Count unique countries
+  const countriesSet=new Set();
+  [...activeSeries,...state.movies].forEach(item=>{
+    (item.country||'').split('/').forEach(c=>{const t=c.trim();if(t)countriesSet.add(t);});
+  });
   const stats=[
-    {num:airingNow.length, label:'series activas', cls:''},
+    {num:activeSeries.filter(s=>s.category!=='anime'&&s.category!=='reality').length, label:'series GL', cls:''},
+    {num:airingNow.length, label:'en emisión', cls:''},
   ];
   if(movieCount) stats.push({num:movieCount, label:'películas', cls:'lav'});
   if(upcoming) stats.push({num:upcoming, label:'próximamente', cls:'lav'});
+  stats.push({num:countriesSet.size, label:'países', cls:'teal'});
   if(bookBased) stats.push({num:bookBased, label:'basadas en libro', cls:'gold'});
-  const sb=document.getElementById('statsBar');if(sb)sb.innerHTML=stats.map(s=>
+  const sb=document.getElementById('statsBarInner');if(sb)sb.innerHTML=stats.map(s=>
     `<div class="hero-stat"><span class="hero-stat-num ${s.cls}">${s.num}</span><span class="hero-stat-label">${s.label}</span></div>`
   ).join('');
 }
@@ -1879,20 +1963,25 @@ function seriesCardHtml(s, si){
   const next=eps.find(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
   const todayEps=eps.filter(e=>e.date===todayStr&&!e.skipped);
 
-  // ── Poster con bandera de país superpuesta
+  // ── Poster con bandera + synopsis overlay
   const flagEl=s.country?`<span class="sc-country-flag">${countryFlag(s.country)}</span>`:'';
+  const synopsisOverlay=s.synopsis?`<div class="sc-synopsis-overlay"><div class="sc-synopsis-text">${s.synopsis}</div><div class="sc-synopsis-more">Ver más →</div></div>`:'';
   const posterEl=s.poster
-    ?`<div class="series-card-poster-wrap">${flagEl}<img class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph>🎬</div>'"></div>`
-    :`<div class="series-card-poster-wrap">${flagEl}<div class="series-card-poster-ph">🎬</div></div>`;
+    ?`<div class="series-card-poster-wrap">${flagEl}<img class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph>🎬</div>'">${synopsisOverlay}</div>`
+    :`<div class="series-card-poster-wrap">${flagEl}<div class="series-card-poster-ph">🎬</div>${synopsisOverlay}</div>`;
 
-  // ── Badges mínimos: solo tipo y libro (el país ya va en la bandera)
+  // ── Badges
   const badges=[];
   if(s.seriesType==='webserie') badges.push(`<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">🌐 Web</span>`);
   if(s.basedOnBook) badges.push(`<span class="badge badge-book">📖</span>`);
   if(seasons.length>1) badges.push(`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">T${seasons.length}</span>`);
   const badgesHtml=`<div class="card-badges">${badges.join('')}</div>`;
 
-  // ── Estado y próximo episodio (línea principal de info)
+  // ── Géneros (hasta 2)
+  const genrePills=(s.genres&&s.genres.length)
+    ?`<div class="sc-genres">${s.genres.slice(0,2).map(g=>`<span class="sc-genre-pill">${g}</span>`).join('')}</div>`:'';
+
+  // ── Estado y próximo episodio
   let statusPill='';
   if(todayEps.length){
     statusPill=`<div class="sc-status-pill today">🌸 Hoy · ${epLabel(todayEps[0],seasons)}</div>`;
@@ -1906,10 +1995,13 @@ function seriesCardHtml(s, si){
     statusPill=`<div class="sc-status-pill finished">✓ Finalizada${renewedTxt}</div>`;
   }
 
-  // ── Barra de progreso minimalista
+  // ── Barra de progreso
   const progressBar=`<div class="progress-wrap" style="margin-top:auto;padding-top:6px">
     <div class="progress-fill" style="width:${pct}%;background:${col}"></div>
   </div>`;
+
+  // ── Año
+  const yearHtml=s.year?`<span style="font-size:10px;color:var(--muted);font-weight:600">${s.year}</span>`:'';
 
   return `<div class="series-card" onclick="openSeries(${si})">
     ${posterEl}
@@ -1917,7 +2009,8 @@ function seriesCardHtml(s, si){
       ${badgesHtml}
       <div class="series-card-name">${s.name}</div>
       ${s.nameEn?`<div style="font-size:10px;color:var(--muted);font-style:italic;line-height:1.3;margin-top:1px;margin-bottom:1px">${s.nameEn}</div>`:''}
-      <div class="series-card-meta">${s.network||''}</div>
+      <div class="series-card-meta" style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">${s.network||''}${yearHtml&&s.network?' · ':''} ${yearHtml}</div>
+      ${genrePills}
       ${statusPill}
       ${progressBar}
     </div>
@@ -2065,7 +2158,7 @@ function buildCountryPicker(id, onChange, availableCountries){
 
 let seriesSubtab='airing';
 let seriesFinishedSubtab='all';
-let seriesFilters={q:'',countries:[],sort:'recent',book:'all',year:'',genre:''};
+let seriesFilters={q:'',countries:[],sort:'recent',book:'all',year:'',genre:'',type:'',region:''};
 // Pagination state
 const PAGE_SIZE=20;
 const paginationState={series:{airing:1,notstarted:1,finished:1,finished_serie:1,finished_webserie:1},movies:1,upcoming:1};
@@ -2098,10 +2191,22 @@ function renderListResults(){
   const yearSel=document.getElementById('seriesYearSel');
   const genreSel=document.getElementById('seriesGenreSel');
   const clearBtn=document.getElementById('seriesClearBtn');
+  const typeSel=document.getElementById('seriesTypeSel');
   if(sortSel) sortSel.value=seriesFilters.sort;
   if(bookSel) bookSel.value=seriesFilters.book;
   if(genreSel) genreSel.value=seriesFilters.genre;
-  if(clearBtn) clearBtn.style.display=(seriesFilters.countries&&seriesFilters.countries.length||seriesFilters.book!=='all'||seriesFilters.year||seriesFilters.genre)?'':'none';
+  if(typeSel) typeSel.value=seriesFilters.type||'';
+  if(clearBtn) clearBtn.style.display=(seriesFilters.countries&&seriesFilters.countries.length||seriesFilters.book!=='all'||seriesFilters.year||seriesFilters.genre||seriesFilters.type||seriesFilters.region)?'':'none';
+  // Refresh region pills active state
+  const regionPillsEl=document.getElementById('seriesRegionPills');
+  if(regionPillsEl){
+    regionPillsEl.querySelectorAll('.region-pill').forEach(btn=>{
+      const r=btn.getAttribute('onclick')||'';
+      const match=r.match(/region='([^']*)'/);
+      const pillRegion=match?match[1]:'';
+      btn.classList.toggle('active',pillRegion===seriesFilters.region);
+    });
+  }
 
   const active=state.series.filter(s=>!s.upcoming&&s.category!=='anime'&&s.category!=='reality');
   const filtered=applySeriesFilters(active);
@@ -2265,6 +2370,11 @@ function applySeriesFilters(arr){
   if(seriesFilters.book==='no') r=r.filter(s=>!s.basedOnBook);
   if(seriesFilters.year) r=r.filter(s=>{ const seasons=getSeasons(s); return seasons.some(t=>t.startDate&&t.startDate.startsWith(seriesFilters.year))||(s.startDate&&s.startDate.startsWith(seriesFilters.year)); });
   if(seriesFilters.genre) r=r.filter(s=>s.genres&&s.genres.includes(seriesFilters.genre));
+  if(seriesFilters.type) r=r.filter(s=>(s.seriesType||'serie')===seriesFilters.type);
+  if(seriesFilters.region){
+    const regionCountries=COUNTRY_REGIONS[seriesFilters.region]||[];
+    r=r.filter(s=>parseCountryParts(s.country||'').some(c=>regionCountries.includes(c)));
+  }
   if(seriesFilters.sort==='az') r.sort((a,b)=>a.name.localeCompare(b.name,'es'));
   else if(seriesFilters.sort==='za') r.sort((a,b)=>b.name.localeCompare(a.name,'es'));
   else if(seriesFilters.sort==='eps') r.sort((a,b)=>b.totalEpisodes-a.totalEpisodes);
@@ -2291,6 +2401,13 @@ function renderList(){
           <input id="seriesSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${seriesFilters.q}" oninput="seriesFilters.q=this.value;resetSeriesPages();renderListResults()" autocomplete="off">
         </div>
       </div>
+      <div class="region-pills" id="seriesRegionPills">
+        <button class="region-pill${!seriesFilters.region?' active':''}" onclick="seriesFilters.region='';resetSeriesPages();renderListResults()">🌐 Todas</button>
+        <button class="region-pill${seriesFilters.region==='asia'?' active':''}" onclick="seriesFilters.region='asia';resetSeriesPages();renderListResults()">🌏 Asia</button>
+        <button class="region-pill${seriesFilters.region==='europa'?' active':''}" onclick="seriesFilters.region='europa';resetSeriesPages();renderListResults()">🌍 Europa</button>
+        <button class="region-pill${seriesFilters.region==='america'?' active':''}" onclick="seriesFilters.region='america';resetSeriesPages();renderListResults()">🌎 América</button>
+        <button class="region-pill${seriesFilters.region==='oceania'?' active':''}" onclick="seriesFilters.region='oceania';resetSeriesPages();renderListResults()">🌏 Oceanía</button>
+      </div>
       <div class="toolbar-filters-row" id="seriesFiltersRow">
         <div class="filter-group" id="seriesCountryPickerSlot">
           <span class="filter-label">País</span>
@@ -2299,6 +2416,14 @@ function renderList(){
           <span class="filter-label">Género</span>
           <select id="seriesGenreSel" class="filter-select" onchange="seriesFilters.genre=this.value;resetSeriesPages();renderListResults()">
           <option value="">🎭 Género</option>${genreOpts}
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Tipo</span>
+          <select id="seriesTypeSel" class="filter-select" onchange="seriesFilters.type=this.value;resetSeriesPages();renderListResults()">
+            <option value="">📺 Tipo</option>
+            <option value="serie"${seriesFilters.type==='serie'?' selected':''}>📺 Serie</option>
+            <option value="webserie"${seriesFilters.type==='webserie'?' selected':''}>🌐 Web Serie</option>
           </select>
         </div>
         <div class="filter-group">
@@ -2326,7 +2451,7 @@ function renderList(){
             <option value="">📅 Año</option>${allYears.map(y=>`<option value="${y}">${y}</option>`).join('')}
           </select>
         </div>
-        <button id="seriesClearBtn" class="filter-clear-btn" onclick="seriesFilters.countries=[];seriesFilters.book='all';seriesFilters.year='';seriesFilters.genre='';document.getElementById('seriesBookSel').value='all';document.getElementById('seriesYearSel').value='';document.getElementById('seriesGenreSel').value='';const scp=document.getElementById('cpWrap_series');if(scp&&scp._reset)scp._reset();resetSeriesPages();renderListResults()" style="display:none">✕ Limpiar</button>
+        <button id="seriesClearBtn" class="filter-clear-btn" onclick="seriesFilters.countries=[];seriesFilters.book='all';seriesFilters.year='';seriesFilters.genre='';seriesFilters.type='';seriesFilters.region='';document.getElementById('seriesBookSel').value='all';document.getElementById('seriesYearSel').value='';document.getElementById('seriesGenreSel').value='';document.getElementById('seriesTypeSel').value='';const scp=document.getElementById('cpWrap_series');if(scp&&scp._reset)scp._reset();resetSeriesPages();renderListResults()" style="display:none">✕ Limpiar</button>
       </div>
     </div>
     <div id="listResults"></div>`;
@@ -2764,9 +2889,10 @@ function openSeries(si){
   const castCount=hasCast?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
   let html=`${posterEl}<div class="modal-body">
-  <div class="modal-badges">${s.basedOnBook?'<span class="badge badge-book">📖 Basada en libro</span>':''}${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}</div>
+  <div class="modal-badges">${s.basedOnBook?'<span class="badge badge-book">📖 Basada en libro</span>':''}${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.seriesType==='webserie'?'<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">🌐 Web Serie</span>':''}</div>
   <div class="modal-title">${s.name}</div>
   ${s.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${s.nameEn}</div>`:''}
+  ${s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px">${s.genres.map(g=>`<span style="font-size:11.5px;font-weight:700;padding:3px 11px;border-radius:20px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2)">${g}</span>`).join('')}</div>`:''}
   ${datesRowHtml}
   ${nextBadgeHtml}
   ${progressBlock}
@@ -4016,21 +4142,16 @@ function renderDocumentalesResults(){
 function switchTab(tab){
   state.tab=tab;
   saveSession();
-  const moreTabs=['anime','realities','documentales'];
+  const moreTabs=['books'];
   ['cal','list','movies','upcoming','books','anime','realities','documentales'].forEach(t=>{
     const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
     const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
     if(btn) btn.className=(moreTabs.includes(t)?'tab-more-item':'tab')+(tab===t?' active':'');
     if(view) view.style.display=tab===t?'':'none';
   });
-  // Highlight "Más" button when a sub-tab is active
+  // Highlight "Más" button when books is active
   const moreBtn=document.getElementById('tabMore');
   if(moreBtn) moreBtn.className='tab'+(moreTabs.includes(tab)?' active':'');
-  // Update More dropdown items
-  moreTabs.forEach(t=>{
-    const item=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
-    if(item) item.className='tab-more-item'+(tab===t?' active':'');
-  });
   // Scroll to top of content on mobile
   if(window.innerWidth<=600) window.scrollTo({top:0,behavior:'smooth'});
   if(tab==='cal'){renderWeekView();}
@@ -4055,10 +4176,11 @@ function closeMoreDrop(){
   document.getElementById('tabMoreDrop').classList.remove('open');
   document.getElementById('tabMore').setAttribute('aria-expanded','false');
 }
-// Close dropdown when clicking outside
 document.addEventListener('click',e=>{
   if(!document.getElementById('tabMoreWrap')?.contains(e.target)) closeMoreDrop();
 });
+
+
 
 document.getElementById('prevBtn').onclick=()=>{state.month--;if(state.month<0){state.month=11;state.year--;}saveSession();renderCal();};
 document.getElementById('nextBtn').onclick=()=>{state.month++;if(state.month>11){state.month=0;state.year++;}saveSession();renderCal();};
