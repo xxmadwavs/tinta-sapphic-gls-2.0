@@ -19105,6 +19105,116 @@
         }
       ],
       "updatedAt": "2026-05-15T21:02:59.742Z"
+    },
+    {
+      "id": "1778880837148",
+      "name": "First Love",
+      "nameEn": "퍼스트러브",
+      "poster": "https://i.mydramalist.com/Pxo5NZ_4c.jpg?v=1",
+      "synopsis": "",
+      "year": 2024,
+      "country": "Corea del Sur",
+      "network": "YouTube",
+      "networkUrl": "https://youtu.be/1FyfMpu-ufk?si=fmClQMujsF3kaSiY",
+      "watchLinks": [
+        {
+          "name": "YouTube",
+          "url": "https://youtu.be/1FyfMpu-ufk?si=fmClQMujsF3kaSiY"
+        }
+      ],
+      "trailerUrl": "",
+      "bookSource": "",
+      "basedOnBook": false,
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 8,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2024-12-30",
+          "totalEpisodes": 6,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2025-03-02",
+          "totalEpisodes": 3,
+          "emissionDays": [
+            6
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-15T21:33:57.148Z"
+    },
+    {
+      "id": "1778880984976",
+      "name": "Love Moment",
+      "nameEn": "บทรัก",
+      "poster": "https://i.mydramalist.com/3oKOwA_4c.jpg?v=1",
+      "synopsis": "Ocho aspirantes a actrices que nunca se han conocido antes deben convivir bajo el mismo techo durante ocho semanas en busca de la pareja perfecta para la pantalla. Solo una pareja será coronada ganadora, y ese dúo no solo conseguirá los papeles protagonistas en una miniserie especial, sino que también disfrutará de una cita de ensueño inolvidable para llevar su química más allá de la pantalla. En la última semana, deberán seguir sus corazones y decidir con quién saldrán de la casa, de la mano.",
+      "year": 2025,
+      "country": "Tailandia",
+      "network": "WeTV",
+      "networkUrl": "https://wetv.vip/en/album/ff113o7figifm9a",
+      "watchLinks": [
+        {
+          "name": "WeTV",
+          "url": "https://wetv.vip/en/album/ff113o7figifm9a"
+        }
+      ],
+      "trailerUrl": "https://youtu.be/Pn0mvk3DXLs?si=8b9ZKeGalNTtWoRW",
+      "bookSource": "",
+      "basedOnBook": false,
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Romance",
+        "Vida cotidiana"
+      ],
+      "category": "reality",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "Otoño 2025",
+      "renewedNextSeason": false,
+      "episodeDuration": 90,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-10-04",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-15T21:36:24.976Z"
     }
   ],
   "movies": [
@@ -30463,5 +30573,5 @@
       "notes": "Actriz, Cantante"
     }
   ],
-  "exportedAt": "2026-05-15T21:30:05.276Z"
+  "exportedAt": "2026-05-15T21:37:51.799Z"
 }
