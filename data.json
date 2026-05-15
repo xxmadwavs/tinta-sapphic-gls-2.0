@@ -467,7 +467,7 @@
       "episodes": [],
       "synopsis": "En medio de una lucha de poder entre el Grupo Watin y el Grupo Watchara, Chonlada, la hija secreta del magnate Pheemdech, es utilizada como peón para sabotear a su rival. Se infiltra en la empresa como recepcionista para acercarse a Apo, una ejecutiva sofisticada e inteligente.\n\nAunque Apo descubre el engaño desde el principio, decide seguirle el juego a Chonlada para protegerla de los peligros que acechan tras la conspiración. A través de escándalos y crisis que ponen en riesgo sus vidas, sus barreras se derrumban, transformando la rivalidad en un afecto genuino entre ambas.",
       "year": 2026,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "networkUrl": "https://www.iq.com/album/the-water-4-elements-2026-2fxxh4am0kx",
       "bookSource": "The Water - Waves of Deception (4 Elements GL Series)",
       "basedOnBook": true,
@@ -478,6 +478,10 @@
         {
           "name": "iQIYI",
           "url": "https://www.iq.com/album/the-water-4-elements-2026-2fxxh4am0kx"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/rDNsXiN9S74",
@@ -494,7 +498,11 @@
         }
       ],
       "genres": [
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -526,14 +534,14 @@
         {
           "actressId": "1778668868889",
           "character": "Lom/Wayo",
-          "coupleType": "other",
-          "coupleNum": 1
+          "coupleType": "secondary",
+          "coupleNum": 2
         },
         {
           "actressId": "1778669459675",
           "character": "Fai/Atjima",
-          "coupleType": "other",
-          "coupleNum": 1
+          "coupleType": "secondary",
+          "coupleNum": 3
         },
         {
           "actressId": "1778669368232",
@@ -558,7 +566,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:33:41.517Z",
+      "updatedAt": "2026-05-15T09:10:54.317Z",
       "nameEn": "นทีร้อยเล่ห์",
       "episodeDuration": 64
     },
@@ -577,14 +585,19 @@
       "episodes": [],
       "synopsis": "La princesa Azul, heredera al trono de Madelin, visita Tailandia, donde conoce a Wayo Wathinwanit, una oficial de policía encargada de su seguridad. Sin embargo, su viaje se convierte en una pesadilla cuando un intento de asesinato obliga a la princesa a huir, y Lom es la única que puede protegerla. Mientras se esconden del enemigo, ambas se enfrentan a peligros y situaciones desafiantes, lo que las lleva a una intimidad y sentimientos prohibidos que tal vez no puedan detener. Aunque sabe que esta vez el amor puede ser imposible, el corazón de Lom le exige que proteja a la princesa a toda costa. Cuando el enemigo descubre su escondite, está a punto de librarse una batalla final.",
       "year": 2026,
-      "country": "Tailandia",
-      "networkUrl": "",
+      "country": "Tailandia / Japón",
+      "networkUrl": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1",
       "bookSource": "The Air - Desires in the wind (4 Elements GL Series)",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/377605/Thumbnail/book_detail_large.gif?8",
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=377605",
       "upcoming": false,
-      "watchLinks": [],
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
+        }
+      ],
       "trailerUrl": "https://youtu.be/a6aH88Zzb_w",
       "bookLinks": [
         {
@@ -601,7 +614,11 @@
       "genres": [
         "Acción",
         "Comedia",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -634,19 +651,19 @@
           "actressId": "1778669290609",
           "character": "Nam/Apo",
           "coupleType": "secondary",
-          "coupleNum": 1
+          "coupleNum": 2
         },
         {
           "actressId": "1778669334143",
           "character": "Lada",
           "coupleType": "secondary",
-          "coupleNum": 1
+          "coupleNum": 2
         },
         {
           "actressId": "1778669459675",
           "character": "\"Fai\" Atjima",
-          "coupleType": "other",
-          "coupleNum": 1
+          "coupleType": "secondary",
+          "coupleNum": 3
         },
         {
           "actressId": "1778669589925",
@@ -677,7 +694,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:34:02.404Z",
+      "updatedAt": "2026-05-15T09:11:09.612Z",
       "nameEn": "เสน่หาวาโย",
       "episodeDuration": ""
     },
@@ -905,9 +922,9 @@
       "poster": "https://i.mydramalist.com/VXlwOm_4c.jpg?v=1",
       "synopsis": "Atjima Wathiwanit, la heredera de un millonario del sur, se reencuentra con Kaphrao Athittaya, su rival de la infancia. Su relación es como las llamas del fuego y el aceite; puede hacer que la llama del amor arda con fuerza o se extinga de nuevo.",
       "year": 2026,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "iQiyi",
-      "networkUrl": "",
+      "networkUrl": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1",
       "bookSource": "The Fire - Flaming Chains of Love (4 Elements GL Series)",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/391629/Thumbnail/book_detail_large.gif?9",
@@ -915,7 +932,12 @@
       "upcoming": true,
       "skipDates": [],
       "episodes": [],
-      "watchLinks": [],
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
+        }
+      ],
       "trailerUrl": "https://youtu.be/erOZdx3WALk",
       "bookLinks": [
         {
@@ -930,7 +952,11 @@
         }
       ],
       "genres": [
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -963,30 +989,30 @@
           "actressId": "1778669290609",
           "character": "Nam/Apo",
           "coupleType": "secondary",
-          "coupleNum": 1
+          "coupleNum": 2
         },
         {
           "actressId": "1778669334143",
           "character": "Lada",
           "coupleType": "secondary",
-          "coupleNum": 1
+          "coupleNum": 2
         },
         {
           "actressId": "1778668868889",
           "character": "Lom/Wayo",
           "coupleType": "secondary",
-          "coupleNum": 1
+          "coupleNum": 3
         },
         {
           "actressId": "1778668798059",
           "character": "Princess Blew / Catherine  | Helena",
           "coupleType": "secondary",
-          "coupleNum": 1
+          "coupleNum": 3
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T07:35:56.950Z",
+      "updatedAt": "2026-05-15T09:11:24.027Z",
       "nameEn": "โซ่รักอัคนี",
       "episodeDuration": ""
     },
@@ -1609,13 +1635,17 @@
       "poster": "https://i.mydramalist.com/nO8E6B_4f.jpg",
       "synopsis": "Rose Thippapha, heredera de las tierras de Chomjan, regresa a Chiang Rai desde Estados Unidos cuando su padrastro cae en coma tras un sospechoso accidente. Allí, se encuentra en peligro por culpa de Wasu, un viticultor que intenta obligarla a casarse con él y apoderarse de sus tierras para sus negocios ilegales. Afortunadamente, Din Kasama Wathinwanit, amigo de la infancia de Rose y propietario de una granja de verduras orgánicas, acude en su ayuda. Para garantizar su seguridad, Rose y Din tendrán que casarse. \n\nAunque se trate de un matrimonio de conveniencia, su renovada cercanía poco a poco da lugar a sentimientos reales.",
       "year": 2026,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "iQiyi",
       "networkUrl": "https://www.iq.com/album/the-earth-4-elements-2026-16vh6ho38tl",
       "watchLinks": [
         {
           "name": "iQiyi",
           "url": "https://www.iq.com/album/the-earth-4-elements-2026-16vh6ho38tl"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/8ZEzEJQ3yqU",
@@ -1645,7 +1675,11 @@
         }
       ],
       "genres": [
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -1665,20 +1699,20 @@
         {
           "actressId": "1778668868889",
           "character": "Lom/Wayo",
-          "coupleType": "main",
+          "coupleType": "secondary",
           "coupleNum": 1
         },
         {
           "actressId": "1778669290609",
           "character": "Nam/Apo",
-          "coupleType": "main",
-          "coupleNum": 1
+          "coupleType": "secondary",
+          "coupleNum": 2
         },
         {
           "actressId": "1778669459675",
           "character": "Fai/Atjima",
-          "coupleType": "main",
-          "coupleNum": 1
+          "coupleType": "secondary",
+          "coupleNum": 3
         }
       ],
       "animeSeason": "",
@@ -1697,7 +1731,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:38:51.567Z",
+      "updatedAt": "2026-05-15T09:10:36.100Z",
       "nameEn": "วิวาห์ปฐพี",
       "episodeDuration": 55
     },
@@ -6216,10 +6250,15 @@
       "poster": "",
       "synopsis": "",
       "year": "",
-      "country": "",
+      "country": "Japón",
       "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1",
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
+        }
+      ],
       "trailerUrl": "",
       "bookSource": "Rhythm",
       "basedOnBook": true,
@@ -6240,9 +6279,20 @@
       "upcoming": true,
       "genres": [
         "Romance",
-        "Sobrenatural"
+        "Sobrenatural",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
-      "nameEn": ""
+      "nameEn": "เธอคือจังหวะของหัวใจ",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "updatedAt": "2026-05-15T09:07:54.672Z"
     },
     {
       "id": "1777227405202",
@@ -6250,13 +6300,17 @@
       "poster": "https://i.mydramalist.com/g06DVP_4f.jpg",
       "synopsis": "La brillante cirujana cardíaca Dra. Premsini está a punto de casarse, pero Pat, una hermosa actriz villana, arruina la boda cuando su amable prometido deja embarazada a la mejor amiga de Pat. Esta situación hace que la Dra. Prem sienta aversión por Pat, pero ignora que la dulce persona con la que compartió un beso robado después de su despedida de soltera no era otra que Pat. En cuanto a Pat, se enamoró de la Dra. Prem a primera vista y está haciendo todo lo posible por ganarse su interés",
       "year": 2025,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/6CO8mBhPrv8?si=NDoha-PxL-w4AYl_",
       "watchLinks": [
         {
           "name": "YouTube",
           "url": "https://youtu.be/6CO8mBhPrv8?si=NDoha-PxL-w4AYl_"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/rKCGc7Lf81E",
@@ -6279,7 +6333,11 @@
       "upcoming": false,
       "genres": [
         "Drama",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -6295,7 +6353,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "พิษรัก",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -6326,7 +6384,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T20:01:37.139Z"
+      "updatedAt": "2026-05-15T09:08:15.109Z",
+      "episodeDuration": 53
     },
     {
       "id": "1777228963657",
@@ -6334,13 +6393,17 @@
       "poster": "https://i.mydramalist.com/yWXDA3_4f.jpg",
       "synopsis": "Kee, una chica tsundere genial, y Peem, una chica rica y traviesa, se convierten en amigas inseparables. Sin embargo, nadie sabe la verdad: que en realidad, han estado secretamente enamoradas la una de la otra desde la secundaria. Desde hilo dental de cerdo hecho a mano, un collar de engranajes como muestra de amor, hasta un primer beso accidental, sus corazones latirán con fuerza. Pero el amor nunca es tan fácil, y el destino juega sus malas pasadas. Las dos se separan y pasarán siete años antes de que se reencuentren... como jefa y empleada.",
       "year": 2025,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "YouTube",
       "networkUrl": "https://www.youtube.com/playlist?list=PL4D0KlUVq4Ix1AF1_vliipbSFOvvGUNWO",
       "watchLinks": [
         {
           "name": "YouTube",
           "url": "https://www.youtube.com/playlist?list=PL4D0KlUVq4Ix1AF1_vliipbSFOvvGUNWO"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/ZUotNR6SSsM",
@@ -6373,7 +6436,11 @@
       "upcoming": false,
       "genres": [
         "Drama",
-        "Romance"
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -6389,7 +6456,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "รักปากแข็ง",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -6414,7 +6481,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T20:02:34.433Z"
+      "updatedAt": "2026-05-15T09:08:33.478Z",
+      "episodeDuration": 70
     },
     {
       "id": "1777235903416",
@@ -6422,7 +6490,7 @@
       "poster": "https://i.mydramalist.com/kAVdqm_4f.jpg",
       "synopsis": "La vida de Ongsa en la escuela secundaria nunca volverá a ser la misma cuando, sin pensarlo dos veces, le desea \"dulces sueños\" a su linda y alegre compañera de clase, Sun, usando el nombre de Instagram Earth. Desafortunadamente, el nombre masculino hace que Sun crea que le está hablando a un chico, pero Ongsa no quiere perder la oportunidad de hablar con ella. Decide mantenerlo en secreto y seguir hablando con Sun como Earth.",
       "year": 2026,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "GMM 25",
       "networkUrl": "https://www.netflix.com/title/81760051",
       "watchLinks": [
@@ -6437,6 +6505,10 @@
         {
           "name": "Viki",
           "url": "https://www.viki.com/tv/40918c-235#about"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "",
@@ -6453,9 +6525,13 @@
       "bookUrl": "https://www.amazon.es/23-5-Earth-Spinning-Around-English-ebook/dp/B0C1JKLC9Q",
       "upcoming": false,
       "genres": [
-        "Romance",
         "Comedia",
-        "Escolar"
+        "Escolar",
+        "Romance",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -6513,8 +6589,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T10:34:57.842Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T09:09:14.268Z",
+      "nameEn": "23.5 องศาที่โลกเอียง",
+      "episodeDuration": 52
     },
     {
       "id": "1777236063170",
@@ -6522,10 +6599,15 @@
       "poster": "https://i.mydramalist.com/mOXkQ3_4f.jpg",
       "synopsis": "Nos besamos cuando el mundo entero se detuvo a través del pétalo de girasol de su escritorio.\nMai-Tree, una mujer bendecida con la extraordinaria capacidad de congelar el tiempo durante diez minutos cada día desde su infancia, ha sobresalido en casi todos los aspectos de su vida, desde las tareas cotidianas y los estudios hasta su carrera como abogada. Este excepcional don le ha valido el apodo de «La Cien Por Ciento»\n\nPero su orgullo y confianza se desmoronan cuando pierde un caso contra Maan-Mek, una fiscal estoica y enigmática cuya fachada tranquila e impasible esconde secretos inconfesables. La belleza de Maan-Mek es innegable, pero su expresión fría e indescifrable frustra a Mai-Tree cada vez que piensa en ella.\n\nPara su sorpresa, Maan-Mek reaparece en su vida, no como rival, sino como su nueva asistente legal. Al cruzarse sus caminos, una atracción inesperada comienza a surgir en Mai-Tree. Sin embargo, el destino interviene cuando recibe una llamada urgente de su hermana mayor, quien posee la rara habilidad de prever el futuro. Su hermana le advierte de un complot siniestro: alguien planea explotar el poder único de Mai-Tree con fines peligrosos, drenando lentamente su fuerza vital en el proceso.\n\n¿Lo más inquietante? Todo lo que describe su hermana apunta a esa mujer: Maan-Mek.\nMientras Mai-Tree lidia con sus crecientes sentimientos por Maan-Mek, se debate entre la confianza y la sospecha.\n¿Se enamorará de la única persona que podría engañarla? ¿Seguirá Mai-Tree los deseos de su corazón o se enfrentará a la inminente amenaza del destino?",
       "year": "",
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1",
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
+        }
+      ],
       "trailerUrl": "",
       "bookSource": "Stuck with Me",
       "basedOnBook": true,
@@ -6550,10 +6632,21 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=391312",
       "upcoming": true,
       "genres": [
+        "Fantasía",
         "Romance",
-        "Fantasía"
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
-      "nameEn": ""
+      "nameEn": "คุณคือพรประการที่สาม",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "updatedAt": "2026-05-15T09:09:26.772Z"
     },
     {
       "id": "1777236404711",
@@ -6561,13 +6654,17 @@
       "poster": "https://i.mydramalist.com/yWLLrN_4f.jpg",
       "synopsis": "“Ni se te ocurra gritar. No hay nadie que te oiga. Cada centímetro de tu carne… cada latido… ¡es mío!” Con solo 168 HORAS antes de que la muerte la alcance, Winrawi se convierte en el objetivo de un espíritu implacable y vengativo cuya oscura presencia se acerca con cada segundo que pasa. Una voz escalofriante susurra roncamente, amenazando con quitarle la vida y empujándola al borde de la desesperación. Desesperada y sola, se encuentra con una mujer de mirada fría e indiferente, la única que le ofrece una esperanza de escapar de esta persecución aterradora, pero su súplica es rechazada sin piedad. A medida que el tiempo se le escapa, Winrawi se ve obligada a enfrentarse a las sombras de su pasado, desentrañando secretos que revelan una verdad espantosa, ¡conduciéndola hacia una tragedia que nadie podría haber previsto!",
       "year": 2025,
-      "country": "Tailandia",
+      "country": "Tailandia / Japón",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/Nb0BVxyQaN0?si=OZw-tJUJhhsi9YJk",
       "watchLinks": [
         {
           "name": "YouTube",
           "url": "https://youtu.be/Nb0BVxyQaN0?si=OZw-tJUJhhsi9YJk"
+        },
+        {
+          "name": "Crunchyroll",
+          "url": "crunchyroll.com/es-es/watch/G4VUQX39Z?irclickid=QxPzhewYZxyZTimXVfXGR0REUkuUCjx5Syi5Vk0&utm_source=impact&utm_medium=affiliate&utm_campaign=1206980&irgwc=1&afsrc=1"
         }
       ],
       "trailerUrl": "https://youtu.be/m1usc-r-4AE",
@@ -6592,7 +6689,11 @@
         "Drama",
         "Romance",
         "Sobrenatural",
-        "Terror"
+        "Terror",
+        "Animación",
+        "Anime",
+        "Comedia",
+        "Drama"
       ],
       "seasons": [
         {
@@ -6608,7 +6709,7 @@
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "หนีไปก็ตายเปล่า",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -6628,12 +6729,13 @@
           "actressId": "1778761913700",
           "character": "\"Khwan\" Jomkwan Narakankul",
           "coupleType": "main",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T20:03:19.744Z"
+      "updatedAt": "2026-05-15T09:10:11.198Z",
+      "episodeDuration": 49
     },
     {
       "id": "1777236582381",
@@ -28342,5 +28444,5 @@
       "notes": "Actriz, Modelo"
     }
   ],
-  "exportedAt": "2026-05-15T08:43:30.450Z"
+  "exportedAt": "2026-05-15T09:11:27.302Z"
 }
