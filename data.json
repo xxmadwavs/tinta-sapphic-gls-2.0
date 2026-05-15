@@ -1270,7 +1270,7 @@
             {
               "num": 7,
               "date": "2026-05-15",
-              "skipped": true
+              "skipped": false
             },
             {
               "num": 8,
@@ -30463,5 +30463,5 @@
       "notes": "Actriz, Cantante"
     }
   ],
-  "exportedAt": "2026-05-15T21:17:14.424Z"
+  "exportedAt": "2026-05-15T21:30:05.276Z"
 }
