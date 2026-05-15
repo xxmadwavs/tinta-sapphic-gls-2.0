@@ -15349,8 +15349,8 @@
       ],
       "trailerUrl": "https://www.youtube.com/watch?v=hHRRF-XLzdI",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -15372,12 +15372,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:02:43.514Z",
+      "updatedAt": "2026-05-15T20:38:22.919Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "@나를 싫어했던 X에게",
+      "cast": [],
+      "episodeDuration": 8
     },
     {
       "id": "1700000000236",
@@ -15396,8 +15398,8 @@
       ],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -15419,12 +15421,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:02:47.602Z",
+      "updatedAt": "2026-05-15T20:38:37.873Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "[나를 싫어했던 X에게] 윤오X재인",
+      "cast": [],
+      "episodeDuration": 9
     },
     {
       "id": "1700000000237",
@@ -15443,8 +15447,8 @@
       ],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": true,
       "bookSource": "Tendering Resignation",
@@ -15466,12 +15470,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:02:51.791Z",
+      "updatedAt": "2026-05-15T20:43:35.962Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "퇴사를 요청합니다",
+      "cast": [],
+      "episodeDuration": 2
     },
     {
       "id": "1700000000239",
@@ -15585,9 +15591,9 @@
       ],
       "trailerUrl": "https://youtu.be/ni7bPo_cRbQ",
       "genres": [
-        "Romance",
+        "Comedia",
         "Drama",
-        "Comedia"
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -15605,7 +15611,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -15616,11 +15623,18 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T12:01:53.481Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:43:54.299Z",
+      "nameEn": "彩香ちゃんは弘子先輩に恋してる",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 24
     },
     {
       "id": "1700000000244",
@@ -18817,6 +18831,80 @@
       ],
       "updatedAt": "2026-05-15T07:58:38.153Z",
       "episodeDuration": ""
+    },
+    {
+      "id": "1778877990809",
+      "name": "Never Fade",
+      "nameEn": "",
+      "poster": "",
+      "synopsis": "",
+      "year": "",
+      "country": "Tailandia",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://youtu.be/WBa2OP5AIwg?si=r6g7mX0KdQkMTgLG",
+      "bookSource": "",
+      "basedOnBook": false,
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": true,
+      "genres": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778760989113",
+          "character": "",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "updatedAt": "2026-05-15T20:48:08.408Z"
+    },
+    {
+      "id": "1778878081641",
+      "name": "My Lady's Bodyguard",
+      "nameEn": "",
+      "poster": "https://pbs.twimg.com/media/HIXRqNvXYAAE7Ix?format=jpg&name=small",
+      "synopsis": "El disfraz puede ocultar la verdad, pero nunca podrá esconder los sentimientos que nacen en el corazón. Cuando una guardaespaldas debe proteger a una joven que es la luz de su vida... ¿cómo lidiará con eso?",
+      "year": 2026,
+      "country": "Tailandia",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "",
+      "bookSource": "",
+      "basedOnBook": false,
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": true,
+      "genres": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778781830314",
+          "character": "",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778781856216",
+          "character": "",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "updatedAt": "2026-05-15T20:48:01.641Z"
     }
   ],
   "movies": [
@@ -30159,5 +30247,5 @@
       "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-15T20:34:14.469Z"
+  "exportedAt": "2026-05-15T20:48:23.486Z"
 }
