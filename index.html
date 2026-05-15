@@ -982,7 +982,79 @@ body::before{content:'';position:fixed;inset:0;background:
   .cast-name{font-size:10.5px}
   .cast-char{font-size:9.5px}
 }
-/* Actress profile modal */
+/* Actress tab */
+.actress-tab-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
+  gap:12px;
+}
+.actress-tab-card{
+  display:flex;flex-direction:column;align-items:center;gap:7px;
+  padding:14px 8px 12px;
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);cursor:pointer;
+  transition:all .2s;text-align:center;
+  box-shadow:var(--shadow-sm);
+}
+.actress-tab-card:hover{
+  border-color:var(--accent2);
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px rgba(201,79,124,0.15);
+}
+.actress-tab-photo{
+  width:72px;height:72px;border-radius:50%;
+  object-fit:cover;object-position:top;
+  border:2.5px solid var(--border2);
+  background:var(--surface2);flex-shrink:0;
+  transition:border-color .2s;
+}
+.actress-tab-card:hover .actress-tab-photo{border-color:var(--accent2)}
+.actress-tab-photo-ph{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--accent-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;flex-shrink:0;
+  border:2.5px solid var(--border2);
+}
+.actress-tab-name{
+  font-size:11.5px;font-weight:700;color:var(--text);
+  line-height:1.3;word-break:break-word;
+}
+.actress-tab-country{
+  font-size:10px;color:var(--muted);font-weight:600;
+}
+.actress-tab-count{
+  font-size:10px;color:var(--accent);font-weight:700;
+  background:var(--accent-soft);border-radius:20px;
+  padding:1px 8px;
+}
+.actress-nationality-section{margin-bottom:2rem}
+.actress-nationality-header{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:1rem;padding-bottom:.6rem;
+  border-bottom:2px solid var(--border2);
+}
+.actress-nationality-flag{font-size:22px;line-height:1}
+.actress-nationality-title{
+  font-family:var(--font-display);
+  font-size:18px;font-weight:700;color:var(--text);
+  letter-spacing:-.01em;
+}
+.actress-nationality-count{
+  font-size:11.5px;font-weight:700;color:var(--muted);
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:20px;padding:2px 10px;margin-left:auto;
+}
+@media(max-width:480px){
+  .actress-tab-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+  .actress-tab-photo,.actress-tab-photo-ph{width:60px;height:60px}
+  .actress-tab-name{font-size:10.5px}
+}
+
+/* Actress tab search */
+.actress-tab-search-wrap{position:relative;margin-bottom:1.25rem}
+
+/* ── Actress tab ── */
 .actress-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
 .actress-modal-bg.open{opacity:1;pointer-events:all}
 .actress-modal{background:var(--surface);border-radius:var(--radius-lg);max-width:480px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 16px 48px rgba(0,0,0,.25)}
@@ -1348,6 +1420,7 @@ footer {
       <button class="tab" id="tabMore" type="button" onclick="toggleMoreDrop(event)" aria-haspopup="true" aria-expanded="false">Más ▾</button>
       <div class="tab-more-drop" id="tabMoreDrop" role="menu">
         <button class="tab-more-item" id="tabBooks" role="menuitem" onclick="closeMoreDrop();switchTab('books')">📚 Libros</button>
+        <button class="tab-more-item" id="tabActresses" role="menuitem" onclick="closeMoreDrop();switchTab('actresses')">🎭 Actrices</button>
       </div>
     </div>
   </div>
@@ -1355,6 +1428,7 @@ footer {
   <div id="viewAnime" style="display:none"></div>
   <div id="viewRealities" style="display:none"></div>
   <div id="viewDocumentales" style="display:none"></div>
+  <div id="viewActresses" style="display:none"></div>
 
   <div id="viewCal">
     <!-- Week view (primary) -->
@@ -4220,17 +4294,119 @@ function renderDocumentalesResults(){
   resultsEl.innerHTML=html;
 }
 
+/* ═══ ACTRESSES TAB ═══ */
+let actressesTabState={q:'', nationality:''};
+
+function renderActressesTab(){
+  const view=document.getElementById('viewActresses');
+  if(!view) return;
+
+  if(!view.querySelector('.actresses-tab-shell')){
+    view.innerHTML=`<div class="actresses-tab-shell">
+      <div class="actress-tab-search-wrap">
+        <span class="search-icon">🔍</span>
+        <input class="search-input" id="actressTabSearch" placeholder="Buscar actriz…"
+          value="${actressesTabState.q}"
+          oninput="actressesTabState.q=this.value;renderActressesTabResults()" autocomplete="off">
+      </div>
+      <div id="actressTabResults"></div>
+    </div>`;
+  }
+  renderActressesTabResults();
+}
+
+function renderActressesTabResults(){
+  const resultsEl=document.getElementById('actressTabResults');
+  if(!resultsEl) return;
+
+  const actresses=state.actresses||[];
+  const q=(actressesTabState.q||'').toLowerCase().trim();
+
+  // Filtrar
+  let filtered=actresses.filter(a=>{
+    if(!q) return true;
+    return (a.name||'').toLowerCase().includes(q)||
+           (a.country||'').toLowerCase().includes(q);
+  });
+
+  if(!filtered.length){
+    resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna actriz.</div>';
+    return;
+  }
+
+  // Agrupar por país
+  const groups={};
+  filtered.forEach(a=>{
+    const country=a.country||'Otros';
+    if(!groups[country]) groups[country]=[];
+    groups[country].push(a);
+  });
+
+  // Ordenar países: los más numerosos primero
+  const sortedCountries=Object.keys(groups).sort((a,b)=>groups[b].length-groups[a].length);
+
+  // Contar apariciones en series+películas por actriz
+  function seriesCount(a){
+    const inS=(state.series||[]).filter(s=>s.cast&&s.cast.some(m=>m.actressId===a.id)).length;
+    const inM=(state.movies||[]).filter(mv=>mv.cast&&mv.cast.some(m=>m.actressId===a.id)).length;
+    return inS+inM;
+  }
+
+  let html='';
+
+  // Si hay búsqueda activa: mostrar todas sin agrupar
+  if(q){
+    html+=`<div class="actress-tab-grid">`;
+    filtered.sort((a,b)=>a.name.localeCompare(b.name,'es')).forEach(a=>{
+      html+=actressTabCardHtml(a, seriesCount(a));
+    });
+    html+=`</div>`;
+  } else {
+    // Agrupar por nacionalidad
+    sortedCountries.forEach(country=>{
+      const list=groups[country].sort((a,b)=>seriesCount(b)-seriesCount(a));
+      const flag=countryFlag(country);
+      html+=`<div class="actress-nationality-section">
+        <div class="actress-nationality-header">
+          <span class="actress-nationality-flag">${flag}</span>
+          <span class="actress-nationality-title">${country}</span>
+          <span class="actress-nationality-count">${list.length} actrices</span>
+        </div>
+        <div class="actress-tab-grid">
+          ${list.map(a=>actressTabCardHtml(a,seriesCount(a))).join('')}
+        </div>
+      </div>`;
+    });
+  }
+
+  resultsEl.innerHTML=html;
+}
+
+function actressTabCardHtml(a, count){
+  const photo=a.photo
+    ?`<img class="actress-tab-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=actress-tab-photo-ph>🎭</div>'">`
+    :`<div class="actress-tab-photo-ph">🎭</div>`;
+  const countBadge=count?`<span class="actress-tab-count">${count} obra${count!==1?'s':''}</span>`:'';
+  const flag=a.country?`<span class="actress-tab-country">${countryFlag(a.country)} ${a.country}</span>`:'';
+  return `<div class="actress-tab-card" onclick="openActressProfile('${a.id}')">
+    ${photo}
+    <div class="actress-tab-name">${a.name}</div>
+    ${flag}
+    ${countBadge}
+  </div>`;
+}
+
 function switchTab(tab){
   state.tab=tab;
   saveSession();
-  const moreTabs=['books'];
-  ['cal','list','movies','upcoming','books','anime','realities','documentales'].forEach(t=>{
+  const moreTabs=['books','actresses'];
+  ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses'].forEach(t=>{
     const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
     const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
     if(btn) btn.className=(moreTabs.includes(t)?'tab-more-item':'tab')+(tab===t?' active':'');
     if(view) view.style.display=tab===t?'':'none';
   });
-  // Highlight "Más" button when books is active
+  // Highlight "Más" button when books or actresses is active
   const moreBtn=document.getElementById('tabMore');
   if(moreBtn) moreBtn.className='tab'+(moreTabs.includes(tab)?' active':'');
   // Scroll to top of content on mobile
@@ -4243,6 +4419,7 @@ function switchTab(tab){
   if(tab==='anime') renderAnime();
   if(tab==='realities') renderRealities();
   if(tab==='documentales') renderDocumentales();
+  if(tab==='actresses') renderActressesTab();
 }
 
 function toggleMoreDrop(e){
@@ -4356,7 +4533,7 @@ document.addEventListener('keydown',e=>{
     loadSession();
     const savedTab=state.tab||'cal';
     // Show the saved tab's view, hide others
-    ['cal','list','movies','upcoming','books','anime','realities','documentales'].forEach(t=>{
+    ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses'].forEach(t=>{
       const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
       const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
       if(btn) btn.className='tab'+(savedTab===t?' active':'');
@@ -4370,6 +4547,7 @@ document.addEventListener('keydown',e=>{
     else if(savedTab==='anime') renderAnime();
     else if(savedTab==='realities') renderRealities();
     else if(savedTab==='documentales') renderDocumentales();
+    else if(savedTab==='actresses') renderActressesTab();
     else renderWeekView();
   }
 })();

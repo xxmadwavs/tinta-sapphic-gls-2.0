@@ -58,7 +58,16 @@ body::before{content:'';position:fixed;inset:0;background:
 .modal-bg.open{display:flex}
 .modal{background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;width:100%;max-width:1000px;max-height:92vh;overflow-y:auto;box-shadow:0 20px 60px rgba(212,96,138,0.15)}
 .modal-header{padding:1.25rem 1.75rem .75rem;border-bottom:1px solid var(--border2)}
-.modal-footer-btns{padding:.9rem 1.75rem;border-top:1px solid var(--border2);display:flex;gap:8px;justify-content:flex-end}
+.modal-footer-btns{
+  padding:.9rem 1.75rem;
+  border-top:1px solid var(--border2);
+  display:flex;gap:8px;justify-content:flex-end;
+  position:sticky;bottom:0;
+  background:var(--surface);
+  z-index:10;
+  border-radius:0 0 20px 20px;
+  box-shadow:0 -4px 16px rgba(58,37,53,0.07);
+}
 .modal-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--text)}
 .form-row{margin-bottom:14px}
 .form-label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
@@ -1698,7 +1707,7 @@ function openAddSeries(){
   document.getElementById('seriesModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null)+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(-1)">Guardar</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(-1)" title="Guardar (Ctrl+S)">Guardar</button></div>`;
   document.getElementById('seriesModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   initCountries('countriesList','');
@@ -1709,7 +1718,7 @@ function openEdit(si){
   document.getElementById('seriesModalTitle').textContent='✏️ Editar serie';
   document.getElementById('seriesModalBody').innerHTML=
     formHtml(series[si])+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(${si})">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('seriesModal').classList.add('open');
   bindPoster();
   const links=series[si].watchLinks||(series[si].networkUrl?[{name:series[si].network||'Ver serie',url:series[si].networkUrl}]:[]);
@@ -1943,7 +1952,7 @@ function openAddAnime(){
   document.getElementById('animeModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null,'anime')+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(-1,'anime')">Guardar anime</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(-1,'anime')" title="Guardar (Ctrl+S)">Guardar anime</button></div>`;
   document.getElementById('animeModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   initCountries('countriesList','Japón');
@@ -1954,7 +1963,7 @@ function openEditAnime(si){
   document.getElementById('animeModalTitle').textContent='✏️ Editar anime';
   document.getElementById('animeModalBody').innerHTML=
     formHtml(series[si],'anime')+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si},'anime')">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si},'anime')" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('animeModal').classList.add('open');
   bindPoster();
   const s=series[si];
@@ -1973,7 +1982,7 @@ function openAddReality(){
   document.getElementById('realityModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null,'reality')+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(-1,'reality')">Guardar</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(-1,'reality')" title="Guardar (Ctrl+S)">Guardar</button></div>`;
   document.getElementById('realityModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   initCountries('countriesList','');
@@ -1984,7 +1993,7 @@ function openEditReality(si){
   document.getElementById('realityModalTitle').textContent='✏️ Editar reality';
   document.getElementById('realityModalBody').innerHTML=
     formHtml(series[si],'reality')+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si},'reality')">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si},'reality')" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('realityModal').classList.add('open');
   bindPoster();
   const s=series[si];
@@ -2128,7 +2137,7 @@ function saveSeries(si, forcedCategory=null){
   const bookLinks=getBookEditions('bookEditionsList');
   const bookUrl=bookLinks.length?bookLinks[0].url:'';
   const genres=getSelectedGenres('f_genres');
-  const category=document.getElementById('f_category')?.value||'series';
+  const category=forcedCategory||(document.getElementById('f_category')?.value||'series');
   const seriesType=document.getElementById('f_seriesType')?.value||'serie';
   const cast=getCastData();
   const animeSeason=(category==='anime'||category==='reality')?getAnimeSeason():'';
@@ -2550,7 +2559,7 @@ function openAddMovie(){
   document.getElementById('movieModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('movie')}</div>`+
     movieFormHtml(null)+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(-1)">Guardar</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(-1)" title="Guardar (Ctrl+S)">Guardar</button></div>`;
   document.getElementById('movieModal').classList.add('open');
   bindMovieForm(); initMoviePlatforms([]); initBookEditions('movieBookEditionsList',[],null);
   initCountries('movieCountriesList','');
@@ -2559,7 +2568,7 @@ function openAddMovie(){
 function openEditMovie(mi){
   document.getElementById('movieModalTitle').textContent='✏️ Editar película';
   document.getElementById('movieModalBody').innerHTML=movieFormHtml(movies[mi])+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(${mi})">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(${mi})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('movieModal').classList.add('open');
   bindMovieForm();
   const mv=movies[mi];
@@ -3477,6 +3486,15 @@ function confirmModalResolve(val){
 document.addEventListener('keydown', e=>{
   if(e.key==='Escape' && document.getElementById('confirmModalBg').classList.contains('open')){
     confirmModalResolve(false);
+  }
+  // Ctrl+S / Cmd+S → click primary save button of the open modal
+  if((e.ctrlKey||e.metaKey) && e.key==='s'){
+    e.preventDefault();
+    const openModal=[...document.querySelectorAll('.modal-bg.open')].at(-1);
+    if(openModal){
+      const saveBtn=openModal.querySelector('.modal-footer-btns .btn.primary');
+      if(saveBtn) saveBtn.click();
+    }
   }
 });
 </script>
