@@ -13604,11 +13604,31 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:59:15.458Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T18:53:30.960Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778668043254",
+          "character": "Pa",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667975177",
+          "character": "Ink",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 47
     },
     {
       "id": "1700000000165",
@@ -14073,8 +14093,8 @@
       ],
       "trailerUrl": "https://www.youtube.com/watch?v=epmCXpvsliU&pp=ygUTbG92ZSBzZW5pb3IgdHJhaWxlcg%3D%3D",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": true,
       "bookSource": "Love Senior",
@@ -14108,11 +14128,49 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T08:21:50.617Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T18:55:07.781Z",
+      "nameEn": "พี่ว้ากคะรักหนูได้มั้ย",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778785354635",
+          "character": "Manaow",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778785439675",
+          "character": "Gyoza",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778786772554",
+          "character": "Warang",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778786841954",
+          "character": "Prang",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778787268516",
+          "character": "Luktan",
+          "coupleType": "other",
+          "coupleNum": 3
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 51
     },
     {
       "id": "1700000000192",
@@ -14557,12 +14615,27 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:01:55.434Z",
+      "updatedAt": "2026-05-15T18:55:48.149Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "ลบเธอให้หาย",
+      "cast": [
+        {
+          "actressId": "1778761992984",
+          "character": "Rata",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778762052809",
+          "character": "Im",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": 12
     },
     {
       "id": "1700000000213",
@@ -17816,10 +17889,25 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:04:07.191Z",
+      "updatedAt": "2026-05-15T18:56:54.661Z",
       "seriesType": "webserie",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "กฎของเรา ข้อยกเว้นคือเธอ",
+      "cast": [
+        {
+          "actressId": "1778841431775",
+          "character": "Time",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841459722",
+          "character": "Lean",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": ""
     },
     {
       "id": "1778499566113",
@@ -29707,5 +29795,5 @@
       "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-15T18:51:45.528Z"
+  "exportedAt": "2026-05-15T18:57:06.783Z"
 }
