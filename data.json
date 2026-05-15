@@ -9145,12 +9145,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:58:10.039Z",
+      "updatedAt": "2026-05-15T12:01:52.391Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [],
+      "episodeDuration": 7
     },
     {
       "id": "1777583796655",
@@ -9191,12 +9193,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:58:13.750Z",
+      "updatedAt": "2026-05-15T12:02:19.798Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "오늘부터 여자친구",
+      "cast": [],
+      "episodeDuration": 9
     },
     {
       "id": "1777583871451",
@@ -9230,12 +9234,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:58:18.252Z",
+      "updatedAt": "2026-05-15T12:02:34.159Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "익명의 여고생",
+      "cast": [],
+      "episodeDuration": 8
     },
     {
       "id": "1777584066900",
@@ -9270,12 +9276,33 @@
           "emissionDays": [
             2
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:23:28.064Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T12:05:11.342Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778846625344",
+          "character": "Harumoto Itsuki",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778846709256",
+          "character": "Hayashi Fuyu",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777584138652",
@@ -9310,12 +9337,33 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:22:18.652Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T12:05:35.094Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778846625344",
+          "character": "Harumoto Itsuki",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778846709256",
+          "character": "Hayashi Fuyu",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777584355784",
@@ -9355,18 +9403,20 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:58:24.216Z",
+      "updatedAt": "2026-05-15T12:09:03.589Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "여자에게 설레는 편",
+      "cast": [],
+      "episodeDuration": 13
     },
     {
       "id": "1777584451615",
       "name": "Couple of Mirrors",
       "poster": "https://i.mydramalist.com/pbL1r_4c.jpg?v=",
-      "synopsis": "",
+      "synopsis": "You Yi es una joven de la alta sociedad, inocente y de buen corazón, además de una autora de éxito, que vive rodeada de la admiración y la envidia de todos. Su vida perfecta da un vuelco cuando descubre que las dos personas en las que más confiaba la han traicionado. Sin nadie a quien recurrir, encuentra refugio en la amistad y el apoyo de Yan Wei, un joven fotógrafo de carácter frío. Sin que nadie lo sepa, Yan Wei esconde una identidad secreta y letal.",
       "year": 2021,
       "country": "China",
       "network": "Bilibili",
@@ -9394,12 +9444,33 @@
             3,
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:27:31.615Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T12:11:12.107Z",
+      "nameEn": "双镜",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778847015736",
+          "character": "Xu You Yi",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778847067858",
+          "character": "Yan Wei",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 46
     },
     {
       "id": "1777584568429",
@@ -27609,11 +27680,24 @@
         "Romance"
       ],
       "category": "movie",
-      "updatedAt": "2026-05-14T21:23:17.795Z",
+      "updatedAt": "2026-05-15T12:08:24.108Z",
       "nameEn": "チェイサーゲームW 水魚の交わり",
       "movieType": "film",
       "duration": 84,
-      "cast": []
+      "cast": [
+        {
+          "actressId": "1778846625344",
+          "character": "Harumoto Itsuki",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778846709256",
+          "character": "Hayashi Fuyu",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ]
     },
     {
       "id": "1778612027313",
@@ -29318,7 +29402,39 @@
       "birthdate": "1989-02-11",
       "notes": "Actriz, Modelo",
       "photoPosition": "center 80%"
+    },
+    {
+      "id": "1778846625344",
+      "name": "Sugai Yuuka",
+      "photo": "https://static.wikia.nocookie.net/drama/images/c/c4/Sugai_Yuuka_13.jpg/revision/latest?cb=20201121195105&path-prefix=es",
+      "country": "Japón",
+      "birthdate": "1995-11-29",
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778846709256",
+      "name": "Nakamura Yurika",
+      "photo": "https://static.wikia.nocookie.net/drama/images/5/5f/Nakamura_Yurika_9.jpg/revision/latest?cb=20200408191925&path-prefix=es",
+      "country": "Japón",
+      "birthdate": "1997-03-04",
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778847015736",
+      "name": "Zhang Nan",
+      "photo": "https://static.wikia.nocookie.net/drama/images/f/f1/Zhang_Nan14.jpg/revision/latest?cb=20200209132856&path-prefix=es",
+      "country": "China",
+      "birthdate": "1997-06-27",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778847067858",
+      "name": "Sun Yi",
+      "photo": "https://i.mydramalist.com/5v6r24_5c.jpg",
+      "country": "China",
+      "birthdate": "1998-04-16",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-15T11:18:06.887Z"
+  "exportedAt": "2026-05-15T12:11:21.821Z"
 }
