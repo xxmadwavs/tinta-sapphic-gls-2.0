@@ -8920,8 +8920,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "seasons": [
         {
@@ -8938,17 +8938,19 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:58:03.029Z",
+      "updatedAt": "2026-05-15T11:09:19.334Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "รักช็อตใจ ยัยช็อตฟีล",
+      "cast": [],
+      "episodeDuration": 8
     },
     {
       "id": "1777460603023",
       "name": "Dangerous Love",
-      "poster": "",
+      "poster": "https://i.mydramalist.com/oQXBVk_4c.jpg?v=1",
       "synopsis": "",
       "year": "",
       "country": "Tailandia",
@@ -8963,8 +8965,21 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-04-29T11:03:23.023Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T11:09:44.399Z",
+      "nameEn": "รักอันตราย",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778760989113",
+          "character": "",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777581394711",
@@ -8996,12 +9011,33 @@
             0,
             1
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T20:36:34.711Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T11:12:19.107Z",
+      "nameEn": "안녕 드라큘라",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778843460519",
+          "character": "An Na",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778843534677",
+          "character": "Soo Jung",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 70
     },
     {
       "id": "1777581846393",
@@ -29226,7 +29262,24 @@
       "country": "Tailandia",
       "birthdate": "2005-11-10",
       "notes": "Actriz"
+    },
+    {
+      "id": "1778843460519",
+      "name": "Seo Ju Hyeon",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/240906_Seohyun_%40_Incheon_International_Airport_051_%28cropped%29.jpg/960px-240906_Seohyun_%40_Incheon_International_Airport_051_%28cropped%29.jpg",
+      "country": "Corea del Sur",
+      "birthdate": "1991-06-28",
+      "height": 168,
+      "notes": "Actriz, Cantante, Modelo"
+    },
+    {
+      "id": "1778843534677",
+      "name": "Lee Chung Ah",
+      "photo": "https://1.vikiplatform.com/pr/14122pr/7850ccb260.jpg?x=b",
+      "country": "Corea del Sur",
+      "birthdate": "1984-10-29",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-15T10:57:14.637Z"
+  "exportedAt": "2026-05-15T11:13:37.351Z"
 }
