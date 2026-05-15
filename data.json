@@ -1269,7 +1269,7 @@
             },
             {
               "num": 7,
-              "date": "2026-04-17",
+              "date": "2026-05-15",
               "skipped": true
             },
             {
@@ -18905,6 +18905,206 @@
       "renewedNextSeason": false,
       "episodeDuration": "",
       "updatedAt": "2026-05-15T20:48:01.641Z"
+    },
+    {
+      "id": "1778878515414",
+      "name": "To Get Her",
+      "nameEn": "너의 연애",
+      "poster": "https://i.mydramalist.com/81dqXl_4c.jpg?v=1",
+      "synopsis": "El primer reality show coreano sobre citas entre mujeres lesbianas sigue a siete mujeres solteras mientras conviven, entablan relaciones y buscan el amor.",
+      "year": 2025,
+      "country": "Corea del Sur",
+      "network": "Wavve",
+      "networkUrl": "https://www.wavve.com/player/vod?programid=F3101_F31000000028",
+      "watchLinks": [
+        {
+          "name": "Wavve",
+          "url": "https://www.wavve.com/player/vod?programid=F3101_F31000000028"
+        }
+      ],
+      "trailerUrl": "",
+      "bookSource": "",
+      "basedOnBook": false,
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Romance"
+      ],
+      "category": "reality",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "Primavera 2025",
+      "renewedNextSeason": false,
+      "episodeDuration": 60,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-04-25",
+          "totalEpisodes": 12,
+          "emissionDays": [
+            4
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-15T20:55:15.414Z"
+    },
+    {
+      "id": "1778878607815",
+      "name": "LeLaLes: Fluid Love",
+      "nameEn": "LeLaLes 爱的流动态",
+      "poster": "https://i.mydramalist.com/816w4d_4c.jpg?v=1",
+      "synopsis": "El primer programa de citas para mujeres queer de China. Ocho mujeres chinas. Una villa en Chiang Mai. Sin guion. Sin reglas. Solo sentimientos auténticos.\nUn programa de citas con un enfoque documental, en el que las emociones reales se muestran tal y como son. Se trata de una exploración íntima del deseo, el valor y el crecimiento personal.",
+      "year": 2026,
+      "country": "China",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://youtu.be/5g8uyCTGb0U?si=b1rlUZ9694pUgZps",
+      "bookSource": "",
+      "basedOnBook": false,
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Romance",
+        "Vida cotidiana"
+      ],
+      "category": "reality",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "Primavera 2026",
+      "renewedNextSeason": false,
+      "episodeDuration": 40,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-05-20",
+          "totalEpisodes": 5,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-15T20:56:47.815Z"
+    },
+    {
+      "id": "1778878773209",
+      "name": "Love (X)",
+      "nameEn": "รักไร้ขอบเขต LOVE (X)",
+      "poster": "https://i.mydramalist.com/81KDql_4c.jpg?v=1",
+      "synopsis": "Doce solteros conviven bajo un mismo techo en Koh Samui, aislados del mundo exterior, en busca del amor sin límites. A través de juegos competitivos, ganan citas y provisiones para sobrevivir. Al final, tomarán la decisión definitiva sobre con quién quieren seguir viéndose tras el programa. La «X» representa lo desconocido, los encuentros fortuitos y las posibilidades infinitas: ¡encontrad juntos la «X» de vuestros sueños!",
+      "year": 2025,
+      "country": "Tailandia",
+      "network": "WeTV",
+      "networkUrl": "https://wetv.vip/en/album/r1542g3l6mox014",
+      "watchLinks": [
+        {
+          "name": "WeTV",
+          "url": "https://wetv.vip/en/album/r1542g3l6mox014"
+        }
+      ],
+      "trailerUrl": "https://youtu.be/oZxIA7HqIg0?si=7Eco9WPqt1mIAREG",
+      "bookSource": "",
+      "basedOnBook": false,
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Romance",
+        "Vida cotidiana"
+      ],
+      "category": "reality",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "Otoño 2025",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-11-29",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-15T20:59:33.209Z"
+    },
+    {
+      "id": "1778878979742",
+      "name": "Futari Escape",
+      "nameEn": "ふたりエスケープ",
+      "poster": "https://i.mydramalist.com/b3RX2L_4c.jpg?v=1",
+      "synopsis": "Dos jóvenes —una dibujante de manga con exceso de trabajo y la otra, una auténtica holgazana— intentan escapar de la realidad de las responsabilidades de la vida adulta. Ya sea escapándose a pasar el día fuera en lugar de ser productivas o endeudándose para darse un festín, ¡las dos siempre se lo pasan en grande cuando están juntas! Disfruta de esta encantadora (y cercana) historia cotidiana sobre los pequeños placeres de escapar de las cosas difíciles.",
+      "year": 2025,
+      "country": "Japón",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "",
+      "bookSource": "Futari Escape",
+      "basedOnBook": true,
+      "bookCoverUrl": "https://m.media-amazon.com/images/I/91MDUI6emqL._UF1000,1000_QL80_.jpg",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Comedia",
+        "Drama",
+        "Romance",
+        "Vida cotidiana"
+      ],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778878953497",
+          "character": "Senpai",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778878977921",
+          "character": "Kohai",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 30,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-10-05",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            6
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-15T21:02:59.742Z"
     }
   ],
   "movies": [
@@ -30245,7 +30445,23 @@
       "country": "Taiwán",
       "birthdate": "1988-06-16",
       "notes": "Actriz"
+    },
+    {
+      "id": "1778878953497",
+      "name": "Iwamoto Renka",
+      "photo": "https://i.mydramalist.com/YY11PA_5c.jpg",
+      "country": "Japón",
+      "birthdate": "2004-02-02",
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778878977921",
+      "name": "Tomisato Nao",
+      "photo": "https://i.mydramalist.com/yW12w1_5c.jpg",
+      "country": "Japón",
+      "birthdate": "2006-09-18",
+      "notes": "Actriz, Cantante"
     }
   ],
-  "exportedAt": "2026-05-15T20:48:23.486Z"
+  "exportedAt": "2026-05-15T21:03:06.868Z"
 }
