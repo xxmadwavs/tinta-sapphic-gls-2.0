@@ -7244,7 +7244,39 @@
       "genres": [
         "Romance"
       ],
-      "nameEn": ""
+      "nameEn": "รติกานต์ผ่านฝัน",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778840736793",
+          "character": "\"Rati\" Ratiya",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778782115526",
+          "character": "\"Rati\" Ratiya",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778834372262",
+          "character": "Wara",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778840764849",
+          "character": "Nara",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "updatedAt": "2026-05-15T10:26:06.331Z"
     },
     {
       "id": "1777278827017",
@@ -7280,9 +7312,9 @@
       "bookUrl": "https://en.mebmarket.com/ebook-363950-PLAYER-Spanish-Version",
       "upcoming": false,
       "genres": [
-        "Romance",
+        "Comedia",
         "Drama",
-        "Comedia"
+        "Romance"
       ],
       "seasons": [
         {
@@ -7292,11 +7324,45 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "ไม่อาจห้ามรัก",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778761514836",
+          "character": "\"Pun\" Punnakorn",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778761562883",
+          "character": "\"Ploy\" Pitcha Pariyakorn",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778761762611",
+          "character": "\"Jay\" Jiraphat",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778761797385",
+          "character": "\"Prang\" Pannaphat",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 46,
+      "updatedAt": "2026-05-15T10:27:16.317Z"
     },
     {
       "id": "1777279117292",
@@ -7327,8 +7393,8 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=377598",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "seasons": [
         {
@@ -7338,11 +7404,33 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "เจน(จะ)เป็นดาวสินกำ",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778761329922",
+          "character": "\"Jane\" Jarin Thiansawangwab",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778761375325",
+          "character": "\"Dai\" Darin Pinmorakot",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 51,
+      "updatedAt": "2026-05-15T10:28:13.994Z"
     },
     {
       "id": "1777449004515",
@@ -7367,8 +7455,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
         "Comedia",
+        "Romance",
         "Sobrenatural"
       ],
       "seasons": [
@@ -7379,12 +7467,33 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T07:50:04.515Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:28:55.352Z",
+      "nameEn": "บริษัทนี้ไม่มีจำกัด",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669290609",
+          "character": "Plu",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669334143",
+          "character": "Ray",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 47
     },
     {
       "id": "1777449810549",
@@ -7419,8 +7528,10 @@
           "emissionDays": [
             2
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -7429,12 +7540,39 @@
           "emissionDays": [
             2
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T08:04:03.896Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:30:47.048Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778832868760",
+          "character": "\"Queen\" Phitinan Teerakiatsaku",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841023114",
+          "character": "Sea",
+          "coupleType": "main",
+          "coupleNum": 2
+        },
+        {
+          "actressId": "1778841043350",
+          "character": "Bam",
+          "coupleType": "main",
+          "coupleNum": 3
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 27
     },
     {
       "id": "1777449955163",
@@ -7463,9 +7601,9 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
+        "Comedia",
         "Drama",
-        "Comedia"
+        "Romance"
       ],
       "seasons": [
         {
@@ -7481,12 +7619,27 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:56:56.547Z",
+      "updatedAt": "2026-05-15T10:32:07.844Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "B-Friend - เจตนา (ไม่) ลืม",
+      "cast": [
+        {
+          "actressId": "1778841096002",
+          "character": "\"Lan\" Thanya",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841125599",
+          "character": "Lalinda / \"Lalin\"",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": ""
     },
     {
       "id": "1777451543042",
@@ -7511,8 +7664,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -7540,12 +7693,27 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:56:48.332Z",
+      "updatedAt": "2026-05-15T10:33:26.723Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "เตือนแล้วนะ... ว่าฉันร้าย",
+      "cast": [
+        {
+          "actressId": "1778841187670",
+          "character": "Mookmanee",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841205354",
+          "character": "Prangdao",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": 30
     },
     {
       "id": "1777452069135",
@@ -7570,9 +7738,9 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
+        "Acción",
         "Comedia",
-        "Acción"
+        "Romance"
       ],
       "seasons": [
         {
@@ -7588,12 +7756,39 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:56:52.236Z",
+      "updatedAt": "2026-05-15T10:35:52.318Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "ภารกิจลวงรัก",
+      "cast": [
+        {
+          "actressId": "1778841289552",
+          "character": "\"Achi\" Achirada Wiratchakul",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841306858",
+          "character": "\"Patty\" Phraephannarai",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841323109",
+          "character": "\"Chama\" Chomanee Phitchayarat",
+          "coupleType": "main",
+          "coupleNum": 2
+        },
+        {
+          "actressId": "1778841351265",
+          "character": "\"Alice\" Alissa Thanluang",
+          "coupleType": "main",
+          "coupleNum": 2
+        }
+      ],
+      "episodeDuration": 40
     },
     {
       "id": "1777452134155",
@@ -7634,12 +7829,27 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:57:01.998Z",
+      "updatedAt": "2026-05-15T10:37:40.771Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [
+        {
+          "actressId": "1778841431775",
+          "character": "Frame",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841459722",
+          "character": "Gale",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": 20
     },
     {
       "id": "1777452192081",
@@ -7681,12 +7891,33 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:57:05.594Z",
+      "updatedAt": "2026-05-15T10:39:11.508Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [
+        {
+          "actressId": "1778841532393",
+          "character": "Prim",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841431775",
+          "character": "Frame",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841459722",
+          "character": "Grace",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": 8
     },
     {
       "id": "1777452242978",
@@ -7727,12 +7958,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:57:10.759Z",
+      "updatedAt": "2026-05-15T10:39:25.878Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [],
+      "episodeDuration": 10
     },
     {
       "id": "1777452345325",
@@ -7774,12 +8007,27 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:57:15.760Z",
+      "updatedAt": "2026-05-15T10:40:38.521Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "ฤดูวุ่นวาย ที่กลายเป็นรัก",
+      "cast": [
+        {
+          "actressId": "1778841431775",
+          "character": "Green",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841532393",
+          "character": "Cin",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": 10
     },
     {
       "id": "1777452411955",
@@ -7821,12 +8069,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:57:20.668Z",
+      "updatedAt": "2026-05-15T10:40:58.913Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "ถึงตาฉันรักเธอบ้าง",
+      "cast": [],
+      "episodeDuration": 10
     },
     {
       "id": "1777452700876",
@@ -7868,12 +8118,27 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:57:26.092Z",
+      "updatedAt": "2026-05-15T10:46:44.370Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [
+        {
+          "actressId": "1778841431775",
+          "character": "Pie",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841532393",
+          "character": "Vava",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": ""
     },
     {
       "id": "1777452828468",
@@ -7898,8 +8163,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -7915,12 +8180,21 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:57:30.105Z",
+      "updatedAt": "2026-05-15T10:48:00.394Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "รัก OVERDOSE",
+      "cast": [
+        {
+          "actressId": "1778842073121",
+          "character": "Tar",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": 23
     },
     {
       "id": "1777453272580",
@@ -7962,12 +8236,27 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:57:43.744Z",
+      "updatedAt": "2026-05-15T10:50:00.470Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [
+        {
+          "actressId": "1778841431775",
+          "character": "Thian",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841459722",
+          "character": "Smay",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": ""
     },
     {
       "id": "1777455153369",
@@ -8039,8 +8328,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
         "Comedia",
+        "Romance",
         "Sobrenatural"
       ],
       "seasons": [
@@ -8051,12 +8340,33 @@
           "emissionDays": [
             0
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T09:37:33.113Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:50:31.342Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778667427357",
+          "character": "\"Na\" Nararat Jongmankit",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778667475076",
+          "character": "Leemai",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777455862847",
@@ -8092,8 +8402,8 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=371047",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "seasons": [
         {
@@ -8103,12 +8413,33 @@
           "emissionDays": [
             3
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T09:44:22.847Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:51:32.886Z",
+      "nameEn": "รินไม่มีวันรัก ตอน พิเศษ",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778761175235",
+          "character": "\"Rin\" Phraenarin",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778761227248",
+          "character": "\"Khem\" Khemjira",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 55
     },
     {
       "id": "1777455928497",
@@ -8133,8 +8464,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "seasons": [
         {
@@ -8144,12 +8475,45 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T09:45:28.497Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:52:19.280Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778760735020",
+          "character": "Win Pawi",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760773120",
+          "character": "Wannueng",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760802641",
+          "character": "Meedee",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760850305",
+          "character": "May",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777458910642",
@@ -8177,8 +8541,14 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-04-29T10:35:10.642Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:52:36.297Z",
+      "nameEn": "สถานะรักถูกปิดกั้น",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777459145338",
@@ -8214,11 +8584,11 @@
       "bookUrl": "https://www.mebmarket.com/ebook-427907-Be-My-Angel-English-Version",
       "upcoming": false,
       "genres": [
-        "Romance",
         "Comedia",
-        "Sobrenatural",
         "Musical",
-        "Slice of Life"
+        "Romance",
+        "Slice of Life",
+        "Sobrenatural"
       ],
       "seasons": [
         {
@@ -8228,12 +8598,33 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T10:39:05.338Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:54:06.308Z",
+      "nameEn": "ฉันหลงรักเทวดาของฉัน",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778842410467",
+          "character": "\"Jane\" Jenika Leewatcharaanant",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778842444743",
+          "character": "Z",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 56
     },
     {
       "id": "1777459217758",
@@ -8266,8 +8657,27 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-04-29T10:40:17.758Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:54:44.939Z",
+      "nameEn": "CRUSH คนอะไรน่ารักเท่าโลก",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778781830314",
+          "character": "Frung",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778781856216",
+          "character": "Yu",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777459342439",
@@ -8303,8 +8713,8 @@
       "bookUrl": "https://www.mebmarket.com/ebook-414772--Eng--Frozen-Valentine",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -8314,12 +8724,33 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T10:42:22.439Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:55:54.943Z",
+      "nameEn": "ปิ๊งรักคุณพี่เย็นชา",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778842534594",
+          "character": "Charm",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778842553568",
+          "character": "Pingrak",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 49
     },
     {
       "id": "1777459392058",
@@ -8347,8 +8778,27 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-04-29T10:44:32.738Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:56:23.815Z",
+      "nameEn": "น้อง Sideline",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778760689825",
+          "character": "",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778760564161",
+          "character": "",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777459455348",
@@ -8378,12 +8828,20 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-29T10:44:15.348Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:56:40.080Z",
+      "nameEn": "คลับฟรายเดย์เดอะซีรีส์ Theory of Love ไม่มีทฤษฎีไหนใช้ได้กับทุกความรัก ตอน ความดีชนะใจ",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777460464400",
@@ -8403,8 +8861,14 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-04-29T11:01:04.400Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:56:55.135Z",
+      "nameEn": "เสี่ยงรัก",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777460506708",
@@ -8424,8 +8888,14 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-04-29T11:01:46.708Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T10:57:07.866Z",
+      "nameEn": "ก็ว่าจะไม่รัก",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1777460572035",
@@ -19029,11 +19499,24 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T20:52:36.548Z",
+      "updatedAt": "2026-05-15T10:48:59.981Z",
       "movieType": "film",
       "duration": 106,
       "nameEn": "Yes or No อยากรัก ก็รักเลย",
-      "cast": []
+      "cast": [
+        {
+          "actressId": "1778842073121",
+          "character": "Kim",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778842136537",
+          "character": "Pie",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ]
     },
     {
       "id": "1700000000042",
@@ -19224,11 +19707,24 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T20:53:32.710Z",
+      "updatedAt": "2026-05-15T10:49:24.566Z",
       "movieType": "film",
       "duration": 119,
       "nameEn": "Yes or No 2 รัก ไม่รัก อย่ากั๊กเลย",
-      "cast": []
+      "cast": [
+        {
+          "actressId": "1778842073121",
+          "character": "Kim",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778842136537",
+          "character": "Pie",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ]
     },
     {
       "id": "1700000000049",
@@ -28562,7 +29058,175 @@
       "country": "Tailandia",
       "birthdate": "1992-12-05",
       "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778840736793",
+      "name": "\"Darran\" Zeththinich Chanavarasutthisiri",
+      "photo": "https://i.mydramalist.com/ABmZZL_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1993-08-22",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778840764849",
+      "name": "\"Eyes\" Amita Tomon",
+      "photo": "https://i.mydramalist.com/NdVRbW_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2000-03-14",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841023114",
+      "name": "\"Mekkhala\" Naruthai Chatupharungroj",
+      "photo": "https://i.mydramalist.com/73bLnL_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2000-11-12",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841043350",
+      "name": "\"Mashii\" Pornthiphat Lertwuthanon",
+      "photo": "https://i.mydramalist.com/PxBQOL_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2000-08-07",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841096002",
+      "name": "\"Pai\" Chatnapha Khiaokham",
+      "photo": "https://i.mydramalist.com/mOD5z2_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1996-05-09",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841125599",
+      "name": "\"Nam\" Jutamas Wangsawat",
+      "photo": "https://i.mydramalist.com/Z8Wx7k_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841187670",
+      "name": "\"Mook\" Napapach Thitakawin",
+      "photo": "https://i.mydramalist.com/RLAN6_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2004-03-18",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841205354",
+      "name": "\"Pink\" Subhisara Suksathan",
+      "photo": "https://i.mydramalist.com/zBxBPe_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1999-06-10",
+      "notes": ""
+    },
+    {
+      "id": "1778841289552",
+      "name": "\"Ploy\" Peerachada Khunrak",
+      "photo": "https://i.mydramalist.com/KpVkLR_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1994-09-10",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841306858",
+      "name": "\"Punch\" Naphassanan Kalaphan",
+      "photo": "https://i.mydramalist.com/ABLXAv_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2003-11-18",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841323109",
+      "name": "\"Kitty\" Nunthaphuk Aranyakasemsuk",
+      "photo": "https://i.mydramalist.com/kLQVm_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841351265",
+      "name": "\"Tian\" Atcharee Buakhiao",
+      "photo": "https://i.mydramalist.com/qvNBK_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1995-12-24",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841431775",
+      "name": "\"Ferin\" Weerin Kaewpuk",
+      "photo": "https://i.mydramalist.com/QJmZD2_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1994-12-07",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778841459722",
+      "name": "\"Puifai\" Ketkramut Phuttima",
+      "photo": "https://i.mydramalist.com/2wXyvV_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2001-05-09",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778841532393",
+      "name": "\"Great\" Mukda Khunnawuttiruk",
+      "photo": "https://i.mydramalist.com/vX3QJX_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2004-02-14",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778842073121",
+      "name": "\"Tina\" Suppanad Jittaleela",
+      "photo": "https://i.mydramalist.com/b3Rxw6_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1991-02-12",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778842136537",
+      "name": "\"Aom\" Sushar Manaying",
+      "photo": "https://i.mydramalist.com/0E8vk_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "1988-01-09",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778842410467",
+      "name": "\"Baipor\" Thitiya Jirapornsilp",
+      "photo": "https://i.mydramalist.com/81vdLm_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2005-01-04",
+      "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "1778842444743",
+      "name": "\"BamBam\" Niwirin Limkangwalmongko",
+      "photo": "https://www.tvtime.com/_next/image?url=https%3A%2F%2Fartworks.thetvdb.com%2Fbanners%2Fv4%2Factor%2F9147631%2Fphoto%2F68f2098a3a948.jpg&w=640&q=75",
+      "country": "Tailandia",
+      "birthdate": "1997-05-14",
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778842534594",
+      "name": "\"Natty\" Natthamon Jantraviphart",
+      "photo": "https://i.mydramalist.com/21wl2_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2002-11-18",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778842553568",
+      "name": "\"Yeepun\" Purichaya Saranark",
+      "photo": "https://i.mydramalist.com/XdODjX_5c.jpg",
+      "country": "Tailandia",
+      "birthdate": "2005-11-10",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-15T09:29:06.362Z"
+  "exportedAt": "2026-05-15T10:57:14.637Z"
 }
