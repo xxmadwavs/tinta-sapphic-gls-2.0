@@ -182,13 +182,13 @@
           "actressId": "1778668312492",
           "character": "zee",
           "coupleType": "other",
-          "coupleNum": 1
+          "coupleNum": 2
         },
         {
           "actressId": "1778668259606",
           "character": "Airy",
           "coupleType": "other",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "nameEn": "Girl Rules กฎหลัก...ห้ามรักเธอ",
@@ -541,7 +541,7 @@
           "actressId": "1778669459675",
           "character": "Fai/Atjima",
           "coupleType": "secondary",
-          "coupleNum": 3
+          "coupleNum": 2
         },
         {
           "actressId": "1778669368232",
@@ -1706,13 +1706,13 @@
           "actressId": "1778669290609",
           "character": "Nam/Apo",
           "coupleType": "secondary",
-          "coupleNum": 2
+          "coupleNum": 1
         },
         {
           "actressId": "1778669459675",
           "character": "Fai/Atjima",
           "coupleType": "secondary",
-          "coupleNum": 3
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
@@ -1940,13 +1940,13 @@
           "actressId": "1778783211856",
           "character": "\"Matmi\" Matika",
           "coupleType": "secondary",
-          "coupleNum": 1
+          "coupleNum": 2
         },
         {
           "actressId": "1778783243230",
           "character": "Khwanrin",
           "coupleType": "secondary",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
@@ -2024,7 +2024,7 @@
           "actressId": "1778784337814",
           "character": "Meimei",
           "coupleType": "other",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
@@ -2128,7 +2128,7 @@
           "actressId": "1778667631376",
           "character": "Jay",
           "coupleType": "main",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
@@ -2389,7 +2389,7 @@
           "actressId": "1778668336253",
           "character": "Kongkaew",
           "coupleType": "other",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
@@ -3691,7 +3691,7 @@
           "actressId": "1778787615039",
           "character": "Oil",
           "coupleType": "main",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
@@ -3781,7 +3781,7 @@
           "actressId": "1778669589925",
           "character": "Prik",
           "coupleType": "main",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
@@ -4020,7 +4020,7 @@
           "actressId": "1778832501214",
           "character": "Han Ji Su",
           "coupleType": "main",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
@@ -5603,7 +5603,7 @@
           "actressId": "1778668336253",
           "character": "Jan",
           "coupleType": "secondary",
-          "coupleNum": 1
+          "coupleNum": 2
         }
       ],
       "animeSeason": "",
