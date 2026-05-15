@@ -3409,11 +3409,11 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T22:04:38.369Z",
+      "updatedAt": "2026-05-15T22:12:07.808Z",
       "myTop10": true,
       "top10Rank": 0,
-      "myPick": true,
-      "myPick2026": false
+      "myPick": false,
+      "myPick2026": true
     },
     {
       "id": "1777017936367",
@@ -30511,5 +30511,5 @@
       "notes": "Actriz, Cantante"
     }
   ],
-  "exportedAt": "2026-05-15T22:05:03.362Z"
+  "exportedAt": "2026-05-15T22:12:08.790Z"
 }
