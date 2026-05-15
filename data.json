@@ -10,7 +10,7 @@
         0
       ],
       "totalEpisodes": 12,
-      "network": "iQiyi, Youtube",
+      "network": "iQiyi, Youtube, Viki",
       "skipDates": [],
       "episodes": [
         {
@@ -63,6 +63,10 @@
         {
           "name": "iQIYI",
           "url": "https://www.iq.com/album/girl-rules-2026-bq3bb5fj2h"
+        },
+        {
+          "name": "Viki",
+          "url": "https://www.viki.com/tv/41431c-girl-rules#episodes"
         }
       ],
       "bookLinks": [],
@@ -124,7 +128,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T17:39:20.041Z",
+      "updatedAt": "2026-05-15T07:32:15.113Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -187,7 +191,8 @@
           "coupleNum": 1
         }
       ],
-      "nameEn": ""
+      "nameEn": "Girl Rules กฎหลัก...ห้ามรักเธอ",
+      "episodeDuration": 51
     },
     {
       "id": "1776889141176",
@@ -286,8 +291,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T17:39:38.184Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:32:36.876Z",
+      "nameEn": "รักเติมเต็ม",
+      "episodeDuration": 47
     },
     {
       "id": "1776889264943",
@@ -344,8 +350,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:55:20.447Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:32:55.102Z",
+      "nameEn": "ใต้เงารัก",
+      "cast": [],
+      "episodeDuration": 12
     },
     {
       "id": "1776889333282",
@@ -384,8 +392,8 @@
         }
       ],
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "seasons": [
         {
@@ -419,8 +427,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T11:00:30.670Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:33:12.466Z",
+      "nameEn": "คุณแฟนบ้านนอก",
+      "episodeDuration": 51
     },
     {
       "id": "1776889365998",
@@ -528,8 +537,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T11:51:42.170Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:33:41.517Z",
+      "nameEn": "นทีร้อยเล่ห์",
+      "episodeDuration": 64
     },
     {
       "id": "1776889415383",
@@ -568,9 +578,9 @@
         }
       ],
       "genres": [
-        "Romance",
+        "Acción",
         "Comedia",
-        "Acción"
+        "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -646,8 +656,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T11:55:40.368Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:34:02.404Z",
+      "nameEn": "เสน่หาวาโย",
+      "episodeDuration": ""
     },
     {
       "id": "1776889447326",
@@ -691,8 +702,8 @@
         }
       ],
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -738,8 +749,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T10:36:48.002Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:34:33.115Z",
+      "nameEn": "ลัลล์ไม่ชอบไวน์",
+      "episodeDuration": 50
     },
     {
       "id": "1776889488147",
@@ -776,7 +788,7 @@
         "Psicológico",
         "Romance"
       ],
-      "nameEn": "",
+      "nameEn": "หัวใจช้ำรัก",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -809,7 +821,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T17:40:54.990Z"
+      "updatedAt": "2026-05-15T07:34:53.207Z",
+      "episodeDuration": 66
     },
     {
       "id": "1776889550180",
@@ -837,10 +850,10 @@
       "upcoming": false,
       "bookLinks": [],
       "genres": [
-        "Romance",
-        "Drama",
         "Comedia",
-        "Escolar"
+        "Drama",
+        "Escolar",
+        "Romance"
       ],
       "seasons": [
         {
@@ -850,11 +863,20 @@
           "emissionDays": [
             5
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "nameEn": ""
+      "nameEn": "เด็ก เรียบ ร้าย",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 48,
+      "updatedAt": "2026-05-15T07:35:19.359Z"
     },
     {
       "id": "1776930878872",
@@ -943,8 +965,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T11:55:44.994Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:35:56.950Z",
+      "nameEn": "โซ่รักอัคนี",
+      "episodeDuration": ""
     },
     {
       "id": "1776931938317",
@@ -982,8 +1005,8 @@
         }
       ],
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -1003,8 +1026,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T10:58:00.550Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:36:11.107Z",
+      "nameEn": "วาดฝันวันวิวาห์",
+      "episodeDuration": ""
     },
     {
       "id": "1776932166717",
@@ -1052,8 +1076,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T17:38:34.546Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:36:27.918Z",
+      "nameEn": "รักได้ไหม",
+      "episodeDuration": ""
     },
     {
       "id": "1776932289648",
@@ -1088,7 +1113,7 @@
       "genres": [
         "Romance"
       ],
-      "nameEn": "",
+      "nameEn": "รักนี้ตีตรา",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -1107,7 +1132,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T18:22:19.911Z"
+      "updatedAt": "2026-05-15T07:36:43.060Z",
+      "episodeDuration": ""
     },
     {
       "id": "1776932412578",
@@ -1212,8 +1238,8 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:47:22.993Z",
-      "nameEn": "",
+      "updatedAt": "2026-05-15T07:37:04.066Z",
+      "nameEn": "온앤오프 ON&OFF 3",
       "cast": [
         {
           "actressId": "1778788012484",
@@ -1227,20 +1253,21 @@
           "coupleType": "main",
           "coupleNum": 1
         }
-      ]
+      ],
+      "episodeDuration": 10
     },
     {
       "id": "1776965675311",
       "name": "Love Beyond Dreams",
       "poster": "https://i.mydramalist.com/Dk6veD_4f.jpg",
-      "synopsis": "",
+      "synopsis": "Aran, una recién graduada de veintiún años, siempre había creído que su relación con Lene, dos años mayor que ella, era algo más que un simple vínculo fraternal, hasta que recibió el rechazo más cruel que jamás hubiera podido imaginar. Al final, solo le queda aceptar su dolor y marcharse al extranjero para continuar sus estudios, con la esperanza de que algún día sea capaz de olvidar a Lene.\n\nEntonces, un día, llega un misterioso paquete acompañado de una carta manuscrita. No hay nombre, pero Aran reconoce la letra al instante. Decide volver a Tailandia, decidida a cerrar por fin este capítulo sin resolver. Sin embargo, nada más llegar, se encuentra con una noticia devastadora: Lene ha muerto. Aran solo puede llevar su corazón destrozado al funeral de Lene, donde se ve obligada a enfrentarse a una verdad que la destroza por completo.\n\nJusto cuando está a punto de despedirse para siempre, oye una conversación que sugiere que la muerte de Lene pudo haber sido causada por alguien cercano a ella. Cuando despierta cinco años atrás, en los momentos posteriores a su rechazo, con el hilo rojo del funeral aún en la mano, se dice a sí misma que esta vez será diferente. Esta vez, será ella quien proteja a Lene.",
       "year": 2026,
       "country": "Tailandia",
       "network": "Youtube, iQiyi",
       "networkUrl": "https://youtube.com/playlist?list=PLFnFjT24wVPX7gxcGvZV89N6h7PASbnPc&si=HaWbMW1rivdphb6d",
       "watchLinks": [
         {
-          "name": "YouTube",
+          "name": "YouTube (CUT)",
           "url": "https://youtube.com/playlist?list=PLFnFjT24wVPX7gxcGvZV89N6h7PASbnPc&si=HaWbMW1rivdphb6d"
         },
         {
@@ -1299,8 +1326,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T17:39:51.057Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:37:52.195Z",
+      "nameEn": "เพื่อเธออีกครั้ง",
+      "episodeDuration": 55
     },
     {
       "id": "1776965794937",
@@ -1332,7 +1360,7 @@
         "Comedia",
         "Romance"
       ],
-      "nameEn": "",
+      "nameEn": "จะ Gen จนกว่าจะเจอ",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -1365,7 +1393,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T18:21:32.989Z"
+      "updatedAt": "2026-05-15T07:38:09.571Z",
+      "episodeDuration": ""
     },
     {
       "id": "1776966024996",
@@ -1525,8 +1554,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T12:42:01.504Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:35:32.313Z",
+      "nameEn": "เด็ก เรียบ ร้าย",
+      "episodeDuration": 48
     },
     {
       "id": "1776966800863",
@@ -1622,8 +1652,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T11:58:49.306Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:38:51.567Z",
+      "nameEn": "วิวาห์ปฐพี",
+      "episodeDuration": 55
     },
     {
       "id": "1776966975487",
@@ -1674,8 +1705,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T12:40:37.648Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T07:39:51.986Z",
+      "nameEn": "เลือดห้ามรัก",
+      "episodeDuration": ""
     },
     {
       "id": "1776967103985",
@@ -27435,5 +27467,5 @@
       "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-14T21:36:50.795Z"
+  "exportedAt": "2026-05-15T07:39:57.908Z"
 }
