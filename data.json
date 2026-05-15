@@ -22513,10 +22513,18 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T20:29:48.682Z",
+      "updatedAt": "2026-05-15T18:58:00.840Z",
       "movieType": "short",
       "duration": 30,
-      "cast": []
+      "cast": [
+        {
+          "actressId": "1778760606088",
+          "character": "Pleng",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "nameEn": ""
     },
     {
       "id": "1700000000134",
@@ -29795,5 +29803,5 @@
       "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-15T18:57:06.783Z"
+  "exportedAt": "2026-05-15T18:58:23.367Z"
 }
