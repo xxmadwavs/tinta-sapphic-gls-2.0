@@ -1164,7 +1164,7 @@ function render(){
       const genrePills=s.genres&&s.genres.length
         ?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">${s.genres.map(g=>`<span style="font-size:10px;padding:2px 8px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--muted);font-weight:600">${escapeHtml(g)}</span>`).join('')}</div>`:'';
       const info=document.createElement('div'); info.className='series-info';
-      info.innerHTML=`<div class="series-name">${escapeHtml(s.name)} ${statusBadge}${bookBadge}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.category==="anime"?'<span class="badge badge-anime">🌸 Anime</span>':s.category==="reality"?'<span class="badge badge-reality">🎤 Reality</span>':`${s.myTop10&&s.top10Rank?`<span class="badge" style="background:#fdf3d8;color:#b08030;border:1px solid rgba(176,128,48,0.3)">⭐ Top ${s.top10Rank}</span>`:''}`}</div>
+      info.innerHTML=`<div class="series-name">${escapeHtml(s.name)} ${statusBadge}${bookBadge}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.category==="anime"?'<span class="badge badge-anime">🌸 Anime</span>':s.category==="reality"?'<span class="badge badge-reality">🎤 Reality</span>':`${s.myPick?'<span class="badge" style="background:#fce8f1;color:#c94f7c;border:1px solid rgba(201,79,124,0.3)">⭐ Pick</span>':''}${s.myPick2026?'<span class="badge" style="background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.3)">🌟 2026</span>':''}`}</div>
         <div class="series-meta">${metaStr}</div>
         ${genrePills}
         ${!s.upcoming?`<div class="progress-wrap" style="margin-top:6px;height:4px;background:var(--border);border-radius:2px;overflow:hidden"><div class="progress-fill" style="width:${(()=>{const eps2=genEpisodes(s),now2=new Date(),seasons2=getSeasons(s),tot=seasons2.reduce((a,t)=>a+t.totalEpisodes,0),a=eps2.filter(e=>new Date(e.date+'T12:00:00')<=now2&&!e.skipped).length;return Math.round(a/Math.max(tot,1)*100)})()}%;background:${col}"></div></div>`:''}`;
@@ -1662,20 +1662,19 @@ function formHtml(s, forcedCategory=null){
         <div><div class="toggle-label" style="color:var(--teal)">🔄 Renovada para nueva temporada</div><div class="toggle-desc">Muestra el badge "Renovada" en index cuando la serie finaliza</div></div>
       </label>
       <label class="toggle-row" style="margin-top:6px">
-        <input type="checkbox" id="f_myTop10" ${s&&s.myTop10?'checked':''} style="width:auto;accent-color:#b08030" onchange="toggleTop10Rank(this)">
+        <input type="checkbox" id="f_myPick" ${s&&s.myPick?'checked':''} style="width:auto;accent-color:#c94f7c">
         <div style="flex:1">
-          <div class="toggle-label" style="color:#b08030">⭐ Incluir en Mis picks (Top 10)</div>
-          <div class="toggle-desc">Aparece en la sección "⭐ Mis picks" del index</div>
+          <div class="toggle-label" style="color:#c94f7c">⭐ Mis picks (recomendaciones generales)</div>
+          <div class="toggle-desc">Aparece en la pestaña "⭐ Mis picks" del index</div>
         </div>
       </label>
-      <div id="f_top10Rank_wrap" style="margin-top:6px;padding:10px 14px;border-radius:10px;background:#fdf3d8;border:1px solid rgba(176,128,48,0.25);${s&&s.myTop10?'':'display:none'}">
-        <label style="display:block;font-size:11px;color:#b08030;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Posición en el ranking</label>
-        <div style="display:flex;gap:6px;flex-wrap:wrap">
-          ${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button type="button" class="top10-rank-chip${s&&s.top10Rank===n?' top10-rank-chip-sel':''}" data-rank="${n}" onclick="selectTop10Rank(${n})" style="width:36px;height:36px;border-radius:10px;border:2px solid ${s&&s.top10Rank===n?'#b08030':'rgba(176,128,48,0.3)'};background:${s&&s.top10Rank===n?'#b08030':'transparent'};color:${s&&s.top10Rank===n?'#fff':'#b08030'};font-size:14px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .15s">${n}</button>`).join('')}
+      <label class="toggle-row" style="margin-top:6px">
+        <input type="checkbox" id="f_myPick2026" ${s&&s.myPick2026?'checked':''} style="width:auto;accent-color:#8b72be">
+        <div style="flex:1">
+          <div class="toggle-label" style="color:#8b72be">🌟 Picks 2026</div>
+          <div class="toggle-desc">Aparece en la pestaña "🌟 Picks 2026" del index</div>
         </div>
-        <input type="hidden" id="f_top10Rank" value="${s&&s.top10Rank?s.top10Rank:''}">
-        <div style="font-size:11px;color:#b08030;margin-top:6px">🥇 = 1, 🥈 = 2, 🥉 = 3 — elige la posición para esta serie</div>
-      </div>
+      </label>
     </div>
 
     <!-- ══ COLUMNA DERECHA: temporadas ══ -->
@@ -1946,28 +1945,6 @@ function selectCategory(cat){
   if(asWrap) asWrap.style.display=(cat==='anime'||cat==='reality')?'':'none';
 }
 
-function toggleTop10Rank(cb){
-  const wrap=document.getElementById('f_top10Rank_wrap');
-  if(wrap) wrap.style.display=cb.checked?'':'none';
-  if(!cb.checked){
-    const inp=document.getElementById('f_top10Rank');
-    if(inp) inp.value='';
-    document.querySelectorAll('.top10-rank-chip').forEach(c=>{
-      c.style.background='transparent';c.style.color='#b08030';c.style.borderColor='rgba(176,128,48,0.3)';
-    });
-  }
-}
-function selectTop10Rank(n){
-  const inp=document.getElementById('f_top10Rank');
-  if(inp) inp.value=n;
-  document.querySelectorAll('.top10-rank-chip').forEach(c=>{
-    const sel=parseInt(c.dataset.rank)===n;
-    c.style.background=sel?'#b08030':'transparent';
-    c.style.color=sel?'#fff':'#b08030';
-    c.style.borderColor=sel?'#b08030':'rgba(176,128,48,0.3)';
-  });
-}
-
 function selectSeriesType(type, el){
   const input=document.getElementById('f_seriesType');
   if(input) input.value=type;
@@ -2181,10 +2158,9 @@ function saveSeries(si, forcedCategory=null){
   const renewedNextSeason=document.getElementById('f_renewed')?.checked||false;
   const nameEn=document.getElementById('f_nameEn')?.value.trim()||'';
   const episodeDuration=parseDurationInput(document.getElementById('f_epDuration')?.value||'')||'';
-  const myTop10=document.getElementById('f_myTop10')?.checked||false;
-  const top10RankRaw=document.getElementById('f_top10Rank')?.value;
-  const top10Rank=myTop10&&top10RankRaw?parseInt(top10RankRaw):0;
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myTop10,top10Rank};
+  const myPick=document.getElementById('f_myPick')?.checked||false;
+  const myPick2026=document.getElementById('f_myPick2026')?.checked||false;
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;

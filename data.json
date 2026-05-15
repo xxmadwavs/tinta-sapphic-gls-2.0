@@ -128,7 +128,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T21:52:31.349Z",
+      "updatedAt": "2026-05-15T22:03:42.743Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -194,7 +194,9 @@
       "nameEn": "Girl Rules กฎหลัก...ห้ามรักเธอ",
       "episodeDuration": 51,
       "myTop10": false,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": false,
+      "myPick2026": true
     },
     {
       "id": "1776889141176",
@@ -568,11 +570,13 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T21:50:33.679Z",
+      "updatedAt": "2026-05-15T22:04:05.159Z",
       "nameEn": "นทีร้อยเล่ห์",
       "episodeDuration": 64,
       "myTop10": true,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": false,
+      "myPick2026": true
     },
     {
       "id": "1776889415383",
@@ -791,9 +795,11 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:34:33.115Z",
+      "updatedAt": "2026-05-15T22:04:20.991Z",
       "nameEn": "ลัลล์ไม่ชอบไวน์",
-      "episodeDuration": 50
+      "episodeDuration": 50,
+      "myPick": false,
+      "myPick2026": true
     },
     {
       "id": "1776889488147",
@@ -1377,11 +1383,13 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T21:52:24.156Z",
+      "updatedAt": "2026-05-15T22:04:12.853Z",
       "nameEn": "เพื่อเธออีกครั้ง",
       "episodeDuration": 55,
       "myTop10": false,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": false,
+      "myPick2026": true
     },
     {
       "id": "1776965794937",
@@ -3030,11 +3038,13 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T21:49:16.254Z",
+      "updatedAt": "2026-05-15T22:03:10.265Z",
       "nameEn": "",
       "episodeDuration": "",
       "myTop10": true,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1776976209757",
@@ -3399,9 +3409,11 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T21:50:52.373Z",
+      "updatedAt": "2026-05-15T22:04:38.369Z",
       "myTop10": true,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1777017936367",
@@ -4489,10 +4501,12 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T21:49:38.347Z",
+      "updatedAt": "2026-05-15T22:03:28.934Z",
       "episodeDuration": 50,
       "myTop10": true,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1777106235834",
@@ -5357,10 +5371,12 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T21:50:22.925Z",
+      "updatedAt": "2026-05-15T22:03:57.350Z",
       "episodeDuration": 40,
       "myTop10": true,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1777150051367",
@@ -5620,10 +5636,12 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T21:52:37.505Z",
+      "updatedAt": "2026-05-15T22:04:46.234Z",
       "episodeDuration": 57,
       "myTop10": true,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1777223788983",
@@ -6147,12 +6165,12 @@
       "bookUrl": "https://en.mebmarket.com/ebook-252333-Affair-%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%99%E0%B8%81%E0%B8%A5-English-version",
       "upcoming": false,
       "genres": [
-        "Melodrama",
-        "Romance",
         "Animación",
         "Anime",
         "Comedia",
-        "Drama"
+        "Drama",
+        "Melodrama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -6187,8 +6205,10 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T08:41:38.285Z",
-      "episodeDuration": 60
+      "updatedAt": "2026-05-15T22:03:35.340Z",
+      "episodeDuration": 60,
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1777226679219",
@@ -6811,11 +6831,13 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T21:50:44.207Z",
+      "updatedAt": "2026-05-15T22:04:30.356Z",
       "nameEn": "ClaireBell คลั่ง/รัก/นักโทษ",
       "episodeDuration": 65,
       "myTop10": true,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1777236702067",
@@ -6901,10 +6923,12 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T21:49:26.932Z",
+      "updatedAt": "2026-05-15T22:03:21.068Z",
       "episodeDuration": 64,
       "myTop10": true,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1777236873444",
@@ -9211,7 +9235,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T21:51:12.984Z",
+      "updatedAt": "2026-05-15T22:03:45.596Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
@@ -9220,7 +9244,9 @@
       "cast": [],
       "episodeDuration": 9,
       "myTop10": true,
-      "top10Rank": 0
+      "top10Rank": 0,
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1777583871451",
@@ -9302,7 +9328,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T12:05:11.342Z",
+      "updatedAt": "2026-05-15T22:05:01.111Z",
       "nameEn": "",
       "category": "series",
       "seriesType": "serie",
@@ -9322,7 +9348,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "myPick": true,
+      "myPick2026": false
     },
     {
       "id": "1777584138652",
@@ -30483,5 +30511,5 @@
       "notes": "Actriz, Cantante"
     }
   ],
-  "exportedAt": "2026-05-15T21:52:41.326Z"
+  "exportedAt": "2026-05-15T22:05:03.362Z"
 }

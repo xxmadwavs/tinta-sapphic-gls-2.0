@@ -1362,107 +1362,103 @@ footer {
 .season-collapse-body{display:none;padding-top:6px}
 .season-collapse-body.open{display:block}
 
-/* ═══ TOP 10 / MIS PICKS ═══ */
-.top10-hero{
-  text-align:center;
-  padding:2rem 1rem 1.5rem;
+/* ═══ MIS PICKS / PICKS 2026 ═══ */
+.picks-hero{
+  padding:1.75rem 1.5rem 1.5rem;
   background:linear-gradient(135deg,rgba(201,79,124,0.06) 0%,rgba(139,114,190,0.06) 100%);
   border-radius:var(--radius-lg);
   border:1.5px solid var(--border2);
-  margin-bottom:2rem;
+  margin-bottom:1.75rem;
+  display:flex;align-items:center;gap:1rem;
 }
-.top10-hero-title{
+.picks-hero-icon{font-size:2.5rem;flex-shrink:0;line-height:1}
+.picks-hero-text{}
+.picks-hero-title{
   font-family:var(--font-display);
-  font-size:28px;font-weight:800;
+  font-size:24px;font-weight:800;
   color:var(--text);letter-spacing:-.02em;line-height:1.1;
-  margin-bottom:.5rem;
+  margin-bottom:.3rem;
 }
-.top10-hero-title em{color:var(--accent);font-style:italic}
-.top10-hero-desc{font-size:13px;color:var(--muted);line-height:1.6;max-width:480px;margin:0 auto}
+.picks-hero-title em{color:var(--accent);font-style:italic}
+.picks-hero-desc{font-size:12.5px;color:var(--muted);line-height:1.6}
+.picks-hero.picks2026{
+  background:linear-gradient(135deg,rgba(139,114,190,0.08) 0%,rgba(74,173,160,0.06) 100%);
+  border-color:rgba(139,114,190,0.3);
+}
+.picks-hero.picks2026 .picks-hero-title em{color:var(--lavender)}
+.picks-count-bar{font-size:12px;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:6px}
+.picks-count-bar strong{color:var(--text)}
 
-.top10-list{display:flex;flex-direction:column;gap:14px}
+/* Grid de picks — igual que series-grid pero con efecto al hover más suave */
+.picks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:16px}
 
-.top10-card{
-  display:flex;align-items:stretch;gap:0;
+/* Tarjeta picks — hereda series-card + pequeño toque especial */
+.pick-card{
   background:var(--surface);border:1.5px solid var(--border);
-  border-radius:var(--radius-lg);overflow:hidden;
-  cursor:pointer;transition:all .22s;
+  border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;
+  transition:all .22s;position:relative;display:flex;flex-direction:column;
   box-shadow:var(--shadow-sm);
-  position:relative;
 }
-.top10-card:hover{
+.pick-card:hover{
   border-color:var(--accent2);
   box-shadow:var(--shadow-lg);
-  transform:translateY(-3px);
+  transform:translateY(-4px);
 }
-.top10-card.top10-gold{border-color:rgba(176,128,48,0.45);background:linear-gradient(135deg,#fffdf7,#fff);}
-.top10-card.top10-gold:hover{border-color:var(--gold);box-shadow:0 10px 36px rgba(176,128,48,0.18)}
-.top10-card.top10-silver{border-color:rgba(160,160,180,0.45);}
-.top10-card.top10-silver:hover{border-color:#aaa;box-shadow:0 10px 36px rgba(150,150,170,0.18)}
-.top10-card.top10-bronze{border-color:rgba(180,120,80,0.45);}
-.top10-card.top10-bronze:hover{border-color:#c08060;box-shadow:0 10px 36px rgba(180,120,80,0.18)}
-
-.top10-rank{
-  width:64px;flex-shrink:0;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-family:var(--font-display);
-  font-size:34px;font-weight:800;line-height:1;
-  padding:16px 8px;
-  background:var(--surface2);
-  border-right:1.5px solid var(--border);
-  gap:4px;
+.pick-card.pick2026:hover{
+  border-color:var(--lavender);
+  box-shadow:0 12px 36px rgba(139,114,190,0.22);
 }
-.top10-card.top10-gold .top10-rank{background:linear-gradient(135deg,#fef9e7,#fdf3d0);border-color:rgba(176,128,48,0.25);color:var(--gold)}
-.top10-card.top10-silver .top10-rank{background:linear-gradient(135deg,#f6f6f8,#ececf0);border-color:rgba(160,160,180,0.25);color:#8888a0}
-.top10-card.top10-bronze .top10-rank{background:linear-gradient(135deg,#fdf5ef,#f8ece0);border-color:rgba(180,120,80,0.25);color:#b07850}
-.top10-rank-num{color:inherit;font-size:inherit;font-weight:inherit}
-.top10-rank-medal{font-size:18px;line-height:1}
-
-.top10-poster-wrap{
-  width:72px;flex-shrink:0;position:relative;overflow:hidden;
+.pick-card-poster-wrap{position:relative;overflow:hidden}
+.pick-card-poster{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--accent-soft)}
+.pick-card-poster-ph{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,var(--accent-soft) 0%,var(--lavender-soft) 100%);display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--accent)}
+.pick-card-poster-wrap::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:55%;
+  background:linear-gradient(to top,rgba(30,15,25,0.65) 0%,transparent 100%);
+  pointer-events:none;
 }
-.top10-poster{width:100%;height:100%;object-fit:cover;display:block}
-.top10-poster-ph{
-  width:100%;height:100%;min-height:100px;
-  background:linear-gradient(135deg,var(--accent-soft),var(--lavender-soft));
-  display:flex;align-items:center;justify-content:center;font-size:28px;
+.pick-card.pick2026 .pick-card-poster-ph{background:linear-gradient(135deg,var(--lavender-soft) 0%,var(--teal-soft) 100%);color:var(--lavender)}
+/* Estrella pick en esquina */
+.pick-star-badge{
+  position:absolute;top:7px;right:7px;z-index:2;
+  background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);
+  border-radius:20px;padding:3px 8px;
+  font-size:11px;font-weight:700;color:#fff;
+  display:flex;align-items:center;gap:3px;letter-spacing:.02em;
 }
-
-.top10-body{
-  flex:1;padding:14px 16px;display:flex;flex-direction:column;justify-content:center;gap:5px;min-width:0;
-}
-.top10-name{
-  font-size:15px;font-weight:700;color:var(--text);
-  line-height:1.3;margin-bottom:2px;
-}
-.top10-meta{font-size:11.5px;color:var(--muted);line-height:1.5;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.top10-synopsis{
-  font-size:12px;color:var(--muted);line-height:1.5;
+.pick-card.pick2026 .pick-star-badge{background:rgba(139,114,190,0.75)}
+.pick-card-body{padding:11px 13px;flex:1;display:flex;flex-direction:column;gap:3px}
+.pick-card-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:2px}
+.pick-card-meta{font-size:10.5px;color:var(--muted);line-height:1.5}
+.pick-card-synopsis{
+  font-size:11px;color:var(--muted);line-height:1.5;margin-top:3px;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-  margin-top:3px;
 }
-.top10-genres{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
-.top10-genre-pill{
-  font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:20px;
+.pick-card-genres{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px}
+.pick-card-genre{
+  font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:20px;
   background:var(--accent-soft);color:var(--accent);
   border:1px solid rgba(201,79,124,0.2);
 }
-.top10-watch{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.pick-card.pick2026 .pick-card-genre{
+  background:var(--lavender-soft);color:var(--lavender);
+  border-color:rgba(139,114,190,0.2);
+}
+.pick-card-watch{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
 
-.top10-empty{
+.picks-empty{
   text-align:center;padding:4rem 2rem;color:var(--muted);font-size:14px;
   background:var(--surface2);border-radius:var(--radius-lg);border:1.5px dashed var(--border2);
 }
-.top10-empty-icon{font-size:3rem;margin-bottom:1rem;opacity:.5}
+.picks-empty-icon{font-size:3rem;margin-bottom:1rem;opacity:.5}
 
-@media(max-width:600px){
-  .top10-card{gap:0}
-  .top10-rank{width:52px;font-size:26px;padding:12px 6px}
-  .top10-poster-wrap{width:58px}
-  .top10-body{padding:10px 12px;gap:4px}
-  .top10-name{font-size:13.5px}
-  .top10-synopsis{display:none}
-  .top10-hero-title{font-size:22px}
+@media(max-width:480px){
+  .picks-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .pick-card-body{padding:9px 10px}
+  .pick-card-name{font-size:12px}
+  .pick-card-synopsis{display:none}
+  .picks-hero{flex-direction:column;text-align:center;gap:.6rem;padding:1.25rem 1rem}
+  .picks-hero-icon{font-size:2rem}
+  .picks-hero-title{font-size:20px}
 }
 
 </style>
@@ -1519,6 +1515,7 @@ footer {
     <button class="tab" id="tabList" onclick="switchTab('list')">🎬 Series</button>
     <button class="tab" id="tabMovies" onclick="switchTab('movies')">🎥 Películas</button>
     <button class="tab" id="tabTop10" onclick="switchTab('top10')">⭐ Mis picks</button>
+    <button class="tab" id="tabPicks2026" onclick="switchTab('picks2026')">🌟 Picks 2026</button>
     <button class="tab" id="tabUpcoming" onclick="switchTab('upcoming')">✨ Próximamente</button>
     <button class="tab" id="tabAnime" onclick="switchTab('anime')">🌸 Anime</button>
     <button class="tab" id="tabRealities" onclick="switchTab('realities')">🎤 Realities</button>
@@ -1537,6 +1534,7 @@ footer {
   <div id="viewDocumentales" style="display:none"></div>
   <div id="viewActresses" style="display:none"></div>
   <div id="viewTop10" style="display:none"></div>
+  <div id="viewPicks2026" style="display:none"></div>
 
   <div id="viewCal">
     <!-- Week view (primary) -->
@@ -4497,91 +4495,103 @@ function actressTabCardHtml(a, count){
   </div>`;
 }
 
-/* ═══ TOP 10 / MIS PICKS ═══ */
-function renderTop10(){
-  const view=document.getElementById('viewTop10');
-  if(!view) return;
-
-  // Get all series with myTop10 flag, ordered by top10Rank
-  const picks=[...state.series]
-    .filter(s=>s.myTop10&&s.top10Rank>=1&&s.top10Rank<=10)
-    .sort((a,b)=>a.top10Rank-b.top10Rank)
-    .slice(0,10);
-
-  const medals={1:'🥇',2:'🥈',3:'🥉'};
-  const tierClass={1:'top10-gold',2:'top10-silver',3:'top10-bronze'};
-
-  let html=`
-  <div class="top10-hero">
-    <div class="top10-hero-title">⭐ Mis <em>picks</em></div>
-    <div class="top10-hero-desc">Mi top 10 personal de series GL ya finalizadas. Las que más me han marcado, en orden.</div>
+/* ═══ MIS PICKS / PICKS 2026 ═══ */
+function _picksCardHtml(s, si, is2026=false){
+  const cls=is2026?' pick2026':'';
+  const starLabel=is2026?'🌟 2026':'⭐ Pick';
+  const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
+  const watchRow=links.length
+    ?`<div class="pick-card-watch">${links.slice(0,2).map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+  const genrePills=s.genres&&s.genres.length
+    ?`<div class="pick-card-genres">${s.genres.slice(0,3).map(g=>`<span class="pick-card-genre">${g}</span>`).join('')}</div>`:'';
+  const seasons=getSeasons(s);
+  const totalEps=seasons.reduce((a,t)=>a+t.totalEpisodes,0);
+  const metaParts=[
+    s.country?`${countryFlag(s.country)} ${s.country}`:'',
+    s.network||'',
+    s.year?String(s.year):'',
+    totalEps?`${totalEps} ep.`:'',
+  ].filter(Boolean);
+  const posterEl=s.poster
+    ?`<img class="pick-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=pick-card-poster-ph>🎬</div>'">`
+    :`<div class="pick-card-poster-ph">🎬</div>`;
+  const openFn=`switchTab('list');setTimeout(()=>openSeries(${si}),80)`;
+  return `<div class="pick-card${cls}" onclick="${openFn}">
+    <div class="pick-card-poster-wrap">
+      ${posterEl}
+      <div class="pick-star-badge">${starLabel}</div>
+    </div>
+    <div class="pick-card-body">
+      <div class="pick-card-name">${s.name}${s.nameEn?`<br><span style="font-size:9.5px;font-weight:400;font-style:italic;color:var(--muted)">${s.nameEn}</span>`:''}</div>
+      <div class="pick-card-meta">${metaParts.join(' · ')}</div>
+      ${s.synopsis?`<div class="pick-card-synopsis">${s.synopsis}</div>`:''}
+      ${genrePills}
+      ${watchRow}
+    </div>
   </div>`;
+}
 
+function _renderPicksView(viewId, filterFn, heroIcon, heroTitle, heroDesc, emptyMsg, is2026=false){
+  const view=document.getElementById(viewId);
+  if(!view) return;
+  const picks=[...state.series].filter(filterFn);
+  // Sort: name alphabetically, stable
+  picks.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+  const heroClass=is2026?'picks-hero picks2026':'picks-hero';
+  let html=`<div class="${heroClass}">
+    <div class="picks-hero-icon">${heroIcon}</div>
+    <div class="picks-hero-text">
+      <div class="picks-hero-title">${heroTitle}</div>
+      <div class="picks-hero-desc">${heroDesc}</div>
+    </div>
+  </div>`;
   if(!picks.length){
-    html+=`<div class="top10-empty">
-      <div class="top10-empty-icon">⭐</div>
+    html+=`<div class="picks-empty">
+      <div class="picks-empty-icon">${heroIcon}</div>
       <div style="font-weight:700;font-size:15px;color:var(--text);margin-bottom:6px">Todavía no hay picks</div>
-      <div style="font-size:13px">Marca series en el admin como parte del Top 10 para que aparezcan aquí.</div>
+      <div style="font-size:13px">${emptyMsg}</div>
     </div>`;
-    view.innerHTML=html;
-    return;
+    view.innerHTML=html; return;
   }
-
-  html+=`<div class="top10-list">`;
-  picks.forEach((s,i)=>{
-    const rank=s.top10Rank;
+  html+=`<div class="picks-count-bar"><strong>${picks.length}</strong> serie${picks.length!==1?'s':''}</div>`;
+  html+=`<div class="picks-grid">`;
+  picks.forEach(s=>{
     const si=state.series.indexOf(s);
-    const medal=medals[rank]||'';
-    const cls=tierClass[rank]||'';
-    const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
-    const watchRow=links.length
-      ?`<div class="top10-watch">${links.slice(0,3).map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
-    const genrePills=s.genres&&s.genres.length
-      ?`<div class="top10-genres">${s.genres.slice(0,3).map(g=>`<span class="top10-genre-pill">${g}</span>`).join('')}</div>`:'';
-    const seasons=getSeasons(s);
-    const totalEps=seasons.reduce((a,t)=>a+t.totalEpisodes,0);
-    const metaParts=[
-      s.country?`${countryFlag(s.country)} ${s.country}`:'',
-      s.network||'',
-      s.year?String(s.year):'',
-      totalEps?`${totalEps} ep.`:'',
-    ].filter(Boolean);
-
-    const posterEl=s.poster
-      ?`<img class="top10-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=top10-poster-ph>🎬</div>'">`
-      :`<div class="top10-poster-ph">🎬</div>`;
-
-    html+=`<div class="top10-card ${cls}" onclick="switchTab('list');setTimeout(()=>openSeries(${si}),80)">
-      <div class="top10-rank">
-        <span class="top10-rank-num">${rank}</span>
-        ${medal?`<span class="top10-rank-medal">${medal}</span>`:''}
-      </div>
-      <div class="top10-poster-wrap">${posterEl}</div>
-      <div class="top10-body">
-        <div class="top10-name">${s.name}${s.nameEn?`<span style="font-size:10px;color:var(--muted);font-weight:400;display:block;margin-top:1px;font-style:italic">${s.nameEn}</span>`:''}</div>
-        <div class="top10-meta">${metaParts.join(' · ')}</div>
-        ${s.synopsis?`<div class="top10-synopsis">${s.synopsis}</div>`:''}
-        ${genrePills}
-        ${watchRow}
-      </div>
-    </div>`;
+    html+=_picksCardHtml(s,si,is2026);
   });
   html+=`</div>`;
-
-  if(picks.length<10){
-    html+=`<div style="text-align:center;margin-top:2rem;padding:1rem;background:var(--surface2);border-radius:var(--radius);border:1px dashed var(--border2);font-size:12px;color:var(--muted)">
-      ${10-picks.length} puesto${10-picks.length!==1?'s':''} por completar en el top 10
-    </div>`;
-  }
-
   view.innerHTML=html;
+}
+
+function renderTop10(){
+  _renderPicksView(
+    'viewTop10',
+    s=>s.myPick,
+    '⭐',
+    'Mis <em>picks</em>',
+    'Series GL que recomiendo especialmente. Sin orden concreto, solo las que más me han gustado.',
+    'Marca series en el admin con "⭐ Mis picks" para que aparezcan aquí.',
+    false
+  );
+}
+
+function renderPicks2026(){
+  _renderPicksView(
+    'viewPicks2026',
+    s=>s.myPick2026,
+    '🌟',
+    'Mis picks <em>2026</em>',
+    'Lo mejor de este año hasta ahora. Series GL de 2026 que no me puedo dejar de recomendar.',
+    'Marca series en el admin con "🌟 Picks 2026" para que aparezcan aquí.',
+    true
+  );
 }
 
 function switchTab(tab){
   state.tab=tab;
   saveSession();
   const moreTabs=['books','actresses'];
-  ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10'].forEach(t=>{
+  ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026'].forEach(t=>{
     const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
     const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
     if(btn) btn.className=(moreTabs.includes(t)?'tab-more-item':'tab')+(tab===t?' active':'');
@@ -4602,6 +4612,7 @@ function switchTab(tab){
   if(tab==='documentales') renderDocumentales();
   if(tab==='actresses') renderActressesTab();
   if(tab==='top10') renderTop10();
+  if(tab==='picks2026') renderPicks2026();
 }
 
 function toggleMoreDrop(e){
@@ -4715,7 +4726,7 @@ document.addEventListener('keydown',e=>{
     loadSession();
     const savedTab=state.tab||'cal';
     // Show the saved tab's view, hide others
-    ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10'].forEach(t=>{
+    ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026'].forEach(t=>{
       const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
       const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
       if(btn) btn.className='tab'+(savedTab===t?' active':'');
@@ -4731,6 +4742,7 @@ document.addEventListener('keydown',e=>{
     else if(savedTab==='documentales') renderDocumentales();
     else if(savedTab==='actresses') renderActressesTab();
     else if(savedTab==='top10') renderTop10();
+    else if(savedTab==='picks2026') renderPicks2026();
     else renderWeekView();
   }
 })();
