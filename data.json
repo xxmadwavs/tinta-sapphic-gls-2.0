@@ -128,7 +128,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T21:50:15.430Z",
+      "updatedAt": "2026-05-15T21:52:31.349Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -193,7 +193,7 @@
       ],
       "nameEn": "Girl Rules กฎหลัก...ห้ามรักเธอ",
       "episodeDuration": 51,
-      "myTop10": true,
+      "myTop10": false,
       "top10Rank": 0
     },
     {
@@ -1377,10 +1377,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T21:51:20.653Z",
+      "updatedAt": "2026-05-15T21:52:24.156Z",
       "nameEn": "เพื่อเธออีกครั้ง",
       "episodeDuration": 55,
-      "myTop10": true,
+      "myTop10": false,
       "top10Rank": 0
     },
     {
@@ -5562,13 +5562,12 @@
       "bookUrl": "https://en.mebmarket.com/ebook-260047-Pluto--English-version",
       "upcoming": false,
       "genres": [
-        "Drama",
-        "Misterio",
-        "Romance",
         "Animación",
         "Anime",
         "Comedia",
-        "Drama"
+        "Drama",
+        "Misterio",
+        "Romance"
       ],
       "seasons": [
         {
@@ -5621,8 +5620,10 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T08:37:18.974Z",
-      "episodeDuration": 57
+      "updatedAt": "2026-05-15T21:52:37.505Z",
+      "episodeDuration": 57,
+      "myTop10": true,
+      "top10Rank": 0
     },
     {
       "id": "1777223788983",
@@ -30482,5 +30483,5 @@
       "notes": "Actriz, Cantante"
     }
   ],
-  "exportedAt": "2026-05-15T21:51:33.622Z"
+  "exportedAt": "2026-05-15T21:52:41.326Z"
 }
