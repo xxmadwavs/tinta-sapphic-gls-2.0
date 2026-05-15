@@ -11115,8 +11115,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -11144,12 +11144,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:59:25.757Z",
+      "updatedAt": "2026-05-15T19:46:00.889Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "熱拉物語",
+      "cast": [],
+      "episodeDuration": 6
     },
     {
       "id": "1777751376726",
@@ -11202,12 +11204,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:59:29.787Z",
+      "updatedAt": "2026-05-15T19:47:06.850Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "나만 설레는 건가요?",
+      "cast": [],
+      "episodeDuration": 9
     },
     {
       "id": "1777751530698",
@@ -11228,8 +11232,8 @@
       "upcoming": false,
       "genres": [
         "Drama",
-        "Psicológico",
-        "Escolar"
+        "Escolar",
+        "Psicológico"
       ],
       "seasons": [
         {
@@ -11241,11 +11245,18 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-02T19:52:10.698Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T19:46:59.197Z",
+      "nameEn": "百合だのかんだの",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 26
     },
     {
       "id": "1777751604849",
@@ -11270,8 +11281,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -11287,12 +11298,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:59:33.081Z",
+      "updatedAt": "2026-05-15T19:46:52.059Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "나의 여자친구에게",
+      "cast": [],
+      "episodeDuration": 10
     },
     {
       "id": "1700000000017",
@@ -11306,8 +11319,8 @@
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=C49SZ8tz7E4&pp=ygUhU291dGggb2YgTm93aGVyZSB0cmFpbGVyIHNlYXNvbiAx",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -11325,7 +11338,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -11336,7 +11350,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 3",
@@ -11347,11 +11362,31 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T11:09:31.451Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T19:49:22.707Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778874490777",
+          "character": "Spencer Carlin",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778874560990",
+          "character": "Ashley Davies",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": ""
     },
     {
       "id": "1700000000018",
@@ -11832,9 +11867,9 @@
       ],
       "trailerUrl": "https://www.youtube.com/watch?v=h6_3IwC3hC4",
       "genres": [
-        "Romance",
         "Comedia",
-        "Fantasía"
+        "Fantasía",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -11880,12 +11915,27 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:59:41.624Z",
+      "updatedAt": "2026-05-15T20:00:39.521Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [
+        {
+          "actressId": "1778874718344",
+          "character": "Carmilla \"Carm\" Karnstein",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778875238406",
+          "character": "Laura Eileen Hollis",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": ""
     },
     {
       "id": "1700000000066",
@@ -12147,12 +12197,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:59:47.615Z",
+      "updatedAt": "2026-05-15T20:02:46.570Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [],
+      "episodeDuration": 9
     },
     {
       "id": "1700000000091",
@@ -12292,8 +12344,8 @@
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=C4N4W-KQzA8",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -12351,12 +12403,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:59:54.336Z",
+      "updatedAt": "2026-05-15T20:02:56.100Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "Kontrola",
+      "cast": [],
+      "episodeDuration": ""
     },
     {
       "id": "1700000000107",
@@ -12648,7 +12702,7 @@
     },
     {
       "id": "1700000000121",
-      "name": "Do You",
+      "name": "Do You \"Truth or Dare\" with Me?",
       "poster": "https://i.mydramalist.com/Z0wEjc.jpg?v=1",
       "synopsis": "\"Oye, ¿quieres jugar a verdad o reto conmigo? Yo también te gusto, ¿verdad?\"\n \n (Fuente: Stylelife Contents Lab, Youtube)",
       "year": 2019,
@@ -12658,8 +12712,8 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -12681,12 +12735,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:00.585Z",
+      "updatedAt": "2026-05-15T20:03:13.655Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "언니 나랑 진실게임 할래요",
+      "cast": [],
+      "episodeDuration": ""
     },
     {
       "id": "1700000000122",
@@ -12700,8 +12756,8 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Fantasía"
+        "Fantasía",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -12723,12 +12779,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:08.244Z",
+      "updatedAt": "2026-05-15T20:03:29.637Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "순정 마녀의 별빛 소나타",
+      "cast": [],
+      "episodeDuration": ""
     },
     {
       "id": "1700000000123",
@@ -12747,8 +12805,8 @@
       ],
       "trailerUrl": "https://youtu.be/jN1V3Lh4AHc",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -12770,12 +12828,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:13.411Z",
+      "updatedAt": "2026-05-15T20:03:44.002Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "숨이 벅차",
+      "cast": [],
+      "episodeDuration": 14
     },
     {
       "id": "1700000000125",
@@ -12816,12 +12876,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:22.239Z",
+      "updatedAt": "2026-05-15T20:03:57.311Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "어프레이드 오브",
+      "cast": [],
+      "episodeDuration": 7
     },
     {
       "id": "1700000000132",
@@ -12882,8 +12944,8 @@
       ],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -12905,12 +12967,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:26.554Z",
+      "updatedAt": "2026-05-15T20:04:38.035Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "내가 몰랐던 너",
+      "cast": [],
+      "episodeDuration": 8
     },
     {
       "id": "1700000000137",
@@ -12942,11 +13006,31 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T15:27:32.125Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:07:57.535Z",
+      "nameEn": "에스에프에잇: 우주인 조안",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778875579212",
+          "character": "Yi Oh",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778875618205",
+          "character": "Shin Jo An",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 54
     },
     {
       "id": "1700000000139",
@@ -12965,8 +13049,8 @@
       ],
       "trailerUrl": "https://youtu.be/2_oy8eN64pQ",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -12985,11 +13069,18 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-03T15:28:03.133Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:09:38.697Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 25
     },
     {
       "id": "1700000000141",
@@ -13287,12 +13378,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:35.037Z",
+      "updatedAt": "2026-05-15T20:09:59.538Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "42 Kg หนักแค่ไหนก็รัก",
+      "cast": [],
+      "episodeDuration": 11
     },
     {
       "id": "1700000000148",
@@ -13311,9 +13404,9 @@
       ],
       "trailerUrl": "https://youtu.be/bO6ZVPSZzco",
       "genres": [
-        "Thriller",
         "Misterio",
-        "Psicológico"
+        "Psicológico",
+        "Thriller"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -13332,11 +13425,25 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:52:28.995Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:11:10.120Z",
+      "nameEn": "เดอะเดบิวต์..อวสานไอดอล",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778667631376",
+          "character": "Farn",
+          "coupleType": "other",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 45
     },
     {
       "id": "1700000000149",
@@ -13355,8 +13462,8 @@
       ],
       "trailerUrl": "https://youtu.be/RkdxhA-LZ2E",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -13374,7 +13481,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -13385,11 +13493,31 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:56:37.161Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:13:53.027Z",
+      "nameEn": "第一次遇見花香的那刻",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778875987751",
+          "character": "Yi Ming",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778876013546",
+          "character": "Tin Ting",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 21
     },
     {
       "id": "1700000000155",
@@ -13426,11 +13554,18 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:56:54.632Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:14:08.249Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 35
     },
     {
       "id": "1700000000156",
@@ -13462,11 +13597,18 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T07:57:37.635Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:14:32.887Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 32
     },
     {
       "id": "1700000000158",
@@ -13480,9 +13622,9 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
+        "Fantasía",
         "Misterio",
-        "Fantasía"
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -13518,12 +13660,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:44.791Z",
+      "updatedAt": "2026-05-15T20:15:22.197Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "云泽传",
+      "cast": [],
+      "episodeDuration": 3
     },
     {
       "id": "1700000000159",
@@ -13537,8 +13681,8 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
         "Comedia",
+        "Romance",
         "Sobrenatural"
       ],
       "basedOnBook": false,
@@ -13562,12 +13706,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:48.730Z",
+      "updatedAt": "2026-05-15T20:15:04.473Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "云泽传 番外",
+      "cast": [],
+      "episodeDuration": 3
     },
     {
       "id": "1700000000164",
@@ -13647,8 +13793,8 @@
       ],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -13670,12 +13816,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:53.224Z",
+      "updatedAt": "2026-05-15T20:15:34.639Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [],
+      "episodeDuration": 10
     },
     {
       "id": "1700000000168",
@@ -13712,11 +13860,25 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T08:11:07.154Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:16:17.151Z",
+      "nameEn": "อากงจ๋า..ป๊าไม่รู้",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778749053691",
+          "character": "Punpun",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 45
     },
     {
       "id": "1700000000169",
@@ -13757,12 +13919,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:00:58.743Z",
+      "updatedAt": "2026-05-15T20:16:25.383Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [],
+      "episodeDuration": ""
     },
     {
       "id": "1700000000174",
@@ -13781,8 +13945,8 @@
       ],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -13804,12 +13968,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:01:02.575Z",
+      "updatedAt": "2026-05-15T20:16:40.266Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "어떤 연애의 하루",
+      "cast": [],
+      "episodeDuration": 13
     },
     {
       "id": "1700000000178",
@@ -13846,7 +14012,8 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -13857,11 +14024,18 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T08:14:36.437Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:17:05.796Z",
+      "nameEn": "彼女のくちづけ感染するリビド",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 11
     },
     {
       "id": "1700000000179",
@@ -13896,7 +14070,8 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -13910,11 +14085,18 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T08:16:03.137Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:17:19.720Z",
+      "nameEn": "作りたい女と食べたい女",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 15
     },
     {
       "id": "1700000000180",
@@ -13933,8 +14115,8 @@
       ],
       "trailerUrl": "https://www.youtube.com/watch?v=E_YdgdQ0EVI&pp=ygUOTXkgRmFpcnkgR2hvc3Q%3D",
       "genres": [
-        "Romance",
         "Drama",
+        "Romance",
         "Sobrenatural"
       ],
       "basedOnBook": false,
@@ -13957,12 +14139,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:01:19.503Z",
+      "updatedAt": "2026-05-15T20:19:22.984Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "ユーレイの彼女と私の恋",
+      "cast": [],
+      "episodeDuration": 8
     },
     {
       "id": "1700000000185",
@@ -14301,12 +14485,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:01:31.324Z",
+      "updatedAt": "2026-05-15T20:21:30.303Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "三生花",
+      "cast": [],
+      "episodeDuration": 2
     },
     {
       "id": "1700000000196",
@@ -14474,12 +14660,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:01:40.695Z",
+      "updatedAt": "2026-05-15T20:21:59.937Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "สัญญารัก 24 ชั่วโมง",
+      "cast": [],
+      "episodeDuration": 16
     },
     {
       "id": "1700000000204",
@@ -14520,12 +14708,21 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:01:44.575Z",
+      "updatedAt": "2026-05-15T20:22:21.076Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [
+        {
+          "actressId": "1778841431775",
+          "character": "Tia",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": 11
     },
     {
       "id": "1700000000208",
@@ -14567,12 +14764,27 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:01:49.397Z",
+      "updatedAt": "2026-05-15T20:29:11.638Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "",
+      "cast": [
+        {
+          "actressId": "1778841431775",
+          "character": "Lil",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841459722",
+          "character": "Hana",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "episodeDuration": ""
     },
     {
       "id": "1700000000209",
@@ -14771,11 +14983,31 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-07T11:32:24.045Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T20:30:15.323Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669536770",
+          "character": "\"Wan\" Dawan",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778669564288",
+          "character": "Khimhan",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 50
     },
     {
       "id": "1700000000218",
@@ -14925,8 +15157,8 @@
       ],
       "trailerUrl": "https://youtu.be/_yESPObEq7s",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -14948,12 +15180,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:02:24.224Z",
+      "updatedAt": "2026-05-15T20:30:52.345Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "메이플라이엔젤",
+      "cast": [],
+      "episodeDuration": 9
     },
     {
       "id": "1700000000232",
@@ -14972,8 +15206,8 @@
       ],
       "trailerUrl": "https://www.youtube.com/watch?v=XHoxlMG_fCg",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -14995,12 +15229,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:02:29.167Z",
+      "updatedAt": "2026-05-15T20:31:08.163Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "자취방의 고백",
+      "cast": [],
+      "episodeDuration": 11
     },
     {
       "id": "1700000000233",
@@ -15041,12 +15277,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T09:02:33.003Z",
+      "updatedAt": "2026-05-15T20:31:21.700Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "가짜 친구",
+      "cast": [],
+      "episodeDuration": ""
     },
     {
       "id": "1700000000234",
@@ -20386,9 +20624,24 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:44:52.863Z",
+      "updatedAt": "2026-05-15T19:50:35.210Z",
       "movieType": "film",
-      "duration": 86
+      "duration": 86,
+      "nameEn": "",
+      "cast": [
+        {
+          "actressId": "1778874560990",
+          "character": "Misty Monroe",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778874490777",
+          "character": "Colby Robson",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ]
     },
     {
       "id": "1700000000059",
@@ -20953,8 +21206,8 @@
       "watchLinks": [],
       "trailerUrl": "https://youtu.be/2UKNTM-Fc0s",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "poster": "https://m.media-amazon.com/images/M/MV5BYWM3NGQ2Y2EtYmU2Ni00YjIxLWFhZjMtMDBkZjcwNTAxY2JlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
       "basedOnBook": false,
@@ -20963,10 +21216,24 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T12:12:49.065Z",
+      "updatedAt": "2026-05-15T20:01:36.492Z",
       "movieType": "film",
       "duration": 90,
-      "cast": []
+      "cast": [
+        {
+          "actressId": "1778874718344",
+          "character": "Cassie",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778875238406",
+          "character": "Mackenzie",
+          "coupleType": "main",
+          "coupleNum": 2
+        }
+      ],
+      "nameEn": ""
     },
     {
       "id": "1700000000080",
@@ -21644,10 +21911,24 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T12:17:12.105Z",
+      "updatedAt": "2026-05-15T20:01:05.205Z",
       "movieType": "film",
       "duration": 97,
-      "cast": []
+      "cast": [
+        {
+          "actressId": "1778875238406",
+          "character": "Laura Eileen Hollis",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778874718344",
+          "character": "Carmilla \"Carm\" Karnstein",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "nameEn": ""
     },
     {
       "id": "1700000000104",
@@ -23201,10 +23482,17 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T21:06:04.672Z",
+      "updatedAt": "2026-05-15T20:09:03.605Z",
       "movieType": "short",
       "duration": 28,
-      "cast": [],
+      "cast": [
+        {
+          "actressId": "1778875579212",
+          "character": "Chae Eun",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
       "nameEn": "졸업영화"
     },
     {
@@ -29801,7 +30089,75 @@
       "birthdate": "1969-08-25",
       "height": 173,
       "notes": "Actriz"
+    },
+    {
+      "id": "1778874490777",
+      "name": "Gabrielle Christian",
+      "photo": "https://m.media-amazon.com/images/M/MV5BMTc1NTM2MDg2N15BMl5BanBnXkFtZTcwNTQ2NTUzMQ@@._V1_.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1984-07-30",
+      "height": 163,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778874560990",
+      "name": "Mandy Musgrave",
+      "photo": "https://st.depositphotos.com/1814084/1647/i/450/depositphotos_16472109-stock-photo-mandy-musgrave.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1986-09-19",
+      "height": 160,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778874718344",
+      "name": "Natasha Negovanlis",
+      "photo": "https://www.film.ru/sites/default/files/people/21071996-898627.jpg",
+      "country": "Canadá",
+      "birthdate": "1990-12-31",
+      "height": 160,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778875238406",
+      "name": "Elise Bauman",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmKQzcxGIIoHSGTAuCPWqEy73-0U0f-7tNyIjT7cmd-RcM5GlIDzxdAZ5p5tQR7AJOnq9O0izD5E6BhHFV3miCzBoH7ssH3Fh2Xm94WUPo&s=10",
+      "country": "Canadá",
+      "birthdate": "1990-10-23",
+      "height": 157,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778875579212",
+      "name": "Choi Sung Eun",
+      "photo": "https://i.mydramalist.com/pNdwb_5c.jpg",
+      "country": "Corea del Sur",
+      "birthdate": "1996-06-17",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778875618205",
+      "name": "Kim Bo Ra",
+      "photo": "https://i.mydramalist.com/zBxEXd_5c.jpg",
+      "country": "Corea del Sur",
+      "birthdate": "1995-09-28",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778875987751",
+      "name": "Lin Zai Zai",
+      "photo": "https://i.mydramalist.com/03oDk_5c.jpg",
+      "country": "Taiwán",
+      "birthdate": "1990-05-22",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778876013546",
+      "name": "Lyan Cheng",
+      "photo": "https://i.mydramalist.com/kAYB6g_5c.jpg",
+      "country": "Taiwán",
+      "birthdate": "1988-06-16",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-15T18:58:23.367Z"
+  "exportedAt": "2026-05-15T20:34:14.469Z"
 }
