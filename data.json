@@ -9495,8 +9495,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -9512,12 +9512,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:58:28.554Z",
+      "updatedAt": "2026-05-15T18:37:00.044Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "오후 두 시의 캠퍼스",
+      "cast": [],
+      "episodeDuration": 20
     },
     {
       "id": "1777584720366",
@@ -9543,8 +9545,8 @@
       "upcoming": false,
       "genres": [
         "Drama",
-        "Thriller",
-        "Misterio"
+        "Misterio",
+        "Thriller"
       ],
       "seasons": [
         {
@@ -9555,12 +9557,20 @@
             0,
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-04-30T21:33:47.519Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T18:37:39.506Z",
+      "nameEn": "마인",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 70
     },
     {
       "id": "1777584791238",
@@ -9580,8 +9590,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -9599,12 +9609,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:58:33.051Z",
+      "updatedAt": "2026-05-15T18:38:06.099Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "어디에나 있고 어디에도 없는",
+      "cast": [],
+      "episodeDuration": 15
     },
     {
       "id": "1777584943726",
@@ -9629,8 +9641,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -9646,12 +9658,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:58:37.174Z",
+      "updatedAt": "2026-05-15T18:38:53.602Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "우리의 연애는 시작도 전에 끝났다",
+      "cast": [],
+      "episodeDuration": 8
     },
     {
       "id": "1777585010770",
@@ -9676,8 +9690,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "seasons": [
         {
@@ -9694,12 +9708,14 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T08:58:41.954Z",
+      "updatedAt": "2026-05-15T18:38:44.334Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "nameEn": ""
+      "nameEn": "대세는 백합",
+      "cast": [],
+      "episodeDuration": 5
     },
     {
       "id": "1777622150204",
@@ -9770,8 +9786,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -9781,8 +9797,10 @@
           "emissionDays": [
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -9791,8 +9809,10 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 3",
@@ -9801,12 +9821,69 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-01T21:01:39.119Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T18:45:42.300Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778870450931",
+          "character": "Bette Porter",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778870543483",
+          "character": "Shane McCutcheon",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778870578358",
+          "character": "Alice Pieszecki",
+          "coupleType": "other",
+          "coupleNum": 2
+        },
+        {
+          "actressId": "1778870612764",
+          "character": "Dani Nùñez",
+          "coupleType": "other",
+          "coupleNum": 2
+        },
+        {
+          "actressId": "1778870641532",
+          "character": "Sarah Finley",
+          "coupleType": "other",
+          "coupleNum": 3
+        },
+        {
+          "actressId": "1778870666376",
+          "character": "Sophie Suarez",
+          "coupleType": "other",
+          "coupleNum": 3
+        },
+        {
+          "actressId": "1778870708250",
+          "character": "Gigi Ghorbani",
+          "coupleType": "other",
+          "coupleNum": 4
+        },
+        {
+          "actressId": "1778870740942",
+          "character": "Natalie \"Nat\" Bailey",
+          "coupleType": "other",
+          "coupleNum": 4
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 45
     },
     {
       "id": "1777669724978",
@@ -9831,8 +9908,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "seasons": [
         {
@@ -9842,8 +9919,10 @@
           "emissionDays": [
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -9852,8 +9931,10 @@
           "emissionDays": [
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 3",
@@ -9862,8 +9943,10 @@
           "emissionDays": [
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 4",
@@ -9872,8 +9955,10 @@
           "emissionDays": [
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 5",
@@ -9882,8 +9967,10 @@
           "emissionDays": [
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 6",
@@ -9892,12 +9979,57 @@
           "emissionDays": [
             6
           ],
+          "allInOneDay": false,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-01T21:08:44.978Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T18:48:57.143Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778870450931",
+          "character": "Bette Porte",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778870543483",
+          "character": "Shane McCutcheon",
+          "coupleType": "other",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778870578358",
+          "character": "Alice Pieszecki",
+          "coupleType": "other",
+          "coupleNum": 2
+        },
+        {
+          "actressId": "1778870858197",
+          "character": "Jenny Schecter",
+          "coupleType": "other",
+          "coupleNum": 2
+        },
+        {
+          "actressId": "1778870892576",
+          "character": "Tina Kennard",
+          "coupleType": "other",
+          "coupleNum": 3
+        },
+        {
+          "actressId": "1778870932471",
+          "character": "Helena Peabody",
+          "coupleType": "other",
+          "coupleNum": 4
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 45
     },
     {
       "id": "1777670118261",
@@ -9922,8 +10054,8 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
-        "Comedia"
+        "Comedia",
+        "Romance"
       ],
       "seasons": [
         {
@@ -9933,6 +10065,7 @@
           "emissionDays": [
             4
           ],
+          "allInOneDay": false,
           "skipDates": [],
           "episodes": [
             {
@@ -9965,11 +10098,18 @@
               "date": "2022-08-12",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-01T21:15:38.736Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T18:50:25.964Z",
+      "nameEn": "A League of Their Own",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 50
     },
     {
       "id": "1777726039958",
@@ -9994,9 +10134,9 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
+        "Comedia",
         "Drama",
-        "Comedia"
+        "Romance"
       ],
       "seasons": [
         {
@@ -10034,7 +10174,8 @@
               "date": "2020-03-19",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -10071,11 +10212,18 @@
               "date": "2021-06-04",
               "skipped": false
             }
-          ]
+          ],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-02T13:10:05.140Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T18:50:46.981Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 26
     },
     {
       "id": "1777726945205",
@@ -10100,11 +10248,12 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
         "Acción",
-        "Ciencia Ficción",
+        "Animación",
         "Aventura",
-        "Familia"
+        "Ciencia Ficción",
+        "Familia",
+        "Romance"
       ],
       "seasons": [
         {
@@ -10116,7 +10265,8 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 2",
@@ -10127,7 +10277,8 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 3",
@@ -10138,7 +10289,8 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 4",
@@ -10149,7 +10301,8 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         },
         {
           "label": "Temporada 5",
@@ -10160,11 +10313,18 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-02T13:09:58.752Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T18:51:16.314Z",
+      "nameEn": "She-Ra and the Princesses of Power",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 24
     },
     {
       "id": "1777727593627",
@@ -10189,9 +10349,9 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
         "Drama",
-        "Misterio"
+        "Misterio",
+        "Romance"
       ],
       "seasons": [
         {
@@ -10203,11 +10363,18 @@
           ],
           "allInOneDay": true,
           "skipDates": [],
-          "episodes": []
+          "episodes": [],
+          "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-02T13:13:13.627Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-15T18:51:37.593Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 45
     },
     {
       "id": "1777727758315",
@@ -18687,9 +18854,9 @@
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=CVyg1xk1HdM",
       "genres": [
-        "Romance",
+        "Comedia",
         "Drama",
-        "Comedia"
+        "Romance"
       ],
       "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/dPbYJaH1j7sgj1NuA4VRyb7O4Mt.jpg",
       "basedOnBook": false,
@@ -18698,9 +18865,18 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:26:58.118Z",
+      "updatedAt": "2026-05-15T18:49:44.161Z",
       "movieType": "film",
-      "duration": 94
+      "duration": 94,
+      "nameEn": "",
+      "cast": [
+        {
+          "actressId": "1778870892576",
+          "character": "Randy Dean",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ]
     },
     {
       "id": "1700000000007",
@@ -29434,7 +29610,102 @@
       "country": "China",
       "birthdate": "1998-04-16",
       "notes": "Actriz"
+    },
+    {
+      "id": "1778870450931",
+      "name": "Jennifer Beals",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9-uBxBvO-nTw23ojX7FR6VVCNxKuzbLzhEslBLvj53pWIQP8t5WmM0G1JlUevWaxZAZqyayoFoZn3Hak6BD8rT2_mk_YIcft3eSs2zxET&s=10",
+      "country": "Estados Unidos",
+      "birthdate": "1963-04-19",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870543483",
+      "name": "Kate Moennig",
+      "photo": "https://image.tmdb.org/t/p/w500/k9V8rcebmJlbfePAigJWG7yWaW5.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1977-12-29",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870578358",
+      "name": "Leisha Hailey",
+      "photo": "https://m.media-amazon.com/images/M/MV5BNzdjOTYyNDUtMjBkMS00OTM0LTg2N2EtZDk3NDAzYmRjNGFkXkEyXkFqcGc@._V1_.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1970-07-11",
+      "height": 167,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870612764",
+      "name": "Arienne Mandi",
+      "photo": "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQJMtX_cksgHXKDL812JmNvN8ikmAZ_25pqaj0pBqP_NchZi8BBRLO5iF6GF2nUobp2u5U8jsFs0xmECKZSdXjKwQt7m8aJKLSh-DEwuak-8OXFDAvaGkaBVsjr36qhBZI4R53LDGXMkr0&s=19",
+      "country": "Estados Unidos",
+      "birthdate": "1994-04-08",
+      "height": 173,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870641532",
+      "name": "Jacqueline Toboni",
+      "photo": "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcS8g_mxJiqApUSBa0I03DdqLtUQM8fFehr5Sr5rBuxfZFBOHU6M-_dJhZ5j693XHbC4Q8_n6jYlr9RkcgFQB9F-gzqfkNzaJZQIiTaryCQGvluT_4wU-HUSr7KoY_RVrzYPgOKeyw7lbH0&s=19",
+      "country": "Estados Unidos",
+      "birthdate": "1992-02-18",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870666376",
+      "name": "Rosanny Zayas",
+      "photo": "https://images.mubicdn.net/images/cast_member/740374/cache-496568-1576267316/image-w856.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1990-05-14",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870708250",
+      "name": "Sepideh Moafi",
+      "photo": "https://image.tmdb.org/t/p/w500/7Z9BvGgwdLqlRJJft38cepGY1TZ.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1985-09-18",
+      "height": 166,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870740942",
+      "name": "Stephanie Allynne",
+      "photo": "https://image.tmdb.org/t/p/w500/orxxs8G1QdKt1tECyJu3qiWCV8M.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1985-09-19",
+      "height": 170,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870858197",
+      "name": "Mia Kirshner",
+      "photo": "https://image.tmdb.org/t/p/w500/7fSYUVxf84JdZ2aRJ9Lm28Ls6IK.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1975-01-25",
+      "height": 160,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870892576",
+      "name": "Laurel Holloman",
+      "photo": "https://image.tmdb.org/t/p/w500/c9cMysLLh0nWEAqNj3pp9nqq3MC.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1971-05-23",
+      "height": 167,
+      "notes": "Actriz"
+    },
+    {
+      "id": "1778870932471",
+      "name": "Rachel Shelley",
+      "photo": "https://image.tmdb.org/t/p/w500/AoZAGf20aNUCqh2ujPxfyC1Sk5O.jpg",
+      "country": "Reino Unido",
+      "birthdate": "1969-08-25",
+      "height": 173,
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-15T12:11:21.821Z"
+  "exportedAt": "2026-05-15T18:51:45.528Z"
 }
