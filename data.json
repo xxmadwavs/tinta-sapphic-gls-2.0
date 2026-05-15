@@ -4489,7 +4489,7 @@
       "poster": "https://i.mydramalist.com/E5Z7bb_4f.jpg",
       "synopsis": "Tras recuperar la vista, Kris ve a una persona en sus sueños, pero al despertar, lo único que recuerda son un par de ojos. Empieza a dibujarlos para recordarlos, pero cuando ve a Karn por primera vez, reconoce que los ojos de sus sueños y los de Karn son los mismos.",
       "year": 2024,
-      "country": "Tailandia / Japón",
+      "country": "Tailandia",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/26CSt6-Rs9I?si=jyzplu3jV8tmSGzK",
       "watchLinks": [
@@ -4525,11 +4525,11 @@
       "bookUrl": "https://www.mebmarket.com/ebook-290406-Apple-%E0%B8%96%E0%B8%B6%E0%B8%87%E0%B9%80%E0%B8%98%E0%B8%AD---%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A3%E0%B8%B1%E0%B8%81-English-Version",
       "upcoming": false,
       "genres": [
-        "Romance",
         "Animación",
         "Anime",
         "Comedia",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "startDate": "2024-10-12",
       "dayOfWeek": 5,
@@ -4572,7 +4572,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T08:16:09.662Z",
+      "updatedAt": "2026-05-15T09:29:02.089Z",
       "episodeDuration": 50
     },
     {
@@ -4581,7 +4581,7 @@
       "poster": "https://i.mydramalist.com/ABAOP8_4f.jpg",
       "synopsis": "Un año después de estar juntas y con Karn cada vez más famosa, ¿qué tipo de desafíos enfrentará la relación de Kris y Karn?",
       "year": 2025,
-      "country": "Tailandia / Japón",
+      "country": "Tailandia",
       "network": "YouTube",
       "networkUrl": "https://youtu.be/TwvTk7EB5lA?si=TB-G7X4qV2MgICqH",
       "watchLinks": [
@@ -4602,11 +4602,11 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Romance",
         "Animación",
         "Anime",
         "Comedia",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "startDate": "2025-04-04",
       "dayOfWeek": 4,
@@ -4653,7 +4653,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T08:30:01.417Z",
+      "updatedAt": "2026-05-15T09:29:05.236Z",
       "episodeDuration": 11
     },
     {
@@ -28564,5 +28564,5 @@
       "notes": "Actriz, Modelo"
     }
   ],
-  "exportedAt": "2026-05-15T09:26:16.181Z"
+  "exportedAt": "2026-05-15T09:29:06.362Z"
 }
