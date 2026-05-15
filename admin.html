@@ -1368,6 +1368,13 @@ function addSeasonBlock(seasonData=null, idx=null){
     <div class="form-row" style="margin-bottom:0">
       <label class="form-label">Número de episodios *</label>
       <input type="number" class="s-eps" min="1" max="500" value="${totalEps}"/>
+    </div>
+    <div class="form-row" style="margin-top:10px;margin-bottom:0">
+      <label class="form-label">⏱ Duración por episodio <span style="font-size:10px;opacity:.5;font-weight:400;text-transform:none">(si difiere de la general)</span></label>
+      <div style="display:flex;align-items:center;gap:8px">
+        <input type="text" class="s-ep-duration" placeholder="Ej: 45min · déjalo vacío si es igual que la general" value="${seasonData?.episodeDuration?formatDurationDisplay(seasonData.episodeDuration):''}" oninput="previewSeasonDuration(this)" style="max-width:260px"/>
+        <span class="s-ep-duration-hint" style="font-size:11px;color:var(--muted)"></span>
+      </div>
     </div>`;
   list.appendChild(block);
 }
@@ -1470,7 +1477,11 @@ function getSeasonsData(){
       });
       premiereSchedule.sort((a,b)=>a.fromEp-b.fromEp);
     }
-    seasons.push({label,startDate,totalEpisodes:totalEps,emissionDays,allInOneDay,skipDates:[],episodes:[],premiereSchedule});
+    const seasonDurRaw=block.querySelector('.s-ep-duration')?.value||'';
+    const seasonDuration=parseDurationInput(seasonDurRaw)||'';
+    const seasonObj={label,startDate,totalEpisodes:totalEps,emissionDays,allInOneDay,skipDates:[],episodes:[],premiereSchedule};
+    if(seasonDuration) seasonObj.episodeDuration=seasonDuration;
+    seasons.push(seasonObj);
   }
   return seasons;
 }
@@ -1554,6 +1565,15 @@ function formHtml(s, forcedCategory=null){
             </select>
           </div>
         </div>
+      </div>
+
+      <div class="form-row" style="margin-top:10px">
+        <label class="form-label">⏱ Duración por episodio <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(media si varía)</span></label>
+        <div style="display:flex;align-items:center;gap:8px">
+          <input id="f_epDuration" type="text" placeholder="Ej: 45  ó  1h 20min  ó  45min" value="${s&&s.episodeDuration?formatDurationDisplay(s.episodeDuration):''}" oninput="previewEpDuration(this)" style="max-width:220px"/>
+          <span id="f_epDuration_hint" style="font-size:11px;color:var(--muted)"></span>
+        </div>
+        <div class="form-hint">Se usa para calcular el tiempo total de la serie. Puedes sobreescribirla por temporada si cambia mucho.</div>
       </div>
 
       <div class="form-row" style="margin-top:10px">
@@ -2114,7 +2134,8 @@ function saveSeries(si, forcedCategory=null){
   const animeSeason=(category==='anime'||category==='reality')?getAnimeSeason():'';
   const renewedNextSeason=document.getElementById('f_renewed')?.checked||false;
   const nameEn=document.getElementById('f_nameEn')?.value.trim()||'';
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason};
+  const episodeDuration=parseDurationInput(document.getElementById('f_epDuration')?.value||'')||'';
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -2461,6 +2482,36 @@ function previewDuration(input){
   } else {
     hint.textContent='Escribe en minutos (92) o en horas y minutos (1h 35min). Opcional pero recomendado para cortos.';
     hint.style.color='';
+  }
+}
+function previewEpDuration(input){
+  const hint=document.getElementById('f_epDuration_hint');
+  if(!hint) return;
+  const mins=parseDurationInput(input.value);
+  if(mins&&mins>0){
+    const h=Math.floor(mins/60),m=mins%60;
+    hint.textContent='→ '+(h?(m?h+'h '+m+'min':h+'h'):m+'min')+' por ep';
+    hint.style.color='var(--teal)';
+  } else if(input.value.trim()){
+    hint.textContent='Formato no reconocido';
+    hint.style.color='#c0392b';
+  } else {
+    hint.textContent='';
+  }
+}
+function previewSeasonDuration(input){
+  const hint=input.closest('.form-row')?.querySelector('.s-ep-duration-hint');
+  if(!hint) return;
+  const mins=parseDurationInput(input.value);
+  if(mins&&mins>0){
+    const h=Math.floor(mins/60),m=mins%60;
+    hint.textContent='→ '+(h?(m?h+'h '+m+'min':h+'h'):m+'min')+' por ep';
+    hint.style.color='var(--teal)';
+  } else if(input.value.trim()){
+    hint.textContent='Formato no reconocido';
+    hint.style.color='#c0392b';
+  } else {
+    hint.textContent='';
   }
 }
 function bindMovieForm(){

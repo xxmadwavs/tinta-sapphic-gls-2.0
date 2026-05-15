@@ -1484,6 +1484,57 @@ function fmtDuration(mins){
   var h=Math.floor(mins/60),m=mins%60;
   return m?h+'h '+m+'min':h+'h';
 }
+
+/**
+ * Devuelve info de duración para una serie:
+ * - epDuration: minutos por episodio (media ponderada entre temporadas si cada una tiene la suya)
+ * - totalMins: minutos totales de todos los episodios
+ * - source: 'exact' | 'average' | null
+ */
+function getSeriesDurationInfo(s){
+  const seasons=getSeasons(s);
+  const totalEps=seasons.reduce((a,t)=>a+t.totalEpisodes,0);
+  if(!totalEps) return {epDuration:null,totalMins:null,source:null};
+
+  // ¿Hay duración por temporada?
+  const seasonsWithDuration=seasons.filter(t=>t.episodeDuration);
+  if(seasonsWithDuration.length){
+    // Calcular media ponderada: suma(eps_t * dur_t) / total_eps
+    let weightedSum=0, coveredEps=0;
+    seasons.forEach(t=>{
+      if(t.episodeDuration){
+        weightedSum+=t.episodeDuration*t.totalEpisodes;
+        coveredEps+=t.totalEpisodes;
+      } else if(s.episodeDuration){
+        // Temporadas sin duración propia → usar la general de la serie
+        weightedSum+=s.episodeDuration*t.totalEpisodes;
+        coveredEps+=t.totalEpisodes;
+      }
+    });
+    const avg=Math.round(weightedSum/Math.max(coveredEps,1));
+    const total=Math.round(seasons.reduce((sum,t)=>{
+      const d=t.episodeDuration||s.episodeDuration||0;
+      return sum+d*t.totalEpisodes;
+    },0));
+    return {epDuration:avg, totalMins:total||null, source:coveredEps===totalEps?'exact':'average'};
+  }
+
+  // ¿Duración general de la serie?
+  if(s.episodeDuration){
+    return {epDuration:s.episodeDuration, totalMins:s.episodeDuration*totalEps, source:'average'};
+  }
+
+  return {epDuration:null, totalMins:null, source:null};
+}
+
+/** Formato "X h totales (≈ Ymin/ep)" o "Ymin/ep · X h totales" */
+function fmtSeriesDuration(info){
+  if(!info||!info.epDuration) return '';
+  const perEp=fmtDuration(info.epDuration);
+  const total=info.totalMins?fmtDuration(info.totalMins):'';
+  const prefix=info.source==='average'?'≈ ':'';
+  return total?`${prefix}${perEp}/ep · ${total} totales`:`${prefix}${perEp}/ep`;
+}
 function fmtDate(d){const x=new Date(d+'T12:00:00');return`${x.getDate()} ${MONTHS[x.getMonth()].slice(0,3)} ${x.getFullYear()}`}
 function toStr(y,m,d){return`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
 function getEmissionDays(s){if(s.emissionDays&&s.emissionDays.length>0)return[...s.emissionDays].sort((a,b)=>a-b);if(s.dayOfWeek!==undefined)return[s.dayOfWeek];return[0]}
@@ -2003,6 +2054,10 @@ function seriesCardHtml(s, si){
   // ── Año
   const yearHtml=s.year?`<span style="font-size:10px;color:var(--muted);font-weight:600">${s.year}</span>`:'';
 
+  // ── Duración
+  const durInfo=getSeriesDurationInfo(s);
+  const durChip=durInfo.epDuration?`<span style="font-size:10px;color:var(--muted);font-weight:600">⏱ ${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span>`:'';
+
   return `<div class="series-card" onclick="openSeries(${si})">
     ${posterEl}
     <div class="series-card-body">
@@ -2012,6 +2067,7 @@ function seriesCardHtml(s, si){
       <div class="series-card-meta" style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">${s.network||''}${yearHtml&&s.network?' · ':''} ${yearHtml}</div>
       ${genrePills}
       ${statusPill}
+      ${durChip}
       ${progressBar}
     </div>
   </div>`;
@@ -2830,6 +2886,11 @@ function openSeries(si){
   if(s.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(s.country)} ${s.country}</div></div>`;
   if(s.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Plataforma</div><div class="meta-val">${s.network}</div></div>`;
   metaGrid+=`<div class="meta-item"><div class="meta-key">Episodios</div><div class="meta-val">${totalEps}${seasons.length>1?` (${seasons.length}T)`:''}</div></div>`;
+  const durInfo=getSeriesDurationInfo(s);
+  if(durInfo.epDuration){
+    metaGrid+=`<div class="meta-item"><div class="meta-key">⏱ Por episodio</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}</div></div>`.replace('</div></div>',`${fmtDuration(durInfo.epDuration)}</div></div>`);
+    if(durInfo.totalMins) metaGrid+=`<div class="meta-item"><div class="meta-key">⏱ Total serie</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.totalMins)}</div></div>`;
+  }
   const watchLinksHtml=(()=>{const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]);if(!links.length)return '';return `<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`;})();
   const progressBlock=`<div class="modal-progress-block">
     <div class="modal-progress-header">
@@ -2861,11 +2922,13 @@ function openSeries(si){
       // Última temporada emitida o en curso: abierta por defecto
       const isLastActive=idx===seasons.length-1||seasonEps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
       const colId=`sCollapse_${idx}`;
+      const seasonDurMin=season.episodeDuration||s.episodeDuration||null;
+      const seasonDurStr=seasonDurMin?` · ⏱ ${fmtDuration(seasonDurMin)}/ep`:'';
       epsHtml+=`<div class="season-collapse">
         <div class="season-collapse-header${isLastActive?' open':''}" onclick="toggleSeasonCollapse('${colId}',this)" role="button" tabindex="0">
           <div>
             <div class="season-collapse-title">${season.label||`Temporada ${idx+1}`}</div>
-            <div class="season-collapse-meta">${sAired}/${season.totalEpisodes} emitidos · ${sPct}%</div>
+            <div class="season-collapse-meta">${sAired}/${season.totalEpisodes} emitidos · ${sPct}%${seasonDurStr}</div>
           </div>
           <div style="display:flex;align-items:center;gap:8px">
             <div style="width:60px;height:4px;background:var(--border);border-radius:2px;overflow:hidden"><div style="width:${sPct}%;height:100%;background:${col};border-radius:2px"></div></div>
@@ -2955,6 +3018,10 @@ function openUpcoming(si){
   if(s.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(s.country)} ${s.country}</div></div>`;
   if(s.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Plataforma</div><div class="meta-val">${s.network}</div></div>`;
   const watchLinksHtml=(()=>{const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]);if(!links.length)return '';return `<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`;})();
+
+  const castHtml=buildCastHtml(s.cast||[]);
+  const castCount=s.cast&&s.cast.length?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
+
   let html=`${posterEl}<div class="modal-body">
   <div class="modal-badges"><span class="badge badge-upcoming">📅 Próximamente</span>${s.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':''}</div>
   <div class="modal-title">${s.name}</div>
@@ -2981,9 +3048,23 @@ function openUpcoming(si){
       ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
     </div></div>`;
   })():''}
+  ${castCount?`<div class="divider"></div>
+  <div class="modal-tabs">
+    <button class="modal-tab active" id="uptab_cast" onclick="switchUpcomingModalTab('cast')">🎭 Cast<span style="font-size:10px;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span></button>
+  </div>
+  <div id="uppanel_cast">${castHtml}</div>`:''}
   <div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div></div>`;
   document.getElementById('modalBox').innerHTML=html;
   document.getElementById('modalBg').classList.add('open');
+}
+
+function switchUpcomingModalTab(tab){
+  ['cast'].forEach(p=>{
+    const panel=document.getElementById('uppanel_'+p);
+    const btn=document.getElementById('uptab_'+p);
+    if(panel) panel.style.display=p===tab?'':'none';
+    if(btn) btn.classList.toggle('active',p===tab);
+  });
 }
 
 function openMovie(mi){
