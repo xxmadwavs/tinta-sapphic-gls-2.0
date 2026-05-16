@@ -217,22 +217,27 @@ footer{
     background:rgba(255,255,255,0.98);border-bottom:1.5px solid var(--border2);
     padding:8px 12px 12px;box-shadow:0 8px 24px rgba(180,80,120,0.1);z-index:100;
     backdrop-filter:blur(16px);
+    max-height:calc(100vh - 58px);overflow-y:auto;
   }
   .navbar-links.open{display:flex}
   .nav-link{justify-content:flex-start;padding:10px 12px;border-radius:10px;font-size:14px}
   .navbar-right{margin-left:auto;gap:6px}
-  /* Ocultar buscador en la barra pero mostrarlo dentro del menú desplegable */
-  .navbar-search-wrap{display:none}
+  /* Ocultar buscador de escritorio en móvil */
+  #navSearchWrap{display:none!important}
+  /* Buscador dentro del menú móvil */
   .navbar-search-wrap.mobile-menu-search{
-    display:flex;margin:4px 0 8px;border-radius:12px;
-    background:var(--surface2);border-color:var(--border2);
+    border-radius:12px;background:var(--surface2);border-color:var(--border2);
+    margin-bottom:4px;
   }
   .navbar-search-wrap.mobile-menu-search .navbar-search-inp{
     width:100%;font-size:14px;padding:8px 0;
   }
-  .navbar-search-results{
-    position:fixed;top:auto;left:12px;right:12px;
-    max-height:50vh;
+  /* Resultados móvil: scroll propio, no sale de la pantalla */
+  #navSearchResultsMobile{
+    position:static!important;
+    max-height:220px;overflow-y:auto;
+    border-radius:10px;margin-top:6px;
+    box-shadow:none;border:1.5px solid var(--border2);
   }
   .nav-picks-drop,.tab-more-drop{
     position:static;box-shadow:none;border:none;
@@ -1614,10 +1619,10 @@ footer {
 
     <!-- Nav links -->
     <div class="navbar-links" id="navbarLinks">
-      <!-- Buscador móvil (solo visible en menú desplegable) -->
-      <div class="navbar-search-wrap mobile-menu-search" id="navSearchWrapMobile">
+      <!-- Buscador (solo visible en móvil dentro del menú) -->
+      <div class="navbar-search-wrap mobile-menu-search" id="navSearchWrapMobile" style="display:none">
         <svg class="navbar-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="navbar-search-inp" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
+        <input class="navbar-search-inp" id="navSearchInpMobile" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResultsMobile" style="display:none"></div>
       </div>
       <button class="nav-link active" id="tabCal" onclick="switchTab('cal')">Calendario</button>
@@ -4813,7 +4818,16 @@ function closePicksDrop(){
   document.getElementById('tabPicksGroup')?.setAttribute('aria-expanded','false');
 }
 function toggleNavMobile(){
-  document.getElementById('navbarLinks')?.classList.toggle('open');
+  const links=document.getElementById('navbarLinks');
+  const mobileSearch=document.getElementById('navSearchWrapMobile');
+  const open=links?.classList.toggle('open');
+  if(mobileSearch) mobileSearch.style.display=open?'flex':'none';
+  if(!open){
+    // reset mobile search on close
+    const inp=document.getElementById('navSearchInpMobile');
+    if(inp) inp.value='';
+    document.getElementById('navSearchResultsMobile')?.style && (document.getElementById('navSearchResultsMobile').style.display='none');
+  }
 }
 document.addEventListener('click',e=>{
   if(!document.getElementById('tabMoreWrap')?.contains(e.target)) closeMoreDrop();
@@ -4849,9 +4863,21 @@ function navSearchHandler(q){
     : '<div class="nsearch-empty">Sin resultados</div>';
   boxes.forEach(b=>{ b.innerHTML=html; b.style.display='flex'; b.style.flexDirection='column'; });
 }
-function navSearchFocus(e){ const q=(e?.target||document.getElementById('navSearchInp'))?.value; if(q&&q.length>=2) navSearchHandler(q); }
-function navSearchBlur(){ setTimeout(()=>document.querySelectorAll('.navbar-search-results').forEach(b=>b.style.display='none'),180); }
-function navSearchPick(){ document.querySelectorAll('.navbar-search-inp').forEach(i=>i.value=''); document.querySelectorAll('.navbar-search-results').forEach(b=>b.style.display='none'); document.getElementById('navbarLinks')?.classList.remove('open'); }
+function navSearchFocus(e){ const q=(e?.target)?.value; if(q&&q.length>=2) navSearchHandler(q); }
+function navSearchBlur(){
+  // Small delay so clicks on results register before hiding
+  setTimeout(()=>{
+    // Only hide desktop results (mobile ones stay until navigated or menu closed)
+    const desktop=document.getElementById('navSearchResults');
+    if(desktop) desktop.style.display='none';
+  }, 200);
+}
+function navSearchPick(){ 
+  document.querySelectorAll('.navbar-search-inp').forEach(i=>i.value=''); 
+  document.querySelectorAll('.navbar-search-results').forEach(b=>b.style.display='none'); 
+  document.getElementById('navbarLinks')?.classList.remove('open');
+  document.getElementById('navSearchWrapMobile').style.display='none';
+}
 
 
 
