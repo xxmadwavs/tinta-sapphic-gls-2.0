@@ -89,6 +89,32 @@ body::before{content:'';position:fixed;inset:0;background:
 .poster-hint{font-size:12px;color:var(--muted);line-height:1.8}
 .poster-hint a{color:var(--accent);text-decoration:none;font-weight:600}
 .poster-hint a:hover{text-decoration:underline}
+
+/* ═══ POSTER EDITOR ═══ */
+.poster-editor-wrap{border:1.5px solid var(--border2);border-radius:12px;overflow:hidden;background:var(--surface2)}
+.poster-editor-tabs{display:flex;border-bottom:1px solid var(--border2)}
+.poster-tab{flex:1;padding:7px 10px;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;background:transparent;border:none;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:5px}
+.poster-tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--accent-soft)}
+.poster-tab-panel{display:none;padding:10px 12px}
+.poster-tab-panel.active{display:block}
+.poster-tab-panel input[type=text]{width:100%;padding:8px 12px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;outline:none}
+.poster-tab-panel input[type=text]:focus{border-color:var(--accent)}
+.poster-upload-zone{border:2px dashed var(--border2);border-radius:8px;padding:18px 12px;text-align:center;cursor:pointer;transition:all .15s;font-size:12.5px;color:var(--muted)}
+.poster-upload-zone:hover,.poster-upload-zone.drag{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.poster-upload-zone input[type=file]{display:none}
+/* Preview + edit strip */
+.poster-editor-preview-row{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-top:1px solid var(--border2);background:var(--surface)}
+.poster-editor-img-wrap{position:relative;width:60px;height:90px;flex-shrink:0;border-radius:8px;overflow:hidden;border:1.5px solid var(--border2);background:#eee}
+.poster-editor-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s}
+.poster-edit-controls{flex:1;display:flex;flex-direction:column;gap:7px}
+.poster-edit-controls label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px;display:block}
+.poster-edit-slider{width:100%;accent-color:var(--accent);cursor:pointer}
+.poster-edit-btns{display:flex;gap:5px;flex-wrap:wrap}
+.poster-edit-btn{padding:4px 10px;border-radius:8px;border:1.5px solid var(--border2);font-size:11.5px;font-weight:700;font-family:'Nunito',sans-serif;background:var(--surface2);color:var(--muted);cursor:pointer;transition:all .15s}
+.poster-edit-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.poster-edit-btn.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.poster-clear-btn{margin-top:4px;font-size:11.5px;font-weight:700;color:var(--danger);background:none;border:1.5px solid rgba(212,92,92,.3);border-radius:8px;padding:3px 9px;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .15s}
+.poster-clear-btn:hover{background:rgba(212,92,92,.08)}
 .ep-list{display:grid;gap:3px;max-height:400px;overflow-y:auto;margin-top:8px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
 .ep-row{
   display:flex;align-items:center;gap:10px;padding:8px 12px;
@@ -1254,15 +1280,128 @@ function closeAll(){ document.querySelectorAll('.modal-bg').forEach(m=>m.classLi
 }
 document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{ if(e.target===m)closeAll(); }));
 
+/* ═══ POSTER EDITOR STATE ═══ */
+let _posterRot=0, _posterFlipped=false, _posterIsData=false;
+
+function switchPosterTab(tab, btn){
+  document.querySelectorAll('#posterEditorWrap .poster-tab').forEach(t=>t.classList.toggle('active',t.dataset.ptab===tab));
+  document.getElementById('posterPanel_url').classList.toggle('active',tab==='url');
+  document.getElementById('posterPanel_upload').classList.toggle('active',tab==='upload');
+}
+
+function posterSetImage(src){
+  _posterRot=0; _posterFlipped=false;
+  const prev=document.getElementById('posterPreview');
+  const row=document.getElementById('posterEditRow');
+  const val=document.getElementById('f_poster_value');
+  if(!src){ if(row) row.style.display='none'; if(val) val.value=''; return; }
+  if(prev){ prev.src=src; prev.style.transform='rotate(0deg) scale(1)'; prev.style.filter='brightness(1) contrast(1)'; }
+  if(row) row.style.display='flex';
+  if(val) val.value=src;
+  // reset sliders
+  const b=document.getElementById('posterBright'), c=document.getElementById('posterContrast');
+  if(b){b.value=100;document.getElementById('posterBrightVal').textContent='100%';}
+  if(c){c.value=100;document.getElementById('posterContrastVal').textContent='100%';}
+}
+
+function posterRotate(deg){
+  _posterRot=(_posterRot+deg+360)%360;
+  posterApplyTransform();
+  if(document.getElementById('f_poster_value')?.value.startsWith('data:')) posterBakeTransform();
+}
+function posterFlip(){
+  _posterFlipped=!_posterFlipped;
+  posterApplyTransform();
+  if(document.getElementById('f_poster_value')?.value.startsWith('data:')) posterBakeTransform();
+}
+function posterApplyTransform(){
+  const prev=document.getElementById('posterPreview');
+  if(!prev) return;
+  const scale=_posterFlipped?-1:1;
+  prev.style.transform=`rotate(${_posterRot}deg) scaleX(${scale})`;
+}
+function posterApplyFilters(){
+  const prev=document.getElementById('posterPreview');
+  const b=document.getElementById('posterBright'), c=document.getElementById('posterContrast');
+  if(!prev||!b||!c) return;
+  document.getElementById('posterBrightVal').textContent=b.value+'%';
+  document.getElementById('posterContrastVal').textContent=c.value+'%';
+  prev.style.filter=`brightness(${b.value/100}) contrast(${c.value/100})`;
+}
+function posterClear(){
+  const inp=document.getElementById('f_poster'); if(inp) inp.value='';
+  const val=document.getElementById('f_poster_value'); if(val) val.value='';
+  const prev=document.getElementById('posterPreview'); if(prev) prev.src='';
+  const row=document.getElementById('posterEditRow'); if(row) row.style.display='none';
+  _posterRot=0; _posterFlipped=false;
+  const fi=document.getElementById('posterFileInput'); if(fi) fi.value='';
+}
+
+function posterHandleFile(file){
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{ _posterIsData=true; posterSetImage(e.target.result); };
+  reader.readAsDataURL(file);
+  document.getElementById('posterDropZone')?.classList.remove('drag');
+}
+function posterHandleDrop(e){
+  e.preventDefault();
+  document.getElementById('posterDropZone')?.classList.remove('drag');
+  const file=e.dataTransfer.files[0];
+  if(file&&file.type.startsWith('image/')) posterHandleFile(file);
+}
+
+/* Bake rotation+flip+filters into a new base64 for URL-sourced images */
+function posterBakeTransform(){
+  const prev=document.getElementById('posterPreview');
+  const val=document.getElementById('f_poster_value');
+  if(!prev||!val) return;
+  const b=parseFloat(document.getElementById('posterBright')?.value||100)/100;
+  const c=parseFloat(document.getElementById('posterContrast')?.value||100)/100;
+  const canvas=document.createElement('canvas');
+  const img=new Image(); img.crossOrigin='anonymous';
+  img.onload=()=>{
+    const rot=_posterRot; const flip=_posterFlipped;
+    const sw=img.naturalWidth, sh=img.naturalHeight;
+    const rotated=(rot===90||rot===270);
+    canvas.width=rotated?sh:sw; canvas.height=rotated?sw:sh;
+    const ctx=canvas.getContext('2d');
+    ctx.save();
+    ctx.translate(canvas.width/2, canvas.height/2);
+    ctx.rotate(rot*Math.PI/180);
+    if(flip) ctx.scale(-1,1);
+    ctx.filter=`brightness(${b}) contrast(${c})`;
+    ctx.drawImage(img,-sw/2,-sh/2,sw,sh);
+    ctx.restore();
+    try{ val.value=canvas.toDataURL('image/jpeg',0.9); }catch(e){ /* CORS — keep original */ }
+  };
+  img.src=prev.src;
+}
+
 function bindPoster(){
-  const inp=document.getElementById('f_poster'),prev=document.getElementById('posterPreview');
-  if(!inp||!prev) return;
-  inp.addEventListener('input',()=>{ if(inp.value.trim()){prev.src=inp.value.trim();prev.style.display='block';}else{prev.style.display='none';} });
-  if(inp.value.trim()){prev.src=inp.value.trim();prev.style.display='block';}
+  // URL input watcher
+  const inp=document.getElementById('f_poster');
+  if(inp){
+    inp.addEventListener('input',()=>{
+      const v=inp.value.trim();
+      if(v){ posterSetImage(v); _posterIsData=false; }
+      else posterClear();
+    });
+    // init if editing existing
+    const existingVal=document.getElementById('f_poster_value')?.value||inp.value.trim();
+    if(existingVal){ posterSetImage(existingVal); if(existingVal.startsWith('data:')) _posterIsData=true; }
+  }
+
+  // Book cover (existing logic)
   const bcInp=document.getElementById('f_bookcoverurl'),bcPrev=document.getElementById('bookCoverPreview');
   if(bcInp&&bcPrev){
     bcInp.addEventListener('input',()=>{ if(bcInp.value.trim()){bcPrev.src=bcInp.value.trim();bcPrev.style.display='block';}else{bcPrev.style.display='none';} });
   }
+}
+
+/* Return final poster value (baked base64 or URL) */
+function getPosterValue(){
+  return document.getElementById('f_poster_value')?.value||document.getElementById('f_poster')?.value.trim()||'';
 }
 function toggleBookFields(){
   const checked=document.getElementById('f_book')?.checked;
@@ -1518,14 +1657,56 @@ function formHtml(s, forcedCategory=null){
       </div>
 
       <div class="form-row">
-        <label class="form-label">Portada (URL)</label>
-        <div style="display:flex;gap:10px;align-items:flex-start">
-          <img id="posterPreview" class="poster-preview" alt="Portada" style="${s&&s.poster?'display:block':'display:none'};width:54px;height:80px;border-radius:10px;object-fit:cover;border:1.5px solid var(--border2);flex-shrink:0" src="${s&&s.poster?s.poster:''}">
-          <div style="flex:1">
-            <input id="f_poster" placeholder="https://image.tmdb.org/..." value="${s&&s.poster?s.poster:''}"/>
-            <div class="poster-hint" style="font-size:11px;margin-top:4px"><a href="https://www.themoviedb.org" target="_blank">TMDB</a> o <a href="https://myanimelist.net" target="_blank">MAL</a> → clic derecho → <strong>Copiar dirección</strong></div>
+        <label class="form-label">Portada</label>
+        <div class="poster-editor-wrap" id="posterEditorWrap">
+          <!-- Tabs -->
+          <div class="poster-editor-tabs">
+            <button type="button" class="poster-tab active" data-ptab="url" onclick="switchPosterTab('url',this)">🔗 URL</button>
+            <button type="button" class="poster-tab" data-ptab="upload" onclick="switchPosterTab('upload',this)">📁 Subir imagen</button>
+          </div>
+          <!-- Panel URL -->
+          <div class="poster-tab-panel active" id="posterPanel_url">
+            <input type="text" id="f_poster" placeholder="https://image.tmdb.org/..." value="${s&&s.poster&&!s.poster.startsWith('data:')?s.poster:''}"/>
+            <div class="poster-hint" style="font-size:11px;margin-top:5px"><a href="https://www.themoviedb.org" target="_blank">TMDB</a> o <a href="https://myanimelist.net" target="_blank">MAL</a> → clic derecho → <strong>Copiar dirección de imagen</strong></div>
+          </div>
+          <!-- Panel Subir -->
+          <div class="poster-tab-panel" id="posterPanel_upload">
+            <div class="poster-upload-zone" id="posterDropZone" onclick="document.getElementById('posterFileInput').click()" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="posterHandleDrop(event)">
+              <input type="file" id="posterFileInput" accept="image/*" onchange="posterHandleFile(this.files[0])">
+              <div style="font-size:1.8rem;margin-bottom:5px">🖼️</div>
+              <div>Haz clic o arrastra una imagen aquí</div>
+              <div style="font-size:11px;margin-top:3px;opacity:.7">JPG, PNG, WEBP…</div>
+            </div>
+          </div>
+          <!-- Preview + edición (se muestra cuando hay imagen) -->
+          <div class="poster-editor-preview-row" id="posterEditRow" style="${s&&s.poster?'':'display:none'}">
+            <div class="poster-editor-img-wrap">
+              <img id="posterPreview" src="${s&&s.poster?s.poster:''}" alt="Portada" style="transform:rotate(0deg) scale(1);filter:brightness(1) contrast(1)">
+            </div>
+            <div class="poster-edit-controls">
+              <div>
+                <label>Rotar</label>
+                <div class="poster-edit-btns">
+                  <button type="button" class="poster-edit-btn" onclick="posterRotate(-90)" title="Rotar -90°">↺ -90°</button>
+                  <button type="button" class="poster-edit-btn" onclick="posterRotate(90)" title="Rotar +90°">↻ +90°</button>
+                  <button type="button" class="poster-edit-btn" onclick="posterRotate(180)" title="Girar 180°">↕ 180°</button>
+                  <button type="button" class="poster-edit-btn" onclick="posterFlip()" title="Voltear horizontal">⇔ Voltear</button>
+                </div>
+              </div>
+              <div>
+                <label>Brillo <span id="posterBrightVal">100%</span></label>
+                <input type="range" class="poster-edit-slider" id="posterBright" min="50" max="150" value="100" oninput="posterApplyFilters()">
+              </div>
+              <div>
+                <label>Contraste <span id="posterContrastVal">100%</span></label>
+                <input type="range" class="poster-edit-slider" id="posterContrast" min="50" max="150" value="100" oninput="posterApplyFilters()">
+              </div>
+              <button type="button" class="poster-clear-btn" onclick="posterClear()">✕ Quitar portada</button>
+            </div>
           </div>
         </div>
+        <!-- Campo oculto que guarda el valor final (URL o base64) -->
+        <input type="hidden" id="f_poster_value" value="${s&&s.poster?s.poster:''}">
       </div>
 
       <div class="form-row">
@@ -2127,7 +2308,7 @@ function renderRealitiesGrid(){
 
 function saveSeries(si, forcedCategory=null){
   const name=document.getElementById('f_name').value.trim();
-  const poster=document.getElementById('f_poster').value.trim();
+  const poster=getPosterValue();
   const synopsis=document.getElementById('f_synopsis').value.trim();
   const year=document.getElementById('f_year').value.trim();
   const country=getCountries('countriesList');
@@ -2377,11 +2558,51 @@ function movieFormHtml(mv){
     <input id="mf_nameEn" placeholder="Ej: 이태원 클라쓰 / Itaewon Class / 深夜食堂…" value="${mv&&mv.nameEn?mv.nameEn:''}"/>
   </div>
   <div class="form-row">
-    <label class="form-label">URL de la portada</label>
-    <input id="mf_poster" placeholder="https://image.tmdb.org/..." value="${mv&&mv.poster?mv.poster:''}"/>
-    <div class="poster-row"><img id="moviePosterPreview" class="poster-preview" alt="Portada" style="${mv&&mv.poster?'display:block':'display:none'}" src="${mv&&mv.poster?mv.poster:''}">
-      <div class="poster-hint">Clic derecho en la portada → <strong>"Copiar dirección de imagen"</strong></div>
+    <label class="form-label">Portada</label>
+    <div class="poster-editor-wrap" id="posterEditorWrap">
+      <div class="poster-editor-tabs">
+        <button type="button" class="poster-tab active" data-ptab="url" onclick="switchPosterTab('url',this)">🔗 URL</button>
+        <button type="button" class="poster-tab" data-ptab="upload" onclick="switchPosterTab('upload',this)">📁 Subir imagen</button>
+      </div>
+      <div class="poster-tab-panel active" id="posterPanel_url">
+        <input type="text" id="mf_poster" placeholder="https://image.tmdb.org/..." value="${mv&&mv.poster&&!mv.poster.startsWith('data:')?mv.poster:''}"/>
+        <div class="poster-hint" style="font-size:11px;margin-top:5px">Clic derecho en la portada → <strong>"Copiar dirección de imagen"</strong></div>
+      </div>
+      <div class="poster-tab-panel" id="posterPanel_upload">
+        <div class="poster-upload-zone" id="posterDropZone" onclick="document.getElementById('posterFileInput').click()" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="posterHandleDrop(event)">
+          <input type="file" id="posterFileInput" accept="image/*" onchange="posterHandleFile(this.files[0])">
+          <div style="font-size:1.8rem;margin-bottom:5px">🖼️</div>
+          <div>Haz clic o arrastra una imagen aquí</div>
+          <div style="font-size:11px;margin-top:3px;opacity:.7">JPG, PNG, WEBP…</div>
+        </div>
+      </div>
+      <div class="poster-editor-preview-row" id="posterEditRow" style="${mv&&mv.poster?'':'display:none'}">
+        <div class="poster-editor-img-wrap">
+          <img id="posterPreview" src="${mv&&mv.poster?mv.poster:''}" alt="Portada" style="transform:rotate(0deg) scale(1);filter:brightness(1) contrast(1)">
+        </div>
+        <div class="poster-edit-controls">
+          <div>
+            <label>Rotar</label>
+            <div class="poster-edit-btns">
+              <button type="button" class="poster-edit-btn" onclick="posterRotate(-90)" title="Rotar -90°">↺ -90°</button>
+              <button type="button" class="poster-edit-btn" onclick="posterRotate(90)" title="Rotar +90°">↻ +90°</button>
+              <button type="button" class="poster-edit-btn" onclick="posterRotate(180)" title="Girar 180°">↕ 180°</button>
+              <button type="button" class="poster-edit-btn" onclick="posterFlip()" title="Voltear horizontal">⇔ Voltear</button>
+            </div>
+          </div>
+          <div>
+            <label>Brillo <span id="posterBrightVal">100%</span></label>
+            <input type="range" class="poster-edit-slider" id="posterBright" min="50" max="150" value="100" oninput="posterApplyFilters()">
+          </div>
+          <div>
+            <label>Contraste <span id="posterContrastVal">100%</span></label>
+            <input type="range" class="poster-edit-slider" id="posterContrast" min="50" max="150" value="100" oninput="posterApplyFilters()">
+          </div>
+          <button type="button" class="poster-clear-btn" onclick="posterClear()">✕ Quitar portada</button>
+        </div>
+      </div>
     </div>
+    <input type="hidden" id="f_poster_value" value="${mv&&mv.poster?mv.poster:''}">
   </div>
   <div class="form-row"><label class="form-label">Sinopsis / Descripción</label><textarea id="mf_synopsis" placeholder="Breve descripción…">${mv&&mv.synopsis?mv.synopsis:''}</textarea></div>
   <div class="form-row-half">
@@ -2540,8 +2761,17 @@ function previewSeasonDuration(input){
   }
 }
 function bindMovieForm(){
-  const p=document.getElementById('mf_poster'),pp=document.getElementById('moviePosterPreview');
-  if(p&&pp){ p.addEventListener('input',()=>{ if(p.value.trim()){pp.src=p.value.trim();pp.style.display='block';}else{pp.style.display='none';} }); }
+  // Use shared poster editor (same IDs: posterPreview, f_poster_value, posterEditRow, etc.)
+  const inp=document.getElementById('mf_poster');
+  if(inp){
+    inp.addEventListener('input',()=>{
+      const v=inp.value.trim();
+      if(v){ posterSetImage(v); _posterIsData=false; }
+      else posterClear();
+    });
+    const existingVal=document.getElementById('f_poster_value')?.value||inp.value.trim();
+    if(existingVal){ posterSetImage(existingVal); if(existingVal.startsWith('data:')) _posterIsData=true; }
+  }
   const bc=document.getElementById('mf_bookcoverurl'),bcp=document.getElementById('movieBookCoverPreview');
   if(bc&&bcp){ bc.addEventListener('input',()=>{ if(bc.value.trim()){bcp.src=bc.value.trim();bcp.style.display='block';}else{bcp.style.display='none';} }); }
 }
@@ -2634,7 +2864,7 @@ function saveMovie(mi){
   const payload={
     name,
     nameEn:document.getElementById('mf_nameEn')?.value.trim()||'',
-    poster:document.getElementById('mf_poster').value.trim(),
+    poster:getPosterValue(),
     synopsis:document.getElementById('mf_synopsis').value.trim(),
     year:document.getElementById('mf_year').value?parseInt(document.getElementById('mf_year').value):'',
     country:getCountries('movieCountriesList'),
@@ -2994,7 +3224,7 @@ function runPasteAutofill(type){
     setVal('f_net',      info.network);
     setVal('f_poster',   posterUrl);
     setVal('f_trailer',  trailerUrl);
-    if(posterUrl){var pp=document.getElementById('seriesPosterPreview');if(pp){pp.src=posterUrl;pp.style.display='block';}}
+    if(posterUrl){ posterSetImage(posterUrl); }
     if(info.country){initCountries('countriesList',info.country);filled++;}
     if(info.basedOnBook){
       var cb=document.getElementById('f_book');
@@ -3017,7 +3247,7 @@ function runPasteAutofill(type){
     setVal('mf_net',     info.network);
     setVal('mf_poster',  posterUrl);
     setVal('mf_trailer', trailerUrl);
-    if(posterUrl){var mpp=document.getElementById('moviePosterPreview');if(mpp){mpp.src=posterUrl;mpp.style.display='block';}}
+    if(posterUrl){ posterSetImage(posterUrl); }
     if(info.country){initCountries('movieCountriesList',info.country);filled++;}
     if(info.basedOnBook){
       var cb2=document.getElementById('mf_book');
