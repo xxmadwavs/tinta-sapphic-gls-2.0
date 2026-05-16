@@ -221,7 +221,19 @@ footer{
   .navbar-links.open{display:flex}
   .nav-link{justify-content:flex-start;padding:10px 12px;border-radius:10px;font-size:14px}
   .navbar-right{margin-left:auto;gap:6px}
+  /* Ocultar buscador en la barra pero mostrarlo dentro del menú desplegable */
   .navbar-search-wrap{display:none}
+  .navbar-search-wrap.mobile-menu-search{
+    display:flex;margin:4px 0 8px;border-radius:12px;
+    background:var(--surface2);border-color:var(--border2);
+  }
+  .navbar-search-wrap.mobile-menu-search .navbar-search-inp{
+    width:100%;font-size:14px;padding:8px 0;
+  }
+  .navbar-search-results{
+    position:fixed;top:auto;left:12px;right:12px;
+    max-height:50vh;
+  }
   .nav-picks-drop,.tab-more-drop{
     position:static;box-shadow:none;border:none;
     padding:0 0 0 12px;border-radius:0;background:transparent;
@@ -1602,6 +1614,12 @@ footer {
 
     <!-- Nav links -->
     <div class="navbar-links" id="navbarLinks">
+      <!-- Buscador móvil (solo visible en menú desplegable) -->
+      <div class="navbar-search-wrap mobile-menu-search" id="navSearchWrapMobile">
+        <svg class="navbar-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="navbar-search-inp" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
+        <div class="navbar-search-results" id="navSearchResultsMobile" style="display:none"></div>
+      </div>
       <button class="nav-link active" id="tabCal" onclick="switchTab('cal')">Calendario</button>
       <button class="nav-link" id="tabList" onclick="switchTab('list')">Series</button>
       <button class="nav-link" id="tabMovies" onclick="switchTab('movies')">Películas</button>
@@ -1637,7 +1655,7 @@ footer {
     <div class="navbar-right">
       <div class="navbar-search-wrap" id="navSearchWrap">
         <svg class="navbar-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus()" onblur="setTimeout(navSearchBlur,180)" autocomplete="off">
+        <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
       </div>
       <a class="navbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X" aria-label="X / Twitter">
@@ -4803,38 +4821,37 @@ document.addEventListener('click',e=>{
   if(!document.getElementById('mainNavbar')?.contains(e.target)) document.getElementById('navbarLinks')?.classList.remove('open');
 });
 
-/* ── Inline navbar search ── */
 function navSearchHandler(q){
-  const box=document.getElementById('navSearchResults');
-  if(!box) return;
-  q=q.trim();
-  if(q.length<2){ box.style.display='none'; return; }
+  const boxes=[document.getElementById('navSearchResults'), document.getElementById('navSearchResultsMobile')].filter(Boolean);
+  q=(q||'').trim();
+  if(q.length<2){ boxes.forEach(b=>b.style.display='none'); return; }
+  const ql=q.toLowerCase();
   const results=[];
-  (window.series||[]).forEach((s,i)=>{
-    if(s.name.toLowerCase().includes(q.toLowerCase())||(s.nameEn||'').toLowerCase().includes(q.toLowerCase()))
+  (state.series||[]).forEach((s,i)=>{
+    if((s.name||'').toLowerCase().includes(ql)||(s.nameEn||'').toLowerCase().includes(ql))
       results.push({type:s.category==='anime'?'anime':s.category==='reality'?'reality':'serie', name:s.name, year:s.year, poster:s.poster, si:i});
   });
-  (window.movies||[]).forEach((m,i)=>{
-    if(m.name.toLowerCase().includes(q.toLowerCase())||(m.nameEn||'').toLowerCase().includes(q.toLowerCase()))
+  (state.movies||[]).forEach((m,i)=>{
+    if((m.name||'').toLowerCase().includes(ql)||(m.nameEn||'').toLowerCase().includes(ql))
       results.push({type:'pelicula', name:m.name, year:m.year, poster:m.poster, si:i});
   });
-  if(!results.length){ box.innerHTML='<div class="nsearch-empty">Sin resultados</div>'; box.style.display='flex'; return; }
   const typeLabel={serie:'Serie',anime:'Anime',reality:'Reality',pelicula:'Película'};
-  box.innerHTML=results.slice(0,8).map(r=>{
-    const poster=r.poster?`<img src="${r.poster}" onerror="this.outerHTML='<div class=nsearch-item-ph>🎬</div>'" loading="lazy">`:'<div class="nsearch-item-ph">🎬</div>';
-    let onclick='';
-    if(r.type==='serie') onclick=`navSearchPick();switchTab('list');setTimeout(()=>openSeries(${r.si}),60)`;
-    else if(r.type==='pelicula') onclick=`navSearchPick();switchTab('movies');setTimeout(()=>openMovie(${r.si}),60)`;
-    else if(r.type==='anime') onclick=`navSearchPick();switchTab('anime');setTimeout(()=>openAnimeDetail('series','${r.si}'),60)`;
-    else if(r.type==='reality') onclick=`navSearchPick();switchTab('realities');setTimeout(()=>openRealityDetail('series','${r.si}'),60)`;
-    return `<div class="nsearch-item" onclick="${onclick}">${poster}<div class="nsearch-item-info"><div class="nsearch-item-name">${r.name}</div><div class="nsearch-item-meta">${typeLabel[r.type]||''}${r.year?' · '+r.year:''}</div></div></div>`;
-  }).join('');
-  box.style.display='flex';
-  box.style.flexDirection='column';
+  const html=results.length
+    ? results.slice(0,8).map(r=>{
+        const poster=r.poster?`<img src="${r.poster}" onerror="this.outerHTML='<div class=nsearch-item-ph>🎬</div>'" loading="lazy">`:'<div class="nsearch-item-ph">🎬</div>';
+        let onclick='';
+        if(r.type==='serie') onclick=`navSearchPick();switchTab('list');setTimeout(()=>openSeries(${r.si}),60)`;
+        else if(r.type==='pelicula') onclick=`navSearchPick();switchTab('movies');setTimeout(()=>openMovie(${r.si}),60)`;
+        else if(r.type==='anime') onclick=`navSearchPick();switchTab('anime');setTimeout(()=>openAnimeDetail('series','${r.si}'),60)`;
+        else if(r.type==='reality') onclick=`navSearchPick();switchTab('realities');setTimeout(()=>openRealityDetail('series','${r.si}'),60)`;
+        return `<div class="nsearch-item" onclick="${onclick}">${poster}<div class="nsearch-item-info"><div class="nsearch-item-name">${r.name}</div><div class="nsearch-item-meta">${typeLabel[r.type]||''}${r.year?' · '+r.year:''}</div></div></div>`;
+      }).join('')
+    : '<div class="nsearch-empty">Sin resultados</div>';
+  boxes.forEach(b=>{ b.innerHTML=html; b.style.display='flex'; b.style.flexDirection='column'; });
 }
-function navSearchFocus(){ const q=document.getElementById('navSearchInp')?.value; if(q&&q.length>=2) navSearchHandler(q); }
-function navSearchBlur(){ document.getElementById('navSearchResults').style.display='none'; }
-function navSearchPick(){ document.getElementById('navSearchInp').value=''; document.getElementById('navSearchResults').style.display='none'; }
+function navSearchFocus(e){ const q=(e?.target||document.getElementById('navSearchInp'))?.value; if(q&&q.length>=2) navSearchHandler(q); }
+function navSearchBlur(){ setTimeout(()=>document.querySelectorAll('.navbar-search-results').forEach(b=>b.style.display='none'),180); }
+function navSearchPick(){ document.querySelectorAll('.navbar-search-inp').forEach(i=>i.value=''); document.querySelectorAll('.navbar-search-results').forEach(b=>b.style.display='none'); document.getElementById('navbarLinks')?.classList.remove('open'); }
 
 
 
