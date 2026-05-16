@@ -18699,7 +18699,7 @@
       "id": "1778877990809",
       "name": "Never Fade",
       "nameEn": "",
-      "poster": "",
+      "poster": "https://girlsloveinfo.com/wp-content/uploads/2026/05/Never-Fade-Movie-PosterNeverFadeProjectNeverFadeProjectPresentedbyAuraBangkokClinic-818x1024.jpg",
       "synopsis": "",
       "year": "",
       "country": "Tailandia",
@@ -18727,7 +18727,9 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-15T20:48:08.408Z"
+      "updatedAt": "2026-05-16T12:57:09.688Z",
+      "myPick": false,
+      "myPick2026": false
     },
     {
       "id": "1778878081641",
@@ -18914,7 +18916,7 @@
       "id": "1778878979742",
       "name": "Futari Escape",
       "nameEn": "ふたりエスケープ",
-      "poster": "https://i.mydramalist.com/b3RX2L_4c.jpg?v=1",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNGQyYzIzOWMtZTNjZC00ZDRlLWEwY2YtOWUyZTk3YzFiOGU0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
       "synopsis": "Dos jóvenes —una dibujante de manga con exceso de trabajo y la otra, una auténtica holgazana— intentan escapar de la realidad de las responsabilidades de la vida adulta. Ya sea escapándose a pasar el día fuera en lugar de ser productivas o endeudándose para darse un festín, ¡las dos siempre se lo pasan en grande cuando están juntas! Disfruta de esta encantadora (y cercana) historia cotidiana sobre los pequeños placeres de escapar de las cosas difíciles.",
       "year": 2025,
       "country": "Japón",
@@ -18967,7 +18969,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T21:02:59.742Z"
+      "updatedAt": "2026-05-16T12:59:07.096Z",
+      "myPick": false,
+      "myPick2026": false
     },
     {
       "id": "1778933359445",
@@ -19165,7 +19169,20 @@
       ],
       "category": "series",
       "seriesType": "serie",
-      "cast": [],
+      "cast": [
+        {
+          "actressId": "1778936286776",
+          "character": "Yoo Je I",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778936326022",
+          "character": "Woo Seul Gi",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
       "animeSeason": "",
       "renewedNextSeason": true,
       "episodeDuration": 30,
@@ -19188,7 +19205,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T12:52:07.765Z"
+      "updatedAt": "2026-05-16T12:58:46.900Z"
     }
   ],
   "movies": [
@@ -30545,7 +30562,24 @@
       "country": "Japón",
       "birthdate": "2006-09-18",
       "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778936286776",
+      "name": "Lee Hye Ri",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Hyeri_in_July_2025.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
+      "country": "Corea del Sur",
+      "birthdate": "1994-06-09",
+      "height": 167,
+      "notes": "Actriz, Cantante"
+    },
+    {
+      "id": "1778936326022",
+      "name": "Chung Su Bin",
+      "photo": "https://static.wikia.nocookie.net/drama/images/b/be/Chung_Su_Bin1.jpg/revision/latest?cb=20221207175553&path-prefix=es",
+      "country": "Corea del Sur",
+      "birthdate": "1998-08-17",
+      "notes": "Actriz"
     }
   ],
-  "exportedAt": "2026-05-16T12:52:09.351Z"
+  "exportedAt": "2026-05-16T13:00:05.900Z"
 }
