@@ -105,7 +105,7 @@ body::before{content:'';position:fixed;inset:0;background:
 /* Preview + edit strip */
 .poster-editor-preview-row{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-top:1px solid var(--border2);background:var(--surface)}
 .poster-editor-img-wrap{position:relative;width:60px;height:90px;flex-shrink:0;border-radius:8px;overflow:hidden;border:1.5px solid var(--border2);background:#eee}
-.poster-editor-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s}
+.poster-editor-img-wrap canvas,.poster-editor-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:none}
 .poster-edit-controls{flex:1;display:flex;flex-direction:column;gap:7px}
 .poster-edit-controls label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px;display:block}
 .poster-edit-slider{width:100%;accent-color:var(--accent);cursor:pointer}
@@ -1287,7 +1287,7 @@ function closeAll(){ document.querySelectorAll('.modal-bg').forEach(m=>m.classLi
 document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{ if(e.target===m)closeAll(); }));
 
 /* ═══ POSTER EDITOR STATE ═══ */
-let _posterRot=0, _posterFlipped=false, _posterIsData=false;
+let _posterRot=0, _posterFlipped=false, _posterOrigSrc='';
 
 function switchPosterTab(tab, btn){
   document.querySelectorAll('#posterEditorWrap .poster-tab').forEach(t=>t.classList.toggle('active',t.dataset.ptab===tab));
@@ -1295,58 +1295,84 @@ function switchPosterTab(tab, btn){
   document.getElementById('posterPanel_upload').classList.toggle('active',tab==='upload');
 }
 
+/* Draw rotated+flipped+filtered image onto the preview canvas, cover-filling the 2:3 frame */
+function _posterRedraw(){
+  const canvas=document.getElementById('posterPreview');
+  const val=document.getElementById('f_poster_value');
+  if(!canvas||!_posterOrigSrc) return;
+  const img=new Image(); img.crossOrigin='anonymous';
+  img.onload=()=>{
+    const rot=_posterRot, flip=_posterFlipped;
+    const rad=rot*Math.PI/180;
+    // Canvas output always portrait 2:3 ratio, pick sensible px size
+    const OUT_W=300, OUT_H=450;
+    canvas.width=OUT_W; canvas.height=OUT_H;
+    const ctx=canvas.getContext('2d');
+    // Filters
+    const b=parseFloat(document.getElementById('posterBright')?.value||100)/100;
+    const c=parseFloat(document.getElementById('posterContrast')?.value||100)/100;
+    ctx.filter=`brightness(${b}) contrast(${c})`;
+    ctx.save();
+    ctx.translate(OUT_W/2, OUT_H/2);
+    ctx.rotate(rad);
+    if(flip) ctx.scale(-1,1);
+    // Cover-fill: scale source so it fills the rotated frame
+    const sw=img.naturalWidth, sh=img.naturalHeight;
+    // After rotation, the effective source dims that must cover OUT_W×OUT_H are swapped if 90/270
+    const rotated=(rot===90||rot===270);
+    const targetW=rotated?OUT_H:OUT_W, targetH=rotated?OUT_W:OUT_H;
+    const scale=Math.max(targetW/sw, targetH/sh);
+    const dw=sw*scale, dh=sh*scale;
+    ctx.drawImage(img,-dw/2,-dh/2,dw,dh);
+    ctx.restore();
+    // Save baked result
+    try{ if(val) val.value=canvas.toDataURL('image/jpeg',0.92); }catch(e){}
+  };
+  img.src=_posterOrigSrc;
+}
+
 function posterSetImage(src){
-  _posterRot=0; _posterFlipped=false;
-  const prev=document.getElementById('posterPreview');
+  _posterRot=0; _posterFlipped=false; _posterOrigSrc=src;
   const row=document.getElementById('posterEditRow');
   const val=document.getElementById('f_poster_value');
   if(!src){ if(row) row.style.display='none'; if(val) val.value=''; return; }
-  if(prev){ prev.src=src; prev.style.transform='rotate(0deg) scale(1)'; prev.style.filter='brightness(1) contrast(1)'; }
   if(row) row.style.display='flex';
   if(val) val.value=src;
   // reset sliders
   const b=document.getElementById('posterBright'), c=document.getElementById('posterContrast');
   if(b){b.value=100;document.getElementById('posterBrightVal').textContent='100%';}
   if(c){c.value=100;document.getElementById('posterContrastVal').textContent='100%';}
+  _posterRedraw();
 }
 
 function posterRotate(deg){
   _posterRot=(_posterRot+deg+360)%360;
-  posterApplyTransform();
-  if(document.getElementById('f_poster_value')?.value.startsWith('data:')) posterBakeTransform();
+  _posterRedraw();
 }
 function posterFlip(){
   _posterFlipped=!_posterFlipped;
-  posterApplyTransform();
-  if(document.getElementById('f_poster_value')?.value.startsWith('data:')) posterBakeTransform();
-}
-function posterApplyTransform(){
-  const prev=document.getElementById('posterPreview');
-  if(!prev) return;
-  const scale=_posterFlipped?-1:1;
-  prev.style.transform=`rotate(${_posterRot}deg) scaleX(${scale})`;
+  _posterRedraw();
 }
 function posterApplyFilters(){
-  const prev=document.getElementById('posterPreview');
   const b=document.getElementById('posterBright'), c=document.getElementById('posterContrast');
-  if(!prev||!b||!c) return;
-  document.getElementById('posterBrightVal').textContent=b.value+'%';
-  document.getElementById('posterContrastVal').textContent=c.value+'%';
-  prev.style.filter=`brightness(${b.value/100}) contrast(${c.value/100})`;
+  if(b) document.getElementById('posterBrightVal').textContent=b.value+'%';
+  if(c) document.getElementById('posterContrastVal').textContent=c.value+'%';
+  _posterRedraw();
 }
 function posterClear(){
   const inp=document.getElementById('f_poster'); if(inp) inp.value='';
   const val=document.getElementById('f_poster_value'); if(val) val.value='';
-  const prev=document.getElementById('posterPreview'); if(prev) prev.src='';
+  const canvas=document.getElementById('posterPreview');
+  if(canvas){ const ctx=canvas.getContext('2d'); ctx.clearRect(0,0,canvas.width,canvas.height); }
   const row=document.getElementById('posterEditRow'); if(row) row.style.display='none';
-  _posterRot=0; _posterFlipped=false;
+  _posterRot=0; _posterFlipped=false; _posterOrigSrc='';
   const fi=document.getElementById('posterFileInput'); if(fi) fi.value='';
 }
 
 function posterHandleFile(file){
   if(!file) return;
   const reader=new FileReader();
-  reader.onload=e=>{ _posterIsData=true; posterSetImage(e.target.result); };
+  reader.onload=e=>{ posterSetImage(e.target.result); };
   reader.readAsDataURL(file);
   document.getElementById('posterDropZone')?.classList.remove('drag');
 }
@@ -1357,45 +1383,18 @@ function posterHandleDrop(e){
   if(file&&file.type.startsWith('image/')) posterHandleFile(file);
 }
 
-/* Bake rotation+flip+filters into a new base64 for URL-sourced images */
-function posterBakeTransform(){
-  const prev=document.getElementById('posterPreview');
-  const val=document.getElementById('f_poster_value');
-  if(!prev||!val) return;
-  const b=parseFloat(document.getElementById('posterBright')?.value||100)/100;
-  const c=parseFloat(document.getElementById('posterContrast')?.value||100)/100;
-  const canvas=document.createElement('canvas');
-  const img=new Image(); img.crossOrigin='anonymous';
-  img.onload=()=>{
-    const rot=_posterRot; const flip=_posterFlipped;
-    const sw=img.naturalWidth, sh=img.naturalHeight;
-    const rotated=(rot===90||rot===270);
-    canvas.width=rotated?sh:sw; canvas.height=rotated?sw:sh;
-    const ctx=canvas.getContext('2d');
-    ctx.save();
-    ctx.translate(canvas.width/2, canvas.height/2);
-    ctx.rotate(rot*Math.PI/180);
-    if(flip) ctx.scale(-1,1);
-    ctx.filter=`brightness(${b}) contrast(${c})`;
-    ctx.drawImage(img,-sw/2,-sh/2,sw,sh);
-    ctx.restore();
-    try{ val.value=canvas.toDataURL('image/jpeg',0.9); }catch(e){ /* CORS — keep original */ }
-  };
-  img.src=prev.src;
-}
-
 function bindPoster(){
   // URL input watcher
   const inp=document.getElementById('f_poster');
   if(inp){
     inp.addEventListener('input',()=>{
       const v=inp.value.trim();
-      if(v){ posterSetImage(v); _posterIsData=false; }
+      if(v){ posterSetImage(v); }
       else posterClear();
     });
     // init if editing existing
     const existingVal=document.getElementById('f_poster_value')?.value||inp.value.trim();
-    if(existingVal){ posterSetImage(existingVal); if(existingVal.startsWith('data:')) _posterIsData=true; }
+    if(existingVal){ posterSetImage(existingVal); }
   }
 
   // Book cover (existing logic)
@@ -1697,7 +1696,7 @@ function formHtml(s, forcedCategory=null){
           <!-- Preview + edición (se muestra cuando hay imagen) -->
           <div class="poster-editor-preview-row" id="posterEditRow" style="${s&&s.poster?'':'display:none'}">
             <div class="poster-editor-img-wrap" onclick="togglePosterExpand()" title="Haz clic para ampliar">
-              <img id="posterPreview" src="${s&&s.poster?s.poster:''}" alt="Portada" style="transform:rotate(0deg) scale(1);filter:brightness(1) contrast(1)">
+              <canvas id="posterPreview" style="width:100%;height:100%;display:block;border-radius:6px"></canvas>
             </div>
             <div class="poster-edit-controls">
               <div>
@@ -2595,7 +2594,7 @@ function movieFormHtml(mv){
       </div>
       <div class="poster-editor-preview-row" id="posterEditRow" style="${mv&&mv.poster?'':'display:none'}">
         <div class="poster-editor-img-wrap" onclick="togglePosterExpand()" title="Haz clic para ampliar">
-          <img id="posterPreview" src="${mv&&mv.poster?mv.poster:''}" alt="Portada" style="transform:rotate(0deg) scale(1);filter:brightness(1) contrast(1)">
+          <canvas id="posterPreview" style="width:100%;height:100%;display:block;border-radius:6px"></canvas>
         </div>
         <div class="poster-edit-controls">
           <div>
@@ -2775,16 +2774,15 @@ function previewSeasonDuration(input){
   }
 }
 function bindMovieForm(){
-  // Use shared poster editor (same IDs: posterPreview, f_poster_value, posterEditRow, etc.)
   const inp=document.getElementById('mf_poster');
   if(inp){
     inp.addEventListener('input',()=>{
       const v=inp.value.trim();
-      if(v){ posterSetImage(v); _posterIsData=false; }
+      if(v){ posterSetImage(v); }
       else posterClear();
     });
     const existingVal=document.getElementById('f_poster_value')?.value||inp.value.trim();
-    if(existingVal){ posterSetImage(existingVal); if(existingVal.startsWith('data:')) _posterIsData=true; }
+    if(existingVal){ posterSetImage(existingVal); }
   }
   const bc=document.getElementById('mf_bookcoverurl'),bcp=document.getElementById('movieBookCoverPreview');
   if(bc&&bcp){ bc.addEventListener('input',()=>{ if(bc.value.trim()){bcp.src=bc.value.trim();bcp.style.display='block';}else{bcp.style.display='none';} }); }
