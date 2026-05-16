@@ -173,33 +173,61 @@ body::before{content:'';position:fixed;inset:0;background:
 /* Hamburger for mobile */
 .navbar-hamburger{
   display:none;flex-direction:column;gap:5px;
-  background:none;border:none;cursor:pointer;padding:8px;margin-left:auto;
+  background:none;border:none;cursor:pointer;padding:8px;margin-left:8px;
+  flex-shrink:0;
 }
 .navbar-hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .2s}
+
+/* X icon button */
+.navbar-x-btn{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);border:1.5px solid var(--border2);
+  background:var(--surface);text-decoration:none;
+  transition:all .18s;flex-shrink:0;
+}
+.navbar-x-btn:hover{background:#000;color:#fff;border-color:#000;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
 
 /* HIDE old topbar & tabs */
 .topbar{display:none!important}
 .tabs{display:none!important}
+.topbar-x-btn{display:none!important}
+
+/* ─── Sticky footer layout ─── */
+html,body{height:100%}
+body{display:flex;flex-direction:column}
+body>*:not(footer){flex-shrink:0}
+#mainContainer{flex:1 0 auto}
+footer{
+  flex-shrink:0;
+  margin-top:auto;
+}
 
 /* Mobile nav */
 @media(max-width:860px){
   .logo-divider,.logo-sub{display:none}
-  .navbar-search-inp{width:130px}
+  .navbar-search-inp{width:120px}
 }
 @media(max-width:700px){
   .navbar-hamburger{display:flex}
+  .navbar-inner{flex-wrap:nowrap;position:relative;gap:0}
   .navbar-links{
     display:none;flex-direction:column;align-items:stretch;gap:2px;
     position:absolute;top:58px;left:0;right:0;
-    background:var(--surface);border-bottom:1.5px solid var(--border2);
-    padding:8px 12px;box-shadow:0 8px 24px rgba(180,80,120,0.1);z-index:100;
+    background:rgba(255,255,255,0.98);border-bottom:1.5px solid var(--border2);
+    padding:8px 12px 12px;box-shadow:0 8px 24px rgba(180,80,120,0.1);z-index:100;
+    backdrop-filter:blur(16px);
   }
   .navbar-links.open{display:flex}
-  .navbar-inner{flex-wrap:wrap;position:relative}
-  .navbar-right{gap:6px}
-  .navbar-search-inp{width:100px}
-  .nav-picks-drop,.tab-more-drop{position:static;box-shadow:none;border:none;padding:0 0 0 14px;border-radius:0;background:transparent}
-  .nav-picks-item,.tab-more-item{padding:7px 10px;font-size:12px}
+  .nav-link{justify-content:flex-start;padding:10px 12px;border-radius:10px;font-size:14px}
+  .navbar-right{margin-left:auto;gap:6px}
+  .navbar-search-wrap{display:none}
+  .nav-picks-drop,.tab-more-drop{
+    position:static;box-shadow:none;border:none;
+    padding:0 0 0 12px;border-radius:0;background:transparent;
+    display:flex;flex-direction:column;
+  }
+  .nav-picks-item,.tab-more-item{padding:8px 12px;font-size:13px;border-radius:8px}
 }
 
 /* ═══ HERO ═══ */
@@ -1280,52 +1308,61 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
 /* ═══ FOOTER ═══ */
 footer {
-  margin-top:3rem; padding:1.5rem 2rem 2rem;
+  margin-top:3rem;
   border-top:1px solid var(--border);
-  background:rgba(255,255,255,0.6);
-  backdrop-filter:blur(8px);
-  text-align:center;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(10px);
   position:relative; z-index:1;
 }
 .footer-inner {
-  max-width:1020px; margin:0 auto;
-  display:flex; flex-direction:column; align-items:center; gap:16px;
+  max-width:1200px; margin:0 auto;
+  padding:1.25rem 2rem;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:12px;
 }
 .footer-brand-row {
-  display:flex; align-items:center; justify-content:space-between;
-  width:100%; flex-wrap:wrap; gap:8px;
+  display:flex; align-items:center; gap:16px;
+  flex-wrap:wrap;
 }
 .footer-logo {
   font-family:var(--font-display); font-size:14px;
-  font-weight:600; color:var(--muted);
+  font-weight:400; color:var(--text); display:flex; align-items:baseline; gap:.28em;
 }
-.footer-logo strong { color:var(--text); font-weight:700; letter-spacing:.06em; }
-.footer-logo em { color:var(--accent); }
+.footer-logo strong { font-weight:700; letter-spacing:.13em; font-size:.92em; text-transform:uppercase; color:var(--text); }
+.footer-logo em { font-style:italic; font-weight:600; font-size:1.05em; color:var(--accent); }
 .footer-tagline { font-size:11.5px; color:var(--muted); }
 .footer-x-link {
-  font-size:11.5px; color:var(--muted); text-decoration:none;
-  font-weight:600; transition:color .15s;
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);border:1.5px solid var(--border2);
+  background:var(--surface);text-decoration:none;
+  transition:all .18s;flex-shrink:0;font-size:13px;
 }
-.footer-x-link:hover { color:var(--accent); }
+.footer-x-link:hover{background:#000;color:#fff;border-color:#000}
 .footer-nav-row {
-  display:flex; align-items:center; justify-content:center;
-  flex-wrap:wrap; gap:8px;
+  display:flex; align-items:center;
+  flex-wrap:wrap; gap:6px;
 }
 .footer-nav-btn {
   font-size:12px; color:var(--muted); cursor:pointer; font-weight:500;
-  padding:6px 14px; border:1.5px solid var(--border2); border-radius:20px;
-  transition:all .18s; background:var(--surface); font-family:var(--font-body);
+  padding:5px 13px; border:1.5px solid var(--border2); border-radius:20px;
+  transition:all .18s; background:transparent; font-family:var(--font-body);
 }
 .footer-nav-btn:hover {
   background:var(--surface2); color:var(--accent); border-color:var(--accent2);
 }
 .footer-nav-x {
-  font-size:12px; color:var(--muted); text-decoration:none; font-weight:500;
-  padding:6px 14px; border:1.5px solid var(--border2); border-radius:20px;
-  transition:all .18s; background:var(--surface);
-  display:flex; align-items:center; gap:5px;
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);border:1.5px solid var(--border2);
+  background:transparent;text-decoration:none;
+  transition:all .18s;
 }
 .footer-nav-x:hover { background:#000; color:#fff; border-color:#000; }
+@media(max-width:600px){
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:10px;padding:1rem 1.25rem}
+  .footer-tagline{display:none}
+}
 
 .info-modal-close{
   position:sticky;top:1rem;float:right;margin:1rem 1rem 0 0;
@@ -1603,9 +1640,8 @@ footer {
         <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus()" onblur="setTimeout(navSearchBlur,180)" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
       </div>
-      <a class="topbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        <span class="x-handle">@xxmadwavs</span>
+      <a class="navbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X" aria-label="X / Twitter">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
     </div>
 
@@ -2233,7 +2269,7 @@ function renderCal(){
           ${thumb}${ph}
           <div class="ep-pill-text" style="color:var(--lavender)">
             <div class="ep-pill-name">${s.name}</div>
-            <div class="ep-pill-ep">🎥 Película</div>
+            <div class="ep-pill-ep">Película</div>
           </div></div>`;
       } else {
         const col=PALETTE[si%PALETTE.length], bg=PALETTE_SOFT[si%PALETTE_SOFT.length];
@@ -2599,15 +2635,15 @@ function renderListResults(){
   // Build subtabs — only show "Estreno Próximo" tab if there are any
   let tabsHtml=`<div class="subtabs">
     <button class="subtab${seriesSubtab==='airing'?' active':''}" onclick="switchSeriesSubtab('airing')">
-      🌸 En emisión<span class="subtab-count">${airing.length}</span>
+      En emisión<span class="subtab-count">${airing.length}</span>
     </button>`;
   if(notStarted.length){
     tabsHtml+=`<button class="subtab${seriesSubtab==='notstarted'?' active':''}" onclick="switchSeriesSubtab('notstarted')">
-      🗓️ Estreno Próximo<span class="subtab-count">${notStarted.length}</span>
+      Estreno próximo<span class="subtab-count">${notStarted.length}</span>
     </button>`;
   }
   tabsHtml+=`<button class="subtab${seriesSubtab==='finished'?' active':''}" onclick="switchSeriesSubtab('finished')">
-      ✓ Finalizadas<span class="subtab-count">${finished.length}</span>
+      Finalizadas<span class="subtab-count">${finished.length}</span>
     </button>
   </div>`;
 
@@ -2648,10 +2684,10 @@ function renderListResults(){
         Todas<span class="subtab-count">${finished.length}</span>
       </button>
       <button class="subtab${seriesFinishedSubtab==='serie'?' active':''}" onclick="seriesFinishedSubtab='serie';saveSession();renderListResults()">
-        📺 Serie<span class="subtab-count">${finishedSeries.length}</span>
+        Serie<span class="subtab-count">${finishedSeries.length}</span>
       </button>
       <button class="subtab${seriesFinishedSubtab==='webserie'?' active':''}" onclick="seriesFinishedSubtab='webserie';saveSession();renderListResults()">
-        🌐 Web Serie<span class="subtab-count">${finishedWebseries.length}</span>
+        Web serie<span class="subtab-count">${finishedWebseries.length}</span>
       </button>
     </div>`;
     const shownFinished=seriesFinishedSubtab==='serie'?finishedSeries:seriesFinishedSubtab==='webserie'?finishedWebseries:finished;
@@ -2750,8 +2786,8 @@ function renderList(){
           <span class="filter-label">Tipo</span>
           <select id="seriesTypeSel" class="filter-select" onchange="seriesFilters.type=this.value;resetSeriesPages();renderListResults()">
             <option value="">📺 Tipo</option>
-            <option value="serie"${seriesFilters.type==='serie'?' selected':''}>📺 Serie</option>
-            <option value="webserie"${seriesFilters.type==='webserie'?' selected':''}>🌐 Web Serie</option>
+            <option value="serie"${seriesFilters.type==='serie'?' selected':''}>Serie</option>
+            <option value="webserie"${seriesFilters.type==='webserie'?' selected':''}>Web serie</option>
           </select>
         </div>
         <div class="filter-group">
@@ -3224,7 +3260,7 @@ function openSeries(si){
   const castCount=hasCast?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
   let html=`${posterEl}<div class="modal-body">
-  <div class="modal-badges">${s.basedOnBook?'<span class="badge badge-book">📖 Basada en libro</span>':''}${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.seriesType==='webserie'?'<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">🌐 Web Serie</span>':''}</div>
+  <div class="modal-badges">${s.basedOnBook?'<span class="badge badge-book">📖 Basada en libro</span>':''}${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.seriesType==='webserie'?'<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">Web serie</span>':''}</div>
   <div class="modal-title">${s.name}</div>
   ${s.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${s.nameEn}</div>`:''}
   ${s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px">${s.genres.map(g=>`<span style="font-size:11.5px;font-weight:700;padding:3px 11px;border-radius:20px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2)">${g}</span>`).join('')}</div>`:''}
@@ -3370,7 +3406,7 @@ function openMovie(mi){
   if(mv.duration) metaGrid+=`<div class="meta-item"><div class="meta-key">Duración</div><div class="meta-val">⏱ ${fmtDuration(mv.duration)}</div></div>`;
   const mvModalTypeBadge=mv.movieType==='short'
     ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">🎞️ Cortometraje</span>`
-    :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">🎥 Película</span>`;
+    :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">Película</span>`;
   const bookBlock=(()=>{
     if(!mv.basedOnBook) return '';
     const hasCover=mv.bookCoverUrl&&mv.bookCoverUrl.trim();
@@ -3464,7 +3500,7 @@ function movieCardHtml(mv){
     ?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-weight:600;cursor:pointer" onclick="event.stopPropagation();moviesFilters.genre='${g}';renderMoviesResults()">${g}</span>`).join('')}${mv.genres.length>3?`<span style="font-size:9.5px;padding:2px 6px;border-radius:20px;background:var(--surface2);color:var(--muted)">+${mv.genres.length-3}</span>`:''}</div>`:'';
   const typeBadge=mv.movieType==='short'
     ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">🎞️ Corto</span>`
-    :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">🎥 Película</span>`;
+    :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">Película</span>`;
   const durationEl=mv.duration?`<span style="font-size:10.5px;color:var(--muted);font-weight:600">⏱ ${fmtDuration(mv.duration)}</span>`:'';
   return `<div class="movie-card" onclick="openMovie(${mi})">${posterEl}
     <div class="movie-card-body">
@@ -3579,22 +3615,22 @@ function renderMoviesResults(){
   }
   let html=`<div class="subtabs" style="margin-bottom:1.25rem">
     <button class="subtab${moviesSubtab==='all'?' active':''}" onclick="switchMoviesSubtab('all')">
-      🎬 Todas<span class="subtab-count">${filtered.length}</span>
+      Todas<span class="subtab-count">${filtered.length}</span>
     </button>
     <button class="subtab${moviesSubtab==='soon'?' active':''}" onclick="switchMoviesSubtab('soon')">
-      📅 Próximos estrenos<span class="subtab-count">${comingSoon.length}</span>
+      Próximos estrenos<span class="subtab-count">${comingSoon.length}</span>
     </button>
     <button class="subtab${moviesSubtab==='films'?' active':''}" onclick="switchMoviesSubtab('films')">
-      🎥 Película<span class="subtab-count">${films.length}</span>
+      Película<span class="subtab-count">${films.length}</span>
     </button>
     <button class="subtab${moviesSubtab==='shorts'?' active':''}" onclick="switchMoviesSubtab('shorts')">
-      🎞️ Cortos<span class="subtab-count">${shorts.length}</span>
+      Cortos<span class="subtab-count">${shorts.length}</span>
     </button>
     <button class="subtab${moviesSubtab==='theaters'?' active':''}" onclick="switchMoviesSubtab('theaters')">
       ✓ Ya estrenadas<span class="subtab-count">${inTheaters.length}</span>
     </button>
     <button class="subtab" onclick="switchTab('anime');setTimeout(()=>{animeSubtab='movies';renderAnimeResults();},50)">
-      🌸 Anime<span class="subtab-count">${getAnimeMoviesData().length}</span>
+      Anime<span class="subtab-count">${getAnimeMoviesData().length}</span>
     </button>
   </div>`;
   if(!shown.length){
@@ -3865,8 +3901,8 @@ function renderAnime(){
       <div class="section-desc">Series y películas de anime con historias de amor entre chicas (yuri, GL y subtexto sáfico)</div>
     </div>
     <div class="subtabs" id="animeSubtabs">
-      <button class="subtab${animeSubtab==='series'?' active':''}" onclick="animeSubtab='series';saveSession();renderAnimeResults()">🎬 Series <span class="subtab-count">${seriesCount}</span></button>
-      <button class="subtab${animeSubtab==='movies'?' active':''}" onclick="animeSubtab='movies';saveSession();renderAnimeResults()">🎥 Películas <span class="subtab-count">${moviesCount}</span></button>
+      <button class="subtab${animeSubtab==='series'?' active':''}" onclick="animeSubtab='series';saveSession();renderAnimeResults()">Series <span class="subtab-count">${seriesCount}</span></button>
+      <button class="subtab${animeSubtab==='movies'?' active':''}" onclick="animeSubtab='movies';saveSession();renderAnimeResults()">Películas <span class="subtab-count">${moviesCount}</span></button>
     </div>
     <div class="books-toolbar" id="animeToolbar">
       <div class="toolbar-search-row">
@@ -4227,7 +4263,7 @@ function renderRealities(){
       <div class="section-desc">Reality shows y docuseries con protagonismo lésbico, bisexual o queer</div>
     </div>
     <div class="subtabs" id="realitiesSubtabs">
-      <button class="subtab${realitiesSubtab==='series'?' active':''}" onclick="realitiesSubtab='series';saveSession();renderRealitiesResults()">📺 Series & Realities <span class="subtab-count">${allSeries.length}</span></button>
+      <button class="subtab${realitiesSubtab==='series'?' active':''}" onclick="realitiesSubtab='series';saveSession();renderRealitiesResults()">Series & Realities <span class="subtab-count">${allSeries.length}</span></button>
     </div>
     <div class="books-toolbar" id="realitiesToolbar">
       <div class="toolbar-search-row">
@@ -4922,17 +4958,15 @@ document.addEventListener('keydown',e=>{
   <div class="footer-inner">
     <div class="footer-brand-row">
       <span class="footer-logo"><strong>TINTA</strong> <em>Sapphic</em></span>
-      <span class="footer-tagline">Series &amp; películas GL de todo el mundo 🌸</span>
-      <a href="https://x.com/xxmadwavs" target="_blank" rel="noopener" class="footer-x-link">@xxmadwavs en X</a>
+      <span class="footer-tagline">Series &amp; películas GL de todo el mundo</span>
     </div>
     <div class="footer-nav-row">
       <button type="button" class="footer-nav-btn" onclick="openInfoModal('sobre')">Sobre nosotras</button>
-      <a href="https://x.com/xxmadwavs" target="_blank" rel="noopener" class="footer-nav-x">
-        <svg width="12" height="12" viewBox="0 0 1200 1227" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg>
-        Contáctanos
-      </a>
       <button type="button" class="footer-nav-btn" onclick="openInfoModal('privacidad')">Política de privacidad</button>
       <button type="button" class="footer-nav-btn" onclick="openInfoModal('terminos')">Términos de uso</button>
+      <a href="https://x.com/xxmadwavs" target="_blank" rel="noopener" class="footer-nav-x" title="@xxmadwavs en X">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
     </div>
   </div>
 </footer>
