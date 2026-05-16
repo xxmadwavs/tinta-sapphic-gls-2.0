@@ -47,86 +47,159 @@ body::before{content:'';position:fixed;inset:0;background:
 .petal{display:none}
 
 
-/* ═══ TOPBAR ═══ */
-.topbar{
-  background:rgba(255,255,255,0.92);
+/* ═══ NAVBAR ═══ */
+.navbar{
+  background:rgba(255,255,255,0.96);
   border-bottom:1px solid var(--border2);
-  padding:0 2.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-  height:64px;position:sticky;top:0;z-index:50;
+  position:sticky;top:0;z-index:50;
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  box-shadow:0 1px 0 var(--border), 0 4px 24px rgba(180,80,120,0.05);
+  box-shadow:0 1px 0 var(--border),0 2px 16px rgba(180,80,120,0.05);
 }
-.logo-wrap{display:flex;align-items:center;gap:12px}
+.navbar-inner{
+  max-width:1200px;margin:0 auto;
+  padding:0 2rem;
+  height:58px;
+  display:flex;align-items:center;gap:0;
+}
+/* Logo */
 .logo{
-  font-family:var(--font-display);
-  font-size:21px;
-  font-weight:400;
-  color:var(--text);
-  letter-spacing:.01em;
-  line-height:1;
-  display:flex;
-  align-items:baseline;
-  gap:.3em;
-  position:relative;
+  font-family:var(--font-display);font-size:19px;font-weight:400;
+  color:var(--text);letter-spacing:.01em;line-height:1;
+  display:flex;align-items:baseline;gap:.28em;position:relative;
 }
-/* TINTA en versalitas con tracking abierto */
-.logo-tinta{
-  font-weight:700;
-  letter-spacing:.14em;
-  font-size:.95em;
-  text-transform:uppercase;
-  color:var(--text);
-}
-/* Sapphic en cursiva elegante */
-.logo em{
-  font-style:italic;
-  font-weight:600;
-  font-size:1.05em;
-  color:var(--accent);
-  letter-spacing:-.01em;
-}
-/* Línea degradada bajo el logo */
+.logo-tinta{font-weight:700;letter-spacing:.13em;font-size:.92em;text-transform:uppercase;color:var(--text)}
+.logo em{font-style:italic;font-weight:600;font-size:1.05em;color:var(--accent);letter-spacing:-.01em}
 .logo::after{
-  content:'';
-  position:absolute;
-  bottom:-4px;left:0;right:0;
-  height:1.5px;
+  content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;
   background:linear-gradient(90deg,var(--accent) 0%,var(--lavender) 55%,rgba(74,173,160,0.4) 100%);
   border-radius:2px;
 }
-.logo-divider{width:1px;height:20px;background:var(--border2);margin:0 4px}
-.logo-sub{font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.topbar-search-btn{
-  display:none;background:transparent;border:none;cursor:pointer;
-  color:var(--muted);padding:8px;border-radius:10px;
-  transition:all .15s;
+.logo-divider{width:1px;height:18px;background:var(--border2);margin:0 12px;flex-shrink:0}
+.logo-sub{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;flex-shrink:0;margin-right:28px}
+
+/* Nav links */
+.navbar-links{display:flex;align-items:center;gap:2px;flex:1}
+.nav-link{
+  padding:6px 13px;border-radius:8px;border:none;cursor:pointer;
+  font-size:13px;font-weight:500;color:var(--muted);
+  background:transparent;font-family:var(--font-body);
+  transition:all .15s;white-space:nowrap;
+  display:flex;align-items:center;gap:3px;
+  line-height:1;
 }
-.topbar-search-btn:hover{background:var(--surface2);color:var(--accent)}
-.topbar-right{display:flex;align-items:center;gap:8px}
-.topbar-x-btn{
-  display:flex;align-items:center;gap:7px;
-  padding:6px 14px;border-radius:20px;
+.nav-link:hover{color:var(--text);background:var(--surface2)}
+.nav-link.active{color:var(--accent);font-weight:700;background:var(--accent-soft)}
+
+/* Picks dropdown */
+.nav-picks-wrap{position:relative;flex-shrink:0}
+.nav-picks-btn{} /* inherits .nav-link */
+.nav-picks-drop{
+  position:absolute;top:calc(100% + 8px);left:0;
   background:var(--surface);border:1.5px solid var(--border2);
-  color:var(--text);font-size:12.5px;font-weight:700;
-  text-decoration:none;font-family:var(--font-body);
-  transition:all .18s;white-space:nowrap;
-  box-shadow:var(--shadow-sm);
+  border-radius:12px;box-shadow:var(--shadow-md);
+  min-width:170px;z-index:200;
+  display:none;flex-direction:column;overflow:hidden;padding:4px;
 }
-.topbar-x-btn:hover{
-  background:#000;color:#fff;border-color:#000;
-  box-shadow:0 4px 16px rgba(0,0,0,0.15);transform:translateY(-1px);
+.nav-picks-drop.open{display:flex}
+.nav-picks-item{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 14px;font-size:13px;font-weight:600;
+  color:var(--text);cursor:pointer;transition:background .12s;
+  border:none;background:transparent;font-family:var(--font-body);
+  text-align:left;width:100%;border-radius:8px;
 }
-.topbar-x-btn svg{flex-shrink:0;transition:inherit}
-@media(max-width:600px){
-  .topbar-x-btn span.x-handle{display:none}
-  .topbar-x-btn{padding:6px 10px}
+.nav-picks-item:hover{background:var(--surface2);color:var(--accent)}
+.nav-picks-item.active{background:var(--accent-soft);color:var(--accent)}
+
+/* Más dropdown */
+.tab-more-wrap{position:relative;flex-shrink:0}
+.tab-more-drop{
+  position:absolute;top:calc(100% + 8px);left:0;
+  background:var(--surface);border:1.5px solid var(--border2);
+  border-radius:12px;box-shadow:var(--shadow-md);
+  min-width:170px;z-index:200;
+  display:none;flex-direction:column;overflow:hidden;padding:4px;
 }
-@media(max-width:600px){
-  .topbar-search-btn{display:flex;align-items:center}
+.tab-more-drop.open{display:flex}
+.tab-more-item{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 14px;font-size:13px;font-weight:600;
+  color:var(--text);cursor:pointer;transition:background .12s;
+  border:none;background:transparent;font-family:var(--font-body);
+  text-align:left;width:100%;border-radius:8px;
+}
+.tab-more-item:hover{background:var(--surface2);color:var(--accent)}
+.tab-more-item.active{background:var(--accent-soft);color:var(--accent)}
+
+/* Right: search + X */
+.navbar-right{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
+.navbar-search-wrap{
+  position:relative;display:flex;align-items:center;
+  background:var(--surface2);border:1.5px solid var(--border2);
+  border-radius:20px;padding:0 14px;gap:7px;
+  transition:border-color .15s,box-shadow .15s;
+}
+.navbar-search-wrap:focus-within{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(201,79,124,0.1);background:#fff}
+.navbar-search-icon{color:var(--muted);flex-shrink:0;pointer-events:none}
+.navbar-search-inp{
+  border:none;background:transparent;outline:none;
+  font-size:13px;font-family:var(--font-body);color:var(--text);
+  width:190px;padding:7px 0;
+}
+.navbar-search-inp::placeholder{color:var(--muted)}
+.navbar-search-results{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;
+  background:var(--surface);border:1.5px solid var(--border2);
+  border-radius:12px;box-shadow:var(--shadow-md);
+  max-height:360px;overflow-y:auto;z-index:300;
+  display:flex;flex-direction:column;
+}
+.nsearch-item{
+  display:flex;align-items:center;gap:10px;padding:9px 14px;
+  cursor:pointer;transition:background .12s;border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+.nsearch-item:last-child{border-bottom:none}
+.nsearch-item:hover{background:var(--surface2)}
+.nsearch-item img,.nsearch-item-ph{
+  width:28px;height:42px;border-radius:5px;object-fit:cover;flex-shrink:0;
+}
+.nsearch-item-ph{background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:14px}
+.nsearch-item-info{flex:1;min-width:0}
+.nsearch-item-name{font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nsearch-item-meta{font-size:11px;color:var(--muted)}
+.nsearch-empty{padding:20px;text-align:center;color:var(--muted);font-size:13px}
+
+/* Hamburger for mobile */
+.navbar-hamburger{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:8px;margin-left:auto;
+}
+.navbar-hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .2s}
+
+/* HIDE old topbar & tabs */
+.topbar{display:none!important}
+.tabs{display:none!important}
+
+/* Mobile nav */
+@media(max-width:860px){
   .logo-divider,.logo-sub{display:none}
-  .topbar{padding:0 1rem}
-  .logo{font-size:17px}
+  .navbar-search-inp{width:130px}
+}
+@media(max-width:700px){
+  .navbar-hamburger{display:flex}
+  .navbar-links{
+    display:none;flex-direction:column;align-items:stretch;gap:2px;
+    position:absolute;top:58px;left:0;right:0;
+    background:var(--surface);border-bottom:1.5px solid var(--border2);
+    padding:8px 12px;box-shadow:0 8px 24px rgba(180,80,120,0.1);z-index:100;
+  }
+  .navbar-links.open{display:flex}
+  .navbar-inner{flex-wrap:wrap;position:relative}
+  .navbar-right{gap:6px}
+  .navbar-search-inp{width:100px}
+  .nav-picks-drop,.tab-more-drop{position:static;box-shadow:none;border:none;padding:0 0 0 14px;border-radius:0;background:transparent}
+  .nav-picks-item,.tab-more-item{padding:7px 10px;font-size:12px}
 }
 
 /* ═══ HERO ═══ */
@@ -1480,24 +1553,68 @@ footer {
   </div>
 </div>
 
-<div class="topbar">
-  <div class="logo-wrap">
-    <span class="logo" style="cursor:pointer" onclick="switchTab('cal')" title="Volver al inicio"><span class="logo-tinta">TINTA</span> <em>Sapphic</em></span>
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="mainNavbar">
+  <div class="navbar-inner">
+    <!-- Logo -->
+    <span class="logo" style="cursor:pointer;flex-shrink:0" onclick="switchTab('cal')" title="Inicio">
+      <span class="logo-tinta">TINTA</span> <em>Sapphic</em>
+    </span>
     <span class="logo-divider"></span>
-    <span class="logo-sub">GL Series & Películas</span>
-  </div>
-  <div class="topbar-right">
-    <a class="topbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      <span class="x-handle">@xxmadwavs</span>
-    </a>
-    <button class="topbar-search-btn" onclick="openSearch()" title="Buscar">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-      </svg>
+    <span class="logo-sub" style="flex-shrink:0">GL Series & Películas</span>
+
+    <!-- Nav links -->
+    <div class="navbar-links" id="navbarLinks">
+      <button class="nav-link active" id="tabCal" onclick="switchTab('cal')">Calendario</button>
+      <button class="nav-link" id="tabList" onclick="switchTab('list')">Series</button>
+      <button class="nav-link" id="tabMovies" onclick="switchTab('movies')">Películas</button>
+      <button class="nav-link" id="tabUpcoming" onclick="switchTab('upcoming')">Próximamente</button>
+
+      <!-- Mis Picks con subtabs -->
+      <div class="nav-picks-wrap" id="navPicksWrap">
+        <button class="nav-link nav-picks-btn" id="tabPicksGroup" type="button" onclick="togglePicksDrop(event)" aria-haspopup="true" aria-expanded="false">
+          Mis picks <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
+        </button>
+        <div class="nav-picks-drop" id="navPicksDrop" role="menu">
+          <button class="nav-picks-item" id="tabTop10" role="menuitem" onclick="closePicksDrop();switchTab('top10')">Picks generales</button>
+          <button class="nav-picks-item" id="tabPicks2026" role="menuitem" onclick="closePicksDrop();switchTab('picks2026')">Picks 2026</button>
+        </div>
+      </div>
+
+      <!-- Más (desplegable) -->
+      <div class="tab-more-wrap" id="tabMoreWrap">
+        <button class="nav-link" id="tabMore" type="button" onclick="toggleMoreDrop(event)" aria-haspopup="true" aria-expanded="false">
+          Más <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
+        </button>
+        <div class="tab-more-drop" id="tabMoreDrop" role="menu">
+          <button class="tab-more-item" id="tabAnime" role="menuitem" onclick="closeMoreDrop();switchTab('anime')">Anime</button>
+          <button class="tab-more-item" id="tabRealities" role="menuitem" onclick="closeMoreDrop();switchTab('realities')">Realities</button>
+          <button class="tab-more-item" id="tabDocumentales" role="menuitem" onclick="closeMoreDrop();switchTab('documentales')">Documentales</button>
+          <button class="tab-more-item" id="tabBooks" role="menuitem" onclick="closeMoreDrop();switchTab('books')">Libros</button>
+          <button class="tab-more-item" id="tabActresses" role="menuitem" onclick="closeMoreDrop();switchTab('actresses')">Actrices</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buscador + X -->
+    <div class="navbar-right">
+      <div class="navbar-search-wrap" id="navSearchWrap">
+        <svg class="navbar-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus()" onblur="setTimeout(navSearchBlur,180)" autocomplete="off">
+        <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
+      </div>
+      <a class="topbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <span class="x-handle">@xxmadwavs</span>
+      </a>
+    </div>
+
+    <!-- Hamburger móvil -->
+    <button class="navbar-hamburger" id="navHamburger" onclick="toggleNavMobile()" aria-label="Menú">
+      <span></span><span></span><span></span>
     </button>
   </div>
-</div>
+</nav>
 
 <div id="statsBar" style="display:none"></div>
 
@@ -1509,25 +1626,7 @@ footer {
 <div class="container" id="mainContainer" style="display:none">
   <!-- ── Stats banner ── -->
   <div id="statsBarInner" class="stats-banner"></div>
-
-  <div class="tabs">
-    <button class="tab active" id="tabCal" onclick="switchTab('cal')">📅 Esta semana</button>
-    <button class="tab" id="tabList" onclick="switchTab('list')">🎬 Series</button>
-    <button class="tab" id="tabMovies" onclick="switchTab('movies')">🎥 Películas</button>
-    <button class="tab" id="tabTop10" onclick="switchTab('top10')">⭐ Mis picks</button>
-    <button class="tab" id="tabPicks2026" onclick="switchTab('picks2026')">🌟 Picks 2026</button>
-    <button class="tab" id="tabUpcoming" onclick="switchTab('upcoming')">✨ Próximamente</button>
-    <button class="tab" id="tabAnime" onclick="switchTab('anime')">🌸 Anime</button>
-    <button class="tab" id="tabRealities" onclick="switchTab('realities')">🎤 Realities</button>
-    <button class="tab" id="tabDocumentales" onclick="switchTab('documentales')">🎞️ Documentales</button>
-    <div class="tab-more-wrap" id="tabMoreWrap">
-      <button class="tab" id="tabMore" type="button" onclick="toggleMoreDrop(event)" aria-haspopup="true" aria-expanded="false">Más ▾</button>
-      <div class="tab-more-drop" id="tabMoreDrop" role="menu">
-        <button class="tab-more-item" id="tabBooks" role="menuitem" onclick="closeMoreDrop();switchTab('books')">📚 Libros</button>
-        <button class="tab-more-item" id="tabActresses" role="menuitem" onclick="closeMoreDrop();switchTab('actresses')">🎭 Actrices</button>
-      </div>
-    </div>
-  </div>
+  <div class="tabs" style="display:none"></div><!-- kept for JS compat -->
 
   <div id="viewAnime" style="display:none"></div>
   <div id="viewRealities" style="display:none"></div>
@@ -4590,17 +4689,33 @@ function renderPicks2026(){
 function switchTab(tab){
   state.tab=tab;
   saveSession();
-  const moreTabs=['books','actresses'];
-  ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026'].forEach(t=>{
-    const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
+  const moreTabs=['books','actresses','anime','realities','documentales'];
+  const picksTabs=['top10','picks2026'];
+  const allTabs=['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026'];
+
+  allTabs.forEach(t=>{
     const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
-    if(btn) btn.className=(moreTabs.includes(t)?'tab-more-item':'tab')+(tab===t?' active':'');
     if(view) view.style.display=tab===t?'':'none';
+    const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
+    if(!btn) return;
+    const isActive=tab===t;
+    if(moreTabs.includes(t)){
+      btn.className='tab-more-item'+(isActive?' active':'');
+    } else if(picksTabs.includes(t)){
+      btn.className='nav-picks-item'+(isActive?' active':'');
+    } else {
+      btn.className='nav-link'+(isActive?' active':'');
+    }
   });
-  // Highlight "Más" button when books or actresses is active
+
+  // "Más" button highlight
   const moreBtn=document.getElementById('tabMore');
-  if(moreBtn) moreBtn.className='tab'+(moreTabs.includes(tab)?' active':'');
-  // Scroll to top of content on mobile
+  if(moreBtn) moreBtn.className='nav-link'+(moreTabs.includes(tab)?' active':'');
+
+  // "Mis picks" button highlight
+  const picksBtn=document.getElementById('tabPicksGroup');
+  if(picksBtn) picksBtn.className='nav-link nav-picks-btn'+(picksTabs.includes(tab)?' active':'');
+
   if(window.innerWidth<=600) window.scrollTo({top:0,behavior:'smooth'});
   if(tab==='cal'){renderWeekView();}
   if(tab==='list') renderList();
@@ -4621,15 +4736,69 @@ function toggleMoreDrop(e){
   const btn=document.getElementById('tabMore');
   const isOpen=drop.classList.contains('open');
   drop.classList.toggle('open',!isOpen);
-  btn.setAttribute('aria-expanded',String(!isOpen));
+  if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
+  // close picks
+  document.getElementById('navPicksDrop')?.classList.remove('open');
 }
 function closeMoreDrop(){
-  document.getElementById('tabMoreDrop').classList.remove('open');
-  document.getElementById('tabMore').setAttribute('aria-expanded','false');
+  document.getElementById('tabMoreDrop')?.classList.remove('open');
+  document.getElementById('tabMore')?.setAttribute('aria-expanded','false');
+}
+function togglePicksDrop(e){
+  e.stopPropagation();
+  const drop=document.getElementById('navPicksDrop');
+  const btn=document.getElementById('tabPicksGroup');
+  const isOpen=drop.classList.contains('open');
+  drop.classList.toggle('open',!isOpen);
+  if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
+  // close más
+  document.getElementById('tabMoreDrop')?.classList.remove('open');
+}
+function closePicksDrop(){
+  document.getElementById('navPicksDrop')?.classList.remove('open');
+  document.getElementById('tabPicksGroup')?.setAttribute('aria-expanded','false');
+}
+function toggleNavMobile(){
+  document.getElementById('navbarLinks')?.classList.toggle('open');
 }
 document.addEventListener('click',e=>{
   if(!document.getElementById('tabMoreWrap')?.contains(e.target)) closeMoreDrop();
+  if(!document.getElementById('navPicksWrap')?.contains(e.target)) closePicksDrop();
+  if(!document.getElementById('mainNavbar')?.contains(e.target)) document.getElementById('navbarLinks')?.classList.remove('open');
 });
+
+/* ── Inline navbar search ── */
+function navSearchHandler(q){
+  const box=document.getElementById('navSearchResults');
+  if(!box) return;
+  q=q.trim();
+  if(q.length<2){ box.style.display='none'; return; }
+  const results=[];
+  (window.series||[]).forEach((s,i)=>{
+    if(s.name.toLowerCase().includes(q.toLowerCase())||(s.nameEn||'').toLowerCase().includes(q.toLowerCase()))
+      results.push({type:s.category==='anime'?'anime':s.category==='reality'?'reality':'serie', name:s.name, year:s.year, poster:s.poster, si:i});
+  });
+  (window.movies||[]).forEach((m,i)=>{
+    if(m.name.toLowerCase().includes(q.toLowerCase())||(m.nameEn||'').toLowerCase().includes(q.toLowerCase()))
+      results.push({type:'pelicula', name:m.name, year:m.year, poster:m.poster, si:i});
+  });
+  if(!results.length){ box.innerHTML='<div class="nsearch-empty">Sin resultados</div>'; box.style.display='flex'; return; }
+  const typeLabel={serie:'Serie',anime:'Anime',reality:'Reality',pelicula:'Película'};
+  box.innerHTML=results.slice(0,8).map(r=>{
+    const poster=r.poster?`<img src="${r.poster}" onerror="this.outerHTML='<div class=nsearch-item-ph>🎬</div>'" loading="lazy">`:'<div class="nsearch-item-ph">🎬</div>';
+    let onclick='';
+    if(r.type==='serie') onclick=`navSearchPick();switchTab('list');setTimeout(()=>openSeries(${r.si}),60)`;
+    else if(r.type==='pelicula') onclick=`navSearchPick();switchTab('movies');setTimeout(()=>openMovie(${r.si}),60)`;
+    else if(r.type==='anime') onclick=`navSearchPick();switchTab('anime');setTimeout(()=>openAnimeDetail('series','${r.si}'),60)`;
+    else if(r.type==='reality') onclick=`navSearchPick();switchTab('realities');setTimeout(()=>openRealityDetail('series','${r.si}'),60)`;
+    return `<div class="nsearch-item" onclick="${onclick}">${poster}<div class="nsearch-item-info"><div class="nsearch-item-name">${r.name}</div><div class="nsearch-item-meta">${typeLabel[r.type]||''}${r.year?' · '+r.year:''}</div></div></div>`;
+  }).join('');
+  box.style.display='flex';
+  box.style.flexDirection='column';
+}
+function navSearchFocus(){ const q=document.getElementById('navSearchInp')?.value; if(q&&q.length>=2) navSearchHandler(q); }
+function navSearchBlur(){ document.getElementById('navSearchResults').style.display='none'; }
+function navSearchPick(){ document.getElementById('navSearchInp').value=''; document.getElementById('navSearchResults').style.display='none'; }
 
 
 
