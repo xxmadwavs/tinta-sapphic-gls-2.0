@@ -128,7 +128,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T22:03:42.743Z",
+      "updatedAt": "2026-05-18T19:54:33.659Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -196,7 +196,13 @@
       "myTop10": false,
       "top10Rank": 0,
       "myPick": false,
-      "myPick2026": true
+      "myPick2026": true,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776889141176",
@@ -31395,5 +31401,16 @@
       ]
     }
   ],
-  "exportedAt": "2026-05-18T19:50:14.422Z"
+  "productoras": [
+    {
+      "id": "1779134050424",
+      "name": "GGMTV",
+      "country": "Tailandia",
+      "founded": "1995",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GMMTV_Logo.svg/1280px-GMMTV_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      "website": "https://www.gmm-tv.com/home/?time=1779134024",
+      "desc": ""
+    }
+  ],
+  "exportedAt": "2026-05-18T19:55:23.116Z"
 }
