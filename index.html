@@ -686,10 +686,21 @@ footer{
 
 /* ══════════════ SHIPS THAIS ══════════════ */
 .ships-shell{padding:0}
-.ships-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:1rem}
+.ships-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:1rem}
 .ship-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:all .22s;box-shadow:var(--shadow-sm)}
-.ship-card:hover{border-color:var(--accent2);box-shadow:0 12px 36px rgba(201,79,124,0.15);transform:translateY(-3px)}
-.ship-card-inner{padding:14px 15px;display:flex;flex-direction:column;gap:10px}
+.ship-card:hover{border-color:var(--accent2);box-shadow:0 12px 36px rgba(201,79,124,0.18);transform:translateY(-3px)}
+.ship-card-inner{padding:13px 14px 14px;display:flex;flex-direction:column;gap:9px}
+/* Foto de pareja — banner horizontal dividido */
+.ship-couple-banner{position:relative;width:100%;height:160px;overflow:hidden;background:linear-gradient(135deg,var(--accent-soft),var(--lavender-soft));display:flex}
+.ship-couple-half{flex:1;overflow:hidden;position:relative}
+.ship-couple-half img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform .3s}
+.ship-card:hover .ship-couple-half img{transform:scale(1.04)}
+.ship-couple-half-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--accent-soft)}
+.ship-couple-divider{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.ship-couple-divider-line{width:1.5px;height:40px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.7),rgba(255,255,255,0.7),transparent)}
+.ship-couple-divider-heart{font-size:16px;background:rgba(255,255,255,0.88);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(201,79,124,.2);backdrop-filter:blur(6px);filter:drop-shadow(0 1px 3px rgba(0,0,0,.2))}
+.ship-couple-names{position:absolute;bottom:0;left:0;right:0;display:flex;background:linear-gradient(to top,rgba(25,10,20,0.7) 0%,transparent 100%);padding:22px 10px 8px;z-index:2}
+.ship-couple-name-tag{flex:1;text-align:center;font-size:11px;font-weight:700;color:#fff;line-height:1.2;text-shadow:0 1px 4px rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
 .ship-series-name{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
 .ship-couple-row{display:flex;align-items:center;gap:10px}
 .ship-actress-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:0}
@@ -5172,17 +5183,32 @@ function renderShipsResults(){
         ?`<img class="ship-series-thumb" src="${firstSeries.poster}" alt="${firstSeries.name}" onerror="this.outerHTML='<div class=ship-series-thumb-ph>💕</div>'">`
         :`<div class="ship-series-thumb-ph">💕</div>`;
 
-      // Actrices del ship
-      const coupleRow=members.map(a=>{
-        const pos=a.photoPosition||'center 15%';
-        const photo=a.photo
-          ?`<img class="ship-photo" src="${a.photo}" alt="${a.name}" style="object-position:${pos}" onerror="this.outerHTML='<div class=ship-photo-ph>🎭</div>'">`
-          :`<div class="ship-photo-ph">🎭</div>`;
-        return `<div class="ship-actress-wrap" onclick="event.stopPropagation();openActressProfile('${a.id}')">
-          ${photo}
-          <div class="ship-name">${a.name}</div>
+      // Foto de pareja o banner dividido
+      const [a1, a2] = members;
+      const coupleNames = members.map(a=>`<div class="ship-couple-name-tag">${a.name}</div>`).join('');
+      let coupleBanner;
+      if(sh.sh.couplePhoto){
+        coupleBanner=`<div class="ship-couple-banner">
+          <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" style="width:100%;height:100%;object-fit:cover;object-position:center top" onerror="this.outerHTML='<div class=ship-couple-half-ph style=width:100%;height:100%;font-size:40px>💕</div>'">
+          <div class="ship-couple-names">${coupleNames}</div>
         </div>`;
-      }).join('<div class="ship-heart">💞</div>');
+      } else {
+        const half1 = a1?.photo
+          ? `<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>🎭</div>'"></div>`
+          : `<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+        const half2 = a2?.photo
+          ? `<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>🎭</div>'"></div>`
+          : `<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+        coupleBanner=`<div class="ship-couple-banner">
+          ${half1}${half2}
+          <div class="ship-couple-divider">
+            <div class="ship-couple-divider-line"></div>
+            <div class="ship-couple-divider-heart">💞</div>
+            <div class="ship-couple-divider-line"></div>
+          </div>
+          <div class="ship-couple-names">${coupleNames}</div>
+        </div>`;
+      }
 
       // Miniaturas de series compartidas
       const seriesChips=shared.map(s=>{
@@ -5199,13 +5225,12 @@ function renderShipsResults(){
         :'';
 
       html+=`<div class="ship-card" onclick="openShipDetail(${idx})">
-        ${thumbEl}
+        ${coupleBanner}
         <div class="ship-card-inner">
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px">
             <div style="font-size:14px;font-weight:700;color:var(--text)">${sh.sh.name||'Ship'}</div>
             ${statusBadge}
           </div>
-          <div class="ship-couple-row">${coupleRow}</div>
           ${serialsSection}
         </div>
       </div>`;
@@ -5222,27 +5247,31 @@ function renderShipsResults(){
         :`<span class="ship-type-badge ship-type-secondary">🌸 Secundaria</span>`;
       const statusBadge=`<span class="ship-status-badge ${statusClass[status]}">${statusLabel[status]}</span>`;
       const pair=sh.members.slice(0,2);
-      const coupleRow=pair.map(m=>{
-        const a=actMap[m.actressId];
-        if(!a) return '';
-        const pos=a.photoPosition||'center 15%';
-        const photo=a.photo
-          ?`<img class="ship-photo" src="${a.photo}" alt="${a.name}" style="object-position:${pos}" onerror="this.outerHTML='<div class=ship-photo-ph>🎭</div>'">`
-          :`<div class="ship-photo-ph">🎭</div>`;
-        return `<div class="ship-actress-wrap" onclick="event.stopPropagation();openActressProfile('${a.id}')">
-          ${photo}
-          <div class="ship-name">${a.name}</div>
-          ${m.character?`<div class="ship-char">${m.character}</div>`:''}
-        </div>`;
-      }).join('<div class="ship-heart">💞</div>');
+      const a1auto=actMap[pair[0]?.actressId];
+      const a2auto=actMap[pair[1]?.actressId];
+      const half1auto=a1auto?.photo
+        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1auto.id}')"><img src="${a1auto.photo}" alt="${a1auto.name}" style="object-position:${a1auto.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>🎭</div>'"></div>`
+        :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+      const half2auto=a2auto?.photo
+        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" style="object-position:${a2auto.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>🎭</div>'"></div>`
+        :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+      const namesAuto=[a1auto,a2auto].filter(Boolean).map(a=>`<div class="ship-couple-name-tag">${a.name}</div>`).join('');
+      const coupleBannerAuto=`<div class="ship-couple-banner">
+        ${half1auto}${half2auto}
+        <div class="ship-couple-divider">
+          <div class="ship-couple-divider-line"></div>
+          <div class="ship-couple-divider-heart">💞</div>
+          <div class="ship-couple-divider-line"></div>
+        </div>
+        <div class="ship-couple-names">${namesAuto}</div>
+      </div>`;
       html+=`<div class="ship-card" onclick="openSeries(${sh.si})">
-        ${thumbEl}
+        ${coupleBannerAuto}
         <div class="ship-card-inner">
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px">
             <div class="ship-series-name">${sh.s.name}</div>
             ${statusBadge}
           </div>
-          <div class="ship-couple-row">${coupleRow}</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">${typeBadge}</div>
         </div>
       </div>`;
@@ -5810,7 +5839,7 @@ document.addEventListener('keydown',e=>{
     loadSession();
     const savedTab=state.tab||'cal';
     // Show the saved tab's view, hide others
-    ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026'].forEach(t=>{
+    ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','canceladas','productoras'].forEach(t=>{
       const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
       const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
       if(btn) btn.className='tab'+(savedTab===t?' active':'');
@@ -5827,6 +5856,9 @@ document.addEventListener('keydown',e=>{
     else if(savedTab==='actresses') renderActressesTab();
     else if(savedTab==='top10') renderTop10();
     else if(savedTab==='picks2026') renderPicks2026();
+    else if(savedTab==='ships') renderShips();
+    else if(savedTab==='canceladas') renderCanceladas();
+    else if(savedTab==='productoras') renderProductoras();
     else renderWeekView();
     // Seed history so the very first back press doesn't exit the page
     history.replaceState({tab:savedTab},'',location.pathname+'?tab='+savedTab);

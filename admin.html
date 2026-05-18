@@ -4021,6 +4021,12 @@ function shipFormHtml(sh){
       <input id="sf_name" placeholder="Ej: FollkOrm, FerGreat…" value="${escapeHtml(sh?.name||'')}"/>
     </div>
     <div class="form-row">
+      <label class="form-label">Foto de la pareja <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional — URL de una foto de ambas juntas)</span></label>
+      <input id="sf_couplePhoto" placeholder="https://…" value="${escapeHtml(sh?.couplePhoto||'')}"/>
+      ${sh?.couplePhoto?`<div style="margin-top:8px;border-radius:10px;overflow:hidden;max-height:140px;border:1.5px solid var(--border2)"><img src="${escapeHtml(sh.couplePhoto)}" style="width:100%;height:140px;object-fit:cover;object-position:center top;display:block" onerror="this.parentElement.style.display='none'"></div>`:''}
+      <div style="font-size:11.5px;color:var(--muted);margin-top:5px">Si no se pone foto de pareja, se mostrarán las fotos individuales de cada actriz lado a lado.</div>
+    </div>
+    <div class="form-row">
       <label class="form-label">Descripción / notas <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
       <textarea id="sf_desc" placeholder="Apuntes sobre el ship…" style="min-height:60px">${escapeHtml(sh?.desc||'')}</textarea>
     </div>
@@ -4073,10 +4079,12 @@ function saveShip(si){
   const checked=[...document.querySelectorAll('input[name="ship_actress"]:checked')].map(c=>c.value);
   if(checked.length<2){alert('Selecciona al menos 2 actrices para el ship');return;}
   const desc=document.getElementById('sf_desc')?.value.trim()||'';
+  const couplePhoto=document.getElementById('sf_couplePhoto')?.value.trim()||'';
   const payload={
     id:si===-1?Date.now().toString():(ships[si]?.id||Date.now().toString()),
     name,
     desc,
+    couplePhoto,
     actressIds:checked,
   };
   if(si===-1) ships.push(payload);
