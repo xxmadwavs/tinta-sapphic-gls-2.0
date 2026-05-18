@@ -813,11 +813,17 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T09:53:05.559Z",
+      "updatedAt": "2026-05-18T20:10:49.057Z",
       "nameEn": "ลัลล์ไม่ชอบไวน์",
       "episodeDuration": 50,
       "myPick": false,
-      "myPick2026": true
+      "myPick2026": true,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776889488147",
@@ -31235,7 +31241,9 @@
         "1778668951822",
         "1778669037769"
       ],
-      "couplePhoto": "https://images.lingorm.pics/260507_MegaWeCare/HHuVS14bgAApMJe.jpeg"
+      "couplePhoto": "https://images.lingorm.pics/260507_MegaWeCare/HHuVS14bgAApMJe.jpeg",
+      "couplePhotoPosition": "47% 26%",
+      "couplePhotoZoom": 1.02
     },
     {
       "id": "1779105703264",
@@ -31245,7 +31253,9 @@
         "1778668798059",
         "1778668868889"
       ],
-      "couplePhoto": "https://pbs.twimg.com/media/FwtYxHOXgAEi4gq.jpg"
+      "couplePhoto": "https://pbs.twimg.com/media/FwtYxHOXgAEi4gq.jpg",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105716784",
@@ -31412,5 +31422,5 @@
       "desc": ""
     }
   ],
-  "exportedAt": "2026-05-18T19:55:23.116Z"
+  "exportedAt": "2026-05-18T20:11:29.057Z"
 }
