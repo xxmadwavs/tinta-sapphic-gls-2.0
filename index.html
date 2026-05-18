@@ -3006,11 +3006,15 @@ function renderUpcoming(){
     const upYears=[...new Set(allUpcoming.map(s=>s.startDate?s.startDate.substring(0,4):'').filter(Boolean))].sort((a,b)=>b-a);
     const yearsOpts=upYears.map(y=>`<option value="${y}">${y}</option>`).join('');
     const genreOpts=GENRES.map(g=>`<option value="${g}">${g}</option>`).join('');
+    const staleManual=allUpcoming.filter(s=>s.sinNovedades).length;
+    const now_count=new Date();
+    const staleAuto=allUpcoming.filter(s=>!s.sinNovedades&&s.updatedAt&&Math.floor((now_count-new Date(s.updatedAt))/(1000*60*60*24))>=14).length;
+    const staleTotal=staleManual+staleAuto;
     view.innerHTML=`<div class="section-heading" style="margin-bottom:.25rem">✨ Próximamente</div>
     <p class="section-desc" style="margin-bottom:.6rem">Series anunciadas que aún no tienen fecha de emisión confirmada.</p>
     <div style="display:flex;gap:4px;margin-bottom:1rem;flex-wrap:wrap">
       <button class="ships-subtab active" id="upSubNormal" onclick="upcomingFilters.subview='normal';document.getElementById('upSubNormal').className='ships-subtab active';document.getElementById('upSubStale').className='ships-subtab';renderUpcomingResults()">Con novedades</button>
-      <button class="ships-subtab" id="upSubStale" onclick="upcomingFilters.subview='stale';document.getElementById('upSubStale').className='ships-subtab active';document.getElementById('upSubNormal').className='ships-subtab';renderUpcomingResults()">Sin novedades</button>
+      <button class="ships-subtab" id="upSubStale" onclick="upcomingFilters.subview='stale';document.getElementById('upSubStale').className='ships-subtab active';document.getElementById('upSubNormal').className='ships-subtab';renderUpcomingResults()">Sin novedades${staleTotal?` <span style="background:#c94040;color:#fff;border-radius:20px;font-size:10px;padding:1px 6px;margin-left:3px;font-weight:700">${staleTotal}</span>`:''}</button>
     </div>
     <div class="upcoming-toolbar-shell books-toolbar">
       <div class="toolbar-search-row">
@@ -3080,43 +3084,76 @@ function renderUpcomingResults(){
   // Sin novedades subview
   const now_sn=new Date();
   if(upcomingFilters.subview==='stale'){
-    // Show stale-sorted view inline, bypassing normal grid
-    const withAge=allUpcoming.map(s=>{
+    // Series marcadas manualmente como "sin novedades" desde el admin
+    const manualStale=allUpcoming.filter(s=>s.sinNovedades);
+    // Resto: automático por fecha de actualización (≥14 días sin tocar)
+    const autoStale=allUpcoming.filter(s=>!s.sinNovedades).map(s=>{
       const upd=s.updatedAt?new Date(s.updatedAt):null;
       const days=upd?Math.floor((now_sn-upd)/(1000*60*60*24)):999;
       return {s,si:state.series.indexOf(s),days};
-    }).sort((a,b)=>b.days-a.days);
-    function snStaleClass(d){return d>=14?'sn-stale-high':d>=7?'sn-stale-mid':'sn-stale-low';}
+    }).filter(x=>x.days>=14).sort((a,b)=>b.days-a.days);
+
     function snStaleLabel(d){
       if(d>=365) return 'Sin info hace +1 año';
       if(d>=30) return 'Sin info hace '+Math.floor(d/30)+'m';
-      if(d>=7) return 'Sin info hace '+d+'d';
-      return 'Actualizada hace '+d+'d';
+      return 'Sin info hace '+d+'d';
     }
-    const staleCount=withAge.filter(x=>x.days>=14).length;
+
+    const totalCount=manualStale.length+autoStale.length;
+    if(!totalCount){
+      resultsEl.innerHTML='<div class="search-empty">No hay series marcadas sin novedades. ¡Buenas noticias!</div>';
+      return;
+    }
+
     let snHtml=`<div class="sinnovedades-intro">
-      🕰️ Series anunciadas sin actualizaciones recientes. Puede que estén retrasadas o esperando noticias.
-      &ensp;<strong style="color:#c94040">${staleCount} sin actualizar 2+ semanas</strong>
+      🕰️ Series anunciadas de las que no hay noticias recientes. Pueden estar retrasadas o esperando confirmación.
+      &ensp;<strong style="color:#c94040">${totalCount} serie${totalCount!==1?'s':''}</strong>
     </div><div class="sinnovedades-grid">`;
-    withAge.forEach(({s,si,days})=>{
+
+    // Primero las marcadas manualmente
+    manualStale.forEach(s=>{
+      const si=state.series.indexOf(s);
+      const poster=s.poster
+        ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph>🎬</div>'">`
+        :`<div class="sn-poster-ph">🎬</div>`;
+      const lastInfo=s.snLastUpdate
+        ?`<span class="sn-stale-high" title="${s.snLastUpdate}">📭 ${s.snLastUpdate.length>30?s.snLastUpdate.slice(0,28)+'…':s.snLastUpdate}</span>`
+        :`<span class="sn-stale-high">📭 Sin novedades</span>`;
+      const noteHtml=s.snNote
+        ?`<div class="sn-meta" style="font-style:italic;margin-top:2px" title="${s.snNote}">${s.snNote.length>50?s.snNote.slice(0,48)+'…':s.snNote}</div>`
+        :'';
+      snHtml+=`<div class="sn-card" onclick="openUpcoming(${si})">
+        ${poster}
+        <div class="sn-body">
+          ${lastInfo}
+          <div class="sn-name">${s.name}</div>
+          <div class="sn-meta">${[s.country?countryFlag(s.country)+' '+s.country:null,s.network].filter(Boolean).join(' · ')||'Sin detalles'}</div>
+          ${noteHtml}
+        </div>
+      </div>`;
+    });
+
+    // Luego las detectadas automáticamente por antigüedad
+    autoStale.forEach(({s,si,days})=>{
       const poster=s.poster
         ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph>🎬</div>'">`
         :`<div class="sn-poster-ph">🎬</div>`;
       snHtml+=`<div class="sn-card" onclick="openUpcoming(${si})">
         ${poster}
         <div class="sn-body">
-          <span class="${snStaleClass(days)}">${snStaleLabel(days)}</span>
+          <span class="sn-stale-mid">🕰️ ${snStaleLabel(days)}</span>
           <div class="sn-name">${s.name}</div>
           <div class="sn-meta">${[s.country?countryFlag(s.country)+' '+s.country:null,s.network].filter(Boolean).join(' · ')||'Sin detalles'}</div>
         </div>
       </div>`;
     });
+
     snHtml+='</div>';
     resultsEl.innerHTML=snHtml;
     return;
   }
 
-  const upcoming=applyUpcomingFilters(allUpcoming);
+  const upcoming=applyUpcomingFilters(allUpcoming.filter(s=>!s.sinNovedades));
 
   if(!upcoming.length){
     resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna serie con esos filtros.</div>';

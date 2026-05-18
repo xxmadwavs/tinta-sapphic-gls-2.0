@@ -2039,7 +2039,26 @@ function formHtml(s, forcedCategory=null){
         </div>
         <div class="form-hint">Ej: Primavera 2025.</div>
       </div>`:''}
-      <div style="text-align:center;padding:3rem 1rem;color:var(--muted);font-size:13px">
+      <!-- ══ SIN NOVEDADES ══ -->
+      <div style="margin-bottom:14px;padding:12px 14px;background:rgba(176,128,48,.07);border:1.5px solid rgba(176,128,48,.25);border-radius:12px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9a7000;margin-bottom:10px">🕰️ Sin novedades</div>
+        <label class="toggle-row" style="margin-bottom:10px;background:transparent;border:none;padding:0;cursor:pointer">
+          <input type="checkbox" id="f_sinNovedades" ${s&&s.sinNovedades?'checked':''} style="width:auto;accent-color:#b08000">
+          <div style="flex:1">
+            <div class="toggle-label" style="color:#9a7000">📭 Marcar como "Sin novedades"</div>
+            <div class="toggle-desc">Aparece en la pestaña "Sin novedades" de Próximamente</div>
+          </div>
+        </label>
+        <div class="form-row" style="margin-bottom:8px">
+          <label class="form-label">Última info conocida</label>
+          <input id="f_snLastUpdate" placeholder="Ej: Anunciada en feb 2025, sin más noticias" value="${escapeHtml(s&&s.snLastUpdate||'')}"/>
+        </div>
+        <div class="form-row" style="margin:0">
+          <label class="form-label">Nota adicional <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
+          <textarea id="f_snNote" placeholder="Ej: Producción pausada, actriz cambió de agencia…" rows="2" style="resize:vertical;min-height:50px">${escapeHtml(s&&s.snNote||'')}</textarea>
+        </div>
+      </div>
+      <div style="text-align:center;padding:2rem 1rem;color:var(--muted);font-size:13px">
         <div style="font-size:2rem;margin-bottom:8px">📅</div>
         Las temporadas se configuran<br>cuando la serie tenga fecha confirmada.
       </div>
@@ -2495,7 +2514,10 @@ async function saveSeries(si, forcedCategory=null){
   const myPick2026=document.getElementById('f_myPick2026')?.checked||false;
   const cancelStatus=document.getElementById('f_cancelStatus')?.value||'';
   const cancelNote=document.getElementById('f_cancelNote')?.value.trim()||'';
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote};
+  const sinNovedades=document.getElementById('f_sinNovedades')?.checked||false;
+  const snLastUpdate=document.getElementById('f_snLastUpdate')?.value.trim()||'';
+  const snNote=document.getElementById('f_snNote')?.value.trim()||'';
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
