@@ -1957,6 +1957,23 @@ function formHtml(s, forcedCategory=null){
         <input type="checkbox" id="f_renewed" ${s&&s.renewedNextSeason?'checked':''} style="width:auto;accent-color:var(--teal)">
         <div><div class="toggle-label" style="color:var(--teal)">🔄 Renovada para nueva temporada</div><div class="toggle-desc">Muestra el badge "Renovada" en index cuando la serie finaliza</div></div>
       </label>
+      <!-- CANCELACIÓN -->
+      <div style="margin-top:10px;padding:10px 12px;background:rgba(201,64,64,.06);border:1.5px solid rgba(201,64,64,.18);border-radius:10px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c94040;margin-bottom:8px">❌ Estado de cancelación</div>
+        <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span style="font-size:12px;font-weight:600;color:var(--text);min-width:80px">Estado</span>
+          <select id="f_cancelStatus" style="flex:1;padding:5px 8px;border:1.5px solid var(--border2);border-radius:7px;font-size:12px;font-family:var(--font-body);background:var(--surface)">
+            <option value="" ${!s||!s.cancelStatus?'selected':''}>— Sin cambios —</option>
+            <option value="cancelled" ${s&&s.cancelStatus==='cancelled'?'selected':''}>❌ Cancelada</option>
+            <option value="limbo" ${s&&s.cancelStatus==='limbo'?'selected':''}>⏸️ En limbo / Sin noticias</option>
+            <option value="closed" ${s&&s.cancelStatus==='closed'?'selected':''}>🏢 Productora cerrada</option>
+          </select>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:8px">
+          <span style="font-size:12px;font-weight:600;color:var(--text);min-width:80px;padding-top:4px">Nota</span>
+          <textarea id="f_cancelNote" rows="2" placeholder="Motivo de cancelación, fuente, etc." style="flex:1;padding:6px 8px;border:1.5px solid var(--border2);border-radius:7px;font-size:12px;font-family:var(--font-body);resize:vertical;background:var(--surface)">${s&&s.cancelNote||''}</textarea>
+        </label>
+      </div>
       <label class="toggle-row" style="margin-top:6px">
         <input type="checkbox" id="f_myPick" ${s&&s.myPick?'checked':''} style="width:auto;accent-color:#c94f7c">
         <div style="flex:1">
@@ -2456,7 +2473,9 @@ async function saveSeries(si, forcedCategory=null){
   const episodeDuration=parseDurationInput(document.getElementById('f_epDuration')?.value||'')||'';
   const myPick=document.getElementById('f_myPick')?.checked||false;
   const myPick2026=document.getElementById('f_myPick2026')?.checked||false;
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026};
+  const cancelStatus=document.getElementById('f_cancelStatus')?.value||'';
+  const cancelNote=document.getElementById('f_cancelNote')?.value.trim()||'';
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
