@@ -2109,6 +2109,7 @@ async function loadData(){
     state.series=d.series||[];
     state.movies=d.movies||[];
     state.actresses=d.actresses||[];
+    state.ships=d.ships||[];
     if(d.exportedAt){
       const dt=new Date(d.exportedAt);
       const badge=document.getElementById('updateBadge'); if(badge){badge.textContent='✓ Act. '+dt.toLocaleDateString('es-ES',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});badge.style.display='';}
@@ -4974,30 +4975,11 @@ const shipsState = {filter:'all', q:''};
 function renderShips(){
   const view=document.getElementById('viewShips');
   if(!view) return;
-  const series=state.series||[];
+  const seriesList=state.series||[];
   const actresses=state.actresses||[];
   const actMap={};
   actresses.forEach(a=>actMap[a.id]=a);
-
-  // Build ships list: thai series with cast main/secondary couples
-  const ships=[];
-  series.forEach((s,si)=>{
-    const isThai=s.country&&s.country.includes('Tailandia');
-    if(!isThai||!s.cast||!s.cast.length) return;
-    const grouped={};
-    s.cast.forEach(m=>{
-      if(m.coupleType==='other') return;
-      const key=m.coupleType+'_'+(m.coupleNum||1);
-      if(!grouped[key]) grouped[key]=[];
-      grouped[key].push(m);
-    });
-    Object.entries(grouped).forEach(([key,members])=>{
-      const valid=members.filter(m=>actMap[m.actressId]);
-      if(valid.length<2) return;
-      const [type]=key.split('_');
-      ships.push({s,si,type,members:valid});
-    });
-  });
+  const manualShips=state.ships||[];
 
   // Status helper
   function seriesStatus(s){
@@ -5008,6 +4990,44 @@ function renderShips(){
     return future.length>0?'ongoing':'finished';
   }
 
+  // Build ships list — usar ships manuales si existen, si no fallback automático
+  let ships=[];
+
+  if(manualShips.length>0){
+    // Modo manual: ships definidos en el admin
+    manualShips.forEach(sh=>{
+      const actressIds=sh.actressIds||[];
+      const members=actressIds.map(id=>actMap[id]).filter(Boolean);
+      if(members.length<2) return;
+      // Detectar series donde aparecen TODAS las actrices del ship
+      const shared=seriesList.filter(s=>{
+        if(!s.cast||!s.cast.length) return false;
+        const castIds=s.cast.map(m=>m.actressId);
+        return actressIds.every(id=>castIds.includes(id));
+      });
+      ships.push({sh, members, shared, mode:'manual'});
+    });
+  } else {
+    // Fallback automático: extraer parejas de series tailandesas
+    seriesList.forEach((s,si)=>{
+      const isThai=s.country&&s.country.includes('Tailandia');
+      if(!isThai||!s.cast||!s.cast.length) return;
+      const grouped={};
+      s.cast.forEach(m=>{
+        if(m.coupleType==='other') return;
+        const key=m.coupleType+'_'+(m.coupleNum||1);
+        if(!grouped[key]) grouped[key]=[];
+        grouped[key].push(m);
+      });
+      Object.entries(grouped).forEach(([key,castMembers])=>{
+        const valid=castMembers.filter(m=>actMap[m.actressId]);
+        if(valid.length<2) return;
+        const [type]=key.split('_');
+        ships.push({s,si,type,members:valid,mode:'auto'});
+      });
+    });
+  }
+
   view.innerHTML=`<div class="ships-shell">
     <div class="section-heading" style="margin-bottom:.25rem">💕 Ships Oficiales Thais</div>
     <p class="section-desc" style="margin-bottom:.85rem">Parejas oficiales de series tailandesas: protagonistas y secundarias.</p>
@@ -5016,16 +5036,18 @@ function renderShips(){
       <button class="ships-subtab" id="shipsSubOngoing" onclick="shipsState.filter='ongoing';renderShipsResults()">🟢 En emisión</button>
       <button class="ships-subtab" id="shipsSubUpcoming" onclick="shipsState.filter='upcoming';renderShipsResults()">📅 Próximamente</button>
       <button class="ships-subtab" id="shipsSubFinished" onclick="shipsState.filter='finished';renderShipsResults()">✅ Finalizadas</button>
-      <button class="ships-subtab" id="shipsSubMain" onclick="shipsState.filter='main';renderShipsResults()">💕 Solo protagonistas</button>
     </div>
     <div style="position:relative;margin-bottom:.85rem">
       <span class="search-icon">🔍</span>
-      <input class="search-input" id="shipsSearchInput" placeholder="Buscar actriz o serie…"
+      <input class="search-input" id="shipsSearchInput" placeholder="Buscar ship o actriz…"
         value="${shipsState.q}" oninput="shipsState.q=this.value;renderShipsResults()" autocomplete="off">
     </div>
     <div id="shipsResults"></div>
   </div>`;
   view._ships=ships;
+  view._actMap=actMap;
+  view._seriesList=seriesList;
+  view._seriesStatus=seriesStatus;
   renderShipsResults();
 }
 
@@ -5034,33 +5056,41 @@ function renderShipsResults(){
   const resultsEl=document.getElementById('shipsResults');
   if(!resultsEl||!view) return;
   const ships=view._ships||[];
-  const actMap={};
-  (state.actresses||[]).forEach(a=>actMap[a.id]=a);
+  const actMap=view._actMap||{};
+  const seriesStatus=view._seriesStatus||function(){return 'finished';};
+  const isManual=(ships[0]?.mode==='manual');
 
   // Subtab active highlight
-  ['All','Ongoing','Upcoming','Finished','Main'].forEach(t=>{
+  ['All','Ongoing','Upcoming','Finished'].forEach(t=>{
     const btn=document.getElementById('shipsSub'+t);
     if(btn) btn.className='ships-subtab'+(shipsState.filter===(t==='All'?'all':t.toLowerCase())?' active':'');
   });
 
-  function seriesStatus(s){
-    if(s.upcoming) return 'upcoming';
-    const now=new Date();
-    const eps=genEps(s);
-    return eps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped)?'ongoing':'finished';
-  }
-
   const q=(shipsState.q||'').toLowerCase().trim();
+
+  // Filter
   let filtered=ships.filter(sh=>{
-    const status=seriesStatus(sh.s);
+    const members=sh.members||[];
+    // Determinar status: para manual usamos la serie más relevante (primera en común o la más reciente)
+    let status='finished';
+    if(isManual){
+      const shared=sh.shared||[];
+      if(shared.length){
+        // Si alguna en emisión → ongoing; si alguna upcoming → upcoming
+        if(shared.some(s=>seriesStatus(s)==='ongoing')) status='ongoing';
+        else if(shared.some(s=>seriesStatus(s)==='upcoming')) status='upcoming';
+        else status='finished';
+      }
+    } else {
+      status=seriesStatus(sh.s);
+    }
     if(shipsState.filter==='ongoing'&&status!=='ongoing') return false;
     if(shipsState.filter==='upcoming'&&status!=='upcoming') return false;
     if(shipsState.filter==='finished'&&status!=='finished') return false;
-    if(shipsState.filter==='main'&&sh.type!=='main') return false;
     if(q){
-      const names=sh.members.map(m=>(actMap[m.actressId]?.name||'').toLowerCase());
-      const seriesName=(sh.s.name||'').toLowerCase();
-      return names.some(n=>n.includes(q))||seriesName.includes(q);
+      const names=members.map(a=>(a.name||'').toLowerCase());
+      const shipName=(sh.sh?.name||sh.s?.name||'').toLowerCase();
+      return names.some(n=>n.includes(q))||shipName.includes(q);
     }
     return true;
   });
@@ -5070,54 +5100,189 @@ function renderShipsResults(){
     return;
   }
 
-  // Sort: main first, then by series name
+  // Sort by ship name
   filtered.sort((a,b)=>{
-    if(a.type==='main'&&b.type!=='main') return -1;
-    if(b.type==='main'&&a.type!=='main') return 1;
-    return (a.s.name||'').localeCompare(b.s.name||'','es');
+    const na=a.sh?.name||a.s?.name||'';
+    const nb=b.sh?.name||b.s?.name||'';
+    return na.localeCompare(nb,'es');
   });
 
   const statusLabel={ongoing:'🟢 En emisión',upcoming:'📅 Próximamente',finished:'✅ Finalizada'};
   const statusClass={ongoing:'ship-ongoing',upcoming:'ship-upcoming',finished:'ship-finished'};
 
   let html=`<div class="ships-count">Mostrando <strong>${filtered.length}</strong> ship${filtered.length!==1?'s':''}</div><div class="ships-grid">`;
-  filtered.forEach(sh=>{
-    const status=seriesStatus(sh.s);
-    const thumbEl=sh.s.poster
-      ?`<img class="ship-series-thumb" src="${sh.s.poster}" alt="${sh.s.name}" onerror="this.outerHTML='<div class=ship-series-thumb-ph>🎬</div>'">`
-      :`<div class="ship-series-thumb-ph">🎬</div>`;
-    const typeBadge=sh.type==='main'
-      ?`<span class="ship-type-badge ship-type-main">💕 Protagonista</span>`
-      :`<span class="ship-type-badge ship-type-secondary">🌸 Secundaria</span>`;
-    const statusBadge=`<span class="ship-status-badge ${statusClass[status]}">${statusLabel[status]}</span>`;
-    const pair=sh.members.slice(0,2);
-    const coupleRow=pair.map(m=>{
-      const a=actMap[m.actressId];
-      if(!a) return '';
-      const photo=a.photo
-        ?`<img class="ship-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=ship-photo-ph>🎭</div>'">`
-        :`<div class="ship-photo-ph">🎭</div>`;
-      return `<div class="ship-actress-wrap" onclick="event.stopPropagation();openActressProfile('${a.id}')">
-        ${photo}
-        <div class="ship-name">${a.name}</div>
-        ${m.character?`<div class="ship-char">${m.character}</div>`:''}
-      </div>`;
-    }).join('<div class="ship-heart">💞</div>');
-    html+=`<div class="ship-card" onclick="openSeries(${sh.si})">
-      ${thumbEl}
-      <div class="ship-card-inner">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px">
-          <div class="ship-series-name">${sh.s.name}</div>
-          ${statusBadge}
+
+  if(isManual){
+    // Render ships manuales
+    filtered.forEach((sh,idx)=>{
+      const shared=sh.shared||[];
+      const members=sh.members||[];
+      // Status global del ship
+      let status='finished';
+      if(shared.length){
+        if(shared.some(s=>seriesStatus(s)==='ongoing')) status='ongoing';
+        else if(shared.some(s=>seriesStatus(s)==='upcoming')) status='upcoming';
+        else status='finished';
+      }
+      const statusBadge=shared.length?`<span class="ship-status-badge ${statusClass[status]}">${statusLabel[status]}</span>`:'';
+
+      // Foto de portada: primera serie compartida o placeholder
+      const firstSeries=shared[0];
+      const thumbEl=firstSeries?.poster
+        ?`<img class="ship-series-thumb" src="${firstSeries.poster}" alt="${firstSeries.name}" onerror="this.outerHTML='<div class=ship-series-thumb-ph>💕</div>'">`
+        :`<div class="ship-series-thumb-ph">💕</div>`;
+
+      // Actrices del ship
+      const coupleRow=members.map(a=>{
+        const pos=a.photoPosition||'center 15%';
+        const photo=a.photo
+          ?`<img class="ship-photo" src="${a.photo}" alt="${a.name}" style="object-position:${pos}" onerror="this.outerHTML='<div class=ship-photo-ph>🎭</div>'">`
+          :`<div class="ship-photo-ph">🎭</div>`;
+        return `<div class="ship-actress-wrap" onclick="event.stopPropagation();openActressProfile('${a.id}')">
+          ${photo}
+          <div class="ship-name">${a.name}</div>
+        </div>`;
+      }).join('<div class="ship-heart">💞</div>');
+
+      // Miniaturas de series compartidas
+      const seriesChips=shared.map(s=>{
+        const sIdx=(state.series||[]).indexOf(s);
+        const sStatus=seriesStatus(s);
+        return `<span class="ship-series-chip" onclick="event.stopPropagation();openSeries(${sIdx})" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--text);margin:2px 2px 0 0">
+          <span class="${statusClass[sStatus]}" style="width:6px;height:6px;border-radius:50%;display:inline-block;background:currentColor"></span>
+          ${s.name}
+        </span>`;
+      }).join('');
+
+      const serialsSection=shared.length
+        ?`<div style="margin-top:6px"><div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">📺 Series en común</div>${seriesChips}</div>`
+        :'';
+
+      html+=`<div class="ship-card" onclick="openShipDetail(${idx})">
+        ${thumbEl}
+        <div class="ship-card-inner">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px">
+            <div style="font-size:14px;font-weight:700;color:var(--text)">${sh.sh.name||'Ship'}</div>
+            ${statusBadge}
+          </div>
+          <div class="ship-couple-row">${coupleRow}</div>
+          ${serialsSection}
         </div>
-        <div class="ship-couple-row">${coupleRow}</div>
-        <div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">${typeBadge}</div>
-      </div>
-    </div>`;
-  });
+      </div>`;
+    });
+  } else {
+    // Render automático (fallback)
+    filtered.forEach(sh=>{
+      const status=seriesStatus(sh.s);
+      const thumbEl=sh.s.poster
+        ?`<img class="ship-series-thumb" src="${sh.s.poster}" alt="${sh.s.name}" onerror="this.outerHTML='<div class=ship-series-thumb-ph>🎬</div>'">`
+        :`<div class="ship-series-thumb-ph">🎬</div>`;
+      const typeBadge=sh.type==='main'
+        ?`<span class="ship-type-badge ship-type-main">💕 Protagonista</span>`
+        :`<span class="ship-type-badge ship-type-secondary">🌸 Secundaria</span>`;
+      const statusBadge=`<span class="ship-status-badge ${statusClass[status]}">${statusLabel[status]}</span>`;
+      const pair=sh.members.slice(0,2);
+      const coupleRow=pair.map(m=>{
+        const a=actMap[m.actressId];
+        if(!a) return '';
+        const pos=a.photoPosition||'center 15%';
+        const photo=a.photo
+          ?`<img class="ship-photo" src="${a.photo}" alt="${a.name}" style="object-position:${pos}" onerror="this.outerHTML='<div class=ship-photo-ph>🎭</div>'">`
+          :`<div class="ship-photo-ph">🎭</div>`;
+        return `<div class="ship-actress-wrap" onclick="event.stopPropagation();openActressProfile('${a.id}')">
+          ${photo}
+          <div class="ship-name">${a.name}</div>
+          ${m.character?`<div class="ship-char">${m.character}</div>`:''}
+        </div>`;
+      }).join('<div class="ship-heart">💞</div>');
+      html+=`<div class="ship-card" onclick="openSeries(${sh.si})">
+        ${thumbEl}
+        <div class="ship-card-inner">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px">
+            <div class="ship-series-name">${sh.s.name}</div>
+            ${statusBadge}
+          </div>
+          <div class="ship-couple-row">${coupleRow}</div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">${typeBadge}</div>
+        </div>
+      </div>`;
+    });
+  }
+
   html+='</div>';
+  // Guardar filtered para el modal de detalle
+  view._filtered=filtered;
   resultsEl.innerHTML=html;
 }
+
+// Modal de detalle de ship manual
+function openShipDetail(idx){
+  const view=document.getElementById('viewShips');
+  const filtered=view?._filtered||[];
+  const sh=filtered[idx];
+  if(!sh) return;
+  const members=sh.members||[];
+  const shared=sh.shared||[];
+  const seriesStatus=view._seriesStatus||function(){return 'finished';};
+  const statusLabel={ongoing:'🟢 En emisión',upcoming:'📅 Próximamente',finished:'✅ Finalizada'};
+  const statusClass={ongoing:'ship-ongoing',upcoming:'ship-upcoming',finished:'ship-finished'};
+
+  // Fotos de las actrices
+  const actressesHtml=members.map(a=>{
+    const pos=a.photoPosition||'center 15%';
+    const photo=a.photo
+      ?`<img src="${a.photo}" style="width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:${pos};border:3px solid var(--accent2);flex-shrink:0" onerror="this.outerHTML='<div style=\\'width:80px;height:80px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:32px\\'>🎭</div>'">`
+      :`<div style="width:80px;height:80px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:32px">🎭</div>`;
+    return `<div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;cursor:pointer" onclick="closeShipDetail();openActressProfile('${a.id}')">
+      ${photo}
+      <div style="font-size:13px;font-weight:700;color:var(--text);text-align:center;line-height:1.3">${a.name}</div>
+    </div>`;
+  });
+  const coupleHtml=actressesHtml.join('<div style="font-size:28px;color:var(--accent2);align-self:center;margin:0 8px">💞</div>');
+
+  // Series compartidas
+  const seriesHtml=shared.length
+    ?shared.map(s=>{
+        const si=(state.series||[]).indexOf(s);
+        const sst=seriesStatus(s);
+        return `<div onclick="closeShipDetail();openSeries(${si})" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(201,79,124,0.12)'" onmouseout="this.style.boxShadow=''">
+          ${s.poster?`<img src="${s.poster}" style="width:34px;height:50px;border-radius:6px;object-fit:cover;flex-shrink:0">`:
+            `<div style="width:34px;height:50px;border-radius:6px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🎬</div>`}
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:700;color:var(--text)">${s.name}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:1px">${s.network||''} · ${s.year||''}</div>
+          </div>
+          <span class="ship-status-badge ${statusClass[sst]}" style="white-space:nowrap">${statusLabel[sst]}</span>
+        </div>`;
+      }).join('')
+    :`<div style="color:var(--muted);font-size:13px;text-align:center;padding:16px">Todavía no tienen series en común registradas.</div>`;
+
+  const descHtml=sh.sh?.desc?`<p style="font-size:13px;color:var(--muted);text-align:center;margin-bottom:16px;line-height:1.6">${sh.sh.desc}</p>`:'';
+
+  const overlay=document.createElement('div');
+  overlay.id='shipDetailOverlay';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(58,37,53,.55);z-index:500;display:flex;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(3px)';
+  overlay.onclick=e=>{if(e.target===overlay) closeShipDetail();};
+  overlay.innerHTML=`<div style="background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;width:100%;max-width:520px;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(201,79,124,0.18)">
+    <div style="padding:1.25rem 1.5rem .75rem;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--text)">💕 ${sh.sh?.name||'Ship'}</div>
+      <button onclick="closeShipDetail()" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);line-height:1;padding:4px">✕</button>
+    </div>
+    <div style="padding:1.5rem">
+      <div style="display:flex;justify-content:center;align-items:center;gap:0;margin-bottom:16px;flex-wrap:wrap">${coupleHtml}</div>
+      ${descHtml}
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:8px">📺 Series en común (${shared.length})</div>
+      <div style="display:flex;flex-direction:column;gap:8px">${seriesHtml}</div>
+    </div>
+  </div>`;
+  document.body.appendChild(overlay);
+}
+
+function closeShipDetail(){
+  const el=document.getElementById('shipDetailOverlay');
+  if(el) el.remove();
+}
+
 
 // ══════════════════════════════════════════════════════════════════════════════
 // CANCELADAS

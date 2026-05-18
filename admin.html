@@ -527,6 +527,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <a class="qnav-btn" href="#section-realities" onclick="document.getElementById('section-realities').scrollIntoView({behavior:'smooth'});return false;">🎤 Realities</a>
   <a class="qnav-btn" href="#section-books" onclick="document.getElementById('section-books').scrollIntoView({behavior:'smooth'});return false;">📚 Libros</a>
   <a class="qnav-btn" href="#section-actresses" onclick="document.getElementById('section-actresses').scrollIntoView({behavior:'smooth'});return false;">🎭 Actrices</a>
+  <a class="qnav-btn" href="#section-ships" onclick="document.getElementById('section-ships').scrollIntoView({behavior:'smooth'});return false;">💕 Ships</a>
   <div class="quicknav-sep"></div>
   <button type="button" class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
   <button type="button" class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
@@ -659,6 +660,23 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddActress()">+ Añadir actriz</button>
     <div class="series-count-label" id="actressCountLabel"></div>
     <div id="actressesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:8px"></div>
+  </div>
+
+  <!-- ══════════ SHIPS ══════════ -->
+  <div class="card" id="section-ships">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+      <div class="card-title" style="margin-bottom:0">💕 Ships</div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Define los ships manualmente: ponles nombre, elige las actrices que los forman. Las series en común se detectarán automáticamente.</p>
+    <div class="admin-toolbar">
+      <div class="admin-search-wrap">
+        <span class="admin-search-icon">🔍</span>
+        <input class="admin-search-input" id="adminShipsQ" placeholder="Buscar ship o actriz…" oninput="renderShipsAdmin()">
+      </div>
+    </div>
+    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:var(--accent)" onclick="openAddShip()">+ Crear ship</button>
+    <div class="series-count-label" id="shipsCountLabel"></div>
+    <div id="shipsAdminGrid" style="display:grid;gap:10px;margin-top:8px"></div>
   </div>
 
   <div class="card">
@@ -865,6 +883,7 @@ function getCountries(listId){
 let series = [];
 let movies = [];
 let actresses = [];
+let ships = [];   // Ships manuales
 let currentStab = 'active';
 
 const PAGE_SIZE = 20;
@@ -934,7 +953,8 @@ async function initData(){
         if(d.series) series = d.series;
         if(d.movies) movies = d.movies;
         if(d.actresses) actresses = d.actresses;
-        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid();
+        if(d.ships) ships = d.ships;
+        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin();
         return;
       }
     } catch(e){ /* sin data.json accesible */ }
@@ -3087,7 +3107,7 @@ function renderBooks(){
 function exportData(){
   try {
     // Validate before exporting
-    const testJson = JSON.stringify({series, movies, actresses, exportedAt: new Date().toISOString()});
+    const testJson = JSON.stringify({series, movies, actresses, ships, exportedAt: new Date().toISOString()});
     JSON.parse(testJson); // verify roundtrip
   } catch(e) {
     alert('Error al validar los datos antes de exportar: ' + e.message);
@@ -3097,7 +3117,7 @@ function exportData(){
   _unsavedCount=0;
   const dot=document.getElementById('exportDot');
   if(dot) dot.classList.remove('visible');
-  const blob=new Blob([JSON.stringify({series,movies,actresses,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
 }
 
@@ -3110,8 +3130,9 @@ function importData(e){
       if(d.series) series=d.series;
       if(d.movies) movies=d.movies;
       if(d.actresses) actresses=d.actresses;
+      if(d.ships) ships=d.ships;
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
-      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid();
+      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin();
       alert('✓ Datos importados correctamente');
     }catch(err){ alert('Error al leer el archivo: '+err.message); }
   };
@@ -3889,6 +3910,166 @@ document.addEventListener('keydown', e=>{
     }
   }
 });
+
+/* ══════════════════════════════════════
+   SHIPS ADMIN
+══════════════════════════════════════ */
+
+function renderShipsAdmin(){
+  const grid=document.getElementById('shipsAdminGrid');
+  const lbl=document.getElementById('shipsCountLabel');
+  if(!grid) return;
+  const q=(document.getElementById('adminShipsQ')?.value||'').toLowerCase();
+  const actMap={};
+  actresses.forEach(a=>actMap[a.id]=a);
+
+  // Calcular series compartidas para cada ship
+  function sharedSeries(sh){
+    if(!sh.actressIds||sh.actressIds.length<2) return [];
+    return (series||[]).filter(s=>{
+      if(!s.cast||!s.cast.length) return false;
+      const castIds=s.cast.map(m=>m.actressId);
+      return sh.actressIds.every(id=>castIds.includes(id));
+    });
+  }
+
+  const list=(ships||[]).filter(sh=>{
+    if(!q) return true;
+    if((sh.name||'').toLowerCase().includes(q)) return true;
+    return (sh.actressIds||[]).some(id=>(actMap[id]?.name||'').toLowerCase().includes(q));
+  });
+
+  if(lbl) lbl.textContent=list.length+' ship'+(list.length!==1?'s':'');
+  if(!list.length){
+    grid.innerHTML='<div style="color:var(--muted);font-size:13px;padding:12px 0">No hay ships. Pulsa "+ Crear ship" para empezar.</div>';
+    return;
+  }
+
+  grid.innerHTML=list.map(sh=>{
+    const si=ships.indexOf(sh);
+    const members=(sh.actressIds||[]).map(id=>actMap[id]).filter(Boolean);
+    const shared=sharedSeries(sh);
+    const photosHtml=members.map(a=>{
+      const pos=a.photoPosition||'center 15%';
+      return a.photo
+        ?`<img src="${escapeHtml(a.photo)}" title="${escapeHtml(a.name)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(pos)};border:2px solid var(--border2);flex-shrink:0" onerror="this.outerHTML='<div style=\\'width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--border2)\\'>🎭</div>'">`
+        :`<div title="${escapeHtml(a.name)}" style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--border2);flex-shrink:0">🎭</div>`;
+    }).join('<span style="font-size:14px;color:var(--accent2);margin:0 2px">💞</span>');
+    const seriesText=shared.length
+      ?`<span style="font-size:11px;color:var(--teal);font-weight:600">📺 ${shared.length} serie${shared.length!==1?'s':''} en común</span>`
+      :`<span style="font-size:11px;color:var(--muted)">Sin series en común aún</span>`;
+    const namesText=members.map(a=>a.name).join(' & ');
+    return `<div class="series-item">
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">${photosHtml}</div>
+      <div class="series-info">
+        <div class="series-name">${escapeHtml(sh.name||'Ship sin nombre')}</div>
+        <div class="series-meta">${escapeHtml(namesText)}</div>
+        <div style="margin-top:3px">${seriesText}</div>
+      </div>
+      <div class="series-actions">
+        <button type="button" class="btn small" onclick="openEditShip(${si})">✏️ Editar</button>
+        <button type="button" class="btn small danger" onclick="delShip(${si})">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function shipFormHtml(sh){
+  const actMap={};
+  actresses.filter(a=>a.country&&a.country.includes('Tailandia')).forEach(a=>actMap[a.id]=a);
+  const allThai=actresses.filter(a=>a.country&&a.country.includes('Tailandia'));
+  const selected=sh?.actressIds||[];
+
+  const actressPickerRows=allThai.sort((a,b)=>a.name.localeCompare(b.name,'es')).map(a=>{
+    const checked=selected.includes(a.id);
+    const pos=a.photoPosition||'center 15%';
+    const photo=a.photo
+      ?`<img src="${escapeHtml(a.photo)}" style="width:30px;height:30px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(pos)};border:1.5px solid var(--border2);flex-shrink:0">`
+      :`<div style="width:30px;height:30px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:12px;border:1.5px solid var(--border2);flex-shrink:0">🎭</div>`;
+    return `<label class="toggle-row" style="cursor:pointer;gap:8px;padding:7px 10px">
+      <input type="checkbox" name="ship_actress" value="${escapeHtml(a.id)}" ${checked?'checked':''} style="accent-color:var(--accent);width:15px;height:15px;flex-shrink:0">
+      ${photo}
+      <span style="font-size:13px;font-weight:600;color:var(--text);flex:1">${escapeHtml(a.name)}</span>
+    </label>`;
+  }).join('');
+
+  return `
+    <div class="form-row">
+      <label class="form-label">Nombre del ship *</label>
+      <input id="sf_name" placeholder="Ej: FollkOrm, FerGreat…" value="${escapeHtml(sh?.name||'')}"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Descripción / notas <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
+      <textarea id="sf_desc" placeholder="Apuntes sobre el ship…" style="min-height:60px">${escapeHtml(sh?.desc||'')}</textarea>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Actrices del ship</label>
+      <div style="font-size:11.5px;color:var(--muted);margin-bottom:8px">Selecciona al menos 2. Las series en común se detectarán automáticamente.</div>
+      <div class="admin-search-wrap" style="margin-bottom:8px">
+        <span class="admin-search-icon">🔍</span>
+        <input class="admin-search-input" id="sf_actressQ" placeholder="Filtrar actrices…" oninput="filterShipActresses(this.value)" style="font-size:13px">
+      </div>
+      <div id="shipActressPicker" style="max-height:280px;overflow-y:auto;border:1.5px solid var(--border2);border-radius:10px;padding:4px">
+        ${actressPickerRows}
+      </div>
+    </div>
+    <div id="sf_preview" style="margin-top:8px"></div>`;
+}
+
+function filterShipActresses(q){
+  const picker=document.getElementById('shipActressPicker');
+  if(!picker) return;
+  const rows=picker.querySelectorAll('label.toggle-row');
+  const lq=(q||'').toLowerCase();
+  rows.forEach(row=>{
+    const name=row.querySelector('span')?.textContent||'';
+    row.style.display=(!lq||name.toLowerCase().includes(lq))?'':'none';
+  });
+}
+
+function openAddShip(){
+  document.getElementById('shipModalTitle').textContent='💕 Nuevo ship';
+  document.getElementById('shipModalBody').innerHTML=shipFormHtml(null);
+  document.getElementById('shipModalFooter').innerHTML=
+    `<button type="button" class="btn" onclick="document.getElementById('shipModal').classList.remove('open')">Cancelar</button>
+     <button type="button" class="btn primary" onclick="saveShip(-1)">Guardar ship</button>`;
+  document.getElementById('shipModal').classList.add('open');
+}
+
+function openEditShip(si){
+  document.getElementById('shipModalTitle').textContent='✏️ Editar ship';
+  document.getElementById('shipModalBody').innerHTML=shipFormHtml(ships[si]);
+  document.getElementById('shipModalFooter').innerHTML=
+    `<button type="button" class="btn" onclick="document.getElementById('shipModal').classList.remove('open')">Cancelar</button>
+     <button type="button" class="btn primary" onclick="saveShip(${si})">Guardar cambios</button>`;
+  document.getElementById('shipModal').classList.add('open');
+}
+
+function saveShip(si){
+  const name=document.getElementById('sf_name')?.value.trim();
+  if(!name){alert('El nombre del ship es obligatorio');return;}
+  const checked=[...document.querySelectorAll('input[name="ship_actress"]:checked')].map(c=>c.value);
+  if(checked.length<2){alert('Selecciona al menos 2 actrices para el ship');return;}
+  const desc=document.getElementById('sf_desc')?.value.trim()||'';
+  const payload={
+    id:si===-1?Date.now().toString():(ships[si]?.id||Date.now().toString()),
+    name,
+    desc,
+    actressIds:checked,
+  };
+  if(si===-1) ships.push(payload);
+  else ships[si]={...ships[si],...payload};
+  save();
+  document.getElementById('shipModal').classList.remove('open');
+  renderShipsAdmin();
+}
+
+async function delShip(si){
+  const ok=await showConfirm({title:`¿Eliminar el ship "${ships[si]?.name}"?`,desc:'Esta acción no se puede deshacer.',icon:'💕'});
+  if(!ok) return;
+  ships.splice(si,1);
+  save(); renderShipsAdmin();
+}
 </script>
 
 
@@ -3898,6 +4079,18 @@ document.addEventListener('keydown', e=>{
     <div class="modal-header" style="flex-shrink:0"><div class="modal-title" id="actressModalTitle" style="margin-bottom:0"></div><button type="button" class="modal-close" onclick="document.getElementById('actressModal').classList.remove('open')">✕</button></div>
     <div id="actressModalBody" style="overflow-y:auto;flex:1"></div>
     <div id="actressModalFooter" style="flex-shrink:0"></div>
+  </div>
+</div>
+
+<!-- Modal Ships -->
+<div class="modal-bg" id="shipModal" style="z-index:290">
+  <div class="modal" style="display:flex;flex-direction:column;max-height:92vh">
+    <div class="modal-header" style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+      <div class="modal-title" id="shipModalTitle">💕 Nuevo ship</div>
+      <button type="button" class="modal-close" onclick="document.getElementById('shipModal').classList.remove('open')">✕</button>
+    </div>
+    <div id="shipModalBody" style="overflow-y:auto;flex:1;padding:1.25rem 1.75rem"></div>
+    <div class="modal-footer-btns" id="shipModalFooter"></div>
   </div>
 </div>
 </body>
