@@ -686,43 +686,50 @@ footer{
 
 /* ══════════════ SHIPS THAIS ══════════════ */
 .ships-shell{padding:0}
-.ships-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:1rem}
-.ship-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:all .22s;box-shadow:var(--shadow-sm)}
-.ship-card:hover{border-color:var(--accent2);box-shadow:0 12px 36px rgba(201,79,124,0.18);transform:translateY(-3px)}
-.ship-card-inner{padding:13px 14px 14px;display:flex;flex-direction:column;gap:9px}
-/* Foto de pareja — banner horizontal dividido */
-.ship-couple-banner{position:relative;width:100%;height:160px;overflow:hidden;background:linear-gradient(135deg,var(--accent-soft),var(--lavender-soft));display:flex}
+.ships-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:1rem}
+.ship-card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;cursor:pointer;transition:all .22s;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.ship-card:hover{border-color:var(--accent2);box-shadow:0 10px 32px rgba(201,79,124,0.16);transform:translateY(-3px)}
+/* Banner foto de pareja */
+.ship-couple-banner{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,var(--accent-soft) 0%,var(--lavender-soft) 100%);display:flex;flex-shrink:0}
 .ship-couple-half{flex:1;overflow:hidden;position:relative}
-.ship-couple-half img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform .3s}
-.ship-card:hover .ship-couple-half img{transform:scale(1.04)}
-.ship-couple-half-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--accent-soft)}
-.ship-couple-divider{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;display:flex;flex-direction:column;align-items:center;pointer-events:none}
-.ship-couple-divider-line{width:1.5px;height:40px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.7),rgba(255,255,255,0.7),transparent)}
-.ship-couple-divider-heart{font-size:16px;background:rgba(255,255,255,0.88);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(201,79,124,.2);backdrop-filter:blur(6px);filter:drop-shadow(0 1px 3px rgba(0,0,0,.2))}
-.ship-couple-names{position:absolute;bottom:0;left:0;right:0;display:flex;background:linear-gradient(to top,rgba(25,10,20,0.7) 0%,transparent 100%);padding:22px 10px 8px;z-index:2}
-.ship-couple-name-tag{flex:1;text-align:center;font-size:11px;font-weight:700;color:#fff;line-height:1.2;text-shadow:0 1px 4px rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
-.ship-series-name{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.ship-couple-half img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform .35s}
+.ship-card:hover .ship-couple-half img{transform:scale(1.06)}
+.ship-couple-half-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px;background:var(--accent-soft)}
+.ship-couple-divider{position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.ship-couple-divider-line{flex:1;width:1.5px;background:linear-gradient(to bottom,transparent 0%,rgba(255,255,255,.55) 30%,rgba(255,255,255,.55) 70%,transparent 100%)}
+.ship-couple-divider-heart{font-size:14px;background:rgba(255,255,255,.9);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(201,79,124,.2);box-shadow:0 2px 8px rgba(201,79,124,.18);flex-shrink:0}
+.ship-couple-names{position:absolute;bottom:0;left:0;right:0;display:flex;background:linear-gradient(to top,rgba(22,8,18,.65) 0%,transparent 100%);padding:22px 8px 8px;z-index:2}
+.ship-couple-name-tag{flex:1;text-align:center;font-size:10px;font-weight:700;color:#fff;line-height:1.25;text-shadow:0 1px 4px rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
+/* Parte inferior */
+.ship-card-inner{padding:9px 11px 11px;display:flex;flex-direction:column;gap:5px;flex:1}
+.ship-card-title{font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ship-card-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.ship-series-chips{display:flex;flex-wrap:wrap;gap:3px;margin-top:1px}
+.ship-series-chip-sm{font-size:9.5px;font-weight:600;padding:1px 6px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--muted);cursor:pointer;white-space:nowrap;transition:background .12s}
+.ship-series-chip-sm:hover{background:var(--accent-soft);color:var(--accent)}
+/* Badges */
+.ship-status-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;white-space:nowrap}
+.ship-ongoing{background:var(--teal-soft);color:var(--teal)}
+.ship-upcoming{background:var(--lavender-soft);color:var(--lavender)}
+.ship-finished{background:var(--surface3);color:var(--muted)}
+.ship-type-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px}
+.ship-type-main{background:var(--accent-soft);color:var(--accent)}
+.ship-type-secondary{background:var(--teal-soft);color:var(--teal)}
+/* Legacy */
+.ship-series-name{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .ship-couple-row{display:flex;align-items:center;gap:10px}
 .ship-actress-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:0}
 .ship-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);flex-shrink:0}
 .ship-photo-ph{width:68px;height:68px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:26px;border:2px solid var(--border2);flex-shrink:0}
-.ship-name{font-size:11.5px;font-weight:600;color:var(--text);text-align:center;line-height:1.3;word-break:break-word}
-.ship-char{font-size:10.5px;color:var(--muted);text-align:center;font-style:italic}
-.ship-heart{font-size:22px;flex-shrink:0;line-height:1}
-.ship-type-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;align-self:flex-start}
-.ship-type-main{background:var(--accent-soft);color:var(--accent)}
-.ship-type-secondary{background:var(--teal-soft);color:var(--teal)}
+.ship-name{font-size:11.5px;font-weight:600;color:var(--text);text-align:center;line-height:1.3}
 .ship-series-thumb{width:100%;height:55px;object-fit:cover;object-position:top;display:block}
 .ship-series-thumb-ph{width:100%;height:55px;background:linear-gradient(135deg,var(--accent-soft),var(--lavender-soft));display:flex;align-items:center;justify-content:center;font-size:20px}
 .ships-count{font-size:13px;color:var(--muted);margin-bottom:.75rem}
-.ship-status-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px}
-.ship-ongoing{background:var(--teal-soft);color:var(--teal)}
-.ship-upcoming{background:var(--lavender-soft);color:var(--lavender)}
-.ship-finished{background:var(--surface3);color:var(--muted)}
 .ships-subtabs{display:flex;gap:4px;margin-bottom:1.1rem;flex-wrap:wrap}
 .ships-subtab{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border2);font-size:12.5px;font-weight:600;cursor:pointer;background:var(--surface);color:var(--muted);transition:all .15s;font-family:var(--font-body)}
 .ships-subtab:hover{background:var(--surface2);color:var(--text)}
 .ships-subtab.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent2)}
+@media(max-width:500px){.ships-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
 /* ══════════════ CANCELADAS ══════════════ */
 .canceladas-shell{padding:0}
 .canceladas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:1rem}
@@ -2121,7 +2128,6 @@ async function loadData(){
     state.movies=d.movies||[];
     state.actresses=d.actresses||[];
     state.ships=d.ships||[];
-    state.productoras=d.productoras||[];
     if(d.exportedAt){
       const dt=new Date(d.exportedAt);
       const badge=document.getElementById('updateBadge'); if(badge){badge.textContent='✓ Act. '+dt.toLocaleDateString('es-ES',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});badge.style.display='';}
@@ -5165,11 +5171,9 @@ function renderShipsResults(){
   let html=`<div class="ships-count">Mostrando <strong>${filtered.length}</strong> ship${filtered.length!==1?'s':''}</div><div class="ships-grid">`;
 
   if(isManual){
-    // Render ships manuales
     filtered.forEach((sh,idx)=>{
       const shared=sh.shared||[];
       const members=sh.members||[];
-      // Status global del ship
       let status='finished';
       if(shared.length){
         if(shared.some(s=>seriesStatus(s)==='ongoing')) status='ongoing';
@@ -5177,29 +5181,23 @@ function renderShipsResults(){
         else status='finished';
       }
       const statusBadge=shared.length?`<span class="ship-status-badge ${statusClass[status]}">${statusLabel[status]}</span>`:'';
-
-      // Foto de portada: primera serie compartida o placeholder
-      const firstSeries=shared[0];
-      const thumbEl=firstSeries?.poster
-        ?`<img class="ship-series-thumb" src="${firstSeries.poster}" alt="${firstSeries.name}" onerror="this.outerHTML='<div class=ship-series-thumb-ph>💕</div>'">`
-        :`<div class="ship-series-thumb-ph">💕</div>`;
-
-      // Foto de pareja o banner dividido
-      const [a1, a2] = members;
-      const coupleNames = members.map(a=>`<div class="ship-couple-name-tag">${a.name}</div>`).join('');
+      const [a1,a2]=members;
+      const coupleNames=members.map(a=>`<div class="ship-couple-name-tag">${a.name}</div>`).join('');
       let coupleBanner;
       if(sh.sh.couplePhoto){
+        const cpPos=sh.sh.couplePhotoPosition||'50% 20%';
+        const cpZoom=sh.sh.couplePhotoZoom||1;
         coupleBanner=`<div class="ship-couple-banner">
-          <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" style="width:100%;height:100%;object-fit:cover;object-position:center top" onerror="this.outerHTML='<div class=ship-couple-half-ph style=width:100%;height:100%;font-size:40px>💕</div>'">
+          <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" style="width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center" onerror="this.outerHTML='<div class=ship-couple-half-ph style=width:100%;height:100%;font-size:40px>💕</div>'">
           <div class="ship-couple-names">${coupleNames}</div>
         </div>`;
       } else {
-        const half1 = a1?.photo
-          ? `<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>🎭</div>'"></div>`
-          : `<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
-        const half2 = a2?.photo
-          ? `<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>🎭</div>'"></div>`
-          : `<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+        const half1=a1?.photo
+          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>🎭</div>'"></div>`
+          :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+        const half2=a2?.photo
+          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>🎭</div>'"></div>`
+          :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
         coupleBanner=`<div class="ship-couple-banner">
           ${half1}${half2}
           <div class="ship-couple-divider">
@@ -5210,39 +5208,22 @@ function renderShipsResults(){
           <div class="ship-couple-names">${coupleNames}</div>
         </div>`;
       }
-
-      // Miniaturas de series compartidas
-      const seriesChips=shared.map(s=>{
+      const chipsHtml=shared.slice(0,3).map(s=>{
         const sIdx=(state.series||[]).indexOf(s);
-        const sStatus=seriesStatus(s);
-        return `<span class="ship-series-chip" onclick="event.stopPropagation();openSeries(${sIdx})" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--text);margin:2px 2px 0 0">
-          <span class="${statusClass[sStatus]}" style="width:6px;height:6px;border-radius:50%;display:inline-block;background:currentColor"></span>
-          ${s.name}
-        </span>`;
-      }).join('');
-
-      const serialsSection=shared.length
-        ?`<div style="margin-top:6px"><div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">📺 Series en común</div>${seriesChips}</div>`
-        :'';
-
+        return `<span class="ship-series-chip-sm" onclick="event.stopPropagation();openSeries(${sIdx})">${s.name}</span>`;
+      }).join('')+(shared.length>3?`<span class="ship-series-chip-sm">+${shared.length-3}</span>`:'');
       html+=`<div class="ship-card" onclick="openShipDetail(${idx})">
         ${coupleBanner}
         <div class="ship-card-inner">
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px">
-            <div style="font-size:14px;font-weight:700;color:var(--text)">${sh.sh.name||'Ship'}</div>
-            ${statusBadge}
-          </div>
-          ${serialsSection}
+          <div class="ship-card-title">${sh.sh.name||'Ship'}</div>
+          <div class="ship-card-meta">${statusBadge}</div>
+          ${shared.length?`<div class="ship-series-chips">${chipsHtml}</div>`:''}
         </div>
       </div>`;
     });
   } else {
-    // Render automático (fallback)
     filtered.forEach(sh=>{
       const status=seriesStatus(sh.s);
-      const thumbEl=sh.s.poster
-        ?`<img class="ship-series-thumb" src="${sh.s.poster}" alt="${sh.s.name}" onerror="this.outerHTML='<div class=ship-series-thumb-ph>🎬</div>'">`
-        :`<div class="ship-series-thumb-ph">🎬</div>`;
       const typeBadge=sh.type==='main'
         ?`<span class="ship-type-badge ship-type-main">💕 Protagonista</span>`
         :`<span class="ship-type-badge ship-type-secondary">🌸 Secundaria</span>`;
@@ -5257,23 +5238,19 @@ function renderShipsResults(){
         ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" style="object-position:${a2auto.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>🎭</div>'"></div>`
         :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
       const namesAuto=[a1auto,a2auto].filter(Boolean).map(a=>`<div class="ship-couple-name-tag">${a.name}</div>`).join('');
-      const coupleBannerAuto=`<div class="ship-couple-banner">
-        ${half1auto}${half2auto}
-        <div class="ship-couple-divider">
-          <div class="ship-couple-divider-line"></div>
-          <div class="ship-couple-divider-heart">💞</div>
-          <div class="ship-couple-divider-line"></div>
-        </div>
-        <div class="ship-couple-names">${namesAuto}</div>
-      </div>`;
       html+=`<div class="ship-card" onclick="openSeries(${sh.si})">
-        ${coupleBannerAuto}
-        <div class="ship-card-inner">
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px">
-            <div class="ship-series-name">${sh.s.name}</div>
-            ${statusBadge}
+        <div class="ship-couple-banner">
+          ${half1auto}${half2auto}
+          <div class="ship-couple-divider">
+            <div class="ship-couple-divider-line"></div>
+            <div class="ship-couple-divider-heart">💞</div>
+            <div class="ship-couple-divider-line"></div>
           </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">${typeBadge}</div>
+          <div class="ship-couple-names">${namesAuto}</div>
+        </div>
+        <div class="ship-card-inner">
+          <div class="ship-card-title">${sh.s.name}</div>
+          <div class="ship-card-meta">${statusBadge}${typeBadge}</div>
         </div>
       </div>`;
     });
@@ -5297,55 +5274,87 @@ function openShipDetail(idx){
   const statusLabel={ongoing:'🟢 En emisión',upcoming:'📅 Próximamente',finished:'✅ Finalizada'};
   const statusClass={ongoing:'ship-ongoing',upcoming:'ship-upcoming',finished:'ship-finished'};
 
-  // Fotos de las actrices
-  const actressesHtml=members.map(a=>{
-    const pos=a.photoPosition||'center 15%';
-    const photo=a.photo
-      ?`<img src="${a.photo}" style="width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:${pos};border:3px solid var(--accent2);flex-shrink:0" onerror="this.outerHTML='<div style=\\'width:80px;height:80px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:32px\\'>🎭</div>'">`
-      :`<div style="width:80px;height:80px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:32px">🎭</div>`;
-    return `<div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;cursor:pointer" onclick="closeShipDetail();openActressProfile('${a.id}')">
-      ${photo}
-      <div style="font-size:13px;font-weight:700;color:var(--text);text-align:center;line-height:1.3">${a.name}</div>
+  // Header visual: foto de pareja con position/zoom, o banner dividido
+  let headerHtml;
+  if(sh.sh?.couplePhoto){
+    const cpPos=sh.sh.couplePhotoPosition||'50% 20%';
+    const cpZoom=sh.sh.couplePhotoZoom||1;
+    headerHtml=`<div style="width:100%;height:220px;overflow:hidden;position:relative;flex-shrink:0">
+      <img src="${sh.sh.couplePhoto}" style="width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center;display:block" onerror="this.style.display='none'">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(20,8,18,.7) 0%,transparent 55%)"></div>
+      <div style="position:absolute;bottom:14px;left:0;right:0;text-align:center">
+        <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.4)">💕 ${sh.sh.name||'Ship'}</div>
+      </div>
     </div>`;
-  });
-  const coupleHtml=actressesHtml.join('<div style="font-size:28px;color:var(--accent2);align-self:center;margin:0 8px">💞</div>');
+  } else {
+    const [a1,a2]=members;
+    const half1=a1?.photo
+      ?`<div style="flex:1;overflow:hidden;cursor:pointer" onclick="closeShipDetail();setTimeout(()=>openActressProfile('${a1.id}'),80)"><img src="${a1.photo}" style="width:100%;height:100%;object-fit:cover;object-position:${a1.photoPosition||'center 15%'};display:block;transition:transform .3s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''"></div>`
+      :`<div style="flex:1;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:44px">🎭</div>`;
+    const half2=a2?.photo
+      ?`<div style="flex:1;overflow:hidden;cursor:pointer" onclick="closeShipDetail();setTimeout(()=>openActressProfile('${a2.id}'),80)"><img src="${a2.photo}" style="width:100%;height:100%;object-fit:cover;object-position:${a2.photoPosition||'center 15%'};display:block;transition:transform .3s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''"></div>`
+      :`<div style="flex:1;background:var(--lavender-soft);display:flex;align-items:center;justify-content:center;font-size:44px">🎭</div>`;
+    headerHtml=`<div style="width:100%;height:220px;overflow:hidden;position:relative;flex-shrink:0;display:flex">
+      ${half1}
+      <div style="position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
+        <div style="flex:1;width:1.5px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.6),rgba(255,255,255,.6),transparent)"></div>
+        <div style="font-size:16px;background:rgba(255,255,255,.9);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(201,79,124,.2);box-shadow:0 2px 10px rgba(201,79,124,.2);flex-shrink:0">💞</div>
+        <div style="flex:1;width:1.5px;background:linear-gradient(to bottom,rgba(255,255,255,.6),rgba(255,255,255,.6),transparent)"></div>
+      </div>
+      ${half2}
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(20,8,18,.65) 0%,transparent 50%);pointer-events:none"></div>
+      <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;pointer-events:none">
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.4)">💕 ${sh.sh?.name||'Ship'}</div>
+      </div>
+    </div>`;
+  }
 
-  // Series compartidas
+  // Fila de actrices
+  const actressRowHtml=members.map(a=>`
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;cursor:pointer;min-width:0" onclick="closeShipDetail();setTimeout(()=>openActressProfile('${a.id}'),80)">
+      ${a.photo
+        ?`<img src="${a.photo}" style="width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:${a.photoPosition||'center 15%'};border:2.5px solid var(--accent2);flex-shrink:0">`
+        :`<div style="width:52px;height:52px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid var(--border2)">🎭</div>`}
+      <div style="font-size:11.5px;font-weight:700;color:var(--text);text-align:center;line-height:1.3;word-break:break-word">${a.name}</div>
+    </div>`).join(`<div style="font-size:22px;color:var(--accent2);align-self:center;margin-top:-16px;flex-shrink:0">💞</div>`);
+
+  const descHtml=sh.sh?.desc?`<p style="font-size:13px;color:var(--muted);text-align:center;line-height:1.65;margin:0">${sh.sh.desc}</p>`:'';
+
   const seriesHtml=shared.length
     ?shared.map(s=>{
         const si=(state.series||[]).indexOf(s);
         const sst=seriesStatus(s);
-        return `<div onclick="closeShipDetail();openSeries(${si})" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(201,79,124,0.12)'" onmouseout="this.style.boxShadow=''">
-          ${s.poster?`<img src="${s.poster}" style="width:34px;height:50px;border-radius:6px;object-fit:cover;flex-shrink:0">`:
-            `<div style="width:34px;height:50px;border-radius:6px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🎬</div>`}
+        return `<div onclick="closeShipDetail();openSeries(${si})" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;transition:all .18s" onmouseover="this.style.borderColor='var(--accent2)';this.style.background='var(--accent-soft)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface2)'">
+          ${s.poster
+            ?`<img src="${s.poster}" style="width:32px;height:48px;border-radius:7px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.1)">`
+            :`<div style="width:32px;height:48px;border-radius:7px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎬</div>`}
           <div style="flex:1;min-width:0">
-            <div style="font-size:13px;font-weight:700;color:var(--text)">${s.name}</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:1px">${s.network||''} · ${s.year||''}</div>
+            <div style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${s.name}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:2px">${[s.network,s.year].filter(Boolean).join(' · ')}</div>
           </div>
-          <span class="ship-status-badge ${statusClass[sst]}" style="white-space:nowrap">${statusLabel[sst]}</span>
+          <span class="ship-status-badge ${statusClass[sst]}">${statusLabel[sst]}</span>
         </div>`;
       }).join('')
-    :`<div style="color:var(--muted);font-size:13px;text-align:center;padding:16px">Todavía no tienen series en común registradas.</div>`;
-
-  const descHtml=sh.sh?.desc?`<p style="font-size:13px;color:var(--muted);text-align:center;margin-bottom:16px;line-height:1.6">${sh.sh.desc}</p>`:'';
+    :`<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px 0">Sin series en común registradas.</div>`;
 
   const overlay=document.createElement('div');
   overlay.id='shipDetailOverlay';
-  overlay.style.cssText='position:fixed;inset:0;background:rgba(58,37,53,.55);z-index:500;display:flex;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(3px)';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(30,10,24,.6);z-index:500;display:flex;align-items:center;justify-content:center;padding:1.25rem;backdrop-filter:blur(4px)';
   overlay.onclick=e=>{if(e.target===overlay) closeShipDetail();};
-  overlay.innerHTML=`<div style="background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;width:100%;max-width:520px;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(201,79,124,0.18)">
-    <div style="padding:1.25rem 1.5rem .75rem;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between">
-      <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--text)">💕 ${sh.sh?.name||'Ship'}</div>
-      <button onclick="closeShipDetail()" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);line-height:1;padding:4px">✕</button>
-    </div>
-    <div style="padding:1.5rem">
-      <div style="display:flex;justify-content:center;align-items:center;gap:0;margin-bottom:16px;flex-wrap:wrap">${coupleHtml}</div>
+  overlay.innerHTML=`<div style="background:var(--surface);border-radius:22px;width:100%;max-width:480px;max-height:90vh;overflow:hidden;box-shadow:0 24px 72px rgba(201,79,124,0.22);display:flex;flex-direction:column;position:relative">
+    ${headerHtml}
+    <button onclick="closeShipDetail()" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.88);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.18);z-index:10;backdrop-filter:blur(4px)">✕</button>
+    <div style="padding:16px 18px 22px;display:flex;flex-direction:column;gap:14px;overflow-y:auto">
+      <div style="display:flex;align-items:flex-start;gap:8px;justify-content:center">${actressRowHtml}</div>
       ${descHtml}
-      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:8px">📺 Series en común (${shared.length})</div>
-      <div style="display:flex;flex-direction:column;gap:8px">${seriesHtml}</div>
+      <div>
+        <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:10px">📺 Series en común (${shared.length})</div>
+        <div style="display:flex;flex-direction:column;gap:7px">${seriesHtml}</div>
+      </div>
     </div>
   </div>`;
   document.body.appendChild(overlay);
+  _pushModal('shipDetail');
 }
 
 function closeShipDetail(){
@@ -5519,33 +5528,33 @@ function getNetworkIcon(name){
 function renderProductoras(){
   const view=document.getElementById('viewProductoras');
   if(!view) return;
-  const seriesList=state.series||[];
-  const moviesList=state.movies||[];
-  const productorasList=state.productoras||[];
+  const series=state.series||[];
+  const movies=state.movies||[];
 
-  // Si no hay productoras definidas, mostrar aviso
-  if(!productorasList.length){
-    view.innerHTML=`<div class="productoras-shell">
-      <div class="section-heading" style="margin-bottom:.25rem">🏢 Productoras</div>
-      <p class="section-desc">Aún no se han añadido productoras. Puedes gestionarlas desde el panel de administración.</p>
-    </div>`;
-    return;
-  }
+  // Group series+movies by normalized network
+  const byNet={};
+  [...series,...movies].forEach(item=>{
+    const net=item.network||'';
+    net.split(/[,\/]/).forEach(n=>{
+      const norm=normalizeNetworkName(n.trim());
+      if(!norm) return;
+      if(!byNet[norm]) byNet[norm]={series:[],movies:[]};
+      if(series.includes(item)) byNet[norm].series.push(item);
+      else byNet[norm].movies.push(item);
+    });
+  });
 
-  // Construir mapa id→productora y asignar contenidos
-  const sorted=productorasList.map(p=>{
-    const ps=seriesList.filter(s=>s.productoraId===p.id);
-    const pm=moviesList.filter(m=>m.productoraId===p.id);
-    return {p, series:ps, movies:pm, total:ps.length+pm.length};
-  }).filter(x=>x.total>0 || true) // mostrar todas, incluso sin contenidos aún
-    .sort((a,b)=>b.total-a.total || a.p.name.localeCompare(b.p.name,'es'));
+  // Sort by total count
+  const sorted=Object.entries(byNet)
+    .map(([name,{series:s,movies:mv}])=>({name,series:s,movies:mv,total:s.length+mv.length}))
+    .sort((a,b)=>b.total-a.total);
 
   view.innerHTML=`<div class="productoras-shell">
-    <div class="section-heading" style="margin-bottom:.25rem">🏢 Productoras</div>
-    <p class="section-desc" style="margin-bottom:.85rem">Series y películas agrupadas por productora. Haz clic para expandir.</p>
+    <div class="section-heading" style="margin-bottom:.25rem">🏢 Por Plataforma</div>
+    <p class="section-desc" style="margin-bottom:.85rem">Series y películas agrupadas por plataforma o productora. Haz clic para expandir.</p>
     <div style="position:relative;margin-bottom:1rem">
       <span class="search-icon">🔍</span>
-      <input class="search-input" id="productorasSearch" placeholder="Buscar productora o serie…"
+      <input class="search-input" id="productorasSearch" placeholder="Buscar plataforma o serie…"
         value="${productorasState.q}" oninput="productorasState.q=this.value;renderProductorasResults()" autocomplete="off">
     </div>
     <div id="productorasResults"></div>
@@ -5563,61 +5572,54 @@ function renderProductorasResults(){
 
   let list=sorted;
   if(q){
-    list=sorted.filter(x=>
-      x.p.name.toLowerCase().includes(q)||
-      x.p.country?.toLowerCase().includes(q)||
-      x.series.some(s=>(s.name||'').toLowerCase().includes(q))||
-      x.movies.some(m=>(m.name||'').toLowerCase().includes(q))
+    list=sorted.filter(p=>
+      p.name.toLowerCase().includes(q)||
+      p.series.some(s=>(s.name||'').toLowerCase().includes(q))||
+      p.movies.some(m=>(m.name||'').toLowerCase().includes(q))
     );
   }
 
   if(!list.length){el.innerHTML='<div class="search-empty">Sin resultados.</div>';return;}
 
   let html=`<div class="productoras-grid">`;
-  list.forEach(({p, series:ps, movies:pm})=>{
-    const isExpanded=productorasState.expanded===p.id;
+  list.forEach(p=>{
+    const isExpanded=productorasState.expanded===p.name;
+    const icon=getNetworkIcon(p.name);
+    const seriesOngoing=p.series.filter(s=>!s.upcoming).length;
+    const seriesUp=p.series.filter(s=>s.upcoming).length;
     const statsStr=[
-      ps.length?`${ps.length} serie${ps.length!==1?'s':''}`:null,
-      pm.length?`${pm.length} película${pm.length!==1?'s':''}`:null,
-      p.country?p.country:null,
-      p.founded?`Fundada en ${p.founded}`:null,
+      p.series.length?`${p.series.length} serie${p.series.length!==1?'s':''}`:null,
+      p.movies.length?`${p.movies.length} película${p.movies.length!==1?'s':''}`:null,
+      seriesUp?`${seriesUp} próximamente`:null,
     ].filter(Boolean).join(' · ');
 
-    const iconEl=p.logo
-      ?`<img src="${p.logo}" style="width:44px;height:44px;border-radius:12px;object-fit:contain;background:#fff;border:1.5px solid var(--border2);padding:3px;flex-shrink:0" onerror="this.outerHTML='<div class=productora-icon>🏢</div>'">`
-      :`<div class="productora-icon">🏢</div>`;
-
-    const allItems=[...ps,...pm];
+    // Mini posters (up to 12)
+    const allItems=[...p.series,...p.movies];
     const shown=allItems.filter(item=>item.poster).slice(0,12);
     const miniPosters=shown.map(item=>{
-      const si=(state.series||[]).indexOf(item);
-      const mi=(state.movies||[]).indexOf(item);
+      const si=state.series.indexOf(item);
+      const mi=state.movies?state.movies.indexOf(item):-1;
       const onclick=si>=0?`openSeries(${si})`:mi>=0?`openMovie(${mi})`:'';
       return `<div class="prod-mini-card" onclick="${onclick}">
-        <img class="prod-mini-poster" src="${item.poster}" alt="${item.name}" onerror="this.outerHTML='<div class=prod-mini-poster-ph>🎬</div>'">
+        <img class="prod-mini-poster" src="${item.poster}" alt="${item.name}" onerror="this.outerHTML='<div class=prod-mini-poster-ph>${icon}</div>'">
         <div class="prod-mini-name">${item.name}</div>
       </div>`;
     }).join('');
     const extraCount=allItems.length-shown.length;
     const extraEl=extraCount>0?`<div class="prod-mini-card" style="justify-content:center"><div class="prod-mini-poster-ph" style="font-size:13px;font-weight:700;color:var(--teal)">+${extraCount}</div><div class="prod-mini-name">más</div></div>`:'';
-    const emptyEl=!allItems.length?`<div style="font-size:12px;color:var(--muted);font-style:italic;padding:4px 0">Sin contenidos asignados aún.</div>`:'';
 
-    const websiteBtn=p.website?`<a href="${p.website}" target="_blank" rel="noopener" style="font-size:11px;color:var(--teal);text-decoration:none;font-weight:600;margin-left:auto;flex-shrink:0" onclick="event.stopPropagation()">🌐 Web</a>`:'';
-
-    html+=`<div class="productora-card${isExpanded?' expanded':''}" id="prod_${p.id}">
+    html+=`<div class="productora-card${isExpanded?' expanded':''}" id="prod_${p.name.replace(/[^a-z0-9]/gi,'_')}">
       <div class="productora-bar"></div>
-      <div class="productora-header" onclick="productorasState.expanded=(productorasState.expanded==='${p.id}'?null:'${p.id}');renderProductorasResults()">
-        ${iconEl}
+      <div class="productora-header" onclick="productorasState.expanded=(productorasState.expanded==='${p.name}'?null:'${p.name}');renderProductorasResults()">
+        <div class="productora-icon">${icon}</div>
         <div class="productora-info">
           <div class="productora-name">${p.name}</div>
-          <div class="productora-stats">${statsStr||'Sin contenidos aún'}</div>
+          <div class="productora-stats">${statsStr}</div>
         </div>
-        ${websiteBtn}
         <span class="productora-chevron">▼</span>
       </div>
-      ${p.desc&&isExpanded?`<div style="padding:0 14px 10px;font-size:12.5px;color:var(--muted);line-height:1.6;border-bottom:1px solid var(--border)">${p.desc}</div>`:''}
       <div class="productora-series-list">
-        ${miniPosters}${extraEl}${emptyEl}
+        ${miniPosters}${extraEl}
       </div>
     </div>`;
   });

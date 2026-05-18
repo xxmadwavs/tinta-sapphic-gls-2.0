@@ -528,7 +528,6 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <a class="qnav-btn" href="#section-books" onclick="document.getElementById('section-books').scrollIntoView({behavior:'smooth'});return false;">📚 Libros</a>
   <a class="qnav-btn" href="#section-actresses" onclick="document.getElementById('section-actresses').scrollIntoView({behavior:'smooth'});return false;">🎭 Actrices</a>
   <a class="qnav-btn" href="#section-ships" onclick="document.getElementById('section-ships').scrollIntoView({behavior:'smooth'});return false;">💕 Ships</a>
-  <a class="qnav-btn" href="#section-productoras" onclick="document.getElementById('section-productoras').scrollIntoView({behavior:'smooth'});return false;">🏢 Productoras</a>
   <div class="quicknav-sep"></div>
   <button type="button" class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
   <button type="button" class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
@@ -678,22 +677,6 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:var(--accent)" onclick="openAddShip()">+ Crear ship</button>
     <div class="series-count-label" id="shipsCountLabel"></div>
     <div id="shipsAdminGrid" style="display:grid;gap:10px;margin-top:8px"></div>
-  </div>
-
-  <div class="card" id="section-productoras">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-      <div class="card-title" style="margin-bottom:0">🏢 Productoras</div>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Define las productoras y asócialas luego a cada serie o película desde su formulario de edición.</p>
-    <div class="admin-toolbar">
-      <div class="admin-search-wrap">
-        <span class="admin-search-icon">🔍</span>
-        <input class="admin-search-input" id="adminProductorasQ" placeholder="Buscar productora…" oninput="renderProductorasAdmin()">
-      </div>
-    </div>
-    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:var(--teal);border-color:var(--teal)" onclick="openAddProductora()">+ Crear productora</button>
-    <div class="series-count-label" id="productorasCountLabel"></div>
-    <div id="productorasAdminGrid" style="display:grid;gap:10px;margin-top:8px"></div>
   </div>
 
   <div class="card">
@@ -971,8 +954,7 @@ async function initData(){
         if(d.movies) movies = d.movies;
         if(d.actresses) actresses = d.actresses;
         if(d.ships) ships = d.ships;
-        if(d.productoras) productoras = d.productoras;
-        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin();
+        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin();
         return;
       }
     } catch(e){ /* sin data.json accesible */ }
@@ -1911,15 +1893,6 @@ function formHtml(s, forcedCategory=null){
       </div>
 
       <div class="form-row" style="margin-top:10px">
-        <label class="form-label">Productora <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
-        <select id="f_productora" style="width:100%;padding:9px 14px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:14px;font-family:'Nunito',sans-serif;outline:none">
-          <option value="">— Sin productora —</option>
-          ${(productoras||[]).sort((a,b)=>a.name.localeCompare(b.name,'es')).map(p=>`<option value="${escapeHtml(p.id)}" ${(s&&s.productoraId===p.id)?'selected':''}>${escapeHtml(p.name)}${p.country?' ('+escapeHtml(p.country)+')':''}</option>`).join('')}
-        </select>
-        ${!(productoras||[]).length?`<div style="font-size:11.5px;color:var(--muted);margin-top:4px">Aún no has creado productoras. Ve a la sección <strong>🏢 Productoras</strong> para añadirlas.</div>`:''}
-      </div>
-
-      <div class="form-row" style="margin-top:10px">
         <label class="form-label">⏱ Duración por episodio <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(media si varía)</span></label>
         <div style="display:flex;align-items:center;gap:8px">
           <input id="f_epDuration" type="text" placeholder="Ej: 45  ó  1h 20min  ó  45min" value="${s&&s.episodeDuration?formatDurationDisplay(s.episodeDuration):''}" oninput="previewEpDuration(this)" style="max-width:220px"/>
@@ -2544,8 +2517,7 @@ async function saveSeries(si, forcedCategory=null){
   const sinNovedades=document.getElementById('f_sinNovedades')?.checked||false;
   const snLastUpdate=document.getElementById('f_snLastUpdate')?.value.trim()||'';
   const snNote=document.getElementById('f_snNote')?.value.trim()||'';
-  const productoraId=document.getElementById('f_productora')?.value||'';
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId};
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -2834,14 +2806,6 @@ function movieFormHtml(mv){
       </select>
     </div>
   </div>
-  <div class="form-row" style="margin-top:14px">
-    <label class="form-label">Productora <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
-    <select id="mf_productora" style="width:100%;padding:9px 14px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:14px;font-family:'Nunito',sans-serif;outline:none">
-      <option value="">— Sin productora —</option>
-      ${(productoras||[]).sort((a,b)=>a.name.localeCompare(b.name,'es')).map(p=>`<option value="${escapeHtml(p.id)}" ${(mv&&mv.productoraId===p.id)?'selected':''}>${escapeHtml(p.name)}${p.country?' ('+escapeHtml(p.country)+')':''}</option>`).join('')}
-    </select>
-    ${!(productoras||[]).length?`<div style="font-size:11.5px;color:var(--muted);margin-top:4px">Aún no has creado productoras. Ve a la sección <strong>🏢 Productoras</strong> para añadirlas.</div>`:''}
-  </div>
   <div class="form-row-half">
     <div class="form-row" style="margin-bottom:0">
       <label class="form-label">Tipo de película</label>
@@ -3103,7 +3067,6 @@ async function saveMovie(mi){
     movieType:document.getElementById('mf_movieType')?.value||'film',
     duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
     cast:getMovieCastData(),
-    productoraId:document.getElementById('mf_productora')?.value||'',
   };
   const movieUpdatedAt=new Date().toISOString();
   if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
@@ -3166,7 +3129,7 @@ function renderBooks(){
 function exportData(){
   try {
     // Validate before exporting
-    const testJson = JSON.stringify({series, movies, actresses, ships, productoras, exportedAt: new Date().toISOString()});
+    const testJson = JSON.stringify({series, movies, actresses, ships, exportedAt: new Date().toISOString()});
     JSON.parse(testJson); // verify roundtrip
   } catch(e) {
     alert('Error al validar los datos antes de exportar: ' + e.message);
@@ -3176,7 +3139,7 @@ function exportData(){
   _unsavedCount=0;
   const dot=document.getElementById('exportDot');
   if(dot) dot.classList.remove('visible');
-  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,productoras,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
 }
 
@@ -3190,9 +3153,8 @@ function importData(e){
       if(d.movies) movies=d.movies;
       if(d.actresses) actresses=d.actresses;
       if(d.ships) ships=d.ships;
-      if(d.productoras) productoras=d.productoras;
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
-      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin();
+      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin();
       alert('✓ Datos importados correctamente');
     }catch(err){ alert('Error al leer el archivo: '+err.message); }
   };
@@ -4060,9 +4022,43 @@ function shipFormHtml(sh){
     </div>
     <div class="form-row">
       <label class="form-label">Foto de la pareja <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional — URL de una foto de ambas juntas)</span></label>
-      <input id="sf_couplePhoto" placeholder="https://…" value="${escapeHtml(sh?.couplePhoto||'')}"/>
-      ${sh?.couplePhoto?`<div style="margin-top:8px;border-radius:10px;overflow:hidden;max-height:140px;border:1.5px solid var(--border2)"><img src="${escapeHtml(sh.couplePhoto)}" style="width:100%;height:140px;object-fit:cover;object-position:center top;display:block" onerror="this.parentElement.style.display='none'"></div>`:''}
-      <div style="font-size:11.5px;color:var(--muted);margin-top:5px">Si no se pone foto de pareja, se mostrarán las fotos individuales de cada actriz lado a lado.</div>
+      <input id="sf_couplePhoto" placeholder="https://…" value="${escapeHtml(sh?.couplePhoto||'')}" oninput="sfUpdatePhotoPreview()"/>
+      <div id="sf_photo_editor" style="margin-top:10px;${sh?.couplePhoto?'':'display:none'}">
+        <!-- Preview -->
+        <div id="sf_photo_preview_wrap" style="border-radius:12px;overflow:hidden;height:160px;border:1.5px solid var(--border2);position:relative;background:#eee;margin-bottom:10px">
+          <img id="sf_photo_preview" src="${escapeHtml(sh?.couplePhoto||'')}"
+            style="width:100%;height:100%;object-fit:cover;object-position:${sh?.couplePhotoPosition||'50% 20%'};transform:scale(${sh?.couplePhotoZoom||1});transform-origin:center center;display:block">
+        </div>
+        <!-- Controles -->
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div>
+            <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between">
+              <span>↔ Desplazar horizontal</span>
+              <span id="sf_posX_val" style="color:var(--accent)">50%</span>
+            </label>
+            <input type="range" id="sf_posX" min="0" max="100" step="1" value="${sfExtractPosX(sh?.couplePhotoPosition)}"
+              oninput="sfUpdatePos()" style="width:100%;accent-color:var(--accent);cursor:pointer;margin-top:3px">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between">
+              <span>↕ Desplazar vertical</span>
+              <span id="sf_posY_val" style="color:var(--accent)">20%</span>
+            </label>
+            <input type="range" id="sf_posY" min="0" max="100" step="1" value="${sfExtractPosY(sh?.couplePhotoPosition)}"
+              oninput="sfUpdatePos()" style="width:100%;accent-color:var(--accent);cursor:pointer;margin-top:3px">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between">
+              <span>🔍 Zoom</span>
+              <span id="sf_zoom_val" style="color:var(--accent)">${Math.round((sh?.couplePhotoZoom||1)*100)}%</span>
+            </label>
+            <input type="range" id="sf_zoom" min="100" max="200" step="1" value="${Math.round((sh?.couplePhotoZoom||1)*100)}"
+              oninput="sfUpdatePos()" style="width:100%;accent-color:var(--accent);cursor:pointer;margin-top:3px">
+          </div>
+          <button type="button" class="btn small" onclick="sfResetPos()" style="align-self:flex-start">↺ Resetear posición</button>
+        </div>
+      </div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:6px">Si no se pone foto de pareja, se mostrarán las fotos individuales de cada actriz lado a lado.</div>
     </div>
     <div class="form-row">
       <label class="form-label">Descripción / notas <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
@@ -4118,11 +4114,18 @@ function saveShip(si){
   if(checked.length<2){alert('Selecciona al menos 2 actrices para el ship');return;}
   const desc=document.getElementById('sf_desc')?.value.trim()||'';
   const couplePhoto=document.getElementById('sf_couplePhoto')?.value.trim()||'';
+  const posX=document.getElementById('sf_posX')?.value||'50';
+  const posY=document.getElementById('sf_posY')?.value||'20';
+  const zoomVal=document.getElementById('sf_zoom')?.value||'100';
+  const couplePhotoPosition=couplePhoto?`${posX}% ${posY}%`:'';
+  const couplePhotoZoom=couplePhoto?parseFloat(zoomVal)/100:1;
   const payload={
     id:si===-1?Date.now().toString():(ships[si]?.id||Date.now().toString()),
     name,
     desc,
     couplePhoto,
+    couplePhotoPosition,
+    couplePhotoZoom,
     actressIds:checked,
   };
   if(si===-1) ships.push(payload);
@@ -4130,6 +4133,39 @@ function saveShip(si){
   save();
   document.getElementById('shipModal').classList.remove('open');
   renderShipsAdmin();
+}
+
+// Helpers para el editor de foto de pareja
+function sfExtractPosX(pos){ const m=(pos||'50% 20%').match(/^(\d+)%/); return m?m[1]:'50'; }
+function sfExtractPosY(pos){ const m=(pos||'50% 20%').match(/(\d+)%\s*$/); return m?m[1]:'20'; }
+
+function sfUpdatePhotoPreview(){
+  const url=document.getElementById('sf_couplePhoto')?.value.trim();
+  const editor=document.getElementById('sf_photo_editor');
+  const img=document.getElementById('sf_photo_preview');
+  if(!editor||!img) return;
+  if(url){ img.src=url; editor.style.display=''; }
+  else { editor.style.display='none'; }
+}
+
+function sfUpdatePos(){
+  const img=document.getElementById('sf_photo_preview');
+  if(!img) return;
+  const x=document.getElementById('sf_posX')?.value||'50';
+  const y=document.getElementById('sf_posY')?.value||'20';
+  const z=document.getElementById('sf_zoom')?.value||'100';
+  img.style.objectPosition=`${x}% ${y}%`;
+  img.style.transform=`scale(${parseFloat(z)/100})`;
+  const xLbl=document.getElementById('sf_posX_val'); if(xLbl) xLbl.textContent=x+'%';
+  const yLbl=document.getElementById('sf_posY_val'); if(yLbl) yLbl.textContent=y+'%';
+  const zLbl=document.getElementById('sf_zoom_val'); if(zLbl) zLbl.textContent=z+'%';
+}
+
+function sfResetPos(){
+  const xEl=document.getElementById('sf_posX'); if(xEl) xEl.value=50;
+  const yEl=document.getElementById('sf_posY'); if(yEl) yEl.value=20;
+  const zEl=document.getElementById('sf_zoom'); if(zEl) zEl.value=100;
+  sfUpdatePos();
 }
 
 async function delShip(si){
@@ -4161,130 +4197,5 @@ async function delShip(si){
     <div class="modal-footer-btns" id="shipModalFooter"></div>
   </div>
 </div>
-<div class="modal-bg" id="productoraModal" style="z-index:290">
-  <div class="modal" style="display:flex;flex-direction:column;max-height:92vh">
-    <div class="modal-header" style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
-      <div class="modal-title" id="productoraModalTitle">🏢 Nueva productora</div>
-      <button type="button" class="modal-close" onclick="document.getElementById('productoraModal').classList.remove('open')">✕</button>
-    </div>
-    <div id="productoraModalBody" style="overflow-y:auto;flex:1;padding:1.25rem 1.75rem"></div>
-    <div class="modal-footer-btns" id="productoraModalFooter"></div>
-  </div>
-</div>
-
-<script>
-// ══════════════════════════════════════════════════════
-// PRODUCTORAS — Admin
-// ══════════════════════════════════════════════════════
-let productoras = [];
-
-function renderProductorasAdmin(){
-  const grid = document.getElementById('productorasAdminGrid');
-  const lbl = document.getElementById('productorasCountLabel');
-  if(!grid) return;
-  const q = (document.getElementById('adminProductorasQ')?.value||'').toLowerCase();
-  const list = (productoras||[]).filter(p=>
-    !q || (p.name||'').toLowerCase().includes(q) || (p.country||'').toLowerCase().includes(q)
-  );
-  if(lbl) lbl.textContent = list.length + ' productora' + (list.length!==1?'s':'');
-  if(!list.length){
-    grid.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:12px 0">No hay productoras. Pulsa "+ Crear productora" para empezar.</div>';
-    return;
-  }
-  grid.innerHTML = list.map(p=>{
-    const realIdx = productoras.indexOf(p);
-    const count = [...(series||[]),...(movies||[])].filter(s=>s.productoraId===p.id).length;
-    const logoHtml = p.logo
-      ? `<img src="${escapeHtml(p.logo)}" style="width:36px;height:36px;border-radius:8px;object-fit:contain;border:1.5px solid var(--border2);background:#fff;flex-shrink:0">`
-      : `<div style="width:36px;height:36px;border-radius:8px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🏢</div>`;
-    return `<div class="series-item">
-      ${logoHtml}
-      <div class="series-info">
-        <div class="series-name">${escapeHtml(p.name||'Sin nombre')}</div>
-        <div class="series-meta">${[p.country, p.founded?'Fundada '+escapeHtml(p.founded):null, count?count+' contenido'+(count!==1?'s asignados':'asignado'):null].filter(Boolean).join(' · ')}</div>
-      </div>
-      <div class="series-actions">
-        <button type="button" class="btn small" onclick="openEditProductora(${realIdx})">✏️ Editar</button>
-        <button type="button" class="btn small danger" onclick="delProductora(${realIdx})">🗑</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function productoraFormHtml(p){
-  return `
-    <div class="form-row">
-      <label class="form-label">Nombre *</label>
-      <input id="pf_name" placeholder="Ej: GMMTV, Studio Wabi Sabi…" value="${escapeHtml(p?.name||'')}"/>
-    </div>
-    <div class="form-row-half">
-      <div class="form-row" style="margin-bottom:0">
-        <label class="form-label">País</label>
-        <input id="pf_country" placeholder="Ej: Tailandia, Corea del Sur…" value="${escapeHtml(p?.country||'')}"/>
-      </div>
-      <div class="form-row" style="margin-bottom:0">
-        <label class="form-label">Año fundación</label>
-        <input id="pf_founded" placeholder="Ej: 2008" value="${escapeHtml(p?.founded||'')}" type="text" maxlength="4"/>
-      </div>
-    </div>
-    <div class="form-row">
-      <label class="form-label">Logo <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(URL de imagen, opcional)</span></label>
-      <input id="pf_logo" placeholder="https://…" value="${escapeHtml(p?.logo||'')}" oninput="const img=document.getElementById('pf_logo_preview');if(img){img.src=this.value;img.style.display=this.value?'':'none'}"/>
-      <img id="pf_logo_preview" src="${escapeHtml(p?.logo||'')}" style="margin-top:8px;height:48px;border-radius:8px;border:1.5px solid var(--border2);background:#fff;padding:4px;object-fit:contain;display:${p?.logo?'block':'none'}" onerror="this.style.display='none'">
-    </div>
-    <div class="form-row">
-      <label class="form-label">Web oficial <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
-      <input id="pf_website" placeholder="https://…" value="${escapeHtml(p?.website||'')}"/>
-    </div>
-    <div class="form-row">
-      <label class="form-label">Descripción <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
-      <textarea id="pf_desc" placeholder="Breve descripción de la productora…" style="min-height:70px">${escapeHtml(p?.desc||'')}</textarea>
-    </div>`;
-}
-
-function openAddProductora(){
-  document.getElementById('productoraModalTitle').textContent = '🏢 Nueva productora';
-  document.getElementById('productoraModalBody').innerHTML = productoraFormHtml(null);
-  document.getElementById('productoraModalFooter').innerHTML =
-    `<button type="button" class="btn" onclick="document.getElementById('productoraModal').classList.remove('open')">Cancelar</button>
-     <button type="button" class="btn primary" style="background:var(--teal);border-color:var(--teal)" onclick="saveProductora(-1)">Guardar productora</button>`;
-  document.getElementById('productoraModal').classList.add('open');
-}
-
-function openEditProductora(pi){
-  document.getElementById('productoraModalTitle').textContent = '✏️ Editar productora';
-  document.getElementById('productoraModalBody').innerHTML = productoraFormHtml(productoras[pi]);
-  document.getElementById('productoraModalFooter').innerHTML =
-    `<button type="button" class="btn" onclick="document.getElementById('productoraModal').classList.remove('open')">Cancelar</button>
-     <button type="button" class="btn primary" style="background:var(--teal);border-color:var(--teal)" onclick="saveProductora(${pi})">Guardar cambios</button>`;
-  document.getElementById('productoraModal').classList.add('open');
-}
-
-function saveProductora(pi){
-  const name = document.getElementById('pf_name')?.value.trim();
-  if(!name){ alert('El nombre es obligatorio'); return; }
-  const payload = {
-    id: pi===-1 ? Date.now().toString() : (productoras[pi]?.id||Date.now().toString()),
-    name,
-    country: document.getElementById('pf_country')?.value.trim()||'',
-    founded: document.getElementById('pf_founded')?.value.trim()||'',
-    logo: document.getElementById('pf_logo')?.value.trim()||'',
-    website: document.getElementById('pf_website')?.value.trim()||'',
-    desc: document.getElementById('pf_desc')?.value.trim()||'',
-  };
-  if(pi===-1) productoras.push(payload);
-  else productoras[pi] = {...productoras[pi], ...payload};
-  save();
-  document.getElementById('productoraModal').classList.remove('open');
-  renderProductorasAdmin();
-}
-
-async function delProductora(pi){
-  const ok = await showConfirm({title:`¿Eliminar "${productoras[pi]?.name}"?`, desc:'Las series/películas que la tenían asignada quedarán sin productora.', icon:'🏢'});
-  if(!ok) return;
-  productoras.splice(pi, 1);
-  save(); renderProductorasAdmin();
-}
-</script>
 </body>
 </html>
