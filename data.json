@@ -1200,8 +1200,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T07:36:43.060Z",
-      "episodeDuration": ""
+      "updatedAt": "2026-05-18T12:10:24.611Z",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "limbo",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": ""
     },
     {
       "id": "1776932412578",
@@ -2488,11 +2495,25 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Romance",
         "Drama",
-        "Histórico"
+        "Histórico",
+        "Romance"
       ],
-      "nameEn": ""
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "updatedAt": "2026-05-18T12:10:53.571Z"
     },
     {
       "id": "1776972993462",
@@ -8740,14 +8761,21 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-05-15T10:56:55.135Z",
+      "updatedAt": "2026-05-18T12:11:51.423Z",
       "nameEn": "เสี่ยงรัก",
       "category": "series",
       "seriesType": "serie",
       "cast": [],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "closed",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": ""
     },
     {
       "id": "1777460506708",
@@ -8767,14 +8795,21 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-05-15T10:57:07.866Z",
+      "updatedAt": "2026-05-18T12:11:58.128Z",
       "nameEn": "ก็ว่าจะไม่รัก",
       "category": "series",
       "seriesType": "serie",
       "cast": [],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "closed",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": ""
     },
     {
       "id": "1777460572035",
@@ -8844,7 +8879,7 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-05-15T11:09:44.399Z",
+      "updatedAt": "2026-05-18T12:12:06.341Z",
       "nameEn": "รักอันตราย",
       "category": "series",
       "seriesType": "serie",
@@ -8858,7 +8893,14 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "closed",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": ""
     },
     {
       "id": "1777581394711",
@@ -31351,5 +31393,5 @@
       ]
     }
   ],
-  "exportedAt": "2026-05-18T12:08:16.356Z"
+  "exportedAt": "2026-05-18T12:12:19.509Z"
 }
