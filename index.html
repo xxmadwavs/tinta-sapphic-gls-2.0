@@ -2121,6 +2121,7 @@ async function loadData(){
     state.movies=d.movies||[];
     state.actresses=d.actresses||[];
     state.ships=d.ships||[];
+    state.productoras=d.productoras||[];
     if(d.exportedAt){
       const dt=new Date(d.exportedAt);
       const badge=document.getElementById('updateBadge'); if(badge){badge.textContent='✓ Act. '+dt.toLocaleDateString('es-ES',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});badge.style.display='';}
@@ -5518,33 +5519,33 @@ function getNetworkIcon(name){
 function renderProductoras(){
   const view=document.getElementById('viewProductoras');
   if(!view) return;
-  const series=state.series||[];
-  const movies=state.movies||[];
+  const seriesList=state.series||[];
+  const moviesList=state.movies||[];
+  const productorasList=state.productoras||[];
 
-  // Group series+movies by normalized network
-  const byNet={};
-  [...series,...movies].forEach(item=>{
-    const net=item.network||'';
-    net.split(/[,\/]/).forEach(n=>{
-      const norm=normalizeNetworkName(n.trim());
-      if(!norm) return;
-      if(!byNet[norm]) byNet[norm]={series:[],movies:[]};
-      if(series.includes(item)) byNet[norm].series.push(item);
-      else byNet[norm].movies.push(item);
-    });
-  });
+  // Si no hay productoras definidas, mostrar aviso
+  if(!productorasList.length){
+    view.innerHTML=`<div class="productoras-shell">
+      <div class="section-heading" style="margin-bottom:.25rem">🏢 Productoras</div>
+      <p class="section-desc">Aún no se han añadido productoras. Puedes gestionarlas desde el panel de administración.</p>
+    </div>`;
+    return;
+  }
 
-  // Sort by total count
-  const sorted=Object.entries(byNet)
-    .map(([name,{series:s,movies:mv}])=>({name,series:s,movies:mv,total:s.length+mv.length}))
-    .sort((a,b)=>b.total-a.total);
+  // Construir mapa id→productora y asignar contenidos
+  const sorted=productorasList.map(p=>{
+    const ps=seriesList.filter(s=>s.productoraId===p.id);
+    const pm=moviesList.filter(m=>m.productoraId===p.id);
+    return {p, series:ps, movies:pm, total:ps.length+pm.length};
+  }).filter(x=>x.total>0 || true) // mostrar todas, incluso sin contenidos aún
+    .sort((a,b)=>b.total-a.total || a.p.name.localeCompare(b.p.name,'es'));
 
   view.innerHTML=`<div class="productoras-shell">
-    <div class="section-heading" style="margin-bottom:.25rem">🏢 Por Plataforma</div>
-    <p class="section-desc" style="margin-bottom:.85rem">Series y películas agrupadas por plataforma o productora. Haz clic para expandir.</p>
+    <div class="section-heading" style="margin-bottom:.25rem">🏢 Productoras</div>
+    <p class="section-desc" style="margin-bottom:.85rem">Series y películas agrupadas por productora. Haz clic para expandir.</p>
     <div style="position:relative;margin-bottom:1rem">
       <span class="search-icon">🔍</span>
-      <input class="search-input" id="productorasSearch" placeholder="Buscar plataforma o serie…"
+      <input class="search-input" id="productorasSearch" placeholder="Buscar productora o serie…"
         value="${productorasState.q}" oninput="productorasState.q=this.value;renderProductorasResults()" autocomplete="off">
     </div>
     <div id="productorasResults"></div>
@@ -5562,54 +5563,61 @@ function renderProductorasResults(){
 
   let list=sorted;
   if(q){
-    list=sorted.filter(p=>
-      p.name.toLowerCase().includes(q)||
-      p.series.some(s=>(s.name||'').toLowerCase().includes(q))||
-      p.movies.some(m=>(m.name||'').toLowerCase().includes(q))
+    list=sorted.filter(x=>
+      x.p.name.toLowerCase().includes(q)||
+      x.p.country?.toLowerCase().includes(q)||
+      x.series.some(s=>(s.name||'').toLowerCase().includes(q))||
+      x.movies.some(m=>(m.name||'').toLowerCase().includes(q))
     );
   }
 
   if(!list.length){el.innerHTML='<div class="search-empty">Sin resultados.</div>';return;}
 
   let html=`<div class="productoras-grid">`;
-  list.forEach(p=>{
-    const isExpanded=productorasState.expanded===p.name;
-    const icon=getNetworkIcon(p.name);
-    const seriesOngoing=p.series.filter(s=>!s.upcoming).length;
-    const seriesUp=p.series.filter(s=>s.upcoming).length;
+  list.forEach(({p, series:ps, movies:pm})=>{
+    const isExpanded=productorasState.expanded===p.id;
     const statsStr=[
-      p.series.length?`${p.series.length} serie${p.series.length!==1?'s':''}`:null,
-      p.movies.length?`${p.movies.length} película${p.movies.length!==1?'s':''}`:null,
-      seriesUp?`${seriesUp} próximamente`:null,
+      ps.length?`${ps.length} serie${ps.length!==1?'s':''}`:null,
+      pm.length?`${pm.length} película${pm.length!==1?'s':''}`:null,
+      p.country?p.country:null,
+      p.founded?`Fundada en ${p.founded}`:null,
     ].filter(Boolean).join(' · ');
 
-    // Mini posters (up to 12)
-    const allItems=[...p.series,...p.movies];
+    const iconEl=p.logo
+      ?`<img src="${p.logo}" style="width:44px;height:44px;border-radius:12px;object-fit:contain;background:#fff;border:1.5px solid var(--border2);padding:3px;flex-shrink:0" onerror="this.outerHTML='<div class=productora-icon>🏢</div>'">`
+      :`<div class="productora-icon">🏢</div>`;
+
+    const allItems=[...ps,...pm];
     const shown=allItems.filter(item=>item.poster).slice(0,12);
     const miniPosters=shown.map(item=>{
-      const si=state.series.indexOf(item);
-      const mi=state.movies?state.movies.indexOf(item):-1;
+      const si=(state.series||[]).indexOf(item);
+      const mi=(state.movies||[]).indexOf(item);
       const onclick=si>=0?`openSeries(${si})`:mi>=0?`openMovie(${mi})`:'';
       return `<div class="prod-mini-card" onclick="${onclick}">
-        <img class="prod-mini-poster" src="${item.poster}" alt="${item.name}" onerror="this.outerHTML='<div class=prod-mini-poster-ph>${icon}</div>'">
+        <img class="prod-mini-poster" src="${item.poster}" alt="${item.name}" onerror="this.outerHTML='<div class=prod-mini-poster-ph>🎬</div>'">
         <div class="prod-mini-name">${item.name}</div>
       </div>`;
     }).join('');
     const extraCount=allItems.length-shown.length;
     const extraEl=extraCount>0?`<div class="prod-mini-card" style="justify-content:center"><div class="prod-mini-poster-ph" style="font-size:13px;font-weight:700;color:var(--teal)">+${extraCount}</div><div class="prod-mini-name">más</div></div>`:'';
+    const emptyEl=!allItems.length?`<div style="font-size:12px;color:var(--muted);font-style:italic;padding:4px 0">Sin contenidos asignados aún.</div>`:'';
 
-    html+=`<div class="productora-card${isExpanded?' expanded':''}" id="prod_${p.name.replace(/[^a-z0-9]/gi,'_')}">
+    const websiteBtn=p.website?`<a href="${p.website}" target="_blank" rel="noopener" style="font-size:11px;color:var(--teal);text-decoration:none;font-weight:600;margin-left:auto;flex-shrink:0" onclick="event.stopPropagation()">🌐 Web</a>`:'';
+
+    html+=`<div class="productora-card${isExpanded?' expanded':''}" id="prod_${p.id}">
       <div class="productora-bar"></div>
-      <div class="productora-header" onclick="productorasState.expanded=(productorasState.expanded==='${p.name}'?null:'${p.name}');renderProductorasResults()">
-        <div class="productora-icon">${icon}</div>
+      <div class="productora-header" onclick="productorasState.expanded=(productorasState.expanded==='${p.id}'?null:'${p.id}');renderProductorasResults()">
+        ${iconEl}
         <div class="productora-info">
           <div class="productora-name">${p.name}</div>
-          <div class="productora-stats">${statsStr}</div>
+          <div class="productora-stats">${statsStr||'Sin contenidos aún'}</div>
         </div>
+        ${websiteBtn}
         <span class="productora-chevron">▼</span>
       </div>
+      ${p.desc&&isExpanded?`<div style="padding:0 14px 10px;font-size:12.5px;color:var(--muted);line-height:1.6;border-bottom:1px solid var(--border)">${p.desc}</div>`:''}
       <div class="productora-series-list">
-        ${miniPosters}${extraEl}
+        ${miniPosters}${extraEl}${emptyEl}
       </div>
     </div>`;
   });
