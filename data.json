@@ -301,9 +301,17 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:32:36.876Z",
+      "updatedAt": "2026-05-18T20:49:11.369Z",
       "nameEn": "รักเติมเต็ม",
-      "episodeDuration": 47
+      "episodeDuration": 47,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135450707"
     },
     {
       "id": "1776889264943",
@@ -462,11 +470,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T09:51:08.849Z",
+      "updatedAt": "2026-05-18T20:38:42.840Z",
       "nameEn": "คุณแฟนบ้านนอก",
       "episodeDuration": 51,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135954653"
     },
     {
       "id": "1776889365998",
@@ -578,13 +592,19 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:26:05.336Z",
+      "updatedAt": "2026-05-18T20:48:17.311Z",
       "nameEn": "นทีร้อยเล่ห์",
       "episodeDuration": 64,
       "myTop10": true,
       "top10Rank": 0,
       "myPick": false,
-      "myPick2026": true
+      "myPick2026": true,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135760151"
     },
     {
       "id": "1776889415383",
@@ -709,11 +729,17 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T18:17:04.508Z",
+      "updatedAt": "2026-05-18T20:48:21.869Z",
       "nameEn": "เสน่หาวาโย",
       "episodeDuration": "",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135760151"
     },
     {
       "id": "1776889447326",
@@ -1041,11 +1067,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:27:27.286Z",
+      "updatedAt": "2026-05-18T20:48:27.103Z",
       "nameEn": "โซ่รักอัคนี",
       "episodeDuration": "",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135760151"
     },
     {
       "id": "1776931938317",
@@ -1104,11 +1136,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:26:15.638Z",
+      "updatedAt": "2026-05-18T20:49:23.024Z",
       "nameEn": "วาดฝันวันวิวาห์",
       "episodeDuration": "",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135450707"
     },
     {
       "id": "1776932166717",
@@ -1156,9 +1194,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T07:36:27.918Z",
+      "updatedAt": "2026-05-18T20:49:27.162Z",
       "nameEn": "รักได้ไหม",
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135450707"
     },
     {
       "id": "1776932289648",
@@ -1212,7 +1258,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T12:10:24.611Z",
+      "updatedAt": "2026-05-18T20:49:31.749Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -1220,7 +1266,8 @@
       "cancelNote": "",
       "sinNovedades": false,
       "snLastUpdate": "",
-      "snNote": ""
+      "snNote": "",
+      "productoraId": "1779136303417"
     },
     {
       "id": "1776932412578",
@@ -1666,9 +1713,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T07:35:32.313Z",
+      "updatedAt": "2026-05-18T20:52:13.006Z",
       "nameEn": "เด็ก เรียบ ร้าย",
-      "episodeDuration": 48
+      "episodeDuration": 48,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779137481839"
     },
     {
       "id": "1776966800863",
@@ -1768,11 +1823,17 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:27:29.564Z",
+      "updatedAt": "2026-05-18T20:48:34.408Z",
       "nameEn": "วิวาห์ปฐพี",
       "episodeDuration": 55,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135760151"
     },
     {
       "id": "1776966975487",
@@ -2004,8 +2065,17 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T18:27:40.273Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-18T20:38:59.524Z",
+      "nameEn": "",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135954653"
     },
     {
       "id": "1776971297117",
@@ -2312,7 +2382,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:29:30.081Z"
+      "updatedAt": "2026-05-18T20:52:23.639Z",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779137481839"
     },
     {
       "id": "1776972122133",
@@ -3189,7 +3268,7 @@
     {
       "id": "1776976364805",
       "name": "Love on Hire",
-      "poster": "",
+      "poster": "https://i.mydramalist.com/JB5kAo_4f.jpg",
       "synopsis": "Thitinan acepta cualquier trabajo: fingir ser la novia de alguien y romper una relación o, especialmente para la señorita Chat, convertirse en su entrenadora sexual.",
       "year": "",
       "country": "Tailandia",
@@ -3242,10 +3321,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:02.042Z",
+      "updatedAt": "2026-05-18T20:43:43.499Z",
       "episodeDuration": "",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135987498"
     },
     {
       "id": "1776976452500",
@@ -3625,7 +3710,7 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-05-14T19:38:24.080Z",
+      "updatedAt": "2026-05-18T20:48:43.395Z",
       "nameEn": "",
       "category": "series",
       "seriesType": "serie",
@@ -3644,7 +3729,16 @@
         }
       ],
       "animeSeason": "",
-      "renewedNextSeason": false
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135760151"
     },
     {
       "id": "1777033081952",
@@ -3806,10 +3900,16 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:27:52.252Z",
+      "updatedAt": "2026-05-18T20:37:40.898Z",
       "episodeDuration": 45,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135376050"
     },
     {
       "id": "1777048586253",
@@ -4186,10 +4286,16 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:28:19.178Z",
+      "updatedAt": "2026-05-18T20:46:43.353Z",
       "episodeDuration": 51,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135450707"
     },
     {
       "id": "1777105656547",
@@ -4453,12 +4559,18 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:26:37.089Z",
+      "updatedAt": "2026-05-18T20:48:49.698Z",
       "episodeDuration": 50,
       "myTop10": true,
       "top10Rank": 0,
       "myPick": true,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135450707"
     },
     {
       "id": "1777106235834",
@@ -4545,8 +4657,16 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T09:29:02.089Z",
-      "episodeDuration": 50
+      "updatedAt": "2026-05-18T20:45:41.396Z",
+      "episodeDuration": 50,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136303417"
     },
     {
       "id": "1777106609486",
@@ -4622,8 +4742,16 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T09:29:05.236Z",
-      "episodeDuration": 11
+      "updatedAt": "2026-05-18T20:45:45.449Z",
+      "episodeDuration": 11,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136303417"
     },
     {
       "id": "1777107997520",
@@ -5084,10 +5212,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:31.235Z",
+      "updatedAt": "2026-05-18T20:37:27.907Z",
       "episodeDuration": 55,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1777149248949",
@@ -5293,12 +5427,18 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:26:13.473Z",
+      "updatedAt": "2026-05-18T20:44:03.506Z",
       "episodeDuration": 40,
       "myTop10": true,
       "top10Rank": 0,
       "myPick": true,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136246720"
     },
     {
       "id": "1777150051367",
@@ -5886,10 +6026,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:26:19.217Z",
+      "updatedAt": "2026-05-18T20:44:08.496Z",
       "episodeDuration": 49,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136264729"
     },
     {
       "id": "1777225577567",
@@ -6096,10 +6242,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:26:29.573Z",
+      "updatedAt": "2026-05-18T20:38:25.242Z",
       "episodeDuration": 60,
       "myPick": true,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135954653"
     },
     {
       "id": "1777226679219",
@@ -6392,10 +6544,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:29:09.026Z",
+      "updatedAt": "2026-05-18T20:37:18.825Z",
       "episodeDuration": 70,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135376050"
     },
     {
       "id": "1777235903416",
@@ -6497,11 +6655,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:29:11.463Z",
+      "updatedAt": "2026-05-18T20:36:01.289Z",
       "nameEn": "23.5 องศาที่โลกเอียง",
       "episodeDuration": 52,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1777236063170",
@@ -6701,13 +6865,19 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T22:13:02.777Z",
+      "updatedAt": "2026-05-18T20:34:53.140Z",
       "nameEn": "ClaireBell คลั่ง/รัก/นักโทษ",
       "episodeDuration": 65,
       "myTop10": true,
       "top10Rank": 0,
       "myPick": true,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136445852"
     },
     {
       "id": "1777236702067",
@@ -6793,12 +6963,18 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:26:48.108Z",
+      "updatedAt": "2026-05-18T20:38:02.470Z",
       "episodeDuration": 64,
       "myTop10": true,
       "top10Rank": 0,
       "myPick": true,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136135118"
     },
     {
       "id": "1777236873444",
@@ -6889,7 +7065,15 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 51,
-      "updatedAt": "2026-05-15T09:24:04.892Z"
+      "updatedAt": "2026-05-18T20:45:27.604Z",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135626732"
     },
     {
       "id": "1777237026617",
@@ -6961,7 +7145,15 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 53,
-      "updatedAt": "2026-05-15T09:23:04.136Z"
+      "updatedAt": "2026-05-18T20:43:28.473Z",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135987498"
     },
     {
       "id": "1777237182173",
@@ -7134,7 +7326,15 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 58,
-      "updatedAt": "2026-05-15T09:26:14.714Z"
+      "updatedAt": "2026-05-18T20:38:12.324Z",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135954653"
     },
     {
       "id": "1777278660998",
@@ -7342,7 +7542,15 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 51,
-      "updatedAt": "2026-05-15T10:28:13.994Z"
+      "updatedAt": "2026-05-18T20:36:43.750Z",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135450707"
     },
     {
       "id": "1777449004515",
@@ -7385,7 +7593,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T10:28:55.352Z",
+      "updatedAt": "2026-05-18T20:39:25.058Z",
       "nameEn": "บริษัทนี้ไม่มีจำกัด",
       "category": "series",
       "seriesType": "serie",
@@ -7405,7 +7613,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 47
+      "episodeDuration": 47,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136191693"
     },
     {
       "id": "1777449810549",
@@ -8331,7 +8547,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T10:51:32.886Z",
+      "updatedAt": "2026-05-18T20:43:33.973Z",
       "nameEn": "รินไม่มีวันรัก ตอน พิเศษ",
       "category": "series",
       "seriesType": "serie",
@@ -8351,7 +8567,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 55
+      "episodeDuration": 55,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135987498"
     },
     {
       "id": "1777455928497",
@@ -8393,7 +8617,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T10:52:19.280Z",
+      "updatedAt": "2026-05-18T20:38:35.542Z",
       "nameEn": "",
       "category": "series",
       "seriesType": "serie",
@@ -8425,7 +8649,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135954653"
     },
     {
       "id": "1777458910642",
@@ -8516,7 +8748,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T10:54:06.308Z",
+      "updatedAt": "2026-05-18T20:48:07.606Z",
       "nameEn": "ฉันหลงรักเทวดาของฉัน",
       "category": "series",
       "seriesType": "serie",
@@ -8536,7 +8768,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 56
+      "episodeDuration": 56,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136330823"
     },
     {
       "id": "1777459217758",
@@ -8569,7 +8809,7 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-05-15T10:54:44.939Z",
+      "updatedAt": "2026-05-18T20:46:03.140Z",
       "nameEn": "CRUSH คนอะไรน่ารักเท่าโลก",
       "category": "series",
       "seriesType": "serie",
@@ -8589,7 +8829,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "limbo",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136303417"
     },
     {
       "id": "1777459342439",
@@ -8642,7 +8890,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T10:55:54.943Z",
+      "updatedAt": "2026-05-18T20:43:53.365Z",
       "nameEn": "ปิ๊งรักคุณพี่เย็นชา",
       "category": "series",
       "seriesType": "serie",
@@ -8662,7 +8910,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 49
+      "episodeDuration": 49,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135987498"
     },
     {
       "id": "1777459392058",
@@ -8746,14 +9002,22 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T10:56:40.080Z",
+      "updatedAt": "2026-05-18T20:48:59.334Z",
       "nameEn": "คลับฟรายเดย์เดอะซีรีส์ Theory of Love ไม่มีทฤษฎีไหนใช้ได้กับทุกความรัก ตอน ความดีชนะใจ",
       "category": "series",
       "seriesType": "serie",
       "cast": [],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135954653"
     },
     {
       "id": "1777460464400",
@@ -14261,7 +14525,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T18:55:07.781Z",
+      "updatedAt": "2026-05-18T20:36:12.543Z",
       "nameEn": "พี่ว้ากคะรักหนูได้มั้ย",
       "category": "series",
       "seriesType": "serie",
@@ -14299,7 +14563,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 51
+      "episodeDuration": 51,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135573515"
     },
     {
       "id": "1700000000192",
@@ -14938,7 +15210,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T20:30:15.323Z",
+      "updatedAt": "2026-05-18T20:37:49.529Z",
       "nameEn": "",
       "category": "series",
       "seriesType": "serie",
@@ -14958,7 +15230,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 50
+      "episodeDuration": 50,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135376050"
     },
     {
       "id": "1700000000218",
@@ -18894,7 +19174,15 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-15T20:48:01.641Z"
+      "updatedAt": "2026-05-18T20:46:26.334Z",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136303417"
     },
     {
       "id": "1778878515414",
@@ -31409,18 +31697,210 @@
         "1778761227248",
         "1778761175235"
       ]
+    },
+    {
+      "id": "1779137267689",
+      "name": "TanYa",
+      "desc": "",
+      "couplePhoto": "https://aphrodite.gmanetwork.com/entertainment/photos/photo/thai_gl_love_teams_that_are_serving_major_kilig_tanyada_1772106141.jpg",
+      "couplePhotoPosition": "50% 22%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778669135059",
+        "1778669089219"
+      ]
     }
   ],
   "productoras": [
     {
+      "id": "1779135450707",
+      "name": "BEC World / Channel 3",
+      "country": "Tailandia",
+      "founded": "1970",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Ch3HDLogo.svg/1280px-Ch3HDLogo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      "website": "https://ch3plus.com/",
+      "desc": "Conglomerado mediático tailandés, conocido principalmente como operador del Canal 3. Es la primera gran cadena televisiva tradicional en apostar por el GL con series como The Secret of Us, Only You, My Safe Zone, Play Park y Fulfill."
+    },
+    {
+      "id": "1779135954653",
+      "name": "CHANGE2561",
+      "country": "Tailandia",
+      "founded": "2018",
+      "logo": "https://static.wikia.nocookie.net/gmmtv/images/e/e6/Change2561_Logo.png/revision/latest?cb=20231211040501",
+      "website": "",
+      "desc": "Productora independiente enfocada en contenido LGBTQ+. Ha producido varias series GL de bajo presupuesto pero con gran acogida en comunidades de fans, como Affair, Harmony Secret"
+    },
+    {
+      "id": "1779135987498",
+      "name": "Copy a Bangkok",
+      "country": "Tailandia",
+      "founded": "2020",
+      "logo": "https://yt3.googleusercontent.com/f7_dIOEQFOPvOgN9SnisgcRVsgP_BLvPhf_KB3-BaGjOn6PMSs6gFZad6luATuj3esU5ykxzEw=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Productora emergente especializada en adaptar novelas web GL populares. Trabaja en coproducción con WeTV en proyectos como Denied Love y Love On Hire, protagonizados por la pareja Enjoy-June."
+    },
+    {
+      "id": "1779137481839",
+      "name": "FRT Entertainment",
+      "country": "Tailandia",
+      "founded": "",
+      "logo": "https://yt3.googleusercontent.com/qmx9UQjy35dJAXyP9PV3vACA73U1ricGweUcdZ-6Iq_NfBddXSD66fE0piplVBUmWXik9hDUnw=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Productora y agencia de representación tailandesa que ha ganado gran popularidad internacional por producir series y contenido del género GL (Girls' Love)."
+    },
+    {
       "id": "1779134050424",
-      "name": "GGMTV",
+      "name": "GMMTV",
       "country": "Tailandia",
       "founded": "1995",
       "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GMMTV_Logo.svg/1280px-GMMTV_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
       "website": "https://www.gmm-tv.com/home/?time=1779134024",
+      "desc": "Subsidiaria de producción televisiva y agencia de talentos perteneciente al conglomerado GMM Grammy, actualmente bajo The One Enterprise. Produce programas de televisión, canciones y videoclips musicales. Es la productora más grande del GL tailandés, con 8 nuevas series GL anunciadas para 2026."
+    },
+    {
+      "id": "1779135376050",
+      "name": "Idol Factory",
+      "country": "Tailandia",
+      "founded": "2020",
+      "logo": "https://static.wikia.nocookie.net/drama/images/d/d0/Idol_Factory-1.jpg/revision/latest/scale-to-width-down/300?cb=20220409152652&path-prefix=es",
+      "website": "",
+      "desc": "Cerrada por problemas económicos. Empresa líder del entretenimiento tailandés, responsable de GAP: The Series, el primer éxito Girls' Love del país con más de 1.000 millones de vistas en YouTube. Fue fundada por Saint Suppapong Udomkaeokanchana, y es el hogar de la popular pareja GL Freen Sarocha y Becky Armstrong."
+    },
+    {
+      "id": "1779136542367",
+      "name": "iQiyi",
+      "country": "China",
+      "founded": "2009",
+      "logo": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxtKW9JBQRXmiF9WwKoKZOyNe3nkautpKObZo5lhuegdJ1p1lrhXCegEUjDYMc3sCuY6Y1bKqYb2Bo7kxtjK0cU8-&format=source",
+      "website": "https://www.iq.com/?lang=es_mx",
       "desc": ""
+    },
+    {
+      "id": "1779136246720",
+      "name": "Kantana Motion Pictures",
+      "country": "Tailandia",
+      "founded": "",
+      "logo": "https://yt3.googleusercontent.com/-Zpx2nSGUhwocFVOUSct57TLIWyW4di9U6uteBeVMofeZZDVDYWkOxOaG0rcDXV8Py0r89Cg=s900-c-k-c0x00ffffff-no-rj",
+      "website": "http://www.kantanamotionpictures.com/",
+      "desc": "Especializada en contenido premium de cine, televisión y animación, ofrece servicios de producción integrales. Su primera serie GL fue Reverse 4 You, que entró en el Top 10 de Netflix Tailandia en su semana de estreno."
+    },
+    {
+      "id": "1779136303417",
+      "name": "Kongthup Production",
+      "country": "Tailandia",
+      "founded": "",
+      "logo": "https://yt3.googleusercontent.com/zLiVUZK7Da6K0iHtJ8YAEuSAl8vhWeJycLpEAfjvWHnlBAH-ImEYIKs9lZSjqpQk5uW5byzX=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Productora conocida por Apple My Love y Your Apple, series GL de bajo presupuesto pero con buena acogida entre los fans. Se caracteriza por tratar temáticas diversas dentro del género, incluyendo representación trans. Distribuye en YouTube, WeTV y GagaOOLala"
+    },
+    {
+      "id": "1779136191693",
+      "name": "MGI Beyond",
+      "country": "Tailandia",
+      "founded": "",
+      "logo": "https://yt3.googleusercontent.com/G1gZlx_wyQ_0W1KGEOORXJ0D-LpPogKoOEsLsO1Cwk0sRH0qIAoG61yZbFYLb4qYP6nx-XQrVg=s900-c-k-c0x00ffffff-no-rj",
+      "website": "https://missgrand.com/our-business/mgi-beyond/",
+      "desc": "Conglomerado tailandés fundado por Nawat Itsaragrisil que abarca publicidad, cosméticos, entretenimiento, eventos y gestión de talentos. Su rama GL produce series protagonizadas por ex-Miss Grand como Engfa Waraha y Charlotte Austin (Show Me Love, Love Bully, Petrichor)"
+    },
+    {
+      "id": "1779136445852",
+      "name": "Mine Media Production",
+      "country": "Tailandia",
+      "founded": "2023",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAC29pOptxh5bnQh5Vct4RHvqqTZ2aEjo47w&s",
+      "website": "",
+      "desc": "Fundada por la actriz Mai Davika y el actor Ter Chantavit. Productora y agencia de gestión de artistas jóvenes. Su primera serie GL fue Clairebell (2025), protagonizada por Mable Siriwalee y Pangjie Paphavarin."
+    },
+    {
+      "id": "1779136087730",
+      "name": "Monomax",
+      "country": "Tailandia",
+      "founded": "2020",
+      "logo": "https://play-lh.googleusercontent.com/YUNOy-jcb0dhR-r9c1P40BO4zizZwBpK8IoSvTP8Zh4aBTWxtYgaUsZILF8v-6sMehi2=w600-h300-pc0xffffff-pd",
+      "website": "https://www.monomax.me/",
+      "desc": "Plataforma de streaming y productora de contenido original tailandés bajo la marca Mono Original. Sus negocios principales incluyen el canal de TV Mono29 y el servicio de suscripción Monomax, que ofrece películas y series nacionales e internacionales."
+    },
+    {
+      "id": "1779136384575",
+      "name": "Motion Minds Entertainment",
+      "country": "Tailandia",
+      "founded": "2023",
+      "logo": "https://yt3.googleusercontent.com/Pk3wQkeuX1FAVrLU15amcAZsyz6X3JtM4aoIbNZOYiEtApL5TqlqBAOKDvhh28euErbSJtANx1I=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Productora independiente tailandesa de nicho GL, enfocada en historias originales con presupuesto moderado. Distribuye principalmente en YouTube."
+    },
+    {
+      "id": "1779136355146",
+      "name": "Nine Star Studios",
+      "country": "Tailandia",
+      "founded": "2022",
+      "logo": "https://yt3.googleusercontent.com/lJgzWYrhV_Wz1WGLDywLgAh2QIrRdcXpb2B2vW-ruiWUEx1UHuXhifALvpYAEPkjx7sEsLUL=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Empresa de producción y gestión de artistas especializada en series GL. Fue fundada por Siripun Wongsawan. Conocida por Blank The Series. Atravesó una grave crisis en 2025 por mal manejo de artistas, y anunció el cierre de operaciones efectivo el 31 de mayo de 2026.\nEstado actual: ⚠️ Cerrando operaciones (mayo 2026)"
+    },
+    {
+      "id": "1779135760151",
+      "name": "North Star Entertainment",
+      "country": "Tailandia",
+      "founded": "2022",
+      "logo": "https://pbs.twimg.com/profile_images/1981923394086957056/_bvy5WBk_400x400.jpg",
+      "website": "",
+      "desc": "Fundada por la veterana actriz Tik Kanyarat, con más de 20 años de experiencia. Actualmente produce series GL como Poisonous Love, protagonizada por Jayna Angelina y Ginny Natnicha, en colaboración con Idol Factory para el mega proyecto GL \"4 Elements\"."
+    },
+    {
+      "id": "1779136330823",
+      "name": "PENNYY Studio",
+      "country": "Tailandia",
+      "founded": "2023",
+      "logo": "https://yt3.googleusercontent.com/acfZQ6I_KfA0MA4SEoybUb-zDODPAEECt-tKlzbCY4EAj8xl8VNUs6L03eljH1UlSNyp-QTOlw=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Productora independiente especializada en series GL para iQIYI. Orientada a historias escolares y de romance juvenil. Produce series de menor presupuesto pero con fans activos en las comunidades GL internacionales"
+    },
+    {
+      "id": "1779136406910",
+      "name": "S.NUR Entertainment",
+      "country": "Tailandia",
+      "founded": "2025",
+      "logo": "https://yt3.googleusercontent.com/nEgHMr19aqqsN1F7qJRzA5gZWX2JoA2-3P-u2TFYJTLld9JJfCNtKN6EOLEIlKOvzAiqjtqEkw=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Una de las productoras más nuevas del ecosistema GL tailandés. Ha producido la serie Denied (con Nur Desoraya y Tankgkwa Phinyanech), disponible en YouTube. Fundada presumiblemente por o en torno a la actriz Nur Desoraya."
+    },
+    {
+      "id": "1779136264729",
+      "name": "SiamSi Studio",
+      "country": "Tailandia",
+      "founded": "2023",
+      "logo": "https://yt3.googleusercontent.com/JiKSQCnhO-4pPnXCLCU9r384uIX1-c6c-JbPx_wFtFiHkW83wBd8QpTEQmhOcLY96kzANFrX=s160-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Productora emergente independiente especializada en GL. Ha producido series como Roller Coaster (iQIYI), adaptando novelas de la autora Zezeho. Opera principalmente a través de YouTube e iQIYI."
+    },
+    {
+      "id": "1779135573515",
+      "name": "Star Hunter Entertainment",
+      "country": "Tailandia",
+      "founded": "2018",
+      "logo": "https://static.wikia.nocookie.net/thai_entertainment/images/9/96/Star_Hunter_Entertainment_company_logo.png/revision/latest?cb=20231008134026",
+      "website": "",
+      "desc": "Prominente empresa de entretenimiento tailandesa ampliamente reconocida como pionera en la industria de series Boys' Love, que ha expandido su catálogo con series GL como Blank The Series y Love Senior The Series."
+    },
+    {
+      "id": "1779136135118",
+      "name": "Velcurve Studio",
+      "country": "Tailandia",
+      "founded": "2017",
+      "logo": "https://static.wixstatic.com/media/b4a9af_a0c918232e234494a4d64e8398152a17~mv2.png/v1/fill/w_1600,h_900,al_c/b4a9af_a0c918232e234494a4d64e8398152a17~mv2.png",
+      "website": "https://www.velcurve.com/",
+      "desc": "Empresa de producción multimedia enfocada en calidad sobre cantidad, especializada en largometrajes, series, comerciales, contenido OTT y servicios de estudio. Destaca por su experiencia en postproducción, especialmente en diseño de sonido y corrección de color. Series GL conocidas: Love Design, Uranus2324"
+    },
+    {
+      "id": "1779135626732",
+      "name": "WeTV",
+      "country": "Tailandia",
+      "founded": "",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_WeTV_fullscreen.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "website": "https://wetv.vip/en",
+      "desc": "En 2025 se convirtió en una de las plataformas de streaming más relevantes dentro del fandom de series BL y GL asiáticas, no solo distribuyendo títulos sino también produciendo los suyos propios. Coproduces con estudios locales como Copy a Bangkok."
     }
   ],
-  "exportedAt": "2026-05-18T20:11:29.057Z"
+  "exportedAt": "2026-05-18T20:52:31.405Z"
 }
