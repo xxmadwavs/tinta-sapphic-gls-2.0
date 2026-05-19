@@ -32386,7 +32386,20 @@
       "website": "https://www.zense.co.th/",
       "desc": "Fundada por Varavuth Jentanakul. Productora independiente líder en Tailandia con más de 150 empleados.",
       "actressIds": []
+    },
+    {
+      "id": "1779177933075",
+      "name": "Fabel Entertainment",
+      "country": "Tailandia",
+      "founded": "2025",
+      "logo": "https://yt3.googleusercontent.com/SRzRQEM7HHqFuDXBoeiKxctP4CVbEysDp0cfiPhguLX7qLx6HCXg9g1NaFX1tBNLvlzy3nSNLzs=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Fundada por \"Faye\" Peraya Malisorn",
+      "actressIds": [
+        "1778760957217",
+        "1778760904100"
+      ]
     }
   ],
-  "exportedAt": "2026-05-19T08:02:08.038Z"
+  "exportedAt": "2026-05-19T08:06:12.274Z"
 }
