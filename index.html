@@ -707,22 +707,28 @@ footer{
 }
 /* Foto cuadrada — sin divisor visible ni emojis */
 .ship-couple-banner{
-  position:relative;width:100%;aspect-ratio:1/1;
-  overflow:hidden;
+  position:relative;width:100%;
+  overflow:hidden;flex-shrink:0;
   background:linear-gradient(160deg,var(--surface2) 0%,var(--lavender-soft) 100%);
-  display:flex;flex-shrink:0;
 }
-.ship-couple-half{flex:1;overflow:hidden;position:relative}
+/* Crea el cuadrado 1:1 de forma fiable sin aspect-ratio */
+.ship-couple-banner::before{content:'';display:block;padding-top:100%}
+/* Las mitades se posicionan en absoluto dentro del banner */
+.ship-couple-half{
+  position:absolute;top:0;bottom:0;overflow:hidden;
+}
+.ship-couple-half:first-child{left:0;width:50%}
+.ship-couple-half:nth-child(2){left:50%;width:50%}
 .ship-couple-half img{
+  position:absolute;inset:0;
   width:100%;height:100%;
-  object-fit:cover;object-position:center 10%;
+  object-fit:cover;object-position:center 15%;
   display:block;transition:transform .45s cubic-bezier(.25,0,.1,1);
 }
 .ship-card:hover .ship-couple-half img{transform:scale(1.05)}
 .ship-couple-half-ph{
   width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-  background:var(--surface2);color:var(--muted);font-size:12px;
-  font-weight:500;letter-spacing:.03em;
+  background:var(--surface2);
 }
 /* Divisor central muy sutil */
 .ship-couple-divider{
@@ -5366,14 +5372,14 @@ function renderShipsResults(){
         const cpPos=sh.sh.couplePhotoPosition||'50% 20%';
         const cpZoom=sh.sh.couplePhotoZoom||1;
         coupleBanner=`<div class="ship-couple-banner">
-          <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" style="width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center" onerror="this.outerHTML='<div class=ship-couple-half-ph style=\"width:100%;height:100%\">—</div>'">
+          <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center" onerror="this.style.display='none'">
         </div>`;
       } else {
         const half1=a1?.photo
-          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>—</div>'"></div>`
+          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
           :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
         const half2=a2?.photo
-          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>—</div>'"></div>`
+          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
           :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
         coupleBanner=`<div class="ship-couple-banner">
           ${half1}${half2}
@@ -5404,10 +5410,10 @@ function renderShipsResults(){
       const a1auto=actMap[pair[0]?.actressId];
       const a2auto=actMap[pair[1]?.actressId];
       const half1auto=a1auto?.photo
-        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1auto.id}')"><img src="${a1auto.photo}" alt="${a1auto.name}" style="object-position:${a1auto.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>—</div>'"></div>`
+        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1auto.id}')"><img src="${a1auto.photo}" alt="${a1auto.name}" style="object-position:${a1auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
         :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
       const half2auto=a2auto?.photo
-        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" style="object-position:${a2auto.photoPosition||'center 15%'}" onerror="this.parentElement.innerHTML='<div class=ship-couple-half-ph>—</div>'"></div>`
+        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" style="object-position:${a2auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
         :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
       html+=`<div class="ship-card" onclick="openSeries(${sh.si})">
         <div class="ship-couple-banner">
