@@ -1460,13 +1460,19 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T22:04:12.853Z",
+      "updatedAt": "2026-05-19T07:53:14.454Z",
       "nameEn": "เพื่อเธออีกครั้ง",
       "episodeDuration": 55,
       "myTop10": false,
       "top10Rank": 0,
       "myPick": false,
-      "myPick2026": true
+      "myPick2026": true,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779177125091"
     },
     {
       "id": "1776965794937",
@@ -1531,8 +1537,16 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:38:09.571Z",
-      "episodeDuration": ""
+      "updatedAt": "2026-05-19T07:53:20.986Z",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779177125091"
     },
     {
       "id": "1776966024996",
@@ -2138,7 +2152,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T18:45:39.914Z"
+      "updatedAt": "2026-05-19T07:53:35.462Z",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776971352334",
@@ -2215,8 +2238,8 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -2242,8 +2265,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:00:06.248Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T07:53:40.763Z",
+      "nameEn": "",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776971628835",
@@ -2326,7 +2358,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:27:57.013Z"
+      "updatedAt": "2026-05-19T07:53:56.308Z",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135573515"
     },
     {
       "id": "1776972053631",
@@ -2439,8 +2480,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T12:44:28.398Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T07:54:07.117Z",
+      "nameEn": "",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136191693"
     },
     {
       "id": "1776972237357",
@@ -2473,8 +2523,8 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -2512,8 +2562,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:02:57.918Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T07:54:14.766Z",
+      "nameEn": "",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776972424986",
@@ -2535,9 +2594,9 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Romance",
         "Drama",
         "Escolar",
+        "Romance",
         "Viaje en el tiempo"
       ],
       "category": "series",
@@ -2558,8 +2617,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:03:32.383Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T07:54:24.723Z",
+      "nameEn": "",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776972733396",
@@ -2626,8 +2694,8 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -2647,8 +2715,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:04:06.810Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T07:54:29.031Z",
+      "nameEn": "",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776973104361",
@@ -2686,9 +2763,9 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Romance",
+        "Comedia",
         "Drama",
-        "Comedia"
+        "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -2720,8 +2797,17 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-13T12:04:56.824Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T07:54:33.953Z",
+      "nameEn": "",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776973507673",
@@ -2774,8 +2860,8 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
@@ -2833,8 +2919,17 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-13T12:06:29.019Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T07:54:42.471Z",
+      "nameEn": "",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776974136082",
@@ -2907,7 +3002,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:31:50.549Z"
+      "updatedAt": "2026-05-19T07:54:48.860Z",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135573515"
     },
     {
       "id": "1776974252950",
@@ -2956,7 +3060,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T19:32:40.775Z"
+      "updatedAt": "2026-05-19T07:54:54.118Z",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135573515"
     },
     {
       "id": "1776974479970",
@@ -3065,7 +3178,16 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T19:36:00.394Z"
+      "updatedAt": "2026-05-19T07:55:02.641Z",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135573515"
     },
     {
       "id": "1776976144217",
@@ -3156,13 +3278,19 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T22:03:10.265Z",
+      "updatedAt": "2026-05-19T07:55:08.253Z",
       "nameEn": "",
       "episodeDuration": "",
       "myTop10": true,
       "top10Rank": 0,
       "myPick": true,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1776976209757",
@@ -3388,10 +3516,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:27:58.895Z",
+      "updatedAt": "2026-05-19T07:55:20.463Z",
       "episodeDuration": "",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135760151"
     },
     {
       "id": "1776976491416",
@@ -3438,10 +3572,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:27:37.520Z",
+      "updatedAt": "2026-05-19T07:55:27.973Z",
       "episodeDuration": "",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136087730"
     },
     {
       "id": "1776976636268",
@@ -3503,11 +3643,17 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:25:24.992Z",
+      "updatedAt": "2026-05-19T07:55:33.177Z",
       "myTop10": true,
       "top10Rank": 0,
       "myPick": false,
-      "myPick2026": true
+      "myPick2026": true,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136087730"
     },
     {
       "id": "1777017936367",
@@ -3772,7 +3918,7 @@
         "Drama",
         "Romance"
       ],
-      "updatedAt": "2026-05-16T08:27:45.156Z",
+      "updatedAt": "2026-05-19T07:55:42.946Z",
       "nameEn": "ถ้อยรักคำลวง",
       "category": "series",
       "seriesType": "serie",
@@ -3800,7 +3946,13 @@
       "renewedNextSeason": false,
       "episodeDuration": "",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135760151"
     },
     {
       "id": "1777048197930",
@@ -4031,7 +4183,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:27:49.145Z",
+      "updatedAt": "2026-05-19T07:55:55.362Z",
       "nameEn": "รักได้ไหม? ยัยตัวร้าย",
       "cast": [
         {
@@ -4049,7 +4201,13 @@
       ],
       "episodeDuration": 40,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779176988365"
     },
     {
       "id": "1777068097582",
@@ -4192,7 +4350,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:28:16.473Z",
+      "updatedAt": "2026-05-19T07:56:01.313Z",
       "nameEn": "รักนี้มากับดวง",
       "cast": [
         {
@@ -4210,7 +4368,13 @@
       ],
       "episodeDuration": 19,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779176988365"
     },
     {
       "id": "1777105535961",
@@ -4375,7 +4539,16 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-14T19:42:47.862Z"
+      "updatedAt": "2026-05-19T07:56:27.911Z",
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135450707"
     },
     {
       "id": "1777105780897",
@@ -4450,10 +4623,16 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:28:21.879Z",
+      "updatedAt": "2026-05-19T07:56:31.586Z",
       "episodeDuration": 47,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135450707"
     },
     {
       "id": "1777106011444",
@@ -5212,7 +5391,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:37:27.907Z",
+      "updatedAt": "2026-05-19T07:56:49.364Z",
       "episodeDuration": 55,
       "myPick": false,
       "myPick2026": false,
@@ -5221,7 +5400,7 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779135376050"
     },
     {
       "id": "1777149248949",
@@ -5275,9 +5454,15 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 40,
-      "updatedAt": "2026-05-16T08:28:33.698Z",
+      "updatedAt": "2026-05-19T07:56:55.559Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135954653"
     },
     {
       "id": "1777149412505",
@@ -5520,10 +5705,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:38.533Z",
+      "updatedAt": "2026-05-19T07:57:05.742Z",
       "episodeDuration": 47,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136355146"
     },
     {
       "id": "1777222930712",
@@ -5591,10 +5782,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:41.637Z",
+      "updatedAt": "2026-05-19T07:57:16.022Z",
       "episodeDuration": "",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "limbo",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777223129027",
@@ -5687,12 +5884,18 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:25:37.747Z",
+      "updatedAt": "2026-05-19T07:57:23.961Z",
       "episodeDuration": 57,
       "myTop10": true,
       "top10Rank": 0,
       "myPick": true,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1777223788983",
@@ -5771,10 +5974,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:43.746Z",
+      "updatedAt": "2026-05-19T07:57:32.268Z",
       "episodeDuration": 44,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779176820442"
     },
     {
       "id": "1777224670901",
@@ -5849,10 +6058,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:45.799Z",
+      "updatedAt": "2026-05-19T07:57:37.979Z",
       "episodeDuration": 70,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136542367"
     },
     {
       "id": "1777224996688",
@@ -6161,9 +6376,15 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 46,
-      "updatedAt": "2026-05-16T08:28:56.758Z",
+      "updatedAt": "2026-05-19T07:57:48.368Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135954653"
     },
     {
       "id": "1777226456284",
@@ -6450,10 +6671,16 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:29:06.830Z",
+      "updatedAt": "2026-05-19T07:57:58.500Z",
       "episodeDuration": 53,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779135760151"
     },
     {
       "id": "1777228963657",
@@ -7474,7 +7701,15 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 46,
-      "updatedAt": "2026-05-15T10:27:16.317Z"
+      "updatedAt": "2026-05-19T07:58:41.835Z",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779176934811"
     },
     {
       "id": "1777279117292",
@@ -7674,7 +7909,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T10:30:47.048Z",
+      "updatedAt": "2026-05-19T07:58:52.517Z",
       "nameEn": "",
       "category": "series",
       "seriesType": "serie",
@@ -7700,7 +7935,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 27
+      "episodeDuration": 27,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779176988365"
     },
     {
       "id": "1777449955163",
@@ -8946,7 +9189,7 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-05-15T10:56:23.815Z",
+      "updatedAt": "2026-05-19T07:59:21.293Z",
       "nameEn": "น้อง Sideline",
       "category": "series",
       "seriesType": "serie",
@@ -8966,7 +9209,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136384575"
     },
     {
       "id": "1777459455348",
@@ -9037,7 +9288,7 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-05-18T12:11:51.423Z",
+      "updatedAt": "2026-05-19T07:59:32.346Z",
       "nameEn": "เสี่ยงรัก",
       "category": "series",
       "seriesType": "serie",
@@ -9051,7 +9302,8 @@
       "cancelNote": "",
       "sinNovedades": false,
       "snLastUpdate": "",
-      "snNote": ""
+      "snNote": "",
+      "productoraId": "1779136355146"
     },
     {
       "id": "1777460506708",
@@ -9071,7 +9323,7 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-05-18T12:11:58.128Z",
+      "updatedAt": "2026-05-19T07:59:37.122Z",
       "nameEn": "ก็ว่าจะไม่รัก",
       "category": "series",
       "seriesType": "serie",
@@ -9085,7 +9337,8 @@
       "cancelNote": "",
       "sinNovedades": false,
       "snLastUpdate": "",
-      "snNote": ""
+      "snNote": "",
+      "productoraId": "1779136355146"
     },
     {
       "id": "1777460572035",
@@ -9155,7 +9408,7 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [],
-      "updatedAt": "2026-05-18T12:12:06.341Z",
+      "updatedAt": "2026-05-19T07:59:47.077Z",
       "nameEn": "รักอันตราย",
       "category": "series",
       "seriesType": "serie",
@@ -9176,7 +9429,8 @@
       "cancelNote": "",
       "sinNovedades": false,
       "snLastUpdate": "",
-      "snNote": ""
+      "snNote": "",
+      "productoraId": "1779136355146"
     },
     {
       "id": "1777581394711",
@@ -13957,7 +14211,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T18:53:30.960Z",
+      "updatedAt": "2026-05-19T08:00:19.533Z",
       "nameEn": "",
       "category": "series",
       "seriesType": "serie",
@@ -13977,7 +14231,15 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 47
+      "episodeDuration": 47,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779134050424"
     },
     {
       "id": "1700000000165",
@@ -15046,7 +15308,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T18:55:48.149Z",
+      "updatedAt": "2026-05-19T08:00:39.501Z",
       "category": "series",
       "seriesType": "webserie",
       "animeSeason": "",
@@ -15066,7 +15328,15 @@
           "coupleNum": 1
         }
       ],
-      "episodeDuration": 12
+      "episodeDuration": 12,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779136191693"
     },
     {
       "id": "1700000000213",
@@ -16373,8 +16643,22 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:09:45.157Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T08:01:00.217Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "limbo",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1700000000289",
@@ -16409,8 +16693,22 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:09:57.171Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T08:01:04.291Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "limbo",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1700000000296",
@@ -16424,8 +16722,8 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Musical"
+        "Musical",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -16446,8 +16744,22 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:10:15.874Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T08:01:07.837Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "limbo",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1700000000298",
@@ -16536,8 +16848,8 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Musical"
+        "Musical",
+        "Romance"
       ],
       "basedOnBook": false,
       "bookSource": "",
@@ -16558,8 +16870,22 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:10:50.995Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T08:01:13.019Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "limbo",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1700000000305",
@@ -16594,8 +16920,22 @@
           "episodes": []
         }
       ],
-      "updatedAt": "2026-05-07T12:11:14.393Z",
-      "nameEn": ""
+      "updatedAt": "2026-05-19T08:01:17.671Z",
+      "nameEn": "",
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "limbo",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1700000000307",
@@ -19750,7 +20090,13 @@
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
-      "updatedAt": "2026-05-16T16:30:41.436Z"
+      "updatedAt": "2026-05-19T08:02:06.339Z",
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779176988365"
     },
     {
       "id": "1778949161696",
@@ -31812,6 +32158,21 @@
       ]
     },
     {
+      "id": "1779176934811",
+      "name": "HeartPop Studio",
+      "country": "Tailandia",
+      "founded": "2024",
+      "logo": "https://yt3.googleusercontent.com/IG1dKZ9F57AHTm5IdZAaVaeGzcw-Ers85FGKblQ8MEzKOT2ofMSwuX1ivvWYBy-vMvBNdlUn5g=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Fundada por la actriz Ize Papichaya. Produce contenido sáfico que refleja diversidad.",
+      "actressIds": [
+        "1778761762611",
+        "1778761562883",
+        "1778761514836",
+        "1778761797385"
+      ]
+    },
+    {
       "id": "1779135376050",
       "name": "Idol Factory",
       "country": "Tailandia",
@@ -31839,6 +32200,16 @@
       "desc": "Especializada en contenido premium de cine, televisión y animación, ofrece servicios de producción integrales. Su primera serie GL fue Reverse 4 You, que entró en el Top 10 de Netflix Tailandia en su semana de estreno."
     },
     {
+      "id": "1779176988365",
+      "name": "KONEONEDEE",
+      "country": "Tailandia",
+      "founded": "2023",
+      "logo": "https://yt3.googleusercontent.com/w69UItJGdKk-u3S-YWA4PupWgTPY01AaSj0XXeM7ttSyE7eoa9aGC9APbNmSQVxp_NZdm-W1iQ=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Productora independiente con varias series GL cortas en YouTube.",
+      "actressIds": []
+    },
+    {
       "id": "1779136303417",
       "name": "Kongthup Production",
       "country": "Tailandia",
@@ -31849,6 +32220,21 @@
       "actressIds": [
         "1778781856216",
         "1778781830314"
+      ]
+    },
+    {
+      "id": "1779177125091",
+      "name": "Me Mind Y",
+      "country": "Tailandia",
+      "founded": "2019",
+      "logo": "https://static.wikia.nocookie.net/drama/images/b/bf/Me_Mind_Y-1.jpg/revision/latest?cb=20220210125353&path-prefix=es",
+      "website": "",
+      "desc": "",
+      "actressIds": [
+        "1778669744880",
+        "1778781926481",
+        "1778669789813",
+        "1778781896148"
       ]
     },
     {
@@ -31990,7 +32376,17 @@
       "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_WeTV_fullscreen.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
       "website": "https://wetv.vip/en",
       "desc": "En 2025 se convirtió en una de las plataformas de streaming más relevantes dentro del fandom de series BL y GL asiáticas, no solo distribuyendo títulos sino también produciendo los suyos propios. Coproduces con estudios locales como Copy a Bangkok."
+    },
+    {
+      "id": "1779176820442",
+      "name": "Zense Entertainment",
+      "country": "Tailandia",
+      "founded": "2011",
+      "logo": "https://media.licdn.com/dms/image/v2/C560BAQHnwomDKsaDMQ/company-logo_200_200/company-logo_200_200/0/1631304411435?e=2147483647&v=beta&t=CBagOLQqFWlmuAUKYCAFqqX-87fy5c8TqjyFxZjmKbs",
+      "website": "https://www.zense.co.th/",
+      "desc": "Fundada por Varavuth Jentanakul. Productora independiente líder en Tailandia con más de 150 empleados.",
+      "actressIds": []
     }
   ],
-  "exportedAt": "2026-05-19T07:39:01.814Z"
+  "exportedAt": "2026-05-19T08:02:08.038Z"
 }
