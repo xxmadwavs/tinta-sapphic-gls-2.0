@@ -919,8 +919,16 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:34:53.207Z",
-      "episodeDuration": 66
+      "updatedAt": "2026-05-19T08:12:10.415Z",
+      "episodeDuration": 66,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779177933075"
     },
     {
       "id": "1776889550180",
@@ -31934,7 +31942,10 @@
       "actressIds": [
         "1778667631376",
         "1778667608624"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/namtanfilm-for-wink-magazine-v0-4b9nwxzo0ice1.jpg?width=640&crop=smart&auto=webp&s=f9e1f4cd4433dc1a6fe3b0feb949373a5a975475",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105772062",
@@ -31943,7 +31954,10 @@
       "actressIds": [
         "1778672828977",
         "1778672885792"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/appreciation-post-for-my-safe-zone-lenamiu-v0-ycuncjk9at2g1.jpg?width=1440&format=pjpg&auto=webp&s=7572d19c879c783fb33742003bf8f4b8be1fd741",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105799282",
@@ -31952,7 +31966,10 @@
       "actressIds": [
         "1778668089762",
         "1778668061135"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/viewmim-todays-update-v0-zyv8dr0v6yce1.jpg?width=1080&crop=smart&auto=webp&s=d5639e0c1c8777261052572b34dfa092f40822bf",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105816244",
@@ -31961,7 +31978,10 @@
       "actressIds": [
         "1778669334143",
         "1778669290609"
-      ]
+      ],
+      "couplePhoto": "https://i.pinimg.com/736x/dd/3c/0c/dd3c0cd060a513b7a7d2beb4a25ed23d.jpg",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105845082",
@@ -31970,7 +31990,10 @@
       "actressIds": [
         "1778667427357",
         "1778667475076"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/janjingjing-winter-holidays-photoshoot-v0-yrr0lo1lb69g1.jpg?width=640&crop=smart&auto=webp&s=0ae9ffcc96e16e12c2236bdaaf26ff76e2dddf5b",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105879657",
@@ -31979,16 +32002,10 @@
       "actressIds": [
         "1778669672693",
         "1778669706067"
-      ]
-    },
-    {
-      "id": "1779105911575",
-      "name": "FayeAtom",
-      "desc": "",
-      "actressIds": [
-        "1778760957217",
-        "1778760904100"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/story-time-how-lmsy-got-the-role-in-affair-v0-0f0h2qro1age1.jpg?width=688&format=pjpg&auto=webp&s=c425e6083587a58b797b35f649fc4a6e69ce536b",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105932288",
@@ -31997,7 +32014,10 @@
       "actressIds": [
         "1778785354635",
         "1778785439675"
-      ]
+      ],
+      "couplePhoto": "https://i.pinimg.com/736x/1f/03/96/1f03966f292e311671b6e45bf7ae4b74.jpg",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105970899",
@@ -32006,7 +32026,10 @@
       "actressIds": [
         "1778669536770",
         "1778669564288"
-      ]
+      ],
+      "couplePhoto": "https://64.media.tumblr.com/386fa3139fb7039ec8082cc9151264a9/67d7bce13ea45f1d-e5/s640x960/cbe28f5af0f062fa50cdc744c72aafea33ac9fcd.jpg",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105986281",
@@ -32015,7 +32038,10 @@
       "actressIds": [
         "1778748946306",
         "1778748865971"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/ginjay-for-mode-v0-l6osauut1kjg1.jpg?width=1080&crop=smart&auto=webp&s=9ba9bee4aa7ce42e6c9724c5a8687bac7d16e867",
+      "couplePhotoPosition": "47% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779106005760",
@@ -32024,7 +32050,10 @@
       "actressIds": [
         "1778672754370",
         "1778672794035"
-      ]
+      ],
+      "couplePhoto": "https://i.redd.it/fulfill-airs-today-wishing-oombam-all-the-very-best-v0-x956d1q5q4xg1.jpg?width=591&format=pjpg&auto=webp&s=08d692ebab7e45f6ffce4600c576171746cc18be",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779106019680",
@@ -32033,7 +32062,10 @@
       "actressIds": [
         "1778761294678",
         "1778761265957"
-      ]
+      ],
+      "couplePhoto": "https://pbs.twimg.com/media/HGRiu9nXoAEBVl2.jpg",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779106055702",
@@ -32137,6 +32169,19 @@
       "logo": "https://yt3.googleusercontent.com/f7_dIOEQFOPvOgN9SnisgcRVsgP_BLvPhf_KB3-BaGjOn6PMSs6gFZad6luATuj3esU5ykxzEw=s900-c-k-c0x00ffffff-no-rj",
       "website": "",
       "desc": "Productora emergente especializada en adaptar novelas web GL populares. Trabaja en coproducción con WeTV en proyectos como Denied Love y Love On Hire, protagonizados por la pareja Enjoy-June."
+    },
+    {
+      "id": "1779177933075",
+      "name": "Fabel Entertainment",
+      "country": "Tailandia",
+      "founded": "2025",
+      "logo": "https://yt3.googleusercontent.com/SRzRQEM7HHqFuDXBoeiKxctP4CVbEysDp0cfiPhguLX7qLx6HCXg9g1NaFX1tBNLvlzy3nSNLzs=s900-c-k-c0x00ffffff-no-rj",
+      "website": "",
+      "desc": "Fundada por \"Faye\" Peraya Malisorn",
+      "actressIds": [
+        "1778760957217",
+        "1778760904100"
+      ]
     },
     {
       "id": "1779137481839",
@@ -32404,20 +32449,7 @@
       "website": "https://www.zense.co.th/",
       "desc": "Fundada por Varavuth Jentanakul. Productora independiente líder en Tailandia con más de 150 empleados.",
       "actressIds": []
-    },
-    {
-      "id": "1779177933075",
-      "name": "Fabel Entertainment",
-      "country": "Tailandia",
-      "founded": "2025",
-      "logo": "https://yt3.googleusercontent.com/SRzRQEM7HHqFuDXBoeiKxctP4CVbEysDp0cfiPhguLX7qLx6HCXg9g1NaFX1tBNLvlzy3nSNLzs=s900-c-k-c0x00ffffff-no-rj",
-      "website": "",
-      "desc": "Fundada por \"Faye\" Peraya Malisorn",
-      "actressIds": [
-        "1778760957217",
-        "1778760904100"
-      ]
     }
   ],
-  "exportedAt": "2026-05-19T08:10:19.986Z"
+  "exportedAt": "2026-05-19T08:23:06.441Z"
 }
