@@ -32064,8 +32064,8 @@
         "1778761265957"
       ],
       "couplePhoto": "https://pbs.twimg.com/media/HGRiu9nXoAEBVl2.jpg",
-      "couplePhotoPosition": "50% 20%",
-      "couplePhotoZoom": 1
+      "couplePhotoPosition": "25% 40%",
+      "couplePhotoZoom": 1.17
     },
     {
       "id": "1779106055702",
@@ -32083,7 +32083,10 @@
       "actressIds": [
         "1778705363188",
         "1778705395423"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/nvjx2j65le1g1.jpg?width=640&crop=smart&auto=webp&s=061206392f0eafd57a05636e9ab8882a70c72069",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779106091030",
@@ -32092,7 +32095,10 @@
       "actressIds": [
         "1778761227248",
         "1778761175235"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/enjoyjune-in-denim-v0-cvi4rzabj7ef1.jpg?width=640&crop=smart&auto=webp&s=642cdf0d9a4ae118b3207c9463d7da817e2173e3",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779137267689",
@@ -32451,5 +32457,5 @@
       "actressIds": []
     }
   ],
-  "exportedAt": "2026-05-19T08:23:06.441Z"
+  "exportedAt": "2026-05-19T08:27:30.372Z"
 }
