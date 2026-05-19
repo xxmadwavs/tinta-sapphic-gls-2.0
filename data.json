@@ -31910,7 +31910,10 @@
       "actressIds": [
         "1778668043254",
         "1778667975177"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/milklove-facecards-v0-96m0rxzziw1h1.jpeg?width=640&crop=smart&auto=webp&s=c4ad202826e1c3f20986dac4dda753d93970c6da",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105738832",
@@ -31919,7 +31922,10 @@
       "actressIds": [
         "1778667533099",
         "1778667585326"
-      ]
+      ],
+      "couplePhoto": "https://preview.redd.it/emibonnie-from-us-the-series-v0-eak9gkaio8ee1.jpg?width=640&crop=smart&auto=webp&s=82915efbf219e668dac4bbfe24230f80d20a01d1",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1
     },
     {
       "id": "1779105755683",
@@ -32066,6 +32072,18 @@
       "actressIds": [
         "1778669135059",
         "1778669089219"
+      ]
+    },
+    {
+      "id": "1779178121952",
+      "name": "FayeAtom",
+      "desc": "",
+      "couplePhoto": "https://preview.redd.it/a-bunch-of-pics-of-faye-and-atom-v0-qqp5qn9wj0xg1.jpg?width=1080&crop=smart&auto=webp&s=f4adf22dd573ed516aaedba4744f66a46938918b",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778760957217",
+        "1778760904100"
       ]
     }
   ],
@@ -32401,5 +32419,5 @@
       ]
     }
   ],
-  "exportedAt": "2026-05-19T08:06:12.274Z"
+  "exportedAt": "2026-05-19T08:10:19.986Z"
 }
