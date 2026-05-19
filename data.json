@@ -31731,7 +31731,18 @@
       "founded": "1970",
       "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Ch3HDLogo.svg/1280px-Ch3HDLogo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
       "website": "https://ch3plus.com/",
-      "desc": "Conglomerado mediático tailandés, conocido principalmente como operador del Canal 3. Es la primera gran cadena televisiva tradicional en apostar por el GL con series como The Secret of Us, Only You, My Safe Zone, Play Park y Fulfill."
+      "desc": "Conglomerado mediático tailandés, conocido principalmente como operador del Canal 3. Es la primera gran cadena televisiva tradicional en apostar por el GL con series como The Secret of Us, Only You, My Safe Zone, Play Park y Fulfill.",
+      "actressIds": [
+        "1778672754370",
+        "1778761227248",
+        "1778672828977",
+        "1778668951822",
+        "1778672885792",
+        "1778672794035",
+        "1778669037769",
+        "1778669135059",
+        "1778669089219"
+      ]
     },
     {
       "id": "1779135954653",
@@ -31740,7 +31751,19 @@
       "founded": "2018",
       "logo": "https://static.wikia.nocookie.net/gmmtv/images/e/e6/Change2561_Logo.png/revision/latest?cb=20231211040501",
       "website": "",
-      "desc": "Productora independiente enfocada en contenido LGBTQ+. Ha producido varias series GL de bajo presupuesto pero con gran acogida en comunidades de fans, como Affair, Harmony Secret"
+      "desc": "Productora independiente enfocada en contenido LGBTQ+. Ha producido varias series GL de bajo presupuesto pero con gran acogida en comunidades de fans, como Affair, Harmony Secret",
+      "actressIds": [
+        "1778783243230",
+        "1778760773120",
+        "1778760802641",
+        "1778760850305",
+        "1778783211856",
+        "1778760735020",
+        "1778669672693",
+        "1778783160921",
+        "1778782214788",
+        "1778669706067"
+      ]
     },
     {
       "id": "1779135987498",
@@ -31767,7 +31790,26 @@
       "founded": "1995",
       "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GMMTV_Logo.svg/1280px-GMMTV_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
       "website": "https://www.gmm-tv.com/home/?time=1779134024",
-      "desc": "Subsidiaria de producción televisiva y agencia de talentos perteneciente al conglomerado GMM Grammy, actualmente bajo The One Enterprise. Produce programas de televisión, canciones y videoclips musicales. Es la productora más grande del GL tailandés, con 8 nuevas series GL anunciadas para 2026."
+      "desc": "Subsidiaria de producción televisiva y agencia de talentos perteneciente al conglomerado GMM Grammy, actualmente bajo The One Enterprise. Produce programas de televisión, canciones y videoclips musicales. Es la productora más grande del GL tailandés, con 8 nuevas series GL anunciadas para 2026.",
+      "actressIds": [
+        "1778667533099",
+        "1778668259606",
+        "1778667585326",
+        "1778667631376",
+        "1778668241744",
+        "1778667427357",
+        "1778668109244",
+        "1778668312492",
+        "1778668043254",
+        "1778668288034",
+        "1778667975177",
+        "1778668089762",
+        "1778667608624",
+        "1778667559702",
+        "1778668360946",
+        "1778668061135",
+        "1778667475076"
+      ]
     },
     {
       "id": "1779135376050",
@@ -31803,7 +31845,11 @@
       "founded": "",
       "logo": "https://yt3.googleusercontent.com/zLiVUZK7Da6K0iHtJ8YAEuSAl8vhWeJycLpEAfjvWHnlBAH-ImEYIKs9lZSjqpQk5uW5byzX=s900-c-k-c0x00ffffff-no-rj",
       "website": "",
-      "desc": "Productora conocida por Apple My Love y Your Apple, series GL de bajo presupuesto pero con buena acogida entre los fans. Se caracteriza por tratar temáticas diversas dentro del género, incluyendo representación trans. Distribuye en YouTube, WeTV y GagaOOLala"
+      "desc": "Productora conocida por Apple My Love y Your Apple, series GL de bajo presupuesto pero con buena acogida entre los fans. Se caracteriza por tratar temáticas diversas dentro del género, incluyendo representación trans. Distribuye en YouTube, WeTV y GagaOOLala",
+      "actressIds": [
+        "1778781856216",
+        "1778781830314"
+      ]
     },
     {
       "id": "1779136191693",
@@ -31821,7 +31867,11 @@
       "founded": "2023",
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAC29pOptxh5bnQh5Vct4RHvqqTZ2aEjo47w&s",
       "website": "",
-      "desc": "Fundada por la actriz Mai Davika y el actor Ter Chantavit. Productora y agencia de gestión de artistas jóvenes. Su primera serie GL fue Clairebell (2025), protagonizada por Mable Siriwalee y Pangjie Paphavarin."
+      "desc": "Fundada por la actriz Mai Davika y el actor Ter Chantavit. Productora y agencia de gestión de artistas jóvenes. Su primera serie GL fue Clairebell (2025), protagonizada por Mable Siriwalee y Pangjie Paphavarin.",
+      "actressIds": [
+        "1778705363188",
+        "1778705395423"
+      ]
     },
     {
       "id": "1779136087730",
@@ -31839,7 +31889,12 @@
       "founded": "2023",
       "logo": "https://yt3.googleusercontent.com/Pk3wQkeuX1FAVrLU15amcAZsyz6X3JtM4aoIbNZOYiEtApL5TqlqBAOKDvhh28euErbSJtANx1I=s900-c-k-c0x00ffffff-no-rj",
       "website": "",
-      "desc": "Productora independiente tailandesa de nicho GL, enfocada en historias originales con presupuesto moderado. Distribuye principalmente en YouTube."
+      "desc": "Productora independiente tailandesa de nicho GL, enfocada en historias originales con presupuesto moderado. Distribuye principalmente en YouTube.",
+      "actressIds": [
+        "1778760564161",
+        "1778760606088",
+        "1778760689825"
+      ]
     },
     {
       "id": "1779136355146",
@@ -31857,7 +31912,15 @@
       "founded": "2022",
       "logo": "https://pbs.twimg.com/profile_images/1981923394086957056/_bvy5WBk_400x400.jpg",
       "website": "",
-      "desc": "Fundada por la veterana actriz Tik Kanyarat, con más de 20 años de experiencia. Actualmente produce series GL como Poisonous Love, protagonizada por Jayna Angelina y Ginny Natnicha, en colaboración con Idol Factory para el mega proyecto GL \"4 Elements\"."
+      "desc": "Fundada por la veterana actriz Tik Kanyarat, con más de 20 años de experiencia. Actualmente produce series GL como Poisonous Love, protagonizada por Jayna Angelina y Ginny Natnicha, en colaboración con Idol Factory para el mega proyecto GL \"4 Elements\".",
+      "actressIds": [
+        "1778669226549",
+        "1778748946306",
+        "1778748865971",
+        "1778669368232",
+        "1778669263021",
+        "1778669414651"
+      ]
     },
     {
       "id": "1779136330823",
@@ -31875,7 +31938,11 @@
       "founded": "2025",
       "logo": "https://yt3.googleusercontent.com/nEgHMr19aqqsN1F7qJRzA5gZWX2JoA2-3P-u2TFYJTLld9JJfCNtKN6EOLEIlKOvzAiqjtqEkw=s900-c-k-c0x00ffffff-no-rj",
       "website": "",
-      "desc": "Una de las productoras más nuevas del ecosistema GL tailandés. Ha producido la serie Denied (con Nur Desoraya y Tankgkwa Phinyanech), disponible en YouTube. Fundada presumiblemente por o en torno a la actriz Nur Desoraya."
+      "desc": "Una de las productoras más nuevas del ecosistema GL tailandés. Ha producido la serie Denied (con Nur Desoraya y Tankgkwa Phinyanech), disponible en YouTube. Fundada presumiblemente por o en torno a la actriz Nur Desoraya.",
+      "actressIds": [
+        "1778761294678",
+        "1778761265957"
+      ]
     },
     {
       "id": "1779136264729",
@@ -31893,7 +31960,18 @@
       "founded": "2018",
       "logo": "https://static.wikia.nocookie.net/thai_entertainment/images/9/96/Star_Hunter_Entertainment_company_logo.png/revision/latest?cb=20231008134026",
       "website": "",
-      "desc": "Prominente empresa de entretenimiento tailandesa ampliamente reconocida como pionera en la industria de series Boys' Love, que ha expandido su catálogo con series GL como Blank The Series y Love Senior The Series."
+      "desc": "Prominente empresa de entretenimiento tailandesa ampliamente reconocida como pionera en la industria de series Boys' Love, que ha expandido su catálogo con series GL como Blank The Series y Love Senior The Series.",
+      "actressIds": [
+        "1778785354635",
+        "1778787268516",
+        "1778787076502",
+        "1778785439675",
+        "1778787240675",
+        "1778761852669",
+        "1778786772554",
+        "1778786871935",
+        "1778787108089"
+      ]
     },
     {
       "id": "1779136135118",
@@ -31914,5 +31992,5 @@
       "desc": "En 2025 se convirtió en una de las plataformas de streaming más relevantes dentro del fandom de series BL y GL asiáticas, no solo distribuyendo títulos sino también produciendo los suyos propios. Coproduces con estudios locales como Copy a Bangkok."
     }
   ],
-  "exportedAt": "2026-05-18T20:54:39.920Z"
+  "exportedAt": "2026-05-19T07:39:01.814Z"
 }
