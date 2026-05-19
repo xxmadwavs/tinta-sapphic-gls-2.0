@@ -707,12 +707,17 @@ footer{
 }
 /* Foto cuadrada — sin divisor visible ni emojis */
 .ship-couple-banner{
-  position:relative;width:100%;aspect-ratio:1/1;
-  overflow:hidden;
+  position:relative;width:100%;
+  overflow:hidden;flex-shrink:0;
   background:linear-gradient(160deg,var(--surface2) 0%,var(--lavender-soft) 100%);
-  display:flex;flex-shrink:0;
 }
-.ship-couple-half{flex:1;overflow:hidden;position:relative}
+/* Padding-top trick para aspect-ratio 1:1 confiable en todos los navegadores */
+.ship-couple-banner::before{content:'';display:block;padding-top:100%}
+.ship-couple-half{
+  position:absolute;top:0;bottom:0;overflow:hidden;
+}
+.ship-couple-half:first-child{left:0;width:50%}
+.ship-couple-half:nth-child(2){left:50%;width:50%}
 .ship-couple-half img{
   width:100%;height:100%;
   object-fit:cover;object-position:center 10%;
@@ -725,18 +730,18 @@ footer{
   font-weight:500;letter-spacing:.03em;
 }
 /* Divisor central muy sutil */
-.ship-couple-divider{
-  position:absolute;left:50%;top:12%;bottom:12%;
-  transform:translateX(-50%);z-index:3;
-  width:1px;background:rgba(255,255,255,.3);
-  pointer-events:none;
-}
+.ship-couple-divider{display:none}
 .ship-couple-divider-line,.ship-couple-divider-heart{display:none}
+/* Línea divisora entre las dos mitades */
+.ship-couple-half:first-child::after{
+  content:'';position:absolute;right:0;top:10%;bottom:10%;
+  width:1px;background:rgba(255,255,255,.25);z-index:3;
+}
 /* Overlay de nombres */
 .ship-couple-names{
   position:absolute;bottom:0;left:0;right:0;display:flex;
   background:linear-gradient(to top,rgba(12,4,10,.78) 0%,rgba(12,4,10,.08) 70%,transparent 100%);
-  padding:36px 8px 8px;z-index:2;
+  padding:36px 8px 8px;z-index:4;
 }
 .ship-couple-name-tag{
   flex:1;text-align:center;
@@ -5377,7 +5382,7 @@ function renderShipsResults(){
         const cpPos=sh.sh.couplePhotoPosition||'50% 20%';
         const cpZoom=sh.sh.couplePhotoZoom||1;
         coupleBanner=`<div class="ship-couple-banner">
-          <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" style="width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center" onerror="this.outerHTML='<div class=ship-couple-half-ph style=\"width:100%;height:100%\">—</div>'">
+          <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center" onerror="this.style.display='none'">
           <div class="ship-couple-names">${coupleNames}</div>
         </div>`;
       } else {
@@ -5389,7 +5394,6 @@ function renderShipsResults(){
           :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
         coupleBanner=`<div class="ship-couple-banner">
           ${half1}${half2}
-          <div class="ship-couple-divider"></div>
           <div class="ship-couple-names">${coupleNames}</div>
         </div>`;
       }
@@ -5426,7 +5430,6 @@ function renderShipsResults(){
       html+=`<div class="ship-card" onclick="openSeries(${sh.si})">
         <div class="ship-couple-banner">
           ${half1auto}${half2auto}
-          <div class="ship-couple-divider"></div>
           <div class="ship-couple-names">${namesAuto}</div>
         </div>
         <div class="ship-card-inner">
