@@ -686,50 +686,133 @@ footer{
 
 /* ══════════════ SHIPS THAIS ══════════════ */
 .ships-shell{padding:0}
-.ships-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:1rem}
-.ship-card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;cursor:pointer;transition:all .22s;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
-.ship-card:hover{border-color:var(--accent2);box-shadow:0 10px 32px rgba(201,79,124,0.16);transform:translateY(-3px)}
+.ships-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:1rem}
+/* Card principal */
+.ship-card{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:20px;overflow:hidden;cursor:pointer;
+  transition:all .25s cubic-bezier(.2,0,.1,1);
+  box-shadow:var(--shadow-sm);display:flex;flex-direction:column;
+  position:relative;
+}
+.ship-card:hover{
+  border-color:var(--accent2);
+  box-shadow:0 14px 40px rgba(201,79,124,0.18);
+  transform:translateY(-4px);
+}
 /* Banner foto de pareja */
-.ship-couple-banner{position:relative;width:100%;aspect-ratio:3/2;overflow:hidden;background:linear-gradient(135deg,var(--accent-soft) 0%,var(--lavender-soft) 100%);display:flex;flex-shrink:0}
+.ship-couple-banner{
+  position:relative;width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--accent-soft) 0%,var(--lavender-soft) 100%);
+  display:flex;flex-shrink:0;
+}
 .ship-couple-half{flex:1;overflow:hidden;position:relative}
-.ship-couple-half img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform .35s}
-.ship-card:hover .ship-couple-half img{transform:scale(1.06)}
+.ship-couple-half img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:center 15%;display:block;
+  transition:transform .4s cubic-bezier(.2,0,.1,1);
+}
+.ship-card:hover .ship-couple-half img{transform:scale(1.07)}
 .ship-couple-half-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px;background:var(--accent-soft)}
-.ship-couple-divider{position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
-.ship-couple-divider-line{flex:1;width:1.5px;background:linear-gradient(to bottom,transparent 0%,rgba(255,255,255,.55) 30%,rgba(255,255,255,.55) 70%,transparent 100%)}
-.ship-couple-divider-heart{font-size:14px;background:rgba(255,255,255,.9);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(201,79,124,.2);box-shadow:0 2px 8px rgba(201,79,124,.18);flex-shrink:0}
-.ship-couple-names{position:absolute;bottom:0;left:0;right:0;display:flex;background:linear-gradient(to top,rgba(22,8,18,.65) 0%,transparent 100%);padding:22px 8px 8px;z-index:2}
-.ship-couple-name-tag{flex:1;text-align:center;font-size:10px;font-weight:700;color:#fff;line-height:1.25;text-shadow:0 1px 4px rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
+.ship-couple-divider{
+  position:absolute;left:50%;top:0;bottom:0;
+  transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+.ship-couple-divider-line{
+  flex:1;width:1.5px;
+  background:linear-gradient(to bottom,transparent 0%,rgba(255,255,255,.6) 30%,rgba(255,255,255,.6) 70%,transparent 100%);
+}
+.ship-couple-divider-heart{
+  font-size:13px;
+  background:rgba(255,255,255,.95);
+  border-radius:50%;width:28px;height:28px;
+  display:flex;align-items:center;justify-content:center;
+  border:1.5px solid rgba(201,79,124,.25);
+  box-shadow:0 3px 12px rgba(201,79,124,.22);flex-shrink:0;
+}
+.ship-couple-names{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;
+  background:linear-gradient(to top,rgba(18,6,16,.75) 0%,rgba(18,6,16,.2) 60%,transparent 100%);
+  padding:28px 10px 9px;z-index:2;
+}
+.ship-couple-name-tag{
+  flex:1;text-align:center;
+  font-size:10px;font-weight:700;color:#fff;line-height:1.25;
+  text-shadow:0 1px 5px rgba(0,0,0,.6);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px;
+}
 /* Parte inferior */
-.ship-card-inner{padding:9px 11px 11px;display:flex;flex-direction:column;gap:5px;flex:1}
-.ship-card-title{font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ship-card-inner{
+  padding:11px 13px 12px;
+  display:flex;flex-direction:column;gap:6px;flex:1;
+  background:var(--surface);
+}
+.ship-card-title{
+  font-size:14px;font-weight:700;color:var(--text);
+  letter-spacing:-.01em;line-height:1.2;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
 .ship-card-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.ship-series-chips{display:flex;flex-wrap:wrap;gap:3px;margin-top:1px}
-.ship-series-chip-sm{font-size:9.5px;font-weight:600;padding:1px 6px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--muted);cursor:pointer;white-space:nowrap;transition:background .12s}
-.ship-series-chip-sm:hover{background:var(--accent-soft);color:var(--accent)}
+.ship-series-chips{display:flex;flex-wrap:wrap;gap:3px}
+.ship-series-chip-sm{
+  font-size:9.5px;font-weight:600;padding:2px 7px;border-radius:20px;
+  background:var(--surface2);border:1px solid var(--border2);
+  color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .12s;
+}
+.ship-series-chip-sm:hover{background:var(--accent-soft);color:var(--accent);border-color:rgba(201,79,124,.3)}
 /* Badges */
-.ship-status-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;white-space:nowrap}
-.ship-ongoing{background:var(--teal-soft);color:var(--teal)}
-.ship-upcoming{background:var(--lavender-soft);color:var(--lavender)}
-.ship-finished{background:var(--surface3);color:var(--muted)}
+.ship-status-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.ship-ongoing{background:rgba(74,173,160,.12);color:var(--teal);border:1px solid rgba(74,173,160,.25)}
+.ship-upcoming{background:rgba(139,114,190,.1);color:var(--lavender);border:1px solid rgba(139,114,190,.25)}
+.ship-finished{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
 .ship-type-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px}
-.ship-type-main{background:var(--accent-soft);color:var(--accent)}
-.ship-type-secondary{background:var(--teal-soft);color:var(--teal)}
-/* Legacy */
-.ship-series-name{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.ship-couple-row{display:flex;align-items:center;gap:10px}
-.ship-actress-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:0}
-.ship-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);flex-shrink:0}
-.ship-photo-ph{width:68px;height:68px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:26px;border:2px solid var(--border2);flex-shrink:0}
-.ship-name{font-size:11.5px;font-weight:600;color:var(--text);text-align:center;line-height:1.3}
-.ship-series-thumb{width:100%;height:55px;object-fit:cover;object-position:top;display:block}
-.ship-series-thumb-ph{width:100%;height:55px;background:linear-gradient(135deg,var(--accent-soft),var(--lavender-soft));display:flex;align-items:center;justify-content:center;font-size:20px}
+.ship-type-main{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2)}
+.ship-type-secondary{background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.2)}
+/* ── Actrices en productoras ── */
+.prod-actresses-section{
+  padding:10px 0 2px;
+  border-top:1px solid var(--border);
+  margin-top:10px;
+}
+.prod-actresses-title{
+  font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--muted);margin-bottom:8px;
+}
+.prod-actresses-grid{
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.prod-actress-chip{
+  display:flex;align-items:center;gap:6px;
+  padding:4px 10px 4px 4px;
+  border-radius:20px;
+  background:var(--surface2);border:1px solid var(--border2);
+  cursor:pointer;transition:all .15s;
+}
+.prod-actress-chip:hover{background:var(--accent-soft);border-color:rgba(201,79,124,.3)}
+.prod-actress-chip img{
+  width:24px;height:24px;border-radius:50%;
+  object-fit:cover;object-position:top;flex-shrink:0;
+}
+.prod-actress-chip-ph{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--accent-soft);display:flex;align-items:center;
+  justify-content:center;font-size:12px;flex-shrink:0;
+}
+.prod-actress-chip-name{
+  font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;
+}
 .ships-count{font-size:13px;color:var(--muted);margin-bottom:.75rem}
 .ships-subtabs{display:flex;gap:4px;margin-bottom:1.1rem;flex-wrap:wrap}
 .ships-subtab{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border2);font-size:12.5px;font-weight:600;cursor:pointer;background:var(--surface);color:var(--muted);transition:all .15s;font-family:var(--font-body)}
 .ships-subtab:hover{background:var(--surface2);color:var(--text)}
 .ships-subtab.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent2)}
 @media(max-width:500px){.ships-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+@media(max-width:400px){.ship-card-title{font-size:12px}}
 /* ══════════════ CANCELADAS ══════════════ */
 .canceladas-shell{padding:0}
 .canceladas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:1rem}
@@ -5678,6 +5761,23 @@ function renderProductorasResults(){
     const descHtml=p.desc?`<div class="productora-desc">${p.desc}</div>`:'';
     const emptyHtml=!allItems.length?`<div class="prod-empty">Sin contenidos asignados aún.</div>`:'';
 
+    // Actrices de la productora
+    const prodActressIds=p.actressIds||[];
+    const prodActresses=prodActressIds.map(id=>(state.actresses||[]).find(a=>a.id===id)).filter(Boolean);
+    const actressesHtml=prodActresses.length
+      ?`<div class="prod-actresses-section">
+        <div class="prod-actresses-title">🎭 Actrices</div>
+        <div class="prod-actresses-grid">${prodActresses.map(a=>`
+          <div class="prod-actress-chip" onclick="event.stopPropagation();openActressProfile('${a.id}')">
+            ${a.photo
+              ?`<img src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=prod-actress-chip-ph>🎭</div>'">`
+              :`<div class="prod-actress-chip-ph">🎭</div>`}
+            <span class="prod-actress-chip-name">${a.name.split('"').filter(Boolean)[0]?.trim()||a.name}</span>
+          </div>`).join('')}
+        </div>
+      </div>`
+      :'';
+
     html+=`<div class="productora-card${isExpanded?' expanded':''}" id="prod_${p.id}">
       <div class="productora-header" onclick="productorasState.expanded=(productorasState.expanded==='${p.id}'?null:'${p.id}');renderProductorasResults()">
         ${logoEl}
@@ -5694,6 +5794,7 @@ function renderProductorasResults(){
         <div class="productora-body-inner">
           ${descHtml}
           <div class="prod-grid">${postersHtml}${emptyHtml}</div>
+          ${actressesHtml}
         </div>
       </div>
     </div>`;

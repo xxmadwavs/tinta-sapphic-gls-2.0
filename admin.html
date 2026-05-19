@@ -75,6 +75,8 @@ body::before{content:'';position:fixed;inset:0;background:
 .form-row textarea{resize:vertical;min-height:70px;line-height:1.5}
 .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--accent)}
 .form-row-half{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pf-actress-item:hover{background:var(--accent-soft)!important;border-color:rgba(201,79,124,.3)!important}
+.pf-actress-item:has(input:checked){background:rgba(201,79,124,.07)!important;border-color:rgba(201,79,124,.35)!important}
 .btn-row{display:flex;gap:8px;justify-content:flex-end;margin-top:1.25rem}
 .toggle-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);margin-bottom:8px;cursor:pointer}
 .toggle-row input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px}
@@ -4280,6 +4282,23 @@ function renderProductorasAdmin(){
 }
 
 function productoraFormHtml(p){
+  // Build actress checkboxes
+  const sortedActresses=[...(actresses||[])].sort((a,b)=>(a.name||'').localeCompare(b.name||'','es'));
+  const selectedIds=p?.actressIds||[];
+  const actressCheckboxes=sortedActresses.length
+    ?sortedActresses.map(a=>{
+      const checked=selectedIds.includes(a.id)?'checked':'';
+      const photoHtml=a.photo
+        ?`<img src="${escapeHtml(a.photo)}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0" onerror="this.style.display='none'">`
+        :`<span style="font-size:14px;flex-shrink:0">🎭</span>`;
+      const displayName=a.name.replace(/^"[^"]*"\s*/,'').split(' ').slice(0,2).join(' ')||a.name;
+      return `<label style="display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);transition:background .12s" class="pf-actress-item">
+        <input type="checkbox" value="${a.id}" ${checked} style="width:14px;height:14px;accent-color:var(--accent);flex-shrink:0;cursor:pointer" onchange="pfActressUpdate()">
+        ${photoHtml}
+        <span style="font-size:12px;font-weight:600;color:var(--text);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(displayName)}</span>
+      </label>`;
+    }).join('')
+    :'<div style="font-size:12px;color:var(--muted);padding:8px 0">No hay actrices creadas aún.</div>';
   return `
     <div class="form-row"><label class="form-label">Nombre *</label>
       <input id="pf_name" placeholder="Ej: GMMTV, Studio Wabi Sabi…" value="${escapeHtml(p?.name||'')}"/></div>
@@ -4295,7 +4314,32 @@ function productoraFormHtml(p){
     <div class="form-row"><label class="form-label">Web oficial <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
       <input id="pf_website" placeholder="https://…" value="${escapeHtml(p?.website||'')}"/></div>
     <div class="form-row"><label class="form-label">Descripción <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
-      <textarea id="pf_desc" placeholder="Breve descripción…" style="min-height:70px">${escapeHtml(p?.desc||'')}</textarea></div>`;
+      <textarea id="pf_desc" placeholder="Breve descripción…" style="min-height:70px">${escapeHtml(p?.desc||'')}</textarea></div>
+    <div class="form-row">
+      <label class="form-label">🎭 Actrices <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(selecciona las asociadas a esta productora)</span></label>
+      <div style="position:relative;margin-bottom:6px">
+        <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;pointer-events:none">🔍</span>
+        <input id="pf_actress_q" placeholder="Filtrar actrices…" style="width:100%;padding:7px 10px 7px 32px;border:1.5px solid var(--border2);border-radius:8px;font-size:12px;font-family:var(--font-body);background:var(--surface2);outline:none" oninput="pfActressFilter(this.value)">
+      </div>
+      <div id="pf_actress_count" style="font-size:11px;color:var(--accent);font-weight:600;margin-bottom:6px">${selectedIds.length?selectedIds.length+' seleccionada'+(selectedIds.length!==1?'s':''):'Ninguna seleccionada'}</div>
+      <div id="pf_actress_list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:5px;max-height:220px;overflow-y:auto;padding:2px">
+        ${actressCheckboxes}
+      </div>
+    </div>`;
+}
+
+function pfActressFilter(q){
+  const items=document.querySelectorAll('#pf_actress_list .pf-actress-item');
+  const ql=(q||'').toLowerCase().trim();
+  items.forEach(item=>{
+    const name=(item.querySelector('span')?.textContent||'').toLowerCase();
+    item.style.display=(!ql||name.includes(ql))?'':'none';
+  });
+}
+function pfActressUpdate(){
+  const checked=document.querySelectorAll('#pf_actress_list input[type=checkbox]:checked');
+  const countEl=document.getElementById('pf_actress_count');
+  if(countEl) countEl.textContent=checked.length?(checked.length+' seleccionada'+(checked.length!==1?'s':'')):'Ninguna seleccionada';
 }
 
 function openAddProductora(){
@@ -4319,6 +4363,7 @@ function openEditProductora(pi){
 function saveProductora(pi){
   const name=document.getElementById('pf_name')?.value.trim();
   if(!name){alert('El nombre es obligatorio');return;}
+  const actressIds=[...document.querySelectorAll('#pf_actress_list input[type=checkbox]:checked')].map(cb=>cb.value);
   const payload={
     id:pi===-1?Date.now().toString():(productoras[pi]?.id||Date.now().toString()),
     name,
@@ -4327,6 +4372,7 @@ function saveProductora(pi){
     logo:document.getElementById('pf_logo')?.value.trim()||'',
     website:document.getElementById('pf_website')?.value.trim()||'',
     desc:document.getElementById('pf_desc')?.value.trim()||'',
+    actressIds,
   };
   if(pi===-1) productoras.push(payload);
   else productoras[pi]={...productoras[pi],...payload};
