@@ -19512,9 +19512,14 @@
       "synopsis": "El primer programa de citas para mujeres queer de China. Ocho mujeres chinas. Una villa en Chiang Mai. Sin guion. Sin reglas. Solo sentimientos auténticos.\nUn programa de citas con un enfoque documental, en el que las emociones reales se muestran tal y como son. Se trata de una exploración íntima del deseo, el valor y el crecimiento personal.",
       "year": 2026,
       "country": "China",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "network": "YouTube",
+      "networkUrl": "https://youtu.be/1Mhkel-dHuM?si=ltmybA0sCM-ILXU2",
+      "watchLinks": [
+        {
+          "name": "YouTube",
+          "url": "https://youtu.be/1Mhkel-dHuM?si=ltmybA0sCM-ILXU2"
+        }
+      ],
       "trailerUrl": "https://youtu.be/5g8uyCTGb0U?si=b1rlUZ9694pUgZps",
       "bookSource": "",
       "basedOnBook": false,
@@ -19546,7 +19551,15 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T20:56:47.815Z"
+      "updatedAt": "2026-05-21T11:26:27.104Z",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1778878773209",
@@ -19999,36 +20012,69 @@
       "nameEn": "ชั่วโมงทดลองรัก",
       "poster": "https://i.mydramalist.com/mO4x2q_4c.jpg?v=1",
       "synopsis": "",
-      "year": "",
+      "year": 2026,
       "country": "Tailandia",
-      "network": "",
+      "network": "YouTube",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "",
+      "trailerUrl": "https://youtu.be/CufGfB9ylDw?si=MozwCV-QkQ4b9Dvk",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
-      "upcoming": true,
+      "upcoming": false,
       "genres": [
         "Romance"
       ],
       "category": "series",
       "seriesType": "serie",
-      "cast": [],
+      "cast": [
+        {
+          "actressId": "1778841323109",
+          "character": "Claire",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778841306858",
+          "character": "Eris",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778832868760",
+          "character": "Cher",
+          "coupleType": "main",
+          "coupleNum": 2
+        }
+      ],
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
-      "updatedAt": "2026-05-19T08:02:06.339Z",
+      "updatedAt": "2026-05-20T20:54:38.305Z",
       "cancelStatus": "",
       "cancelNote": "",
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779176988365"
+      "productoraId": "1779176988365",
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-05-29",
+          "totalEpisodes": 4,
+          "emissionDays": [
+            4
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ]
     },
     {
       "id": "1778949161696",
@@ -32626,5 +32672,5 @@
       "actressIds": []
     }
   ],
-  "exportedAt": "2026-05-20T11:53:05.717Z"
+  "exportedAt": "2026-05-21T11:26:27.953Z"
 }

@@ -265,6 +265,24 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 }
 .genre-chip:hover{border-color:var(--accent2);color:var(--accent);background:var(--accent-soft)}
 .genre-chip.selected{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.mood-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.mood-chip{
+  padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;
+  border:1.5px solid rgba(139,114,190,0.35);background:var(--lavender-soft);
+  color:var(--lavender);cursor:pointer;transition:all .15s;
+  font-family:'Nunito',sans-serif;user-select:none;
+}
+.mood-chip:hover{border-color:var(--lavender);background:rgba(139,114,190,0.2);color:#6e58a8}
+.mood-chip.selected{background:var(--lavender);border-color:var(--lavender);color:#fff}
+.source-type-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.source-type-chip{
+  padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;
+  border:1.5px solid var(--border2);background:var(--yellow-soft);
+  color:#8a6800;cursor:pointer;transition:all .15s;
+  font-family:'Nunito',sans-serif;user-select:none;
+}
+.source-type-chip:hover{border-color:var(--yellow);background:rgba(232,193,106,0.3);color:#6a5000}
+.source-type-chip.selected{background:var(--yellow);border-color:var(--yellow);color:#fff}
 .platform-del-btn{width:30px;height:30px;border-radius:8px;border:1.5px solid rgba(212,92,92,.3);background:transparent;color:var(--danger);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-family:'Nunito',sans-serif}
 .platform-del-btn:hover{background:rgba(212,92,92,.08);border-color:var(--danger)}
 .platform-add-btn{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1.5px solid var(--border2);border-radius:20px;padding:4px 13px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:4px;transition:all .15s}
@@ -776,6 +794,23 @@ const PLATFORMS=[
   {name:'Otros',      url:''},
 ];
 
+const MOODS=[
+  'Angst','Fluff','Slow-burn','Dark','Comedia','Romance puro','Hurt/Comfort',
+  'Tragedia','Happy ending','Bittersweet','Enemies to lovers','Friends to lovers',
+  'Tensión sexual','Segunda oportunidad','Amor no correspondido','Found family','Épico',
+];
+
+const SOURCE_TYPES=[
+  {value:'novela',label:'📚 Novela'},
+  {value:'webnovel',label:'🌐 Webnovel'},
+  {value:'manhwa',label:'📖 Manhwa'},
+  {value:'manga',label:'🎌 Manga'},
+  {value:'manhua',label:'🐉 Manhua'},
+  {value:'novela-grafica',label:'🖼️ Novela gráfica'},
+  {value:'webtoon',label:'📱 Webtoon'},
+  {value:'libro',label:'📕 Libro'},
+];
+
 const GENRES=[
   'Academia mágica','Acción','Amistad','Animación','Anime','Año Nuevo',
   'Apocalíptico','Artes marciales','Aventura','Campo / Rural','Ciencia Ficción','Ciudad',
@@ -795,6 +830,23 @@ function genreChipsHtml(selected=[]){
 }
 function getSelectedGenres(containerId){
   return [...document.querySelectorAll(`#${containerId} .genre-chip.selected`)].map(c=>c.textContent);
+}
+function moodChipsHtml(selected=[]){
+  return MOODS.map(m=>`<span class="mood-chip${selected.includes(m)?' selected':''}" onclick="this.classList.toggle('selected')">${m}</span>`).join('');
+}
+function getSelectedMoods(containerId){
+  return [...document.querySelectorAll(`#${containerId} .mood-chip.selected`)].map(c=>c.textContent);
+}
+function sourceTypeChipsHtml(selected=''){
+  return SOURCE_TYPES.map(st=>`<span class="source-type-chip${selected===st.value?' selected':''}" data-value="${st.value}" onclick="selectSourceType(this)">${st.label}</span>`).join('');
+}
+function selectSourceType(el){
+  el.closest('.source-type-grid').querySelectorAll('.source-type-chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.toggle('selected');
+}
+function getSelectedSourceType(containerId){
+  const sel=document.querySelector(`#${containerId} .source-type-chip.selected`);
+  return sel?sel.dataset.value:'';
 }
 function platformSelectHtml(){
   return `<option value="">— Seleccionar —</option>`+PLATFORMS.map(p=>`<option value="${p.name}">${p.name}</option>`).join('');
@@ -1968,12 +2020,21 @@ function formHtml(s, forcedCategory=null){
         <div class="genre-chips" id="f_genres">${genreChipsHtml(s&&s.genres?s.genres:[])}</div>
       </div>
 
+      <div class="form-row">
+        <label class="form-label">Tono / Mood <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(atmósfera emocional de la serie)</span></label>
+        <div class="mood-chips" id="f_moods">${moodChipsHtml(s&&s.moods?s.moods:[])}</div>
+      </div>
+
       <div class="divider"></div>
       <label class="toggle-row" onclick="">
         <input type="checkbox" id="f_book" ${s&&s.basedOnBook?'checked':''} style="width:auto;accent-color:var(--accent)" onchange="toggleBookFields()">
         <div><div class="toggle-label">📖 Basada en libro / novela / manhwa</div><div class="toggle-desc">Se mostrará una etiqueta especial</div></div>
       </label>
       <div id="bookExtraFields" style="${s&&s.basedOnBook?'':'display:none'}">
+        <div class="form-row" style="margin-top:8px">
+          <label class="form-label">Tipo de fuente</label>
+          <div class="source-type-grid" id="f_sourceType">${sourceTypeChipsHtml(s&&s.sourceType?s.sourceType:'')}</div>
+        </div>
         <div class="form-row" style="margin-top:8px">
           <label class="form-label">Título del libro / fuente</label>
           <input id="f_booksource" placeholder="Ej: Título de la novela o manhwa" value="${s&&s.bookSource?s.bookSource:''}"/>
@@ -2533,6 +2594,8 @@ async function saveSeries(si, forcedCategory=null){
   const bookLinks=getBookEditions('bookEditionsList');
   const bookUrl=bookLinks.length?bookLinks[0].url:'';
   const genres=getSelectedGenres('f_genres');
+  const moods=getSelectedMoods('f_moods');
+  const sourceType=getSelectedSourceType('f_sourceType');
   const category=forcedCategory||(document.getElementById('f_category')?.value||'series');
   const seriesType=document.getElementById('f_seriesType')?.value||'serie';
   const cast=getCastData();
@@ -2548,7 +2611,7 @@ async function saveSeries(si, forcedCategory=null){
   const snLastUpdate=document.getElementById('f_snLastUpdate')?.value.trim()||'';
   const snNote=document.getElementById('f_snNote')?.value.trim()||'';
   const productoraId=document.getElementById('f_productora')?.value||'';
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId};
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -2875,6 +2938,10 @@ function movieFormHtml(mv){
     <div class="genre-chips" id="mf_genres">${genreChipsHtml(mv&&mv.genres?mv.genres:[])}</div>
   </div>
   <div class="form-row">
+    <label class="form-label">Tono / Mood <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(atmósfera emocional)</span></label>
+    <div class="mood-chips" id="mf_moods">${moodChipsHtml(mv&&mv.moods?mv.moods:[])}</div>
+  </div>
+  <div class="form-row">
     <label class="form-label">🔗 Dónde ver <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(puedes añadir varias)</span></label>
     <div class="platforms-list" id="moviePlatformsList"></div>
     <button type="button" class="platform-add-btn" onclick="addMoviePlatformRow()">+ Añadir plataforma</button>
@@ -2891,6 +2958,7 @@ function movieFormHtml(mv){
     <div><div class="toggle-label">📖 Basada en libro / novela / manhwa</div><div class="toggle-desc">Se mostrará una etiqueta especial y la info del libro</div></div>
   </label>
   <div id="movieBookFields" style="${mv&&mv.basedOnBook?'':'display:none'}">
+    <div class="form-row"><label class="form-label">Tipo de fuente</label><div class="source-type-grid" id="mf_sourceType">${sourceTypeChipsHtml(mv&&mv.sourceType?mv.sourceType:'')}</div></div>
     <div class="form-row"><label class="form-label">Título del libro</label><input id="mf_booksource" placeholder="Ej: Título de la novela o manhwa" value="${mv&&mv.bookSource?mv.bookSource:''}"/></div>
     <div class="form-row"><label class="form-label">URL portada del libro</label>
       <input id="mf_bookcoverurl" placeholder="https://..." value="${mv&&mv.bookCoverUrl?mv.bookCoverUrl:''}"/>
@@ -3083,6 +3151,8 @@ async function saveMovie(mi){
   const watchLinks=getMovieWatchLinks();
   const bookLinks=getBookEditions('movieBookEditionsList');
   const genres=getSelectedGenres('mf_genres');
+  const moods=getSelectedMoods('mf_moods');
+  const sourceType=getSelectedSourceType('mf_sourceType');
   const movieCategory=document.getElementById('mf_category')?.value||'movie';
   const payload={
     name,
@@ -3102,6 +3172,8 @@ async function saveMovie(mi){
     bookLinks,
     bookUrl:bookLinks.length?bookLinks[0].url:'',
     genres,
+    moods,
+    sourceType,
     category:movieCategory,
     movieType:document.getElementById('mf_movieType')?.value||'film',
     duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
