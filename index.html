@@ -667,7 +667,11 @@ footer{
   animation:todayPulse 2.2s ease-in-out infinite;
 }
 @keyframes todayPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,79,124,0.35)}60%{box-shadow:0 0 0 6px rgba(201,79,124,0)}}
-.progress-wrap{height:5px;background:var(--border);border-radius:3px;margin-top:8px;overflow:hidden;position:relative}
+.progress-wrap{margin-top:auto;padding-top:6px}
+.progress-bar-row{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.progress-ep-label{font-size:9.5px;font-weight:700;color:var(--muted);white-space:nowrap;flex:1;min-width:0}
+.progress-pct-label{font-size:9.5px;font-weight:700;color:var(--muted);flex-shrink:0}
+.progress-track{height:5px;background:var(--border);border-radius:3px;overflow:hidden;position:relative}
 .progress-fill{height:100%;border-radius:3px;transition:width .4s}
 .progress-today-marker{
   position:absolute;top:-1px;bottom:-1px;width:2px;
@@ -736,8 +740,20 @@ footer{
 
 /* ═══ SIMILAR / Si te gustó ═══ */
 .similar-section{margin-top:1.5rem;padding-top:1rem;border-top:1.5px solid var(--border)}
-.similar-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
-.similar-strip{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.similar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.similar-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);display:flex;align-items:center;gap:6px}
+.similar-nav{display:flex;gap:4px}
+.similar-nav-btn{
+  width:28px;height:28px;border-radius:50%;
+  border:1.5px solid var(--border2);background:var(--surface);
+  color:var(--muted);cursor:pointer;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;flex-shrink:0;font-family:var(--font-body);
+}
+.similar-nav-btn:hover{background:var(--lavender-soft);border-color:var(--lavender);color:var(--lavender)}
+.similar-nav-btn:disabled{opacity:.3;cursor:default;pointer-events:none}
+.similar-scroll-wrap{position:relative;overflow:hidden}
+.similar-strip{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;scroll-behavior:smooth}
 .similar-strip::-webkit-scrollbar{display:none}
 .similar-card{
   flex:0 0 110px;display:flex;flex-direction:column;
@@ -751,6 +767,20 @@ footer{
 .similar-info{padding:5px 6px 6px}
 .similar-name{font-size:10px;font-weight:700;color:var(--text);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .similar-score{font-size:9px;font-weight:700;color:var(--lavender);margin-top:2px}
+
+/* ═══ PREMIOS Y FESTIVALES ═══ */
+.badge-award{background:var(--gold-soft);color:var(--gold);border:1px solid rgba(176,136,48,0.3)}
+.awards-block{margin-top:14px;padding:12px 14px;background:var(--gold-soft);border:1px solid rgba(176,136,48,0.25);border-radius:var(--radius)}
+.awards-block-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.awards-list{display:flex;flex-direction:column;gap:5px}
+.award-row{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;background:rgba(255,255,255,0.55);border-radius:8px;border:1px solid rgba(176,136,48,0.15)}
+.award-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.award-info{flex:1;min-width:0}
+.award-name{font-size:12.5px;font-weight:700;color:var(--text);line-height:1.3}
+.award-meta{font-size:11px;color:var(--muted);margin-top:1px}
+.award-result{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.award-result.won{background:var(--gold);color:#fff}
+.award-result.nominated{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
 @media(max-width:480px){
   .listas-grid{grid-template-columns:1fr}
   .listas-items-grid{grid-template-columns:repeat(2,1fr);gap:10px}
@@ -2931,6 +2961,12 @@ function seriesCardHtml(s, si){
   if(s.seriesType==='webserie') badges.push(`<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">🌐 Web</span>`);
   if(s.basedOnBook) badges.push(sourceTypeBadge(s));
   if(seasons.length>1) badges.push(`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">T${seasons.length}</span>`);
+  if(s.awards&&s.awards.length){
+    const wins=s.awards.filter(a=>a.result==='won').length;
+    badges.push(wins>0
+      ?`<span class="badge badge-award">🏆 ${wins} premio${wins!==1?'s':''}</span>`
+      :`<span class="badge badge-award">🎖 Nominada</span>`);
+  }
   const badgesHtml=`<div class="card-badges">${badges.join('')}</div>`;
 
   // ── Géneros (hasta 2)
@@ -2952,9 +2988,19 @@ function seriesCardHtml(s, si){
     statusPill=`<div class="sc-status-pill finished">✓ Finalizada${renewedTxt}</div>`;
   }
 
-  // ── Barra de progreso
-  const progressBar=`<div class="progress-wrap" style="margin-top:auto;padding-top:6px">
-    <div class="progress-fill" style="width:${pct}%;background:${col}"></div>
+  // ── Barra de progreso con indicador ep
+  const isFinishedCard=!next&&!todayEps.length;
+  const epLabelText=totalEps===0?''
+    :isFinishedCard?`${totalEps}/${totalEps} eps`
+    :`${aired}/${totalEps} eps`;
+  const progressBar=`<div class="progress-wrap">
+    <div class="progress-bar-row">
+      <span class="progress-ep-label">${epLabelText}</span>
+      <span class="progress-pct-label">${pct}%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:${pct}%;background:${col}"></div>
+    </div>
   </div>`;
 
   // ── Año
@@ -3015,6 +3061,29 @@ function parseCountryParts(country){
  * countryFlag(country) — acepta valores simples ('Tailandia') o compuestos ('Tailandia / Japón').
  * Devuelve las banderas de todos los países concatenadas, o 🌐 si ninguno se reconoce.
  */
+function buildAwardsHtml(item){
+  if(!item.awards||!item.awards.length) return '';
+  const rows = item.awards.map(a=>{
+    const icon = a.result==='won'?'🏆':'🎖';
+    const resultHtml = a.result==='won'
+      ?'<span class="award-result won">Ganadora</span>'
+      :'<span class="award-result nominated">Nominada</span>';
+    const meta=[a.festival,a.year,a.category].filter(Boolean).join(' · ');
+    return `<div class="award-row">
+      <div class="award-icon">${icon}</div>
+      <div class="award-info">
+        <div class="award-name">${a.name||a.festival||'Premio'}</div>
+        ${meta?`<div class="award-meta">${meta}</div>`:''}
+      </div>
+      ${resultHtml}
+    </div>`;
+  }).join('');
+  return `<div class="awards-block">
+    <div class="awards-block-title">🏆 Premios y festivales</div>
+    <div class="awards-list">${rows}</div>
+  </div>`;
+}
+
 function sourceTypeBadge(s){
   if(!s.basedOnBook) return '';
   const types={
@@ -3979,6 +4048,7 @@ function openSeries(si){
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
   ${s.synopsis?`<div class="synopsis">${s.synopsis}</div>`:''}
+  ${buildAwardsHtml(s)}
   ${s.basedOnBook?(()=>{
     const hasCover=s.bookCoverUrl&&s.bookCoverUrl.trim();
     const hasTitle=s.bookSource&&s.bookSource.trim();
@@ -4151,6 +4221,7 @@ function openMovie(mi){
   ${mv.trailerUrl?trailerHtml(mv.trailerUrl):''}
   ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
   ${mv.synopsis?`<div class="synopsis">${mv.synopsis}</div>`:''}
+  ${buildAwardsHtml(mv)}
   ${bookBlock}
   ${castCount?`<div class="divider"></div>
   <div class="modal-tabs">
@@ -4225,7 +4296,7 @@ function movieCardHtml(mv){
   const durationEl=mv.duration?`<span style="font-size:10.5px;color:var(--muted);font-weight:600">⏱ ${fmtDuration(mv.duration)}</span>`:'';
   return `<div class="movie-card" onclick="openMovie(${mi})">${posterEl}
     <div class="movie-card-body">
-      <div class="card-badges">${typeBadge}${sourceTypeBadge(mv)}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
+      <div class="card-badges">${typeBadge}${sourceTypeBadge(mv)}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}${mv.awards&&mv.awards.length?(mv.awards.filter(a=>a.result==='won').length>0?`<span class="badge badge-award">🏆 ${mv.awards.filter(a=>a.result==='won').length} premio${mv.awards.filter(a=>a.result==='won').length!==1?'s':''}</span>`:`<span class="badge badge-award">🎖 Nominada</span>"):''}</div>
       <div class="movie-card-name">${mv.name}</div>
       ${mv.nameEn?`<div style="font-size:10px;color:var(--muted);font-style:italic;line-height:1.3;margin-top:1px;margin-bottom:1px">${mv.nameEn}</div>`:''}
       <div class="movie-card-meta" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${mv.network?`<span>${mv.network}</span>`:''}${durationEl}</div>
@@ -6781,23 +6852,26 @@ function getSimilarItems(item, type, limit=6){
   const allSeries = (state.series||[]).filter(s=>s.category==='series'||!s.category);
   const allMovies = state.movies||[];
 
-  const iGenres = item.genres||[];
-  const iMoods  = item.moods||[];
-  const iCountry= item.country||'';
-  const iSource = item.sourceType||'';
+  const iGenres    = item.genres||[];
+  const iMoods     = item.moods||[];
+  const iCountry   = item.country||'';
+  const iSource    = item.sourceType||'';
+  const iProductora= item.productoraId||'';
 
   function score(candidate, candType){
     if(candidate===item) return -1; // skip self
     if(!candidate.poster) return -1; // sin poster no tiene sentido mostrarlo
     let s = 0;
+    // Productora coincide → +4
+    if(iProductora && (candidate.productoraId||'')===iProductora) s += 4;
     // País coincide → +3
     if(iCountry && (candidate.country||'')=== iCountry) s += 3;
-    // Géneros compartidos → +2 cada uno (máx 3 géneros)
-    const sharedGenres = (candidate.genres||[]).filter(g=>iGenres.includes(g));
-    s += Math.min(sharedGenres.length,3)*2;
     // Moods compartidos → +3 cada uno (máx 2)
     const sharedMoods = (candidate.moods||[]).filter(m=>iMoods.includes(m));
     s += Math.min(sharedMoods.length,2)*3;
+    // Géneros compartidos → +2 cada uno (máx 3 géneros)
+    const sharedGenres = (candidate.genres||[]).filter(g=>iGenres.includes(g));
+    s += Math.min(sharedGenres.length,3)*2;
     // Tipo de fuente coincide → +1
     if(iSource && (candidate.sourceType||'')===iSource) s += 1;
     // Al menos 2 puntos para que aparezca
@@ -6811,6 +6885,24 @@ function getSimilarItems(item, type, limit=6){
   // Sort by score desc, then by name
   candidates.sort((a,b)=>b.sc-a.sc||a.item.name.localeCompare(b.item.name,'es'));
   return candidates.slice(0,limit);
+}
+
+function scrollSimilar(stripId, dir){
+  const strip = document.getElementById(stripId);
+  if(!strip) return;
+  // Scroll by ~3 card widths (110px + 10px gap = 120px each)
+  strip.scrollBy({left: dir * 120 * 3, behavior: 'smooth'});
+}
+
+function updateSimilarArrows(stripId){
+  const strip = document.getElementById(stripId);
+  const prev  = document.getElementById(stripId + '_prev');
+  const next  = document.getElementById(stripId + '_next');
+  if(!strip || !prev || !next) return;
+  const atStart = strip.scrollLeft <= 4;
+  const atEnd   = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 4;
+  prev.disabled = atStart;
+  next.disabled = atEnd;
 }
 
 function buildSimilarHtml(item, type){
@@ -6844,9 +6936,24 @@ function buildSimilarHtml(item, type){
     </div>`;
   }).join('');
 
+  const stripId = 'simStrip_' + Date.now();
+  // Show arrows only if more than 3 cards (they won't all fit)
+  const showArrows = similar.length > 3;
+  const arrowsHtml = showArrows
+    ? `<div class="similar-nav">
+        <button class="similar-nav-btn" id="${stripId}_prev" onclick="scrollSimilar('${stripId}',-1)" title="Anterior">&#8592;</button>
+        <button class="similar-nav-btn" id="${stripId}_next" onclick="scrollSimilar('${stripId}',1)" title="Siguiente">&#8594;</button>
+      </div>` : '';
+  // After render, update arrow states
+  if(showArrows) setTimeout(()=>updateSimilarArrows(stripId), 50);
   return `<div class="similar-section">
-    <div class="similar-title">✦ Si te gustó esta serie, prueba…</div>
-    <div class="similar-strip">${cards}</div>
+    <div class="similar-header">
+      <div class="similar-title">✦ Si te gustó esta, prueba…</div>
+      ${arrowsHtml}
+    </div>
+    <div class="similar-scroll-wrap">
+      <div class="similar-strip" id="${stripId}" onscroll="updateSimilarArrows('${stripId}')">${cards}</div>
+    </div>
   </div>`;
 }
 </script>

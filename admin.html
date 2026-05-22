@@ -284,6 +284,10 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .source-type-chip:hover{border-color:var(--yellow);background:rgba(232,193,106,0.3);color:#6a5000}
 .source-type-chip.selected{background:var(--yellow);border-color:var(--yellow);color:#fff}
 .platform-del-btn{width:30px;height:30px;border-radius:8px;border:1.5px solid rgba(212,92,92,.3);background:transparent;color:var(--danger);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-family:'Nunito',sans-serif}
+.award-admin-row{display:grid;grid-template-columns:1fr 1fr 1fr auto auto;gap:6px;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;margin-bottom:6px}
+.award-admin-row input,.award-admin-row select{padding:6px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:12.5px;font-family:'Nunito',sans-serif;outline:none;width:100%}
+.award-admin-row input:focus,.award-admin-row select:focus{border-color:var(--yellow)}
+@media(max-width:600px){.award-admin-row{grid-template-columns:1fr 1fr;gap:4px}}
 .platform-del-btn:hover{background:rgba(212,92,92,.08);border-color:var(--danger)}
 .platform-add-btn{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1.5px solid var(--border2);border-radius:20px;padding:4px 13px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:4px;transition:all .15s}
 .platform-add-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -2047,6 +2051,12 @@ function formHtml(s, forcedCategory=null){
         <div class="mood-chips" id="f_moods">${moodChipsHtml(s&&s.moods?s.moods:[])}</div>
       </div>
 
+      <div class="form-row">
+        <label class="form-label">🏆 Premios y festivales <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(opcional)</span></label>
+        <div id="awardsAdminList" style="display:flex;flex-direction:column;gap:0"></div>
+        <button type="button" class="platform-add-btn" onclick="addAwardRow('awardsAdminList')" style="margin-top:4px;background:var(--yellow-soft);color:#7a5800;border-color:var(--yellow)">+ Añadir premio / nominación</button>
+      </div>
+
       <div class="divider"></div>
       <label class="toggle-row" onclick="">
         <input type="checkbox" id="f_book" ${s&&s.basedOnBook?'checked':''} style="width:auto;accent-color:var(--accent)" onchange="toggleBookFields()">
@@ -2189,6 +2199,7 @@ function openAddSeries(){
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(-1)" title="Guardar (Ctrl+S)">Guardar</button></div>`;
   document.getElementById('seriesModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
+  populateAwards('awardsAdminList',[]);
   initCountries('countriesList','');
   initSeasons(null);
   initCast([]);
@@ -2206,6 +2217,7 @@ function openEdit(si){
   initCountries('countriesList', series[si].country||'');
   initSeasons(getSeasons(series[si]));
   initCast(series[si].cast||[]);
+  populateAwards('awardsAdminList', series[si].awards||[]);
 }
 
 function initPlatforms(links){
@@ -2434,6 +2446,7 @@ function openAddAnime(){
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(-1,'anime')" title="Guardar (Ctrl+S)">Guardar anime</button></div>`;
   document.getElementById('animeModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
+  populateAwards('awardsAdminList',[]);
   initCountries('countriesList','Japón');
   initSeasons(null);
   initCast([]);
@@ -2464,6 +2477,7 @@ function openAddReality(){
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(-1,'reality')" title="Guardar (Ctrl+S)">Guardar</button></div>`;
   document.getElementById('realityModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
+  populateAwards('awardsAdminList',[]);
   initCountries('countriesList','');
   initSeasons(null);
   initCast([]);
@@ -2618,6 +2632,7 @@ async function saveSeries(si, forcedCategory=null){
   const genres=getSelectedGenres('f_genres');
   const moods=getSelectedMoods('f_moods');
   const sourceType=getSelectedSourceType('f_sourceType');
+  const awards=getAwards('awardsAdminList');
   const category=forcedCategory||(document.getElementById('f_category')?.value||'series');
   const seriesType=document.getElementById('f_seriesType')?.value||'serie';
   const cast=getCastData();
@@ -2633,7 +2648,7 @@ async function saveSeries(si, forcedCategory=null){
   const snLastUpdate=document.getElementById('f_snLastUpdate')?.value.trim()||'';
   const snNote=document.getElementById('f_snNote')?.value.trim()||'';
   const productoraId=document.getElementById('f_productora')?.value||'';
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId};
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,awards,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -2964,6 +2979,11 @@ function movieFormHtml(mv){
     <div class="mood-chips" id="mf_moods">${moodChipsHtml(mv&&mv.moods?mv.moods:[])}</div>
   </div>
   <div class="form-row">
+    <label class="form-label">🏆 Premios y festivales <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(opcional)</span></label>
+    <div id="movieAwardsAdminList" style="display:flex;flex-direction:column;gap:0"></div>
+    <button type="button" class="platform-add-btn" onclick="addAwardRow('movieAwardsAdminList')" style="margin-top:4px;background:var(--yellow-soft);color:#7a5800;border-color:var(--yellow)">+ Añadir premio / nominación</button>
+  </div>
+  <div class="form-row">
     <label class="form-label">🔗 Dónde ver <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(puedes añadir varias)</span></label>
     <div class="platforms-list" id="moviePlatformsList"></div>
     <button type="button" class="platform-add-btn" onclick="addMoviePlatformRow()">+ Añadir plataforma</button>
@@ -3121,6 +3141,7 @@ function openAddMovie(){
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(-1)" title="Guardar (Ctrl+S)">Guardar</button></div>`;
   document.getElementById('movieModal').classList.add('open');
   bindMovieForm(); initMoviePlatforms([]); initBookEditions('movieBookEditionsList',[],null);
+  populateAwards('movieAwardsAdminList',[]);
   initCountries('movieCountriesList','');
   initMovieCast([]);
 }
@@ -3134,6 +3155,7 @@ function openEditMovie(mi){
   const links=mv.watchLinks||(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);
   initMoviePlatforms(links);
   initBookEditions('movieBookEditionsList', mv.bookLinks||[], mv.bookUrl||'');
+  populateAwards('movieAwardsAdminList', mv.awards||[]);
   initCountries('movieCountriesList', mv.country||'');
   initMovieCast(mv.cast||[]);
 }
@@ -3175,6 +3197,7 @@ async function saveMovie(mi){
   const genres=getSelectedGenres('mf_genres');
   const moods=getSelectedMoods('mf_moods');
   const sourceType=getSelectedSourceType('mf_sourceType');
+  const awards=getAwards('movieAwardsAdminList');
   const movieCategory=document.getElementById('mf_category')?.value||'movie';
   const payload={
     name,
@@ -3196,6 +3219,7 @@ async function saveMovie(mi){
     genres,
     moods,
     sourceType,
+    awards,
     category:movieCategory,
     movieType:document.getElementById('mf_movieType')?.value||'film',
     duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
@@ -4633,5 +4657,50 @@ async function delLista(li){
   if(!ok) return;
   listas.splice(li,1);
   save(); renderListasAdmin();
+}
+</script>
+<script>
+// ══════════════════════════════════════════════════════════════════════════════
+// PREMIOS Y FESTIVALES
+// ══════════════════════════════════════════════════════════════════════════════
+
+function addAwardRow(containerId, award){
+  const list = document.getElementById(containerId);
+  if(!list) return;
+  const row = document.createElement('div');
+  row.className = 'award-admin-row';
+  row.innerHTML = `
+    <input placeholder="Nombre del premio" value="${award&&award.name?award.name:''}" data-field="name" title="Ej: Best GL Series, Premio de la Audiencia…">
+    <input placeholder="Festival / entidad" value="${award&&award.festival?award.festival:''}" data-field="festival" title="Ej: Thai Awards, MyDramaList Awards…">
+    <input placeholder="Categoría" value="${award&&award.category?award.category:''}" data-field="category" title="Ej: Mejor actriz principal, Mejor pareja…">
+    <input type="number" placeholder="Año" value="${award&&award.year?award.year:new Date().getFullYear()}" data-field="year" style="width:72px" min="2000" max="2040">
+    <select data-field="result" style="width:110px">
+      <option value="nominated" ${!award||award.result!=='won'?'selected':''}>🎖 Nominada</option>
+      <option value="won" ${award&&award.result==='won'?'selected':''}>🏆 Ganadora</option>
+    </select>
+    <button type="button" class="platform-del-btn" onclick="this.closest('.award-admin-row').remove()" title="Eliminar">✕</button>`;
+  list.appendChild(row);
+}
+
+function getAwards(containerId){
+  const list = document.getElementById(containerId);
+  if(!list) return [];
+  return [...list.querySelectorAll('.award-admin-row')].map(row=>{
+    const get = f => row.querySelector(`[data-field="${f}"]`)?.value.trim()||'';
+    return {
+      name:     get('name'),
+      festival: get('festival'),
+      category: get('category'),
+      year:     get('year')?parseInt(get('year')):'',
+      result:   get('result'),
+    };
+  }).filter(a=>a.name||a.festival); // skip empty rows
+}
+
+function populateAwards(containerId, awards){
+  const list = document.getElementById(containerId);
+  if(!list) return;
+  list.innerHTML = '';
+  (awards||[]).forEach(a=>addAwardRow(containerId, a));
 }
 </script>
