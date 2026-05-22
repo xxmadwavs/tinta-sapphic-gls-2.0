@@ -8,6 +8,13 @@
 if(window.innerWidth<=700){
   document.documentElement.classList.add('is-mobile');
 }
+// Dark mode: aplicar ANTES de render para evitar flash
+(function(){
+  var saved = localStorage.getItem('tsSapphicTheme');
+  if(saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+    document.documentElement.setAttribute('data-theme','dark');
+  }
+})();
 </script>
 <style>
 html.is-mobile #navbarLinks{display:none!important}
@@ -41,6 +48,37 @@ html.is-mobile #navbarLinks.open{display:flex!important}
   --shadow-lg: 0 16px 52px rgba(180,80,120,0.18);
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
+  /* Movie card accent */
+  --movie-accent: #7c5cbf;
+  --movie-border: rgba(124,92,191,0.35);
+  --movie-bar: rgba(124,92,191,0.12);
+}
+
+/* ═══ DARK MODE ═══ */
+html[data-theme="dark"] {
+  --bg: #18101a;
+  --surface: #231629;
+  --surface2: #2c1d35;
+  --surface3: #34243f;
+  --border: rgba(210,140,175,0.10);
+  --border2: rgba(210,140,175,0.22);
+  --text: #f0e6f0;
+  --muted: #b08aa0;
+  --accent: #e0729a;
+  --accent2: #f09dbc;
+  --accent-soft: rgba(224,114,154,0.15);
+  --teal: #5dc4b8;
+  --teal-soft: rgba(93,196,184,0.15);
+  --lavender: #a98de0;
+  --lavender-soft: rgba(169,141,224,0.15);
+  --gold: #d4a844;
+  --gold-soft: rgba(212,168,68,0.15);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.35);
+  --shadow-md: 0 6px 28px rgba(0,0,0,0.45);
+  --shadow-lg: 0 16px 52px rgba(0,0,0,0.55);
+  --movie-accent: #9b7dd4;
+  --movie-border: rgba(155,125,212,0.30);
+  --movie-bar: rgba(155,125,212,0.12);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -55,6 +93,54 @@ body::before{content:'';position:fixed;inset:0;background:
 
 /* Sin orbes ni pétalos flotantes */
 .petal{display:none}
+
+/* ═══ DARK MODE OVERRIDES ═══ */
+html[data-theme="dark"] body::before{
+  background:
+    radial-gradient(ellipse at 8% 10%,rgba(224,114,154,0.07) 0%,transparent 50%),
+    radial-gradient(ellipse at 92% 90%,rgba(169,141,224,0.08) 0%,transparent 50%),
+    radial-gradient(ellipse at 50% 50%,rgba(93,196,184,0.03) 0%,transparent 60%);
+}
+html[data-theme="dark"] .navbar{background:rgba(27,16,32,0.97)}
+html[data-theme="dark"] .navbar-links{background:rgba(27,16,32,0.98)}
+html[data-theme="dark"] .modal{background:var(--surface)}
+html[data-theme="dark"] .modal-close-btn{background:var(--surface2);color:var(--muted)}
+html[data-theme="dark"] .modal-footer-btns{background:var(--surface)}
+html[data-theme="dark"] .day-cell.has-eps{background:var(--surface)}
+html[data-theme="dark"] .week-day-col{background:var(--surface)}
+html[data-theme="dark"] .week-item{background:var(--surface)}
+html[data-theme="dark"] .search-input{background:var(--surface2);color:var(--text)}
+html[data-theme="dark"] .navbar-search-wrap{background:var(--surface2)}
+html[data-theme="dark"] .navbar-search-inp{color:var(--text)}
+html[data-theme="dark"] .navbar-search-results{background:var(--surface)}
+html[data-theme="dark"] .nsearch-item:hover{background:var(--surface2)}
+html[data-theme="dark"] .btn{background:transparent;color:var(--text)}
+html[data-theme="dark"] .book-block{background:rgba(212,168,68,0.1);border-color:rgba(212,168,68,0.2)}
+html[data-theme="dark"] .award-row{background:rgba(255,255,255,0.04)}
+html[data-theme="dark"] .progress-today-marker{background:rgba(255,255,255,0.4)}
+html[data-theme="dark"] .sc-synopsis-overlay{background:linear-gradient(to top,rgba(10,4,16,0.97) 0%,rgba(10,4,16,0.82) 55%,rgba(10,4,16,0.2) 100%)}
+html[data-theme="dark"] .changelog-banner{background:var(--surface)}
+html[data-theme="dark"] .changelog-header{background:linear-gradient(90deg,rgba(224,114,154,0.06) 0%,transparent 100%)}
+html[data-theme="dark"] .month-picker-btn{background:var(--surface2);color:var(--text)}
+html[data-theme="dark"] .actressModalBg .modal,
+html[data-theme="dark"] #actressModalBox{background:var(--surface)}
+html[data-theme="dark"] .ship-card{background:var(--surface)}
+html[data-theme="dark"] .ship-modal-bg .modal{background:var(--surface)}
+html[data-theme="dark"] .productora-card{background:var(--surface)}
+html[data-theme="dark"] .productora-body-inner{background:var(--surface)}
+html[data-theme="dark"] .info-modal-box{background:var(--surface)}
+html[data-theme="dark"] .movie-card-stripe::after{opacity:.85}
+
+/* Dark mode toggle button */
+.dark-toggle{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);border:1.5px solid var(--border2);
+  background:var(--surface);cursor:pointer;
+  transition:all .2s;flex-shrink:0;font-size:15px;
+}
+.dark-toggle:hover{background:var(--surface2);color:var(--accent);border-color:var(--accent2)}
+html[data-theme="dark"] .dark-toggle{background:var(--surface2);color:var(--gold);border-color:var(--border2)}
 
 
 /* ═══ NAVBAR ═══ */
@@ -1156,24 +1242,45 @@ footer{
 /* Movies */
 .movies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:16px}
 .movie-card{
-  background:var(--surface);border:1.5px solid var(--border);
+  background:var(--surface);
+  border:1.5px solid var(--movie-border);
   border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;
   transition:all .22s;position:relative;display:flex;flex-direction:column;
   box-shadow:var(--shadow-sm);
 }
-.movie-card:hover{border-color:var(--lavender);box-shadow:0 12px 36px rgba(139,114,190,0.2);transform:translateY(-4px)}
+.movie-card:hover{border-color:var(--movie-accent);box-shadow:0 12px 36px rgba(124,92,191,0.22);transform:translateY(-4px)}
+/* Franja superior de color "cine" */
+.movie-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--movie-accent),var(--lavender),var(--accent));
+  z-index:1;
+}
 .movie-card-poster-wrap{position:relative;overflow:hidden}
 .movie-card-poster{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--lavender-soft)}
-.movie-card-poster-ph{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,var(--lavender-soft) 0%,var(--accent-soft) 100%);display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--lavender)}
+.movie-card-poster-ph{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,var(--lavender-soft) 0%,var(--surface3) 100%);display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--movie-accent)}
+/* Overlay gradiente más profundo en películas */
 .movie-card-poster-wrap::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:55%;
-  background:linear-gradient(to top,rgba(25,15,35,0.65) 0%,transparent 100%);
+  content:'';position:absolute;bottom:0;left:0;right:0;height:60%;
+  background:linear-gradient(to top,rgba(20,10,35,0.80) 0%,transparent 100%);
   pointer-events:none;
 }
-.movie-card-body{padding:12px 13px;flex:1;display:flex;flex-direction:column}
+/* Badge 🎬 flotante sobre el poster */
+.movie-card-poster-wrap::before{
+  content:'🎬';
+  position:absolute;top:7px;right:7px;
+  font-size:13px;line-height:1;z-index:2;
+  background:rgba(20,10,35,0.65);
+  border-radius:20px;padding:3px 7px;
+  backdrop-filter:blur(4px);
+  pointer-events:none;
+}
+.movie-card-body{
+  padding:12px 13px;flex:1;display:flex;flex-direction:column;
+  background:linear-gradient(180deg,var(--surface) 0%,var(--movie-bar) 100%);
+}
 .movie-card-name{font-size:13.5px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:3px}
 .movie-card-meta{font-size:11px;color:var(--muted);line-height:1.5}
-.movie-card-date{font-size:11px;color:var(--lavender);font-weight:600;margin-top:4px}
+.movie-card-date{font-size:11px;color:var(--movie-accent);font-weight:700;margin-top:4px}
 .movie-card-watch{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
 @media(max-width:480px){
   .movies-grid{grid-template-columns:repeat(2,1fr);gap:10px}
@@ -2220,6 +2327,7 @@ footer {
         <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
       </div>
+      <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()" title="Cambiar modo oscuro/claro" aria-label="Modo oscuro">🌙</button>
       <a class="navbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X" aria-label="X / Twitter">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
@@ -4163,7 +4271,7 @@ function switchUpcomingModalTab(tab){
 function openMovie(mi){
   const mv=state.movies[mi], now=new Date();
   const isPast=mv.date&&new Date(mv.date+'T12:00:00')<=now;
-  const posterEl=mv.poster?`<img class="modal-poster-full" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=modal-poster-full-ph>🎥</div>'">`:`<div class="modal-poster-full-ph">🎥</div>`;
+  const posterEl=mv.poster?`<img class="modal-poster-full" src="${mv.poster}" alt="${mv.name}" style="border-top:3px solid var(--movie-accent)" onerror="this.outerHTML='<div class=modal-poster-full-ph>🎥</div>'">`:`<div class="modal-poster-full-ph">🎥</div>`;
   // Release badge
   let releaseBadgeHtml='';
   if(mv.date){
@@ -4206,7 +4314,7 @@ function openMovie(mi){
       ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
     </div></div>`;
   })();
-  const watchLinksHtml=(()=>{const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);if(!links.length)return '';return `<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" style="background:var(--lavender-soft);color:var(--lavender);border-color:rgba(155,130,201,.35)"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`;})();
+  const watchLinksHtml=(()=>{const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);if(!links.length)return '';return `<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" style="background:var(--movie-bar);color:var(--movie-accent);border-color:var(--movie-border)"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`;})();
   const castHtml=buildCastHtml(mv.cast||[]);
   const castCount=mv.cast&&mv.cast.length?mv.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
   let html=`${posterEl}<div class="modal-body">
@@ -4282,10 +4390,10 @@ function movieCardHtml(mv){
     ?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎥</div>'"></div>`
     :`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph">🎥</div></div>`;
   const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
-  const watchRow=links.length?`<div class="movie-card-watch">${links.map(l=>`<a class="card-watch-pill" style="background:var(--lavender-soft);color:var(--lavender);border-color:rgba(155,130,201,.3)" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+  const watchRow=links.length?`<div class="movie-card-watch">${links.map(l=>`<a class="card-watch-pill" style="background:var(--movie-bar);color:var(--movie-accent);border-color:var(--movie-border)" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
   const dateEl=mv.date
     ?(isPast?`<div class="movie-card-date" style="color:var(--teal)">✓ ${fmtDate(mv.date)}</div>`
-            :`<div class="movie-card-date">📅 ${fmtDate(mv.date)}</div>`)
+            :`<div class="movie-card-date" style="color:var(--movie-accent)">🎬 ${fmtDate(mv.date)}</div>`)
     :'<div class="movie-card-date" style="color:var(--muted)">Fecha por confirmar</div>';
   const mvGenrePills=mv.genres&&mv.genres.length
     ?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-weight:600;cursor:pointer" onclick="event.stopPropagation();moviesFilters.genre='${g}';renderMoviesResults()">${g}</span>`).join('')}${mv.genres.length>3?`<span style="font-size:9.5px;padding:2px 6px;border-radius:20px;background:var(--surface2);color:var(--muted)">+${mv.genres.length-3}</span>`:''}</div>`:'';
@@ -4296,7 +4404,7 @@ function movieCardHtml(mv){
   const durationEl=mv.duration?`<span style="font-size:10.5px;color:var(--muted);font-weight:600">⏱ ${fmtDuration(mv.duration)}</span>`:'';
   return `<div class="movie-card" onclick="openMovie(${mi})">${posterEl}
     <div class="movie-card-body">
-      <div class="card-badges">${typeBadge}${sourceTypeBadge(mv)}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}${mv.awards&&mv.awards.length?(mv.awards.filter(a=>a.result==='won').length>0?`<span class="badge badge-award">🏆 ${mv.awards.filter(a=>a.result==='won').length} premio${mv.awards.filter(a=>a.result==='won').length!==1?'s':''}</span>`:`<span class="badge badge-award">🎖 Nominada</span>"):''}</div>
+      <div class="card-badges">${typeBadge}${sourceTypeBadge(mv)}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}${mv.awards&&mv.awards.length?(mv.awards.filter(a=>a.result==='won').length>0?`<span class="badge badge-award">🏆 ${mv.awards.filter(a=>a.result==='won').length} premio${mv.awards.filter(a=>a.result==='won').length!==1?'s':''}</span>`:`<span class="badge badge-award">🎖 Nominada</span>`):''}</div>
       <div class="movie-card-name">${mv.name}</div>
       ${mv.nameEn?`<div style="font-size:10px;color:var(--muted);font-style:italic;line-height:1.3;margin-top:1px;margin-bottom:1px">${mv.nameEn}</div>`:''}
       <div class="movie-card-meta" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${mv.network?`<span>${mv.network}</span>`:''}${durationEl}</div>
@@ -6886,6 +6994,35 @@ function getSimilarItems(item, type, limit=6){
   candidates.sort((a,b)=>b.sc-a.sc||a.item.name.localeCompare(b.item.name,'es'));
   return candidates.slice(0,limit);
 }
+
+// ══════════════════════════════════════════════════════════════════════════════
+// MODO OSCURO
+// ══════════════════════════════════════════════════════════════════════════════
+
+function toggleDark(){
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = isDark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('tsSapphicTheme', next);
+  _syncDarkBtn();
+}
+
+function _syncDarkBtn(){
+  const btn = document.getElementById('darkToggleBtn');
+  if(!btn) return;
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  btn.textContent = isDark ? '☀️' : '🌙';
+  btn.title = isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
+}
+
+// Sync on load + listen for OS change
+window.addEventListener('DOMContentLoaded', _syncDarkBtn);
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e=>{
+  if(!localStorage.getItem('tsSapphicTheme')){
+    document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    _syncDarkBtn();
+  }
+});
 
 function scrollSimilar(stripId, dir){
   const strip = document.getElementById(stripId);
