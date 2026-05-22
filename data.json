@@ -128,7 +128,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T19:54:33.659Z",
+      "updatedAt": "2026-05-22T06:44:13.732Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -202,7 +202,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779134050424",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776889141176",
@@ -470,7 +472,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:38:42.840Z",
+      "updatedAt": "2026-05-22T06:44:29.973Z",
       "nameEn": "คุณแฟนบ้านนอก",
       "episodeDuration": 51,
       "myPick": false,
@@ -480,7 +482,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135954653"
+      "productoraId": "1779135954653",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776889365998",
@@ -592,7 +596,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:48:17.311Z",
+      "updatedAt": "2026-05-22T06:44:35.506Z",
       "nameEn": "นทีร้อยเล่ห์",
       "episodeDuration": 64,
       "myTop10": true,
@@ -604,7 +608,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135760151"
+      "productoraId": "1779135760151",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776889415383",
@@ -729,7 +735,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:48:21.869Z",
+      "updatedAt": "2026-05-22T06:44:38.618Z",
       "nameEn": "เสน่หาวาโย",
       "episodeDuration": "",
       "myPick": false,
@@ -739,7 +745,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135760151"
+      "productoraId": "1779135760151",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776889447326",
@@ -839,7 +847,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:10:49.057Z",
+      "updatedAt": "2026-05-22T06:44:41.604Z",
       "nameEn": "ลัลล์ไม่ชอบไวน์",
       "episodeDuration": 50,
       "myPick": false,
@@ -849,7 +857,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779134050424",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776889488147",
@@ -1075,7 +1085,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:48:27.103Z",
+      "updatedAt": "2026-05-22T06:44:46.096Z",
       "nameEn": "โซ่รักอัคนี",
       "episodeDuration": "",
       "myPick": false,
@@ -1085,7 +1095,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135760151"
+      "productoraId": "1779135760151",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776931938317",
@@ -1144,7 +1156,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:49:23.024Z",
+      "updatedAt": "2026-05-22T06:44:49.226Z",
       "nameEn": "วาดฝันวันวิวาห์",
       "episodeDuration": "",
       "myPick": false,
@@ -1154,7 +1166,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135450707"
+      "productoraId": "1779135450707",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776932166717",
@@ -1202,7 +1216,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T11:58:27.492Z",
+      "updatedAt": "2026-05-22T06:44:51.857Z",
       "nameEn": "รักได้ไหม",
       "episodeDuration": "",
       "myPick": false,
@@ -1212,7 +1226,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135450707"
+      "productoraId": "1779135450707",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776932289648",
@@ -1266,7 +1282,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T19:02:06.997Z",
+      "updatedAt": "2026-05-22T06:44:54.611Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -1275,7 +1291,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136303417"
+      "productoraId": "1779136303417",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776932412578",
@@ -1845,7 +1863,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:48:34.408Z",
+      "updatedAt": "2026-05-22T06:45:00.935Z",
       "nameEn": "วิวาห์ปฐพี",
       "episodeDuration": 55,
       "myPick": false,
@@ -1855,7 +1873,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135760151"
+      "productoraId": "1779135760151",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776966975487",
@@ -1906,9 +1926,19 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T07:39:51.986Z",
+      "updatedAt": "2026-05-22T06:45:03.798Z",
       "nameEn": "เลือดห้ามรัก",
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "sourceType": "novela",
+      "moods": [],
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1776967103985",
@@ -1990,7 +2020,18 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T18:23:15.440Z"
+      "updatedAt": "2026-05-22T06:45:07.895Z",
+      "sourceType": "novela",
+      "moods": [],
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1776971232987",
@@ -2087,7 +2128,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:38:59.524Z",
+      "updatedAt": "2026-05-22T06:45:10.767Z",
       "nameEn": "",
       "episodeDuration": "",
       "myPick": false,
@@ -2097,7 +2138,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135954653"
+      "productoraId": "1779135954653",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776971297117",
@@ -2273,7 +2316,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:53:40.763Z",
+      "updatedAt": "2026-05-22T06:45:14.759Z",
       "nameEn": "",
       "episodeDuration": "",
       "myPick": false,
@@ -2283,7 +2326,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779134050424",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776971628835",
@@ -2366,7 +2411,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:53:56.308Z",
+      "updatedAt": "2026-05-22T06:45:17.349Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -2375,7 +2420,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135573515"
+      "productoraId": "1779135573515",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776972053631",
@@ -2431,7 +2478,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:52:23.639Z",
+      "updatedAt": "2026-05-22T06:45:20.631Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -2440,7 +2487,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779137481839"
+      "productoraId": "1779137481839",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776972122133",
@@ -2570,7 +2619,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:54:14.766Z",
+      "updatedAt": "2026-05-22T06:45:25.094Z",
       "nameEn": "",
       "episodeDuration": "",
       "myPick": false,
@@ -2580,7 +2629,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779134050424",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776972424986",
@@ -2805,7 +2856,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:54:33.953Z",
+      "updatedAt": "2026-05-22T06:45:27.337Z",
       "nameEn": "",
       "episodeDuration": "",
       "myPick": false,
@@ -2815,7 +2866,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779134050424",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776973507673",
@@ -2927,7 +2980,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T07:54:42.471Z",
+      "updatedAt": "2026-05-22T06:45:29.727Z",
       "nameEn": "",
       "episodeDuration": "",
       "myPick": false,
@@ -2937,7 +2990,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779134050424",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776974136082",
@@ -3186,7 +3241,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T07:55:02.641Z",
+      "updatedAt": "2026-05-22T06:45:33.541Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3195,7 +3250,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135573515"
+      "productoraId": "1779135573515",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776976144217",
@@ -3286,7 +3343,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T07:55:08.253Z",
+      "updatedAt": "2026-05-22T06:45:37.325Z",
       "nameEn": "",
       "episodeDuration": "",
       "myTop10": true,
@@ -3298,7 +3355,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779134050424",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776976209757",
@@ -3404,7 +3463,7 @@
     {
       "id": "1776976364805",
       "name": "Love on Hire",
-      "poster": "",
+      "poster": "https://i.mydramalist.com/81bVe2_4f.jpg",
       "synopsis": "Thitinan acepta cualquier trabajo: fingir ser la novia de alguien y romper una relación o, especialmente para la señorita Chat, convertirse en su entrenadora sexual.",
       "year": "",
       "country": "Tailandia",
@@ -3457,7 +3516,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T21:01:50.714Z",
+      "updatedAt": "2026-05-22T06:45:43.581Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3466,7 +3525,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135987498"
+      "productoraId": "1779135987498",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776976452500",
@@ -3524,7 +3585,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:55:20.463Z",
+      "updatedAt": "2026-05-22T06:45:45.969Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3533,7 +3594,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135760151"
+      "productoraId": "1779135760151",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1776976491416",
@@ -3703,9 +3766,17 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-16T08:27:40.430Z",
+      "updatedAt": "2026-05-22T06:46:01.096Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "novela",
+      "moods": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777017989605",
@@ -3746,9 +3817,17 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-16T08:27:55.546Z",
+      "updatedAt": "2026-05-22T06:46:05.655Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "novela",
+      "moods": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777018102689",
@@ -3800,9 +3879,17 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-16T08:27:42.813Z",
+      "updatedAt": "2026-05-22T06:46:10.640Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "novela",
+      "moods": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777018271372",
@@ -3834,7 +3921,25 @@
       "upcoming": true,
       "skipDates": [],
       "episodes": [],
-      "nameEn": ""
+      "nameEn": "",
+      "sourceType": "novela",
+      "genres": [],
+      "moods": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "updatedAt": "2026-05-22T06:46:13.759Z"
     },
     {
       "id": "1777032925125",
@@ -3864,7 +3969,7 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-05-18T20:48:43.395Z",
+      "updatedAt": "2026-05-22T06:46:16.970Z",
       "nameEn": "",
       "category": "series",
       "seriesType": "serie",
@@ -3892,7 +3997,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135760151"
+      "productoraId": "1779135760151",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777033081952",
@@ -3926,7 +4033,7 @@
         "Drama",
         "Romance"
       ],
-      "updatedAt": "2026-05-19T07:55:42.946Z",
+      "updatedAt": "2026-05-22T06:46:20.023Z",
       "nameEn": "ถ้อยรักคำลวง",
       "category": "series",
       "seriesType": "serie",
@@ -3960,7 +4067,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135760151"
+      "productoraId": "1779135760151",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777048197930",
@@ -4060,7 +4169,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:37:40.898Z",
+      "updatedAt": "2026-05-22T06:46:22.879Z",
       "episodeDuration": 45,
       "myPick": false,
       "myPick2026": false,
@@ -4069,7 +4178,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135376050"
+      "productoraId": "1779135376050",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777048586253",
@@ -4746,7 +4857,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:48:49.698Z",
+      "updatedAt": "2026-05-22T06:46:27.642Z",
       "episodeDuration": 50,
       "myTop10": true,
       "top10Rank": 0,
@@ -4757,7 +4868,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135450707"
+      "productoraId": "1779135450707",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777106235834",
@@ -4844,7 +4957,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:45:41.396Z",
+      "updatedAt": "2026-05-22T06:46:29.861Z",
       "episodeDuration": 50,
       "myPick": false,
       "myPick2026": false,
@@ -4853,7 +4966,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136303417"
+      "productoraId": "1779136303417",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777106609486",
@@ -5399,7 +5514,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:56:49.364Z",
+      "updatedAt": "2026-05-22T06:46:34.394Z",
       "episodeDuration": 55,
       "myPick": false,
       "myPick2026": false,
@@ -5408,7 +5523,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135376050"
+      "productoraId": "1779135376050",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777149248949",
@@ -5620,7 +5737,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:44:03.506Z",
+      "updatedAt": "2026-05-22T06:46:38.862Z",
       "episodeDuration": 40,
       "myTop10": true,
       "top10Rank": 0,
@@ -5631,7 +5748,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136246720"
+      "productoraId": "1779136246720",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777150051367",
@@ -5713,7 +5832,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:57:05.742Z",
+      "updatedAt": "2026-05-22T06:46:43.645Z",
       "episodeDuration": 47,
       "myPick": false,
       "myPick2026": false,
@@ -5722,7 +5841,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136355146"
+      "productoraId": "1779136355146",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777222930712",
@@ -5790,7 +5911,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:57:16.022Z",
+      "updatedAt": "2026-05-22T06:46:46.475Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -5799,7 +5920,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": ""
+      "productoraId": "",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777223129027",
@@ -5892,7 +6015,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:57:23.961Z",
+      "updatedAt": "2026-05-22T06:46:48.600Z",
       "episodeDuration": 57,
       "myTop10": true,
       "top10Rank": 0,
@@ -5903,7 +6026,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779134050424",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777223788983",
@@ -5982,7 +6107,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:57:32.268Z",
+      "updatedAt": "2026-05-22T06:46:53.465Z",
       "episodeDuration": 44,
       "myPick": false,
       "myPick2026": false,
@@ -5991,7 +6116,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779176820442"
+      "productoraId": "1779176820442",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777224670901",
@@ -6066,7 +6193,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:57:37.979Z",
+      "updatedAt": "2026-05-22T06:46:56.179Z",
       "episodeDuration": 70,
       "myPick": false,
       "myPick2026": false,
@@ -6075,7 +6202,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136542367"
+      "productoraId": "1779136542367",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777224996688",
@@ -6165,9 +6294,17 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 43,
-      "updatedAt": "2026-05-16T08:28:48.041Z",
+      "updatedAt": "2026-05-22T06:46:58.725Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "novela",
+      "moods": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777225431592",
@@ -6249,7 +6386,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:44:08.496Z",
+      "updatedAt": "2026-05-22T06:47:01.709Z",
       "episodeDuration": 49,
       "myPick": false,
       "myPick2026": false,
@@ -6258,7 +6395,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136264729"
+      "productoraId": "1779136264729",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777225577567",
@@ -6471,7 +6610,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:38:25.242Z",
+      "updatedAt": "2026-05-22T06:47:06.189Z",
       "episodeDuration": 60,
       "myPick": true,
       "myPick2026": false,
@@ -6480,7 +6619,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135954653"
+      "productoraId": "1779135954653",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777226679219",
@@ -6590,9 +6731,17 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-16T08:29:04.058Z",
+      "updatedAt": "2026-05-22T06:47:17.244Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "novela",
+      "moods": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777227405202",
@@ -6679,7 +6828,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:57:58.500Z",
+      "updatedAt": "2026-05-22T06:47:26.562Z",
       "episodeDuration": 53,
       "myPick": false,
       "myPick2026": false,
@@ -6688,7 +6837,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135760151"
+      "productoraId": "1779135760151",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777228963657",
@@ -6779,7 +6930,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:37:18.825Z",
+      "updatedAt": "2026-05-22T06:47:32.073Z",
       "episodeDuration": 70,
       "myPick": false,
       "myPick2026": false,
@@ -6788,7 +6939,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135376050"
+      "productoraId": "1779135376050",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777235903416",
@@ -6890,7 +7043,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:36:01.289Z",
+      "updatedAt": "2026-05-22T06:47:34.202Z",
       "nameEn": "23.5 องศาที่โลกเอียง",
       "episodeDuration": 52,
       "myPick": false,
@@ -6900,7 +7053,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779134050424"
+      "productoraId": "1779134050424",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777236063170",
@@ -6950,9 +7105,17 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-16T08:29:13.586Z",
+      "updatedAt": "2026-05-22T06:47:36.717Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "novela",
+      "moods": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777236404711",
@@ -7035,10 +7198,18 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:29:16.138Z",
+      "updatedAt": "2026-05-22T06:47:39.011Z",
       "episodeDuration": 49,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "novela",
+      "moods": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777236582381",
@@ -7100,7 +7271,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:34:53.140Z",
+      "updatedAt": "2026-05-22T06:47:43.884Z",
       "nameEn": "ClaireBell คลั่ง/รัก/นักโทษ",
       "episodeDuration": 65,
       "myTop10": true,
@@ -7112,7 +7283,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136445852"
+      "productoraId": "1779136445852",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777236702067",
@@ -7198,7 +7371,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:38:02.470Z",
+      "updatedAt": "2026-05-22T06:47:51.114Z",
       "episodeDuration": 64,
       "myTop10": true,
       "top10Rank": 0,
@@ -7209,7 +7382,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136135118"
+      "productoraId": "1779136135118",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777236873444",
@@ -7300,7 +7475,7 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 51,
-      "updatedAt": "2026-05-18T20:45:27.604Z",
+      "updatedAt": "2026-05-22T06:47:54.708Z",
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -7308,7 +7483,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135626732"
+      "productoraId": "1779135626732",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777237026617",
@@ -7380,7 +7557,7 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 53,
-      "updatedAt": "2026-05-18T20:43:28.473Z",
+      "updatedAt": "2026-05-22T06:47:57.384Z",
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -7388,7 +7565,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135987498"
+      "productoraId": "1779135987498",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777237182173",
@@ -7467,7 +7646,7 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 46,
-      "updatedAt": "2026-05-19T08:34:30.848Z",
+      "updatedAt": "2026-05-22T06:47:59.678Z",
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -7475,7 +7654,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136384575"
+      "productoraId": "1779136384575",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777278523920",
@@ -7569,7 +7750,7 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 58,
-      "updatedAt": "2026-05-18T20:38:12.324Z",
+      "updatedAt": "2026-05-22T06:48:02.014Z",
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -7577,7 +7758,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135954653"
+      "productoraId": "1779135954653",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777278660998",
@@ -7631,7 +7814,17 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-15T10:26:06.331Z"
+      "updatedAt": "2026-05-22T06:48:12.982Z",
+      "sourceType": "novela",
+      "moods": [],
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777278827017",
@@ -7717,7 +7910,7 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 46,
-      "updatedAt": "2026-05-19T07:58:41.835Z",
+      "updatedAt": "2026-05-22T06:48:18.891Z",
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -7725,7 +7918,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779176934811"
+      "productoraId": "1779176934811",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777279117292",
@@ -7793,7 +7988,7 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 51,
-      "updatedAt": "2026-05-18T20:36:43.750Z",
+      "updatedAt": "2026-05-22T06:48:23.848Z",
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -7801,7 +7996,9 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135450707"
+      "productoraId": "1779135450707",
+      "sourceType": "novela",
+      "moods": []
     },
     {
       "id": "1777449004515",
@@ -32283,8 +32480,8 @@
       "id": "1779224009357",
       "name": "AtomMer",
       "desc": "",
-      "couplePhoto": "https://glthai.com/wp-content/uploads/20260426-AtomMer-Fan-Sign-Taipei.jpg",
-      "couplePhotoPosition": "50% 20%",
+      "couplePhoto": "",
+      "couplePhotoPosition": "",
       "couplePhotoZoom": 1,
       "actressIds": [
         "1778787268516",
@@ -32672,5 +32869,5 @@
       "actressIds": []
     }
   ],
-  "exportedAt": "2026-05-21T11:26:27.953Z"
+  "exportedAt": "2026-05-22T06:48:51.789Z"
 }

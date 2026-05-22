@@ -685,6 +685,77 @@ footer{
 .badge-mood{background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.25)}
 .sc-moods{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
 .sc-mood-pill{font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.2);line-height:1.4}
+/* ═══ LISTAS TEMÁTICAS ═══ */
+.listas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-top:1rem}
+.lista-card{
+  background:var(--surface);border:1.5px solid var(--border2);
+  border-radius:var(--radius-lg);overflow:hidden;
+  cursor:pointer;transition:all .22s;
+  box-shadow:var(--shadow-sm);display:flex;flex-direction:column;
+}
+.lista-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--lavender)}
+.lista-card-header{
+  padding:1.1rem 1.25rem .75rem;
+  border-bottom:1.5px solid var(--border);
+  display:flex;align-items:flex-start;gap:12px;
+}
+.lista-card-emoji{font-size:2rem;line-height:1;flex-shrink:0;margin-top:2px}
+.lista-card-meta{flex:1;min-width:0}
+.lista-card-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:3px}
+.lista-card-desc{font-size:12px;color:var(--muted);line-height:1.55}
+.lista-card-count{font-size:11px;font-weight:700;color:var(--lavender);margin-top:4px}
+.lista-posters-strip{
+  display:flex;gap:0;overflow:hidden;height:80px;flex-shrink:0;
+}
+.lista-poster-thumb{
+  flex:1;min-width:0;overflow:hidden;position:relative;
+}
+.lista-poster-thumb img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform .3s}
+.lista-card:hover .lista-poster-thumb img{transform:scale(1.05)}
+.lista-poster-ph{width:100%;height:100%;background:var(--lavender-soft);display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+
+/* Panel lista abierta */
+.lista-panel-header{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:1.25rem;
+  padding-bottom:1rem;
+  border-bottom:1.5px solid var(--border2);
+}
+.lista-panel-emoji{font-size:2.5rem;line-height:1}
+.lista-panel-title{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.lista-panel-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-top:3px}
+.lista-back-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:12px;font-weight:700;color:var(--muted);
+  background:var(--surface);border:1.5px solid var(--border2);
+  border-radius:20px;padding:5px 13px;cursor:pointer;
+  transition:all .15s;margin-bottom:1rem;font-family:var(--font-body);
+}
+.lista-back-btn:hover{color:var(--lavender);border-color:var(--lavender);background:var(--lavender-soft)}
+.listas-items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:16px}
+
+/* ═══ SIMILAR / Si te gustó ═══ */
+.similar-section{margin-top:1.5rem;padding-top:1rem;border-top:1.5px solid var(--border)}
+.similar-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
+.similar-strip{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.similar-strip::-webkit-scrollbar{display:none}
+.similar-card{
+  flex:0 0 110px;display:flex;flex-direction:column;
+  border-radius:10px;overflow:hidden;cursor:pointer;
+  border:1.5px solid var(--border);background:var(--surface);
+  transition:all .18s;
+}
+.similar-card:hover{border-color:var(--lavender);transform:translateY(-2px);box-shadow:0 6px 18px rgba(139,114,190,0.18)}
+.similar-poster{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:center 15%;display:block}
+.similar-poster-ph{width:100%;aspect-ratio:2/3;background:var(--lavender-soft);display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.similar-info{padding:5px 6px 6px}
+.similar-name{font-size:10px;font-weight:700;color:var(--text);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.similar-score{font-size:9px;font-weight:700;color:var(--lavender);margin-top:2px}
+@media(max-width:480px){
+  .listas-grid{grid-template-columns:1fr}
+  .listas-items-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+}
+
 .badge-upcoming{background:var(--lavender-soft);color:var(--lavender)}
 
 /* ══════════════ SHIPS THAIS ══════════════ */
@@ -2101,6 +2172,7 @@ footer {
           Más <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
         </button>
         <div class="tab-more-drop" id="tabMoreDrop" role="menu">
+          <button class="tab-more-item" id="tabListas" role="menuitem" onclick="closeMoreDrop();switchTab('listas');closeMobileMenu()">📋 Listas GL</button>
           <button class="tab-more-item" id="tabAnime" role="menuitem" onclick="closeMoreDrop();switchTab('anime');closeMobileMenu()">Anime</button>
           <button class="tab-more-item" id="tabRealities" role="menuitem" onclick="closeMoreDrop();switchTab('realities');closeMobileMenu()">Realities</button>
           <button class="tab-more-item" id="tabDocumentales" role="menuitem" onclick="closeMoreDrop();switchTab('documentales');closeMobileMenu()">Documentales</button>
@@ -2166,6 +2238,7 @@ footer {
   <div id="viewTop10" style="display:none"></div>
   <div id="viewPicks2026" style="display:none"></div>
   <div id="viewShips" style="display:none"></div>
+  <div id="viewListas" style="display:none"></div>
   <div id="viewCanceladas" style="display:none"></div>
   <div id="viewSinNovedades" style="display:none"></div>
   <div id="viewProductoras" style="display:none"></div>
@@ -2263,7 +2336,7 @@ const GENRES=[
   'Reencarnación','Viaje en el tiempo','Idols / Entretenimiento','Oficina / Trabajo','Food / Cocina',
 ];
 
-let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[]};
+let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[]};
 
 // ═══ SESSION PERSISTENCE ═══
 const SS_KEY='tintaSapphicState';
@@ -2497,6 +2570,7 @@ async function loadData(){
     state.actresses=d.actresses||[];
     state.ships=d.ships||[];
     state.productoras=d.productoras||[];
+    state.listas=d.listas||[];
     if(d.exportedAt){
       const dt=new Date(d.exportedAt);
       const badge=document.getElementById('updateBadge'); if(badge){badge.textContent='✓ Act. '+dt.toLocaleDateString('es-ES',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});badge.style.display='';}
@@ -3924,6 +3998,7 @@ function openSeries(si){
   </div>
   <div id="spanel_eps">${epsHtml}</div>
   <div id="spanel_cast" style="display:none">${castHtml}</div>
+  ${buildSimilarHtml(s,'serie')}
   <div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div>
   </div>`;
   document.getElementById('modalBox').innerHTML=html;
@@ -3999,7 +4074,8 @@ function openUpcoming(si){
     <button class="modal-tab active" id="uptab_cast" onclick="switchUpcomingModalTab('cast')">🎭 Cast<span style="font-size:10px;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span></button>
   </div>
   <div id="uppanel_cast">${castHtml}</div>`:''}
-  <div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div></div>`;
+  
+  ${buildSimilarHtml(s,'serie')}<div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div></div>`;
   document.getElementById('modalBox').innerHTML=html;
   document.getElementById('modalBg').classList.add('open');
   _pushModal('modal');
@@ -4083,7 +4159,8 @@ function openMovie(mi){
   </div>
   <div id="mvpanel_info" style="display:none"></div>
   <div id="mvpanel_cast">${castHtml}</div>`:''}
-  <div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div></div>`;
+  
+  ${buildSimilarHtml(mv,'pelicula')}<div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div></div>`;
   document.getElementById('modalBox').innerHTML=html;
   document.getElementById('modalBg').classList.add('open');
   _pushModal('modal');
@@ -5371,9 +5448,9 @@ function renderPicks2026(){
 function switchTab(tab, fromPopstate=false){
   state.tab=tab;
   saveSession();
-  const moreTabs=['books','actresses','anime','realities','documentales','productoras'];
+  const moreTabs=['books','actresses','anime','realities','documentales','productoras','listas'];
   const picksTabs=['top10','picks2026'];
-  const allTabs=['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','productoras','canceladas'];
+  const allTabs=['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','productoras','canceladas','listas'];
 
   allTabs.forEach(t=>{
     const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
@@ -5418,6 +5495,7 @@ function switchTab(tab, fromPopstate=false){
   if(tab==='ships') renderShips();
   if(tab==='canceladas') renderCanceladas();
   if(tab==='productoras') renderProductoras();
+  if(tab==='listas') renderListas();
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -6551,3 +6629,224 @@ document.addEventListener('keydown', e => {
 
 </body>
 </html>
+<script>
+// ══════════════════════════════════════════════════════════════════════════════
+// LISTAS TEMÁTICAS CURADAS
+// ══════════════════════════════════════════════════════════════════════════════
+
+let listasViewMode = 'grid'; // 'grid' | 'open'
+let listasOpenIdx = -1;
+
+function renderListas(){
+  const view = document.getElementById('viewListas');
+  if(!view) return;
+  const listas = state.listas || [];
+
+  if(listasViewMode === 'open' && listasOpenIdx >= 0 && listas[listasOpenIdx]){
+    _renderListaOpen(view, listas[listasOpenIdx]);
+    return;
+  }
+  listasViewMode = 'grid';
+  _renderListasGrid(view, listas);
+}
+
+function _renderListasGrid(view, listas){
+  if(!listas.length){
+    view.innerHTML = `<div style="text-align:center;padding:3rem 1rem">
+      <div style="font-size:3rem;margin-bottom:1rem;opacity:.4">📋</div>
+      <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--text);margin-bottom:.5rem">Sin listas todavía</div>
+      <div style="font-size:13px;color:var(--muted)">Las listas temáticas curadas aparecerán aquí cuando las crees desde el panel de administración.</div>
+    </div>`;
+    return;
+  }
+
+  const cards = listas.map((l, li)=>{
+    const allSeries = state.series || [];
+    const allMovies = state.movies || [];
+    const seriesIds = l.seriesIds || [];
+    const movieIds  = l.movieIds  || [];
+    const total = seriesIds.length + movieIds.length;
+
+    // Poster strip — up to 5 items
+    const stripItems = [
+      ...seriesIds.map(id => allSeries.find(s=>s.id===id)).filter(Boolean),
+      ...movieIds.map(id => allMovies.find(m=>m.id===id)).filter(Boolean),
+    ].slice(0, 5);
+
+    const strip = stripItems.map(it=>
+      it.poster
+        ? `<div class="lista-poster-thumb"><img src="${it.poster}" alt="${it.name}" loading="lazy" onerror="this.outerHTML='<div class=lista-poster-ph>🎬</div>'"></div>`
+        : `<div class="lista-poster-thumb"><div class="lista-poster-ph">🎬</div></div>`
+    ).join('');
+
+    return `<div class="lista-card" onclick="openLista(${li})">
+      ${strip ? `<div class="lista-posters-strip">${strip}</div>` : ''}
+      <div class="lista-card-header">
+        <div class="lista-card-emoji">${l.emoji||'📋'}</div>
+        <div class="lista-card-meta">
+          <div class="lista-card-title">${l.title}</div>
+          ${l.desc ? `<div class="lista-card-desc">${l.desc}</div>` : ''}
+          <div class="lista-card-count">${total} título${total!==1?'s':''}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  view.innerHTML = `
+    <div style="margin-bottom:1rem">
+      <div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text);letter-spacing:-.01em;margin-bottom:.25rem">
+        Listas <em style="color:var(--lavender);font-style:italic">GL</em>
+      </div>
+      <div style="font-size:13px;color:var(--muted)">Selecciones curadas por temáticas, mood y estilo.</div>
+    </div>
+    <div class="listas-grid">${cards}</div>`;
+}
+
+function openLista(li){
+  listasViewMode = 'open';
+  listasOpenIdx = li;
+  renderListas();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function _renderListaOpen(view, l){
+  const allSeries = state.series || [];
+  const allMovies = state.movies || [];
+  const seriesIds = l.seriesIds || [];
+  const movieIds  = l.movieIds  || [];
+
+  const seriesItems = seriesIds.map(id=>{
+    const s = allSeries.find(x=>x.id===id);
+    if(!s) return '';
+    const si = allSeries.indexOf(s);
+    const seasons = getSeasons(s);
+    const totalEps = seasons.reduce((a,t)=>a+t.totalEpisodes,0);
+    const poster = s.poster
+      ? `<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph>🎬</div>'">${s.country?`<span class="sc-country-flag">${countryFlag(s.country)}</span>`:''}</div>`
+      : `<div class="series-card-poster-wrap"><div class="series-card-poster-ph">🎬</div></div>`;
+    const moodsPills = moodPillsHtml(s.moods, 2);
+    return `<div class="series-card" onclick="openSeries(${si})">
+      ${poster}
+      <div class="series-card-body">
+        <div class="card-badges">${sourceTypeBadge(s)}</div>
+        <div class="series-card-name">${s.name}</div>
+        ${s.genres&&s.genres.length?`<div class="sc-genres">${s.genres.slice(0,2).map(g=>`<span class="sc-genre-pill">${g}</span>`).join('')}</div>`:''}
+        ${moodsPills}
+        <div style="font-size:10px;color:var(--muted);font-weight:600;margin-top:4px">${[s.country?countryFlag(s.country)+' '+s.country:'',s.year].filter(Boolean).join(' · ')}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const movieItems = movieIds.map(id=>{
+    const mv = allMovies.find(x=>x.id===id);
+    if(!mv) return '';
+    const mi = allMovies.indexOf(mv);
+    const poster = mv.poster
+      ? `<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎬</div>'"></div>`
+      : `<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph">🎥</div></div>`;
+    return `<div class="movie-card" onclick="openMovie(${mi})">
+      ${poster}
+      <div class="movie-card-body">
+        <div class="card-badges">${sourceTypeBadge(mv)}${mv.country?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
+        <div class="movie-card-name">${mv.name}</div>
+        ${mv.genres&&mv.genres.length?`<div class="sc-genres">${mv.genres.slice(0,2).map(g=>`<span class="sc-genre-pill">${g}</span>`).join('')}</div>`:''}
+        ${moodPillsHtml(mv.moods,2)}
+        <div class="movie-card-date">${mv.year||''}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const allItems = seriesItems + movieItems;
+  const total = seriesIds.length + movieIds.length;
+
+  view.innerHTML = `
+    <button class="lista-back-btn" onclick="listasViewMode='grid';renderListas()">← Volver a listas</button>
+    <div class="lista-panel-header">
+      <div class="lista-panel-emoji">${l.emoji||'📋'}</div>
+      <div>
+        <div class="lista-panel-title">${l.title}</div>
+        ${l.desc?`<div class="lista-panel-desc">${l.desc}</div>`:''}
+        <div style="font-size:12px;color:var(--lavender);font-weight:700;margin-top:4px">${total} título${total!==1?'s':''}</div>
+      </div>
+    </div>
+    <div class="listas-items-grid">${allItems||'<div style="color:var(--muted);font-size:13px;font-style:italic">Esta lista no tiene títulos asignados todavía.</div>'}</div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// MOTOR "SI TE GUSTÓ X → PRUEBA Y"
+// ══════════════════════════════════════════════════════════════════════════════
+
+function getSimilarItems(item, type, limit=6){
+  // Recoge todo el catálogo combinado (series + películas)
+  const allSeries = (state.series||[]).filter(s=>s.category==='series'||!s.category);
+  const allMovies = state.movies||[];
+
+  const iGenres = item.genres||[];
+  const iMoods  = item.moods||[];
+  const iCountry= item.country||'';
+  const iSource = item.sourceType||'';
+
+  function score(candidate, candType){
+    if(candidate===item) return -1; // skip self
+    if(!candidate.poster) return -1; // sin poster no tiene sentido mostrarlo
+    let s = 0;
+    // País coincide → +3
+    if(iCountry && (candidate.country||'')=== iCountry) s += 3;
+    // Géneros compartidos → +2 cada uno (máx 3 géneros)
+    const sharedGenres = (candidate.genres||[]).filter(g=>iGenres.includes(g));
+    s += Math.min(sharedGenres.length,3)*2;
+    // Moods compartidos → +3 cada uno (máx 2)
+    const sharedMoods = (candidate.moods||[]).filter(m=>iMoods.includes(m));
+    s += Math.min(sharedMoods.length,2)*3;
+    // Tipo de fuente coincide → +1
+    if(iSource && (candidate.sourceType||'')===iSource) s += 1;
+    // Al menos 2 puntos para que aparezca
+    return s >= 2 ? s : -1;
+  }
+
+  let candidates = [];
+  allSeries.forEach(s=>{ const sc=score(s,'serie'); if(sc>0) candidates.push({item:s,type:'serie',sc}); });
+  allMovies.forEach(m=>{ const sc=score(m,'pelicula'); if(sc>0) candidates.push({item:m,type:'pelicula',sc}); });
+
+  // Sort by score desc, then by name
+  candidates.sort((a,b)=>b.sc-a.sc||a.item.name.localeCompare(b.item.name,'es'));
+  return candidates.slice(0,limit);
+}
+
+function buildSimilarHtml(item, type){
+  const similar = getSimilarItems(item, type, 6);
+  if(!similar.length) return '';
+
+  const allSeries = state.series||[];
+  const allMovies = state.movies||[];
+
+  const cards = similar.map(({item:it,type:t,sc})=>{
+    const idx = t==='serie' ? allSeries.indexOf(it) : allMovies.indexOf(it);
+    const onClick = t==='serie' ? `closeModal();openSeries(${idx})` : `closeModal();openMovie(${idx})`;
+    const sharedGenres = (it.genres||[]).filter(g=>(item.genres||[]).includes(g));
+    const sharedMoods  = (it.moods||[]).filter(m=>(item.moods||[]).includes(m));
+    const reasonParts = [];
+    if(it.country && it.country===item.country) reasonParts.push(countryFlag(it.country)+' '+it.country);
+    if(sharedGenres.length) reasonParts.push(sharedGenres.slice(0,2).join(', '));
+    if(sharedMoods.length)  reasonParts.push(sharedMoods[0]);
+    const reason = reasonParts.slice(0,2).join(' · ');
+
+    const poster = it.poster
+      ? `<img class="similar-poster" src="${it.poster}" alt="${it.name}" loading="lazy" onerror="this.outerHTML='<div class=similar-poster-ph>🎬</div>'">`
+      : `<div class="similar-poster-ph">🎬</div>`;
+
+    return `<div class="similar-card" onclick="${onClick}">
+      ${poster}
+      <div class="similar-info">
+        <div class="similar-name">${it.name}</div>
+        ${reason?`<div class="similar-score">${reason}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div class="similar-section">
+    <div class="similar-title">✦ Si te gustó esta serie, prueba…</div>
+    <div class="similar-strip">${cards}</div>
+  </div>`;
+}
+</script>

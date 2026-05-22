@@ -548,6 +548,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <a class="qnav-btn" href="#section-books" onclick="document.getElementById('section-books').scrollIntoView({behavior:'smooth'});return false;">📚 Libros</a>
   <a class="qnav-btn" href="#section-actresses" onclick="document.getElementById('section-actresses').scrollIntoView({behavior:'smooth'});return false;">🎭 Actrices</a>
   <a class="qnav-btn" href="#section-ships" onclick="document.getElementById('section-ships').scrollIntoView({behavior:'smooth'});return false;">💕 Ships</a>
+  <a class="qnav-btn" href="#section-listas" onclick="document.getElementById('section-listas').scrollIntoView({behavior:'smooth'});return false;">📋 Listas</a>
   <a class="qnav-btn" href="#section-productoras" onclick="document.getElementById('section-productoras').scrollIntoView({behavior:'smooth'});return false;">🏢 Productoras</a>
   <div class="quicknav-sep"></div>
   <button type="button" class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
@@ -684,6 +685,17 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 
   <!-- ══════════ SHIPS ══════════ -->
+
+  <div class="card" id="section-listas">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+      <div class="card-title" style="margin-bottom:0">📋 Listas temáticas curadas</div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Crea colecciones curadas de series y películas: "Para empezar en GL", "Las mejores de 2025", "Final feliz garantizado", etc. Aparecen en la pestaña <strong>Listas</strong> del índice.</p>
+    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:var(--lavender);border-color:var(--lavender)" onclick="openAddLista()">+ Crear lista temática</button>
+    <div class="series-count-label" id="listasCountLabel"></div>
+    <div id="listasAdminGrid" style="display:grid;gap:10px;margin-top:8px"></div>
+  </div>
+
   <div class="card" id="section-ships">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
       <div class="card-title" style="margin-bottom:0">💕 Ships</div>
@@ -727,6 +739,14 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
         <li>Pulsa <strong>"Commit changes"</strong>. En segundos tus amig@s verán los cambios.</li>
       </ol>
     </div></div>
+  </div>
+</div>
+
+<!-- Modal lista temática -->
+<div class="modal-bg" id="listaModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="listaModalTitle" style="margin-bottom:0"></div></div>
+    <div id="listaModalBody"></div>
   </div>
 </div>
 
@@ -956,6 +976,7 @@ let movies = [];
 let actresses = [];
 let ships = [];   // Ships manuales
 let productoras = [];  // Productoras
+let listas = [];  // Listas temáticas curadas
 let currentStab = 'active';
 
 const PAGE_SIZE = 20;
@@ -1027,7 +1048,8 @@ async function initData(){
         if(d.actresses) actresses = d.actresses;
         if(d.ships) ships = d.ships;
         if(d.productoras) productoras = d.productoras;
-        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin();
+        if(d.listas) listas = d.listas;
+        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin();
         return;
       }
     } catch(e){ /* sin data.json accesible */ }
@@ -3241,7 +3263,7 @@ function renderBooks(){
 function exportData(){
   try {
     // Validate before exporting
-    const testJson = JSON.stringify({series, movies, actresses, ships, productoras, exportedAt: new Date().toISOString()});
+    const testJson = JSON.stringify({series, movies, actresses, ships, productoras, listas, exportedAt: new Date().toISOString()});
     JSON.parse(testJson); // verify roundtrip
   } catch(e) {
     alert('Error al validar los datos antes de exportar: ' + e.message);
@@ -3251,7 +3273,7 @@ function exportData(){
   _unsavedCount=0;
   const dot=document.getElementById('exportDot');
   if(dot) dot.classList.remove('visible');
-  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,productoras,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,productoras,listas,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
 }
 
@@ -3266,8 +3288,9 @@ function importData(e){
       if(d.actresses) actresses=d.actresses;
       if(d.ships) ships=d.ships;
       if(d.productoras) productoras=d.productoras;
+      if(d.listas) listas=d.listas;
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
-      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin();
+      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin();
       alert('✓ Datos importados correctamente');
     }catch(err){ alert('Error al leer el archivo: '+err.message); }
   };
@@ -4462,3 +4485,153 @@ async function delProductora(pi){
 </script>
 </body>
 </html>
+<!-- LISTAS JS injected -->
+<script>
+// ══════════════════════════════════════════════════════════════════════════════
+// LISTAS TEMÁTICAS
+// ══════════════════════════════════════════════════════════════════════════════
+
+function renderListasAdmin(){
+  const grid = document.getElementById('listasAdminGrid');
+  const label = document.getElementById('listasCountLabel');
+  if(!grid) return;
+  if(!listas.length){
+    grid.innerHTML = '<div style="color:var(--muted);font-size:13px;font-style:italic;padding:8px 0">No hay listas creadas todavía.</div>';
+    if(label) label.textContent = '';
+    return;
+  }
+  if(label) label.textContent = listas.length + ' lista' + (listas.length!==1?'s':'');
+  grid.innerHTML = listas.map((l, li)=>{
+    const count = (l.seriesIds||[]).length + (l.movieIds||[]).length;
+    const emoji = l.emoji || '📋';
+    return `<div class="series-item" style="align-items:flex-start;gap:12px">
+      <div style="font-size:2rem;line-height:1;flex-shrink:0;padding-top:2px">${emoji}</div>
+      <div style="flex:1;min-width:0">
+        <div class="series-name" style="font-size:14px">${escapeHtml(l.title)}</div>
+        ${l.desc?`<div class="series-meta" style="margin-top:2px">${escapeHtml(l.desc)}</div>`:''}
+        <div style="margin-top:4px;font-size:11px;color:var(--muted)">${count} título${count!==1?'s':''}</div>
+      </div>
+      <div class="series-actions">
+        <button class="btn small" onclick="openEditLista(${li})">✏️ Editar</button>
+        <button class="btn small danger" onclick="delLista(${li})">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function _listaFormHtml(l){
+  const allItems = [
+    ...series.map((s,i)=>({id:s.id,label:s.name,type:'serie',cat:s.category||'series'})),
+    ...movies.map((m,i)=>({id:m.id,label:m.name,type:'pelicula',cat:m.category||'movie'})),
+  ].sort((a,b)=>a.label.localeCompare(b.label,'es'));
+
+  const selectedSeries = l?l.seriesIds||[]:[];
+  const selectedMovies = l?l.movieIds||[]:[];
+  const selectedAll = [...selectedSeries,...selectedMovies];
+
+  const itemRows = allItems.map(it=>{
+    const checked = selectedAll.includes(it.id);
+    const typeLabel = it.type==='serie'?'Serie':'Película';
+    const typeColor = it.type==='serie'?'var(--accent)':'var(--lavender)';
+    return `<label style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;cursor:pointer;transition:background .12s;${checked?'background:var(--accent-soft)':''}" class="lista-item-row">
+      <input type="checkbox" value="${it.id}" data-type="${it.type}" ${checked?'checked':''} style="width:auto;accent-color:var(--accent);flex-shrink:0" onchange="this.closest('label').style.background=this.checked?'var(--accent-soft)':''">
+      <span style="flex:1;font-size:13px;font-weight:600;color:var(--text)">${escapeHtml(it.label)}</span>
+      <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--surface2);color:${typeColor};border:1px solid var(--border2)">${typeLabel}</span>
+    </label>`;
+  }).join('');
+
+  return `<div style="padding:1.25rem 1.75rem;display:flex;flex-direction:column;gap:14px">
+    <div class="form-row">
+      <label class="form-label">Emoji representativo</label>
+      <input id="lf_emoji" placeholder="📋" value="${l&&l.emoji?l.emoji:''}" style="width:80px;font-size:1.4rem;text-align:center"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Título de la lista <span style="color:var(--danger)">*</span></label>
+      <input id="lf_title" placeholder="Ej: Para empezar en GL" value="${l&&l.title?escapeHtml(l.title):''}"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Descripción</label>
+      <textarea id="lf_desc" placeholder="Explica brevemente el criterio de selección de esta lista…" style="min-height:60px">${l&&l.desc?escapeHtml(l.desc):''}</textarea>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Orden de visualización <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(número menor = aparece antes)</span></label>
+      <input id="lf_order" type="number" min="0" value="${l&&l.order!=null?l.order:99}" style="width:100px"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Títulos incluidos <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona los que quieras)</span></label>
+      <div style="margin-top:4px;margin-bottom:6px;display:flex;gap:8px">
+        <input id="lf_q" placeholder="🔍 Filtrar por nombre…" oninput="filterListaItems()" style="flex:1;padding:7px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;outline:none"/>
+      </div>
+      <div id="lf_items" style="max-height:320px;overflow-y:auto;border:1.5px solid var(--border2);border-radius:12px;background:var(--surface2);display:flex;flex-direction:column;gap:2px;padding:4px">
+        ${itemRows}
+      </div>
+      <div style="margin-top:5px;font-size:11px;color:var(--muted)" id="lf_count_label">${selectedAll.length} seleccionado${selectedAll.length!==1?'s':''}</div>
+    </div>
+  </div>
+  <div class="modal-footer-btns">
+    <button type="button" class="btn" onclick="closeLista()">Cancelar</button>
+    <button type="button" class="btn primary" onclick="saveLista()">💾 Guardar lista</button>
+  </div>`;
+}
+
+function filterListaItems(){
+  const q = (document.getElementById('lf_q')?.value||'').toLowerCase().trim();
+  document.querySelectorAll('#lf_items .lista-item-row').forEach(row=>{
+    const name = row.querySelector('span')?.textContent.toLowerCase()||'';
+    row.style.display = !q||name.includes(q)?'':'none';
+  });
+}
+
+function _updateListaCount(){
+  const count = document.querySelectorAll('#lf_items input:checked').length;
+  const lbl = document.getElementById('lf_count_label');
+  if(lbl) lbl.textContent = count + ' seleccionado' + (count!==1?'s':'');
+}
+
+function openAddLista(){
+  document.getElementById('listaModalTitle').textContent = '📋 Nueva lista temática';
+  document.getElementById('listaModalBody').innerHTML = _listaFormHtml(null);
+  document.getElementById('listaModal').classList.add('open');
+  document.getElementById('lf_items').addEventListener('change', _updateListaCount);
+}
+
+function openEditLista(li){
+  document.getElementById('listaModalTitle').textContent = '✏️ Editar lista';
+  document.getElementById('listaModalBody').innerHTML = _listaFormHtml(listas[li]);
+  document.getElementById('listaModal').dataset.li = li;
+  document.getElementById('listaModal').classList.add('open');
+  document.getElementById('lf_items').addEventListener('change', _updateListaCount);
+}
+
+function closeLista(){
+  document.getElementById('listaModal').classList.remove('open');
+  delete document.getElementById('listaModal').dataset.li;
+}
+
+function saveLista(){
+  const title = document.getElementById('lf_title')?.value.trim();
+  if(!title){ alert('El título es obligatorio'); return; }
+  const emoji = document.getElementById('lf_emoji')?.value.trim()||'📋';
+  const desc  = document.getElementById('lf_desc')?.value.trim()||'';
+  const order = parseInt(document.getElementById('lf_order')?.value)||99;
+  const checked = [...document.querySelectorAll('#lf_items input:checked')];
+  const seriesIds = checked.filter(c=>c.dataset.type==='serie').map(c=>c.value);
+  const movieIds  = checked.filter(c=>c.dataset.type==='pelicula').map(c=>c.value);
+  const li = document.getElementById('listaModal').dataset.li;
+  const payload = { title, emoji, desc, order, seriesIds, movieIds,
+    id: li!=null ? (listas[li]?.id||Date.now().toString()) : Date.now().toString() };
+  if(li!=null) listas[li] = payload;
+  else listas.push(payload);
+  listas.sort((a,b)=>(a.order||99)-(b.order||99));
+  save();
+  closeLista();
+  renderListasAdmin();
+}
+
+async function delLista(li){
+  const ok = await showConfirm({title:`¿Eliminar "${listas[li]?.title}"?`, desc:'Esta acción no se puede deshacer.', icon:'📋'});
+  if(!ok) return;
+  listas.splice(li,1);
+  save(); renderListasAdmin();
+}
+</script>
