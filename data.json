@@ -348,8 +348,6 @@
       "trailerUrl": "https://youtu.be/Bu1KwZJ2Ux0",
       "bookLinks": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -528,8 +526,6 @@
         }
       ],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -596,7 +592,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:44:35.506Z",
+      "updatedAt": "2026-05-22T07:24:53.209Z",
       "nameEn": "นทีร้อยเล่ห์",
       "episodeDuration": 64,
       "myTop10": true,
@@ -610,7 +606,8 @@
       "snNote": "",
       "productoraId": "1779135760151",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "awards": []
     },
     {
       "id": "1776889415383",
@@ -655,8 +652,6 @@
       ],
       "genres": [
         "Acción",
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -735,7 +730,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:44:38.618Z",
+      "updatedAt": "2026-05-22T07:24:56.901Z",
       "nameEn": "เสน่หาวาโย",
       "episodeDuration": "",
       "myPick": false,
@@ -747,7 +742,8 @@
       "snNote": "",
       "productoraId": "1779135760151",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "awards": []
     },
     {
       "id": "1776889447326",
@@ -1025,8 +1021,6 @@
         }
       ],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -1085,7 +1079,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:44:46.096Z",
+      "updatedAt": "2026-05-22T07:25:03.876Z",
       "nameEn": "โซ่รักอัคนี",
       "episodeDuration": "",
       "myPick": false,
@@ -1097,7 +1091,8 @@
       "snNote": "",
       "productoraId": "1779135760151",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "awards": []
     },
     {
       "id": "1776931938317",
@@ -1605,8 +1600,6 @@
         }
       ],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -1615,7 +1608,7 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:08.514Z",
+      "updatedAt": "2026-05-22T07:25:09.514Z",
       "nameEn": "",
       "cast": [
         {
@@ -1633,7 +1626,16 @@
       ],
       "episodeDuration": "",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "",
+      "moods": [],
+      "awards": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1776966161759",
@@ -1807,8 +1809,6 @@
         }
       ],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -1863,7 +1863,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:45:00.935Z",
+      "updatedAt": "2026-05-22T07:25:13.713Z",
       "nameEn": "วิวาห์ปฐพี",
       "episodeDuration": 55,
       "myPick": false,
@@ -1875,7 +1875,8 @@
       "snNote": "",
       "productoraId": "1779135760151",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "awards": []
     },
     {
       "id": "1776966975487",
@@ -3379,8 +3380,6 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -3405,9 +3404,18 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-16T08:27:34.828Z",
+      "updatedAt": "2026-05-22T07:25:25.085Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "",
+      "moods": [],
+      "awards": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1776976249517",
@@ -3430,8 +3438,6 @@
       "episodes": [],
       "genres": [
         "Acción",
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -3456,9 +3462,18 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-16T08:27:32.489Z",
+      "updatedAt": "2026-05-22T07:25:27.468Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "",
+      "moods": [],
+      "awards": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1776976364805",
@@ -3491,8 +3506,6 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -3560,8 +3573,6 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -3618,8 +3629,6 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -3686,8 +3695,6 @@
       "episodes": [],
       "genres": [
         "Acción",
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Misterio",
@@ -3753,8 +3760,6 @@
       "episodes": [],
       "genres": [
         "Acción",
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -3804,8 +3809,6 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -3865,8 +3868,6 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Oficina / Trabajo",
@@ -4027,8 +4028,6 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -4123,8 +4122,6 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Histórico",
@@ -4278,8 +4275,6 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -4437,8 +4432,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -4522,8 +4515,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -4696,8 +4687,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama"
       ],
@@ -4796,8 +4785,6 @@
       "bookUrl": "https://en.mebmarket.com/ebook-426054-El-Secreto-entre-Nosotras-Spanish-The-Secret-of-Us-%E0%B9%83%E0%B8%88%E0%B8%8B%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%A3%E0%B8%B1%E0%B8%81",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Idols / Entretenimiento",
@@ -4910,8 +4897,6 @@
       "bookUrl": "https://www.mebmarket.com/ebook-290406-Apple-%E0%B8%96%E0%B8%B6%E0%B8%87%E0%B9%80%E0%B8%98%E0%B8%AD---%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A3%E0%B8%B1%E0%B8%81-English-Version",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -4993,8 +4978,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -5470,8 +5453,6 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=181426",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama"
       ],
@@ -5545,8 +5526,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -5607,8 +5586,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -5696,8 +5673,6 @@
       "bookUrl": "https://www.mebmarket.com/ebook-332614-Reverse-4-You-Spanish-Version",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Fantasía",
@@ -5781,8 +5756,6 @@
       "bookUrl": "https://www.mebmarket.com/ebook-278699-Blank--English-version",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -5879,8 +5852,6 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=353321",
       "upcoming": true,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Misterio",
@@ -5957,8 +5928,6 @@
       "bookUrl": "https://en.mebmarket.com/ebook-260047-Pluto--English-version",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Misterio",
@@ -6068,8 +6037,6 @@
       "bookUrl": "https://www.mebmarket.com/ebook-230854-MATE-1-%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%A3%E0%B8%B1%E0%B8%81-English-version",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -6143,8 +6110,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama"
       ],
@@ -6240,8 +6205,6 @@
       "bookUrl": "https://www.mebmarket.com/ebook-358801-Kassatithan-Spanish-Version",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Fantasía",
@@ -6344,8 +6307,6 @@
       "bookUrl": "https://www.mebmarket.com/ebook-344508-Spanish-Version-Reverse-with-me-Across-Millions-of-Orbits",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Fantasía",
@@ -6422,8 +6383,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -6483,8 +6442,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -6570,8 +6527,6 @@
       "bookUrl": "https://en.mebmarket.com/ebook-252333-Affair-%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%99%E0%B8%81%E0%B8%A5-English-version",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Melodrama",
@@ -6641,8 +6596,6 @@
       "bookUrl": "",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Histórico",
@@ -6717,8 +6670,6 @@
       "bookUrl": "https://en.mebmarket.com/ebook-313383-Rhythm-Vol--1-%E0%B9%80%E0%B8%98%E0%B8%AD%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B0%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AB%E0%B8%B1%E0%B8%A7%E0%B9%83%E0%B8%88-English-version",
       "upcoming": true,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance",
@@ -6777,8 +6728,6 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=306830",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -6885,8 +6834,6 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=343980",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance"
@@ -6980,8 +6927,6 @@
       "bookUrl": "https://www.amazon.es/23-5-Earth-Spinning-Around-English-ebook/dp/B0C1JKLC9Q",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Escolar",
@@ -7091,8 +7036,6 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=391312",
       "upcoming": true,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Fantasía",
@@ -7151,8 +7094,6 @@
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=381259",
       "upcoming": false,
       "genres": [
-        "Animación",
-        "Anime",
         "Comedia",
         "Drama",
         "Romance",
@@ -9003,7 +8944,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:43:33.973Z",
+      "updatedAt": "2026-05-22T07:23:56.184Z",
       "nameEn": "รินไม่มีวันรัก ตอน พิเศษ",
       "category": "series",
       "seriesType": "serie",
@@ -9031,7 +8972,10 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135987498"
+      "productoraId": "1779135987498",
+      "sourceType": "novela",
+      "moods": [],
+      "awards": []
     },
     {
       "id": "1777455928497",
@@ -9141,14 +9085,25 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-05-15T10:52:36.297Z",
+      "updatedAt": "2026-05-22T07:24:05.130Z",
       "nameEn": "สถานะรักถูกปิดกั้น",
       "category": "series",
       "seriesType": "serie",
       "cast": [],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "sourceType": "novela",
+      "moods": [],
+      "awards": [],
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777459145338",
@@ -9204,7 +9159,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:48:07.606Z",
+      "updatedAt": "2026-05-22T07:24:10.883Z",
       "nameEn": "ฉันหลงรักเทวดาของฉัน",
       "category": "series",
       "seriesType": "serie",
@@ -9232,7 +9187,10 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136330823"
+      "productoraId": "1779136330823",
+      "sourceType": "novela",
+      "moods": [],
+      "awards": []
     },
     {
       "id": "1777459217758",
@@ -9265,7 +9223,7 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-05-18T20:46:03.140Z",
+      "updatedAt": "2026-05-22T07:24:15.552Z",
       "nameEn": "CRUSH คนอะไรน่ารักเท่าโลก",
       "category": "series",
       "seriesType": "serie",
@@ -9293,7 +9251,10 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136303417"
+      "productoraId": "1779136303417",
+      "sourceType": "novela",
+      "moods": [],
+      "awards": []
     },
     {
       "id": "1777459342439",
@@ -9346,7 +9307,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:43:53.365Z",
+      "updatedAt": "2026-05-22T07:24:19.079Z",
       "nameEn": "ปิ๊งรักคุณพี่เย็นชา",
       "category": "series",
       "seriesType": "serie",
@@ -9374,7 +9335,10 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135987498"
+      "productoraId": "1779135987498",
+      "sourceType": "novela",
+      "moods": [],
+      "awards": []
     },
     {
       "id": "1777459392058",
@@ -9402,7 +9366,7 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-05-19T07:59:21.293Z",
+      "updatedAt": "2026-05-22T07:24:21.561Z",
       "nameEn": "น้อง Sideline",
       "category": "series",
       "seriesType": "serie",
@@ -9430,7 +9394,10 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136384575"
+      "productoraId": "1779136384575",
+      "sourceType": "novela",
+      "moods": [],
+      "awards": []
     },
     {
       "id": "1777459455348",
@@ -32887,5 +32854,5 @@
       "id": "1779434253511"
     }
   ],
-  "exportedAt": "2026-05-22T07:17:38.929Z"
+  "exportedAt": "2026-05-22T07:25:46.966Z"
 }
