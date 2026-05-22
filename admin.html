@@ -853,13 +853,15 @@ function genreChipsHtml(selected=[]){
   return GENRES.map(g=>`<span class="genre-chip${selected.includes(g)?' selected':''}" onclick="this.classList.toggle('selected')">${g}</span>`).join('');
 }
 function getSelectedGenres(containerId){
-  return [...document.querySelectorAll(`#${containerId} .genre-chip.selected`)].map(c=>c.textContent);
+  const _el=_findInModal(containerId)||document.getElementById(containerId);
+  return [...(_el?_el.querySelectorAll('.genre-chip.selected'):document.querySelectorAll(`#${containerId} .genre-chip.selected`))].map(c=>c.textContent);
 }
 function moodChipsHtml(selected=[]){
   return MOODS.map(m=>`<span class="mood-chip${selected.includes(m)?' selected':''}" onclick="this.classList.toggle('selected')">${m}</span>`).join('');
 }
 function getSelectedMoods(containerId){
-  return [...document.querySelectorAll(`#${containerId} .mood-chip.selected`)].map(c=>c.textContent);
+  const _el=_findInModal(containerId)||document.getElementById(containerId);
+  return [...(_el?_el.querySelectorAll('.mood-chip.selected'):document.querySelectorAll(`#${containerId} .mood-chip.selected`))].map(c=>c.textContent);
 }
 function sourceTypeChipsHtml(selected=''){
   return SOURCE_TYPES.map(st=>`<span class="source-type-chip${selected===st.value?' selected':''}" data-value="${st.value}" onclick="selectSourceType(this)">${st.label}</span>`).join('');
@@ -869,7 +871,8 @@ function selectSourceType(el){
   el.classList.toggle('selected');
 }
 function getSelectedSourceType(containerId){
-  const sel=document.querySelector(`#${containerId} .source-type-chip.selected`);
+  const _el=_findInModal(containerId)||document.getElementById(containerId);
+  const sel=_el?_el.querySelector('.source-type-chip.selected'):document.querySelector(`#${containerId} .source-type-chip.selected`);
   return sel?sel.dataset.value:'';
 }
 function platformSelectHtml(){
@@ -952,7 +955,7 @@ function addCountryRow(listId, value=''){
 }
 
 function initCountries(listId, countryStr){
-  const list=document.getElementById(listId);
+  const list=_findInModal(listId)||document.getElementById(listId);
   if(!list) return;
   list.innerHTML='';
   // country may be stored as "España / Corea del Sur" or plain "España"
@@ -962,7 +965,8 @@ function initCountries(listId, countryStr){
 }
 
 function getCountries(listId){
-  const rows=document.querySelectorAll(`#${listId} .country-row`);
+  const _cl=_findInModal(listId)||document.getElementById(listId);
+  const rows=_cl?_cl.querySelectorAll('.country-row'):document.querySelectorAll(`#${listId} .country-row`);
   const result=[];
   rows.forEach(r=>{
     const sel=r.querySelector('select');
@@ -1399,9 +1403,16 @@ function renderMovies(){
   grid.insertAdjacentHTML('beforeend', paginationHtml('movies', filtered.length, totalPages, page));
 }
 
-function closeAll(){ document.querySelectorAll('.modal-bg').forEach(m=>m.classList.remove('open')); 
-  document.getElementById('animeModal')?.classList.remove('open');
-  document.getElementById('realityModal')?.classList.remove('open');
+function closeAll(){
+  document.querySelectorAll('.modal-bg').forEach(m=>m.classList.remove('open'));
+  // Clear modal bodies so stale IDs don't pollute future getElementById calls
+  ['seriesModalBody','animeModalBody','realityModalBody'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.innerHTML='';
+  });
+  // Reset poster state
+  _posterRot=0; _posterFlipped=false; _posterOrigSrc='';
+  _posterOffsetX=0; _posterOffsetY=0;
 }
 document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{ if(e.target===m)closeAll(); }));
 
@@ -1411,14 +1422,14 @@ let _posterOffsetX=0, _posterOffsetY=0;
 
 function switchPosterTab(tab, btn){
   document.querySelectorAll('#posterEditorWrap .poster-tab').forEach(t=>t.classList.toggle('active',t.dataset.ptab===tab));
-  document.getElementById('posterPanel_url').classList.toggle('active',tab==='url');
-  document.getElementById('posterPanel_upload').classList.toggle('active',tab==='upload');
+  (_findInModal('posterPanel_url')||document.getElementById('posterPanel_url')).classList.toggle('active',tab==='url');
+  (_findInModal('posterPanel_upload')||document.getElementById('posterPanel_upload')).classList.toggle('active',tab==='upload');
 }
 
 /* ── Preview using <img> + CSS (no CORS needed) ── */
 function _posterRefreshPreview(){
-  const wrap=document.getElementById('posterImgWrap');
-  const img=document.getElementById('posterPreviewImg');
+  const wrap=_findInModal('posterImgWrap');
+  const img=_findInModal('posterPreviewImg');
   if(!wrap||!img||!_posterOrigSrc) return;
 
   const rot=_posterRot, flip=_posterFlipped;
@@ -1470,7 +1481,7 @@ function _posterDetectOverflow(img, rotated){
   // Use natural dims to determine if there's overflow worth panning
   const nw=img.naturalWidth||0, nh=img.naturalHeight||0;
   if(!nw||!nh){ _posterUpdatePanUI(false,false); return; }
-  const wrap=document.getElementById('posterImgWrap');
+  const wrap=_findInModal('posterImgWrap');
   const ww=wrap?.offsetWidth||60, wh=wrap?.offsetHeight||90;
   // visual dims of image inside wrap after rotation
   const visW=rotated?nh:nw, visH=rotated?nw:nh;
@@ -1482,7 +1493,7 @@ function _posterDetectOverflow(img, rotated){
 /* ── Bake to base64 at save time (only for base64 sources or if CORS succeeds) ── */
 function _posterBakeToValue(){
   return new Promise(resolve=>{
-    const val=document.getElementById('f_poster_value');
+    const val=_findInModal('f_poster_value');
     const isBase64=_posterOrigSrc.startsWith('data:');
     // If no edits at all and not base64, keep the URL as-is
     if(!isBase64 && _posterRot===0 && !_posterFlipped && _posterOffsetX===0 && _posterOffsetY===0){
@@ -1541,17 +1552,17 @@ function _posterUpdatePanUI(hasX, hasY){
 function posterSetImage(src){
   _posterRot=0; _posterFlipped=false; _posterOrigSrc=src;
   _posterOffsetX=0; _posterOffsetY=0;
-  const panH=document.getElementById('posterPanH'); if(panH) panH.value=0;
-  const panV=document.getElementById('posterPanV'); if(panV) panV.value=0;
-  const row=document.getElementById('posterEditRow');
-  const val=document.getElementById('f_poster_value');
+  const panH=_findInModal('posterPanH'); if(panH) panH.value=0;
+  const panV=_findInModal('posterPanV'); if(panV) panV.value=0;
+  const row=_findInModal('posterEditRow');
+  const val=_findInModal('f_poster_value');
   if(!src){ if(row) row.style.display='none'; if(val) val.value=''; return; }
   if(row) row.style.display='flex';
   if(val) val.value=src;
-  const b=document.getElementById('posterBright'),c=document.getElementById('posterContrast');
-  if(b){b.value=100;document.getElementById('posterBrightVal').textContent='100%';}
-  if(c){c.value=100;document.getElementById('posterContrastVal').textContent='100%';}
-  const img=document.getElementById('posterPreviewImg');
+  const b=_findInModal('posterBright'),cntr=_findInModal('posterContrast');
+  if(b){b.value=100;const bv=_findInModal('posterBrightVal');if(bv)bv.textContent='100%';}
+  if(cntr){cntr.value=100;const cv=_findInModal('posterContrastVal');if(cv)cv.textContent='100%';}
+  const img=_findInModal('posterPreviewImg');
   if(img){ img.src=src; img.onload=()=>_posterRefreshPreview(); }
   else _posterRefreshPreview();
 }
@@ -1565,9 +1576,9 @@ function posterRotate(deg){
 }
 function posterFlip(){ _posterFlipped=!_posterFlipped; _posterRefreshPreview(); }
 function posterApplyFilters(){
-  const b=document.getElementById('posterBright'),c=document.getElementById('posterContrast');
-  if(b) document.getElementById('posterBrightVal').textContent=b.value+'%';
-  if(c) document.getElementById('posterContrastVal').textContent=c.value+'%';
+  const b=_findInModal('posterBright'),c=_findInModal('posterContrast');
+  if(b){const bv=_findInModal('posterBrightVal');if(bv)bv.textContent=b.value+'%';}
+  if(c){const cv=_findInModal('posterContrastVal');if(cv)cv.textContent=c.value+'%';}
   _posterRefreshPreview();
 }
 function posterPan(axis,v){
@@ -1576,11 +1587,11 @@ function posterPan(axis,v){
   _posterRefreshPreview();
 }
 function posterClear(){
-  const inp=document.getElementById('f_poster'); if(inp) inp.value='';
-  const inp2=document.getElementById('mf_poster'); if(inp2) inp2.value='';
-  const val=document.getElementById('f_poster_value'); if(val) val.value='';
-  const row=document.getElementById('posterEditRow'); if(row) row.style.display='none';
-  const img=document.getElementById('posterPreviewImg'); if(img) img.src='';
+  const inp=_findInModal('f_poster'); if(inp) inp.value='';
+  const inp2=_findInModal('mf_poster'); if(inp2) inp2.value='';
+  const val=_findInModal('f_poster_value'); if(val) val.value='';
+  const row=_findInModal('posterEditRow'); if(row) row.style.display='none';
+  const img=_findInModal('posterPreviewImg'); if(img) img.src='';
   _posterRot=0; _posterFlipped=false; _posterOrigSrc='';
   _posterOffsetX=0; _posterOffsetY=0;
   const fi=document.getElementById('posterFileInput'); if(fi) fi.value='';
@@ -1601,13 +1612,13 @@ function posterHandleDrop(e){
 }
 
 function bindPoster(){
-  const inp=document.getElementById('f_poster')||document.getElementById('mf_poster');
+  const inp=_findInModal('f_poster')||_findInModal('mf_poster');
   if(inp){
     inp.addEventListener('input',()=>{ const v=inp.value.trim(); if(v) posterSetImage(v); else posterClear(); });
-    const existingVal=document.getElementById('f_poster_value')?.value||inp.value.trim();
+    const existingVal=_findInModal('f_poster_value')?.value||inp.value.trim();
     if(existingVal) posterSetImage(existingVal);
   }
-  const bcInp=document.getElementById('f_bookcoverurl'),bcPrev=document.getElementById('bookCoverPreview');
+  const bcInp=_findInModal('f_bookcoverurl'),bcPrev=_findInModal('bookCoverPreview');
   if(bcInp&&bcPrev){
     bcInp.addEventListener('input',()=>{ if(bcInp.value.trim()){bcPrev.src=bcInp.value.trim();bcPrev.style.display='block';}else{bcPrev.style.display='none';} });
   }
@@ -1615,12 +1626,12 @@ function bindPoster(){
 
 /* Return final poster value — bakes canvas at save time */
 async function getPosterValue(){
-  if(!_posterOrigSrc) return document.getElementById('f_poster')?.value.trim()||document.getElementById('mf_poster')?.value.trim()||'';
+  if(!_posterOrigSrc) return _findInModal('f_poster')?.value.trim()||_findInModal('mf_poster')?.value.trim()||'';
   return await _posterBakeToValue();
 }
 
 function togglePosterExpand(){
-  const row=document.getElementById('posterEditRow');
+  const row=_findInModal('posterEditRow');
   if(!row) return;
   const expanded=row.classList.toggle('expanded');
   // Update all "Ampliar" buttons in the active form
@@ -1629,8 +1640,8 @@ function togglePosterExpand(){
   });
 }
 function toggleBookFields(){
-  const checked=document.getElementById('f_book')?.checked;
-  const el=document.getElementById('bookExtraFields');
+  const checked=_findInModal('f_book')?.checked;
+  const el=_findInModal('bookExtraFields');
   if(el) el.style.display=checked?'':'none';
 }
 function bindDowChips(){ document.querySelectorAll('.dow-chip').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('selected'))); }
@@ -1656,7 +1667,7 @@ function dowChipsHtml(selectedDays=[]){
 }
 
 function addSeasonBlock(seasonData=null, idx=null){
-  const list=document.getElementById('seasonsList');
+  const list=_findInModal('seasonsList');
   if(!list) return;
   const blockIdx=list.children.length;
   const label=seasonData?.label||(blockIdx===0?'Temporada 1':`Temporada ${blockIdx+1}`);
@@ -1753,7 +1764,7 @@ function addSeasonBlock(seasonData=null, idx=null){
 }
 
 function renumberSeasons(){
-  const list=document.getElementById('seasonsList');
+  const list=_findInModal('seasonsList');
   if(!list) return;
   [...list.children].forEach((block,i)=>{
     const inp=block.querySelector('.season-block-title input');
@@ -1764,7 +1775,7 @@ function renumberSeasons(){
 }
 
 function initSeasons(seasonsData){
-  const list=document.getElementById('seasonsList');
+  const list=_findInModal('seasonsList');
   if(!list) return;
   list.innerHTML='';
   if(seasonsData&&seasonsData.length){
@@ -1820,7 +1831,7 @@ function updatePremiereLabels(block){
 }
 
 function getSeasonsData(){
-  const list=document.getElementById('seasonsList');
+  const list=_findInModal('seasonsList');
   if(!list) return [];
   const seasons=[];
   const blocks=[...list.children];
@@ -2217,15 +2228,24 @@ function openEdit(si){
   populateAwards('awardsAdminList', series[si].awards||[]);
 }
 
+// ── Scope helpers: find elements inside the ACTIVE open modal ──────────────────
+function _activeModal(){
+  return document.querySelector('.modal-bg.open');
+}
+function _findInModal(id){
+  const m=_activeModal();
+  return (m&&m.querySelector('#'+id)) || document.getElementById(id);
+}
+
 function initPlatforms(links){
-  const list=document.getElementById('platformsList');
+  const list=_findInModal('platformsList');
   if(!list) return;
   list.innerHTML='';
-  if(!links.length){ addPlatformRow('',''); return; }
+  if(!links||!links.length){ addPlatformRow('',''); return; }
   links.forEach(l=>addPlatformRow(l.name,l.url));
 }
 function addPlatformRow(name='',url='', listId='platformsList'){
-  const list=document.getElementById('platformsList');
+  const list=_findInModal('platformsList');
   if(!list) return;
   const row=document.createElement('div'); row.className='platform-row-sel';
   row.innerHTML=`
@@ -2239,7 +2259,8 @@ function addPlatformRow(name='',url='', listId='platformsList'){
   list.appendChild(row);
 }
 function getWatchLinks(){
-  const rows=document.querySelectorAll('#platformsList .platform-row-sel');
+  const list=_findInModal('platformsList');
+  const rows=list?list.querySelectorAll('.platform-row-sel'):document.querySelectorAll('#platformsList .platform-row-sel');
   const links=[];
   rows.forEach(r=>{
     const inputs=r.querySelectorAll('input');
@@ -2284,7 +2305,7 @@ function addBookEditionRow(){ buildEditionRow('bookEditionsList'); }
 function addMovieBookEditionRow(){ buildEditionRow('movieBookEditionsList'); }
 
 function initBookEditions(listId, editions, legacyUrl){
-  const list=document.getElementById(listId); if(!list) return;
+  const list=(_findInModal(listId)||document.getElementById(listId)); if(!list) return;
   list.innerHTML='';
   if(editions&&editions.length){
     editions.forEach(e=>buildEditionRow(listId, e.lang||'es', e.store||'Amazon', e.url||''));
@@ -2294,7 +2315,8 @@ function initBookEditions(listId, editions, legacyUrl){
 }
 
 function getBookEditions(listId){
-  const rows=document.querySelectorAll(`#${listId} .book-edition-row`);
+  const _bel=_findInModal(listId)||document.getElementById(listId);
+  const rows=_bel?_bel.querySelectorAll('.book-edition-row'):document.querySelectorAll(`#${listId} .book-edition-row`);
   const editions=[];
   rows.forEach(r=>{
     const lang=r.querySelector('.edition-lang')?.value||'es';
@@ -2308,7 +2330,7 @@ function getBookEditions(listId){
 
 
 function quickSetCountry(country){
-  const list=document.getElementById('countriesList');
+  const list=_findInModal('countriesList');
   if(!list) return;
   list.innerHTML='';
   addCountryRow('countriesList', country);
@@ -2323,7 +2345,7 @@ function quickSetCountry(country){
 
 
 function quickAddPlatform(name, url){
-  const list=document.getElementById('platformsList');
+  const list=_findInModal('platformsList');
   if(!list) return;
   // Check if already added
   const existing=[...list.querySelectorAll('input[placeholder*="nombre"]')].map(i=>i.value.toLowerCase());
@@ -2462,6 +2484,7 @@ function openEditAnime(si){
   initCountries('countriesList', s.country||'');
   initSeasons(getSeasons(s));
   initCast(s.cast||[]);
+  populateAwards('awardsAdminList', s.awards||[]);
 }
 function openEpsAnime(si){ openEps(si); } // reuse same modal
 
@@ -2493,6 +2516,7 @@ function openEditReality(si){
   initCountries('countriesList', s.country||'');
   initSeasons(getSeasons(s));
   initCast(s.cast||[]);
+  populateAwards('awardsAdminList', s.awards||[]);
 }
 
 /* ═══ RENDER ANIME GRID ═══ */
@@ -3099,7 +3123,7 @@ function bindMovieForm(){
       if(v){ posterSetImage(v); }
       else posterClear();
     });
-    const existingVal=document.getElementById('f_poster_value')?.value||inp.value.trim();
+    const existingVal=_findInModal('f_poster_value')?.value||inp.value.trim();
     if(existingVal){ posterSetImage(existingVal); }
   }
   const bc=document.getElementById('mf_bookcoverurl'),bcp=document.getElementById('movieBookCoverPreview');
@@ -3575,11 +3599,11 @@ function runPasteAutofill(type){
       filled++;
     }
     if(info.totalEpisodes||info.startDate){
-      var sl=document.getElementById('seasonsList');
+      var sl=_findInModal('seasonsList')||document.getElementById('seasonsList');
       if(sl){sl.innerHTML='';addSeasonBlock({label:'Temporada 1',startDate:info.startDate||'',totalEpisodes:info.totalEpisodes||12,emissionDays:info.emissionDays,skipDates:[],episodes:[]});filled++;}
     }
     if(watchLinks.length){
-      var wl=document.getElementById('platformsList');
+      var wl=_findInModal('platformsList')||document.getElementById('platformsList');
       if(wl&&!wl.children.length){addPlatformRow({name:info.network||'Ver',url:watchLinks[0]});filled++;}
     }
   } else {
@@ -3752,14 +3776,14 @@ async function delActress(ai){
 }
 
 function initCast(castData){
-  const list=document.getElementById('castList');
+  const list=_findInModal('castList');
   if(!list) return;
   list.innerHTML='';
   (castData||[]).forEach(m=>addCastMember(m));
 }
 
 function addCastMember(data){
-  const list=document.getElementById('castList');
+  const list=_findInModal('castList');
   if(!list) return;
   if(!actresses.length){
     alert('Primero añade actrices en la sección "🎭 Actrices".');
@@ -3901,7 +3925,8 @@ function getActressThumb(actressId){
 }
 
 function getCastData(){
-  const rows=document.querySelectorAll('#castList .cast-admin-row');
+  const cl=_findInModal('castList');
+  const rows=cl?cl.querySelectorAll('.cast-admin-row'):document.querySelectorAll('#castList .cast-admin-row');
   const cast=[];
   rows.forEach(row=>{
     const actressId=row.querySelector('.cast-actress-sel')?.value;
@@ -4680,7 +4705,7 @@ function addAwardRow(containerId, award){
 }
 
 function getAwards(containerId){
-  const list = document.getElementById(containerId);
+  const list = _findInModal(containerId)||document.getElementById(containerId);
   if(!list) return [];
   return [...list.querySelectorAll('.award-admin-row')].map(row=>{
     const get = f => row.querySelector(`[data-field="${f}"]`)?.value.trim()||'';
@@ -4695,7 +4720,7 @@ function getAwards(containerId){
 }
 
 function populateAwards(containerId, awards){
-  const list = document.getElementById(containerId);
+  const list = _findInModal(containerId)||document.getElementById(containerId);
   if(!list) return;
   list.innerHTML = '';
   (awards||[]).forEach(a=>addAwardRow(containerId, a));

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
 // Ejecutar ANTES del CSS para evitar el flash del menú abierto en móvil
-if(window.innerWidth<=700){
+if(window.innerWidth<=860){
   document.documentElement.classList.add('is-mobile');
 }
 // Dark mode: aplicar ANTES de render para evitar flash
@@ -300,11 +300,25 @@ footer{
 }
 
 /* Mobile nav */
-@media(max-width:860px){
+
+/* 1100px → reducir padding nav-links y buscador */
+@media(max-width:1100px){
+  .navbar-inner{padding:0 1.25rem}
+  .navbar-search-inp{width:150px}
+  .nav-link{padding:6px 10px;font-size:12.5px}
+}
+
+/* 960px → ocultar logo-sub, reducir buscador más */
+@media(max-width:960px){
   .logo-divider,.logo-sub{display:none}
   .navbar-search-inp{width:120px}
+  .nav-link{padding:6px 8px;font-size:12px}
 }
-@media(max-width:700px){
+
+/* 860px → ocultar buscador de escritorio, activar hamburger
+   El menú sigue visible en línea hasta aquí pero más compacto */
+@media(max-width:860px){
+  #navSearchWrap{display:none!important}
   .navbar-hamburger{display:flex}
   .navbar-inner{flex-wrap:nowrap;position:relative;gap:0}
   .navbar-links{
@@ -315,11 +329,10 @@ footer{
     backdrop-filter:blur(16px);
     max-height:calc(100vh - 58px);overflow-y:auto;
   }
+  html[data-theme="dark"] .navbar-links{background:rgba(27,16,32,0.98)}
   .navbar-links.open{display:flex}
   .nav-link{justify-content:flex-start;padding:10px 12px;border-radius:10px;font-size:14px}
   .navbar-right{margin-left:auto;gap:6px}
-  /* Ocultar buscador de escritorio en móvil */
-  #navSearchWrap{display:none!important}
   /* Buscador dentro del menú móvil */
   .navbar-search-wrap.mobile-menu-search{
     border-radius:12px;background:var(--surface2);border-color:var(--border2);
@@ -344,6 +357,13 @@ footer{
     display:flex;
   }
   .nav-picks-item,.tab-more-item{padding:8px 12px;font-size:13px;border-radius:8px}
+}
+
+/* 700px → móvil puro (ya heredan lo de arriba) */
+@media(max-width:700px){
+  .navbar-right{gap:5px}
+  .dark-toggle{width:30px;height:30px;font-size:13px}
+  .navbar-x-btn{width:30px;height:30px}
 }
 
 /* ═══ HERO ═══ */
