@@ -2047,11 +2047,6 @@ function formHtml(s, forcedCategory=null){
       </div>
 
       <div class="form-row">
-        <label class="form-label">Tono / Mood <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(atmósfera emocional de la serie)</span></label>
-        <div class="mood-chips" id="f_moods">${moodChipsHtml(s&&s.moods?s.moods:[])}</div>
-      </div>
-
-      <div class="form-row">
         <label class="form-label">🏆 Premios y festivales <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(opcional)</span></label>
         <div id="awardsAdminList" style="display:flex;flex-direction:column;gap:0"></div>
         <button type="button" class="platform-add-btn" onclick="addAwardRow('awardsAdminList')" style="margin-top:4px;background:var(--yellow-soft);color:#7a5800;border-color:var(--yellow)">+ Añadir premio / nominación</button>
@@ -2086,7 +2081,11 @@ function formHtml(s, forcedCategory=null){
         </div>
       </div>
 
-      <div class="divider"></div>
+    </div>
+
+    <!-- ══ COLUMNA DERECHA: temporadas ══ -->
+    <div class="form-col-right" id="schedFields" style="${isUpcoming?'display:none':''}">
+
       <div class="form-section-hd">🎭 Reparto GL</div>
       <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas en la sección Actrices. Indica el personaje y a qué pareja pertenece (P1, P2…)</div>
       <button type="button" class="platform-add-btn" onclick="addCastMember(null)" style="margin-bottom:8px">+ Añadir actriz al reparto</button>
@@ -2131,10 +2130,8 @@ function formHtml(s, forcedCategory=null){
           <div class="toggle-desc">Aparece en la pestaña "🌟 Picks 2026" del index</div>
         </div>
       </label>
-    </div>
 
-    <!-- ══ COLUMNA DERECHA: temporadas ══ -->
-    <div class="form-col-right" id="schedFields" style="${isUpcoming?'display:none':''}">
+      <div class="divider" style="margin:14px 0"></div>
       <div class="form-section-hd">📅 Temporadas y emisión</div>
 
       <!-- Temporada anime / documental -->
