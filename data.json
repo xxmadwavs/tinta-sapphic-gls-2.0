@@ -128,7 +128,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:44:13.732Z",
+      "updatedAt": "2026-05-23T18:35:48.386Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -204,7 +204,22 @@
       "snNote": "",
       "productoraId": "1779134050424",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Amigas con beneficios",
+        "Amor no correspondido",
+        "Amor prohibido",
+        "Coming Out tardío",
+        "Despertar lésbico",
+        "Segunda oportunidad",
+        "Triángulo amoroso"
+      ],
+      "dinamica": [
+        "Famosa × Anónima",
+        "Femme × Femme",
+        "Rica × Pobre"
+      ],
+      "awards": []
     },
     {
       "id": "1776889141176",
@@ -303,7 +318,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:49:11.369Z",
+      "updatedAt": "2026-05-23T18:21:18.709Z",
       "nameEn": "รักเติมเต็ม",
       "episodeDuration": 47,
       "myPick": false,
@@ -313,7 +328,14 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135450707"
+      "productoraId": "1779135450707",
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [
+        "Femme × Femme"
+      ],
+      "awards": []
     },
     {
       "id": "1776889264943",
@@ -470,7 +492,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:44:29.973Z",
+      "updatedAt": "2026-05-23T18:21:54.816Z",
       "nameEn": "คุณแฟนบ้านนอก",
       "episodeDuration": 51,
       "myPick": false,
@@ -482,7 +504,15 @@
       "snNote": "",
       "productoraId": "1779135954653",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Tropo de los celos",
+        "Matrimonio de conveniencia"
+      ],
+      "dinamica": [
+        "Masc × Femme"
+      ],
+      "awards": []
     },
     {
       "id": "1776889365998",
@@ -592,7 +622,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T07:24:53.209Z",
+      "updatedAt": "2026-05-23T18:26:35.674Z",
       "nameEn": "นทีร้อยเล่ห์",
       "episodeDuration": 64,
       "myTop10": true,
@@ -607,7 +637,15 @@
       "productoraId": "1779135760151",
       "sourceType": "novela",
       "moods": [],
-      "awards": []
+      "awards": [],
+      "tropos": [
+        "Romance en el trabajo"
+      ],
+      "dinamica": [
+        "Jefa × Subordinada",
+        "Gruñona × Sunshine",
+        "Masc × Femme"
+      ]
     },
     {
       "id": "1776889415383",
@@ -730,7 +768,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T07:24:56.901Z",
+      "updatedAt": "2026-05-23T18:22:56.113Z",
       "nameEn": "เสน่หาวาโย",
       "episodeDuration": "",
       "myPick": false,
@@ -743,7 +781,14 @@
       "productoraId": "1779135760151",
       "sourceType": "novela",
       "moods": [],
-      "awards": []
+      "awards": [],
+      "tropos": [
+        "Bodyguard / VIP",
+        "Romance en el trabajo"
+      ],
+      "dinamica": [
+        "Masc × Femme"
+      ]
     },
     {
       "id": "1776889447326",
@@ -843,7 +888,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:44:41.604Z",
+      "updatedAt": "2026-05-23T18:23:00.299Z",
       "nameEn": "ลัลล์ไม่ชอบไวน์",
       "episodeDuration": 50,
       "myPick": false,
@@ -855,7 +900,17 @@
       "snNote": "",
       "productoraId": "1779134050424",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Enemigos a amantes",
+        "Proximidad forzada",
+        "Amigas con beneficios",
+        "Los opuestos se atraen"
+      ],
+      "dinamica": [
+        "Femme × Femme"
+      ],
+      "awards": []
     },
     {
       "id": "1776889488147",
@@ -925,7 +980,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T08:12:10.415Z",
+      "updatedAt": "2026-05-23T18:22:50.286Z",
       "episodeDuration": 66,
       "myPick": false,
       "myPick2026": false,
@@ -934,61 +989,14 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779177933075"
-    },
-    {
-      "id": "1776889550180",
-      "name": "Shades Cut Version",
-      "poster": "https://i.mydramalist.com/oQpb4x_4f.jpg",
-      "startDate": "2026-04-18",
-      "dayOfWeek": 5,
-      "emissionDays": [
-        5
+      "productoraId": "1779177933075",
+      "sourceType": "",
+      "moods": [],
+      "tropos": [
+        "Age Gap"
       ],
-      "totalEpisodes": 12,
-      "network": "",
-      "skipDates": [],
-      "episodes": [],
-      "synopsis": "En el internado femenino más elitista de Tailandia, las reglas están para romperse. Seis alumnas y una profesora desatan una tormenta de escándalos, deseo y revolución digital. A medida que amores ocultos y secretos explosivos chocan, destrozarán el mito de la chica buena y redefinirán lo que significa crecer en la era de los vídeos virales y la cultura de la cancelación",
-      "year": 2026,
-      "country": "Tailandia",
-      "networkUrl": "",
-      "watchLinks": [],
-      "trailerUrl": "https://youtu.be/wtBVUpEJBmA",
-      "bookSource": "",
-      "basedOnBook": false,
-      "bookCoverUrl": "",
-      "bookUrl": "",
-      "upcoming": false,
-      "bookLinks": [],
-      "genres": [
-        "Comedia",
-        "Drama",
-        "Escolar",
-        "Romance"
-      ],
-      "seasons": [
-        {
-          "label": "Temporada 1",
-          "startDate": "2026-04-18",
-          "totalEpisodes": 6,
-          "emissionDays": [
-            5
-          ],
-          "allInOneDay": false,
-          "skipDates": [],
-          "episodes": [],
-          "premiereSchedule": []
-        }
-      ],
-      "nameEn": "เด็ก เรียบ ร้าย",
-      "category": "series",
-      "seriesType": "serie",
-      "cast": [],
-      "animeSeason": "",
-      "renewedNextSeason": false,
-      "episodeDuration": 48,
-      "updatedAt": "2026-05-15T07:35:19.359Z"
+      "dinamica": [],
+      "awards": []
     },
     {
       "id": "1776930878872",
@@ -1003,7 +1011,7 @@
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/391629/Thumbnail/book_detail_large.gif?9",
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=391629",
-      "upcoming": true,
+      "upcoming": false,
       "skipDates": [],
       "episodes": [],
       "watchLinks": [],
@@ -1079,7 +1087,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T07:25:03.876Z",
+      "updatedAt": "2026-05-24T15:57:26.480Z",
       "nameEn": "โซ่รักอัคนี",
       "episodeDuration": "",
       "myPick": false,
@@ -1092,7 +1100,29 @@
       "productoraId": "1779135760151",
       "sourceType": "novela",
       "moods": [],
-      "awards": []
+      "awards": [],
+      "tropos": [
+        "Enemigos a amantes",
+        "Los opuestos se atraen",
+        "Proximidad forzada"
+      ],
+      "dinamica": [
+        "Masc × Femme"
+      ],
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-07-11",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ]
     },
     {
       "id": "1776931938317",
@@ -1151,7 +1181,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:44:49.226Z",
+      "updatedAt": "2026-05-23T18:23:16.128Z",
       "nameEn": "วาดฝันวันวิวาห์",
       "episodeDuration": "",
       "myPick": false,
@@ -1163,7 +1193,14 @@
       "snNote": "",
       "productoraId": "1779135450707",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Segunda oportunidad"
+      ],
+      "dinamica": [
+        "Femme × Femme"
+      ],
+      "awards": []
     },
     {
       "id": "1776932166717",
@@ -1211,7 +1248,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:44:51.857Z",
+      "updatedAt": "2026-05-23T18:26:47.291Z",
       "nameEn": "รักได้ไหม",
       "episodeDuration": "",
       "myPick": false,
@@ -1223,7 +1260,16 @@
       "snNote": "",
       "productoraId": "1779135450707",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Amor prohibido",
+        "Romance rico / pobre"
+      ],
+      "dinamica": [
+        "Femme × Femme",
+        "Rica × Pobre"
+      ],
+      "awards": []
     },
     {
       "id": "1776932289648",
@@ -1393,7 +1439,7 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-15T07:37:04.066Z",
+      "updatedAt": "2026-05-23T18:36:06.758Z",
       "nameEn": "온앤오프 ON&OFF 3",
       "cast": [
         {
@@ -1409,7 +1455,25 @@
           "coupleNum": 1
         }
       ],
-      "episodeDuration": 10
+      "episodeDuration": 10,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [
+        "Romance en el trabajo"
+      ],
+      "dinamica": [
+        "Femme × Femme",
+        "Jefa × Subordinada"
+      ],
+      "awards": [],
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1776965675311",
@@ -1481,7 +1545,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T07:53:14.454Z",
+      "updatedAt": "2026-05-23T18:45:47.760Z",
       "nameEn": "เพื่อเธออีกครั้ง",
       "episodeDuration": 55,
       "myTop10": false,
@@ -1493,7 +1557,20 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779177125091"
+      "productoraId": "1779177125091",
+      "sourceType": "",
+      "moods": [],
+      "tropos": [
+        "Amantes predestinados",
+        "Jefa y empleada",
+        "Segunda oportunidad"
+      ],
+      "dinamica": [
+        "Femme × Femme",
+        "Protectora × Delicada",
+        "Rica × Pobre"
+      ],
+      "awards": []
     },
     {
       "id": "1776965794937",
@@ -1754,8 +1831,8 @@
         }
       ],
       "animeSeason": "",
-      "renewedNextSeason": false,
-      "updatedAt": "2026-05-18T20:52:13.006Z",
+      "renewedNextSeason": true,
+      "updatedAt": "2026-05-23T18:25:15.387Z",
       "nameEn": "เด็ก เรียบ ร้าย",
       "episodeDuration": 48,
       "myPick": false,
@@ -1765,7 +1842,21 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779137481839"
+      "productoraId": "1779137481839",
+      "sourceType": "",
+      "moods": [],
+      "awards": [],
+      "tropos": [
+        "Amor no correspondido",
+        "Enemigos a amantes",
+        "Proximidad forzada",
+        "Triángulo amoroso",
+        "Relación secreta",
+        "Amor no correspondido"
+      ],
+      "dinamica": [
+        "Femme × Femme"
+      ]
     },
     {
       "id": "1776966800863",
@@ -1927,7 +2018,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:45:03.798Z",
+      "updatedAt": "2026-05-23T18:36:19.108Z",
       "nameEn": "เลือดห้ามรัก",
       "episodeDuration": "",
       "sourceType": "novela",
@@ -1939,7 +2030,12 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": ""
+      "productoraId": "",
+      "awards": [],
+      "tropos": [],
+      "dinamica": [
+        "Vampira × Humana"
+      ]
     },
     {
       "id": "1776967103985",
@@ -2021,7 +2117,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:45:07.895Z",
+      "updatedAt": "2026-05-23T18:37:05.360Z",
       "sourceType": "novela",
       "moods": [],
       "episodeDuration": "",
@@ -2032,7 +2128,12 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": ""
+      "productoraId": "",
+      "tropos": [
+        "Romance en el trabajo"
+      ],
+      "dinamica": [],
+      "awards": []
     },
     {
       "id": "1776971232987",
@@ -2129,7 +2230,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:45:10.767Z",
+      "updatedAt": "2026-05-23T18:39:22.586Z",
       "nameEn": "",
       "episodeDuration": "",
       "myPick": false,
@@ -2141,7 +2242,18 @@
       "snNote": "",
       "productoraId": "1779135954653",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Los opuestos se atraen",
+        "Romance en el trabajo",
+        "Tropo de los celos"
+      ],
+      "dinamica": [
+        "Femme × Femme",
+        "Fría × Cálida",
+        "Gruñona × Sunshine"
+      ],
+      "awards": []
     },
     {
       "id": "1776971297117",
@@ -2257,7 +2369,23 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-14T18:58:23.898Z"
+      "updatedAt": "2026-05-23T18:40:20.207Z",
+      "sourceType": "",
+      "moods": [],
+      "tropos": [
+        "Amor prohibido"
+      ],
+      "dinamica": [],
+      "awards": [],
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1776971502360",
@@ -2317,7 +2445,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:45:14.759Z",
+      "updatedAt": "2026-05-23T18:40:39.486Z",
       "nameEn": "",
       "episodeDuration": "",
       "myPick": false,
@@ -2329,7 +2457,15 @@
       "snNote": "",
       "productoraId": "1779134050424",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Age Gap",
+        "Amigas con beneficios"
+      ],
+      "dinamica": [
+        "Femme × Femme"
+      ],
+      "awards": []
     },
     {
       "id": "1776971628835",
@@ -2479,7 +2615,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:45:20.631Z",
+      "updatedAt": "2026-05-23T18:41:10.719Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -2490,7 +2626,15 @@
       "snNote": "",
       "productoraId": "1779137481839",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Jefa y empleada"
+      ],
+      "dinamica": [
+        "Jefa × Subordinada",
+        "Rica × Pobre"
+      ],
+      "awards": []
     },
     {
       "id": "1776972122133",
@@ -2857,7 +3001,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:45:27.337Z",
+      "updatedAt": "2026-05-23T18:41:32.153Z",
       "nameEn": "",
       "episodeDuration": "",
       "myPick": false,
@@ -2869,7 +3013,13 @@
       "snNote": "",
       "productoraId": "1779134050424",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Los opuestos se atraen",
+        "Proximidad forzada"
+      ],
+      "dinamica": [],
+      "awards": []
     },
     {
       "id": "1776973507673",
@@ -3344,7 +3494,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:45:37.325Z",
+      "updatedAt": "2026-05-23T18:42:23.807Z",
       "nameEn": "",
       "episodeDuration": "",
       "myTop10": true,
@@ -3358,7 +3508,15 @@
       "snNote": "",
       "productoraId": "1779134050424",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Age Gap",
+        "Relación secreta"
+      ],
+      "dinamica": [
+        "Femme × Femme"
+      ],
+      "awards": []
     },
     {
       "id": "1776976209757",
@@ -3478,7 +3636,7 @@
     {
       "id": "1776976364805",
       "name": "Love on Hire",
-      "poster": "https://i.mydramalist.com/81bVe2_4f.jpg",
+      "poster": "",
       "synopsis": "Thitinan acepta cualquier trabajo: fingir ser la novia de alguien y romper una relación o, especialmente para la señorita Chat, convertirse en su entrenadora sexual.",
       "year": "",
       "country": "Tailandia",
@@ -3529,7 +3687,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:45:43.581Z",
+      "updatedAt": "2026-05-23T18:42:00.026Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3540,7 +3698,10 @@
       "snNote": "",
       "productoraId": "1779135987498",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": []
     },
     {
       "id": "1776976452500",
@@ -3596,7 +3757,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:45:45.969Z",
+      "updatedAt": "2026-05-23T18:42:54.878Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3607,7 +3768,16 @@
       "snNote": "",
       "productoraId": "1779135760151",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [
+        "Amor prohibido",
+        "Enemigos a amantes",
+        "Proximidad forzada"
+      ],
+      "dinamica": [
+        "Femme × Femme"
+      ],
+      "awards": []
     },
     {
       "id": "1776976491416",
@@ -3721,7 +3891,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T07:55:33.177Z",
+      "updatedAt": "2026-05-23T18:43:07.781Z",
       "myTop10": true,
       "top10Rank": 0,
       "myPick": false,
@@ -3731,7 +3901,16 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136087730"
+      "productoraId": "1779136087730",
+      "sourceType": "",
+      "moods": [],
+      "tropos": [
+        "Romance rico / pobre"
+      ],
+      "dinamica": [
+        "Rica × Pobre"
+      ],
+      "awards": []
     },
     {
       "id": "1777017936367",
@@ -4166,7 +4345,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:46:22.879Z",
+      "updatedAt": "2026-05-23T18:45:23.285Z",
       "episodeDuration": 45,
       "myPick": false,
       "myPick2026": false,
@@ -4177,7 +4356,12 @@
       "snNote": "",
       "productoraId": "1779135376050",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [],
+      "dinamica": [
+        "Realeza × Plebeya"
+      ],
+      "awards": []
     },
     {
       "id": "1777048586253",
@@ -5801,11 +5985,23 @@
           "character": "Anueng",
           "coupleType": "main",
           "coupleNum": 1
+        },
+        {
+          "actressId": "1778761040196",
+          "character": "Sam",
+          "coupleType": "secondary",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778761114502",
+          "character": "Mon",
+          "coupleType": "secondary",
+          "coupleNum": 1
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:46:43.645Z",
+      "updatedAt": "2026-05-24T10:00:05.912Z",
       "episodeDuration": 47,
       "myPick": false,
       "myPick2026": false,
@@ -5816,7 +6012,10 @@
       "snNote": "",
       "productoraId": "1779136355146",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": []
     },
     {
       "id": "1777222930712",
@@ -18708,12 +18907,23 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:56:21.427Z",
+      "updatedAt": "2026-05-22T07:51:21.243Z",
       "seriesType": "serie",
       "cast": [],
       "renewedNextSeason": false,
       "nameEn": "私の推しは悪役令嬢。",
-      "episodeDuration": 24
+      "episodeDuration": 24,
+      "sourceType": "",
+      "moods": [],
+      "awards": [],
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1778406327495",
@@ -20776,6 +20986,205 @@
         }
       ],
       "updatedAt": "2026-05-22T07:40:53.021Z"
+    },
+    {
+      "id": "1779616671400",
+      "name": "Falling for My Hater",
+      "nameEn": "พักหัวใจที่ยัยแอนตี้แฟน",
+      "poster": "https://i.mydramalist.com/5vYymV_4c.jpg?v=1",
+      "synopsis": "",
+      "year": 2026,
+      "country": "Tailandia",
+      "network": "iQIYI",
+      "networkUrl": "https://www.iqiyi.com",
+      "watchLinks": [
+        {
+          "name": "iQIYI",
+          "url": "https://www.iqiyi.com"
+        }
+      ],
+      "trailerUrl": "https://x.com/Falling4hater/status/2036464945458717015?s=20",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Comedia",
+        "Drama",
+        "Misterio",
+        "Romance"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": [],
+      "category": "series",
+      "seriesType": "webserie",
+      "cast": [
+        {
+          "actressId": "1778761040196",
+          "character": "Nam",
+          "coupleType": "main",
+          "coupleNum": 1
+        },
+        {
+          "actressId": "1778761114502",
+          "character": "Gina",
+          "coupleType": "main",
+          "coupleNum": 1
+        }
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "1779176934811",
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-05-25",
+          "totalEpisodes": 12,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-24T09:57:51.400Z"
+    },
+    {
+      "id": "1779639066759",
+      "name": "A Ninja and an Assassin Under one roof",
+      "nameEn": "忍者と殺し屋のふたりぐらし",
+      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/dk23TT4JXGwPVZAZ1AT7iNYmcOE.jpg",
+      "synopsis": "De camino a casa un día tras las clases, Konoha Koga rescata a Satoko Kusagakure, una ninja que ha huido de su aldea. Poco después, sus perseguidores aparecen para capturarla, pero Konoha los derrota con sorprendente facilidad. Y es que, en realidad, esta aparentemente inofensiva estudiante de secundaria es en realidad una asesina. Así comienza la peligrosa y peculiar convivencia entre una ninja fugitiva y una asesina profesional.",
+      "year": 2025,
+      "country": "Japón",
+      "network": "Crunchyroll",
+      "networkUrl": "https://www.crunchyroll.com/es/series/GNVHKN9EW/a-ninja-and-an-assassin-under-one-roof?srsltid=AfmBOooqsfE4LuYCSSjepgyyZiDZCoqsXOYRMJ9YynMmLoyWIxmDFY-P",
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "https://www.crunchyroll.com/es/series/GNVHKN9EW/a-ninja-and-an-assassin-under-one-roof?srsltid=AfmBOooqsfE4LuYCSSjepgyyZiDZCoqsXOYRMJ9YynMmLoyWIxmDFY-P"
+        }
+      ],
+      "trailerUrl": "https://youtu.be/fcUnjQyNOLo?si=2ZLlcNI4OblV-Mqk",
+      "bookSource": "A Ninja and an Assassin Under one roof",
+      "basedOnBook": true,
+      "sourceType": "manga",
+      "bookCoverUrl": "https://m.media-amazon.com/images/I/71N5cRlakqL._AC_UF1000,1000_QL80_.jpg",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Comedia"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": [],
+      "category": "anime",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "Primavera 2025",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-04-10",
+          "totalEpisodes": 12,
+          "emissionDays": [
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-24T16:11:06.759Z"
+    },
+    {
+      "id": "1779639218592",
+      "name": "A Mangaka’s Weirdly Wonderful Workplace",
+      "nameEn": "笑顔のたえない職場です。",
+      "poster": "https://m.media-amazon.com/images/M/MV5BYWMyZTY0YmUtOGEzZi00ZWNhLWEyOTctYTNlNWRkZWI3YTM3XkEyXkFqcGc@._V1_.jpg",
+      "synopsis": "Futami, una dibujante novata de shojo, por fin va a publicar su querido manga de shogi, \"Dear Subaru\". Pero… el estrés le provoca dolor de estómago, se ve obligada a retrasar la entrega de su primer capítulo y no avanza con los storyboards. Para colmo, engorda por sus picoteos nocturnos y empieza a tener delirios disparatados. ¿Conseguirá Futami disfrutar de la vida como mangaka?",
+      "year": 2025,
+      "country": "Japón",
+      "network": "",
+      "networkUrl": "https://www.crunchyroll.com/es/series/GT00361926/a-mangakas-weirdly-wonderful-workplace",
+      "watchLinks": [
+        {
+          "name": "Crunchyroll",
+          "url": "https://www.crunchyroll.com/es/series/GT00361926/a-mangakas-weirdly-wonderful-workplace"
+        }
+      ],
+      "trailerUrl": "https://youtu.be/UfW04nno1CE?si=S4O88L-ruCW-xF_0",
+      "bookSource": "A Mangaka’s Weirdly Wonderful Workplace",
+      "basedOnBook": true,
+      "sourceType": "manga",
+      "bookCoverUrl": "https://m.media-amazon.com/images/I/91syfZDVz0L._UF1000,1000_QL80_.jpg",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Comedia"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": [],
+      "category": "anime",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "Otoño 2025",
+      "renewedNextSeason": false,
+      "episodeDuration": 23,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-10-06",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-24T16:13:38.592Z"
     }
   ],
   "movies": [
@@ -30150,34 +30559,6 @@
       "cast": []
     },
     {
-      "id": "1778500875179",
-      "name": "Asagao to Kase-san",
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/69Fy0t0QWGk1xPh0f3qcboT2VUs.jpg",
-      "synopsis": "Yui Yamada, una chica tímida que disfruta cuidando el jardín de su escuela, se enamora de la juvenil y atlética Tomoka Kase. Las dos eventualmente comienzan a salir, y la historia sigue a la pareja mientras enfrentan varios desafíos en su relación.",
-      "year": 2018,
-      "country": "Japón",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
-      "trailerUrl": "https://youtu.be/SRJJtaZekbI",
-      "date": "2018-06-09",
-      "basedOnBook": false,
-      "bookSource": "",
-      "bookCoverUrl": "",
-      "bookLinks": [],
-      "bookUrl": "",
-      "genres": [
-        "Animación",
-        "Anime"
-      ],
-      "category": "anime",
-      "updatedAt": "2026-05-14T21:22:44.376Z",
-      "movieType": "film",
-      "duration": 58,
-      "cast": [],
-      "nameEn": "あさがおと加瀬さん。"
-    },
-    {
       "id": "1778611963184",
       "name": "Chaser Game W: Suigyo no Majiwari",
       "poster": "https://i.mydramalist.com/816rQb_4c.jpg?v=1",
@@ -30401,6 +30782,170 @@
       "duration": 12,
       "cast": [],
       "updatedAt": "2026-05-16T16:56:42.440Z"
+    },
+    {
+      "id": "1779617164070",
+      "name": "Montreal, My Beautiful",
+      "nameEn": "Montréal, ma belle",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/6/5/1/8/5/1065185-montreal-my-beautiful-0-1000-0-1500-crop.jpg?v=ef6229f4c6",
+      "synopsis": "Una madre inmigrante china en Montreal rompe con el deber y la tradición cuando se enamora de una joven quebequense, lo que la lleva a enfrentarse a cuestiones de identidad y libertad.",
+      "year": 2025,
+      "country": "Canadá",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://youtu.be/0A9_uxkwWng?si=zKkP3kqHY99eY48q",
+      "date": "2025-10-12",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "moods": [],
+      "tropos": [
+        "Age Gap"
+      ],
+      "dinamica": [],
+      "sourceType": "",
+      "awards": [],
+      "category": "movie",
+      "movieType": "film",
+      "duration": 118,
+      "cast": [],
+      "productoraId": "",
+      "updatedAt": "2026-05-24T10:06:04.070Z"
+    },
+    {
+      "id": "1779617406260",
+      "name": "La calumnia",
+      "nameEn": "The Children’s Hour",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/3/9/2/0/7/39207-the-children-s-hour-0-1000-0-1500-crop.jpg?v=a54d339e21",
+      "synopsis": "Una estudiante rebelde en una escuela de niñas acusa a dos maestras de lesbianismo.",
+      "year": 1961,
+      "country": "Estados Unidos",
+      "network": "Filmin, Prime Video",
+      "networkUrl": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.88b9ce76-3056-5e04-8595-422a01265cf6&linkCode=xm2&tag=justesqxg9-21",
+      "watchLinks": [
+        {
+          "name": "Prime Video",
+          "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.88b9ce76-3056-5e04-8595-422a01265cf6&linkCode=xm2&tag=justesqxg9-21"
+        },
+        {
+          "name": "Filmin",
+          "url": "https://www.filmin.es/pelicula/la-calumnia?awinaffid=400165&awinmid=82863"
+        }
+      ],
+      "trailerUrl": "https://youtu.be/64T9YaMb_wU?si=i-tGkhwbysDK_5n4",
+      "date": "1961-12-19",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "awards": [],
+      "category": "movie",
+      "movieType": "film",
+      "duration": 108,
+      "cast": [],
+      "productoraId": "",
+      "updatedAt": "2026-05-24T10:10:06.260Z"
+    },
+    {
+      "id": "1779638690965",
+      "name": "Reina Cristina",
+      "nameEn": "The Girl King",
+      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/zmNPPf1Zn6Y11OeK4jXrkcjyXvT.jpg",
+      "synopsis": "El retrato de la brillante y extravagante Kristina de Suecia, reina desde los seis años, que lucha contra las fuerzas conservadoras que están en contra de sus ideas para modernizar Suecia y que no toleran su sexualidad.",
+      "year": 2015,
+      "country": "Canadá / Alemania / Francia / Suecia / Finlandia",
+      "network": "Filmin, Prime Video",
+      "networkUrl": "https://www.filmin.es/pelicula/reina-cristina",
+      "watchLinks": [
+        {
+          "name": "Filmin",
+          "url": "https://www.filmin.es/pelicula/reina-cristina"
+        },
+        {
+          "name": "Prime Video",
+          "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.40b9d31d-5645-4156-9366-e56654eea0fe&linkCode=xm2&tag=justesqxg9-21"
+        }
+      ],
+      "trailerUrl": "https://youtu.be/zxL0S78DZfc?si=s3StPpRj4KFiws4C",
+      "date": "2015-09-04",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Drama",
+        "Histórico",
+        "Romance"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "awards": [
+        {
+          "name": "",
+          "festival": "Jussi Gaala",
+          "category": "Mejor diseño de vestuario",
+          "year": 2016,
+          "result": "won"
+        }
+      ],
+      "category": "movie",
+      "movieType": "film",
+      "duration": 106,
+      "cast": [],
+      "productoraId": "",
+      "updatedAt": "2026-05-24T16:04:50.965Z"
+    },
+    {
+      "id": "1779639506085",
+      "name": "Kase-san and Morning Glories",
+      "nameEn": "あさがおと加瀬さん。",
+      "poster": "https://cdn.myanimelist.net/images/anime/1578/94205.jpg",
+      "synopsis": "Yui Yamada, una estudiante de secundaria aficionada a las plantas y la jardinería, comienza a salir con Tomoka Kase, la mejor atleta del equipo de atletismo de su escuela. Yui es tímida, femenina y nunca ha tenido una relación. Por otro lado, Tomoka es vivaz, un poco marimacho y popular entre sus amigas. A pesar de ser tan diferentes, intentan comprenderse y apoyarse mutuamente mientras experimentan la euforia del primer amor.\n\nAsagao to Kase-san es una conmovedora historia sobre dos chicas que lidian con sus crecientes sentimientos mutuos y otras preocupaciones propias de las enamoradas.",
+      "year": 2018,
+      "country": "Japón",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://youtu.be/SRJJtaZekbI?si=Ij48_VTA6jpYJoQ1",
+      "date": "2018-06-09",
+      "basedOnBook": true,
+      "bookSource": "Asagao to Kase-san",
+      "bookCoverUrl": "https://www.planetadelibros.com/usuaris/libros/thumbs/0b18a040-f953-4d91-b8cf-de5f3234b43e/m_175_310/portada_kase-y-las-campanillas-azules-n-0105_hiromi-takashima_202406281215.webp",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Escolar",
+        "Romance"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "manga",
+      "awards": [],
+      "category": "anime",
+      "movieType": "film",
+      "duration": 58,
+      "cast": [],
+      "productoraId": "",
+      "updatedAt": "2026-05-24T16:18:26.085Z"
     }
   ],
   "actresses": [
@@ -32239,6 +32784,60 @@
       "country": "Corea del Sur",
       "birthdate": "1998-08-17",
       "notes": "Actriz"
+    },
+    {
+      "id": "1779619197784",
+      "name": "\"Tingting\" Anchisa Nirahanee",
+      "photo": "https://pbs.twimg.com/media/HIp_XAUbwAAx7O4?format=jpg&name=4096x4096",
+      "photoPosition": "center 5%",
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1779619234473",
+      "name": "\"Nina\" Jinnita Djadda",
+      "photo": "https://pbs.twimg.com/media/HIqLH_AagAAdL5-?format=jpg&name=large",
+      "photoPosition": "center 15%",
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1779619343830",
+      "name": "\"Nene\" Pawarun Hathaisantitham",
+      "photo": "https://pbs.twimg.com/media/HIvhNcVaIAAsHa6?format=jpg&name=large",
+      "photoPosition": "center 15%",
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1779619364565",
+      "name": "\"Nonie\" Jarupiya Boribalburibhand",
+      "photo": "https://pbs.twimg.com/media/HIvwI0EaYAAqTSc?format=jpg&name=4096x4096",
+      "photoPosition": "center 15%",
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1779619408319",
+      "name": "\"Noodee\" Kanoklada Sihsen",
+      "photo": "https://pbs.twimg.com/media/HI0JyKCboAA1OLY?format=jpg&name=4096x4096",
+      "photoPosition": "center 5%",
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1779619425790",
+      "name": "\"Pair\" Penpitcha Thaweekijkasem",
+      "photo": "https://pbs.twimg.com/media/HI0X5SEasAEULJp?format=jpg&name=4096x4096",
+      "photoPosition": "center 15%",
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz"
     }
   ],
   "ships": [
@@ -32633,6 +33232,227 @@
       "actressIds": [
         "1778669459675",
         "1778669499657"
+      ],
+      "retired": false
+    },
+    {
+      "id": "1779616751489",
+      "name": "IzeZa",
+      "desc": "",
+      "couplePhoto": "https://pbs.twimg.com/media/HBvETcmW8AAqV4z?format=jpg&name=large",
+      "couplePhotoPosition": "50% 17%",
+      "couplePhotoZoom": 1.21,
+      "actressIds": [
+        "1778761040196",
+        "1778761114502"
+      ]
+    },
+    {
+      "id": "1779617942284",
+      "name": "FayeYoko",
+      "desc": "",
+      "retired": true,
+      "couplePhoto": "https://preview.redd.it/some-random-magazine-shots-of-fayeyoko-last-pic-is-mine-and-v0-d74ss2tokr7e1.jpg?width=640&crop=smart&auto=webp&s=a5b3d54cdbb23a403d328e3911b4db376db527a3",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778760904100",
+        "1778760989113"
+      ]
+    },
+    {
+      "id": "1779618469383",
+      "name": "OrmFolk",
+      "desc": "",
+      "retired": false,
+      "couplePhoto": "https://preview.redd.it/h5542fdm9nbf1.jpg?width=640&crop=smart&auto=webp&s=ddc20ffbeb344285771c8c7aec8ca9d5dc9c0508",
+      "couplePhotoPosition": "50% 27%",
+      "couplePhotoZoom": 1.06,
+      "actressIds": [
+        "1778781856216",
+        "1778781830314"
+      ]
+    },
+    {
+      "id": "1779618607306",
+      "name": "NattPitcha",
+      "desc": "",
+      "retired": true,
+      "couplePhoto": "https://i.redd.it/nattpitcha-v0-8r8ax5np11df1.jpg?width=1170&format=pjpg&auto=webp&s=e11b061bdb5a19a36e5ae39d46306655ffe8522c",
+      "couplePhotoPosition": "43% 21%",
+      "couplePhotoZoom": 1.1,
+      "actressIds": [
+        "1778704997832",
+        "1778704935711"
+      ]
+    },
+    {
+      "id": "1779618721081",
+      "name": "NamBenz",
+      "desc": "",
+      "retired": true,
+      "couplePhoto": "https://pbs.twimg.com/media/G9jbMpWWcAAfO_l?format=jpg&name=4096x4096",
+      "couplePhotoPosition": "50% 32%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778784264617",
+        "1778841125599"
+      ]
+    },
+    {
+      "id": "1779629333590",
+      "name": "MookPinky",
+      "desc": "",
+      "retired": true,
+      "couplePhoto": "https://pbs.twimg.com/media/HCV9X05bcAAUV96?format=jpg&name=large",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778841187670",
+        "1778841205354"
+      ]
+    },
+    {
+      "id": "1779629410911",
+      "name": "GraceOaey",
+      "desc": "",
+      "retired": true,
+      "couplePhoto": "https://pbs.twimg.com/media/Gl7g0JZWgAAXRTD?format=jpg&name=small",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778788649653",
+        "1778788627772"
+      ]
+    },
+    {
+      "id": "1779629551099",
+      "name": "FahsaiSeya",
+      "desc": "",
+      "retired": false,
+      "couplePhoto": "https://pbs.twimg.com/media/GxCOJ67WQAAb4EQ?format=jpg&name=medium",
+      "couplePhotoPosition": "50% 22%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778762094028",
+        "1778762128045"
+      ]
+    },
+    {
+      "id": "1779629657952",
+      "name": "ChristineMae",
+      "desc": "",
+      "retired": true,
+      "couplePhoto": "https://pbs.twimg.com/media/GioYJ52WMAAiVjU?format=jpg&name=medium",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778705238403",
+        "1778705285700"
+      ]
+    },
+    {
+      "id": "1779637257191",
+      "name": "ArhoungPam",
+      "desc": "",
+      "retired": true,
+      "couplePhoto": "https://i.redd.it/arhoungpam-going-to-guangzhou-v0-ug3hrbemir2g1.jpg?width=1080&format=pjpg&auto=webp&s=1c42d22e5219d1d0b32740311eea7eb98e060121",
+      "couplePhotoPosition": "50% 39%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778749053691",
+        "1778749084232"
+      ]
+    },
+    {
+      "id": "1779637331739",
+      "name": "JuneMewnich",
+      "desc": "",
+      "retired": false,
+      "couplePhoto": "https://pbs.twimg.com/media/GjuJZQ9bcAArlLx?format=jpg&name=large",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1.11,
+      "actressIds": [
+        "1778668109244",
+        "1778668288034"
+      ]
+    },
+    {
+      "id": "1779637369968",
+      "name": "KaoJane",
+      "desc": "",
+      "retired": false,
+      "couplePhoto": "https://pbs.twimg.com/media/HFNpSuOaMAAQwm5?format=jpg&name=4096x4096",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1.47,
+      "actressIds": [
+        "1778705070874",
+        "1778705034390"
+      ]
+    },
+    {
+      "id": "1779637444772",
+      "name": "NattyYeepun",
+      "desc": "",
+      "retired": false,
+      "couplePhoto": "https://pbs.twimg.com/media/G_eXM39XgAAhAcn?format=jpg&name=medium",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778842534594",
+        "1778842553568"
+      ]
+    },
+    {
+      "id": "1779637484666",
+      "name": "NileNamwan",
+      "desc": "",
+      "retired": false,
+      "couplePhoto": "https://pbs.twimg.com/media/HDXkOxCa0AAB2B0?format=jpg&name=large",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778783160921",
+        "1778782214788"
+      ]
+    },
+    {
+      "id": "1779637550513",
+      "name": "PimjiPineare",
+      "desc": "",
+      "retired": false,
+      "couplePhoto": "https://pbs.twimg.com/media/HCfmgaiaEAATOla?format=jpg&name=large",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1778782042599",
+        "1778782073689"
+      ]
+    },
+    {
+      "id": "1779637645492",
+      "name": "PlaifahMiusic",
+      "desc": "",
+      "retired": true,
+      "couplePhoto": "https://pbs.twimg.com/media/G-JwTdva0AAWTvq?format=jpg&name=medium",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1.35,
+      "actressIds": [
+        "1778761852669",
+        "1778761884699"
+      ]
+    },
+    {
+      "id": "1779637723716",
+      "name": "YingAom",
+      "desc": "",
+      "retired": false,
+      "couplePhoto": "https://pbs.twimg.com/media/GuuN3VWXwAAZcFo?format=jpg&name=large",
+      "couplePhotoPosition": "50% 20%",
+      "couplePhotoZoom": 1.08,
+      "actressIds": [
+        "1778786968294",
+        "1778669177371"
       ]
     }
   ],
@@ -32836,6 +33656,8 @@
       "desc": "Fundada por la actriz Mai Davika y el actor Ter Chantavit. Productora y agencia de gestión de artistas jóvenes. Su primera serie GL fue Clairebell (2025), protagonizada por Mable Siriwalee y Pangjie Paphavarin.",
       "actressIds": [
         "1778705363188",
+        "1779619343830",
+        "1779619364565",
         "1778705395423"
       ]
     },
@@ -32859,7 +33681,11 @@
       "actressIds": [
         "1778760564161",
         "1778760606088",
-        "1778760689825"
+        "1779619234473",
+        "1779619408319",
+        "1779619425790",
+        "1778760689825",
+        "1779619197784"
       ]
     },
     {
@@ -32970,7 +33796,7 @@
   ],
   "listas": [
     {
-      "title": "Para empezar en el Gl",
+      "title": "Para empezar en el GL Thai",
       "emoji": "📋",
       "desc": "",
       "order": 99,
@@ -32984,7 +33810,94 @@
       ],
       "movieIds": [],
       "id": "1779434253511"
+    },
+    {
+      "title": "TOP 10 GLs THAIS (MYDRAMALIST RANKING)",
+      "emoji": "🐘",
+      "desc": "",
+      "order": 99,
+      "seriesIds": [
+        "1777236582381",
+        "1776889447326",
+        "1776976636268",
+        "1776889333282",
+        "1777236702067",
+        "1777223129027",
+        "1777236873444",
+        "1776966800863",
+        "1777048197930",
+        "1776976144217"
+      ],
+      "movieIds": [],
+      "id": "1779436604114"
+    },
+    {
+      "title": "TOP 10 GLs COREANOS (MYDRAMALIST RANKING)",
+      "emoji": "🫰",
+      "desc": "",
+      "order": 99,
+      "seriesIds": [
+        "1777751376726",
+        "1700000000266",
+        "1700000000233",
+        "1700000000234",
+        "1777583796655",
+        "1777116291060",
+        "1777584943726",
+        "1700000000123",
+        "1777584355784",
+        "1700000000236"
+      ],
+      "movieIds": [
+        "1700000000233",
+        "1700000000236",
+        "1700000000266",
+        "1700000000123",
+        "1700000000234"
+      ],
+      "id": "1779436788054"
+    },
+    {
+      "title": "TOP 7 GLs JAPONESES (MYDRAMALIST RANKING)",
+      "emoji": "🎌",
+      "desc": "",
+      "order": 99,
+      "seriesIds": [
+        "1700000000243",
+        "1700000000267",
+        "1777584066900",
+        "1777584138652",
+        "1700000000244",
+        "1700000000180",
+        "1700000000179"
+      ],
+      "movieIds": [
+        "1700000000244",
+        "1700000000243",
+        "1700000000267",
+        "1700000000180",
+        "1700000000179"
+      ],
+      "id": "1779436891444"
+    },
+    {
+      "title": "TOP 4 GLs CHINOS (MYDRAMALIST RANKING)",
+      "emoji": "🐉",
+      "desc": "",
+      "order": 99,
+      "seriesIds": [
+        "1700000000158",
+        "1700000000159",
+        "1777751254463",
+        "1700000000268"
+      ],
+      "movieIds": [
+        "1700000000158",
+        "1700000000268",
+        "1700000000159"
+      ],
+      "id": "1779437187677"
     }
   ],
-  "exportedAt": "2026-05-22T07:41:06.279Z"
+  "exportedAt": "2026-05-24T16:22:51.618Z"
 }
