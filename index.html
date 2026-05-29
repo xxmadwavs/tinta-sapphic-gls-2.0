@@ -1926,23 +1926,82 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 }
 .btn:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent);transform:translateY(-1px)}
 
-/* Watch links in modal — elegant redesign */
+/* ═══ MODAL HIERARCHY — 3 BLOQUE STRUCTURE ═══ */
+
+/* BLOQUE 1: Hero (poster + info principal) — ya existe, sin cambios de estructura */
+
+/* BLOQUE 2: Detalles secundarios plegables */
+.modal-details-accordion{
+  border:1.5px solid var(--border2);
+  border-radius:14px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+.modal-details-toggle{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;padding:11px 16px;
+  background:var(--surface2);border:none;cursor:pointer;
+  font-family:var(--font-body);font-size:12px;font-weight:700;
+  color:var(--muted);text-align:left;letter-spacing:.04em;text-transform:uppercase;
+  transition:background .15s,color .15s;
+  gap:8px;
+}
+.modal-details-toggle:hover{background:var(--surface3);color:var(--text)}
+.modal-details-toggle.open{color:var(--text)}
+.modal-details-arrow{
+  font-size:11px;transition:transform .22s;flex-shrink:0;opacity:.6;
+}
+.modal-details-toggle.open .modal-details-arrow{transform:rotate(180deg)}
+.modal-details-body{
+  display:none;padding:14px 16px 16px;
+  border-top:1px solid var(--border);
+  animation:detailsFadeIn .18s ease;
+}
+.modal-details-body.open{display:block}
+@keyframes detailsFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+/* BLOQUE 3: Dónde ver — siempre visible, destacado */
+.modal-watch-block{
+  background:linear-gradient(135deg, rgba(201,79,124,0.06) 0%, rgba(139,114,190,0.06) 100%);
+  border:1.5px solid rgba(201,79,124,0.22);
+  border-radius:14px;
+  padding:14px 16px;
+  margin-bottom:14px;
+}
+html[data-theme="dark"] .modal-watch-block{
+  background:linear-gradient(135deg, rgba(224,114,154,0.08) 0%, rgba(169,141,224,0.08) 100%);
+  border-color:rgba(224,114,154,0.20);
+}
+.modal-watch-label{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--accent);margin-bottom:10px;
+  display:flex;align-items:center;gap:7px;
+}
+.modal-watch-label::before{
+  content:'▶';display:inline-block;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--accent);color:#fff;
+  font-size:7px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
 .watch-links-label{
   font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
   color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px;
 }
 .watch-links-label::before{content:'';display:block;width:14px;height:1px;background:var(--muted);opacity:.5}
-.watch-links{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.watch-links{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
 .watch-link{
   display:inline-flex;align-items:center;gap:7px;
-  font-size:12px;font-weight:600;color:var(--text);
+  font-size:12.5px;font-weight:700;color:var(--accent);
   text-decoration:none;
-  background:var(--surface2);
-  border-radius:10px;padding:8px 16px;
-  border:1px solid var(--border2);
+  background:var(--surface);
+  border-radius:10px;padding:9px 18px;
+  border:1.5px solid rgba(201,79,124,0.28);
   transition:all .2s cubic-bezier(.25,.8,.25,1);
   white-space:nowrap;
-  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  box-shadow:0 2px 8px rgba(201,79,124,0.1);
+  flex:1;min-width:0;justify-content:center;
 }
 .watch-link:hover{
   background:var(--accent);color:#fff;border-color:var(--accent);
@@ -1950,10 +2009,10 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
   box-shadow:0 6px 18px rgba(201,79,124,0.28);
 }
 .watch-link-icon{
-  width:22px;height:22px;border-radius:50%;
+  width:20px;height:20px;border-radius:50%;
   background:rgba(201,79,124,0.12);
   display:flex;align-items:center;justify-content:center;
-  font-size:9px;color:var(--accent);
+  font-size:8px;color:var(--accent);
   flex-shrink:0;transition:inherit;
 }
 .watch-link:hover .watch-link-icon{background:rgba(255,255,255,.22);color:#fff}
@@ -4977,7 +5036,7 @@ function openSeries(si){
     metaGrid+=`<div class="meta-item"><div class="meta-key">⏱ Por episodio</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}</div></div>`.replace('</div></div>',`${fmtDuration(durInfo.epDuration)}</div></div>`);
     if(durInfo.totalMins) metaGrid+=`<div class="meta-item"><div class="meta-key">⏱ Total serie</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.totalMins)}</div></div>`;
   }
-  const watchLinksHtml=(()=>{const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]);if(!links.length)return '';return `<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`;})();
+  const watchLinksHtml=(()=>{const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]);if(!links.length)return '';return `<div class="modal-watch-block"><div class="modal-watch-label">Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div></div>`;})();
   const progressBlock=`<div class="modal-progress-block">
     <div class="modal-progress-header">
       <span class="modal-progress-label">${aired} / ${totalEps} emitidos · ${activeDays}</span>
@@ -5048,21 +5107,34 @@ function openSeries(si){
   ${nextBadgeHtml}
   ${progressBlock}
   ${watchLinksHtml}
-  ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
-  ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
-  ${s.synopsis?`<div class="synopsis">${s.synopsis}</div>`:''}
-  ${buildAwardsHtml(s)}
-  ${s.basedOnBook?(()=>{
-    const hasCover=s.bookCoverUrl&&s.bookCoverUrl.trim();
-    const hasTitle=s.bookSource&&s.bookSource.trim();
-    const editions=s.bookLinks&&s.bookLinks.length?s.bookLinks:(s.bookUrl?[{lang:'es',store:'Amazon',url:s.bookUrl}]:[]);
-    if(!hasCover&&!hasTitle&&!editions.length) return '';
-    const coverEl=hasCover?`<img class="book-cover" src="${s.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph>📖</div>'">`:`<div class="book-cover-ph">📖</div>`;
-    const edPills=editions.map(e=>`<a class="book-edition-pill" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`).join('');
-    const stypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
-    const stLabel=s.sourceType&&stypes[s.sourceType]?stypes[s.sourceType]:'📖 Libro';
-    return `<div class="book-block">${coverEl}<div class="book-info"><div class="book-source-type" style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px">${stLabel}</div>${hasTitle?`<div class="book-title-text">${s.bookSource}</div>`:''}${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}</div></div>`;
-  })():''}
+  ${(()=>{
+    const hasDetails = metaGrid || s.synopsis || s.trailerUrl || buildAwardsHtml(s) || s.basedOnBook;
+    if(!hasDetails) return '';
+    const bookHtml = s.basedOnBook?(()=>{
+      const hasCover=s.bookCoverUrl&&s.bookCoverUrl.trim();
+      const hasTitle=s.bookSource&&s.bookSource.trim();
+      const editions=s.bookLinks&&s.bookLinks.length?s.bookLinks:(s.bookUrl?[{lang:'es',store:'Amazon',url:s.bookUrl}]:[]);
+      if(!hasCover&&!hasTitle&&!editions.length) return '';
+      const coverEl=hasCover?`<img class="book-cover" src="${s.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph>📖</div>'">`:`<div class="book-cover-ph">📖</div>`;
+      const edPills=editions.map(e=>`<a class="book-edition-pill" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`).join('');
+      const stypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
+      const stLabel=s.sourceType&&stypes[s.sourceType]?stypes[s.sourceType]:'📖 Libro';
+      return `<div class="book-block">${coverEl}<div class="book-info"><div class="book-source-type" style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px">${stLabel}</div>${hasTitle?`<div class="book-title-text">${s.bookSource}</div>`:''}${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}</div></div>`;
+    })():'';
+    return `<div class="modal-details-accordion">
+      <button class="modal-details-toggle" onclick="toggleModalDetails('sdetails_body',this)" id="sdetails_btn">
+        <span>ℹ️ Ficha técnica y sinopsis</span>
+        <span class="modal-details-arrow">▾</span>
+      </button>
+      <div class="modal-details-body" id="sdetails_body">
+        ${metaGrid?`<div class="modal-meta-grid" style="margin-bottom:14px">${metaGrid}</div>`:''}
+        ${s.synopsis?`<div class="synopsis">${s.synopsis}</div>`:''}
+        ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
+        ${buildAwardsHtml(s)}
+        ${bookHtml}
+      </div>
+    </div>`;
+  })()}
   <div class="divider"></div>
   <div class="modal-tabs">
     <button class="modal-tab active" id="stab_eps" onclick="switchSeriesModalTab('eps')">📋 Episodios</button>
@@ -5088,6 +5160,14 @@ function toggleSeasonCollapse(id, header){
   header.classList.toggle('open',!isOpen);
 }
 
+function toggleModalDetails(bodyId, btn){
+  const body=document.getElementById(bodyId);
+  if(!body) return;
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  btn.classList.toggle('open',!isOpen);
+}
+
 function switchSeriesModalTab(tab){
   ['eps','cast'].forEach(p=>{
     const panel=document.getElementById('spanel_'+p);
@@ -5110,10 +5190,24 @@ function openUpcoming(si){
   if(s.year) metaGrid+=`<div class="meta-item"><div class="meta-key">Año aprox.</div><div class="meta-val">${s.year}</div></div>`;
   if(s.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(s.country)} ${s.country}</div></div>`;
   if(s.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Plataforma</div><div class="meta-val">${s.network}</div></div>`;
-  const watchLinksHtml=(()=>{const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]);if(!links.length)return '';return `<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`;})();
+  const watchLinksHtml=(()=>{const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]);if(!links.length)return '';return `<div class="modal-watch-block"><div class="modal-watch-label">Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div></div>`;})();
 
   const castHtml=buildCastHtml(s.cast||[]);
   const castCount=s.cast&&s.cast.length?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
+
+  const upBookHtml=s.basedOnBook?(()=>{
+    const hasCover=s.bookCoverUrl&&s.bookCoverUrl.trim();
+    const hasTitle=s.bookSource&&s.bookSource.trim();
+    const editions=s.bookLinks&&s.bookLinks.length?s.bookLinks:(s.bookUrl?[{lang:'es',store:'Amazon',url:s.bookUrl}]:[]);
+    if(!hasCover&&!hasTitle&&!editions.length) return '';
+    const coverEl=hasCover?`<img class="book-cover" src="${s.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph>📖</div>'">`:`<div class="book-cover-ph">📖</div>`;
+    const edPills=editions.map(e=>`<a class="book-edition-pill" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`).join('');
+    return `<div class="book-block">${coverEl}<div class="book-info">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px">${(()=>{const _t={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. Gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};return s.sourceType&&_t[s.sourceType]?_t[s.sourceType]:'📖 Libro'})()}</div>
+      ${hasTitle?`<div class="book-title-text">${s.bookSource}</div>`:''}
+      ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
+    </div></div>`;
+  })():'';
 
   let html=`${posterEl}<div class="modal-body">
   <div class="modal-badges"><span class="badge badge-upcoming">📅 Próximamente</span>${sourceTypeBadge(s)}</div>
@@ -5126,22 +5220,18 @@ function openUpcoming(si){
   </div>
   ${s.country?`<div class="modal-dates-row"><span class="modal-date-chip">${countryFlag(s.country)} ${s.country}</span>${s.year?`<span class="modal-date-chip">📆 ${s.year}</span>`:''}</div>`:''}
   ${watchLinksHtml}
-  ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
-  ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
-  ${s.synopsis?`<div class="synopsis">${s.synopsis}</div>`:`<div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:13px;font-style:italic">📝 Sinopsis no disponible aún</div>`}
-  ${s.basedOnBook?(()=>{
-    const hasCover=s.bookCoverUrl&&s.bookCoverUrl.trim();
-    const hasTitle=s.bookSource&&s.bookSource.trim();
-    const editions=s.bookLinks&&s.bookLinks.length?s.bookLinks:(s.bookUrl?[{lang:'es',store:'Amazon',url:s.bookUrl}]:[]);
-    if(!hasCover&&!hasTitle&&!editions.length) return '';
-    const coverEl=hasCover?`<img class="book-cover" src="${s.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph>📖</div>'">`:`<div class="book-cover-ph">📖</div>`;
-    const edPills=editions.map(e=>`<a class="book-edition-pill" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`).join('');
-    return `<div class="book-block">${coverEl}<div class="book-info">
-      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px">${(()=>{const _t={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. Gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};return s.sourceType&&_t[s.sourceType]?_t[s.sourceType]:'📖 Libro'})()}</div>
-      ${hasTitle?`<div class="book-title-text">${s.bookSource}</div>`:''}
-      ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
-    </div></div>`;
-  })():''}
+  ${(metaGrid||s.synopsis||s.trailerUrl||upBookHtml)?`<div class="modal-details-accordion">
+    <button class="modal-details-toggle" onclick="toggleModalDetails('updetails_body',this)">
+      <span>ℹ️ Ficha técnica y sinopsis</span>
+      <span class="modal-details-arrow">▾</span>
+    </button>
+    <div class="modal-details-body" id="updetails_body">
+      ${metaGrid?`<div class="modal-meta-grid" style="margin-bottom:14px">${metaGrid}</div>`:''}
+      ${s.synopsis?`<div class="synopsis">${s.synopsis}</div>`:`<div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:13px;font-style:italic">📝 Sinopsis no disponible aún</div>`}
+      ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
+      ${upBookHtml}
+    </div>
+  </div>`:''}
   ${castCount?`<div class="divider"></div>
   <div class="modal-tabs">
     <button class="modal-tab active" id="uptab_cast" onclick="switchUpcomingModalTab('cast')">🎭 Cast<span style="font-size:10px;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span></button>
@@ -5209,7 +5299,7 @@ function openMovie(mi){
       ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
     </div></div>`;
   })();
-  const watchLinksHtml=(()=>{const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);if(!links.length)return '';return `<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" style="background:var(--movie-bar);color:var(--movie-accent);border-color:var(--movie-border)"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`;})();
+  const watchLinksHtml=(()=>{const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);if(!links.length)return '';return `<div class="modal-watch-block" style="border-color:rgba(124,92,191,0.28)"><div class="modal-watch-label" style="color:var(--movie-accent)">Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" style="color:var(--movie-accent);border-color:var(--movie-border)"><span class="watch-link-icon" style="background:var(--movie-bar);color:var(--movie-accent)">▶</span>${l.name}</a>`).join('')}</div></div>`;})();
   const castHtml=buildCastHtml(mv.cast||[]);
   const castCount=mv.cast&&mv.cast.length?mv.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
   let html=`${posterEl}<div class="modal-body">
@@ -5221,11 +5311,19 @@ function openMovie(mi){
   ${mv.moods&&mv.moods.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin:4px 0">${mv.moods.map(m=>`<span style="font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.25)">${m}</span>`).join('')}</div>`:''}
   ${releaseBadgeHtml}
   ${watchLinksHtml}
-  ${mv.trailerUrl?trailerHtml(mv.trailerUrl):''}
-  ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
-  ${mv.synopsis?`<div class="synopsis">${mv.synopsis}</div>`:''}
-  ${buildAwardsHtml(mv)}
-  ${bookBlock}
+  ${(metaGrid||mv.synopsis||mv.trailerUrl||bookBlock||buildAwardsHtml(mv))?`<div class="modal-details-accordion">
+    <button class="modal-details-toggle" onclick="toggleModalDetails('mvdetails_body',this)">
+      <span>ℹ️ Ficha técnica y sinopsis</span>
+      <span class="modal-details-arrow">▾</span>
+    </button>
+    <div class="modal-details-body" id="mvdetails_body">
+      ${metaGrid?`<div class="modal-meta-grid" style="margin-bottom:14px">${metaGrid}</div>`:''}
+      ${mv.synopsis?`<div class="synopsis">${mv.synopsis}</div>`:''}
+      ${mv.trailerUrl?trailerHtml(mv.trailerUrl):''}
+      ${buildAwardsHtml(mv)}
+      ${bookBlock}
+    </div>
+  </div>`:''}
   ${castCount?`<div class="divider"></div>
   <div class="modal-tabs">
     <button class="modal-tab active" id="mvtab_info" onclick="switchMovieModalTab('info')">ℹ️ Info</button>
@@ -5887,7 +5985,7 @@ function openRichDetail(item, opts){
   // Watch links
   const links=item.watchLinks&&item.watchLinks.length?item.watchLinks:(item.networkUrl?[{name:item.network||'Ver',url:item.networkUrl}]:[]);
   const watchLinksHtml=links.length
-    ?`<div class="watch-links-label">▶ Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div>`
+    ?`<div class="modal-watch-block" style="border-color:${accentBorder}"><div class="modal-watch-label" style="color:${accentColor}">Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" style="color:${accentColor};border-color:${accentBorder}"><span class="watch-link-icon" style="background:${accentSoft};color:${accentColor}">▶</span>${l.name}</a>`).join('')}</div></div>`
     :'';
 
   // Trailer
@@ -5988,11 +6086,19 @@ function openRichDetail(item, opts){
       </div>
       ${nextBadgeHtml}
       ${watchLinksHtml}
-      ${trailerSection}
-      ${metaGrid?`<div class="modal-meta-grid">${metaGrid}</div>`:''}
-      ${genrePills}
-      ${synopsis}
-      ${bookBlock}
+      ${(metaGrid||genrePills||synopsis||bookBlock||trailerSection)?`<div class="modal-details-accordion">
+        <button class="modal-details-toggle" onclick="toggleModalDetails('richdetails_body',this)">
+          <span>ℹ️ Ficha técnica y sinopsis</span>
+          <span class="modal-details-arrow">▾</span>
+        </button>
+        <div class="modal-details-body" id="richdetails_body">
+          ${metaGrid?`<div class="modal-meta-grid" style="margin-bottom:14px">${metaGrid}</div>`:''}
+          ${genrePills}
+          ${synopsis}
+          ${trailerSection}
+          ${bookBlock}
+        </div>
+      </div>`:''}
       ${epListHtml}
       ${!epListHtml?'<div class="divider"></div>':''}
       <div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div>
