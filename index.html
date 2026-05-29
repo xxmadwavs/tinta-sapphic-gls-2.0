@@ -2335,6 +2335,594 @@ footer {
   .picks-hero-title{font-size:20px}
 }
 
+
+/* ═══════════════════════════════════════════
+   MEJORA 1: CARDS MÁS EXPRESIVAS
+   ═══════════════════════════════════════════ */
+
+/* Series card — rediseño expresivo */
+.series-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .28s cubic-bezier(.25,.8,.25,1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+.series-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--lavender) 100%);
+  opacity: 0;
+  transition: opacity .28s;
+  z-index: 2;
+  border-radius: 0;
+}
+.series-card:hover::before { opacity: 1; }
+.series-card:hover {
+  border-color: var(--accent2);
+  box-shadow: 0 20px 60px rgba(180,80,120,0.22), 0 4px 16px rgba(180,80,120,0.1);
+  transform: translateY(-6px);
+}
+
+/* Poster wrap con overlay de categoría */
+.series-card-poster-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.series-card-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  background: var(--accent-soft);
+  transition: transform .38s cubic-bezier(.25,.8,.25,1);
+}
+.series-card:hover .series-card-poster { transform: scale(1.04); }
+
+/* Gradiente inferior más rico */
+.series-card-poster-wrap::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 65%;
+  background: linear-gradient(to top, rgba(20,8,28,0.82) 0%, rgba(20,8,28,0.4) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Card body más refinado */
+.series-card-body {
+  padding: 13px 14px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+/* Nombre de serie más impactante */
+.series-card-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 2px;
+  letter-spacing: -.01em;
+}
+
+/* Status pill más expresiva */
+.sc-status-pill.airing {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  animation: todayPulse 2.2s ease-in-out infinite;
+  font-size: 10.5px;
+  letter-spacing: .02em;
+}
+.sc-status-pill.today {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  animation: todayPulse 2.2s ease-in-out infinite;
+}
+.sc-status-pill.finished {
+  background: var(--surface3);
+  color: var(--teal);
+  border: 1px solid rgba(74,173,160,.25);
+  font-size: 10.5px;
+}
+
+/* Barra de progreso más elegante */
+.progress-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width .5s cubic-bezier(.25,.8,.25,1);
+  background: linear-gradient(90deg, var(--accent), var(--lavender));
+}
+
+/* Movie card — rediseño */
+.movie-card {
+  background: var(--surface);
+  border: 1.5px solid var(--movie-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .28s cubic-bezier(.25,.8,.25,1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+.movie-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--movie-accent), var(--lavender), var(--accent));
+  z-index: 1;
+}
+/* Quitar el ::before que ya existe con el clapperboard emoji — reemplazarlo limpio */
+.movie-card-poster-wrap::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 55%;
+  background: linear-gradient(to top, rgba(20,10,35,0.82) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.movie-card-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  background: var(--lavender-soft);
+  transition: transform .38s cubic-bezier(.25,.8,.25,1);
+}
+.movie-card:hover .movie-card-poster { transform: scale(1.04); }
+.movie-card:hover {
+  border-color: var(--movie-accent);
+  box-shadow: 0 20px 60px rgba(124,92,191,0.25), 0 4px 16px rgba(124,92,191,0.12);
+  transform: translateY(-6px);
+}
+.movie-card-body {
+  padding: 13px 14px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--movie-bar) 100%);
+}
+.movie-card-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 3px;
+  letter-spacing: -.01em;
+}
+
+/* Upcoming card */
+.upcoming-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .28s cubic-bezier(.25,.8,.25,1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+.upcoming-card:hover {
+  border-color: var(--lavender);
+  box-shadow: 0 20px 60px rgba(139,114,190,0.22), 0 4px 16px rgba(139,114,190,0.1);
+  transform: translateY(-6px);
+}
+.upcoming-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  background: var(--lavender-soft);
+  transition: transform .38s cubic-bezier(.25,.8,.25,1);
+}
+.upcoming-card:hover .upcoming-poster { transform: scale(1.04); }
+.upcoming-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 2px;
+  letter-spacing: -.01em;
+}
+
+/* Pick card */
+.pick-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .28s cubic-bezier(.25,.8,.25,1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+.pick-card:hover {
+  border-color: var(--accent2);
+  box-shadow: 0 20px 60px rgba(180,80,120,0.22);
+  transform: translateY(-6px);
+}
+.pick-card-poster { transition: transform .38s cubic-bezier(.25,.8,.25,1); }
+.pick-card:hover .pick-card-poster { transform: scale(1.04); }
+.pick-card-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  letter-spacing: -.01em;
+}
+
+/* ═══════════════════════════════════════════
+   MEJORA 2: FILTROS ELEGANTES SIN EMOJIS
+   ═══════════════════════════════════════════ */
+
+/* Select base — refinado */
+.filter-select {
+  padding: 8px 32px 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border2);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s, background .15s;
+  box-shadow: none;
+  max-width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238a6878' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.filter-select:hover { border-color: var(--accent2); background-color: var(--surface2); }
+.filter-select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,79,124,0.1); }
+
+html[data-theme="dark"] .filter-select {
+  background-color: var(--surface2);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23b08aa0' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* Toolbar row — grid limpio */
+.toolbar-filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
+}
+
+/* filter-group sin label en desktop */
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Clear button — minimal */
+.filter-clear-btn {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(201,79,124,.25);
+  background: transparent;
+  color: var(--accent);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all .15s;
+  white-space: nowrap;
+  letter-spacing: .01em;
+}
+.filter-clear-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* Search input — más limpio */
+.search-input {
+  width: 100%;
+  padding: 11px 18px 11px 44px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border2);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+  box-shadow: none;
+  height: 44px;
+}
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(201,79,124,0.1);
+}
+
+/* Region pills — sin emojis, más limpios */
+.region-pill {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border: 1.5px solid var(--border2);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .15s;
+  font-family: var(--font-body);
+  letter-spacing: .01em;
+}
+.region-pill:hover {
+  border-color: var(--accent2);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.region-pill.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 10px rgba(201,79,124,.25);
+}
+
+/* Subtabs — más elegantes */
+.subtab {
+  padding: 7px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  transition: all .18s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: .01em;
+}
+.subtab.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(201,79,124,0.28);
+  border-radius: 8px;
+}
+.subtab:hover:not(.active) { color: var(--text); background: var(--surface2); }
+.subtab-count {
+  font-size: 10.5px;
+  background: rgba(255,255,255,0.25);
+  color: inherit;
+  border-radius: 99px;
+  padding: 1px 7px;
+  font-weight: 700;
+  opacity: .85;
+}
+.subtab:not(.active) .subtab-count {
+  background: var(--border2);
+  color: var(--muted);
+}
+
+/* Subtabs container */
+.subtabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 1.25rem;
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 3px;
+  width: fit-content;
+  max-width: 100%;
+  border: 1.5px solid var(--border2);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.subtabs::-webkit-scrollbar { display: none; }
+
+/* Nav btn — más limpio */
+.nav-btn {
+  background: var(--surface);
+  border: 1.5px solid var(--border2);
+  border-radius: 8px;
+  padding: 7px 16px;
+  cursor: pointer;
+  font-size: 12.5px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 600;
+  transition: all .18s;
+  box-shadow: none;
+  letter-spacing: .01em;
+}
+.nav-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent2);
+  color: var(--accent);
+  transform: none;
+}
+
+/* Pagination — más limpia */
+.pg-btn {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border2);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pg-btn:hover:not(:disabled):not(.pg-active) {
+  background: var(--accent-soft);
+  border-color: var(--accent2);
+  color: var(--accent);
+}
+.pg-btn.pg-active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 3px 10px rgba(201,79,124,0.28);
+}
+
+/* Ships subtab — coherente */
+.ships-subtab {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border2);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--surface);
+  color: var(--muted);
+  transition: all .14s;
+  font-family: var(--font-body);
+  letter-spacing: .01em;
+}
+.ships-subtab:hover { background: var(--surface2); color: var(--text); }
+.ships-subtab.active { background: var(--text); color: var(--surface); border-color: var(--text); }
+
+/* Alpha bar buttons */
+.alpha-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alpha-btn:hover:not(.alpha-active):not(.alpha-disabled) {
+  border-color: var(--accent2);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.alpha-btn.alpha-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(201,79,124,0.28);
+}
+.alpha-btn.alpha-disabled { opacity: .2; cursor: default; }
+
+/* Country picker button */
+.country-picker-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border2);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+  box-shadow: none;
+  white-space: nowrap;
+  min-width: 110px;
+  justify-content: space-between;
+}
+.country-picker-btn:hover { border-color: var(--accent2); background: var(--surface2); }
+.country-picker-btn.open { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,79,124,0.1); }
+
+/* Dropdown */
+.country-picker-dropdown {
+  border-radius: 10px;
+  border: 1.5px solid var(--border2);
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  padding: 6px;
+}
+
+/* Changelog toggle */
+.changelog-toggle-icon { font-size: 12px; }
+
+/* ═══════════════════════════════════════════
+   COUNTRY FLAG — posición dentro del poster
+   ═══════════════════════════════════════════ */
+.sc-country-flag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  font-size: 17px;
+  line-height: 1;
+  text-shadow: 0 1px 6px rgba(0,0,0,.55);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Badge refinado */
+.badge {
+  font-size: 10px;
+  padding: 2px 9px;
+  border-radius: 6px;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+/* Card watch pill */
+.card-watch-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+  background: var(--teal-soft);
+  border-radius: 6px;
+  padding: 3px 10px;
+  border: 1px solid rgba(74,173,160,0.3);
+  transition: all .15s;
+  white-space: nowrap;
+}
+.card-watch-pill:hover {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
 </style>
 </head>
 <body>
@@ -3430,7 +4018,7 @@ const COUNTRY_REGIONS={
   america:['EE.UU.','EEUU','Estados Unidos','Canadá','México','Brasil','Argentina','Colombia','Chile','Perú','Venezuela'],
   oceania:['Australia','Nueva Zelanda'],
 };
-const REGION_LABELS={'asia':'🌏 Asia','europa':'🌍 Europa','america':'🌎 América','oceania':'🌏 Oceanía','otros':'🌐 Otros'};
+const REGION_LABELS={'asia':'Asia','europa':'Europa','america':'América','oceania':'Oceanía','otros':'Otros'};
 
 /** Dado un string de país (puede ser 'A / B'), devuelve los fragmentos atómicos. */
 function parseCountryParts(country){
@@ -3521,16 +4109,16 @@ function buildCountryPicker(id, onChange, availableCountries){
   const btn=document.createElement('button');
   btn.type='button';
   btn.className='country-picker-btn';
-  btn.innerHTML='<span class="cpb-label">🌍 País</span><span class="cpb-arrow">▼</span>';
+  btn.innerHTML='<span class="cpb-label">País</span><span class="cpb-arrow">▼</span>';
   const drop=document.createElement('div');
   drop.className='country-picker-dropdown';
   let selected=[];
   function getAll(){return [...selected];}
   function updateBtn(){
     const all=getAll();
-    if(!all.length){btn.innerHTML='<span class="cpb-label">🌍 País</span><span class="cpb-arrow">▼</span>';}
+    if(!all.length){btn.innerHTML='<span class="cpb-label">País</span><span class="cpb-arrow">▼</span>';}
     else if(all.length===1){btn.innerHTML=`<span class="cpb-label">${countryFlag(all[0])} ${all[0]}</span><span class="cpb-arrow">▼</span>`;}
-    else{btn.innerHTML=`<span class="cpb-label">🌍 País <span class="country-picker-active-count">${all.length}</span></span><span class="cpb-arrow">▼</span>`;}
+    else{btn.innerHTML=`<span class="cpb-label">País <span class="country-picker-active-count">${all.length}</span></span><span class="cpb-arrow">▼</span>`;}
     btn.classList.toggle('open',drop.classList.contains('open'));
   }
   function buildDrop(){
@@ -3866,13 +4454,13 @@ function renderList(){
         <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="seriesGenreSel" class="filter-select" onchange="seriesFilters.genre=this.value;resetSeriesPages();renderListResults()">
-          <option value="">🎭 Género</option>${genreOpts}
+          <option value="">Género</option>${genreOpts}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Tipo</span>
           <select id="seriesTypeSel" class="filter-select" onchange="seriesFilters.type=this.value;resetSeriesPages();renderListResults()">
-            <option value="">📺 Tipo</option>
+            <option value="">Tipo</option>
             <option value="serie"${seriesFilters.type==='serie'?' selected':''}>Serie</option>
             <option value="webserie"${seriesFilters.type==='webserie'?' selected':''}>Web serie</option>
           </select>
@@ -3883,38 +4471,38 @@ function renderList(){
             <option value="az"${seriesFilters.sort==='az'?' selected':''}>A → Z</option>
             <option value="za"${seriesFilters.sort==='za'?' selected':''}>Z → A</option>
             <option value="eps"${seriesFilters.sort==='eps'?' selected':''}>+ Episodios</option>
-            <option value="date"${seriesFilters.sort==='date'?' selected':''}>📅 Más reciente primero</option>
-            <option value="dateold"${seriesFilters.sort==='dateold'?' selected':''}>📅 Más antiguo primero</option>
-            <option value="recent"${seriesFilters.sort==='recent'?' selected':''}>🕐 Actualizado recientemente</option>
+            <option value="date"${seriesFilters.sort==='date'?' selected':''}>Más reciente primero</option>
+            <option value="dateold"${seriesFilters.sort==='dateold'?' selected':''}>Más antiguo primero</option>
+            <option value="recent"${seriesFilters.sort==='recent'?' selected':''}>Actualizado recientemente</option>
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Libro</span>
           <select id="seriesBookSel" class="filter-select" onchange="seriesFilters.book=this.value;resetSeriesPages();renderListResults()">
-            <option value="all">📚 Libro</option>
-            <option value="yes">📖 Con libro</option>
+            <option value="all">Libro</option>
+            <option value="yes">Con libro</option>
             <option value="no">Sin libro</option>
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Año</span>
           <select id="seriesYearSel" class="filter-select" onchange="seriesFilters.year=this.value;resetSeriesPages();renderListResults()">
-            <option value="">📅 Año</option>${allYears.map(y=>`<option value="${y}">${y}</option>`).join('')}
+            <option value="">Año</option>${allYears.map(y=>`<option value="${y}">${y}</option>`).join('')}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Tropo</span>
           <select id="seriesTropoSel" class="filter-select" onchange="seriesFilters.tropo=this.value;resetSeriesPages();renderListResults()">
-            <option value="">💘 Tropo</option>${TROPOS.map(t=>`<option value="${t}"${seriesFilters.tropo===t?' selected':''}>${t}</option>`).join('')}
+            <option value="">Tropo</option>${TROPOS.map(t=>`<option value="${t}"${seriesFilters.tropo===t?' selected':''}>${t}</option>`).join('')}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Dinámica</span>
           <select id="seriesDinamicaSel" class="filter-select" onchange="seriesFilters.dinamica=this.value;resetSeriesPages();renderListResults()">
-            <option value="">💞 Dinámica</option>${DINAMICAS.map(d=>`<option value="${d}"${seriesFilters.dinamica===d?' selected':''}>${d}</option>`).join('')}
+            <option value="">Dinámica</option>${DINAMICAS.map(d=>`<option value="${d}"${seriesFilters.dinamica===d?' selected':''}>${d}</option>`).join('')}
           </select>
         </div>
-        <button id="seriesClearBtn" class="filter-clear-btn" onclick="seriesFilters.countries=[];seriesFilters.book='all';seriesFilters.year='';seriesFilters.genre='';seriesFilters.type='';seriesFilters.region='';seriesFilters.tropo='';seriesFilters.dinamica='';document.getElementById('seriesBookSel').value='all';document.getElementById('seriesYearSel').value='';document.getElementById('seriesGenreSel').value='';document.getElementById('seriesTypeSel').value='';document.getElementById('seriesTropoSel').value='';document.getElementById('seriesDinamicaSel').value='';const scp=document.getElementById('cpWrap_series');if(scp&&scp._reset)scp._reset();resetSeriesPages();renderListResults()" style="display:none">✕ Limpiar</button>
+        <button id="seriesClearBtn" class="filter-clear-btn" onclick="seriesFilters.countries=[];seriesFilters.book='all';seriesFilters.year='';seriesFilters.genre='';seriesFilters.type='';seriesFilters.region='';seriesFilters.tropo='';seriesFilters.dinamica='';document.getElementById('seriesBookSel').value='all';document.getElementById('seriesYearSel').value='';document.getElementById('seriesGenreSel').value='';document.getElementById('seriesTypeSel').value='';document.getElementById('seriesTropoSel').value='';document.getElementById('seriesDinamicaSel').value='';const scp=document.getElementById('cpWrap_series');if(scp&&scp._reset)scp._reset();resetSeriesPages();renderListResults()" style="display:none">Limpiar</button>
       </div>
     </div>
     <div id="listResults"></div>`;
@@ -3986,13 +4574,13 @@ function renderUpcoming(){
         <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="upcomingGenreSel" class="filter-select" onchange="upcomingFilters.genre=this.value;resetUpcomingPage();renderUpcomingResults()">
-            <option value="">🎭 Género</option>${genreOpts}
+            <option value="">Género</option>${genreOpts}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Orden</span>
           <select id="upcomingSortSel" class="filter-select" onchange="upcomingFilters.sort=this.value;resetUpcomingPage();renderUpcomingResults()">
-            <option value="recent">🕐 Última modificación</option>
+            <option value="recent">Última modificación</option>
             <option value="az">A → Z</option>
             <option value="za">Z → A</option>
           </select>
@@ -4000,19 +4588,19 @@ function renderUpcoming(){
         <div class="filter-group">
           <span class="filter-label">Libro</span>
           <select id="upcomingBookSel" class="filter-select" onchange="upcomingFilters.book=this.value;resetUpcomingPage();renderUpcomingResults()">
-            <option value="all">📚 Libro</option>
-            <option value="yes">📖 Con libro</option>
+            <option value="all">Libro</option>
+            <option value="yes">Con libro</option>
             <option value="no">Sin libro</option>
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Año</span>
           <select id="upcomingYearSel" class="filter-select" onchange="upcomingFilters.year=this.value;resetUpcomingPage();renderUpcomingResults()">
-            <option value="">📅 Año</option>${yearsOpts}
+            <option value="">Año</option>${yearsOpts}
           </select>
         </div>
         <button id="upcomingClearBtn" class="filter-clear-btn" style="display:none"
-          onclick="upcomingFilters.countries=[];upcomingFilters.book='all';upcomingFilters.year='';upcomingFilters.genre='';document.getElementById('upcomingBookSel').value='all';document.getElementById('upcomingYearSel').value='';const ug=document.getElementById('upcomingGenreSel');if(ug)ug.value='';const ucp=document.getElementById('cpWrap_upcoming');if(ucp&&ucp._reset)ucp._reset();resetUpcomingPage();renderUpcomingResults()">✕ Limpiar</button>
+          onclick="upcomingFilters.countries=[];upcomingFilters.book='all';upcomingFilters.year='';upcomingFilters.genre='';document.getElementById('upcomingBookSel').value='all';document.getElementById('upcomingYearSel').value='';const ug=document.getElementById('upcomingGenreSel');if(ug)ug.value='';const ucp=document.getElementById('cpWrap_upcoming');if(ucp&&ucp._reset)ucp._reset();resetUpcomingPage();renderUpcomingResults()">Limpiar</button>
       </div>
     </div>
     <div id="upcomingResults"></div>`;
@@ -4752,35 +5340,35 @@ function renderMovies(){
         <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="moviesGenreSel" class="filter-select" onchange="handleMoviesGenreChange(this.value)">
-            <option value="">🎭 Género</option>${genreOpts}
+            <option value="">Género</option>${genreOpts}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Orden</span>
           <select id="moviesSortSel" class="filter-select" onchange="moviesFilters.sort=this.value;resetMoviesPage();renderMoviesResults()">
-            <option value="date">📅 Más reciente primero</option>
-            <option value="dateold">📅 Más antiguo primero</option>
+            <option value="date">Más reciente primero</option>
+            <option value="dateold">Más antiguo primero</option>
             <option value="az">A → Z</option>
             <option value="za">Z → A</option>
-            <option value="recent">🕐 Actualizado recientemente</option>
+            <option value="recent">Actualizado recientemente</option>
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Libro</span>
           <select id="moviesBookSel" class="filter-select" onchange="moviesFilters.book=this.value;resetMoviesPage();renderMoviesResults()">
-            <option value="all">📚 Libro</option>
-            <option value="yes">📖 Con libro</option>
+            <option value="all">Libro</option>
+            <option value="yes">Con libro</option>
             <option value="no">Sin libro</option>
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Año</span>
           <select id="moviesYearSel" class="filter-select" onchange="moviesFilters.year=this.value;resetMoviesPage();renderMoviesResults()">
-            <option value="">📅 Año</option>${yearsOpts}
+            <option value="">Año</option>${yearsOpts}
           </select>
         </div>
         <button id="moviesClearBtn" class="filter-clear-btn" style="display:none"
-          onclick="moviesFilters.countries=[];moviesFilters.book='all';moviesFilters.year='';moviesFilters.genre='';document.getElementById('moviesBookSel').value='all';document.getElementById('moviesYearSel').value='';const mg=document.getElementById('moviesGenreSel');if(mg)mg.value='';const mcp=document.getElementById('cpWrap_movies');if(mcp&&mcp._reset)mcp._reset();resetMoviesPage();renderMoviesResults()">✕ Limpiar</button>
+          onclick="moviesFilters.countries=[];moviesFilters.book='all';moviesFilters.year='';moviesFilters.genre='';document.getElementById('moviesBookSel').value='all';document.getElementById('moviesYearSel').value='';const mg=document.getElementById('moviesGenreSel');if(mg)mg.value='';const mcp=document.getElementById('cpWrap_movies');if(mcp&&mcp._reset)mcp._reset();resetMoviesPage();renderMoviesResults()">Limpiar</button>
       </div>
     </div>
     <div id="moviesResults"></div>`;
@@ -4976,7 +5564,7 @@ function renderBooks(){
       <div class="filter-group">
         <span class="filter-label">Idioma</span>
         <select id="booksLangSel" class="filter-select" onchange="booksState.lang=this.value;renderBooksResults()">
-          <option value="">🌐 Idioma</option>${langOpts}
+          <option value="">Idioma</option>${langOpts}
         </select>
       </div>
       <div class="filter-group">
@@ -4989,7 +5577,7 @@ function renderBooks(){
         </select>
       </div>
       <button id="booksClearBtn" class="filter-clear-btn" style="display:none"
-        onclick="booksState.type='all';booksState.lang='';booksState.letter='';document.getElementById('booksTypeSel').value='all';document.getElementById('booksLangSel').value='';renderBooksResults()">✕ Limpiar</button>
+        onclick="booksState.type='all';booksState.lang='';booksState.letter='';document.getElementById('booksTypeSel').value='all';document.getElementById('booksLangSel').value='';renderBooksResults()">Limpiar</button>
     </div>
     <div id="booksAlphaBar"></div>
     <div id="booksResults"></div>`;
@@ -5123,27 +5711,27 @@ function renderAnime(){
         <div class="filter-group">
           <span class="filter-label">País</span>
           <select class="filter-select" onchange="animeFilters.countries=this.value?[this.value]:[];paginationAnime={series:1,movies:1};renderAnimeResults()">
-            <option value="">🌐 País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
+            <option value="">País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="animeGenreSel" class="filter-select" onchange="animeFilters.genre=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()">
-            <option value="">🎭 Género</option>${genreOpts}
+            <option value="">Género</option>${genreOpts}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Libro/Manga</span>
           <select id="animeBookSel" class="filter-select" onchange="animeFilters.book=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()">
-            <option value="all">📚 Origen</option>
-            <option value="yes">📖 Con manga/novela</option>
+            <option value="all">Origen</option>
+            <option value="yes">Con manga/novela</option>
             <option value="no">Original</option>
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Año</span>
           <select id="animeYearSel" class="filter-select" onchange="animeFilters.year=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()">
-            <option value="">📅 Año</option>${yearsOpts}
+            <option value="">Año</option>${yearsOpts}
           </select>
         </div>
         <div class="filter-group">
@@ -5151,12 +5739,12 @@ function renderAnime(){
           <select id="animeSortSel" class="filter-select" onchange="animeFilters.sort=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()">
             <option value="az">A → Z</option>
             <option value="za">Z → A</option>
-            <option value="date">📅 Más reciente primero</option>
-            <option value="dateold">📅 Más antiguo primero</option>
+            <option value="date">Más reciente primero</option>
+            <option value="dateold">Más antiguo primero</option>
           </select>
         </div>
         <button class="filter-clear-btn" id="animeClearBtn" style="display:none"
-          onclick="animeFilters={q:'',countries:[],sort:'az',book:'all',year:'',genre:''};document.getElementById('animeSearchInput').value='';document.getElementById('animeGenreSel').value='';document.getElementById('animeBookSel').value='all';document.getElementById('animeYearSel').value='';document.getElementById('animeSortSel').value='az';paginationAnime={series:1,movies:1};renderAnimeResults()">✕ Limpiar</button>
+          onclick="animeFilters={q:'',countries:[],sort:'az',book:'all',year:'',genre:''};document.getElementById('animeSearchInput').value='';document.getElementById('animeGenreSel').value='';document.getElementById('animeBookSel').value='all';document.getElementById('animeYearSel').value='';document.getElementById('animeSortSel').value='az';paginationAnime={series:1,movies:1};renderAnimeResults()">Limpiar</button>
       </div>
     </div>
     <div id="animeResults"></div>
@@ -5485,19 +6073,19 @@ function renderRealities(){
         <div class="filter-group">
           <span class="filter-label">País</span>
           <select class="filter-select" onchange="realitiesFilters.countries=this.value?[this.value]:[];paginationRealities={series:1,movies:1};renderRealitiesResults()">
-            <option value="">🌐 País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
+            <option value="">País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="realitiesGenreSel" class="filter-select" onchange="realitiesFilters.genre=this.value;paginationRealities={series:1,movies:1};renderRealitiesResults()">
-            <option value="">🎭 Tipo</option>${genreOpts}
+            <option value="">Tipo</option>${genreOpts}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Año</span>
           <select id="realitiesYearSel" class="filter-select" onchange="realitiesFilters.year=this.value;paginationRealities={series:1,movies:1};renderRealitiesResults()">
-            <option value="">📅 Año</option>${yearsOpts}
+            <option value="">Año</option>${yearsOpts}
           </select>
         </div>
         <div class="filter-group">
@@ -5505,12 +6093,12 @@ function renderRealities(){
           <select id="realitiesSortSel" class="filter-select" onchange="realitiesFilters.sort=this.value;paginationRealities={series:1,movies:1};renderRealitiesResults()">
             <option value="az">A → Z</option>
             <option value="za">Z → A</option>
-            <option value="date">📅 Más reciente primero</option>
-            <option value="dateold">📅 Más antiguo primero</option>
+            <option value="date">Más reciente primero</option>
+            <option value="dateold">Más antiguo primero</option>
           </select>
         </div>
         <button class="filter-clear-btn" id="realitiesClearBtn" style="display:none"
-          onclick="realitiesFilters={q:'',countries:[],sort:'az',year:'',genre:''};document.getElementById('realitiesSearchInput').value='';document.getElementById('realitiesGenreSel').value='';document.getElementById('realitiesYearSel').value='';document.getElementById('realitiesSortSel').value='az';paginationRealities={series:1,movies:1};renderRealitiesResults()">✕ Limpiar</button>
+          onclick="realitiesFilters={q:'',countries:[],sort:'az',year:'',genre:''};document.getElementById('realitiesSearchInput').value='';document.getElementById('realitiesGenreSel').value='';document.getElementById('realitiesYearSel').value='';document.getElementById('realitiesSortSel').value='az';paginationRealities={series:1,movies:1};renderRealitiesResults()">Limpiar</button>
       </div>
     </div>
     <div id="realitiesResults"></div>
@@ -5661,19 +6249,19 @@ function renderDocumentales(){
         <div class="filter-group">
           <span class="filter-label">País</span>
           <select class="filter-select" onchange="documentalesFilters.countries=this.value?[this.value]:[];paginationDocumentales={page:1};renderDocumentalesResults()">
-            <option value="">🌐 País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
+            <option value="">País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="documentalesGenreSel" class="filter-select" onchange="documentalesFilters.genre=this.value;paginationDocumentales={page:1};renderDocumentalesResults()">
-            <option value="">🎭 Tipo</option>${genreOpts}
+            <option value="">Tipo</option>${genreOpts}
           </select>
         </div>
         <div class="filter-group">
           <span class="filter-label">Año</span>
           <select id="documentalesYearSel" class="filter-select" onchange="documentalesFilters.year=this.value;paginationDocumentales={page:1};renderDocumentalesResults()">
-            <option value="">📅 Año</option>${yearsOpts}
+            <option value="">Año</option>${yearsOpts}
           </select>
         </div>
         <div class="filter-group">
@@ -5681,12 +6269,12 @@ function renderDocumentales(){
           <select id="documentalesSortSel" class="filter-select" onchange="documentalesFilters.sort=this.value;paginationDocumentales={page:1};renderDocumentalesResults()">
             <option value="az">A → Z</option>
             <option value="za">Z → A</option>
-            <option value="date">📅 Más reciente primero</option>
-            <option value="dateold">📅 Más antiguo primero</option>
+            <option value="date">Más reciente primero</option>
+            <option value="dateold">Más antiguo primero</option>
           </select>
         </div>
         <button class="filter-clear-btn" id="documentalesClearBtn" style="display:none"
-          onclick="documentalesFilters={q:'',countries:[],sort:'az',year:'',genre:''};document.getElementById('documentalesSearchInput').value='';document.getElementById('documentalesGenreSel').value='';document.getElementById('documentalesYearSel').value='';document.getElementById('documentalesSortSel').value='az';paginationDocumentales={page:1};renderDocumentalesResults()">✕ Limpiar</button>
+          onclick="documentalesFilters={q:'',countries:[],sort:'az',year:'',genre:''};document.getElementById('documentalesSearchInput').value='';document.getElementById('documentalesGenreSel').value='';document.getElementById('documentalesYearSel').value='';document.getElementById('documentalesSortSel').value='az';paginationDocumentales={page:1};renderDocumentalesResults()">Limpiar</button>
       </div>
     </div>
     <div id="documentalesResults"></div>

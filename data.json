@@ -1137,11 +1137,11 @@
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/429133/Thumbnail/book_detail_large.gif?2",
       "bookUrl": "https://en.mebmarket.com/?action=book_details&book_id=429133",
-      "upcoming": true,
+      "upcoming": false,
       "skipDates": [],
       "episodes": [],
       "watchLinks": [],
-      "trailerUrl": "",
+      "trailerUrl": "https://youtu.be/-m-afYbLgTA?si=qyDAWqxmfjfoLQAj",
       "bookLinks": [
         {
           "lang": "es",
@@ -1181,7 +1181,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-23T18:23:16.128Z",
+      "updatedAt": "2026-05-29T06:47:32.757Z",
       "nameEn": "วาดฝันวันวิวาห์",
       "episodeDuration": "",
       "myPick": false,
@@ -1200,7 +1200,21 @@
       "dinamica": [
         "Femme × Femme"
       ],
-      "awards": []
+      "awards": [],
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-06-19",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            4
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ]
     },
     {
       "id": "1776932166717",
@@ -1219,7 +1233,7 @@
       "skipDates": [],
       "episodes": [],
       "watchLinks": [],
-      "trailerUrl": "",
+      "trailerUrl": "https://youtu.be/-m-afYbLgTA?si=qyDAWqxmfjfoLQAj",
       "bookLinks": [
         {
           "lang": "th",
@@ -1248,7 +1262,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-23T18:26:47.291Z",
+      "updatedAt": "2026-05-29T06:41:51.698Z",
       "nameEn": "รักได้ไหม",
       "episodeDuration": "",
       "myPick": false,
@@ -1262,8 +1276,7 @@
       "sourceType": "novela",
       "moods": [],
       "tropos": [
-        "Amor prohibido",
-        "Romance rico / pobre"
+        "Amor prohibido"
       ],
       "dinamica": [
         "Femme × Femme",
@@ -1428,8 +1441,8 @@
             },
             {
               "num": 8,
-              "date": "2026-04-24",
-              "skipped": true
+              "date": "2026-05-28",
+              "skipped": false
             }
           ],
           "premiereSchedule": []
@@ -9542,14 +9555,14 @@
     {
       "id": "1777459392058",
       "name": "By Your Side",
-      "poster": "https://i.mydramalist.com/ABX754_4c.jpg?v=1",
+      "poster": "https://pbs.twimg.com/media/HJJbCoybMAA5ZAl?format=jpg&name=4096x4096",
       "synopsis": "Zhaojun es una estudiante universitaria como cualquier otra durante el día, pero por la noche se adentra en un mundo secreto de encuentros de alto riesgo y deseos ocultos. Mientras intenta compaginar los estudios, los amigos y la presión de su trabajo poco convencional, nunca imaginó que una reunión rutinaria se convertiría en un momento capaz de desmoronar todo.\n\nCuando una misteriosa nueva clienta, Namnueng, se cruza en su camino, Zhaojun debe enfrentarse a la tensión entre el deseo, el peligro y las decisiones que definen quién es realmente. Si a esto le sumamos amigos que se preocupan demasiado, profesores que saben demasiado y secretos que se niegan a permanecer ocultos, de repente cada decisión adquiere un peso que va mucho más allá del dinero.\n\n¿Podrá sobrevivir a la emoción y el riesgo de un mundo donde las apariencias engañan y los límites se difuminan, o será un solo encuentro lo que cambie su vida para siempre?",
       "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "",
+      "trailerUrl": "https://www.youtube.com/watch?v=0UzWBBSS3js",
       "bookSource": "By Your Side",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/422079/Thumbnail/book_detail_large.gif?3",
@@ -9565,7 +9578,7 @@
       "genres": [
         "Romance"
       ],
-      "updatedAt": "2026-05-22T07:24:21.561Z",
+      "updatedAt": "2026-05-25T19:45:58.652Z",
       "nameEn": "น้อง Sideline",
       "category": "series",
       "seriesType": "serie",
@@ -9596,7 +9609,9 @@
       "productoraId": "1779136384575",
       "sourceType": "novela",
       "moods": [],
-      "awards": []
+      "awards": [],
+      "tropos": [],
+      "dinamica": []
     },
     {
       "id": "1777459455348",
@@ -21052,17 +21067,17 @@
         {
           "label": "Temporada 1",
           "startDate": "2026-05-25",
-          "totalEpisodes": 12,
+          "totalEpisodes": 50,
           "emissionDays": [
             0
           ],
-          "allInOneDay": false,
+          "allInOneDay": true,
           "skipDates": [],
           "episodes": [],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-24T09:57:51.400Z"
+      "updatedAt": "2026-05-26T06:59:00.630Z"
     },
     {
       "id": "1779639066759",
@@ -21185,6 +21200,68 @@
         }
       ],
       "updatedAt": "2026-05-24T16:13:38.592Z"
+    },
+    {
+      "id": "1779991449685",
+      "name": "Your Portrait",
+      "nameEn": "너의 초상화",
+      "poster": "https://i.mydramalist.com/nOkLpE_4f.jpg",
+      "synopsis": "El primer amor de Se Hyun la dejó con el corazón roto, pero encuentra el verdadero amor en la universidad, donde conoce a su primera novia, Seon U. La pareja comparte felizmente un apartamento hasta que Seon U se ve obligada a mudarse después de graduarse. Se Hyun acepta a un nuevo compañero de piso, Jin A, quien resulta ser... ¿el ex de Seon U? ¿Sobrevivirá la relación de Se Hyun y Seon U a los intentos de Jin A por reconquistar a Seon U? (",
+      "year": 2025,
+      "country": "Corea del Sur",
+      "network": "vigloo",
+      "networkUrl": "https://www.vigloo.com/ko/video/15000153?episode=1",
+      "watchLinks": [
+        {
+          "name": "vigloo",
+          "url": "https://www.vigloo.com/ko/video/15000153?episode=1"
+        }
+      ],
+      "trailerUrl": "https://www.vigloo.com/ko/video/15000153?season=15000153&episode=0",
+      "bookSource": "Portrait of You",
+      "basedOnBook": true,
+      "sourceType": "manhwa",
+      "bookCoverUrl": "https://preview.redd.it/portrait-of-you-day-144-of-recommending-yuri-manhwa-v0-uu0rfkwo5n6f1.png?width=640&crop=smart&auto=webp&s=3015a0d9838397fa6e32912ba0e0f13bce3892c3",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 2,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-01-01",
+          "totalEpisodes": 40,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": true,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-05-28T18:04:09.685Z"
     }
   ],
   "movies": [
@@ -30946,6 +31023,88 @@
       "cast": [],
       "productoraId": "",
       "updatedAt": "2026-05-24T16:18:26.085Z"
+    },
+    {
+      "id": "1779990666997",
+      "name": "Criaturas celestiales",
+      "nameEn": "Heavenly Creatures",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/5/1/1/6/9/51169-heavenly-creatures-0-1000-0-1500-crop.jpg?v=9f6a5f4e5c",
+      "synopsis": "Basada en la historia real de Juliet Hulme y Pauline Parker, dos amigas que comparten el amor por a fantasía y la literatura y conspiran para matar a la madre de Pauline luego de que ésta intentara ponerle fin a la intensa y obsesiva relación de las chicas.",
+      "year": 1994,
+      "country": "Estados Unidos / Alemania / Nueva Zelanda",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://youtu.be/_bIUDcnHDlg?si=CGFM6mxBOTuVCGy0",
+      "date": "1994-09-08",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Drama",
+        "Fantasía"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "awards": [
+        {
+          "name": "Writers Guild Awards",
+          "festival": "",
+          "category": "Mejor guion original",
+          "year": 1995,
+          "result": "nominated"
+        }
+      ],
+      "category": "movie",
+      "movieType": "film",
+      "duration": 109,
+      "cast": [],
+      "productoraId": "",
+      "updatedAt": "2026-05-28T17:52:41.616Z"
+    },
+    {
+      "id": "1779990989856",
+      "name": "La princesa Kaguya del cosmos",
+      "nameEn": "超かぐや姫！",
+      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/9YrbOSKoreS4oIjuwx9YjkAU8KP.jpg",
+      "synopsis": "Una estudiante de 17 años que equilibra escuela y trabajo conoce a Kaguya, una misteriosa chica lunar que irrumpe en su vida",
+      "year": 2026,
+      "country": "Japón",
+      "network": "Netflix",
+      "networkUrl": "https://www.netflix.com/es/title/81756595",
+      "watchLinks": [
+        {
+          "name": "Netflix",
+          "url": "https://www.netflix.com/es/title/81756595"
+        }
+      ],
+      "trailerUrl": "https://youtu.be/uine6d15yGE?si=46MEH03W08tHNN2Q",
+      "date": "2026-01-22",
+      "basedOnBook": true,
+      "bookSource": "Cosmic Princess Kaguya!",
+      "bookCoverUrl": "https://preview.redd.it/cosmic-princess-kaguya-manga-volume-1-emergency-reprint-v0-om9ff00tyuhg1.jpeg?auto=webp&s=e98daf8a3ea9b927ffa915b5bc41fd0019990192",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Animación",
+        "Anime",
+        "Fantasía"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "manga",
+      "awards": [],
+      "category": "anime",
+      "movieType": "film",
+      "duration": 141,
+      "cast": [],
+      "productoraId": "",
+      "updatedAt": "2026-05-28T17:56:29.856Z"
     }
   ],
   "actresses": [
@@ -33850,7 +34009,6 @@
       ],
       "movieIds": [
         "1700000000233",
-        "1700000000236",
         "1700000000266",
         "1700000000123",
         "1700000000234"
@@ -33871,13 +34029,7 @@
         "1700000000180",
         "1700000000179"
       ],
-      "movieIds": [
-        "1700000000244",
-        "1700000000243",
-        "1700000000267",
-        "1700000000180",
-        "1700000000179"
-      ],
+      "movieIds": [],
       "id": "1779436891444"
     },
     {
@@ -33891,13 +34043,9 @@
         "1777751254463",
         "1700000000268"
       ],
-      "movieIds": [
-        "1700000000158",
-        "1700000000268",
-        "1700000000159"
-      ],
+      "movieIds": [],
       "id": "1779437187677"
     }
   ],
-  "exportedAt": "2026-05-24T16:22:51.618Z"
+  "exportedAt": "2026-05-29T06:47:38.705Z"
 }
