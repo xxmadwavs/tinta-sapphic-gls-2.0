@@ -1261,11 +1261,30 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
   line-height:1.4;
 }
 
-/* ── Series card status pill ── */
-.sc-status-pill{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:20px;margin-top:5px;display:inline-block}
-.sc-status-pill.today{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;animation:todayPulse 2.2s ease-in-out infinite}
-.sc-status-pill.airing{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2)}
-.sc-status-pill.finished{background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.2)}
+/* ── Series card status pill — PROMINENTE ── */
+.sc-status-pill{
+  display:flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:800;padding:5px 10px;
+  border-radius:8px;margin-bottom:5px;
+  width:100%;letter-spacing:.01em;
+}
+.sc-status-pill.today{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;animation:todayPulse 2.2s ease-in-out infinite;
+  box-shadow:0 2px 10px rgba(201,79,124,0.35);
+}
+.sc-status-pill.airing{
+  background:linear-gradient(135deg,rgba(201,79,124,0.12),rgba(224,122,160,0.08));
+  color:var(--accent);border:1.5px solid rgba(201,79,124,.25);
+}
+.sc-status-pill.finished{
+  background:var(--teal-soft);color:var(--teal);
+  border:1.5px solid rgba(74,173,160,.25);
+}
+.sc-status-pill.upcoming-start{
+  background:var(--lavender-soft);color:var(--lavender);
+  border:1.5px solid rgba(139,114,190,.25);
+}
 
 /* ── Region quick-filter pills ── */
 .region-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
@@ -2252,25 +2271,27 @@ footer {
 
 /* ═══ SERIES CARD — SIMPLIFIED ═══ */
 .sc-status-pill{
-  display:inline-flex;align-items:center;gap:4px;
-  font-size:10px;font-weight:700;padding:3px 9px;
-  border-radius:20px;margin-top:5px;
+  display:flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:800;padding:5px 10px;
+  border-radius:8px;margin-bottom:5px;
+  width:100%;letter-spacing:.01em;
 }
 .sc-status-pill.airing{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;animation:todayPulse 2.2s ease-in-out infinite;
+  background:linear-gradient(135deg,rgba(201,79,124,0.12),rgba(224,122,160,0.08));
+  color:var(--accent);border:1.5px solid rgba(201,79,124,.25);
 }
 .sc-status-pill.today{
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   color:#fff;animation:todayPulse 2.2s ease-in-out infinite;
+  box-shadow:0 2px 10px rgba(201,79,124,0.35);
 }
 .sc-status-pill.upcoming-start{
   background:var(--lavender-soft);color:var(--lavender);
-  border:1px solid rgba(139,114,190,.25);
+  border:1.5px solid rgba(139,114,190,.25);
 }
 .sc-status-pill.finished{
   background:var(--teal-soft);color:var(--teal);
-  border:1px solid rgba(74,173,160,.2);
+  border:1.5px solid rgba(74,173,160,.25);
 }
 .sc-country-flag{
   position:absolute;bottom:6px;left:6px;
@@ -4044,10 +4065,10 @@ function seriesCardHtml(s, si){
       ${badgesHtml}
       <div class="series-card-name">${s.name}</div>
       ${s.nameEn?`<div style="font-size:10px;color:var(--muted);font-style:italic;line-height:1.3;margin-top:1px;margin-bottom:1px">${s.nameEn}</div>`:''}
+      ${statusPill}
       <div class="series-card-meta" style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">${s.network||''}${yearHtml&&s.network?' · ':''} ${yearHtml}</div>
       ${genrePills}
       ${moodsPills}
-      ${statusPill}
       ${durChip}
       ${progressBar}
     </div>
@@ -6742,13 +6763,6 @@ function renderShips(){
   view.innerHTML=`<div class="ships-shell">
     <div class="section-heading" style="margin-bottom:.25rem">💕 Ships Oficiales Thais</div>
     <p class="section-desc" style="margin-bottom:.85rem">Parejas oficiales de series tailandesas: protagonistas y secundarias.</p>
-    <div class="ships-subtabs">
-      <button class="ships-subtab active" id="shipsSubAll" onclick="shipsState.filter='all';renderShipsResults()">Todas</button>
-      <button class="ships-subtab" id="shipsSubOngoing" onclick="shipsState.filter='ongoing';renderShipsResults()">En emisión</button>
-      <button class="ships-subtab" id="shipsSubUpcoming" onclick="shipsState.filter='upcoming';renderShipsResults()">Próximamente</button>
-      <button class="ships-subtab" id="shipsSubFinished" onclick="shipsState.filter='finished';renderShipsResults()">Finalizadas</button>
-      <button class="ships-subtab" id="shipsSubRetired" onclick="shipsState.filter='retired';renderShipsResults()">💔 Retiradas</button>
-    </div>
     <div style="position:relative;margin-bottom:.85rem">
       <span class="search-icon">🔍</span>
       <input class="search-input" id="shipsSearchInput" placeholder="Buscar ship o actriz…"
@@ -6772,83 +6786,51 @@ function renderShipsResults(){
   const seriesStatus=view._seriesStatus||function(){return 'finished';};
   const isManual=(ships[0]?.mode==='manual');
 
-  // Subtab active highlight
-  ['All','Ongoing','Upcoming','Finished','Retired'].forEach(t=>{
-    const btn=document.getElementById('shipsSub'+t);
-    if(btn) btn.className='ships-subtab'+(shipsState.filter===(t==='All'?'all':t.toLowerCase())?' active':'');
-  });
-
   const q=(shipsState.q||'').toLowerCase().trim();
 
-  // Filter
-  let filtered=ships.filter(sh=>{
-    const members=sh.members||[];
-    // Ships marcadas como retiradas manualmente
+  // Compute status for each ship
+  function getShipStatus(sh){
     const isRetired=!!(sh.sh?.retired);
-    // Determinar status: para manual usamos la serie más relevante (primera en común o la más reciente)
-    let status='finished';
+    if(isRetired) return 'retired';
     if(isManual){
-      if(isRetired){
-        status='retired';
-      } else {
-        const shared=sh.shared||[];
-        if(shared.length){
-          // Si alguna en emisión → ongoing; si alguna upcoming → upcoming
-          if(shared.some(s=>seriesStatus(s)==='ongoing')) status='ongoing';
-          else if(shared.some(s=>seriesStatus(s)==='upcoming')) status='upcoming';
-          else status='finished';
-        }
-      }
-    } else {
-      status=seriesStatus(sh.s);
+      const shared=sh.shared||[];
+      if(!shared.length) return 'finished';
+      if(shared.some(s=>seriesStatus(s)==='ongoing')) return 'ongoing';
+      if(shared.some(s=>seriesStatus(s)==='upcoming')) return 'upcoming';
+      return 'finished';
     }
-    if(shipsState.filter==='ongoing'&&status!=='ongoing') return false;
-    if(shipsState.filter==='upcoming'&&status!=='upcoming') return false;
-    if(shipsState.filter==='finished'&&status!=='finished') return false;
-    if(shipsState.filter==='retired'&&status!=='retired') return false;
-    // "Todas" excluye retiradas — se ven solo en su propio tab
-    if(shipsState.filter==='all'&&status==='retired') return false;
-    if(q){
-      const names=members.map(a=>(a.name||'').toLowerCase());
-      const shipName=(sh.sh?.name||sh.s?.name||'').toLowerCase();
-      return names.some(n=>n.includes(q))||shipName.includes(q);
-    }
-    return true;
-  });
-
-  if(!filtered.length){
-    resultsEl.innerHTML='<div class="search-empty">No se encontraron ships con esos filtros.</div>';
-    return;
+    return seriesStatus(sh.s);
   }
 
-  // Sort by ship name
-  filtered.sort((a,b)=>{
-    const na=a.sh?.name||a.s?.name||'';
-    const nb=b.sh?.name||b.s?.name||'';
-    return na.localeCompare(nb,'es');
+  // Filter by search query only
+  let allFiltered=ships.filter(sh=>{
+    if(!q) return true;
+    const members=sh.members||[];
+    const names=members.map(a=>(a.name||'').toLowerCase());
+    const shipName=(sh.sh?.name||sh.s?.name||'').toLowerCase();
+    return names.some(n=>n.includes(q))||shipName.includes(q);
   });
 
-  const statusLabel={ongoing:'En emisión',upcoming:'Próximamente',finished:'Finalizada',retired:'Retirada 💔'};
+  // Split into active (all non-retired) and retired
+  const activeShips=allFiltered.filter(sh=>getShipStatus(sh)!=='retired');
+  const retiredShips=allFiltered.filter(sh=>getShipStatus(sh)==='retired');
+
+  // Sort both by name
+  const sortByName=(a,b)=>(a.sh?.name||a.s?.name||'').localeCompare(b.sh?.name||b.s?.name||'','es');
+  activeShips.sort(sortByName);
+  retiredShips.sort(sortByName);
+
+  const statusLabel={ongoing:'▶ En emisión',upcoming:'🔜 Próximamente',finished:'✓ Finalizada',retired:'💔 Ruptura'};
   const statusClass={ongoing:'ship-ongoing',upcoming:'ship-upcoming',finished:'ship-finished',retired:'ship-retired'};
 
-  let html=`<div class="ships-count">Mostrando <strong>${filtered.length}</strong> ship${filtered.length!==1?'s':''}</div><div class="ships-grid">`;
+  function buildShipCard(sh,idx,isRetired,clickHandler){
+    const shared=sh.shared||[];
+    const members=sh.members||[];
+    const status=getShipStatus(sh);
+    const statusBadge=`<span class="ship-status-badge ${statusClass[status]}">${statusLabel[status]}</span>`;
 
-  if(isManual){
-    filtered.forEach((sh,idx)=>{
-      const shared=sh.shared||[];
-      const members=sh.members||[];
-      const isRetired=!!(sh.sh?.retired);
-      let status='finished';
-      if(isRetired){
-        status='retired';
-      } else if(shared.length){
-        if(shared.some(s=>seriesStatus(s)==='ongoing')) status='ongoing';
-        else if(shared.some(s=>seriesStatus(s)==='upcoming')) status='upcoming';
-        else status='finished';
-      }
-      const statusBadge=`<span class="ship-status-badge ${statusClass[status]}">${statusLabel[status]}</span>`;
-      const [a1,a2]=members;
-      let coupleBanner;
+    let coupleBanner;
+    if(isManual){
       if(sh.sh.couplePhoto){
         const cpPos=sh.sh.couplePhotoPosition||'50% 20%';
         const cpZoom=sh.sh.couplePhotoZoom||1;
@@ -6856,22 +6838,20 @@ function renderShipsResults(){
           <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center" onerror="this.style.display='none'">
         </div>`;
       } else {
+        const [a1,a2]=members;
         const half1=a1?.photo
           ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
           :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
         const half2=a2?.photo
           ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
           :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
-        coupleBanner=`<div class="ship-couple-banner">
-          ${half1}${half2}
-          <div class="ship-couple-divider"></div>
-        </div>`;
+        coupleBanner=`<div class="ship-couple-banner">${half1}${half2}<div class="ship-couple-divider"></div></div>`;
       }
       const chipsHtml=shared.slice(0,3).map(s=>{
         const sIdx=(state.series||[]).indexOf(s);
         return `<span class="ship-series-chip-sm" onclick="event.stopPropagation();openSeries(${sIdx})">${s.name}</span>`;
       }).join('')+(shared.length>3?`<span class="ship-series-chip-sm">+${shared.length-3}</span>`:'');
-      html+=`<div class="ship-card${isRetired?' is-retired':''}" onclick="openShipDetail(${idx})">
+      return `<div class="ship-card${isRetired?' is-retired':''}" onclick="${clickHandler}">
         ${coupleBanner}
         <div class="ship-card-inner">
           <div class="ship-card-title">${sh.sh.name||'Ship'}</div>
@@ -6879,14 +6859,12 @@ function renderShipsResults(){
           ${shared.length?`<div class="ship-series-chips">${chipsHtml}</div>`:''}
         </div>
       </div>`;
-    });
-  } else {
-    filtered.forEach(sh=>{
-      const status=seriesStatus(sh.s);
+    } else {
+      const status2=seriesStatus(sh.s);
       const typeBadge=sh.type==='main'
         ?`<span class="ship-type-badge ship-type-main">Principal</span>`
         :`<span class="ship-type-badge ship-type-secondary">Secundaria</span>`;
-      const statusBadge=`<span class="ship-status-badge ${statusClass[status]}">${statusLabel[status]}</span>`;
+      const statusBadge2=`<span class="ship-status-badge ${statusClass[status2]}">${statusLabel[status2]}</span>`;
       const pair=sh.members.slice(0,2);
       const a1auto=actMap[pair[0]?.actressId];
       const a2auto=actMap[pair[1]?.actressId];
@@ -6896,22 +6874,53 @@ function renderShipsResults(){
       const half2auto=a2auto?.photo
         ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" style="object-position:${a2auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
         :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
-      html+=`<div class="ship-card" onclick="openSeries(${sh.si})">
-        <div class="ship-couple-banner">
-          ${half1auto}${half2auto}
-          <div class="ship-couple-divider"></div>
-        </div>
+      return `<div class="ship-card" onclick="${clickHandler}">
+        <div class="ship-couple-banner">${half1auto}${half2auto}<div class="ship-couple-divider"></div></div>
         <div class="ship-card-inner">
           <div class="ship-card-title">${sh.s.name}</div>
-          <div class="ship-card-meta">${statusBadge}${typeBadge}</div>
+          <div class="ship-card-meta">${statusBadge2}${typeBadge}</div>
         </div>
       </div>`;
-    });
+    }
   }
 
-  html+='</div>';
-  // Guardar filtered para el modal de detalle
-  view._filtered=filtered;
+  // Build result HTML: two sections
+  let html='';
+
+  if(!activeShips.length&&!retiredShips.length){
+    html='<div class="search-empty">No se encontraron ships con esa búsqueda.</div>';
+    resultsEl.innerHTML=html;
+    return;
+  }
+
+  // Active ships section
+  if(activeShips.length){
+    html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px">💕 Ships — ${activeShips.length}</div>`;
+    html+=`<div class="ships-grid">`;
+    activeShips.forEach((sh,i)=>{
+      const filteredIdx=i; // position in _filtered
+      const clickHandler=isManual?`openShipDetail(${filteredIdx})`:`openSeries(${sh.si})`;
+      html+=buildShipCard(sh,filteredIdx,false,clickHandler);
+    });
+    html+=`</div>`;
+  }
+
+  // Rupturas section
+  if(retiredShips.length){
+    html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:22px 0 10px;display:flex;align-items:center;gap:8px">
+      <span>💔 Rupturas — ${retiredShips.length}</span>
+    </div>`;
+    html+=`<div class="ships-grid">`;
+    retiredShips.forEach((sh,i)=>{
+      const filteredIdx=activeShips.length+i; // position in _filtered after active
+      const clickHandler=isManual?`openShipDetail(${filteredIdx})`:`openSeries(${sh.si})`;
+      html+=buildShipCard(sh,filteredIdx,true,clickHandler);
+    });
+    html+=`</div>`;
+  }
+
+  // Store filtered (active+retired combined) for detail modal
+  view._filtered=[...activeShips,...retiredShips];
   resultsEl.innerHTML=html;
 }
 
