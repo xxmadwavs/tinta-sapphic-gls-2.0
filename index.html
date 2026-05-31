@@ -8569,14 +8569,7 @@ function ruletaDrawWheel(angle){
     const item = slices[i];
     ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a0,a1);ctx.closePath();
     ctx.fillStyle = RULETA_COLORS[i % RULETA_COLORS.length];ctx.fill();
-    ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=1.5;ctx.stroke();
-    ctx.save();ctx.translate(cx,cy);ctx.rotate(a0 + sliceAngle/2);
-    ctx.fillStyle='rgba(255,255,255,0.92)';
-    ctx.font='bold 10px DM Sans,sans-serif';
-    ctx.textAlign='right';ctx.textBaseline='middle';
-    const name=(item.name||'').length>16?item.name.substring(0,15)+'…':item.name;
-    ctx.fillText(name, r-10, 0);
-    ctx.restore();
+    ctx.strokeStyle='rgba(255,255,255,0.35)';ctx.lineWidth=2;ctx.stroke();
   }
   ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
   ctx.strokeStyle='rgba(255,255,255,0.5)';ctx.lineWidth=3;ctx.stroke();
