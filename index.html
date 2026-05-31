@@ -8368,6 +8368,7 @@ function getRuletaPool(){
     });
   } else {
     return (state.series||[]).filter(s => {
+      if(s.upcoming) return false; // excluir no estrenadas
       if(!includeWebseries && s.seriesType === 'webserie') return false;
       if(s.category === 'anime' || s.category === 'reality') return false;
       return true;
@@ -8504,6 +8505,7 @@ function renderRuleta(){
   <div id="ruletaResult"></div>
 </div>`;
 
+  _refreshRuletaSlices();
   ruletaDrawWheel();
 }
 
@@ -8513,6 +8515,30 @@ const RULETA_COLORS = [
   '#e8a0c0','#c8a8e8','#8dd8d0','#f0d090',
 ];
 
+// Holds the 12 shuffled items currently shown on the wheel
+let ruletaDisplaySlices = [];
+
+function _shuffleArray(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+// Refreshes ruletaDisplaySlices with a fresh random 12 from pool.
+// If forcedItem is provided it's guaranteed to be in the slices.
+function _refreshRuletaSlices(forcedItem){
+  const pool=getRuletaPool();
+  if(!pool.length){ruletaDisplaySlices=[];return;}
+  const shuffled=_shuffleArray(pool);
+  const n=Math.min(pool.length,12);
+  let slices=shuffled.slice(0,n);
+  // Ensure forcedItem is included
+  if(forcedItem && !slices.includes(forcedItem)){
+    slices[Math.floor(Math.random()*n)]=forcedItem;
+  }
+  ruletaDisplaySlices=slices;
+}
+
 function ruletaDrawWheel(angle){
   const canvas = document.getElementById('ruletaCanvas');
   if(!canvas) return;
@@ -8520,7 +8546,8 @@ function ruletaDrawWheel(angle){
   const size = canvas.width;
   const cx = size/2, cy = size/2, r = size/2 - 4;
   const pool = getRuletaPool();
-  const n = Math.min(pool.length, 12);
+  const slices = ruletaDisplaySlices.length ? ruletaDisplaySlices : pool.slice(0,Math.min(pool.length,12));
+  const n = slices.length;
   ctx.clearRect(0,0,size,size);
 
   if(!n){
@@ -8539,7 +8566,7 @@ function ruletaDrawWheel(angle){
   for(let i=0;i<n;i++){
     const a0 = startAngle + i*sliceAngle;
     const a1 = a0 + sliceAngle;
-    const item = pool[i % pool.length];
+    const item = slices[i];
     ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a0,a1);ctx.closePath();
     ctx.fillStyle = RULETA_COLORS[i % RULETA_COLORS.length];ctx.fill();
     ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=1.5;ctx.stroke();
@@ -8573,6 +8600,7 @@ function ruletaToggle(key){
       togglesEl.innerHTML=`<div class="ruleta-toggle${ruletaState.includeWebseries?' on':''}" onclick="ruletaToggle('includeWebseries')"><div class="rt-dot"></div>Incluir web series</div>`;
     }
   }
+  _refreshRuletaSlices();
   ruletaDrawWheel();
 }
 
@@ -8589,11 +8617,14 @@ function spinRuleta(){
   if(centerBtn) centerBtn.classList.add('spinning');
   if(resultEl) resultEl.innerHTML='';
 
+  // Pick winner from full pool, then build a fresh random set of 12 that includes it
   const winnerIdx=Math.floor(Math.random()*pool.length);
   const winner=pool[winnerIdx];
-  const n=Math.min(pool.length,12);
+  _refreshRuletaSlices(winner);
+
+  const n=ruletaDisplaySlices.length;
   const sliceAngle=(Math.PI*2)/n;
-  const winnerSegment=winnerIdx%n;
+  const winnerSegment=ruletaDisplaySlices.indexOf(winner);
   const targetAngle=-Math.PI/2-(winnerSegment*sliceAngle+sliceAngle/2);
   const fullSpins=(5+Math.floor(Math.random()*4))*Math.PI*2;
   const finalAngle=targetAngle+fullSpins;
@@ -8612,6 +8643,9 @@ function spinRuleta(){
       ruletaState.lastResult=winner;
       if(spinBtn){spinBtn.disabled=false;spinBtn.textContent='🔄 Girar de nuevo';}
       if(centerBtn) centerBtn.classList.remove('spinning');
+      // After landing, refresh slices again for next spin visual variety
+      _refreshRuletaSlices();
+      setTimeout(()=>ruletaDrawWheel(),50);
       _showRuletaResult(winner);
     }
   }
