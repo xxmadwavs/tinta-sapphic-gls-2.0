@@ -3545,8 +3545,10 @@ function getPlatformLogo(name){
   const canon=canonicalizePlatform(name);
   // 1) logos personalizados guardados en data.json
   const custom=(state.platformLogos)||{};
-  if(custom[canon]) return custom[canon];
-  if(custom[name]) return custom[name];
+  // Entradas marcadas como ocultas no muestran logo
+  if(custom[canon]==='__hidden__'||custom[name]==='__hidden__') return null;
+  if(custom[canon]&&custom[canon]!=='__hidden__') return custom[canon];
+  if(custom[name]&&custom[name]!=='__hidden__') return custom[name];
   // 2) predefinidos (nombre canónico)
   return PLATFORM_LOGOS_DEFAULT[canon]||PLATFORM_LOGOS_DEFAULT[name]||null;
 }

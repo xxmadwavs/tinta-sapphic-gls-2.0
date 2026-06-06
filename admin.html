@@ -4803,6 +4803,7 @@ function renderListasAdmin(){
   grid.innerHTML = listas.map((l, li)=>{
     const count = (l.seriesIds||[]).length + (l.movieIds||[]).length;
     const emoji = l.emoji || '📋';
+    const safeId = (l.id||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     return `<div class="series-item" style="align-items:flex-start;gap:12px">
       <div style="font-size:2rem;line-height:1;flex-shrink:0;padding-top:2px">${emoji}</div>
       <div style="flex:1;min-width:0">
@@ -4812,7 +4813,7 @@ function renderListasAdmin(){
       </div>
       <div class="series-actions">
         <button class="btn small" onclick="openEditLista(${li})">✏️ Editar</button>
-        <button class="btn small danger" onclick="delLista(${li})">🗑</button>
+        <button class="btn small danger" onclick="delLista('${safeId}')">🗑</button>
       </div>
     </div>`;
   }).join('');
@@ -4897,14 +4898,14 @@ function openAddLista(){
 function openEditLista(li){
   document.getElementById('listaModalTitle').textContent = '✏️ Editar lista';
   document.getElementById('listaModalBody').innerHTML = _listaFormHtml(listas[li]);
-  document.getElementById('listaModal').dataset.li = li;
+  document.getElementById('listaModal').dataset.liId = listas[li].id;
   document.getElementById('listaModal').classList.add('open');
   document.getElementById('lf_items').addEventListener('change', _updateListaCount);
 }
 
 function closeLista(){
   document.getElementById('listaModal').classList.remove('open');
-  delete document.getElementById('listaModal').dataset.li;
+  delete document.getElementById('listaModal').dataset.liId;
 }
 
 function saveLista(){
@@ -4916,18 +4917,25 @@ function saveLista(){
   const checked = [...document.querySelectorAll('#lf_items input:checked')];
   const seriesIds = checked.filter(c=>c.dataset.type==='serie').map(c=>c.value);
   const movieIds  = checked.filter(c=>c.dataset.type==='pelicula').map(c=>c.value);
-  const li = document.getElementById('listaModal').dataset.li;
-  const payload = { title, emoji, desc, order, seriesIds, movieIds,
-    id: li!=null ? (listas[li]?.id||Date.now().toString()) : Date.now().toString() };
-  if(li!=null) listas[li] = payload;
-  else listas.push(payload);
+  const editId = document.getElementById('listaModal').dataset.liId;
+  if(editId){
+    // Editar existente — buscar por id, no por índice
+    const idx = listas.findIndex(l=>l.id===editId);
+    if(idx>=0) listas[idx] = { ...listas[idx], title, emoji, desc, order, seriesIds, movieIds };
+    else listas.push({ title, emoji, desc, order, seriesIds, movieIds, id: editId });
+  } else {
+    // Nueva lista
+    listas.push({ title, emoji, desc, order, seriesIds, movieIds, id: Date.now().toString() });
+  }
   listas.sort((a,b)=>(a.order||99)-(b.order||99));
   save();
   closeLista();
   renderListasAdmin();
 }
 
-async function delLista(li){
+async function delLista(listaId){
+  const li = listas.findIndex(l=>l.id===listaId);
+  if(li<0) return;
   const ok = await showConfirm({title:`¿Eliminar "${listas[li]?.title}"?`, desc:'Esta acción no se puede deshacer.', icon:'📋'});
   if(!ok) return;
   listas.splice(li,1);
@@ -5058,6 +5066,7 @@ function getAllPlatformNamesFromData(){
 
 function getLogoForPlatform(name){
   const custom=getCustomPlatformLogos();
+  if(custom[name]==='__hidden__') return null;
   return custom[name] || PLATFORM_LOGOS_DEFAULT_ADMIN[name] || null;
 }
 
@@ -5067,18 +5076,25 @@ function renderPlatformLogosSection(){
 
   const custom=getCustomPlatformLogos();
   const dataNames=getAllPlatformNamesFromData();
-  // Union: plataformas en data + las que hayas añadido manualmente en platformLogos
-  const customOnly=Object.keys(custom).filter(n=>!dataNames.includes(n));
-  const allNames=[...dataNames, ...customOnly];
+  // Union: plataformas en data + las que hayas añadido manualmente en platformLogos (excluye ocultas)
+  const customOnly=Object.keys(custom).filter(n=>!dataNames.includes(n)&&custom[n]!=='__hidden__');
+  // Filtra las que estén marcadas como ocultas
+  const allNames=[...dataNames.filter(n=>custom[n]!=='__hidden__'), ...customOnly];
 
   if(!allNames.length){
     grid.innerHTML=`<div style="grid-column:1/-1;color:var(--muted);font-size:13px;padding:8px 0">Importa el <code>data.json</code> para ver las plataformas.</div>`;
     return;
   }
 
-  grid.innerHTML=allNames.map(name=>{
+  // Count hidden entries to show restore button
+  const hiddenCount=Object.values(custom).filter(v=>v==='__hidden__').length;
+  const hiddenBar=hiddenCount>0
+    ?`<div style="grid-column:1/-1;font-size:12px;color:var(--muted);padding:4px 0;display:flex;align-items:center;gap:10px"><span>${hiddenCount} entrada${hiddenCount!==1?'s':''} oculta${hiddenCount!==1?'s':''}</span><button type="button" class="btn small" onclick="restoreAllHidden()" style="font-size:11px;padding:3px 10px">↩ Restaurar todas</button></div>`
+    :'';
+
+  grid.innerHTML=hiddenBar+allNames.map(name=>{
     const logo=getLogoForPlatform(name);
-    const isCustomized=!!custom[name];
+    const isCustomized=!!custom[name]&&custom[name]!=='__hidden__';
     const escapedName=name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     const imgHtml=logo
       ?`<img src="${logo}" style="width:32px;height:32px;object-fit:contain;display:block" alt="${name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
@@ -5093,11 +5109,26 @@ function renderPlatformLogosSection(){
         <div style="font-size:10px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${logo||''}">${logo||'<em>sin logo</em>'}</div>
       </div>
       <div style="display:flex;gap:5px;flex-shrink:0">
-        <button type="button" class="platform-del-btn" style="background:var(--surface);border:1.5px solid var(--border2);color:var(--muted);border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer" onclick="editPlatformLogo('${escapedName}')" title="Editar">✏️</button>
-        ${isCustomized?`<button type="button" class="platform-del-btn" onclick="deletePlatformLogo('${escapedName}')" title="Quitar logo personalizado">✕</button>`:''}
+        <button type="button" class="platform-del-btn" style="background:var(--surface);border:1.5px solid var(--border2);color:var(--muted);border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer" onclick="editPlatformLogo('${escapedName}')" title="Editar logo">✏️</button>
+        <button type="button" class="platform-del-btn" style="background:var(--surface);border:1.5px solid rgba(200,60,60,0.3);color:#c83c3c;border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer" onclick="hidePlatformEntry('${escapedName}')" title="Ocultar esta entrada">🗑</button>
       </div>
     </div>`;
   }).join('');
+}
+
+function hidePlatformEntry(name){
+  const custom=getCustomPlatformLogos();
+  custom[name]='__hidden__';
+  saveCustomPlatformLogos(custom);
+  renderPlatformLogosSection();
+}
+
+function restoreAllHidden(){
+  if(!confirm('¿Restaurar todas las entradas ocultas?')) return;
+  const custom=getCustomPlatformLogos();
+  Object.keys(custom).forEach(k=>{ if(custom[k]==='__hidden__') delete custom[k]; });
+  saveCustomPlatformLogos(custom);
+  renderPlatformLogosSection();
 }
 
 function editPlatformLogo(name){
