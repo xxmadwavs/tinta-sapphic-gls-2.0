@@ -573,6 +573,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <a class="qnav-btn" href="#section-ships" onclick="document.getElementById('section-ships').scrollIntoView({behavior:'smooth'});return false;">💕 Ships</a>
   <a class="qnav-btn" href="#section-listas" onclick="document.getElementById('section-listas').scrollIntoView({behavior:'smooth'});return false;">📋 Listas</a>
   <a class="qnav-btn" href="#section-productoras" onclick="document.getElementById('section-productoras').scrollIntoView({behavior:'smooth'});return false;">🏢 Productoras</a>
+  <a class="qnav-btn" href="#section-platform-logos" onclick="document.getElementById('section-platform-logos').scrollIntoView({behavior:'smooth'});return false;">🎬 Logos</a>
   <div class="quicknav-sep"></div>
   <button type="button" class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
   <button type="button" class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
@@ -751,6 +752,15 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     <div id="productorasAdminGrid" style="display:grid;gap:10px;margin-top:8px"></div>
   </div>
 
+  <div class="card" id="section-platform-logos">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem">
+      <div class="card-title" style="margin-bottom:0">🎬 Logos de plataformas</div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Todas las plataformas que aparecen en el catálogo. Edita cualquiera para cambiar su logo. Los cambios se guardan en <code>data.json</code>.</p>
+    <div id="platformLogosGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:12px"></div>
+    <button type="button" class="btn primary" onclick="addPlatformLogoRow()" style="width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:var(--accent)">+ Añadir plataforma</button>
+  </div>
+
   <div class="card">
     <div class="card-title">📤 Cómo publicar cambios</div>
     <div class="export-box"><div class="export-instructions">Cada vez que hagas cambios, sigue estos pasos:
@@ -823,18 +833,26 @@ const MONTHS_ES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agost
 const PALETTE=['#d4608a','#5bbcb0','#9b82c9','#e8a84a','#e06fa0','#4eadb5','#b07ad4','#d47a4e'];
 
 const PLATFORMS=[
-  {name:'GagaOOLala', url:'https://www.gagaoolala.com'},
-  {name:'WeTV',       url:'https://wetv.vip'},
-  {name:'iQIYI',      url:'https://www.iqiyi.com'},
-  {name:'Viki',       url:'https://www.viki.com'},
-  {name:'VIU',        url:'https://www.viu.com'},
-  {name:'YouTube',    url:'https://www.youtube.com'},
-  {name:'Netflix',    url:'https://www.netflix.com'},
-  {name:'Prime Video',url:'https://www.primevideo.com'},
-  {name:'HBO Max',    url:'https://www.max.com'},
-  {name:'CH3+',       url:'https://www.ch3plus.com'},
-  {name:'OneD',       url:'https://www.one31.net'},
-  {name:'Otros',      url:''},
+  {name:'GagaOOLala',  url:'https://www.gagaoolala.com'},
+  {name:'WeTV',        url:'https://wetv.vip'},
+  {name:'iQIYI',       url:'https://www.iqiyi.com'},
+  {name:'Viki',        url:'https://www.viki.com'},
+  {name:'VIU',         url:'https://www.viu.com'},
+  {name:'YouTube',     url:'https://www.youtube.com'},
+  {name:'Netflix',     url:'https://www.netflix.com'},
+  {name:'Prime Video', url:'https://www.primevideo.com'},
+  {name:'Max',         url:'https://www.max.com'},
+  {name:'Disney+',     url:'https://www.disneyplus.com'},
+  {name:'Apple TV+',   url:'https://tv.apple.com'},
+  {name:'Crunchyroll', url:'https://www.crunchyroll.com'},
+  {name:'CH3+',        url:'https://www.ch3plus.com'},
+  {name:'OneD',        url:'https://www.one31.net'},
+  {name:'Bilibili',    url:'https://www.bilibili.com'},
+  {name:'Wavve',       url:'https://www.wavve.com'},
+  {name:'TVING',       url:'https://www.tving.com'},
+  {name:'Filmin',      url:'https://www.filmin.es'},
+  {name:'RTVE',        url:'https://www.rtve.es'},
+  {name:'Otros',       url:''},
 ];
 
 const MOODS=[
@@ -1134,6 +1152,7 @@ let actresses = [];
 let ships = [];   // Ships manuales
 let productoras = [];  // Productoras
 let listas = [];  // Listas temáticas curadas
+let platformLogos = {};  // Logos personalizados de plataformas
 let currentStab = 'active';
 
 const PAGE_SIZE = 20;
@@ -1144,6 +1163,7 @@ function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,
 function paginate(items, section){
   const total = items.length;
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if(!pages[section] || pages[section] < 1) pages[section] = 1;
   if(pages[section] > totalPages) pages[section] = totalPages;
   const start = (pages[section]-1)*PAGE_SIZE;
   return { items: items.slice(start, start+PAGE_SIZE), total, totalPages, page: pages[section] };
@@ -1206,7 +1226,8 @@ async function initData(){
         if(d.ships) ships = d.ships;
         if(d.productoras) productoras = d.productoras;
         if(d.listas) listas = d.listas;
-        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin();
+        if(d.platformLogos) platformLogos = d.platformLogos;
+        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection();
         return;
       }
     } catch(e){ /* sin data.json accesible */ }
@@ -1235,9 +1256,10 @@ function showImportBanner(){
   document.body.appendChild(banner);
 }
 
-function getDow(d){ return (new Date(d+'T12:00:00').getDay()+6)%7; }
-function addDays(d,n){ const x=new Date(d+'T12:00:00'); x.setDate(x.getDate()+n); return x.toISOString().slice(0,10); }
-function fmtDate(d){ const x=new Date(d+'T12:00:00'); return `${x.getDate()} ${MONTHS_ES[x.getMonth()].slice(0,3)} ${x.getFullYear()}`; }
+function _validDate(d){ if(!d||typeof d!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(d)) return false; const x=new Date(d+'T12:00:00'); return !isNaN(x.getTime()); }
+function getDow(d){ if(!_validDate(d)) return 0; return (new Date(d+'T12:00:00').getDay()+6)%7; }
+function addDays(d,n){ if(!_validDate(d)) return d||''; const x=new Date(d+'T12:00:00'); x.setDate(x.getDate()+n); return x.toISOString().slice(0,10); }
+function fmtDate(d){ if(!_validDate(d)) return d||''; const x=new Date(d+'T12:00:00'); return `${x.getDate()} ${MONTHS_ES[x.getMonth()].slice(0,3)} ${x.getFullYear()}`; }
 function getEmissionDays(s){ if(s.emissionDays&&s.emissionDays.length>0) return [...s.emissionDays].sort((a,b)=>a-b); if(s.dayOfWeek!==undefined) return [s.dayOfWeek]; return [0]; }
 
 function getSeasons(s){
@@ -1259,10 +1281,11 @@ function genEpisodes(s){
 
     // ── Modo estreno completo en un día ──────────────────────────────────────
     if(season.allInOneDay){
+      const aioDate=_validDate(season.startDate)?season.startDate:'';
       for(let i=0;i<season.totalEpisodes;i++){
         const epNum=i+1, globalNum=offset+epNum;
         const ov=epOverrides.find(e=>e.num===epNum);
-        all.push(ov?{...ov,num:globalNum,seasonNum:epNum,season:idx+1}:{num:globalNum,seasonNum:epNum,season:idx+1,date:season.startDate,skipped:false});
+        all.push(ov?{...ov,num:globalNum,seasonNum:epNum,season:idx+1}:{num:globalNum,seasonNum:epNum,season:idx+1,date:aioDate,skipped:false});
       }
       offset+=season.totalEpisodes;
       return;
@@ -1305,7 +1328,12 @@ function genEpisodes(s){
 
     // Calcular la fecha de inicio del patrón semanal
     // = primera fecha de emisión regular DESPUÉS del último grupo especial (o desde startDate si no hay grupos)
-    let weekRefDate=season.startDate;
+    // Guard: if no valid startDate, skip regular scheduling
+    if(!_validDate(season.startDate) && !premiereSchedule.length){
+      offset+=season.totalEpisodes;
+      return;
+    }
+    let weekRefDate=_validDate(season.startDate)?season.startDate:new Date().toISOString().slice(0,10);
     let regularSearchStart=0; // sin premiereSchedule: startDate puede ser día de emisión
     if(premiereSchedule.length){
       // La última fecha especial usada
@@ -1371,7 +1399,7 @@ function getSeriesStatus(s){
   if(s.upcoming) return 'upcoming';
   const now=new Date();
   const eps=genEpisodes(s);
-  return eps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped)?'airing':'finished';
+  return eps.some(e=>e.date&&_validDate(e.date)&&new Date(e.date+'T12:00:00')>now&&!e.skipped)?'airing':'finished';
 }
 
 function switchStab(tab){
@@ -1393,8 +1421,9 @@ function render(){
       if(adminSeriesStatus!==st) return false;
     }
     if(q){
-      return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q)||
-        (s.watchLinks||[]).some(l=>(l.name||'').toLowerCase().includes(q)||(l.url||'').toLowerCase().includes(q));
+      return s.name.toLowerCase().includes(q)||(s.nameEn||'').toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q)||
+        (s.watchLinks||[]).some(l=>(l.name||'').toLowerCase().includes(q)||(l.url||'').toLowerCase().includes(q))||
+        (s.synopsis||'').toLowerCase().includes(q);
     }
     return true;
   });
@@ -1406,7 +1435,7 @@ function render(){
   else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
   else if(sort==='next'){
     filtered.sort((a,b)=>{
-      const nextEp=s=>{ if(s.upcoming) return null; const ep=genEpisodes(s).find(e=>new Date(e.date+'T12:00:00')>now2&&!e.skipped); return ep?ep.date:null; };
+      const nextEp=s=>{ if(s.upcoming) return null; const ep=genEpisodes(s).find(e=>e.date&&_validDate(e.date)&&new Date(e.date+'T12:00:00')>now2&&!e.skipped); return ep?ep.date:null; };
       const da=nextEp(a), db=nextEp(b);
       if(!da&&!db) return a.name.localeCompare(b.name,'es');
       if(!da) return 1; if(!db) return -1;
@@ -1414,7 +1443,7 @@ function render(){
     });
   } else if(sort==='progress'){
     filtered.sort((a,b)=>{
-      const pct=s=>{ if(s.upcoming) return -1; const seasons=getSeasons(s),tot=seasons.reduce((a,t)=>a+t.totalEpisodes,0); if(!tot) return -1; const aired=genEpisodes(s).filter(e=>new Date(e.date+'T12:00:00')<=now2&&!e.skipped).length; return aired/tot; };
+      const pct=s=>{ if(s.upcoming) return -1; const seasons=getSeasons(s),tot=seasons.reduce((a,t)=>a+t.totalEpisodes,0); if(!tot) return -1; const aired=genEpisodes(s).filter(e=>e.date&&_validDate(e.date)&&new Date(e.date+'T12:00:00')<=now2&&!e.skipped).length; return aired/tot; };
       return pct(b)-pct(a);
     });
   }
@@ -1431,6 +1460,9 @@ function render(){
     pages.series = 1;
     grid.innerHTML=`<div class="empty">${q?'🔍 No se encontró ninguna serie con esa búsqueda.':adminSeriesStatus==='upcoming'?'📅 No hay series próximamente.':'🌸 No hay series todavía.'}</div>`;
   } else {
+    // If current page would show no results (e.g. after filtering), reset to page 1
+    const _maxPg = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    if(pages.series > _maxPg) pages.series = 1;
     const {items, total, totalPages, page} = paginate(filtered, 'series');
     grid.innerHTML='';
     items.forEach((s)=>{
@@ -1458,7 +1490,7 @@ function render(){
         const eps=genEpisodes(s), now=new Date();
         const seasons=getSeasons(s);
         const totalEps=seasons.reduce((a,t)=>a+t.totalEpisodes,0);
-        const aired=eps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
+        const aired=eps.filter(e=>e.date&&_validDate(e.date)&&new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
         const pct=Math.round(aired/Math.max(totalEps,1)*100);
         const lastSeason=seasons[seasons.length-1];
         const daysLabel=((lastSeason?.emissionDays&&lastSeason.emissionDays.length)?lastSeason.emissionDays:[lastSeason?.dayOfWeek||0]).map(d=>DAYS_ES[d]).join(' y ');
@@ -1822,7 +1854,7 @@ function addSeasonBlock(seasonData=null, idx=null){
   if(!list) return;
   const blockIdx=list.children.length;
   const label=seasonData?.label||(blockIdx===0?'Temporada 1':`Temporada ${blockIdx+1}`);
-  const startDate=(seasonData?.startDate!=null&&seasonData.startDate!=='')?seasonData.startDate:new Date().toISOString().slice(0,10);
+  const startDate=(seasonData?.startDate!=null&&seasonData.startDate!=='')?seasonData.startDate:'';
   const totalEps=(seasonData?.totalEpisodes!=null&&seasonData.totalEpisodes>0)?seasonData.totalEpisodes:12;
   const emDays=seasonData?.emissionDays??(seasonData?.dayOfWeek!=null?[seasonData.dayOfWeek]:[0]);
   // Special premiere: premiereSchedule = [{fromEp, toEp, date}, ...]  OR legacy [{date, count}]
@@ -1855,7 +1887,7 @@ function addSeasonBlock(seasonData=null, idx=null){
       <button type="button" class="season-del-btn" onclick="this.closest('.season-block').remove();renumberSeasons()" title="Eliminar temporada">✕</button>
     </div>
     <div class="form-row" style="margin-bottom:10px">
-      <label class="form-label">Fecha del primer episodio *</label>
+      <label class="form-label">Fecha del primer episodio <span style="color:var(--muted);font-weight:400;font-size:11px;text-transform:none">(opcional si se desconoce)</span></label>
       <input type="date" class="s-start" value="${startDate}"/>
     </div>
     <div class="form-row" style="margin-bottom:10px">
@@ -1992,12 +2024,12 @@ function getSeasonsData(){
     const startDate=block.querySelector('.s-start').value;
     const totalEps=parseInt(block.querySelector('.s-eps').value);
     const allInOneDay=block.querySelector('.s-allday')?.checked||false;
-    const emissionDays=allInOneDay?[getDow(startDate)]:[...block.querySelectorAll('.s-dow .dow-chip.selected')].map(c=>parseInt(c.dataset.dow)).sort((a,b)=>a-b);
-    if(!startDate||isNaN(totalEps)||totalEps<1){
-      alert(`Temporada "${label}": rellena la fecha de inicio y el número de episodios.`);
+    const emissionDays=startDate?(allInOneDay?[getDow(startDate)]:[...block.querySelectorAll('.s-dow .dow-chip.selected')].map(c=>parseInt(c.dataset.dow)).sort((a,b)=>a-b)):[];
+    if(isNaN(totalEps)||totalEps<1){
+      alert(`Temporada "${label}": rellena el número de episodios.`);
       return null;
     }
-    if(!allInOneDay&&!emissionDays.length){
+    if(startDate&&!allInOneDay&&!emissionDays.length){
       alert(`Temporada "${label}": selecciona al menos un día de emisión (Lunes, Martes…)`);
       return null;
     }
@@ -2143,7 +2175,7 @@ function formHtml(s, forcedCategory=null){
           <input id="f_year" type="number" placeholder="${new Date().getFullYear()}" min="1990" max="2035" value="${s&&s.year?s.year:''}"/>
         </div>
         <div class="form-row" style="margin-bottom:0">
-          <label class="form-label">Plataforma principal</label>
+          <label class="form-label">Estreno / Cadena <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(dónde se emite originalmente)</span></label>
           <div class="platform-net-wrap">
             <input id="f_net" placeholder="Netflix, WeTV…" value="${s&&s.network?s.network:''}"/>
             <select class="platform-net-select" onchange="if(this.value){document.getElementById('f_net').value=this.value;this.value=''}">
@@ -2261,12 +2293,14 @@ function formHtml(s, forcedCategory=null){
     </div>
 
     <!-- ══ COLUMNA DERECHA: temporadas ══ -->
-    <div class="form-col-right" id="schedFields" style="${isUpcoming?'display:none':''}">
-
+    <!-- Cast always visible regardless of upcoming toggle -->
+    <div class="form-col-right" style="padding:1rem 1.5rem;border-right:1px solid var(--border2)">
       <div class="form-section-hd">🎭 Reparto GL</div>
       <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas en la sección Actrices. Indica el personaje y a qué pareja pertenece (P1, P2…)</div>
       <button type="button" class="platform-add-btn" onclick="addCastMember(null)" style="margin-bottom:8px">+ Añadir actriz al reparto</button>
       <div id="castList" style="margin-bottom:8px;overflow:visible;position:relative"></div>
+    </div>
+    <div class="form-col-right" id="schedFields" style="${isUpcoming?'display:none':''}">
 
       <label class="toggle-row" style="margin-top:8px">
         <input type="checkbox" id="f_upcoming" ${isUpcoming?'checked':''} style="width:auto;accent-color:var(--lavender)" onchange="toggleUpcomingFields()">
@@ -2359,6 +2393,23 @@ function formHtml(s, forcedCategory=null){
           <label class="form-label">Nota adicional <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
           <textarea id="f_snNote" placeholder="Ej: Producción pausada, actriz cambió de agencia…" rows="2" style="resize:vertical;min-height:50px">${escapeHtml(s&&s.snNote||'')}</textarea>
         </div>
+      </div>
+      <!-- CANCELACIÓN (también disponible en modo próximamente) -->
+      <div style="margin-top:10px;padding:10px 12px;background:rgba(201,64,64,.06);border:1.5px solid rgba(201,64,64,.18);border-radius:10px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c94040;margin-bottom:8px">❌ Estado de cancelación</div>
+        <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span style="font-size:12px;font-weight:600;color:var(--text);min-width:80px">Estado</span>
+          <select id="f_cancelStatus_up" style="flex:1;padding:5px 8px;border:1.5px solid var(--border2);border-radius:7px;font-size:12px;font-family:var(--font-body);background:var(--surface)" onchange="document.getElementById('f_cancelStatus').value=this.value">
+            <option value="" ${!s||!s.cancelStatus?'selected':''}>— Sin cambios —</option>
+            <option value="cancelled" ${s&&s.cancelStatus==='cancelled'?'selected':''}>❌ Cancelada</option>
+            <option value="limbo" ${s&&s.cancelStatus==='limbo'?'selected':''}>⏸️ En limbo / Sin noticias</option>
+            <option value="closed" ${s&&s.cancelStatus==='closed'?'selected':''}>🏢 Productora cerrada</option>
+          </select>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:8px">
+          <span style="font-size:12px;font-weight:600;color:var(--text);min-width:80px;padding-top:4px">Nota</span>
+          <textarea id="f_cancelNote_up" rows="2" placeholder="Motivo de cancelación, fuente, etc." style="flex:1;padding:6px 8px;border:1.5px solid var(--border2);border-radius:7px;font-size:12px;font-family:var(--font-body);resize:vertical;background:var(--surface)" onchange="document.getElementById('f_cancelNote').value=this.value" oninput="document.getElementById('f_cancelNote').value=this.value">${s&&s.cancelNote||''}</textarea>
+        </label>
       </div>
       <div style="text-align:center;padding:2rem 1rem;color:var(--muted);font-size:13px">
         <div style="font-size:2rem;margin-bottom:8px">📅</div>
@@ -2724,7 +2775,7 @@ function renderAnimeGrid(){
     const si=series.indexOf(s);
     const now=new Date();
     const eps=genEpisodes(s);
-    const aired=eps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
+    const aired=eps.filter(e=>e.date&&_validDate(e.date)&&new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
     const total2=s.seasons?s.seasons.reduce((a,t)=>a+t.totalEpisodes,0):(s.totalEpisodes||0);
     const pct=Math.round(aired/Math.max(total2,1)*100);
     const cover=s.poster?`<img class="series-poster" src="${escapeHtml(s.poster)}" alt="" onerror="this.outerHTML='<div class=series-poster-ph>🌸</div>'">`:`<div class="series-poster-ph">🌸</div>`;
@@ -2777,7 +2828,7 @@ function renderRealitiesGrid(){
     const si=series.indexOf(s);
     const now=new Date();
     const eps=genEpisodes(s);
-    const aired=eps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
+    const aired=eps.filter(e=>e.date&&_validDate(e.date)&&new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
     const total2=s.seasons?s.seasons.reduce((a,t)=>a+t.totalEpisodes,0):(s.totalEpisodes||0);
     const pct=Math.round(aired/Math.max(total2,1)*100);
     const cover=s.poster?`<img class="series-poster" src="${escapeHtml(s.poster)}" alt="" onerror="this.outerHTML='<div class=series-poster-ph>🎤</div>'">`:`<div class="series-poster-ph">🎤</div>`;
@@ -2838,8 +2889,8 @@ async function saveSeries(si, forcedCategory=null){
   const episodeDuration=parseDurationInput(document.getElementById('f_epDuration')?.value||'')||'';
   const myPick=document.getElementById('f_myPick')?.checked||false;
   const myPick2026=document.getElementById('f_myPick2026')?.checked||false;
-  const cancelStatus=document.getElementById('f_cancelStatus')?.value||'';
-  const cancelNote=document.getElementById('f_cancelNote')?.value.trim()||'';
+  const cancelStatus=(upcoming?(document.getElementById('f_cancelStatus_up')?.value||document.getElementById('f_cancelStatus')?.value):document.getElementById('f_cancelStatus')?.value)||'';
+  const cancelNote=(upcoming?(document.getElementById('f_cancelNote_up')?.value.trim()||document.getElementById('f_cancelNote')?.value.trim()):document.getElementById('f_cancelNote')?.value.trim())||'';
   const sinNovedades=document.getElementById('f_sinNovedades')?.checked||false;
   const snLastUpdate=document.getElementById('f_snLastUpdate')?.value.trim()||'';
   const snNote=document.getElementById('f_snNote')?.value.trim()||'';
@@ -3125,7 +3176,7 @@ function movieFormHtml(mv){
     </div>
   </div>
   <div class="form-row" style="margin-top:14px">
-    <label class="form-label">Plataforma / Canal principal</label>
+    <label class="form-label">Estreno / Cadena <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(dónde se emite originalmente)</span></label>
     <div class="platform-net-wrap">
       <input id="mf_net" placeholder="Ej: Netflix, iQIYI…" value="${mv&&mv.network?mv.network:''}"/>
       <select class="platform-net-select" onchange="if(this.value){document.getElementById('mf_net').value=this.value;this.value=''}">
@@ -3497,7 +3548,7 @@ function renderBooks(){
 function exportData(){
   try {
     // Validate before exporting
-    const testJson = JSON.stringify({series, movies, actresses, ships, productoras, listas, exportedAt: new Date().toISOString()});
+    const testJson = JSON.stringify({series, movies, actresses, ships, productoras, listas, platformLogos, exportedAt: new Date().toISOString()});
     JSON.parse(testJson); // verify roundtrip
   } catch(e) {
     alert('Error al validar los datos antes de exportar: ' + e.message);
@@ -3507,7 +3558,7 @@ function exportData(){
   _unsavedCount=0;
   const dot=document.getElementById('exportDot');
   if(dot) dot.classList.remove('visible');
-  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,productoras,listas,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,productoras,listas,platformLogos,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
 }
 
@@ -3523,8 +3574,9 @@ function importData(e){
       if(d.ships) ships=d.ships;
       if(d.productoras) productoras=d.productoras;
       if(d.listas) listas=d.listas;
+      if(d.platformLogos) platformLogos=d.platformLogos;
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
-      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin();
+      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection();
       alert('✓ Datos importados correctamente');
     }catch(err){ alert('Error al leer el archivo: '+err.message); }
   };
@@ -4926,4 +4978,218 @@ function populateAwards(containerId, awards){
   list.innerHTML = '';
   (awards||[]).forEach(a=>addAwardRow(containerId, a));
 }
+
+// ═══ LOGOS DE PLATAFORMAS ═══════════════════════════════════
+const PLATFORM_LOGOS_DEFAULT_ADMIN={
+  'YouTube':     'https://www.google.com/s2/favicons?sz=64&domain=youtube.com',
+  'Youtube':     'https://www.google.com/s2/favicons?sz=64&domain=youtube.com',
+  'youtube':     'https://www.google.com/s2/favicons?sz=64&domain=youtube.com',
+  'Netflix':     'https://www.google.com/s2/favicons?sz=64&domain=netflix.com',
+  'Prime Video': 'https://www.google.com/s2/favicons?sz=64&domain=primevideo.com',
+  'HBO Max':     'https://www.google.com/s2/favicons?sz=64&domain=max.com',
+  'Max':         'https://www.google.com/s2/favicons?sz=64&domain=max.com',
+  'GagaOOLala':  'https://www.google.com/s2/favicons?sz=64&domain=gagaoolala.com',
+  'WeTV':        'https://www.google.com/s2/favicons?sz=64&domain=wetv.vip',
+  'iQIYI':       'https://www.google.com/s2/favicons?sz=64&domain=iqiyi.com',
+  'iQiyi':       'https://www.google.com/s2/favicons?sz=64&domain=iqiyi.com',
+  'Viki':        'https://www.google.com/s2/favicons?sz=64&domain=viki.com',
+  'VIU':         'https://www.google.com/s2/favicons?sz=64&domain=viu.com',
+  'CH3+':        'https://www.google.com/s2/favicons?sz=64&domain=ch3plus.com',
+  'OneD':        'https://www.google.com/s2/favicons?sz=64&domain=one31.net',
+  'oneD':        'https://www.google.com/s2/favicons?sz=64&domain=one31.net',
+  'One 31':      'https://www.google.com/s2/favicons?sz=64&domain=one31.net',
+  'Disney+':     'https://www.google.com/s2/favicons?sz=64&domain=disneyplus.com',
+  'Apple TV+':   'https://www.google.com/s2/favicons?sz=64&domain=tv.apple.com',
+  'Apple Tv':    'https://www.google.com/s2/favicons?sz=64&domain=tv.apple.com',
+  'AppleTv':     'https://www.google.com/s2/favicons?sz=64&domain=tv.apple.com',
+  'Crunchyroll': 'https://www.google.com/s2/favicons?sz=64&domain=crunchyroll.com',
+  'Wavve':       'https://www.google.com/s2/favicons?sz=64&domain=wavve.com',
+  'TVING':       'https://www.google.com/s2/favicons?sz=64&domain=tving.com',
+  'Funimation':  'https://www.google.com/s2/favicons?sz=64&domain=funimation.com',
+  'Bilibili':    'https://www.google.com/s2/favicons?sz=64&domain=bilibili.com',
+  'Hulu':        'https://www.google.com/s2/favicons?sz=64&domain=hulu.com',
+  'Paramount+':  'https://www.google.com/s2/favicons?sz=64&domain=paramountplus.com',
+  'Plex':        'https://www.google.com/s2/favicons?sz=64&domain=plex.tv',
+  'RTVE':        'https://www.google.com/s2/favicons?sz=64&domain=rtve.es',
+  'RTL+':        'https://www.google.com/s2/favicons?sz=64&domain=rtl.de',
+  'Filmin':      'https://www.google.com/s2/favicons?sz=64&domain=filmin.es',
+  'Monomax':     'https://www.google.com/s2/favicons?sz=64&domain=monomax.me',
+  'TikTok':      'https://www.google.com/s2/favicons?sz=64&domain=tiktok.com',
+  'jTBC':        'https://www.google.com/s2/favicons?sz=64&domain=jtbc.co.kr',
+  'tvN':         'https://www.google.com/s2/favicons?sz=64&domain=tvn.com',
+  'iWant':       'https://www.google.com/s2/favicons?sz=64&domain=iwant.ph',
+  'GMM 25':      'https://www.google.com/s2/favicons?sz=64&domain=gmm25.com',
+  'TV Tokyo':    'https://www.google.com/s2/favicons?sz=64&domain=tv-tokyo.co.jp',
+};
+
+function getCustomPlatformLogos(){
+  return platformLogos||{};
+}
+function saveCustomPlatformLogos(obj){
+  platformLogos=obj;
+  save();
+}
+
+// Recoge todas las plataformas únicas del catálogo actual
+function normalizePlatformName(raw){
+  // Remove parenthetical suffixes like (CUT), (UNCUT), (Pago), (recopilacion), (solo miembros), (USA, LATAM, UK) etc.
+  // But keep names that are just the platform, e.g. "Disney+" stays as-is
+  return raw.replace(/\s*\([^)]*\)/g,'').trim();
+}
+
+function splitPlatformNames(raw){
+  if(!raw) return [];
+  // Skip obviously corrupt/multi-region strings (very long with no clear separator pattern)
+  if(raw.length > 60 && !raw.includes(',') && !raw.includes('/')) return [];
+  // Split by comma or slash, normalize each part
+  return raw.split(/[,\/]/)
+    .map(p=>normalizePlatformName(p))
+    .filter(p=>p && p!=='Ver serie' && p!=='Ver película' && p.length>1);
+}
+
+function getAllPlatformNamesFromData(){
+  const names=new Set();
+  [...series,...movies].forEach(item=>{
+    splitPlatformNames(item.network).forEach(n=>names.add(n));
+    (item.watchLinks||[]).forEach(l=>splitPlatformNames(l.name).forEach(n=>names.add(n)));
+  });
+  return [...names].sort((a,b)=>a.toLowerCase().localeCompare(b.toLowerCase()));
+}
+
+function getLogoForPlatform(name){
+  const custom=getCustomPlatformLogos();
+  return custom[name] || PLATFORM_LOGOS_DEFAULT_ADMIN[name] || null;
+}
+
+function renderPlatformLogosSection(){
+  const grid=document.getElementById('platformLogosGrid');
+  if(!grid) return;
+
+  const custom=getCustomPlatformLogos();
+  const dataNames=getAllPlatformNamesFromData();
+  // Union: plataformas en data + las que hayas añadido manualmente en platformLogos
+  const customOnly=Object.keys(custom).filter(n=>!dataNames.includes(n));
+  const allNames=[...dataNames, ...customOnly];
+
+  if(!allNames.length){
+    grid.innerHTML=`<div style="grid-column:1/-1;color:var(--muted);font-size:13px;padding:8px 0">Importa el <code>data.json</code> para ver las plataformas.</div>`;
+    return;
+  }
+
+  grid.innerHTML=allNames.map(name=>{
+    const logo=getLogoForPlatform(name);
+    const isCustomized=!!custom[name];
+    const escapedName=name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    const imgHtml=logo
+      ?`<img src="${logo}" style="width:32px;height:32px;object-fit:contain;display:block" alt="${name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+      :'';
+    const phHtml=`<span style="font-size:18px;display:${logo?'none':'flex'}">🎬</span>`;
+    return `<div class="platform-logo-row" id="plrow_${CSS.escape(name)}" style="background:var(--surface2);border-radius:12px;padding:10px 12px;border:1.5px solid ${isCustomized?'var(--accent2)':'var(--border2)'};display:flex;align-items:center;gap:10px">
+      <div style="width:44px;height:44px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">
+        ${imgHtml}${phHtml}
+      </div>
+      <div style="flex:1;min-width:0">
+        <div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:1px">${name}</div>
+        <div style="font-size:10px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${logo||''}">${logo||'<em>sin logo</em>'}</div>
+      </div>
+      <div style="display:flex;gap:5px;flex-shrink:0">
+        <button type="button" class="platform-del-btn" style="background:var(--surface);border:1.5px solid var(--border2);color:var(--muted);border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer" onclick="editPlatformLogo('${escapedName}')" title="Editar">✏️</button>
+        ${isCustomized?`<button type="button" class="platform-del-btn" onclick="deletePlatformLogo('${escapedName}')" title="Quitar logo personalizado">✕</button>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function editPlatformLogo(name){
+  // Close any open edit form first
+  document.querySelectorAll('.pl-edit-form').forEach(f=>f.remove());
+  const row=document.getElementById('plrow_'+CSS.escape(name));
+  if(!row) return;
+  const currentLogo=getLogoForPlatform(name)||'';
+  const form=document.createElement('div');
+  form.className='pl-edit-form';
+  form.style.cssText='grid-column:1/-1;background:var(--surface);border:1.5px solid var(--accent2);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;margin-top:2px';
+  const eid='pledit_'+Date.now();
+  form.innerHTML=`
+    <div style="font-weight:700;font-size:13px;color:var(--text)">Editando: <em>${name}</em></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <input id="${eid}_url" placeholder="URL del logo (https://…)" value="${currentLogo}" style="flex:1;min-width:200px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;outline:none">
+      <button type="button" class="btn small" onclick="previewPlEdit('${eid}')" style="background:var(--surface2);flex-shrink:0">👁 Ver</button>
+    </div>
+    <div style="font-size:11px;color:var(--muted)">💡 Favicon rápida: <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;cursor:pointer" onclick="document.getElementById('${eid}_url').value='https://www.google.com/s2/favicons?sz=64&domain='">https://www.google.com/s2/favicons?sz=64&domain=<strong>dominio.com</strong></code></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div id="${eid}_prev" style="width:44px;height:44px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">
+        ${currentLogo?`<img src="${currentLogo}" style="width:32px;height:32px;object-fit:contain" onerror="this.outerHTML='<span style=font-size:18px>❌</span>'">`:  '<span style="font-size:18px">🎬</span>'}
+      </div>
+      <button type="button" class="btn primary small" onclick="savePlEdit('${name.replace(/'/g,"\\'")}','${eid}')">Guardar</button>
+      <button type="button" class="btn small" onclick="this.closest('.pl-edit-form').remove()">Cancelar</button>
+    </div>`;
+  row.after(form);
+  document.getElementById(eid+'_url').focus();
+}
+
+function previewPlEdit(eid){
+  const url=document.getElementById(eid+'_url').value.trim();
+  const prev=document.getElementById(eid+'_prev');
+  if(!prev) return;
+  prev.innerHTML=url
+    ?`<img src="${url}" style="width:32px;height:32px;object-fit:contain" onerror="this.outerHTML='<span style=font-size:18px>❌</span>'">`
+    :'<span style="font-size:18px">🎬</span>';
+}
+
+function savePlEdit(name, eid){
+  const url=document.getElementById(eid+'_url').value.trim();
+  if(!url){alert('Escribe la URL del logo.');return;}
+  const custom=getCustomPlatformLogos();
+  custom[name]=url;
+  saveCustomPlatformLogos(custom);
+  document.querySelector('.pl-edit-form').remove();
+  renderPlatformLogosSection();
+}
+
+function deletePlatformLogo(name){
+  if(!confirm(`¿Quitar el logo personalizado de "${name}"? Se usará el predefinido si existe.`)) return;
+  const custom=getCustomPlatformLogos();
+  delete custom[name];
+  saveCustomPlatformLogos(custom);
+  renderPlatformLogosSection();
+}
+
+function addPlatformLogoRow(){
+  document.querySelectorAll('.pl-edit-form').forEach(f=>f.remove());
+  const grid=document.getElementById('platformLogosGrid');
+  const form=document.createElement('div');
+  form.className='pl-edit-form';
+  form.style.cssText='grid-column:1/-1;background:var(--surface);border:1.5px solid var(--accent2);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;margin-bottom:10px';
+  const eid='pladd_'+Date.now();
+  form.innerHTML=`
+    <div style="font-weight:700;font-size:13px;color:var(--text)">Nueva plataforma</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <input id="${eid}_name" placeholder="Nombre (ej: Vigloo)" style="flex:1;min-width:130px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;outline:none">
+      <input id="${eid}_url" placeholder="URL del logo (https://…)" style="flex:2;min-width:200px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;outline:none">
+    </div>
+    <div style="font-size:11px;color:var(--muted)">💡 Favicon rápida: <code style="background:var(--surface2);padding:2px 6px;border-radius:4px">https://www.google.com/s2/favicons?sz=64&domain=dominio.com</code></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div id="${eid}_prev" style="width:44px;height:44px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0"><span style="font-size:18px">🎬</span></div>
+      <button type="button" class="btn small" onclick="previewPlEdit('${eid}')" style="background:var(--surface2)">👁 Ver</button>
+      <button type="button" class="btn primary small" onclick="saveNewPlatform('${eid}')">Guardar</button>
+      <button type="button" class="btn small" onclick="this.closest('.pl-edit-form').remove()">Cancelar</button>
+    </div>`;
+  grid.prepend(form);
+  document.getElementById(eid+'_name').focus();
+}
+
+function saveNewPlatform(eid){
+  const name=document.getElementById(eid+'_name').value.trim();
+  const url=document.getElementById(eid+'_url').value.trim();
+  if(!name||!url){alert('Rellena el nombre y la URL del logo.');return;}
+  const custom=getCustomPlatformLogos();
+  custom[name]=url;
+  saveCustomPlatformLogos(custom);
+  document.querySelector('.pl-edit-form').remove();
+  renderPlatformLogosSection();
+}
+
+// Init platform logos section on load
+document.addEventListener('DOMContentLoaded',()=>{ renderPlatformLogosSection(); });
 </script>

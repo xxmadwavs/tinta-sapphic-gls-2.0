@@ -1847,6 +1847,22 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 .trailer-thumb-wrap:hover .trailer-play-circle{background:rgba(201,79,124,1)}
 .trailer-play-circle svg{width:24px;height:24px;fill:#fff;margin-left:5px}
 .trailer-iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:12px}
+.trailer-ext-btn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:8px;padding:9px 0;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-body);text-decoration:none;transition:all .15s}
+.trailer-ext-btn.yt{background:rgba(255,0,0,.08);border:1.5px solid rgba(255,0,0,.2);color:#ff4040}
+.trailer-ext-btn.yt:hover{background:rgba(255,0,0,.16)}
+.trailer-ext-btn.vimeo{background:rgba(26,183,234,.08);border:1.5px solid rgba(26,183,234,.25);color:#1ab7ea}
+.trailer-ext-btn.vimeo:hover{background:rgba(26,183,234,.16)}
+.trailer-ext-btn.twitter{background:rgba(29,161,242,.08);border:1.5px solid rgba(29,161,242,.25);color:#1da1f2}
+.trailer-ext-btn.twitter:hover{background:rgba(29,161,242,.16)}
+.trailer-ext-btn.vigloo{background:rgba(255,102,0,.08);border:1.5px solid rgba(255,102,0,.25);color:#ff6600}
+.trailer-ext-btn.vigloo:hover{background:rgba(255,102,0,.16)}
+.trailer-ext-btn.fb{background:rgba(24,119,242,.08);border:1.5px solid rgba(24,119,242,.25);color:#1877f2}
+.trailer-ext-btn.fb:hover{background:rgba(24,119,242,.16)}
+.trailer-ext-btn.bilibili{background:rgba(0,161,214,.08);border:1.5px solid rgba(0,161,214,.25);color:#00a1d6}
+.trailer-ext-btn.bilibili:hover{background:rgba(0,161,214,.16)}
+.trailer-ext-btn.other{background:rgba(155,130,201,.08);border:1.5px solid rgba(155,130,201,.3);color:#9b82c9}
+.trailer-ext-btn.other:hover{background:rgba(155,130,201,.16)}
+/* Fallback alias for old markup */
 .trailer-yt-btn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:8px;padding:9px 0;background:rgba(255,0,0,.08);border:1.5px solid rgba(255,0,0,.2);color:#ff4040;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-body);text-decoration:none;transition:all .15s}
 .trailer-yt-btn:hover{background:rgba(255,0,0,.16)}
 .synopsis{
@@ -2052,32 +2068,49 @@ html[data-theme="dark"] .modal-watch-block{
   color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px;
 }
 .watch-links-label::before{content:'';display:block;width:14px;height:1px;background:var(--muted);opacity:.5}
-.watch-links{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+.watch-links{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:0;align-items:center}
+/* Logo-style watch link */
 .watch-link{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:12.5px;font-weight:700;color:var(--accent);
+  display:inline-flex;align-items:center;justify-content:center;
   text-decoration:none;
   background:var(--surface);
-  border-radius:10px;padding:9px 18px;
-  border:1.5px solid rgba(201,79,124,0.28);
+  border-radius:12px;
+  border:1.5px solid var(--border2);
   transition:all .2s cubic-bezier(.25,.8,.25,1);
-  white-space:nowrap;
-  box-shadow:0 2px 8px rgba(201,79,124,0.1);
-  flex:1;min-width:0;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.07);
+  overflow:hidden;
+  width:56px;height:56px;
+  flex-shrink:0;
+  position:relative;
 }
 .watch-link:hover{
-  background:var(--accent);color:#fff;border-color:var(--accent);
-  transform:translateY(-2px);
-  box-shadow:0 6px 18px rgba(201,79,124,0.28);
+  border-color:var(--accent2);
+  transform:translateY(-3px);
+  box-shadow:0 8px 22px rgba(201,79,124,0.22);
 }
-.watch-link-icon{
-  width:20px;height:20px;border-radius:50%;
-  background:rgba(201,79,124,0.12);
-  display:flex;align-items:center;justify-content:center;
-  font-size:8px;color:var(--accent);
-  flex-shrink:0;transition:inherit;
+/* Logo image inside */
+.watch-link-logo{
+  width:36px;height:36px;object-fit:contain;display:block;border-radius:6px;
 }
-.watch-link:hover .watch-link-icon{background:rgba(255,255,255,.22);color:#fff}
+/* Text fallback (no logo) */
+.watch-link-text{
+  font-size:10px;font-weight:700;color:var(--accent);
+  text-align:center;line-height:1.2;padding:6px 4px;
+  word-break:break-word;
+}
+/* Tooltip on hover */
+.watch-link[title]:hover::after{
+  content:attr(title);
+  position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,0.82);color:#fff;
+  font-size:10px;font-weight:600;white-space:nowrap;
+  padding:3px 8px;border-radius:6px;pointer-events:none;
+  font-family:var(--font-body);
+}
+html[data-theme="dark"] .watch-link{background:var(--surface2)}
+html[data-theme="dark"] .watch-link:hover{border-color:var(--accent);box-shadow:0 8px 22px rgba(224,114,154,0.22)}
+/* Legacy icon (hidden now) */
+.watch-link-icon{display:none}
 
 /* Book block in modal */
 .book-block{
@@ -3460,6 +3493,98 @@ function filtrarTropos(tropos,dinamica){
 
 let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[]};
 
+// ── LOGOS DE PLATAFORMAS ──────────────────────────────────────────
+// Logos predefinidos (favicons oficiales vía Google S2)
+// Mapa canónico: una sola entrada por plataforma (nombre normalizado → logo)
+const PLATFORM_LOGOS_DEFAULT={
+  'YouTube':     'https://www.google.com/s2/favicons?sz=64&domain=youtube.com',
+  'Netflix':     'https://www.google.com/s2/favicons?sz=64&domain=netflix.com',
+  'Prime Video': 'https://www.google.com/s2/favicons?sz=64&domain=primevideo.com',
+  'Max':         'https://www.google.com/s2/favicons?sz=64&domain=max.com',
+  'GagaOOLala':  'https://www.google.com/s2/favicons?sz=64&domain=gagaoolala.com',
+  'WeTV':        'https://www.google.com/s2/favicons?sz=64&domain=wetv.vip',
+  'iQIYI':       'https://www.google.com/s2/favicons?sz=64&domain=iqiyi.com',
+  'Viki':        'https://www.google.com/s2/favicons?sz=64&domain=viki.com',
+  'VIU':         'https://www.google.com/s2/favicons?sz=64&domain=viu.com',
+  'CH3+':        'https://www.google.com/s2/favicons?sz=64&domain=ch3plus.com',
+  'OneD':        'https://www.google.com/s2/favicons?sz=64&domain=one31.net',
+  'Disney+':     'https://www.google.com/s2/favicons?sz=64&domain=disneyplus.com',
+  'Apple TV+':   'https://www.google.com/s2/favicons?sz=64&domain=tv.apple.com',
+  'Crunchyroll': 'https://www.google.com/s2/favicons?sz=64&domain=crunchyroll.com',
+  'Wavve':       'https://www.google.com/s2/favicons?sz=64&domain=wavve.com',
+  'TVING':       'https://www.google.com/s2/favicons?sz=64&domain=tving.com',
+  'Funimation':  'https://www.google.com/s2/favicons?sz=64&domain=funimation.com',
+  'Bilibili':    'https://www.google.com/s2/favicons?sz=64&domain=bilibili.com',
+  'Hulu':        'https://www.google.com/s2/favicons?sz=64&domain=hulu.com',
+  'Paramount+':  'https://www.google.com/s2/favicons?sz=64&domain=paramountplus.com',
+  'Plex':        'https://www.google.com/s2/favicons?sz=64&domain=plex.tv',
+  'RTVE':        'https://www.google.com/s2/favicons?sz=64&domain=rtve.es',
+  'RTL+':        'https://www.google.com/s2/favicons?sz=64&domain=rtl.de',
+  'Filmin':      'https://www.google.com/s2/favicons?sz=64&domain=filmin.es',
+  'Monomax':     'https://www.google.com/s2/favicons?sz=64&domain=monomax.me',
+  'TikTok':      'https://www.google.com/s2/favicons?sz=64&domain=tiktok.com',
+  'jTBC':        'https://www.google.com/s2/favicons?sz=64&domain=jtbc.co.kr',
+  'tvN':         'https://www.google.com/s2/favicons?sz=64&domain=tvn.com',
+  'iWant':       'https://www.google.com/s2/favicons?sz=64&domain=iwant.ph',
+  'GMM 25':      'https://www.google.com/s2/favicons?sz=64&domain=gmm25.com',
+  'TV Tokyo':    'https://www.google.com/s2/favicons?sz=64&domain=tv-tokyo.co.jp',
+};
+// Alias: variantes de escritura → nombre canónico
+const PLATFORM_ALIASES={
+  'youtube':'YouTube','Youtube':'YouTube','Yotube':'YouTube',
+  'hbo max':'Max','HBO Max':'Max','hbomax':'Max',
+  'iqiyi':'iQIYI','iQiyi':'iQIYI','IQIYI':'iQIYI',
+  'oned':'OneD','oneD':'OneD','One 31':'OneD','one31':'OneD',
+  'apple tv+':'Apple TV+','Apple Tv':'Apple TV+','AppleTv':'Apple TV+','apple tv':'Apple TV+',
+};
+function canonicalizePlatform(name){
+  if(!name) return name;
+  return PLATFORM_ALIASES[name] || PLATFORM_ALIASES[name.toLowerCase()] || name;
+}
+function getPlatformLogo(name){
+  const canon=canonicalizePlatform(name);
+  // 1) logos personalizados guardados en data.json
+  const custom=(state.platformLogos)||{};
+  if(custom[canon]) return custom[canon];
+  if(custom[name]) return custom[name];
+  // 2) predefinidos (nombre canónico)
+  return PLATFORM_LOGOS_DEFAULT[canon]||PLATFORM_LOGOS_DEFAULT[name]||null;
+}
+function normalizePlatformName(raw){
+  return raw.replace(/\s*\([^)]*\)/g,'').trim();
+}
+function splitPlatformNames(raw){
+  if(!raw) return [];
+  if(raw.length>60 && !raw.includes(',') && !raw.includes('/')) return [];
+  return raw.split(/[,\/]/)
+    .map(p=>normalizePlatformName(p))
+    .filter(p=>p && p!=='Ver serie' && p!=='Ver película' && p.length>1);
+}
+function buildWatchLinksHtml(links, accentColor, accentBorder, accentSoft){
+  if(!links||!links.length) return '';
+  // Expand each link: split comma/slash names into individual platform buttons
+  const expanded=[];
+  links.forEach(l=>{
+    const parts=splitPlatformNames(l.name);
+    if(!parts.length){ expanded.push(l); return; }
+    parts.forEach(name=>expanded.push({name, url:l.url}));
+  });
+  const btns=expanded.map(l=>{
+    const canonName=canonicalizePlatform(l.name);
+    const logo=getPlatformLogo(canonName);
+    const inner=logo
+      ?`<img class="watch-link-logo" src="${logo}" alt="${canonName}" onerror="this.outerHTML='<span class=watch-link-text>${canonName}</span>'">`
+      :`<span class="watch-link-text">${canonName}</span>`;
+    const style=accentBorder?`style="border-color:${accentBorder}"`:'';
+    return `<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" title="${l.name}" ${style}>${inner}</a>`;
+  }).join('');
+  const labelStyle=accentColor?`style="color:${accentColor}"`:'';
+  return `<div class="modal-watch-block"${accentBorder?` style="border-color:${accentBorder}"`:''}>
+    <div class="modal-watch-label" ${labelStyle}>Dónde ver</div>
+    <div class="watch-links">${btns}</div>
+  </div>`;
+}
+
 // ═══ SESSION PERSISTENCE ═══
 const SS_KEY='tintaSapphicState';
 function saveSession(){
@@ -3693,6 +3818,7 @@ async function loadData(){
     state.ships=d.ships||[];
     state.productoras=d.productoras||[];
     state.listas=d.listas||[];
+    state.platformLogos=d.platformLogos||{};
     if(d.exportedAt){
       const dt=new Date(d.exportedAt);
       const badge=document.getElementById('updateBadge'); if(badge){badge.textContent='✓ Act. '+dt.toLocaleDateString('es-ES',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});badge.style.display='';}
@@ -5154,14 +5280,14 @@ function openSeries(si){
   let metaGrid='';
   if(s.year) metaGrid+=`<div class="meta-item"><div class="meta-key">Año</div><div class="meta-val">${s.year}</div></div>`;
   if(s.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(s.country)} ${s.country}</div></div>`;
-  if(s.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Plataforma</div><div class="meta-val">${s.network}</div></div>`;
+  if(s.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Estreno / Cadena</div><div class="meta-val">${s.network}</div></div>`;
   metaGrid+=`<div class="meta-item"><div class="meta-key">Episodios</div><div class="meta-val">${totalEps}${seasons.length>1?` (${seasons.length}T)`:''}</div></div>`;
   const durInfo=getSeriesDurationInfo(s);
   if(durInfo.epDuration){
     metaGrid+=`<div class="meta-item"><div class="meta-key">⏱ Por episodio</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}</div></div>`.replace('</div></div>',`${fmtDuration(durInfo.epDuration)}</div></div>`);
     if(durInfo.totalMins) metaGrid+=`<div class="meta-item"><div class="meta-key">⏱ Total serie</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.totalMins)}</div></div>`;
   }
-  const watchLinksHtml=(()=>{const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]);if(!links.length)return '';return `<div class="modal-watch-block"><div class="modal-watch-label">Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div></div>`;})();
+  const watchLinksHtml=buildWatchLinksHtml(s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]),'','','');
   const progressBlock=`<div class="modal-progress-block">
     <div class="modal-progress-header">
       <span class="modal-progress-label">${aired} / ${totalEps} emitidos · ${activeDays}</span>
@@ -5315,8 +5441,8 @@ function openUpcoming(si){
   let metaGrid='';
   if(s.year) metaGrid+=`<div class="meta-item"><div class="meta-key">Año aprox.</div><div class="meta-val">${s.year}</div></div>`;
   if(s.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(s.country)} ${s.country}</div></div>`;
-  if(s.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Plataforma</div><div class="meta-val">${s.network}</div></div>`;
-  const watchLinksHtml=(()=>{const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]);if(!links.length)return '';return `<div class="modal-watch-block"><div class="modal-watch-label">Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener"><span class="watch-link-icon">▶</span>${l.name}</a>`).join('')}</div></div>`;})();
+  if(s.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Estreno / Cadena</div><div class="meta-val">${s.network}</div></div>`;
+  const watchLinksHtml=buildWatchLinksHtml(s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]),'','','');
 
   const castHtml=buildCastHtml(s.cast||[]);
   const castCount=s.cast&&s.cast.length?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
@@ -5406,7 +5532,7 @@ function openMovie(mi){
   let metaGrid='';
   if(mv.year) metaGrid+=`<div class="meta-item"><div class="meta-key">Año</div><div class="meta-val">${mv.year}</div></div>`;
   if(mv.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(mv.country)} ${mv.country}</div></div>`;
-  if(mv.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Plataforma</div><div class="meta-val">${mv.network}</div></div>`;
+  if(mv.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Estreno / Cadena</div><div class="meta-val">${mv.network}</div></div>`;
   if(mv.date) metaGrid+=`<div class="meta-item"><div class="meta-key">Estreno</div><div class="meta-val">${fmtDate(mv.date)}</div></div>`;
   if(mv.duration) metaGrid+=`<div class="meta-item"><div class="meta-key">Duración</div><div class="meta-val">⏱ ${fmtDuration(mv.duration)}</div></div>`;
   const mvModalTypeBadge=mv.movieType==='short'
@@ -5426,7 +5552,7 @@ function openMovie(mi){
       ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
     </div></div>`;
   })();
-  const watchLinksHtml=(()=>{const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);if(!links.length)return '';return `<div class="modal-watch-block" style="border-color:rgba(124,92,191,0.28)"><div class="modal-watch-label" style="color:var(--movie-accent)">Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" style="color:var(--movie-accent);border-color:var(--movie-border)"><span class="watch-link-icon" style="background:var(--movie-bar);color:var(--movie-accent)">▶</span>${l.name}</a>`).join('')}</div></div>`;})();
+  const watchLinksHtml=buildWatchLinksHtml(mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]),'var(--movie-accent)','rgba(124,92,191,0.28)','var(--movie-bar)');
   const castHtml=buildCastHtml(mv.cast||[]);
   const castCount=mv.cast&&mv.cast.length?mv.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
   let html=`${posterEl}<div class="modal-body">
@@ -5757,32 +5883,170 @@ function getYoutubeId(url){
   if(m) return m[1];
   return null;
 }
-function trailerHtml(url){
-  const id=getYoutubeId(url);
-  const ytUrl = id ? `https://www.youtube.com/watch?v=${id}` : (url||'').trim();
-  if(!id){
-    if(ytUrl) return `<a class="trailer-yt-btn" href="${ytUrl}" target="_blank" rel="noopener">▶ Ver trailer</a>`;
-    return '';
+
+/* ── Detect trailer platform ─────────────────────────────────────────────── */
+function detectTrailerPlatform(url){
+  if(!url) return {type:'other',url};
+  const u=url.trim();
+
+  // YouTube
+  if(/youtu\.be|youtube\.com/i.test(u)){
+    const id=getYoutubeId(u);
+    return {type:'youtube',id,url:u};
   }
-  // Use maxresdefault first, fallback to hqdefault via onerror
-  const thumb=`https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-  return `<div class="trailer-wrap">
-    <div class="trailer-thumb-wrap" onclick="loadTrailerIframe(this,'${id}')">
-      <img class="trailer-thumb" src="${thumb}" alt="Ver trailer" onerror="this.src='https://img.youtube.com/vi/${id}/0.jpg'">
+  // Vimeo
+  if(/vimeo\.com/i.test(u)){
+    const m=u.match(/vimeo\.com\/(?:video\/)?([\d]+)/);
+    const id=m?m[1]:null;
+    // Check for unlisted hash  ?h=xxxxx or #xxxxx
+    const h=u.match(/[?#&]h=([\w]+)/);
+    return {type:'vimeo',id,hash:h?h[1]:null,url:u};
+  }
+  // Twitter / X
+  if(/twitter\.com|x\.com/i.test(u)){
+    return {type:'twitter',url:u};
+  }
+  // Vigloo
+  if(/vigloo\.com/i.test(u)){
+    return {type:'vigloo',url:u};
+  }
+  // Dailymotion
+  if(/dailymotion\.com|dai\.ly/i.test(u)){
+    const m=u.match(/(?:video|dai\.ly)\/([a-z0-9]+)/i);
+    return {type:'dailymotion',id:m?m[1]:null,url:u};
+  }
+  // Bilibili
+  if(/bilibili\.com/i.test(u)){
+    const m=u.match(/BV[\w]+/);
+    return {type:'bilibili',id:m?m[0]:null,url:u};
+  }
+  // Facebook
+  if(/facebook\.com|fb\.watch/i.test(u)){
+    return {type:'facebook',url:u};
+  }
+  // Direct video file
+  if(/\.(mp4|webm|ogg)(\?|$)/i.test(u)){
+    return {type:'video',url:u};
+  }
+  // Fallback: generic external link
+  return {type:'other',url:u};
+}
+
+/* ── Platform icons ──────────────────────────────────────────────────────── */
+function _platformIcon(type){
+  const icons={
+    youtube:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>`,
+    vimeo:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 12.5C4.603 9.913 3.83 8.619 3 8.619c-.179 0-.806.378-1.881 1.132L0 8.266c1.185-1.044 2.351-2.087 3.498-3.13C5.115 3.7 6.337 2.99 7.205 2.912c2.228-.215 3.596 1.31 4.105 4.57.556 3.51.942 5.69 1.16 6.543.644 2.927 1.35 4.39 2.115 4.39.597 0 1.494-.945 2.69-2.836 1.194-1.889 1.836-3.327 1.927-4.314.172-1.63-.469-2.447-1.926-2.447-.687 0-1.393.158-2.12.471 1.406-4.607 4.09-6.848 8.056-6.72z"/></svg>`,
+    twitter:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+    vigloo:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>`,
+    dailymotion:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-7.072.144-9.174 0C4.943 16.72 4.75 15.568 4.75 12s.194-4.72 2.517-4.892c2.102-.144 7.073-.144 9.175 0 2.323.172 2.516 1.324 2.516 4.892s-.193 4.72-2.517 4.892zM9.75 9.5l5 2.5-5 2.5V9.5z"/></svg>`,
+    bilibili:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1 0-1.733 1.234 1.234 0 0 1 1.7 0l2.7 2.666h3.6l2.7-2.666a1.234 1.234 0 0 1 1.7 0 1.234 1.234 0 0 1 0 1.733zM16 8.668H8a1 1 0 0 0-1 1v4.666a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9.668a1 1 0 0 0-1-1zm-5 4.333v-2.666l2 1.333z"/></svg>`,
+    facebook:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
+    video:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`,
+    other:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 13h-5v5h-2v-5H6v-2h5V6h2v5h5v2z"/></svg>`
+  };
+  return icons[type]||icons.other;
+}
+
+function _platformLabel(type){
+  return {youtube:'Abrir en YouTube',vimeo:'Abrir en Vimeo',twitter:'Ver en X / Twitter',
+    vigloo:'Ver en Vigloo',dailymotion:'Abrir en Dailymotion',bilibili:'Ver en Bilibili',
+    facebook:'Ver en Facebook',video:'Ver vídeo',other:'Ver trailer'}[type]||'Ver trailer';
+}
+
+function trailerHtml(url){
+  if(!url||!url.trim()) return '';
+  const p=detectTrailerPlatform(url.trim());
+
+  // ── YouTube: thumbnail + embed click ──
+  if(p.type==='youtube' && p.id){
+    const thumb=`https://img.youtube.com/vi/${p.id}/hqdefault.jpg`;
+    return `<div class="trailer-wrap">
+    <div class="trailer-thumb-wrap" onclick="loadTrailerIframe(this,'yt','${p.id}')">
+      <img class="trailer-thumb" src="${thumb}" alt="Ver trailer" onerror="this.src='https://img.youtube.com/vi/${p.id}/0.jpg'">
       <div class="trailer-play-btn"><div class="trailer-play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
     </div>
-    <a class="trailer-yt-btn" href="${ytUrl}" target="_blank" rel="noopener">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff4040"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-2.75 12.09 12.09 0 0 0-7.46-2.94A12.08 12.08 0 0 0 0 12a12.08 12.08 0 0 0 12 12 12.08 12.08 0 0 0 12-12 12.08 12.08 0 0 0-4.41-9.31ZM9.75 15.02V8.98l6.5 3.02-6.5 3.02Z"/></svg>
-      Abrir en YouTube
+    <a class="trailer-ext-btn yt" href="${p.url}" target="_blank" rel="noopener">
+      ${_platformIcon('youtube')} ${_platformLabel('youtube')}
     </a>
   </div>`;
+  }
+
+  // ── Vimeo: embed click (with optional unlisted hash) ──
+  if(p.type==='vimeo' && p.id){
+    const thumbSrc=`https://vumbnail.com/${p.id}.jpg`;
+    const hashParam=p.hash?`?h=${p.hash}`:'';
+    return `<div class="trailer-wrap">
+    <div class="trailer-thumb-wrap" onclick="loadTrailerIframe(this,'vimeo','${p.id}','${p.hash||''}')">
+      <img class="trailer-thumb" src="${thumbSrc}" alt="Ver trailer"
+        onerror="this.style.display='none';this.nextElementSibling.style.background='rgba(26,183,234,.15)'">
+      <div class="trailer-play-btn"><div class="trailer-play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+    </div>
+    <a class="trailer-ext-btn vimeo" href="${p.url}" target="_blank" rel="noopener">
+      ${_platformIcon('vimeo')} ${_platformLabel('vimeo')}
+    </a>
+  </div>`;
+  }
+
+  // ── Dailymotion: embed click ──
+  if(p.type==='dailymotion' && p.id){
+    return `<div class="trailer-wrap">
+    <div class="trailer-thumb-wrap" onclick="loadTrailerIframe(this,'dailymotion','${p.id}')">
+      <img class="trailer-thumb" src="https://www.dailymotion.com/thumbnail/video/${p.id}" alt="Ver trailer"
+        onerror="this.style.display='none';this.nextElementSibling.style.background='rgba(0,100,200,.1)'">
+      <div class="trailer-play-btn"><div class="trailer-play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+    </div>
+    <a class="trailer-ext-btn other" href="${p.url}" target="_blank" rel="noopener">
+      ${_platformIcon('dailymotion')} ${_platformLabel('dailymotion')}
+    </a>
+  </div>`;
+  }
+
+  // ── Bilibili: embed click ──
+  if(p.type==='bilibili' && p.id){
+    return `<div class="trailer-wrap">
+    <div class="trailer-thumb-wrap" onclick="loadTrailerIframe(this,'bilibili','${p.id}')">
+      <div style="width:100%;aspect-ratio:16/9;background:rgba(0,161,214,.12);display:flex;align-items:center;justify-content:center;border-radius:12px">
+        ${_platformIcon('bilibili')}<span style="color:#00a1d6;font-weight:700;font-size:14px;margin-left:8px">Bilibili</span>
+      </div>
+      <div class="trailer-play-btn"><div class="trailer-play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+    </div>
+    <a class="trailer-ext-btn bilibili" href="${p.url}" target="_blank" rel="noopener">
+      ${_platformIcon('bilibili')} ${_platformLabel('bilibili')}
+    </a>
+  </div>`;
+  }
+
+  // ── Direct video file: native <video> ──
+  if(p.type==='video'){
+    return `<div class="trailer-wrap">
+    <video class="trailer-iframe" controls preload="metadata" src="${p.url}">Tu navegador no soporta vídeo HTML5.</video>
+  </div>`;
+  }
+
+  // ── Everything else (Twitter/X, Vigloo, Facebook, generic link):
+  //    Can't embed due to iFrame restrictions → stylish external button ──
+  const cls={twitter:'twitter',vigloo:'vigloo',facebook:'fb',other:'other'}[p.type]||'other';
+  return `<a class="trailer-ext-btn ${cls}" href="${p.url}" target="_blank" rel="noopener" style="margin-top:0;border-radius:12px;padding:16px 0;font-size:14px">
+    ${_platformIcon(p.type)} ${_platformLabel(p.type)}
+  </a>`;
 }
-function loadTrailerIframe(el,id){
+
+function loadTrailerIframe(el, platform, id, extra){
   const iframe=document.createElement('iframe');
   iframe.className='trailer-iframe';
-  iframe.src=`https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
-  iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
   iframe.allowFullscreen=true;
+  iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  if(platform==='yt'){
+    iframe.src=`https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+  } else if(platform==='vimeo'){
+    const hash=extra?`?h=${extra}&`:'?';
+    iframe.src=`https://player.vimeo.com/video/${id}${hash}autoplay=1&title=0&byline=0`;
+  } else if(platform==='dailymotion'){
+    iframe.src=`https://www.dailymotion.com/embed/video/${id}?autoplay=1`;
+  } else if(platform==='bilibili'){
+    iframe.src=`https://player.bilibili.com/player.html?bvid=${id}&autoplay=1&high_quality=1&danmaku=0`;
+  }
   el.replaceWith(iframe);
 }
 
@@ -6161,9 +6425,7 @@ function openRichDetail(item, opts){
 
   // Watch links
   const links=item.watchLinks&&item.watchLinks.length?item.watchLinks:(item.networkUrl?[{name:item.network||'Ver',url:item.networkUrl}]:[]);
-  const watchLinksHtml=links.length
-    ?`<div class="modal-watch-block" style="border-color:${accentBorder}"><div class="modal-watch-label" style="color:${accentColor}">Dónde ver</div><div class="watch-links">${links.map(l=>`<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" style="color:${accentColor};border-color:${accentBorder}"><span class="watch-link-icon" style="background:${accentSoft};color:${accentColor}">▶</span>${l.name}</a>`).join('')}</div></div>`
-    :'';
+  const watchLinksHtml=buildWatchLinksHtml(links,accentColor,accentBorder,accentSoft);
 
   // Trailer
   const trailerSection=item.trailerUrl?trailerHtml(item.trailerUrl):'';
@@ -6172,7 +6434,7 @@ function openRichDetail(item, opts){
   let metaGrid='';
   if(item.year) metaGrid+=`<div class="meta-item"><div class="meta-key">Año</div><div class="meta-val">${item.year}</div></div>`;
   if(item.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(item.country)} ${item.country}</div></div>`;
-  if(item.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Plataforma</div><div class="meta-val">${item.network}</div></div>`;
+  if(item.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Estreno / Cadena</div><div class="meta-val">${item.network}</div></div>`;
   if(item.totalEpisodes) metaGrid+=`<div class="meta-item"><div class="meta-key">Episodios</div><div class="meta-val">${item.totalEpisodes}${item.seasons&&item.seasons.length>1?` (${item.seasons.length}T)`:''}</div></div>`;
 
   // Genre pills
