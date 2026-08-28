@@ -1342,22 +1342,6 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 .movie-card-poster-wrap{position:relative;overflow:hidden}
 .movie-card-poster{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--lavender-soft)}
 .movie-card-poster-ph{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,var(--lavender-soft) 0%,var(--surface3) 100%);display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--movie-accent)}
-/* Overlay gradiente más profundo en películas */
-.movie-card-poster-wrap::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:60%;
-  background:linear-gradient(to top,rgba(20,10,35,0.80) 0%,transparent 100%);
-  pointer-events:none;
-}
-/* Badge 🎬 flotante sobre el poster */
-.movie-card-poster-wrap::before{
-  content:'🎬';
-  position:absolute;top:7px;right:7px;
-  font-size:13px;line-height:1;z-index:2;
-  background:rgba(20,10,35,0.65);
-  border-radius:20px;padding:3px 7px;
-  backdrop-filter:blur(4px);
-  pointer-events:none;
-}
 .movie-card-body{
   padding:12px 13px;flex:1;display:flex;flex-direction:column;
   background:linear-gradient(180deg,var(--surface) 0%,var(--movie-bar) 100%);
@@ -2624,15 +2608,6 @@ footer {
   background: linear-gradient(90deg, var(--movie-accent), var(--lavender), var(--accent));
   z-index: 1;
 }
-/* Quitar el ::before que ya existe con el clapperboard emoji — reemplazarlo limpio */
-.movie-card-poster-wrap::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0; height: 55%;
-  background: linear-gradient(to top, rgba(20,10,35,0.82) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 1;
-}
 .movie-card-poster {
   width: 100%;
   aspect-ratio: 2/3;
@@ -3089,7 +3064,7 @@ html[data-theme="dark"] .filter-select {
   <div class="search-overlay-box">
     <div style="position:relative">
       <span class="search-overlay-icon">🔍</span>
-      <input class="search-overlay-input" id="searchOverlayInput" placeholder="Buscar series, películas…" oninput="renderSearchResults(this.value)" autocomplete="off">
+      <input class="search-overlay-input" id="searchOverlayInput" placeholder="Buscar series, películas…" oninput="debounceRender('searchOverlay',()=>renderSearchResults(this.value))" autocomplete="off">
     </div>
     <div class="search-overlay-results" id="searchOverlayResults"></div>
     <div style="text-align:right;margin-top:.75rem">
@@ -3113,7 +3088,7 @@ html[data-theme="dark"] .filter-select {
       <!-- Buscador (solo visible en móvil dentro del menú) -->
       <div class="navbar-search-wrap mobile-menu-search" id="navSearchWrapMobile" style="display:none">
         <svg class="navbar-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="navbar-search-inp" id="navSearchInpMobile" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
+        <input class="navbar-search-inp" id="navSearchInpMobile" placeholder="Buscar series, películas…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResultsMobile" style="display:none"></div>
       </div>
       <button class="nav-link active" id="tabCal" onclick="switchTab('cal');closeMobileMenu()">Calendario</button>
@@ -3155,7 +3130,7 @@ html[data-theme="dark"] .filter-select {
     <div class="navbar-right">
       <div class="navbar-search-wrap" id="navSearchWrap">
         <svg class="navbar-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="navSearchHandler(this.value)" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
+        <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
       </div>
       <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()" title="Cambiar modo oscuro/claro" aria-label="Modo oscuro">🌙</button>
@@ -3300,7 +3275,7 @@ html[data-theme="dark"] .filter-select {
 
 <div class="modal-bg" id="monthPickerBg" onclick="if(event.target===this)closeMonthPicker()">
   <div class="modal" style="max-width:340px;padding:1.5rem">
-    <button class="modal-close-btn" onclick="closeMonthPicker()">✕</button>
+    <button class="modal-close-btn" onclick="closeMonthPicker()" aria-label="Cerrar selector de mes">✕</button>
     <div style="font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:1rem;color:var(--text)">Ir a un mes</div>
     <div id="monthPickerInner"></div>
   </div>
@@ -3308,7 +3283,7 @@ html[data-theme="dark"] .filter-select {
 
 <div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
   <div class="modal" id="modalBox">
-    <button class="modal-close-btn" onclick="closeModal()" title="Cerrar">✕</button>
+    <button class="modal-close-btn" onclick="closeModal()" title="Cerrar" aria-label="Cerrar">✕</button>
   </div>
 </div>
 <!-- Actress profile modal -->
@@ -3322,6 +3297,15 @@ const DAYS=['L','M','X','J','V','S','D'];
 const DAYS_L=['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
 const PALETTE=['#d4608a','#5bbcb0','#9b82c9','#e8a84a','#e06fa0','#4eadb5','#b07ad4','#d47a4e'];
 const PALETTE_SOFT=['rgba(212,96,138,0.13)','rgba(91,188,176,0.13)','rgba(155,130,201,0.13)','rgba(232,168,74,0.13)','rgba(224,111,160,0.13)','rgba(78,173,181,0.13)','rgba(176,122,212,0.13)','rgba(212,122,78,0.13)'];
+
+// Debounce genérico para inputs de búsqueda: la actualización de estado (filters.q=...)
+// se ejecuta al instante, pero el repintado (render, que es lo caro) se retrasa unos ms
+// para no repintar toda la lista en cada tecla pulsada.
+const _searchDebounceTimers={};
+function debounceRender(key, fn, delay=200){
+  clearTimeout(_searchDebounceTimers[key]);
+  _searchDebounceTimers[key]=setTimeout(fn, delay);
+}
 
 // Format "T2 · Ep 6" label for an episode
 function epLabel(ep, seasons){
@@ -3811,7 +3795,9 @@ function genEps(s){
 
 async function loadData(){
   try{
-    const r=await fetch('data.json?t='+Date.now());
+    // 'no-cache' fuerza revalidar con el servidor (nunca sirve un data.json viejo),
+    // pero permite reutilizar el body cacheado si el servidor responde 304 (no cambió).
+    const r=await fetch('data.json',{cache:'no-cache'});
     if(!r.ok) throw new Error('No se encontró data.json (código '+r.status+')');
     const d=await r.json();
     state.series=d.series||[];
@@ -4148,9 +4134,9 @@ function closeMonthPicker(){ document.getElementById('monthPickerBg').classList.
 function renderMonthPicker(){
   const html=`
     <div class="month-picker-year">
-      <button class="month-picker-arr" onclick="monthPickerYear--;renderMonthPicker()">←</button>
+      <button class="month-picker-arr" onclick="monthPickerYear--;renderMonthPicker()" aria-label="Año anterior">←</button>
       <span class="month-picker-year-val">${monthPickerYear}</span>
-      <button class="month-picker-arr" onclick="monthPickerYear++;renderMonthPicker()">→</button>
+      <button class="month-picker-arr" onclick="monthPickerYear++;renderMonthPicker()" aria-label="Año siguiente">→</button>
     </div>
     <div class="month-picker-grid">
       ${MONTHS.map((mn,i)=>`<button class="month-picker-btn${state.year===monthPickerYear&&state.month===i?' active':''}" onclick="state.month=${i};state.year=monthPickerYear;closeMonthPicker();renderCal()">${mn.slice(0,3)}</button>`).join('')}
@@ -4175,7 +4161,7 @@ function seriesCardHtml(s, si){
   const flagEl=s.country?`<span class="sc-country-flag">${countryFlag(s.country)}</span>`:'';
   const synopsisOverlay=s.synopsis?`<div class="sc-synopsis-overlay"><div class="sc-synopsis-text">${s.synopsis}</div><div class="sc-synopsis-more">Ver más →</div></div>`:'';
   const posterEl=s.poster
-    ?`<div class="series-card-poster-wrap">${flagEl}<img class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph>🎬</div>'">${synopsisOverlay}</div>`
+    ?`<div class="series-card-poster-wrap">${flagEl}<img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph>🎬</div>'">${synopsisOverlay}</div>`
     :`<div class="series-card-poster-wrap">${flagEl}<div class="series-card-poster-ph">🎬</div>${synopsisOverlay}</div>`;
 
   // ── Badges
@@ -4448,14 +4434,14 @@ function paginationHtml(current,total,onPageFn){
   const show=new Set([1,total,current,current-1,current+1].filter(p=>p>=1&&p<=total));
   const sorted=[...show].sort((a,b)=>a-b);
   let html='<div class="pagination">';
-  html+=`<button class="pg-btn pg-prev" onclick="${onPageFn}(${current-1})" ${current===1?'disabled':''}>&larr;</button>`;
+  html+=`<button class="pg-btn pg-prev" onclick="${onPageFn}(${current-1})" ${current===1?'disabled':''} aria-label="Página anterior">&larr;</button>`;
   let prev=null;
   sorted.forEach(p=>{
     if(prev!==null&&p-prev>1) html+='<span class="pg-ellipsis">…</span>';
     html+=`<button class="pg-btn${p===current?' pg-active':''}" onclick="${onPageFn}(${p})">${p}</button>`;
     prev=p;
   });
-  html+=`<button class="pg-btn pg-next" onclick="${onPageFn}(${current+1})" ${current===total?'disabled':''}>&rarr;</button>`;
+  html+=`<button class="pg-btn pg-next" onclick="${onPageFn}(${current+1})" ${current===total?'disabled':''} aria-label="Página siguiente">&rarr;</button>`;
   html+='</div>';
   return html;
 }
@@ -4739,7 +4725,7 @@ function renderList(){
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
           <span class="search-icon">🔍</span>
-          <input id="seriesSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${seriesFilters.q}" oninput="seriesFilters.q=this.value;resetSeriesPages();renderListResults()" autocomplete="off">
+          <input id="seriesSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${seriesFilters.q}" oninput="seriesFilters.q=this.value;resetSeriesPages();debounceRender('series',renderListResults)" autocomplete="off">
         </div>
       </div>
       <div class="toolbar-filters-row" id="seriesFiltersRow">
@@ -4875,7 +4861,7 @@ function renderUpcoming(){
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
           <span class="search-icon">🔍</span>
-          <input id="upcomingSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${upcomingFilters.q}" oninput="upcomingFilters.q=this.value;resetUpcomingPage();renderUpcomingResults()" autocomplete="off">
+          <input id="upcomingSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${upcomingFilters.q}" oninput="upcomingFilters.q=this.value;resetUpcomingPage();debounceRender('upcoming',renderUpcomingResults)" autocomplete="off">
         </div>
       </div>
       <div class="toolbar-filters-row">
@@ -5636,7 +5622,7 @@ function movieCardHtml(mv){
   const now=new Date();
   const isPast=mv.date&&new Date(mv.date+'T12:00:00')<=now;
   const posterEl=mv.poster
-    ?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎥</div>'"></div>`
+    ?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎥</div>'"></div>`
     :`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph">🎥</div></div>`;
   const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
   const watchRow=links.length?`<div class="movie-card-watch">${links.map(l=>`<a class="card-watch-pill" style="background:var(--movie-bar);color:var(--movie-accent);border-color:var(--movie-border)" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
@@ -5684,7 +5670,7 @@ function renderMovies(){
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
           <span class="search-icon">🔍</span>
-          <input id="moviesSearchInput" class="search-input" placeholder="Buscar película, país, plataforma…" value="${moviesFilters.q}" oninput="moviesFilters.q=this.value;resetMoviesPage();renderMoviesResults()" autocomplete="off">
+          <input id="moviesSearchInput" class="search-input" placeholder="Buscar película, país, plataforma…" value="${moviesFilters.q}" oninput="moviesFilters.q=this.value;resetMoviesPage();debounceRender('movies',renderMoviesResults)" autocomplete="off">
         </div>
       </div>
       <div class="toolbar-filters-row">
@@ -5824,12 +5810,26 @@ function _setModalShareHash(hash){
 }
 
 function copyShareLink(){
-  const url = location.href.split('#')[0] + location.hash;
+  const url = _buildShareUrl();
   if(navigator.clipboard && navigator.clipboard.writeText){
     navigator.clipboard.writeText(url).then(()=>_flashShareBtn('¡Copiado!')).catch(()=>_shareFallback(url));
   } else {
     _shareFallback(url);
   }
+}
+
+// Si el hash actual es #serie-ID o #pelicula-ID, comparte la página estática
+// /s/ID.html o /p/ID.html (que lleva el póster y la sinopsis en meta tags,
+// para que la preview en WhatsApp/Telegram/Twitter salga bien) en vez del
+// link directo a la app, que un bot sin JS no puede leer.
+function _buildShareUrl(){
+  const hash = location.hash;
+  const root = location.origin + location.pathname.replace(/index\.html$/,'');
+  const mSerie = hash.match(/^#serie-(.+)$/);
+  const mPelicula = hash.match(/^#pelicula-(.+)$/);
+  if(mSerie) return root + 's/' + mSerie[1] + '.html';
+  if(mPelicula) return root + 'p/' + mPelicula[1] + '.html';
+  return location.href.split('#')[0] + location.hash;
 }
 
 function _shareFallback(url){
@@ -6091,7 +6091,7 @@ function renderBooks(){
     <div class="books-toolbar-shell books-toolbar">
       <div class="search-wrap" style="position:relative">
         <span class="search-icon">🔍</span>
-        <input id="booksSearchInput" class="search-input" placeholder="Buscar libro o serie…" value="${booksState.q}" oninput="booksState.q=this.value;renderBooksResults()" autocomplete="off">
+        <input id="booksSearchInput" class="search-input" placeholder="Buscar libro o serie…" value="${booksState.q}" oninput="booksState.q=this.value;debounceRender('books',renderBooksResults)" autocomplete="off">
       </div>
       <div class="filter-group">
         <span class="filter-label">Tipo</span>
@@ -6245,7 +6245,7 @@ function renderAnime(){
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
           <span class="search-icon">🔍</span>
-          <input id="animeSearchInput" class="search-input" placeholder="Buscar anime, país, plataforma…" value="${animeFilters.q}" oninput="animeFilters.q=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()" autocomplete="off">
+          <input id="animeSearchInput" class="search-input" placeholder="Buscar anime, país, plataforma…" value="${animeFilters.q}" oninput="animeFilters.q=this.value;paginationAnime={series:1,movies:1};debounceRender('anime',renderAnimeResults)" autocomplete="off">
         </div>
       </div>
       <div class="toolbar-filters-row">
@@ -6321,7 +6321,7 @@ function renderAnimeResults(){
     let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> anime${filtered.length!==1?'s':''}</div><div class="series-grid">`;
     paged.forEach((s,i)=>{
       const si=i;
-      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph>🌸</div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph">🌸</div></div>`;
+      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph>🌸</div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph">🌸</div></div>`;
       const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
       const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
       const genrePills=s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${s.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--lavender-soft);border:1px solid rgba(139,114,190,0.2);color:var(--lavender);font-weight:600">${g}</span>`).join('')}</div>`:'';
@@ -6350,7 +6350,7 @@ function renderAnimeResults(){
     if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna película de anime con esos filtros.</div>';return;}
     let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> película${filtered.length!==1?'s':''}</div><div class="movies-grid">`;
     paged.forEach((mv,mi)=>{
-      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph>🌸</div>'">`:`<div class="movie-card-poster-ph">🌸</div>`;
+      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph>🌸</div>'">`:`<div class="movie-card-poster-ph">🌸</div>`;
       const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
       const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
       const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
@@ -6613,7 +6613,7 @@ function renderRealities(){
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
           <span class="search-icon">🔍</span>
-          <input id="realitiesSearchInput" class="search-input" placeholder="Buscar reality, docuserie, país, red…" value="${realitiesFilters.q}" oninput="realitiesFilters.q=this.value;paginationRealities={series:1,movies:1};renderRealitiesResults()" autocomplete="off">
+          <input id="realitiesSearchInput" class="search-input" placeholder="Buscar reality, docuserie, país, red…" value="${realitiesFilters.q}" oninput="realitiesFilters.q=this.value;paginationRealities={series:1,movies:1};debounceRender('realities',renderRealitiesResults)" autocomplete="off">
         </div>
       </div>
       <div class="toolbar-filters-row">
@@ -6679,7 +6679,7 @@ function renderRealitiesResults(){
     if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún reality con esos filtros.</div>';return;}
     let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> programa${filtered.length!==1?'s':''}</div><div class="series-grid">`;
     paged.forEach((s,i)=>{
-      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph>🎤</div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph">🎤</div></div>`;
+      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph>🎤</div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph">🎤</div></div>`;
       const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
       const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
       const genrePills=s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${s.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid rgba(74,173,160,0.2);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
@@ -6708,7 +6708,7 @@ function renderRealitiesResults(){
     if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún documental con esos filtros.</div>';return;}
     let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> documental${filtered.length!==1?'es':''}</div><div class="movies-grid">`;
     paged.forEach((mv,mi)=>{
-      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎤</div>'">`:`<div class="movie-card-poster-ph">🎤</div>`;
+      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎤</div>'">`:`<div class="movie-card-poster-ph">🎤</div>`;
       const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
       const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
       const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
@@ -6789,7 +6789,7 @@ function renderDocumentales(){
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
           <span class="search-icon">🔍</span>
-          <input id="documentalesSearchInput" class="search-input" placeholder="Buscar documental, país, plataforma…" value="${documentalesFilters.q}" oninput="documentalesFilters.q=this.value;paginationDocumentales={page:1};renderDocumentalesResults()" autocomplete="off">
+          <input id="documentalesSearchInput" class="search-input" placeholder="Buscar documental, país, plataforma…" value="${documentalesFilters.q}" oninput="documentalesFilters.q=this.value;paginationDocumentales={page:1};debounceRender('documentales',renderDocumentalesResults)" autocomplete="off">
         </div>
       </div>
       <div class="toolbar-filters-row">
@@ -6850,7 +6850,7 @@ function renderDocumentalesResults(){
   if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún documental con esos filtros.</div>';return;}
   let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> documental${filtered.length!==1?'es':''}</div><div class="movies-grid">`;
   paged.forEach((mv,mi)=>{
-    const posterEl=mv.poster?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎞️</div>'"></div>`:`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph">🎞️</div></div>`;
+    const posterEl=mv.poster?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎞️</div>'"></div>`:`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph">🎞️</div></div>`;
     const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
     const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
     const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
@@ -6885,7 +6885,7 @@ function renderActressesTab(){
         <span class="search-icon">🔍</span>
         <input class="search-input" id="actressTabSearch" placeholder="Buscar actriz…"
           value="${actressesTabState.q}"
-          oninput="actressesTabState.q=this.value;renderActressesTabResults()" autocomplete="off">
+          oninput="actressesTabState.q=this.value;debounceRender('actresses',renderActressesTabResults)" autocomplete="off">
       </div>
       <div id="actressTabResults"></div>
     </div>`;
@@ -6962,7 +6962,7 @@ function renderActressesTabResults(){
 
 function actressTabCardHtml(a, count){
   const photo=a.photo
-    ?`<img class="actress-tab-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=actress-tab-photo-ph>🎭</div>'">`
+    ?`<img class="actress-tab-photo" src="${a.photo}" alt="${a.name}" loading="lazy" onerror="this.outerHTML='<div class=actress-tab-photo-ph>🎭</div>'">`
     :`<div class="actress-tab-photo-ph">🎭</div>`;
   const countBadge=count?`<span class="actress-tab-count">${count} obra${count!==1?'s':''}</span>`:'';
   const flag=a.country?`<span class="actress-tab-country">${countryFlag(a.country)} ${a.country}</span>`:'';
@@ -7187,7 +7187,7 @@ function renderShips(){
     <div style="position:relative;margin-bottom:.85rem">
       <span class="search-icon">🔍</span>
       <input class="search-input" id="shipsSearchInput" placeholder="Buscar ship o actriz…"
-        value="${shipsState.q}" oninput="shipsState.q=this.value;renderShipsResults()" autocomplete="off">
+        value="${shipsState.q}" oninput="shipsState.q=this.value;debounceRender('ships',renderShipsResults)" autocomplete="off">
     </div>
     <div id="shipsResults"></div>
   </div>`;
@@ -7256,15 +7256,15 @@ function renderShipsResults(){
         const cpPos=sh.sh.couplePhotoPosition||'50% 20%';
         const cpZoom=sh.sh.couplePhotoZoom||1;
         coupleBanner=`<div class="ship-couple-banner">
-          <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center" onerror="this.style.display='none'">
+          <img src="${sh.sh.couplePhoto}" alt="${sh.sh.name}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center" onerror="this.style.display='none'">
         </div>`;
       } else {
         const [a1,a2]=members;
         const half1=a1?.photo
-          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
+          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" loading="lazy" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
           :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
         const half2=a2?.photo
-          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
+          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" loading="lazy" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
           :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
         coupleBanner=`<div class="ship-couple-banner">${half1}${half2}<div class="ship-couple-divider"></div></div>`;
       }
@@ -7290,10 +7290,10 @@ function renderShipsResults(){
       const a1auto=actMap[pair[0]?.actressId];
       const a2auto=actMap[pair[1]?.actressId];
       const half1auto=a1auto?.photo
-        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1auto.id}')"><img src="${a1auto.photo}" alt="${a1auto.name}" style="object-position:${a1auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
+        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1auto.id}')"><img src="${a1auto.photo}" alt="${a1auto.name}" loading="lazy" style="object-position:${a1auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
         :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
       const half2auto=a2auto?.photo
-        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" style="object-position:${a2auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
+        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" loading="lazy" style="object-position:${a2auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
         :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
       return `<div class="ship-card" onclick="${clickHandler}">
         <div class="ship-couple-banner">${half1auto}${half2auto}<div class="ship-couple-divider"></div></div>
@@ -7428,7 +7428,7 @@ function openShipDetail(idx){
   overlay.onclick=e=>{if(e.target===overlay) closeShipDetail();};
   overlay.innerHTML=`<div style="background:var(--surface);border-radius:18px;width:100%;max-width:460px;max-height:90vh;overflow:hidden;box-shadow:0 20px 60px rgba(20,8,18,0.25),0 0 0 1px rgba(210,140,175,0.15);display:flex;flex-direction:column;position:relative">
     ${headerHtml}
-    <button onclick="closeShipDetail()" style="position:absolute;top:11px;right:11px;background:rgba(255,255,255,.92);border:none;border-radius:50%;width:30px;height:30px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 6px rgba(0,0,0,.12);z-index:10;color:var(--muted);font-weight:700">✕</button>
+    <button onclick="closeShipDetail()" aria-label="Cerrar" style="position:absolute;top:11px;right:11px;background:rgba(255,255,255,.92);border:none;border-radius:50%;width:30px;height:30px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 6px rgba(0,0,0,.12);z-index:10;color:var(--muted);font-weight:700">✕</button>
     <div style="padding:18px 20px 24px;display:flex;flex-direction:column;gap:16px;overflow-y:auto">
       <div style="display:flex;align-items:flex-start;justify-content:center;gap:10px">${actressRowHtml}</div>
       ${retiredBannerHtml}
@@ -7634,7 +7634,7 @@ function renderProductoras(){
     <div style="position:relative;margin-bottom:1rem">
       <span class="search-icon">🔍</span>
       <input class="search-input" id="productorasSearch" placeholder="Buscar productora o serie…"
-        value="${productorasState.q}" oninput="productorasState.q=this.value;renderProductorasResults()" autocomplete="off">
+        value="${productorasState.q}" oninput="productorasState.q=this.value;debounceRender('productoras',renderProductorasResults)" autocomplete="off">
     </div>
     <div id="productorasResults"></div>
   </div>`;
@@ -8061,10 +8061,35 @@ function closeSearch(){
   document.getElementById('searchOverlay').classList.remove('open');
   document.getElementById('searchOverlayInput').value='';
 }
+// Abre el detalle de un ship desde el buscador global: cambia a la pestaña Ships,
+// limpia el filtro local para que no quede oculto, y localiza su índice en la lista filtrada.
+function openShipFromSearch(shipId){
+  switchTab('ships');
+  shipsState.q='';
+  setTimeout(()=>{
+    renderShipsResults();
+    const view=document.getElementById('viewShips');
+    const filtered=(view&&view._filtered)||[];
+    const idx=filtered.findIndex(sh=>sh.sh&&sh.sh.id===shipId);
+    if(idx>=0) openShipDetail(idx);
+  },80);
+}
+
+// Abre (expande) la tarjeta de una productora desde el buscador global.
+function openProductoraFromSearch(prodId){
+  switchTab('productoras');
+  productorasState.q='';
+  setTimeout(()=>{
+    renderProductorasResults();
+    toggleProductora(prodId);
+    document.getElementById('prod_'+prodId)?.scrollIntoView({behavior:'smooth',block:'center'});
+  },80);
+}
+
 function renderSearchResults(q){
   const box=document.getElementById('searchOverlayResults');
   const term=q.toLowerCase().trim();
-  if(!term){box.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:1rem">Escribe para buscar series o películas</div>';return;}
+  if(!term){box.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:1rem">Escribe para buscar series, películas, actrices, ships…</div>';return;}
   const results=[];
   state.series.forEach((s,si)=>{
     const castNames=(s.cast||[]).map(m=>{const a=(state.actresses||[]).find(x=>x.id===m.actressId);return a?a.name.toLowerCase():'';}).join(' ');
@@ -8096,14 +8121,28 @@ function renderSearchResults(q){
     if(mv.name.toLowerCase().includes(term)||(mv.network||'').toLowerCase().includes(term)||(mv.country||'').toLowerCase().includes(term))
       results.push({type:'reality-movie',s:mv,si:mv.id||mv.name});
   });
+  (state.actresses||[]).forEach(a=>{
+    if((a.name||'').toLowerCase().includes(term)||(a.country||'').toLowerCase().includes(term)||(a.notes||'').toLowerCase().includes(term))
+      results.push({type:'actress',s:a});
+  });
+  (state.ships||[]).forEach(sh=>{
+    const memberNames=(sh.actressIds||[]).map(id=>{const a=(state.actresses||[]).find(x=>x.id===id);return a?a.name.toLowerCase():'';}).join(' ');
+    if((sh.name||'').toLowerCase().includes(term)||memberNames.includes(term))
+      results.push({type:'ship',s:sh});
+  });
+  (state.productoras||[]).forEach(p=>{
+    if((p.name||'').toLowerCase().includes(term)||(p.country||'').toLowerCase().includes(term))
+      results.push({type:'productora',s:p});
+  });
   if(!results.length){box.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:1rem">Sin resultados para "'+q+'"</div>';return;}
   box.innerHTML=results.slice(0,12).map(r=>{
-    const icons={serie:'🎬',pelicula:'🎥',anime:'🌸','anime-movie':'🌸',reality:'🎤','reality-movie':'🎤'};
-    const labels={serie:'Serie GL',pelicula:'Película GL',anime:'Anime GL','anime-movie':'Película Anime',reality:'Reality/Docuserie','reality-movie':'Documental GL'};
+    const icons={serie:'🎬',pelicula:'🎥',anime:'🌸','anime-movie':'🌸',reality:'🎤','reality-movie':'🎤',actress:'🎭',ship:'💞',productora:'🏢'};
+    const labels={serie:'Serie GL',pelicula:'Película GL',anime:'Anime GL','anime-movie':'Película Anime',reality:'Reality/Docuserie','reality-movie':'Documental GL',actress:'Actriz',ship:'Ship',productora:'Productora'};
     const icon=icons[r.type]||'🎬';
     const label=labels[r.type]||r.type;
-    const thumb=r.s.poster
-      ?`<img class="search-result-thumb" src="${r.s.poster}" alt="" onerror="this.outerHTML='<div class=search-result-thumb-ph>${icon}</div>'">`
+    const imgSrc=r.s.poster||r.s.photo||r.s.couplePhoto||r.s.logo||'';
+    const thumb=imgSrc
+      ?`<img class="search-result-thumb" src="${imgSrc}" alt="" loading="lazy" onerror="this.outerHTML='<div class=search-result-thumb-ph>${icon}</div>'">`
       :`<div class="search-result-thumb-ph">${icon}</div>`;
     let onclick='';
     if(r.type==='serie') onclick=`closeSearch();switchTab('list');setTimeout(()=>openSeries(${r.si}),50)`;
@@ -8112,11 +8151,19 @@ function renderSearchResults(q){
     else if(r.type==='anime-movie') onclick=`closeSearch();switchTab('anime');setTimeout(()=>{animeSubtab='movies';renderAnime();openAnimeDetail('movie','${r.si}')},50)`;
     else if(r.type==='reality') onclick=`closeSearch();switchTab('realities');setTimeout(()=>openRealityDetail('series','${r.si}'),50)`;
     else if(r.type==='reality-movie') onclick=`closeSearch();switchTab('documentales');setTimeout(()=>{paginationDocumentales={page:1};renderDocumentalesResults();openRealityDetail('movie','${r.si}')},50)`;
+    else if(r.type==='actress') onclick=`closeSearch();openActressProfile('${r.s.id}')`;
+    else if(r.type==='ship') onclick=`closeSearch();openShipFromSearch('${r.s.id}')`;
+    else if(r.type==='productora') onclick=`closeSearch();openProductoraFromSearch('${r.s.id}')`;
+    let metaExtra='';
+    if(r.type==='ship'){
+      const names=(r.s.actressIds||[]).map(id=>{const a=(state.actresses||[]).find(x=>x.id===id);return a?a.name:'';}).filter(Boolean);
+      metaExtra=names.length?' · '+names.join(' & '):'';
+    }
     return `<div class="search-result-row" onclick="${onclick}">
       ${thumb}
       <div>
         <div class="search-result-name">${r.s.name}</div>
-        <div class="search-result-meta">${label}${r.s.country?' · '+countryFlag(r.s.country)+' '+r.s.country:''}${r.s.network?' · '+r.s.network:''}</div>
+        <div class="search-result-meta">${label}${r.s.country?' · '+countryFlag(r.s.country)+' '+r.s.country:''}${r.s.network?' · '+r.s.network:''}${metaExtra}</div>
       </div>
     </div>`;
   }).join('');
@@ -8163,7 +8210,8 @@ document.addEventListener('keydown',e=>{
     else if(savedTab==='ruleta') renderRuleta();
     else renderWeekView();
     // Seed history so the very first back press doesn't exit the page
-    history.replaceState({tab:savedTab},'',location.pathname+'?tab='+savedTab);
+    // (conservamos location.hash para no perder los deep-links #serie-/#pelicula-)
+    history.replaceState({tab:savedTab},'',location.pathname+'?tab='+savedTab+location.hash);
 
     // ── Deep-link: abrir modal si la URL tiene #serie-ID o #pelicula-ID ──────
     (function resolveHashDeepLink(){
@@ -8996,8 +9044,8 @@ function buildSimilarHtml(item, type){
   const showArrows = similar.length > 3;
   const arrowsHtml = showArrows
     ? `<div class="similar-nav">
-        <button class="similar-nav-btn" id="${stripId}_prev" onclick="scrollSimilar('${stripId}',-1)" title="Anterior">&#8592;</button>
-        <button class="similar-nav-btn" id="${stripId}_next" onclick="scrollSimilar('${stripId}',1)" title="Siguiente">&#8594;</button>
+        <button class="similar-nav-btn" id="${stripId}_prev" onclick="scrollSimilar('${stripId}',-1)" title="Anterior" aria-label="Anterior">&#8592;</button>
+        <button class="similar-nav-btn" id="${stripId}_next" onclick="scrollSimilar('${stripId}',1)" title="Siguiente" aria-label="Siguiente">&#8594;</button>
       </div>` : '';
   // After render, update arrow states
   if(showArrows) setTimeout(()=>updateSimilarArrows(stripId), 50);
