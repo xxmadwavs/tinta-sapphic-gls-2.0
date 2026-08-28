@@ -26,7 +26,7 @@ import sys
 
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA_PATH = os.path.join(REPO_ROOT, "data.json")
-SITE_URL = "https://xxmadwavs.github.io/tintasapphic-gls"
+SITE_URL = "https://xxmadwavs.github.io/tinta-sapphic-gls-2.0"
 FALLBACK_IMAGE = f"{SITE_URL}/og-image.jpg"
 SITE_NAME = "TINTA Sapphic"
 
