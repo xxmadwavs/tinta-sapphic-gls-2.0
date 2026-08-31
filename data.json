@@ -7672,7 +7672,7 @@
       "name": "Queendom",
       "poster": "https://i.mydramalist.com/O82kRg_4f.jpg",
       "synopsis": "Enemigas desde la escuela hasta su entrada en la industria del entretenimiento, Rey y Print se reencuentran al conseguir papeles en una serie muy esperada. Sin embargo, una semana antes de que comience el rodaje, sucede algo extraño: sus almas intercambian cuerpos. Se desata el caos. Pero lo más importante es que sus sentimientos mutuos comienzan a cambiar al encarnar al otro",
-      "year": 2022,
+      "year": 2025,
       "country": "Tailandia",
       "network": "WeTV",
       "networkUrl": "https://wetv.vip/en/album/7l74coxequnt8hl",
@@ -7756,7 +7756,7 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": 51,
-      "updatedAt": "2026-05-22T06:47:54.708Z",
+      "updatedAt": "2026-08-31T21:00:52.905Z",
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -7766,7 +7766,10 @@
       "snNote": "",
       "productoraId": "1779135626732",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": []
     },
     {
       "id": "1777237026617",
@@ -37233,5 +37236,5 @@
       }
     ]
   },
-  "exportedAt": "2026-08-31T20:51:21.233Z"
+  "exportedAt": "2026-08-31T21:01:11.734Z"
 }

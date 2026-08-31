@@ -3148,7 +3148,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
 .chk-poster-progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#c94f7c,#f2a8c8)}
 .chk-poster-progress-count{font-family:var(--font-display);font-weight:700;font-size:17px;color:#f7c7dd;white-space:nowrap}
 .chk-poster-divider{text-align:center;margin:26px 0 6px;color:#e0729a;font-size:15px;letter-spacing:.4em;opacity:.65}
-.chk-poster-cols{column-count:var(--chk-cols,3);column-gap:26px;margin-top:10px}
+.chk-poster-cols{column-count:var(--chk-cols,3);column-gap:26px;margin-top:34px}
 .chk-poster-col{break-inside:avoid;-webkit-column-break-inside:avoid;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:16px 16px 12px;margin-bottom:22px;position:relative;overflow:hidden}
 .chk-poster-col::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--chk-col-color,#e0729a)}
 .chk-poster-col-year{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-display);font-weight:700;font-size:13.5px;padding:5px 16px;border-radius:999px;margin-bottom:14px;color:#2d1626;letter-spacing:.02em}
@@ -3162,8 +3162,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
 .chk-poster-footer{text-align:center;margin-top:14px;padding-top:20px;border-top:1px dashed rgba(255,255,255,0.15)}
 .chk-poster-footer .brand{font-family:var(--font-display);font-size:14px;color:#f0a8c4;letter-spacing:.05em}
 .chk-poster-footer .date{font-size:11.5px;color:#a988a0;margin-top:4px}
-.chk-poster-heart{position:absolute;opacity:.10;line-height:1;pointer-events:none;color:#f2a8c8}
-.chk-poster-sparkle{position:absolute;opacity:.5;color:#f2a8c8;pointer-events:none}
+
 </style>
 </head>
 <body>
@@ -9317,24 +9316,14 @@ function _chkBuildPosterHtml(data, items){
       </div>`;
     }).join('');
     return `<div class="chk-poster-col" style="--chk-col-color:${color}">
-      <span class="chk-poster-col-year" style="background:${color}">✦ ${escapeHtmlChk(y)}</span>
+      <span class="chk-poster-col-year" style="background:${color}">${escapeHtmlChk(y)}</span>
       ${itemsHtml}
     </div>`;
   }).join('');
 
-  // Corazones y brillitos decorativos repartidos por el póster (identidad TINTA Sapphic)
-  const decor=`
-    <span class="chk-poster-heart" style="top:-30px;right:-20px;font-size:150px;transform:rotate(-12deg)">♥</span>
-    <span class="chk-poster-heart" style="bottom:-10px;left:-30px;font-size:110px;transform:rotate(10deg)">♥</span>
-    <span class="chk-poster-sparkle" style="top:36px;left:56px;font-size:20px">✦</span>
-    <span class="chk-poster-sparkle" style="top:70px;right:64px;font-size:14px">✧</span>
-    <span class="chk-poster-sparkle" style="bottom:60px;right:40px;font-size:18px">✦</span>
-  `;
-
   return `
-    ${decor}
     <div class="chk-poster-top">
-      <div class="chk-poster-brand">✦ TINTA Sapphic</div>
+      <div class="chk-poster-brand">TINTA Sapphic</div>
       <div class="chk-poster-title">${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</div>
       <div class="chk-poster-subtitle">${escapeHtmlChk(data.subtitulo||'')}</div>
       <div class="chk-poster-progress">
@@ -9342,10 +9331,9 @@ function _chkBuildPosterHtml(data, items){
         <div class="chk-poster-progress-count">${done} / ${total}</div>
       </div>
     </div>
-    <div class="chk-poster-divider">♥ ⋆ ⋆ ♥</div>
     <div class="chk-poster-cols" style="--chk-cols:${cols}">${colsHtml}</div>
     <div class="chk-poster-footer">
-      <div class="brand">✦ TINTA SAPPHIC · ${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</div>
+      <div class="brand">TINTA SAPPHIC · ${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</div>
       <div class="date">Generado el ${new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'})}</div>
     </div>
   `;
