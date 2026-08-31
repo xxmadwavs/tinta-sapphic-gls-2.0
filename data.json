@@ -4308,7 +4308,7 @@
     {
       "id": "1777033081952",
       "name": "Third Person",
-      "poster": "https://pbs.twimg.com/media/HGqwDHsbMAAqZdh?format=jpg&name=small",
+      "poster": "https://pbs.twimg.com/media/HQuHMUUbYAAx7RG?format=jpg&name=4096x4096",
       "synopsis": "Desde que perdí la memoria hace cuatro años… por fin veo a la mujer bajo el paraguas amarillo con la que sueño cada noche. ⛱️\n\nUna historia de amor, secretos y recuerdos ocultos… está a punto de revelarse. No te pierdas la serie Third Person – Words of Love and Deception, protagonizada por Karn-Natacha como “Chris” y Mimi-Patchara como “Sun”.",
       "year": "",
       "country": "Tailandia",
@@ -4335,7 +4335,7 @@
         "Drama",
         "Romance"
       ],
-      "updatedAt": "2026-08-26T21:19:45.294Z",
+      "updatedAt": "2026-08-31T18:20:02.111Z",
       "nameEn": "ถ้อยรักคำลวง",
       "category": "series",
       "seriesType": "serie",
@@ -21600,7 +21600,7 @@
         }
       ],
       "bookUrl": "https://www.mebmarket.com/ebook-387856-I-LOVE-YOU-English-ver-",
-      "upcoming": true,
+      "upcoming": false,
       "genres": [],
       "moods": [],
       "tropos": [],
@@ -21636,16 +21636,18 @@
       "seasons": [
         {
           "label": "Temporada 1",
-          "startDate": "",
+          "startDate": "2026-11-28",
           "totalEpisodes": 12,
-          "emissionDays": [],
+          "emissionDays": [
+            5
+          ],
           "allInOneDay": false,
           "skipDates": [],
           "episodes": [],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-06-06T07:40:50.567Z"
+      "updatedAt": "2026-08-31T18:23:19.299Z"
     },
     {
       "id": "1780758236051",
@@ -21777,7 +21779,7 @@
     },
     {
       "id": "1781080085263",
-      "name": "I want to love you till your dying day",
+      "name": "I want to love you till your dying day (Kimi ga Shinu made Koi wo Shitai)",
       "nameEn": "きみが死ぬまで恋をしたい",
       "poster": "https://cdn.myanimelist.net/images/anime/1850/158429.jpg",
       "synopsis": "La muerte de la compañera de cuarto de Sheena Totsuki se anuncia casualmente al comienzo de la clase, y el día transcurre con normalidad. En un orfanato que cría niños como soldados, la muerte no es nada nuevo para sus residentes. Con su país de origen sumido en una guerra que se ha prolongado durante demasiados años y no muestra signos de terminar, los niños de la institución son enviados a morir en batalla cada día. A diferencia de los demás huérfanos, Sheena está profundamente perturbada por el conflicto y desea que termine.\n\nLa noche de la muerte de su compañera, Sheena conoció a una niña cubierta de sangre que, a pesar de su estado, se mantenía alegre. Al día siguiente, la niña aparece como una nueva alumna en la clase de Sheena y se presenta como Mimi Kagari. Inicialmente considerada una leyenda escolar, se dice que Mimi es el arma secreta del orfanato: una niña inmortal. Asignada como la nueva compañera de cuarto de Sheena, Mimi espera llevarse bien con ella y adaptarse a la vida escolar.\n\nSin embargo, inquieta por la actitud despreocupada de Mimi ante la guerra, Sheena lucha por aceptar el mundo en el que viven, mientras su inusual amistad florece en medio de la sombría situación.",
@@ -21819,7 +21821,7 @@
         {
           "label": "Temporada 1",
           "startDate": "2026-07-07",
-          "totalEpisodes": 12,
+          "totalEpisodes": 13,
           "emissionDays": [
             1
           ],
@@ -21829,7 +21831,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-06-10T08:28:05.263Z"
+      "updatedAt": "2026-08-31T18:21:51.839Z"
     },
     {
       "id": "1781080190265",
@@ -36784,5 +36786,39 @@
     "TV Setouchi": "https://static.wikitide.net/avidwiki/thumb/2/20/JOPH-DTV_%28TSC_TV_Setouchi%2C_2006%2C_credit_-_TSC%E3%83%86%E3%83%AC%E3%83%93%E3%81%9B%E3%81%A8%E3%81%86%E3%81%A1%29.jpeg/534px-JOPH-DTV_%28TSC_TV_Setouchi%2C_2006%2C_credit_-_TSC%E3%83%86%E3%83%AC%E3%83%93%E3%81%9B%E3%81%A8%E3%81%86%E3%81%A1%29.jpeg",
     "tvN": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Logo_tvN.svg/1280px-Logo_tvN.svg.png"
   },
-  "exportedAt": "2026-08-26T21:22:30.814Z"
+  "exportedAt": "2026-08-31T18:26:19.239Z",
+  "checklist": {
+    "titulo": "GL Thai ~ Checklist",
+    "subtitulo": "Marca las que ya has visto o leído",
+    "items": [
+      {
+        "id": "girl-from-nowhere",
+        "title": "Girl From Nowhere",
+        "type": "serie",
+        "year": 2018,
+        "poster": ""
+      },
+      {
+        "id": "bad-buddy",
+        "title": "Bad Buddy",
+        "type": "serie",
+        "year": 2021,
+        "poster": ""
+      },
+      {
+        "id": "laws-of-attraction",
+        "title": "Laws of Attraction",
+        "type": "serie",
+        "year": 2023,
+        "poster": ""
+      },
+      {
+        "id": "sisters",
+        "title": "Sisters",
+        "type": "pelicula",
+        "year": 2004,
+        "poster": ""
+      }
+    ]
+  }
 }

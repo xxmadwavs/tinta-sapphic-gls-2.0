@@ -21,6 +21,25 @@ html.is-mobile #navbarLinks{display:none!important}
 html.is-mobile #navbarLinks.open{display:flex!important}
 </style>
 <title>TINTA SAPPHIC ~ GL Series & Películas</title>
+<meta name="description" content="Calendario, catálogo y comunidad de series, películas, anime y realities GL (sáficas) de todo el mundo. Estrenos, dónde ver, novelas en las que se basan y mucho más.">
+
+<!-- Open Graph (WhatsApp, Telegram, Facebook, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TINTA Sapphic">
+<meta property="og:title" content="TINTA SAPPHIC ~ GL Series & Películas">
+<meta property="og:description" content="Calendario, catálogo y comunidad de series, películas, anime y realities GL (sáficas) de todo el mundo. Estrenos, dónde ver, novelas en las que se basan y mucho más.">
+<meta property="og:image" content="https://xxmadwavs.github.io/tintasapphic-gls/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://xxmadwavs.github.io/tintasapphic-gls/">
+<meta property="og:locale" content="es_ES">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TINTA SAPPHIC ~ GL Series & Películas">
+<meta name="twitter:description" content="Calendario, catálogo y comunidad de series, películas, anime y realities GL (sáficas) de todo el mundo.">
+<meta name="twitter:image" content="https://xxmadwavs.github.io/tintasapphic-gls/og-image.jpg">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -3054,6 +3073,69 @@ html[data-theme="dark"] .filter-select {
   border-color: var(--teal);
   transform: translateY(-1px);
 }
+
+/* ═══════════════ CHECKLIST CTA BANNER ═══════════════ */
+.chk-cta-banner{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:linear-gradient(90deg,var(--accent-soft) 0%,var(--surface) 100%);
+  border:1px solid var(--border2);border-radius:var(--radius);
+  padding:14px 18px;margin-bottom:14px;cursor:pointer;transition:all .15s;
+  box-shadow:var(--shadow-sm);
+}
+.chk-cta-banner:hover{border-color:var(--accent2);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.chk-cta-left{display:flex;align-items:center;gap:12px;min-width:0}
+.chk-cta-icon{font-size:22px;flex-shrink:0}
+.chk-cta-title{font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--text)}
+.chk-cta-subtitle{font-size:12.5px;color:var(--muted);margin-top:2px}
+.chk-cta-arrow{font-size:18px;color:var(--accent);flex-shrink:0;transition:transform .15s}
+.chk-cta-banner:hover .chk-cta-arrow{transform:translateX(4px)}
+html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--accent-soft) 0%,var(--surface) 100%)}
+
+/* ═══════════════ CHECKLIST VIEW ═══════════════ */
+.chk-wrap{max-width:760px;margin:0 auto}
+.chk-header{text-align:center;margin-bottom:1.5rem}
+.chk-header h1{font-family:var(--font-display);font-weight:700;font-size:1.9rem}
+.chk-header .chk-subtitle{color:var(--muted);margin-top:.4rem;font-size:14px}
+.chk-progress-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:1.1rem 1.3rem;margin-bottom:1.25rem}
+.chk-progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.55rem}
+.chk-progress-label{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.chk-progress-count{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--accent)}
+.chk-progress-track{height:8px;border-radius:5px;background:var(--surface3);overflow:hidden}
+.chk-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:5px;transition:width .35s ease}
+.chk-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.chk-filter-btn{border:1.5px solid var(--border2);background:var(--surface);color:var(--muted);border-radius:999px;padding:.4rem .9rem;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s}
+.chk-filter-btn.active,.chk-filter-btn:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent2)}
+.chk-search-input{width:100%;padding:.7rem 1rem;border:1.5px solid var(--border2);border-radius:var(--radius);background:var(--surface);color:var(--text);font-family:var(--font-body);font-size:13.5px;margin-bottom:1.25rem}
+.chk-search-input:focus{outline:none;border-color:var(--accent)}
+.chk-list{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem}
+.chk-item-row{display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:.7rem .9rem;cursor:pointer;transition:all .15s}
+.chk-item-row:hover{border-color:var(--border2)}
+.chk-item-row.checked{background:var(--accent-soft);border-color:var(--accent2)}
+.chk-check-box{width:22px;height:22px;flex-shrink:0;border-radius:7px;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;transition:all .15s}
+.chk-item-row.checked .chk-check-box{background:var(--accent);border-color:var(--accent)}
+.chk-poster{width:34px;height:48px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--surface3)}
+.chk-poster-ph{width:34px;height:48px;border-radius:6px;flex-shrink:0;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-size:15px}
+.chk-item-info{flex:1;min-width:0}
+.chk-item-title{font-weight:600;font-size:14px}
+.chk-item-row.checked .chk-item-title{text-decoration:line-through;text-decoration-color:var(--accent2);opacity:.75}
+.chk-item-meta{font-size:11.5px;color:var(--muted);margin-top:1px}
+.chk-type-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:999px;flex-shrink:0}
+.chk-type-serie{background:var(--teal-soft);color:var(--teal)}
+.chk-type-pelicula{background:var(--lavender-soft);color:var(--lavender)}
+.chk-type-novela{background:var(--gold-soft);color:var(--gold)}
+.chk-type-anime{background:var(--accent-soft);color:var(--accent)}
+.chk-type-webserie{background:var(--surface3);color:var(--muted)}
+.chk-empty{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.chk-action-bar{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem}
+.chk-btn{border:none;border-radius:999px;padding:.65rem 1.15rem;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:.4rem}
+.chk-btn-primary{background:var(--accent);color:#fff}
+.chk-btn-primary:hover{background:var(--accent2)}
+.chk-btn-ghost{background:var(--surface2);color:var(--text);border:1.5px solid var(--border2)}
+.chk-btn-ghost:hover{background:var(--surface3)}
+.chk-btn:disabled{opacity:.5;cursor:not-allowed}
+.chk-export-footer{display:none;text-align:center;padding-top:1.25rem;margin-top:.5rem;border-top:1px dashed var(--border2)}
+body.chk-exporting .chk-action-bar,body.chk-exporting .chk-filters,body.chk-exporting .chk-search-input{display:none!important}
+body.chk-exporting .chk-export-footer{display:block!important}
 </style>
 </head>
 <body>
@@ -3114,6 +3196,7 @@ html[data-theme="dark"] .filter-select {
           Más <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
         </button>
         <div class="tab-more-drop" id="tabMoreDrop" role="menu">
+          <button class="tab-more-item" id="tabChecklist" role="menuitem" onclick="closeMoreDrop();switchTab('checklist');closeMobileMenu()">✅ Checklist GL Thai</button>
           <button class="tab-more-item" id="tabListas" role="menuitem" onclick="closeMoreDrop();switchTab('listas');closeMobileMenu()">📋 Listas GL</button>
           <button class="tab-more-item" id="tabRuleta" role="menuitem" onclick="closeMoreDrop();switchTab('ruleta');closeMobileMenu()">🎡 Ruleta GL</button>
           <button class="tab-more-item" id="tabAnime" role="menuitem" onclick="closeMoreDrop();switchTab('anime');closeMobileMenu()">Anime</button>
@@ -3157,20 +3240,16 @@ html[data-theme="dark"] .filter-select {
   <!-- ── Stats banner ── -->
   <div id="statsBarInner" class="stats-banner"></div>
 
-  <!-- ── Changelog / Novedades banner ── -->
-  <div class="changelog-banner" id="changelogBanner">
-    <div class="changelog-header" onclick="toggleChangelog()">
-      <div class="changelog-header-left">
-        <span>✨</span>
-        <span class="changelog-title">Novedades de la web</span>
-        <span class="changelog-badge-new" id="changelogNewBadge">NUEVO</span>
-        <span class="changelog-subtitle" id="changelogSubtitle"></span>
+  <!-- ── CTA: Checklist GL Thai ── -->
+  <div class="chk-cta-banner" id="checklistCtaBanner" onclick="switchTab('checklist')">
+    <div class="chk-cta-left">
+      <span class="chk-cta-icon">✅</span>
+      <div>
+        <div class="chk-cta-title">Haz CheckList series thais</div>
+        <div class="chk-cta-subtitle">Marca las series, películas y novelas GL Thai que ya has visto o leído</div>
       </div>
-      <div class="changelog-toggle-icon" id="changelogToggleIcon">▼</div>
     </div>
-    <div class="changelog-body" id="changelogBody">
-      <div class="changelog-inner" id="changelogInner"></div>
-    </div>
+    <div class="chk-cta-arrow">→</div>
   </div>
 
   <div class="tabs" style="display:none"></div><!-- kept for JS compat -->
@@ -3187,6 +3266,7 @@ html[data-theme="dark"] .filter-select {
   <div id="viewCanceladas" style="display:none"></div>
   <div id="viewSinNovedades" style="display:none"></div>
   <div id="viewProductoras" style="display:none"></div>
+  <div id="viewChecklist" style="display:none"></div>
 
   <div id="viewCal">
     <!-- Week view (primary) -->
@@ -3475,7 +3555,7 @@ function filtrarTropos(tropos,dinamica){
   return tropos.filter(t=>!(TROPO_CUBIERTO_POR_DINAMICA[t]&&dinamica.includes(TROPO_CUBIERTO_POR_DINAMICA[t])));
 }
 
-let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[]};
+let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[],checklist:{titulo:'',subtitulo:'',items:[]}};
 
 // ── LOGOS DE PLATAFORMAS ──────────────────────────────────────────
 // Logos predefinidos (favicons oficiales vía Google S2)
@@ -3807,6 +3887,7 @@ async function loadData(){
     state.productoras=d.productoras||[];
     state.listas=d.listas||[];
     state.platformLogos=d.platformLogos||{};
+    state.checklist=d.checklist||{titulo:'GL Thai ~ Checklist',subtitulo:'Marca las que ya has visto o leído',items:[]};
     if(d.exportedAt){
       const dt=new Date(d.exportedAt);
       const badge=document.getElementById('updateBadge'); if(badge){badge.textContent='✓ Act. '+dt.toLocaleDateString('es-ES',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});badge.style.display='';}
@@ -5810,26 +5891,12 @@ function _setModalShareHash(hash){
 }
 
 function copyShareLink(){
-  const url = _buildShareUrl();
+  const url = location.href.split('#')[0] + location.hash;
   if(navigator.clipboard && navigator.clipboard.writeText){
     navigator.clipboard.writeText(url).then(()=>_flashShareBtn('¡Copiado!')).catch(()=>_shareFallback(url));
   } else {
     _shareFallback(url);
   }
-}
-
-// Si el hash actual es #serie-ID o #pelicula-ID, comparte la página estática
-// /s/ID.html o /p/ID.html (que lleva el póster y la sinopsis en meta tags,
-// para que la preview en WhatsApp/Telegram/Twitter salga bien) en vez del
-// link directo a la app, que un bot sin JS no puede leer.
-function _buildShareUrl(){
-  const hash = location.hash;
-  const root = location.origin + location.pathname.replace(/index\.html$/,'');
-  const mSerie = hash.match(/^#serie-(.+)$/);
-  const mPelicula = hash.match(/^#pelicula-(.+)$/);
-  if(mSerie) return root + 's/' + mSerie[1] + '.html';
-  if(mPelicula) return root + 'p/' + mPelicula[1] + '.html';
-  return location.href.split('#')[0] + location.hash;
 }
 
 function _shareFallback(url){
@@ -7069,9 +7136,9 @@ function renderPicks2026(){
 function switchTab(tab, fromPopstate=false){
   state.tab=tab;
   saveSession();
-  const moreTabs=['books','actresses','anime','realities','documentales','productoras','listas','ruleta'];
+  const moreTabs=['books','actresses','anime','realities','documentales','productoras','listas','ruleta','checklist'];
   const picksTabs=['top10','picks2026'];
-  const allTabs=['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','productoras','canceladas','listas','ruleta'];
+  const allTabs=['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','productoras','canceladas','listas','ruleta','checklist'];
 
   allTabs.forEach(t=>{
     const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
@@ -7118,6 +7185,7 @@ function switchTab(tab, fromPopstate=false){
   if(tab==='productoras') renderProductoras();
   if(tab==='listas') renderListas();
   if(tab==='ruleta') renderRuleta();
+  if(tab==='checklist') renderChecklist();
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -9058,5 +9126,178 @@ function buildSimilarHtml(item, type){
       <div class="similar-strip" id="${stripId}" onscroll="updateSimilarArrows('${stripId}')">${cards}</div>
     </div>
   </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// CHECKLIST GL THAI
+// ══════════════════════════════════════════════════════════════════════════════
+const CHK_STORAGE_KEY = 'tsThaiChecklistProgress';
+const CHK_TYPE_LABELS = { serie:'Serie', pelicula:'Película', novela:'Novela', anime:'Anime', webserie:'Web serie' };
+let chkState = { activeType:'todos', q:'' };
+let chkChecked = null;
+
+function _chkLoadChecked(){
+  if(chkChecked) return chkChecked;
+  try{ chkChecked = new Set(JSON.parse(localStorage.getItem(CHK_STORAGE_KEY) || '[]')); }
+  catch(e){ chkChecked = new Set(); }
+  return chkChecked;
+}
+function _chkSaveChecked(){
+  try{ localStorage.setItem(CHK_STORAGE_KEY, JSON.stringify([...chkChecked])); }catch(e){}
+}
+
+function renderChecklist(){
+  const view=document.getElementById('viewChecklist');
+  if(!view) return;
+  const data=state.checklist||{titulo:'GL Thai ~ Checklist',subtitulo:'',items:[]};
+  const items=data.items||[];
+  _chkLoadChecked();
+
+  if(!items.length){
+    view.innerHTML=`<div class="chk-wrap">
+      <div class="chk-header"><h1>${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</h1></div>
+      <div class="chk-empty">✨ Todavía no hay títulos en la checklist. Añádelos desde el panel de administración.</div>
+    </div>`;
+    return;
+  }
+
+  const types=[...new Set(items.map(i=>i.type))];
+  const filtersHtml=`<button type="button" class="chk-filter-btn${chkState.activeType==='todos'?' active':''}" onclick="chkSetFilter('todos')">Todos</button>`
+    + types.map(t=>`<button type="button" class="chk-filter-btn${chkState.activeType===t?' active':''}" onclick="chkSetFilter('${t}')">${CHK_TYPE_LABELS[t]||t}</button>`).join('');
+
+  view.innerHTML=`<div class="chk-wrap" id="chkExportRoot">
+    <div class="chk-header">
+      <h1>${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</h1>
+      <p class="chk-subtitle">${escapeHtmlChk(data.subtitulo||'')}</p>
+    </div>
+    <div class="chk-progress-card">
+      <div class="chk-progress-top">
+        <span class="chk-progress-label">Progreso</span>
+        <span class="chk-progress-count" id="chkProgressCount"></span>
+      </div>
+      <div class="chk-progress-track"><div class="chk-progress-fill" id="chkProgressFill"></div></div>
+    </div>
+    <div class="chk-filters">${filtersHtml}</div>
+    <input type="text" class="chk-search-input" id="chkSearchInput" placeholder="Buscar título…" value="${escapeHtmlChk(chkState.q)}" oninput="chkState.q=this.value;_chkRenderList()">
+    <div class="chk-list" id="chkListEl"></div>
+    <div class="chk-export-footer">
+      <div class="brand">✦ TINTA SAPPHIC · GL Thai Checklist</div>
+      <div class="date" id="chkExportDate"></div>
+    </div>
+    <div class="chk-action-bar">
+      <button type="button" class="chk-btn chk-btn-ghost" onclick="chkResetProgress()">↺ Reiniciar</button>
+      <button type="button" class="chk-btn chk-btn-primary" id="chkImgBtn" onclick="chkExportAs('img')">🖼 Descargar imagen</button>
+      <button type="button" class="chk-btn chk-btn-primary" id="chkPdfBtn" onclick="chkExportAs('pdf')">📄 Descargar PDF</button>
+    </div>
+  </div>`;
+  _chkRenderList();
+}
+
+function escapeHtmlChk(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+function chkSetFilter(type){
+  chkState.activeType=type;
+  renderChecklist();
+}
+
+function _chkRenderList(){
+  const data=state.checklist||{items:[]};
+  const items=data.items||[];
+  const q=(chkState.q||'').toLowerCase().trim();
+  const filtered=items.filter(i=>
+    (chkState.activeType==='todos'||i.type===chkState.activeType) &&
+    (!q||(i.title||'').toLowerCase().includes(q))
+  );
+  const listEl=document.getElementById('chkListEl');
+  if(listEl){
+    listEl.innerHTML=filtered.map(i=>{
+      const isChecked=chkChecked.has(i.id);
+      const poster=i.poster
+        ? `<img class="chk-poster" src="${escapeHtmlChk(i.poster)}" alt="" onerror="this.outerHTML='<div class=chk-poster-ph>🎬</div>'">`
+        : `<div class="chk-poster-ph">🎬</div>`;
+      const meta=[i.year,CHK_TYPE_LABELS[i.type]||i.type].filter(Boolean).join(' · ');
+      return `<div class="chk-item-row${isChecked?' checked':''}" onclick="chkToggle('${i.id}')">
+        <div class="chk-check-box">${isChecked?'✓':''}</div>
+        ${poster}
+        <div class="chk-item-info">
+          <div class="chk-item-title">${escapeHtmlChk(i.title)}</div>
+          <div class="chk-item-meta">${escapeHtmlChk(meta)}</div>
+        </div>
+        <span class="chk-type-badge chk-type-${i.type}">${CHK_TYPE_LABELS[i.type]||i.type}</span>
+      </div>`;
+    }).join('') || '<div class="chk-empty">Sin resultados para esa búsqueda.</div>';
+  }
+  const total=items.length;
+  const done=items.filter(i=>chkChecked.has(i.id)).length;
+  const countEl=document.getElementById('chkProgressCount');
+  if(countEl) countEl.textContent=`${done} / ${total}`;
+  const fillEl=document.getElementById('chkProgressFill');
+  if(fillEl) fillEl.style.width=total?(done/total*100)+'%':'0%';
+}
+
+function chkToggle(id){
+  if(chkChecked.has(id)) chkChecked.delete(id); else chkChecked.add(id);
+  _chkSaveChecked();
+  _chkRenderList();
+}
+
+function chkResetProgress(){
+  if(!confirm('¿Vaciar toda la checklist marcada?')) return;
+  chkChecked.clear();
+  _chkSaveChecked();
+  _chkRenderList();
+}
+
+function _chkLoadExportLibs(){
+  const need=[];
+  if(typeof html2canvas==='undefined') need.push('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+  if(typeof window.jspdf==='undefined') need.push('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+  return Promise.all(need.map(src=>new Promise((resolve,reject)=>{
+    const s=document.createElement('script');
+    s.src=src; s.onload=resolve; s.onerror=reject;
+    document.head.appendChild(s);
+  })));
+}
+
+async function chkExportAs(kind){
+  const root=document.getElementById('chkExportRoot');
+  if(!root) return;
+  const btn=kind==='img'?document.getElementById('chkImgBtn'):document.getElementById('chkPdfBtn');
+  const originalText=btn?btn.textContent:'';
+  if(btn){ btn.disabled=true; btn.textContent='Generando…'; }
+  try{
+    await _chkLoadExportLibs();
+    document.getElementById('chkExportDate').textContent='Generado el '+new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
+    document.body.classList.add('chk-exporting');
+    const canvas=await html2canvas(root,{backgroundColor:getComputedStyle(document.body).backgroundColor,scale:2});
+    if(kind==='img'){
+      const link=document.createElement('a');
+      link.download='gl-thai-checklist.png';
+      link.href=canvas.toDataURL('image/png');
+      link.click();
+    } else {
+      const { jsPDF }=window.jspdf;
+      const pageW=210,pageH=297;
+      const imgW=pageW-20;
+      const imgH=canvas.height*imgW/canvas.width;
+      const pdf=new jsPDF('p','mm','a4');
+      let heightLeft=imgH, position=10;
+      const imgData=canvas.toDataURL('image/png');
+      pdf.addImage(imgData,'PNG',10,position,imgW,imgH);
+      heightLeft-=(pageH-20);
+      while(heightLeft>0){
+        position=heightLeft-imgH+10;
+        pdf.addPage();
+        pdf.addImage(imgData,'PNG',10,position,imgW,imgH);
+        heightLeft-=(pageH-20);
+      }
+      pdf.save('gl-thai-checklist.pdf');
+    }
+  } catch(e){
+    alert('No se pudo generar el archivo. Comprueba tu conexión e inténtalo de nuevo.');
+  } finally {
+    document.body.classList.remove('chk-exporting');
+    if(btn){ btn.disabled=false; btn.textContent=originalText; }
+  }
 }
 </script>

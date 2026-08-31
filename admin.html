@@ -542,6 +542,26 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .export-btn-wrap{position:relative;display:inline-block}
 .export-btn-wrap .export-dot.visible{display:block}
 
+/* ═══ Checklist admin ═══ */
+.chk-label{display:block;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem}
+.chk-form-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:.7rem;margin-bottom:.9rem}
+.chk-form-grid .chk-full{grid-column:1/-1}
+.chk-item-row{display:flex;align-items:center;gap:.6rem;padding:.6rem;border:1px solid var(--border);border-radius:10px;margin-bottom:.5rem;background:var(--surface2)}
+.chk-drag-controls{display:flex;flex-direction:column;gap:2px}
+.chk-drag-controls button{width:22px;height:16px;font-size:10px;line-height:1;background:var(--surface3);border:none;border-radius:4px;cursor:pointer;color:var(--muted)}
+.chk-drag-controls button:disabled{opacity:.35;cursor:not-allowed}
+.chk-item-info{flex:1;min-width:0}
+.chk-item-title{font-weight:600;font-size:13.5px}
+.chk-item-meta{font-size:11.5px;color:var(--muted)}
+.chk-type-badge{font-size:10px;font-weight:700;text-transform:uppercase;padding:2px 7px;border-radius:999px;flex-shrink:0}
+.chk-type-serie{background:rgba(74,173,160,.15);color:#4aada0}
+.chk-type-pelicula{background:rgba(139,114,190,.15);color:#8b72be}
+.chk-type-novela{background:rgba(176,128,48,.15);color:#b08030}
+.chk-type-anime{background:rgba(201,79,124,.15);color:var(--accent)}
+.chk-type-webserie{background:var(--surface3);color:var(--muted)}
+.chk-empty{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:13px}
+.chk-icon-btn{width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:8px}
+
 </style>
 </head>
 <body>
@@ -574,6 +594,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <a class="qnav-btn" href="#section-listas" onclick="document.getElementById('section-listas').scrollIntoView({behavior:'smooth'});return false;">📋 Listas</a>
   <a class="qnav-btn" href="#section-productoras" onclick="document.getElementById('section-productoras').scrollIntoView({behavior:'smooth'});return false;">🏢 Productoras</a>
   <a class="qnav-btn" href="#section-platform-logos" onclick="document.getElementById('section-platform-logos').scrollIntoView({behavior:'smooth'});return false;">🎬 Logos</a>
+  <a class="qnav-btn" href="#section-checklist" onclick="document.getElementById('section-checklist').scrollIntoView({behavior:'smooth'});return false;">✅ Checklist</a>
   <div class="quicknav-sep"></div>
   <button type="button" class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
   <button type="button" class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
@@ -759,6 +780,42 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Todas las plataformas que aparecen en el catálogo. Edita cualquiera para cambiar su logo. Los cambios se guardan en <code>data.json</code>.</p>
     <div id="platformLogosGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:12px"></div>
     <button type="button" class="btn primary" onclick="addPlatformLogoRow()" style="width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:var(--accent)">+ Añadir plataforma</button>
+  </div>
+
+  <div class="card" id="section-checklist">
+    <div class="card-title">✅ Checklist GL Thai</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Gestiona los títulos de la checklist pública (pestaña "Checklist" en la web). Se guarda dentro del mismo <code>data.json</code>, junto con series y películas.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem">
+      <div><label class="chk-label">Título de la checklist</label><input id="chkMetaTitle" oninput="checklist.titulo=this.value;save()" placeholder="GL Thai ~ Checklist"></div>
+      <div><label class="chk-label">Subtítulo</label><input id="chkMetaSubtitle" oninput="checklist.subtitulo=this.value;save()" placeholder="Marca las que ya has visto o leído"></div>
+    </div>
+
+    <div class="chk-form-grid">
+      <div class="chk-full"><label class="chk-label">Título</label><input id="chkFTitle" placeholder="Ej: Bad Buddy"></div>
+      <div><label class="chk-label">Tipo</label>
+        <select id="chkFType">
+          <option value="serie">Serie</option>
+          <option value="pelicula">Película</option>
+          <option value="novela">Novela</option>
+          <option value="anime">Anime</option>
+          <option value="webserie">Web serie</option>
+        </select>
+      </div>
+      <div><label class="chk-label">Año (opcional)</label><input id="chkFYear" placeholder="2023"></div>
+      <div class="chk-full"><label class="chk-label">URL del póster (opcional)</label><input id="chkFPoster" placeholder="https://…"></div>
+    </div>
+    <div style="display:flex;gap:.5rem;margin-bottom:1.25rem">
+      <button type="button" class="btn primary" id="chkSubmitBtn" onclick="chkSubmit()">+ Añadir a la checklist</button>
+      <button type="button" class="btn" id="chkCancelEditBtn" style="display:none" onclick="chkResetForm()">Cancelar edición</button>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.75rem">
+      <span class="series-count-label" id="chkCountLabel" style="margin:0">0 títulos</span>
+      <span style="font-size:12px;color:var(--muted)">↑↓ para reordenar como se muestran en la web</span>
+    </div>
+    <div id="chkList"></div>
+    <div class="chk-empty" id="chkEmptyMsg" style="display:none">Todavía no has añadido ningún título a la checklist.</div>
   </div>
 
   <div class="card">
@@ -1153,6 +1210,7 @@ let ships = [];   // Ships manuales
 let productoras = [];  // Productoras
 let listas = [];  // Listas temáticas curadas
 let platformLogos = {};  // Logos personalizados de plataformas
+let checklist = { titulo:'GL Thai ~ Checklist', subtitulo:'Marca las que ya has visto o leído', items: [] }; // Checklist GL Thai
 let currentStab = 'active';
 
 const PAGE_SIZE = 20;
@@ -1227,13 +1285,14 @@ async function initData(){
         if(d.productoras) productoras = d.productoras;
         if(d.listas) listas = d.listas;
         if(d.platformLogos) platformLogos = d.platformLogos;
-        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection();
+        if(d.checklist) checklist = d.checklist;
+        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
         return;
       }
     } catch(e){ /* sin data.json accesible */ }
   }
   // Mostrar banner de importación y esperar a que el usuario cargue el archivo
-  render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+  render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderChecklistAdmin();
   if(isFileProtocol || series.length===0){
     showImportBanner();
   }
@@ -3548,7 +3607,7 @@ function renderBooks(){
 function exportData(){
   try {
     // Validate before exporting
-    const testJson = JSON.stringify({series, movies, actresses, ships, productoras, listas, platformLogos, exportedAt: new Date().toISOString()});
+    const testJson = JSON.stringify({series, movies, actresses, ships, productoras, listas, platformLogos, checklist, exportedAt: new Date().toISOString()});
     JSON.parse(testJson); // verify roundtrip
   } catch(e) {
     alert('Error al validar los datos antes de exportar: ' + e.message);
@@ -3558,7 +3617,7 @@ function exportData(){
   _unsavedCount=0;
   const dot=document.getElementById('exportDot');
   if(dot) dot.classList.remove('visible');
-  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,productoras,listas,platformLogos,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,productoras,listas,platformLogos,checklist,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
 }
 
@@ -3575,13 +3634,111 @@ function importData(e){
       if(d.productoras) productoras=d.productoras;
       if(d.listas) listas=d.listas;
       if(d.platformLogos) platformLogos=d.platformLogos;
+      if(d.checklist) checklist=d.checklist;
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
-      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection();
+      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
       alert('✓ Datos importados correctamente');
     }catch(err){ alert('Error al leer el archivo: '+err.message); }
   };
   reader.readAsText(file);
   e.target.value='';
+}
+
+/* ═══ CHECKLIST GL THAI ═══ */
+const CHK_TYPE_LABELS = { serie:'Serie', pelicula:'Película', novela:'Novela', anime:'Anime', webserie:'Web serie' };
+let chkEditingId = null;
+
+function chkSlugify(str){
+  return String(str||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') || ('item-'+Date.now());
+}
+
+function renderChecklistAdmin(){
+  const list=document.getElementById('chkList');
+  if(!list) return;
+  const titleInp=document.getElementById('chkMetaTitle');
+  const subInp=document.getElementById('chkMetaSubtitle');
+  if(titleInp && document.activeElement!==titleInp) titleInp.value=checklist.titulo||'';
+  if(subInp && document.activeElement!==subInp) subInp.value=checklist.subtitulo||'';
+
+  const items=checklist.items||[];
+  const countLbl=document.getElementById('chkCountLabel');
+  if(countLbl) countLbl.textContent=items.length+(items.length===1?' título':' títulos');
+  const emptyMsg=document.getElementById('chkEmptyMsg');
+  if(emptyMsg) emptyMsg.style.display=items.length?'none':'block';
+
+  list.innerHTML=items.map((it,idx)=>{
+    const meta=[it.year,CHK_TYPE_LABELS[it.type]||it.type].filter(Boolean).join(' · ');
+    return `<div class="chk-item-row">
+      <div class="chk-drag-controls">
+        <button type="button" onclick="chkMove(${idx},-1)" ${idx===0?'disabled':''}>▲</button>
+        <button type="button" onclick="chkMove(${idx},1)" ${idx===items.length-1?'disabled':''}>▼</button>
+      </div>
+      <div class="chk-item-info">
+        <div class="chk-item-title">${escapeHtml(it.title)}</div>
+        <div class="chk-item-meta">${escapeHtml(meta)}</div>
+      </div>
+      <span class="chk-type-badge chk-type-${it.type}">${CHK_TYPE_LABELS[it.type]||it.type}</span>
+      <button type="button" class="btn small chk-icon-btn" onclick="chkEditItem('${it.id}')" title="Editar">✎</button>
+      <button type="button" class="btn small danger chk-icon-btn" onclick="chkDeleteItem('${it.id}')" title="Eliminar">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function chkMove(idx,dir){
+  const items=checklist.items;
+  const target=idx+dir;
+  if(target<0||target>=items.length) return;
+  [items[idx],items[target]]=[items[target],items[idx]];
+  save(); renderChecklistAdmin();
+}
+
+function chkResetForm(){
+  document.getElementById('chkFTitle').value='';
+  document.getElementById('chkFType').value='serie';
+  document.getElementById('chkFYear').value='';
+  document.getElementById('chkFPoster').value='';
+  chkEditingId=null;
+  document.getElementById('chkSubmitBtn').textContent='+ Añadir a la checklist';
+  document.getElementById('chkCancelEditBtn').style.display='none';
+}
+
+function chkEditItem(id){
+  const it=(checklist.items||[]).find(i=>i.id===id);
+  if(!it) return;
+  chkEditingId=id;
+  document.getElementById('chkFTitle').value=it.title;
+  document.getElementById('chkFType').value=it.type;
+  document.getElementById('chkFYear').value=it.year||'';
+  document.getElementById('chkFPoster').value=it.poster||'';
+  document.getElementById('chkSubmitBtn').textContent='Guardar cambios';
+  document.getElementById('chkCancelEditBtn').style.display='inline-block';
+  document.getElementById('section-checklist').scrollIntoView({behavior:'smooth'});
+}
+
+async function chkDeleteItem(id){
+  const it=(checklist.items||[]).find(i=>i.id===id);
+  const ok=await showConfirm({title:`¿Eliminar "${it?it.title:''}" de la checklist?`, desc:'Esta acción no se puede deshacer.', icon:'🗑️'});
+  if(!ok) return;
+  checklist.items=(checklist.items||[]).filter(i=>i.id!==id);
+  save(); renderChecklistAdmin();
+}
+
+function chkSubmit(){
+  const title=document.getElementById('chkFTitle').value.trim();
+  if(!title){ alert('Ponle un título.'); return; }
+  const type=document.getElementById('chkFType').value;
+  const year=document.getElementById('chkFYear').value.trim();
+  const poster=document.getElementById('chkFPoster').value.trim();
+  if(!checklist.items) checklist.items=[];
+  if(chkEditingId){
+    const it=checklist.items.find(i=>i.id===chkEditingId);
+    if(it) Object.assign(it,{title,type,year,poster});
+  } else {
+    checklist.items.push({ id: chkSlugify(title)+'-'+Math.random().toString(36).slice(2,6), title, type, year, poster });
+  }
+  save();
+  chkResetForm();
+  renderChecklistAdmin();
 }
 
 /* ═══ PASTE AUTOFILL ═══ */
