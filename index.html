@@ -8280,30 +8280,10 @@ document.addEventListener('keydown',e=>{
     renderRecentlyAdded();
     loadSession();
     const savedTab=state.tab||'cal';
-    // Show the saved tab's view, hide others
-    ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','canceladas','productoras','listas','ruleta'].forEach(t=>{
-      const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
-      const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
-      if(btn) btn.className='tab'+(savedTab===t?' active':'');
-      if(view) view.style.display=savedTab===t?'':'none';
-    });
-    if(savedTab==='cal'){renderWeekView();}
-    else if(savedTab==='list') renderList();
-    else if(savedTab==='movies') renderMovies();
-    else if(savedTab==='upcoming') renderUpcoming();
-    else if(savedTab==='books') renderBooks();
-    else if(savedTab==='anime') renderAnime();
-    else if(savedTab==='realities') renderRealities();
-    else if(savedTab==='documentales') renderDocumentales();
-    else if(savedTab==='actresses') renderActressesTab();
-    else if(savedTab==='top10') renderTop10();
-    else if(savedTab==='picks2026') renderPicks2026();
-    else if(savedTab==='ships') renderShips();
-    else if(savedTab==='canceladas') renderCanceladas();
-    else if(savedTab==='productoras') renderProductoras();
-    else if(savedTab==='listas') renderListas();
-    else if(savedTab==='ruleta') renderRuleta();
-    else renderWeekView();
+    // Delegamos en switchTab() para no duplicar la lista de tabs: así cualquier
+    // pestaña (incluida 'checklist') queda siempre en sync tanto al navegar
+    // como al refrescar la página estando en esa pestaña.
+    switchTab(savedTab, true);
     // Seed history so the very first back press doesn't exit the page
     // (conservamos location.hash para no perder los deep-links #serie-/#pelicula-)
     history.replaceState({tab:savedTab},'',location.pathname+'?tab='+savedTab+location.hash);
@@ -9284,11 +9264,33 @@ function _chkLoadExportLibs(){
 
 const CHK_YEAR_COLORS=['#e0729a','#8b72be','#4aada0','#d4a844','#e08a4a','#5d8fc9','#c9648f','#6fbfa8'];
 
+// Busca la fecha real de emisión/estreno del item cruzando su id con el catálogo
+// (state.series / state.movies). Si no se encuentra, cae en el año del item para
+// no romper el agrupado, y si tampoco hay año, va al final.
+function _chkGetSortDate(item){
+  if(item.type==='serie'){
+    const s=state.series&&state.series.find(x=>String(x.id)===String(item.id));
+    if(s){
+      const seasons=getSeasons(s);
+      const d=(seasons&&seasons[0]&&seasons[0].startDate)||s.startDate;
+      if(d) return d;
+    }
+  } else if(item.type==='pelicula'){
+    const m=state.movies&&state.movies.find(x=>String(x.id)===String(item.id));
+    if(m&&m.date) return m.date;
+  }
+  return item.year?String(item.year)+'-01-01':'9999-99-99';
+}
+
 function _chkBuildPosterHtml(data, items){
   const byYear={};
   items.forEach(i=>{
     const y=i.year?String(i.year):'Otros';
     (byYear[y]=byYear[y]||[]).push(i);
+  });
+  // Orden de emisión (no alfabético) dentro de cada año
+  Object.keys(byYear).forEach(y=>{
+    byYear[y].sort((a,b)=>_chkGetSortDate(a).localeCompare(_chkGetSortDate(b)));
   });
   const years=Object.keys(byYear).sort((a,b)=>{
     if(a==='Otros') return 1;
