@@ -3133,9 +3133,34 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
 .chk-btn-ghost{background:var(--surface2);color:var(--text);border:1.5px solid var(--border2)}
 .chk-btn-ghost:hover{background:var(--surface3)}
 .chk-btn:disabled{opacity:.5;cursor:not-allowed}
-.chk-export-footer{display:none;text-align:center;padding-top:1.25rem;margin-top:.5rem;border-top:1px dashed var(--border2)}
-body.chk-exporting .chk-action-bar,body.chk-exporting .chk-filters,body.chk-exporting .chk-search-input{display:none!important}
-body.chk-exporting .chk-export-footer{display:block!important}
+/* ═══════════════ CHECKLIST — POSTER DE EXPORTACIÓN (imagen/PDF) ═══════════════ */
+.chk-poster-wrap{
+  position:fixed;left:-99999px;top:0;width:920px;box-sizing:border-box;
+  background:radial-gradient(circle at 15% 0%,#3a1a3a 0%,#1c0f22 55%,#150b1a 100%);
+  padding:52px 48px 44px;font-family:var(--font-body);color:#f6e9f0;overflow:hidden;
+}
+.chk-poster-top{text-align:center;margin-bottom:8px;position:relative}
+.chk-poster-brand{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:#f0a8c4;font-weight:700;margin-bottom:12px}
+.chk-poster-title{font-family:var(--font-display);font-size:44px;font-weight:700;color:#fff;line-height:1.15}
+.chk-poster-subtitle{font-size:14.5px;color:#e3b9cf;margin-top:8px}
+.chk-poster-progress{display:flex;align-items:center;justify-content:center;gap:14px;margin:28px auto 0;max-width:440px}
+.chk-poster-progress-track{flex:1;height:10px;border-radius:6px;background:rgba(255,255,255,0.12);overflow:hidden}
+.chk-poster-progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#c94f7c,#f2a8c8)}
+.chk-poster-progress-count{font-family:var(--font-display);font-weight:700;font-size:17px;color:#f7c7dd;white-space:nowrap}
+.chk-poster-cols{display:grid;grid-template-columns:repeat(var(--chk-cols,3),1fr);gap:0 28px;margin-top:40px;align-items:start}
+.chk-poster-col{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:16px 16px 10px;margin-bottom:0}
+.chk-poster-col-year{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:13.5px;padding:5px 16px;border-radius:999px;margin-bottom:14px;color:#2d1626;letter-spacing:.02em}
+.chk-poster-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.10)}
+.chk-poster-item:last-child{border-bottom:none}
+.chk-poster-check{width:19px;height:19px;flex-shrink:0;margin-top:1px;border-radius:6px;border:2px solid rgba(255,255,255,0.35);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;background:rgba(255,255,255,0.04)}
+.chk-poster-item.done .chk-poster-check{background:linear-gradient(135deg,#e0729a,#c94f7c);border-color:#e0729a}
+.chk-poster-item-title{font-size:13px;font-weight:600;color:#f6e9f0;line-height:1.3}
+.chk-poster-item.done .chk-poster-item-title{text-decoration:line-through;text-decoration-color:#e0729a;opacity:.55}
+.chk-poster-item-type{font-size:9.5px;color:#c99bb2;margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+.chk-poster-footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px dashed rgba(255,255,255,0.15)}
+.chk-poster-footer .brand{font-family:var(--font-display);font-size:14px;color:#f0a8c4;letter-spacing:.05em}
+.chk-poster-footer .date{font-size:11.5px;color:#a988a0;margin-top:4px}
+.chk-poster-heart{position:absolute;font-size:120px;opacity:.06;line-height:1;pointer-events:none}
 </style>
 </head>
 <body>
@@ -9180,10 +9205,6 @@ function renderChecklist(){
     <div class="chk-filters">${filtersHtml}</div>
     <input type="text" class="chk-search-input" id="chkSearchInput" placeholder="Buscar título…" value="${escapeHtmlChk(chkState.q)}" oninput="chkState.q=this.value;_chkRenderList()">
     <div class="chk-list" id="chkListEl"></div>
-    <div class="chk-export-footer">
-      <div class="brand">✦ TINTA SAPPHIC · GL Thai Checklist</div>
-      <div class="date" id="chkExportDate"></div>
-    </div>
     <div class="chk-action-bar">
       <button type="button" class="chk-btn chk-btn-ghost" onclick="chkResetProgress()">↺ Reiniciar</button>
       <button type="button" class="chk-btn chk-btn-primary" id="chkImgBtn" onclick="chkExportAs('img')">🖼 Descargar imagen</button>
@@ -9259,17 +9280,76 @@ function _chkLoadExportLibs(){
   })));
 }
 
+const CHK_YEAR_COLORS=['#e0729a','#8b72be','#4aada0','#d4a844','#e08a4a','#5d8fc9','#c9648f','#6fbfa8'];
+
+function _chkBuildPosterHtml(data, items){
+  const byYear={};
+  items.forEach(i=>{
+    const y=i.year?String(i.year):'Otros';
+    (byYear[y]=byYear[y]||[]).push(i);
+  });
+  const years=Object.keys(byYear).sort((a,b)=>{
+    if(a==='Otros') return 1;
+    if(b==='Otros') return -1;
+    return Number(a)-Number(b);
+  });
+  const cols=Math.max(1,Math.min(4,years.length));
+  const total=items.length;
+  const done=items.filter(i=>chkChecked.has(i.id)).length;
+
+  const colsHtml=years.map((y,idx)=>{
+    const color=CHK_YEAR_COLORS[idx%CHK_YEAR_COLORS.length];
+    const itemsHtml=byYear[y].map(i=>{
+      const isChecked=chkChecked.has(i.id);
+      return `<div class="chk-poster-item${isChecked?' done':''}">
+        <div class="chk-poster-check">${isChecked?'✓':''}</div>
+        <div>
+          <div class="chk-poster-item-title">${escapeHtmlChk(i.title)}</div>
+          <div class="chk-poster-item-type">${CHK_TYPE_LABELS[i.type]||i.type}</div>
+        </div>
+      </div>`;
+    }).join('');
+    return `<div class="chk-poster-col">
+      <span class="chk-poster-col-year" style="background:${color}">${escapeHtmlChk(y)}</span>
+      ${itemsHtml}
+    </div>`;
+  }).join('');
+
+  return `
+    <span class="chk-poster-heart" style="top:-20px;right:-10px">✦</span>
+    <div class="chk-poster-top">
+      <div class="chk-poster-brand">✦ TINTA Sapphic</div>
+      <div class="chk-poster-title">${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</div>
+      <div class="chk-poster-subtitle">${escapeHtmlChk(data.subtitulo||'')}</div>
+      <div class="chk-poster-progress">
+        <div class="chk-poster-progress-track"><div class="chk-poster-progress-fill" style="width:${total?(done/total*100):0}%"></div></div>
+        <div class="chk-poster-progress-count">${done} / ${total}</div>
+      </div>
+    </div>
+    <div class="chk-poster-cols" style="--chk-cols:${cols}">${colsHtml}</div>
+    <div class="chk-poster-footer">
+      <div class="brand">✦ TINTA SAPPHIC · ${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</div>
+      <div class="date">Generado el ${new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'})}</div>
+    </div>
+  `;
+}
+
 async function chkExportAs(kind){
-  const root=document.getElementById('chkExportRoot');
-  if(!root) return;
+  const data=state.checklist||{items:[]};
+  const items=data.items||[];
+  if(!items.length) return;
   const btn=kind==='img'?document.getElementById('chkImgBtn'):document.getElementById('chkPdfBtn');
   const originalText=btn?btn.textContent:'';
   if(btn){ btn.disabled=true; btn.textContent='Generando…'; }
+  let posterEl=null;
   try{
     await _chkLoadExportLibs();
-    document.getElementById('chkExportDate').textContent='Generado el '+new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
-    document.body.classList.add('chk-exporting');
-    const canvas=await html2canvas(root,{backgroundColor:getComputedStyle(document.body).backgroundColor,scale:2});
+    posterEl=document.createElement('div');
+    posterEl.className='chk-poster-wrap';
+    posterEl.style.position='relative';
+    posterEl.innerHTML=_chkBuildPosterHtml(data, items);
+    document.body.appendChild(posterEl);
+    const canvas=await html2canvas(posterEl,{backgroundColor:null,scale:2,useCORS:true});
     if(kind==='img'){
       const link=document.createElement('a');
       link.download='gl-thai-checklist.png';
@@ -9296,7 +9376,7 @@ async function chkExportAs(kind){
   } catch(e){
     alert('No se pudo generar el archivo. Comprueba tu conexión e inténtalo de nuevo.');
   } finally {
-    document.body.classList.remove('chk-exporting');
+    if(posterEl) posterEl.remove();
     if(btn){ btn.disabled=false; btn.textContent=originalText; }
   }
 }
