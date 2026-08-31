@@ -3102,6 +3102,10 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
 .chk-progress-count{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--accent)}
 .chk-progress-track{height:8px;border-radius:5px;background:var(--surface3);overflow:hidden}
 .chk-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:5px;transition:width .35s ease}
+.chk-country-tabs{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.4rem}
+.chk-country-tab{border:1.5px solid var(--border2);background:var(--surface);color:var(--muted);border-radius:999px;padding:.55rem 1.2rem;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;font-family:var(--font-body)}
+.chk-country-tab:hover{border-color:var(--accent2);color:var(--accent)}
+.chk-country-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .chk-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
 .chk-filter-btn{border:1.5px solid var(--border2);background:var(--surface);color:var(--muted);border-radius:999px;padding:.4rem .9rem;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s}
 .chk-filter-btn.active,.chk-filter-btn:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent2)}
@@ -3223,7 +3227,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
           Más <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
         </button>
         <div class="tab-more-drop" id="tabMoreDrop" role="menu">
-          <button class="tab-more-item" id="tabChecklist" role="menuitem" onclick="closeMoreDrop();switchTab('checklist');closeMobileMenu()">✅ Checklist GL Thai</button>
+          <button class="tab-more-item" id="tabChecklist" role="menuitem" onclick="closeMoreDrop();switchTab('checklist');closeMobileMenu()">✅ Checklist</button>
           <button class="tab-more-item" id="tabListas" role="menuitem" onclick="closeMoreDrop();switchTab('listas');closeMobileMenu()">📋 Listas GL</button>
           <button class="tab-more-item" id="tabRuleta" role="menuitem" onclick="closeMoreDrop();switchTab('ruleta');closeMobileMenu()">🎡 Ruleta GL</button>
           <button class="tab-more-item" id="tabAnime" role="menuitem" onclick="closeMoreDrop();switchTab('anime');closeMobileMenu()">Anime</button>
@@ -3272,8 +3276,8 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
     <div class="chk-cta-left">
       <span class="chk-cta-icon">✅</span>
       <div>
-        <div class="chk-cta-title">Haz CheckList series thais</div>
-        <div class="chk-cta-subtitle">Marca las series, películas y novelas GL Thai que ya has visto o leído</div>
+        <div class="chk-cta-title">Haz CheckList series</div>
+        <div class="chk-cta-subtitle">Marca las series, películas y novelas GL Thai, China y Japón que ya has visto o leído</div>
       </div>
     </div>
     <div class="chk-cta-arrow">→</div>
@@ -3582,7 +3586,7 @@ function filtrarTropos(tropos,dinamica){
   return tropos.filter(t=>!(TROPO_CUBIERTO_POR_DINAMICA[t]&&dinamica.includes(TROPO_CUBIERTO_POR_DINAMICA[t])));
 }
 
-let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[],checklist:{titulo:'',subtitulo:'',items:[]}};
+let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[],checklist:{thai:{titulo:'',subtitulo:'',items:[]},china:{titulo:'',subtitulo:'',items:[]},japan:{titulo:'',subtitulo:'',items:[]}}};
 
 // ── LOGOS DE PLATAFORMAS ──────────────────────────────────────────
 // Logos predefinidos (favicons oficiales vía Google S2)
@@ -3900,6 +3904,25 @@ function genEps(s){
   return allEps;
 }
 
+// ── Checklist: configuración de países y migración de formato antiguo ──
+const CHK_COUNTRIES = {
+  thai:  { flag:'🇹🇭', label:'GL Thai',  storageKey:'tsThaiChecklistProgress',  filePart:'thai',  defaultTitulo:'GL Thai ~ Checklist' },
+  china: { flag:'🇨🇳', label:'GL China', storageKey:'tsChinaChecklistProgress', filePart:'china', defaultTitulo:'GL China ~ Checklist' },
+  japan: { flag:'🇯🇵', label:'GL Japón', storageKey:'tsJapanChecklistProgress', filePart:'japan', defaultTitulo:'GL Japón ~ Checklist' }
+};
+function _chkDefaultList(country){ return { titulo: CHK_COUNTRIES[country].defaultTitulo, subtitulo:'Marca las que ya has visto o leído', items: [] }; }
+// Migra un checklist con el formato antiguo (plano, sin países) al nuevo formato por país
+function normalizeChecklist(raw){
+  if(raw && (raw.thai||raw.china||raw.japan)){
+    return { thai: raw.thai||_chkDefaultList('thai'), china: raw.china||_chkDefaultList('china'), japan: raw.japan||_chkDefaultList('japan') };
+  }
+  if(raw && Array.isArray(raw.items)){
+    // Formato antiguo: un único objeto plano → se asume que era la checklist de Thai
+    return { thai: raw, china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+  }
+  return { thai:_chkDefaultList('thai'), china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+}
+
 async function loadData(){
   try{
     // 'no-cache' fuerza revalidar con el servidor (nunca sirve un data.json viejo),
@@ -3914,7 +3937,7 @@ async function loadData(){
     state.productoras=d.productoras||[];
     state.listas=d.listas||[];
     state.platformLogos=d.platformLogos||{};
-    state.checklist=d.checklist||{titulo:'GL Thai ~ Checklist',subtitulo:'Marca las que ya has visto o leído',items:[]};
+    state.checklist=normalizeChecklist(d.checklist);
     if(d.exportedAt){
       const dt=new Date(d.exportedAt);
       const badge=document.getElementById('updateBadge'); if(badge){badge.textContent='✓ Act. '+dt.toLocaleDateString('es-ES',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});badge.style.display='';}
@@ -8280,10 +8303,31 @@ document.addEventListener('keydown',e=>{
     renderRecentlyAdded();
     loadSession();
     const savedTab=state.tab||'cal';
-    // Delegamos en switchTab() para no duplicar la lista de tabs: así cualquier
-    // pestaña (incluida 'checklist') queda siempre en sync tanto al navegar
-    // como al refrescar la página estando en esa pestaña.
-    switchTab(savedTab, true);
+    // Show the saved tab's view, hide others
+    ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','canceladas','productoras','listas','ruleta','checklist'].forEach(t=>{
+      const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
+      const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
+      if(btn) btn.className='tab'+(savedTab===t?' active':'');
+      if(view) view.style.display=savedTab===t?'':'none';
+    });
+    if(savedTab==='cal'){renderWeekView();}
+    else if(savedTab==='list') renderList();
+    else if(savedTab==='movies') renderMovies();
+    else if(savedTab==='upcoming') renderUpcoming();
+    else if(savedTab==='books') renderBooks();
+    else if(savedTab==='anime') renderAnime();
+    else if(savedTab==='realities') renderRealities();
+    else if(savedTab==='documentales') renderDocumentales();
+    else if(savedTab==='actresses') renderActressesTab();
+    else if(savedTab==='top10') renderTop10();
+    else if(savedTab==='picks2026') renderPicks2026();
+    else if(savedTab==='ships') renderShips();
+    else if(savedTab==='canceladas') renderCanceladas();
+    else if(savedTab==='productoras') renderProductoras();
+    else if(savedTab==='listas') renderListas();
+    else if(savedTab==='ruleta') renderRuleta();
+    else if(savedTab==='checklist') renderChecklist();
+    else renderWeekView();
     // Seed history so the very first back press doesn't exit the page
     // (conservamos location.hash para no perder los deep-links #serie-/#pelicula-)
     history.replaceState({tab:savedTab},'',location.pathname+'?tab='+savedTab+location.hash);
@@ -9136,45 +9180,59 @@ function buildSimilarHtml(item, type){
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// CHECKLIST GL THAI
+// CHECKLIST (Thai / China / Japón)
 // ══════════════════════════════════════════════════════════════════════════════
-const CHK_STORAGE_KEY = 'tsThaiChecklistProgress';
 const CHK_TYPE_LABELS = { serie:'Serie', pelicula:'Película', novela:'Novela', anime:'Anime', webserie:'Web serie' };
-let chkState = { activeType:'todos', q:'' };
-let chkChecked = null;
+let chkActiveCountry = 'thai';
+let chkState = { thai:{activeType:'todos',q:''}, china:{activeType:'todos',q:''}, japan:{activeType:'todos',q:''} };
+let chkChecked = { thai:null, china:null, japan:null };
 
-function _chkLoadChecked(){
-  if(chkChecked) return chkChecked;
-  try{ chkChecked = new Set(JSON.parse(localStorage.getItem(CHK_STORAGE_KEY) || '[]')); }
-  catch(e){ chkChecked = new Set(); }
-  return chkChecked;
+function _chkLoadChecked(country){
+  if(chkChecked[country]) return chkChecked[country];
+  try{ chkChecked[country] = new Set(JSON.parse(localStorage.getItem(CHK_COUNTRIES[country].storageKey) || '[]')); }
+  catch(e){ chkChecked[country] = new Set(); }
+  return chkChecked[country];
 }
-function _chkSaveChecked(){
-  try{ localStorage.setItem(CHK_STORAGE_KEY, JSON.stringify([...chkChecked])); }catch(e){}
+function _chkSaveChecked(country){
+  try{ localStorage.setItem(CHK_COUNTRIES[country].storageKey, JSON.stringify([...chkChecked[country]])); }catch(e){}
+}
+
+function chkSwitchCountry(country){
+  if(!CHK_COUNTRIES[country]) return;
+  chkActiveCountry = country;
+  renderChecklist();
 }
 
 function renderChecklist(){
   const view=document.getElementById('viewChecklist');
   if(!view) return;
-  const data=state.checklist||{titulo:'GL Thai ~ Checklist',subtitulo:'',items:[]};
+  const country=chkActiveCountry;
+  const data=(state.checklist&&state.checklist[country])||{titulo:CHK_COUNTRIES[country].defaultTitulo,subtitulo:'',items:[]};
   const items=data.items||[];
-  _chkLoadChecked();
+  _chkLoadChecked(country);
+
+  const tabsHtml=Object.keys(CHK_COUNTRIES).map(c=>
+    `<button type="button" class="chk-country-tab${country===c?' active':''}" onclick="chkSwitchCountry('${c}')">${CHK_COUNTRIES[c].flag} ${CHK_COUNTRIES[c].label}</button>`
+  ).join('');
 
   if(!items.length){
     view.innerHTML=`<div class="chk-wrap">
-      <div class="chk-header"><h1>${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</h1></div>
-      <div class="chk-empty">✨ Todavía no hay títulos en la checklist. Añádelos desde el panel de administración.</div>
+      <div class="chk-country-tabs">${tabsHtml}</div>
+      <div class="chk-header"><h1>${escapeHtmlChk(data.titulo||CHK_COUNTRIES[country].defaultTitulo)}</h1></div>
+      <div class="chk-empty">✨ Todavía no hay títulos en esta checklist. Añádelos desde el panel de administración.</div>
     </div>`;
     return;
   }
 
+  const cs=chkState[country];
   const types=[...new Set(items.map(i=>i.type))];
-  const filtersHtml=`<button type="button" class="chk-filter-btn${chkState.activeType==='todos'?' active':''}" onclick="chkSetFilter('todos')">Todos</button>`
-    + types.map(t=>`<button type="button" class="chk-filter-btn${chkState.activeType===t?' active':''}" onclick="chkSetFilter('${t}')">${CHK_TYPE_LABELS[t]||t}</button>`).join('');
+  const filtersHtml=`<button type="button" class="chk-filter-btn${cs.activeType==='todos'?' active':''}" onclick="chkSetFilter('todos')">Todos</button>`
+    + types.map(t=>`<button type="button" class="chk-filter-btn${cs.activeType===t?' active':''}" onclick="chkSetFilter('${t}')">${CHK_TYPE_LABELS[t]||t}</button>`).join('');
 
   view.innerHTML=`<div class="chk-wrap" id="chkExportRoot">
+    <div class="chk-country-tabs">${tabsHtml}</div>
     <div class="chk-header">
-      <h1>${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</h1>
+      <h1>${escapeHtmlChk(data.titulo||CHK_COUNTRIES[country].defaultTitulo)}</h1>
       <p class="chk-subtitle">${escapeHtmlChk(data.subtitulo||'')}</p>
     </div>
     <div class="chk-progress-card">
@@ -9185,7 +9243,7 @@ function renderChecklist(){
       <div class="chk-progress-track"><div class="chk-progress-fill" id="chkProgressFill"></div></div>
     </div>
     <div class="chk-filters">${filtersHtml}</div>
-    <input type="text" class="chk-search-input" id="chkSearchInput" placeholder="Buscar título…" value="${escapeHtmlChk(chkState.q)}" oninput="chkState.q=this.value;_chkRenderList()">
+    <input type="text" class="chk-search-input" id="chkSearchInput" placeholder="Buscar título…" value="${escapeHtmlChk(cs.q)}" oninput="chkState[chkActiveCountry].q=this.value;_chkRenderList()">
     <div class="chk-list" id="chkListEl"></div>
     <div class="chk-action-bar">
       <button type="button" class="chk-btn chk-btn-ghost" onclick="chkResetProgress()">↺ Reiniciar</button>
@@ -9199,22 +9257,25 @@ function renderChecklist(){
 function escapeHtmlChk(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
 function chkSetFilter(type){
-  chkState.activeType=type;
+  chkState[chkActiveCountry].activeType=type;
   renderChecklist();
 }
 
 function _chkRenderList(){
-  const data=state.checklist||{items:[]};
+  const country=chkActiveCountry;
+  const data=(state.checklist&&state.checklist[country])||{items:[]};
   const items=data.items||[];
-  const q=(chkState.q||'').toLowerCase().trim();
+  const cs=chkState[country];
+  const checkedSet=_chkLoadChecked(country);
+  const q=(cs.q||'').toLowerCase().trim();
   const filtered=items.filter(i=>
-    (chkState.activeType==='todos'||i.type===chkState.activeType) &&
+    (cs.activeType==='todos'||i.type===cs.activeType) &&
     (!q||(i.title||'').toLowerCase().includes(q))
   );
   const listEl=document.getElementById('chkListEl');
   if(listEl){
     listEl.innerHTML=filtered.map(i=>{
-      const isChecked=chkChecked.has(i.id);
+      const isChecked=checkedSet.has(i.id);
       const poster=i.poster
         ? `<img class="chk-poster" src="${escapeHtmlChk(i.poster)}" alt="" onerror="this.outerHTML='<div class=chk-poster-ph>🎬</div>'">`
         : `<div class="chk-poster-ph">🎬</div>`;
@@ -9231,7 +9292,7 @@ function _chkRenderList(){
     }).join('') || '<div class="chk-empty">Sin resultados para esa búsqueda.</div>';
   }
   const total=items.length;
-  const done=items.filter(i=>chkChecked.has(i.id)).length;
+  const done=items.filter(i=>checkedSet.has(i.id)).length;
   const countEl=document.getElementById('chkProgressCount');
   if(countEl) countEl.textContent=`${done} / ${total}`;
   const fillEl=document.getElementById('chkProgressFill');
@@ -9239,15 +9300,17 @@ function _chkRenderList(){
 }
 
 function chkToggle(id){
-  if(chkChecked.has(id)) chkChecked.delete(id); else chkChecked.add(id);
-  _chkSaveChecked();
+  const checkedSet=_chkLoadChecked(chkActiveCountry);
+  if(checkedSet.has(id)) checkedSet.delete(id); else checkedSet.add(id);
+  _chkSaveChecked(chkActiveCountry);
   _chkRenderList();
 }
 
 function chkResetProgress(){
-  if(!confirm('¿Vaciar toda la checklist marcada?')) return;
-  chkChecked.clear();
-  _chkSaveChecked();
+  // Solo vacía el progreso del país activo, no afecta a los otros dos.
+  if(!confirm(`¿Vaciar la checklist marcada de ${CHK_COUNTRIES[chkActiveCountry].label}?`)) return;
+  _chkLoadChecked(chkActiveCountry).clear();
+  _chkSaveChecked(chkActiveCountry);
   _chkRenderList();
 }
 
@@ -9264,22 +9327,22 @@ function _chkLoadExportLibs(){
 
 const CHK_YEAR_COLORS=['#e0729a','#8b72be','#4aada0','#d4a844','#e08a4a','#5d8fc9','#c9648f','#6fbfa8'];
 
-// Busca la fecha real de emisión/estreno del item cruzando su id con el catálogo
-// (state.series / state.movies). Si no se encuentra, cae en el año del item para
-// no romper el agrupado, y si tampoco hay año, va al final.
-function _chkGetSortDate(item){
-  if(item.type==='serie'){
-    const s=state.series&&state.series.find(x=>String(x.id)===String(item.id));
-    if(s){
-      const seasons=getSeasons(s);
-      const d=(seasons&&seasons[0]&&seasons[0].startDate)||s.startDate;
-      if(d) return d;
-    }
-  } else if(item.type==='pelicula'){
-    const m=state.movies&&state.movies.find(x=>String(x.id)===String(item.id));
-    if(m&&m.date) return m.date;
-  }
-  return item.year?String(item.year)+'-01-01':'9999-99-99';
+// Normaliza un título para poder compararlo con los nombres del catálogo (series/películas)
+function _chkNormCatalogTitle(str){
+  return String(str||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+}
+
+// Busca la fecha real de emisión/estreno de un título de la checklist en el catálogo,
+// para poder ordenar cronológicamente (y no alfabéticamente) al generar imagen/PDF.
+// Empareja por título normalizado, ya que los ids de la checklist son slugs propios
+// que no coinciden con los ids del catálogo de series/películas.
+function _chkCatalogDate(title){
+  const norm=_chkNormCatalogTitle(title);
+  const s=(state.series||[]).find(x=>_chkNormCatalogTitle(x.name)===norm);
+  if(s) return s.startDate || (s.seasons&&s.seasons[0]&&s.seasons[0].startDate) || null;
+  const m=(state.movies||[]).find(x=>_chkNormCatalogTitle(x.name)===norm);
+  if(m) return m.date || null;
+  return null;
 }
 
 function _chkBuildPosterHtml(data, items){
@@ -9288,25 +9351,34 @@ function _chkBuildPosterHtml(data, items){
     const y=i.year?String(i.year):'Otros';
     (byYear[y]=byYear[y]||[]).push(i);
   });
-  // Orden de emisión (no alfabético) dentro de cada año
-  Object.keys(byYear).forEach(y=>{
-    byYear[y].sort((a,b)=>_chkGetSortDate(a).localeCompare(_chkGetSortDate(b)));
-  });
   const years=Object.keys(byYear).sort((a,b)=>{
     if(a==='Otros') return 1;
     if(b==='Otros') return -1;
     return Number(a)-Number(b);
   });
+  // Dentro de cada año: orden cronológico real de emisión/estreno según el catálogo,
+  // no alfabético. Los títulos sin fecha encontrada en el catálogo mantienen su
+  // posición relativa (orden manual de la checklist) y se colocan al final.
+  years.forEach(y=>{
+    byYear[y].sort((a,b)=>{
+      const da=_chkCatalogDate(a.title), db=_chkCatalogDate(b.title);
+      if(da&&db) return da<db?-1:(da>db?1:0);
+      if(da&&!db) return -1;
+      if(!da&&db) return 1;
+      return 0;
+    });
+  });
   // Columnas tipo "muro" que se reparten solas (como una lista de series por años):
   // pocas columnas si hay pocos años, y hasta 3 cuando la lista crece mucho.
   const cols=years.length<=1?1:(years.length===2?2:3);
   const total=items.length;
-  const done=items.filter(i=>chkChecked.has(i.id)).length;
+  const checkedSet=_chkLoadChecked(chkActiveCountry);
+  const done=items.filter(i=>checkedSet.has(i.id)).length;
 
   const colsHtml=years.map((y,idx)=>{
     const color=CHK_YEAR_COLORS[idx%CHK_YEAR_COLORS.length];
     const itemsHtml=byYear[y].map(i=>{
-      const isChecked=chkChecked.has(i.id);
+      const isChecked=checkedSet.has(i.id);
       // La etiqueta de tipo solo se muestra si NO es una serie (para no repetir "SERIE" en cada fila)
       const typeTag=(i.type&&i.type!=='serie')?`<div class="chk-poster-item-type">${CHK_TYPE_LABELS[i.type]||i.type}</div>`:'';
       return `<div class="chk-poster-item${isChecked?' done':''}">
@@ -9326,7 +9398,7 @@ function _chkBuildPosterHtml(data, items){
   return `
     <div class="chk-poster-top">
       <div class="chk-poster-brand">TINTA Sapphic</div>
-      <div class="chk-poster-title">${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</div>
+      <div class="chk-poster-title">${escapeHtmlChk(data.titulo||CHK_COUNTRIES[chkActiveCountry].defaultTitulo)}</div>
       <div class="chk-poster-subtitle">${escapeHtmlChk(data.subtitulo||'')}</div>
       <div class="chk-poster-progress">
         <div class="chk-poster-progress-track"><div class="chk-poster-progress-fill" style="width:${total?(done/total*100):0}%"></div></div>
@@ -9335,14 +9407,15 @@ function _chkBuildPosterHtml(data, items){
     </div>
     <div class="chk-poster-cols" style="--chk-cols:${cols}">${colsHtml}</div>
     <div class="chk-poster-footer">
-      <div class="brand">TINTA SAPPHIC · ${escapeHtmlChk(data.titulo||'GL Thai ~ Checklist')}</div>
+      <div class="brand">TINTA SAPPHIC · ${escapeHtmlChk(data.titulo||CHK_COUNTRIES[chkActiveCountry].defaultTitulo)}</div>
       <div class="date">Generado el ${new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'})}</div>
     </div>
   `;
 }
 
 async function chkExportAs(kind){
-  const data=state.checklist||{items:[]};
+  const country=chkActiveCountry;
+  const data=(state.checklist&&state.checklist[country])||{items:[]};
   const items=data.items||[];
   if(!items.length) return;
   const btn=kind==='img'?document.getElementById('chkImgBtn'):document.getElementById('chkPdfBtn');
@@ -9357,9 +9430,10 @@ async function chkExportAs(kind){
     posterEl.innerHTML=_chkBuildPosterHtml(data, items);
     document.body.appendChild(posterEl);
     const canvas=await html2canvas(posterEl,{backgroundColor:null,scale:2,useCORS:true});
+    const filePart=CHK_COUNTRIES[country].filePart;
     if(kind==='img'){
       const link=document.createElement('a');
-      link.download='gl-thai-checklist.png';
+      link.download=`gl-${filePart}-checklist.png`;
       link.href=canvas.toDataURL('image/png');
       link.click();
     } else {
@@ -9378,7 +9452,7 @@ async function chkExportAs(kind){
         pdf.addImage(imgData,'PNG',10,position,imgW,imgH);
         heightLeft-=(pageH-20);
       }
-      pdf.save('gl-thai-checklist.pdf');
+      pdf.save(`gl-${filePart}-checklist.pdf`);
     }
   } catch(e){
     alert('No se pudo generar el archivo. Comprueba tu conexión e inténtalo de nuevo.');

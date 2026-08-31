@@ -561,6 +561,10 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .chk-type-webserie{background:var(--surface3);color:var(--muted)}
 .chk-empty{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:13px}
 .chk-icon-btn{width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:8px}
+.chk-country-tabs{display:flex;gap:.5rem;margin-bottom:1.1rem;flex-wrap:wrap}
+.chk-country-tab{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border2);cursor:pointer;font-size:13px;font-weight:700;background:transparent;color:var(--muted);font-family:'Nunito',sans-serif;transition:all .15s}
+.chk-country-tab:hover{border-color:var(--accent2);color:var(--accent)}
+.chk-country-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 
 </style>
 </head>
@@ -783,16 +787,22 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 
   <div class="card" id="section-checklist">
-    <div class="card-title">✅ Checklist GL Thai</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Gestiona los títulos de la checklist pública (pestaña "Checklist" en la web). Se guarda dentro del mismo <code>data.json</code>, junto con series y películas.</p>
+    <div class="card-title">✅ Checklist</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Gestiona los títulos de la checklist pública (pestaña "Checklist" en la web). Cada país tiene su propia lista independiente. Se guarda dentro del mismo <code>data.json</code>, junto con series y películas.</p>
+
+    <div class="chk-country-tabs" id="chkCountryTabs">
+      <button type="button" class="chk-country-tab active" data-country="thai" onclick="switchChkCountry('thai',this)">🇹🇭 GL Thai</button>
+      <button type="button" class="chk-country-tab" data-country="china" onclick="switchChkCountry('china',this)">🇨🇳 GL China</button>
+      <button type="button" class="chk-country-tab" data-country="japan" onclick="switchChkCountry('japan',this)">🇯🇵 GL Japón</button>
+    </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem">
-      <div><label class="chk-label">Título de la checklist</label><input id="chkMetaTitle" oninput="checklist.titulo=this.value;save()" placeholder="GL Thai ~ Checklist"></div>
-      <div><label class="chk-label">Subtítulo</label><input id="chkMetaSubtitle" oninput="checklist.subtitulo=this.value;save()" placeholder="Marca las que ya has visto o leído"></div>
+      <div><label class="chk-label">Título de la checklist</label><input id="chkMetaTitle" oninput="checklist[chkCountry].titulo=this.value;save()" placeholder="GL Thai ~ Checklist"></div>
+      <div><label class="chk-label">Subtítulo</label><input id="chkMetaSubtitle" oninput="checklist[chkCountry].subtitulo=this.value;save()" placeholder="Marca las que ya has visto o leído"></div>
     </div>
 
     <div style="margin-bottom:1rem">
-      <button type="button" class="btn primary" style="background:#4aada0;border-color:#4aada0" onclick="openChkPicker()">📥 Añadir series/pelis thai ya en la app</button>
+      <button type="button" class="btn primary" style="background:#4aada0;border-color:#4aada0" onclick="openChkPicker()" id="chkPickerOpenBtn">📥 Añadir series/pelis thai ya en la app</button>
       <span style="font-size:12px;color:var(--muted);margin-left:.5rem">Elige de tu catálogo en vez de escribir a mano</span>
     </div>
 
@@ -855,7 +865,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 <!-- Modal película -->
 <div class="modal-bg" id="chkPickerModal">
   <div class="modal">
-    <div class="modal-header"><div class="modal-title" style="margin-bottom:0">🇹🇭 Añadir a la checklist desde tu catálogo</div></div>
+    <div class="modal-header"><div class="modal-title" style="margin-bottom:0" id="chkPickerModalTitle">🇹🇭 Añadir a la checklist desde tu catálogo</div></div>
     <div style="padding:1rem 1.75rem">
       <input id="chkPickerSearch" oninput="renderChkPicker()" placeholder="Buscar por título…" style="width:100%;padding:9px 12px;border:1.5px solid var(--border2);border-radius:9px;font-size:14px;margin-bottom:.9rem;background:var(--surface)">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem">
@@ -1230,7 +1240,26 @@ let ships = [];   // Ships manuales
 let productoras = [];  // Productoras
 let listas = [];  // Listas temáticas curadas
 let platformLogos = {};  // Logos personalizados de plataformas
-let checklist = { titulo:'GL Thai ~ Checklist', subtitulo:'Marca las que ya has visto o leído', items: [] }; // Checklist GL Thai
+const CHK_COUNTRIES = {
+  thai:  { flag:'🇹🇭', label:'GL Thai',  catalogCountry:'Tailandia', defaultTitulo:'GL Thai ~ Checklist' },
+  china: { flag:'🇨🇳', label:'GL China', catalogCountry:'China',     defaultTitulo:'GL China ~ Checklist' },
+  japan: { flag:'🇯🇵', label:'GL Japón', catalogCountry:'Japón',     defaultTitulo:'GL Japón ~ Checklist' }
+};
+function _chkDefaultList(country){ return { titulo: CHK_COUNTRIES[country].defaultTitulo, subtitulo:'Marca las que ya has visto o leído', items: [] }; }
+// Checklist con 3 secciones independientes por país
+let checklist = { thai:_chkDefaultList('thai'), china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+let chkCountry = 'thai';
+// Migra un checklist con el formato antiguo (plano, sin países) al nuevo formato por país
+function normalizeChecklist(raw){
+  if(raw && (raw.thai||raw.china||raw.japan)){
+    return { thai: raw.thai||_chkDefaultList('thai'), china: raw.china||_chkDefaultList('china'), japan: raw.japan||_chkDefaultList('japan') };
+  }
+  if(raw && Array.isArray(raw.items)){
+    // Formato antiguo: un único objeto plano → se asume que era la checklist de Thai
+    return { thai: raw, china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+  }
+  return { thai:_chkDefaultList('thai'), china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+}
 let currentStab = 'active';
 
 const PAGE_SIZE = 20;
@@ -1305,7 +1334,7 @@ async function initData(){
         if(d.productoras) productoras = d.productoras;
         if(d.listas) listas = d.listas;
         if(d.platformLogos) platformLogos = d.platformLogos;
-        if(d.checklist) checklist = d.checklist;
+        checklist = normalizeChecklist(d.checklist);
         render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
         return;
       }
@@ -3654,7 +3683,7 @@ function importData(e){
       if(d.productoras) productoras=d.productoras;
       if(d.listas) listas=d.listas;
       if(d.platformLogos) platformLogos=d.platformLogos;
-      if(d.checklist) checklist=d.checklist;
+      checklist=normalizeChecklist(d.checklist);
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
       save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
       alert('✓ Datos importados correctamente');
@@ -3664,7 +3693,7 @@ function importData(e){
   e.target.value='';
 }
 
-/* ═══ CHECKLIST GL THAI ═══ */
+/* ═══ CHECKLIST (Thai / China / Japón) ═══ */
 const CHK_TYPE_LABELS = { serie:'Serie', pelicula:'Película', novela:'Novela', anime:'Anime', webserie:'Web serie' };
 let chkEditingId = null;
 
@@ -3672,15 +3701,32 @@ function chkSlugify(str){
   return String(str||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') || ('item-'+Date.now());
 }
 
+function switchChkCountry(country, btn){
+  if(!CHK_COUNTRIES[country]) return;
+  chkCountry = country;
+  document.querySelectorAll('#chkCountryTabs .chk-country-tab').forEach(b=>b.classList.remove('active'));
+  const activeBtn = btn || document.querySelector(`#chkCountryTabs .chk-country-tab[data-country="${country}"]`);
+  if(activeBtn) activeBtn.classList.add('active');
+  chkResetForm();
+  const meta=CHK_COUNTRIES[country];
+  const openBtn=document.getElementById('chkPickerOpenBtn');
+  if(openBtn) openBtn.textContent = `📥 Añadir series/pelis ${meta.label.replace('GL ','')} ya en la app`;
+  const titleInp=document.getElementById('chkMetaTitle');
+  if(titleInp) titleInp.placeholder = meta.defaultTitulo;
+  renderChecklistAdmin();
+}
+
 function renderChecklistAdmin(){
   const list=document.getElementById('chkList');
   if(!list) return;
+  if(!checklist[chkCountry]) checklist[chkCountry]=_chkDefaultList(chkCountry);
+  const data=checklist[chkCountry];
   const titleInp=document.getElementById('chkMetaTitle');
   const subInp=document.getElementById('chkMetaSubtitle');
-  if(titleInp && document.activeElement!==titleInp) titleInp.value=checklist.titulo||'';
-  if(subInp && document.activeElement!==subInp) subInp.value=checklist.subtitulo||'';
+  if(titleInp && document.activeElement!==titleInp) titleInp.value=data.titulo||'';
+  if(subInp && document.activeElement!==subInp) subInp.value=data.subtitulo||'';
 
-  const items=checklist.items||[];
+  const items=data.items||[];
   const countLbl=document.getElementById('chkCountLabel');
   if(countLbl) countLbl.textContent=items.length+(items.length===1?' título':' títulos');
   const emptyMsg=document.getElementById('chkEmptyMsg');
@@ -3705,7 +3751,7 @@ function renderChecklistAdmin(){
 }
 
 function chkMove(idx,dir){
-  const items=checklist.items;
+  const items=checklist[chkCountry].items;
   const target=idx+dir;
   if(target<0||target>=items.length) return;
   [items[idx],items[target]]=[items[target],items[idx]];
@@ -3723,7 +3769,7 @@ function chkResetForm(){
 }
 
 function chkEditItem(id){
-  const it=(checklist.items||[]).find(i=>i.id===id);
+  const it=(checklist[chkCountry].items||[]).find(i=>i.id===id);
   if(!it) return;
   chkEditingId=id;
   document.getElementById('chkFTitle').value=it.title;
@@ -3736,10 +3782,10 @@ function chkEditItem(id){
 }
 
 async function chkDeleteItem(id){
-  const it=(checklist.items||[]).find(i=>i.id===id);
+  const it=(checklist[chkCountry].items||[]).find(i=>i.id===id);
   const ok=await showConfirm({title:`¿Eliminar "${it?it.title:''}" de la checklist?`, desc:'Esta acción no se puede deshacer.', icon:'🗑️'});
   if(!ok) return;
-  checklist.items=(checklist.items||[]).filter(i=>i.id!==id);
+  checklist[chkCountry].items=(checklist[chkCountry].items||[]).filter(i=>i.id!==id);
   save(); renderChecklistAdmin();
 }
 
@@ -3749,12 +3795,12 @@ function chkSubmit(){
   const type=document.getElementById('chkFType').value;
   const year=document.getElementById('chkFYear').value.trim();
   const poster=document.getElementById('chkFPoster').value.trim();
-  if(!checklist.items) checklist.items=[];
+  if(!checklist[chkCountry].items) checklist[chkCountry].items=[];
   if(chkEditingId){
-    const it=checklist.items.find(i=>i.id===chkEditingId);
+    const it=checklist[chkCountry].items.find(i=>i.id===chkEditingId);
     if(it) Object.assign(it,{title,type,year,poster});
   } else {
-    checklist.items.push({ id: chkSlugify(title)+'-'+Math.random().toString(36).slice(2,6), title, type, year, poster });
+    checklist[chkCountry].items.push({ id: chkSlugify(title)+'-'+Math.random().toString(36).slice(2,6), title, type, year, poster });
   }
   save();
   chkResetForm();
@@ -3769,22 +3815,26 @@ function chkNorm(str){
 }
 
 function chkPickerCandidates(){
-  const existingTitles = new Set((checklist.items||[]).map(it=>chkNorm(it.title)));
-  const thaiSeries = series
-    .filter(s=>(s.country||'').includes('Tailandia'))
+  const meta=CHK_COUNTRIES[chkCountry];
+  const existingTitles = new Set((checklist[chkCountry].items||[]).map(it=>chkNorm(it.title)));
+  const countrySeries = series
+    .filter(s=>(s.country||'').includes(meta.catalogCountry))
     .filter(s=>!existingTitles.has(chkNorm(s.name)))
     .map(s=>({ key:'serie-'+s.id, kind:'serie', title:s.name, year:s.year||'', poster:s.poster||'' }));
-  const thaiMovies = movies
-    .filter(m=>(m.country||'').includes('Tailandia'))
+  const countryMovies = movies
+    .filter(m=>(m.country||'').includes(meta.catalogCountry))
     .filter(m=>!existingTitles.has(chkNorm(m.name)))
     .map(m=>({ key:'pelicula-'+m.id, kind:'pelicula', title:m.name, year:m.year||'', poster:m.poster||'' }));
-  return thaiSeries.concat(thaiMovies).sort((a,b)=>a.title.localeCompare(b.title,'es'));
+  return countrySeries.concat(countryMovies).sort((a,b)=>a.title.localeCompare(b.title,'es'));
 }
 
 function openChkPicker(){
   chkPickerSelected = new Set();
   const searchInp=document.getElementById('chkPickerSearch');
   if(searchInp) searchInp.value='';
+  const meta=CHK_COUNTRIES[chkCountry];
+  const titleEl=document.getElementById('chkPickerModalTitle');
+  if(titleEl) titleEl.textContent = `${meta.flag} Añadir a la checklist desde tu catálogo`;
   renderChkPicker();
   document.getElementById('chkPickerModal').classList.add('open');
 }
@@ -3794,8 +3844,9 @@ function renderChkPicker(){
   const all = chkPickerCandidates();
   const items = q ? all.filter(it=>chkNorm(it.title).includes(q)) : all;
 
+  const meta=CHK_COUNTRIES[chkCountry];
   const countLbl=document.getElementById('chkPickerCount');
-  if(countLbl) countLbl.textContent = `${items.length} título${items.length===1?'':'s'} disponibles de Tailandia (aún no están en la checklist)`;
+  if(countLbl) countLbl.textContent = `${items.length} título${items.length===1?'':'s'} disponibles de ${meta.catalogCountry} (aún no están en la checklist)`;
 
   const list=document.getElementById('chkPickerList');
   list.innerHTML = items.length ? items.map(it=>{
@@ -3810,7 +3861,7 @@ function renderChkPicker(){
       </div>
       <span class="chk-type-badge chk-type-${it.kind}">${CHK_TYPE_LABELS[it.kind]}</span>
     </label>`;
-  }).join('') : `<div class="chk-empty">No hay títulos thai pendientes que coincidan.</div>`;
+  }).join('') : `<div class="chk-empty">No hay títulos de ${meta.catalogCountry} pendientes que coincidan.</div>`;
 
   const addBtn=document.getElementById('chkPickerAddBtn');
   if(addBtn) addBtn.textContent = `+ Añadir seleccionadas (${chkPickerSelected.size})`;
@@ -3836,9 +3887,9 @@ function chkPickerToggleAll(){
 function chkPickerAddSelected(){
   if(!chkPickerSelected.size) return;
   const all = chkPickerCandidates();
-  if(!checklist.items) checklist.items=[];
+  if(!checklist[chkCountry].items) checklist[chkCountry].items=[];
   all.filter(it=>chkPickerSelected.has(it.key)).forEach(it=>{
-    checklist.items.push({ id: chkSlugify(it.title)+'-'+Math.random().toString(36).slice(2,6), title: it.title, type: it.kind, year: it.year, poster: it.poster });
+    checklist[chkCountry].items.push({ id: chkSlugify(it.title)+'-'+Math.random().toString(36).slice(2,6), title: it.title, type: it.kind, year: it.year, poster: it.poster });
   });
   save();
   renderChecklistAdmin();

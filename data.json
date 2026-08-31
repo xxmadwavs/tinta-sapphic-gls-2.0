@@ -36790,451 +36790,463 @@
     "tvN": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Logo_tvN.svg/1280px-Logo_tvN.svg.png"
   },
   "checklist": {
-    "titulo": "GL Thai ~ Checklist",
-    "subtitulo": "Marca las que ya has visto o leído",
-    "items": [
-      {
-        "id": "your-apple-ks2i",
-        "title": "(Your) Apple",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/ABAOP8_4f.jpg"
-      },
-      {
-        "id": "23-5-qmu9",
-        "title": "23.5",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/kAVdqm_4f.jpg"
-      },
-      {
-        "id": "affair-p91l",
-        "title": "Affair",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/XdOP4w_4f.jpg"
-      },
-      {
-        "id": "ai-girl-xcag",
-        "title": "AI Girl",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/AB6JKP_4f.jpg"
-      },
-      {
-        "id": "apple-my-love-rym3",
-        "title": "Apple My Love",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/E5Z7bb_4f.jpg"
-      },
-      {
-        "id": "b-friend-hrk7",
-        "title": "B-Friend",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/oQ1p6N_4f.jpg"
-      },
-      {
-        "id": "be-my-angel-fg1k",
-        "title": "Be My Angel",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/5vD7EL_4c.jpg?v=1"
-      },
-      {
-        "id": "blank-39gt",
-        "title": "Blank",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/x4XONj_4c.jpg?v=1"
-      },
-      {
-        "id": "broken-of-love-rznr",
-        "title": "Broken of Love",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/VX6LzQ_4f.jpg"
-      },
-      {
-        "id": "chasing-love-ao4e",
-        "title": "Chasing Love",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/AB60Zq_4c.jpg?v=1"
-      },
-      {
-        "id": "clairebell-6h3t",
-        "title": "ClaireBell",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/Lwb8xg_4f.jpg"
-      },
-      {
-        "id": "club-friday-hot-love-issue-love-bully-vws4",
-        "title": "Club Friday Hot Love Issue: Love Bully",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/0wK1VO_4f.jpg"
-      },
-      {
-        "id": "dangerous-queen-irac",
-        "title": "Dangerous Queen",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://m.media-amazon.com/images/M/MV5BNWFiNjJlYzMtMjY2YS00ODFmLWE0ZTUtMTkwZDk3NmQyNzhmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-      },
-      {
-        "id": "denied-love-iihr",
-        "title": "Denied Love",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/yWwdmN_4f.jpg"
-      },
-      {
-        "id": "denied-love-special-endless-kckl",
-        "title": "Denied Love Special Endless",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/JB5kAo_4f.jpg"
-      },
-      {
-        "id": "enemies-with-benefits-eh15",
-        "title": "Enemies with Benefits",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/l0KYnx_4f.jpg"
-      },
-      {
-        "id": "frozen-valentine-6qld",
-        "title": "Frozen Valentine",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/yWr3pd_4c.jpg?v=1"
-      },
-      {
-        "id": "fulfill-07g4",
-        "title": "Fulfill",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/mOQ2eP_4f.jpg"
-      },
-      {
-        "id": "gap-0auu",
-        "title": "GAP",
-        "type": "serie",
-        "year": 2022,
-        "poster": "https://static.wikia.nocookie.net/drama/images/8/8a/GAP-8.jpg/revision/latest?cb=20221119105123&path-prefix=es"
-      },
-      {
-        "id": "girl-rules-tthw",
-        "title": "Girl Rules",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/73Jq1j_4f.jpg"
-      },
-      {
-        "id": "harmony-secret-izih",
-        "title": "Harmony Secret",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/ABL82g_4c.jpg?v=1"
-      },
-      {
-        "id": "heart-code-dd6g",
-        "title": "Heart Code",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/mOq6kJ_4f.jpg"
-      },
-      {
-        "id": "hometown-romance-vzjg",
-        "title": "Hometown Romance",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/g0pN1P_4f.jpg"
-      },
-      {
-        "id": "i-wanna-be-sup-tar-rofz",
-        "title": "I Wanna Be Sup'tar",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/zBqdA7_4f.jpg"
-      },
-      {
-        "id": "i-m-your-moon-nv7i",
-        "title": "I'm Your Moon",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/vXzw88_4f.jpg"
-      },
-      {
-        "id": "in-love-forever-qp56",
-        "title": "In Love Forever",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/5vl7de_4f.jpg"
-      },
-      {
-        "id": "like-a-palette-a8b9",
-        "title": "Like a Palette",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/PxAdg3_4c.jpg?v=1"
-      },
-      {
-        "id": "love-beyond-dreams-dfbs",
-        "title": "Love Beyond Dreams",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/Dk6veD_4f.jpg"
-      },
-      {
-        "id": "love-design-gmxg",
-        "title": "Love Design",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/YYVRvd_4f.jpg"
-      },
-      {
-        "id": "love-senior-9en7",
-        "title": "Love Senior",
-        "type": "serie",
-        "year": 2023,
-        "poster": "https://i.mydramalist.com/2wx7pd_4f.jpg"
-      },
-      {
-        "id": "lucky-my-love-e500",
-        "title": "Lucky My Love",
-        "type": "serie",
-        "year": 2023,
-        "poster": "https://i.mydramalist.com/qYqNDB_4c.jpg?v=1"
-      },
-      {
-        "id": "mate-b1du",
-        "title": "Mate",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/81ZlJK_4f.jpg"
-      },
-      {
-        "id": "moonshadow-05cl",
-        "title": "Moonshadow",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/5vkpeY_4f.jpg"
-      },
-      {
-        "id": "muteluv-hello-is-this-luck-kal7",
-        "title": "MuTeLuv: Hello, Is This Luck?",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/JBYX5o_4f.jpg"
-      },
-      {
-        "id": "my-lady-s-bodyguard-dvjf",
-        "title": "My Lady's Bodyguard",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://pbs.twimg.com/media/HIXRqNvXYAAE7Ix?format=jpg&name=small"
-      },
-      {
-        "id": "my-marvellous-dream-is-you-ujul",
-        "title": "My Marvellous Dream Is You",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/pdjZQ8_4c.jpg?v=1"
-      },
-      {
-        "id": "my-only-sunshine-55ow",
-        "title": "My Only Sunshine",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/l0p7eE_4f.jpg"
-      },
-      {
-        "id": "my-safe-zone-taja",
-        "title": "My Safe Zone",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/NdzDZn_4f.jpg"
-      },
-      {
-        "id": "only-you-b1oj",
-        "title": "Only You",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/g0DPko_4f.jpg"
-      },
-      {
-        "id": "petrichor-c4rx",
-        "title": "Petrichor",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/738kon_4f.jpg"
-      },
-      {
-        "id": "play-park-xsrr",
-        "title": "Play Park",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/mOdgE0_4f.jpg"
-      },
-      {
-        "id": "player-3v9v",
-        "title": "Player",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/VXmE5z_4c.jpg?v=1"
-      },
-      {
-        "id": "pluto-b9lr",
-        "title": "Pluto",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/73X4eD_4f.jpg"
-      },
-      {
-        "id": "poisonous-love-yjxk",
-        "title": "Poisonous Love",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/g06DVP_4f.jpg"
-      },
-      {
-        "id": "queendom-9cij",
-        "title": "Queendom",
-        "type": "serie",
-        "year": "2025",
-        "poster": "https://i.mydramalist.com/O82kRg_4f.jpg"
-      },
-      {
-        "id": "rak-overdose-mt34",
-        "title": "Rak Overdose",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/YYVKLB_4f.jpg"
-      },
-      {
-        "id": "reverse-4-you-3r9u",
-        "title": "Reverse 4 You",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/x4WDdz_4f.jpg"
-      },
-      {
-        "id": "reverse-with-me-vzwq",
-        "title": "Reverse with Me",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/ABRZXZ_4f.jpg"
-      },
-      {
-        "id": "roller-coaster-s0ks",
-        "title": "Roller Coaster",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/YYDkzA_4f.jpg"
-      },
-      {
-        "id": "runaway-uont",
-        "title": "Runaway",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/yWLLrN_4f.jpg"
-      },
-      {
-        "id": "shades-uncut-ver-pib1",
-        "title": "Shades UNCUT Ver",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/oQpb4x_4f.jpg"
-      },
-      {
-        "id": "show-me-love-n8sc",
-        "title": "Show Me Love",
-        "type": "serie",
-        "year": 2023,
-        "poster": "https://i.mydramalist.com/eY075E_4f.jpg"
-      },
-      {
-        "id": "somewhere-somehow-yh3k",
-        "title": "Somewhere Somehow",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/yWXDA3_4f.jpg"
-      },
-      {
-        "id": "the-air-9clo",
-        "title": "The Air",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/YYWekQ_4f.jpg"
-      },
-      {
-        "id": "the-earth-9wqu",
-        "title": "The Earth",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/nO8E6B_4f.jpg"
-      },
-      {
-        "id": "the-fire-tfpq",
-        "title": "The Fire",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/VXlwOm_4c.jpg?v=1"
-      },
-      {
-        "id": "the-loyal-pin-rbha",
-        "title": "The Loyal Pin",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/2wnwdR_4f.jpg"
-      },
-      {
-        "id": "the-secret-of-us-sc3m",
-        "title": "The Secret of Us",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/rNzXKZ_4f.jpg"
-      },
-      {
-        "id": "the-water-jd0a",
-        "title": "The Water",
-        "type": "serie",
-        "year": 2026,
-        "poster": "https://i.mydramalist.com/g0jn2O_4f.jpg"
-      },
-      {
-        "id": "unlimited-love-pz6j",
-        "title": "Unlimited Love",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/yWyY04_4f.jpg"
-      },
-      {
-        "id": "unlock-your-love-s8id",
-        "title": "Unlock Your Love",
-        "type": "serie",
-        "year": 2024,
-        "poster": "https://i.mydramalist.com/x4npLw_4f.jpg"
-      },
-      {
-        "id": "us-q7m5",
-        "title": "Us",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/81bVe2_4f.jpg"
-      },
-      {
-        "id": "whale-store-xoxo-hga0",
-        "title": "Whale Store xoxo",
-        "type": "serie",
-        "year": 2025,
-        "poster": "https://i.mydramalist.com/nO6nPE_4f.jpg"
-      }
-    ]
+    "thai": {
+      "titulo": "GL Thai ~ Checklist",
+      "subtitulo": "Marca las que ya has visto o leído",
+      "items": [
+        {
+          "id": "your-apple-ks2i",
+          "title": "(Your) Apple",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/ABAOP8_4f.jpg"
+        },
+        {
+          "id": "23-5-qmu9",
+          "title": "23.5",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/kAVdqm_4f.jpg"
+        },
+        {
+          "id": "affair-p91l",
+          "title": "Affair",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/XdOP4w_4f.jpg"
+        },
+        {
+          "id": "ai-girl-xcag",
+          "title": "AI Girl",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/AB6JKP_4f.jpg"
+        },
+        {
+          "id": "apple-my-love-rym3",
+          "title": "Apple My Love",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/E5Z7bb_4f.jpg"
+        },
+        {
+          "id": "b-friend-hrk7",
+          "title": "B-Friend",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/oQ1p6N_4f.jpg"
+        },
+        {
+          "id": "be-my-angel-fg1k",
+          "title": "Be My Angel",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/5vD7EL_4c.jpg?v=1"
+        },
+        {
+          "id": "blank-39gt",
+          "title": "Blank",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/x4XONj_4c.jpg?v=1"
+        },
+        {
+          "id": "broken-of-love-rznr",
+          "title": "Broken of Love",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/VX6LzQ_4f.jpg"
+        },
+        {
+          "id": "chasing-love-ao4e",
+          "title": "Chasing Love",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/AB60Zq_4c.jpg?v=1"
+        },
+        {
+          "id": "clairebell-6h3t",
+          "title": "ClaireBell",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/Lwb8xg_4f.jpg"
+        },
+        {
+          "id": "club-friday-hot-love-issue-love-bully-vws4",
+          "title": "Club Friday Hot Love Issue: Love Bully",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/0wK1VO_4f.jpg"
+        },
+        {
+          "id": "dangerous-queen-irac",
+          "title": "Dangerous Queen",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://m.media-amazon.com/images/M/MV5BNWFiNjJlYzMtMjY2YS00ODFmLWE0ZTUtMTkwZDk3NmQyNzhmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+        },
+        {
+          "id": "denied-love-iihr",
+          "title": "Denied Love",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/yWwdmN_4f.jpg"
+        },
+        {
+          "id": "denied-love-special-endless-kckl",
+          "title": "Denied Love Special Endless",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/JB5kAo_4f.jpg"
+        },
+        {
+          "id": "enemies-with-benefits-eh15",
+          "title": "Enemies with Benefits",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/l0KYnx_4f.jpg"
+        },
+        {
+          "id": "frozen-valentine-6qld",
+          "title": "Frozen Valentine",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/yWr3pd_4c.jpg?v=1"
+        },
+        {
+          "id": "fulfill-07g4",
+          "title": "Fulfill",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/mOQ2eP_4f.jpg"
+        },
+        {
+          "id": "gap-0auu",
+          "title": "GAP",
+          "type": "serie",
+          "year": 2022,
+          "poster": "https://static.wikia.nocookie.net/drama/images/8/8a/GAP-8.jpg/revision/latest?cb=20221119105123&path-prefix=es"
+        },
+        {
+          "id": "girl-rules-tthw",
+          "title": "Girl Rules",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/73Jq1j_4f.jpg"
+        },
+        {
+          "id": "harmony-secret-izih",
+          "title": "Harmony Secret",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/ABL82g_4c.jpg?v=1"
+        },
+        {
+          "id": "heart-code-dd6g",
+          "title": "Heart Code",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/mOq6kJ_4f.jpg"
+        },
+        {
+          "id": "hometown-romance-vzjg",
+          "title": "Hometown Romance",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/g0pN1P_4f.jpg"
+        },
+        {
+          "id": "i-wanna-be-sup-tar-rofz",
+          "title": "I Wanna Be Sup'tar",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/zBqdA7_4f.jpg"
+        },
+        {
+          "id": "i-m-your-moon-nv7i",
+          "title": "I'm Your Moon",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/vXzw88_4f.jpg"
+        },
+        {
+          "id": "in-love-forever-qp56",
+          "title": "In Love Forever",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/5vl7de_4f.jpg"
+        },
+        {
+          "id": "like-a-palette-a8b9",
+          "title": "Like a Palette",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/PxAdg3_4c.jpg?v=1"
+        },
+        {
+          "id": "love-beyond-dreams-dfbs",
+          "title": "Love Beyond Dreams",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/Dk6veD_4f.jpg"
+        },
+        {
+          "id": "love-design-gmxg",
+          "title": "Love Design",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/YYVRvd_4f.jpg"
+        },
+        {
+          "id": "love-senior-9en7",
+          "title": "Love Senior",
+          "type": "serie",
+          "year": 2023,
+          "poster": "https://i.mydramalist.com/2wx7pd_4f.jpg"
+        },
+        {
+          "id": "lucky-my-love-e500",
+          "title": "Lucky My Love",
+          "type": "serie",
+          "year": 2023,
+          "poster": "https://i.mydramalist.com/qYqNDB_4c.jpg?v=1"
+        },
+        {
+          "id": "mate-b1du",
+          "title": "Mate",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/81ZlJK_4f.jpg"
+        },
+        {
+          "id": "moonshadow-05cl",
+          "title": "Moonshadow",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/5vkpeY_4f.jpg"
+        },
+        {
+          "id": "muteluv-hello-is-this-luck-kal7",
+          "title": "MuTeLuv: Hello, Is This Luck?",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/JBYX5o_4f.jpg"
+        },
+        {
+          "id": "my-lady-s-bodyguard-dvjf",
+          "title": "My Lady's Bodyguard",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://pbs.twimg.com/media/HIXRqNvXYAAE7Ix?format=jpg&name=small"
+        },
+        {
+          "id": "my-marvellous-dream-is-you-ujul",
+          "title": "My Marvellous Dream Is You",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/pdjZQ8_4c.jpg?v=1"
+        },
+        {
+          "id": "my-only-sunshine-55ow",
+          "title": "My Only Sunshine",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/l0p7eE_4f.jpg"
+        },
+        {
+          "id": "my-safe-zone-taja",
+          "title": "My Safe Zone",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/NdzDZn_4f.jpg"
+        },
+        {
+          "id": "only-you-b1oj",
+          "title": "Only You",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/g0DPko_4f.jpg"
+        },
+        {
+          "id": "petrichor-c4rx",
+          "title": "Petrichor",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/738kon_4f.jpg"
+        },
+        {
+          "id": "play-park-xsrr",
+          "title": "Play Park",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/mOdgE0_4f.jpg"
+        },
+        {
+          "id": "player-3v9v",
+          "title": "Player",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/VXmE5z_4c.jpg?v=1"
+        },
+        {
+          "id": "pluto-b9lr",
+          "title": "Pluto",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/73X4eD_4f.jpg"
+        },
+        {
+          "id": "poisonous-love-yjxk",
+          "title": "Poisonous Love",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/g06DVP_4f.jpg"
+        },
+        {
+          "id": "queendom-9cij",
+          "title": "Queendom",
+          "type": "serie",
+          "year": 2022,
+          "poster": "https://i.mydramalist.com/O82kRg_4f.jpg"
+        },
+        {
+          "id": "rak-overdose-mt34",
+          "title": "Rak Overdose",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/YYVKLB_4f.jpg"
+        },
+        {
+          "id": "reverse-4-you-3r9u",
+          "title": "Reverse 4 You",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/x4WDdz_4f.jpg"
+        },
+        {
+          "id": "reverse-with-me-vzwq",
+          "title": "Reverse with Me",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/ABRZXZ_4f.jpg"
+        },
+        {
+          "id": "roller-coaster-s0ks",
+          "title": "Roller Coaster",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/YYDkzA_4f.jpg"
+        },
+        {
+          "id": "runaway-uont",
+          "title": "Runaway",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/yWLLrN_4f.jpg"
+        },
+        {
+          "id": "shades-uncut-ver-pib1",
+          "title": "Shades UNCUT Ver",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/oQpb4x_4f.jpg"
+        },
+        {
+          "id": "show-me-love-n8sc",
+          "title": "Show Me Love",
+          "type": "serie",
+          "year": 2023,
+          "poster": "https://i.mydramalist.com/eY075E_4f.jpg"
+        },
+        {
+          "id": "somewhere-somehow-yh3k",
+          "title": "Somewhere Somehow",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/yWXDA3_4f.jpg"
+        },
+        {
+          "id": "the-air-9clo",
+          "title": "The Air",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/YYWekQ_4f.jpg"
+        },
+        {
+          "id": "the-earth-9wqu",
+          "title": "The Earth",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/nO8E6B_4f.jpg"
+        },
+        {
+          "id": "the-fire-tfpq",
+          "title": "The Fire",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/VXlwOm_4c.jpg?v=1"
+        },
+        {
+          "id": "the-loyal-pin-rbha",
+          "title": "The Loyal Pin",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/2wnwdR_4f.jpg"
+        },
+        {
+          "id": "the-secret-of-us-sc3m",
+          "title": "The Secret of Us",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/rNzXKZ_4f.jpg"
+        },
+        {
+          "id": "the-water-jd0a",
+          "title": "The Water",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://i.mydramalist.com/g0jn2O_4f.jpg"
+        },
+        {
+          "id": "unlimited-love-pz6j",
+          "title": "Unlimited Love",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/yWyY04_4f.jpg"
+        },
+        {
+          "id": "unlock-your-love-s8id",
+          "title": "Unlock Your Love",
+          "type": "serie",
+          "year": 2024,
+          "poster": "https://i.mydramalist.com/x4npLw_4f.jpg"
+        },
+        {
+          "id": "us-q7m5",
+          "title": "Us",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/81bVe2_4f.jpg"
+        },
+        {
+          "id": "whale-store-xoxo-hga0",
+          "title": "Whale Store xoxo",
+          "type": "serie",
+          "year": 2025,
+          "poster": "https://i.mydramalist.com/nO6nPE_4f.jpg"
+        }
+      ]
+    },
+    "china": {
+      "titulo": "GL China ~ Checklist",
+      "subtitulo": "Marca las que ya has visto o leído",
+      "items": []
+    },
+    "japan": {
+      "titulo": "GL Japón ~ Checklist",
+      "subtitulo": "Marca las que ya has visto o leído",
+      "items": []
+    }
   },
-  "exportedAt": "2026-08-31T21:08:29.390Z"
+  "exportedAt": "2026-08-31T21:01:11.734Z"
 }
