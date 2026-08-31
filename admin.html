@@ -791,6 +791,11 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
       <div><label class="chk-label">Subtítulo</label><input id="chkMetaSubtitle" oninput="checklist.subtitulo=this.value;save()" placeholder="Marca las que ya has visto o leído"></div>
     </div>
 
+    <div style="margin-bottom:1rem">
+      <button type="button" class="btn primary" style="background:#4aada0;border-color:#4aada0" onclick="openChkPicker()">📥 Añadir series/pelis thai ya en la app</button>
+      <span style="font-size:12px;color:var(--muted);margin-left:.5rem">Elige de tu catálogo en vez de escribir a mano</span>
+    </div>
+
     <div class="chk-form-grid">
       <div class="chk-full"><label class="chk-label">Título</label><input id="chkFTitle" placeholder="Ej: Bad Buddy"></div>
       <div><label class="chk-label">Tipo</label>
@@ -848,6 +853,21 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 </div>
 <!-- Modal película -->
+<div class="modal-bg" id="chkPickerModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" style="margin-bottom:0">🇹🇭 Añadir a la checklist desde tu catálogo</div></div>
+    <div style="padding:1rem 1.75rem">
+      <input id="chkPickerSearch" oninput="renderChkPicker()" placeholder="Buscar por título…" style="width:100%;padding:9px 12px;border:1.5px solid var(--border2);border-radius:9px;font-size:14px;margin-bottom:.9rem;background:var(--surface)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem">
+        <span style="font-size:12px;color:var(--muted)" id="chkPickerCount"></span>
+        <span style="font-size:12px;color:var(--muted);cursor:pointer;text-decoration:underline" onclick="chkPickerToggleAll()">Seleccionar / deseleccionar todo</span>
+      </div>
+      <div id="chkPickerList" style="max-height:55vh;overflow-y:auto"></div>
+    </div>
+    <div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" id="chkPickerAddBtn" onclick="chkPickerAddSelected()">+ Añadir seleccionadas (0)</button></div>
+  </div>
+</div>
+
 <div class="modal-bg" id="movieModal">
   <div class="modal">
     <div class="modal-header"><div class="modal-title" id="movieModalTitle" style="margin-bottom:0"></div></div>
@@ -3739,6 +3759,90 @@ function chkSubmit(){
   save();
   chkResetForm();
   renderChecklistAdmin();
+}
+
+/* ═══ CHECKLIST: selector desde catálogo (series/pelis thai) ═══ */
+let chkPickerSelected = new Set();
+
+function chkNorm(str){
+  return String(str||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+}
+
+function chkPickerCandidates(){
+  const existingTitles = new Set((checklist.items||[]).map(it=>chkNorm(it.title)));
+  const thaiSeries = series
+    .filter(s=>(s.country||'').includes('Tailandia'))
+    .filter(s=>!existingTitles.has(chkNorm(s.name)))
+    .map(s=>({ key:'serie-'+s.id, kind:'serie', title:s.name, year:s.year||'', poster:s.poster||'' }));
+  const thaiMovies = movies
+    .filter(m=>(m.country||'').includes('Tailandia'))
+    .filter(m=>!existingTitles.has(chkNorm(m.name)))
+    .map(m=>({ key:'pelicula-'+m.id, kind:'pelicula', title:m.name, year:m.year||'', poster:m.poster||'' }));
+  return thaiSeries.concat(thaiMovies).sort((a,b)=>a.title.localeCompare(b.title,'es'));
+}
+
+function openChkPicker(){
+  chkPickerSelected = new Set();
+  const searchInp=document.getElementById('chkPickerSearch');
+  if(searchInp) searchInp.value='';
+  renderChkPicker();
+  document.getElementById('chkPickerModal').classList.add('open');
+}
+
+function renderChkPicker(){
+  const q = chkNorm(document.getElementById('chkPickerSearch')?.value||'');
+  const all = chkPickerCandidates();
+  const items = q ? all.filter(it=>chkNorm(it.title).includes(q)) : all;
+
+  const countLbl=document.getElementById('chkPickerCount');
+  if(countLbl) countLbl.textContent = `${items.length} título${items.length===1?'':'s'} disponibles de Tailandia (aún no están en la checklist)`;
+
+  const list=document.getElementById('chkPickerList');
+  list.innerHTML = items.length ? items.map(it=>{
+    const checked = chkPickerSelected.has(it.key);
+    const meta=[it.year,CHK_TYPE_LABELS[it.kind]].filter(Boolean).join(' · ');
+    return `<label class="chk-item-row" style="cursor:pointer">
+      <input type="checkbox" style="width:17px;height:17px;flex-shrink:0" ${checked?'checked':''} onchange="chkPickerToggle('${it.key}')">
+      ${it.poster?`<img src="${escapeHtml(it.poster)}" style="width:32px;height:46px;object-fit:cover;border-radius:5px;flex-shrink:0" loading="lazy">`:`<div style="width:32px;height:46px;border-radius:5px;background:var(--surface3);flex-shrink:0"></div>`}
+      <div class="chk-item-info">
+        <div class="chk-item-title">${escapeHtml(it.title)}</div>
+        <div class="chk-item-meta">${escapeHtml(meta)}</div>
+      </div>
+      <span class="chk-type-badge chk-type-${it.kind}">${CHK_TYPE_LABELS[it.kind]}</span>
+    </label>`;
+  }).join('') : `<div class="chk-empty">No hay títulos thai pendientes que coincidan.</div>`;
+
+  const addBtn=document.getElementById('chkPickerAddBtn');
+  if(addBtn) addBtn.textContent = `+ Añadir seleccionadas (${chkPickerSelected.size})`;
+}
+
+function chkPickerToggle(key){
+  if(chkPickerSelected.has(key)) chkPickerSelected.delete(key);
+  else chkPickerSelected.add(key);
+  const addBtn=document.getElementById('chkPickerAddBtn');
+  if(addBtn) addBtn.textContent = `+ Añadir seleccionadas (${chkPickerSelected.size})`;
+}
+
+function chkPickerToggleAll(){
+  const q = chkNorm(document.getElementById('chkPickerSearch')?.value||'');
+  const all = chkPickerCandidates();
+  const items = q ? all.filter(it=>chkNorm(it.title).includes(q)) : all;
+  const allSelected = items.length>0 && items.every(it=>chkPickerSelected.has(it.key));
+  if(allSelected){ items.forEach(it=>chkPickerSelected.delete(it.key)); }
+  else { items.forEach(it=>chkPickerSelected.add(it.key)); }
+  renderChkPicker();
+}
+
+function chkPickerAddSelected(){
+  if(!chkPickerSelected.size) return;
+  const all = chkPickerCandidates();
+  if(!checklist.items) checklist.items=[];
+  all.filter(it=>chkPickerSelected.has(it.key)).forEach(it=>{
+    checklist.items.push({ id: chkSlugify(it.title)+'-'+Math.random().toString(36).slice(2,6), title: it.title, type: it.kind, year: it.year, poster: it.poster });
+  });
+  save();
+  renderChecklistAdmin();
+  closeAll();
 }
 
 /* ═══ PASTE AUTOFILL ═══ */
