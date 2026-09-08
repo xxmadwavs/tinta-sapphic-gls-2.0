@@ -226,25 +226,33 @@ html[data-theme="dark"] .dark-toggle{background:var(--surface2);color:var(--gold
 .nav-picks-item:hover{background:var(--surface2);color:var(--accent)}
 .nav-picks-item.active{background:var(--accent-soft);color:var(--accent)}
 
-/* Más dropdown */
-.tab-more-wrap{position:relative;flex-shrink:0}
-.tab-more-drop{
+/* Mis picks: separador entre picks y herramientas */
+.nav-picks-sep{height:1px;background:var(--border2);margin:4px 8px}
+
+/* Explorar (mega-dropdown con columnas) */
+.nav-explore-wrap{position:relative;flex-shrink:0}
+.nav-explore-drop{
   position:absolute;top:calc(100% + 8px);left:0;
   background:var(--surface);border:1.5px solid var(--border2);
   border-radius:12px;box-shadow:var(--shadow-md);
-  min-width:170px;z-index:200;
-  display:none;flex-direction:column;overflow:hidden;padding:4px;
+  min-width:460px;z-index:200;
+  display:none;gap:22px;overflow:hidden;padding:14px;
 }
-.tab-more-drop.open{display:flex}
-.tab-more-item{
+.nav-explore-drop.open{display:flex}
+.explore-col{display:flex;flex-direction:column;gap:1px;min-width:130px}
+.explore-col-title{
+  font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--muted);padding:4px 10px 6px;
+}
+.explore-item{
   display:flex;align-items:center;gap:8px;
-  padding:9px 14px;font-size:13px;font-weight:600;
+  padding:9px 10px;font-size:13px;font-weight:600;
   color:var(--text);cursor:pointer;transition:background .12s;
   border:none;background:transparent;font-family:var(--font-body);
   text-align:left;width:100%;border-radius:8px;
 }
-.tab-more-item:hover{background:var(--surface2);color:var(--accent)}
-.tab-more-item.active{background:var(--accent-soft);color:var(--accent)}
+.explore-item:hover{background:var(--surface2);color:var(--accent)}
+.explore-item.active{background:var(--accent-soft);color:var(--accent)}
 
 /* Right: search + X */
 .navbar-right{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
@@ -367,15 +375,17 @@ footer{
     border-radius:10px;margin-top:6px;
     box-shadow:none;border:1.5px solid var(--border2);
   }
-  .nav-picks-drop,.tab-more-drop{
+  .nav-picks-drop,.nav-explore-drop{
     position:static;box-shadow:none;border:none;
     padding:0 0 0 12px;border-radius:0;background:transparent;
-    display:none;flex-direction:column;
+    display:none;flex-direction:column;min-width:0;gap:2px;
   }
-  .nav-picks-drop.open,.tab-more-drop.open{
+  .nav-picks-drop.open,.nav-explore-drop.open{
     display:flex;
   }
-  .nav-picks-item,.tab-more-item{padding:8px 12px;font-size:13px;border-radius:8px}
+  .nav-picks-item,.explore-item{padding:8px 12px;font-size:13px;border-radius:8px}
+  .explore-col{min-width:0;gap:0}
+  .explore-col-title{padding:10px 12px 2px}
 }
 
 /* 700px → móvil puro (ya heredan lo de arriba) */
@@ -1804,36 +1814,40 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
   .country-picker-dropdown{min-width:180px}
 }
 
-/* ═══ MODAL ═══ */
+/* ═══ MODAL (ahora ficha a pantalla completa, estilo IMDb/TMDB) ═══ */
 .modal-bg{
   position:fixed;inset:0;
-  background:rgba(20,10,18,.6);
-  display:none;align-items:flex-end;justify-content:center;
-  z-index:200;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  background:var(--bg);
+  display:none;align-items:flex-start;justify-content:center;
+  z-index:200;overflow-y:auto;
+  animation:modalPageIn .18s ease;
 }
+@keyframes modalPageIn{from{opacity:0}to{opacity:1}}
 .modal-bg.open{display:flex}
-@media(min-width:601px){.modal-bg{align-items:center;padding:1.5rem}}
 .modal{
-  background:var(--surface);border:1.5px solid var(--border2);
-  border-radius:var(--radius-lg);padding:0;
-  width:100%;max-width:480px;max-height:92vh;overflow-y:auto;
-  box-shadow:0 28px 80px rgba(150,60,100,0.25);
+  background:var(--surface);border:none;
+  border-radius:0;padding:0;
+  width:100%;max-width:1100px;min-height:100vh;
+  box-shadow:none;
   position:relative;
 }
-@media(max-width:600px){.modal{border-radius:24px 24px 0 0;max-height:92vh}}
+@media(min-width:1101px){
+  .modal-bg{padding:0 0 3rem}
+  .modal{min-height:auto;margin-top:0;border-radius:0 0 var(--radius-lg) var(--radius-lg);box-shadow:0 20px 60px rgba(150,60,100,0.18)}
+}
 .modal-close-btn{
-  position:absolute;top:12px;right:12px;z-index:10;
-  width:32px;height:32px;border-radius:50%;
-  background:rgba(255,255,255,0.9);border:1px solid var(--border2);
-  color:var(--muted);cursor:pointer;font-size:14px;
+  position:sticky;top:12px;left:12px;margin:12px 0 -44px 12px;z-index:10;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(20,10,18,.55);border:1px solid rgba(255,255,255,.25);
+  color:#fff;cursor:pointer;font-size:16px;
   display:flex;align-items:center;justify-content:center;
   transition:all .15s;backdrop-filter:blur(4px);font-family:var(--font-body);
-  box-shadow:0 2px 8px rgba(0,0,0,.1);
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
 }
 .modal-close-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(1.1)}
-.modal-poster-full{width:100%;aspect-ratio:2/3;max-height:300px;object-fit:cover;object-position:top center;border-radius:calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;display:block}
-.modal-poster-full-ph{width:100%;height:160px;background:linear-gradient(135deg,var(--accent-soft),var(--lavender-soft));border-radius:calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;display:flex;align-items:center;justify-content:center;font-size:40px}
-.modal-body{padding:1.5rem 1.5rem 1.75rem}
+.modal-poster-full{width:100%;aspect-ratio:2/3;max-height:420px;object-fit:cover;object-position:top center;border-radius:0;display:block}
+.modal-poster-full-ph{width:100%;height:220px;background:linear-gradient(135deg,var(--accent-soft),var(--lavender-soft));border-radius:0;display:flex;align-items:center;justify-content:center;font-size:48px}
+.modal-body{padding:1.5rem 1.75rem 2.5rem;max-width:760px;margin:0 auto}
 .modal-title{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:4px;letter-spacing:-.01em}
 .modal-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .modal-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
@@ -3140,18 +3154,18 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
 /* ═══════════════ CHECKLIST — POSTER DE EXPORTACIÓN (imagen/PDF) ═══════════════ */
 .chk-poster-wrap{
   position:fixed;left:-99999px;top:0;width:920px;box-sizing:border-box;
-  background:radial-gradient(circle at 15% 0%,#3a1a3a 0%,#1c0f22 55%,#150b1a 100%);
+  background:var(--chk-p-bg,radial-gradient(circle at 15% 0%,#3a1a3a 0%,#1c0f22 55%,#150b1a 100%));
   padding:52px 48px 44px;font-family:var(--font-body);color:#f6e9f0;overflow:hidden;
 }
 .chk-poster-top{text-align:center;margin-bottom:8px;position:relative}
-.chk-poster-brand{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:#f0a8c4;font-weight:700;margin-bottom:12px}
+.chk-poster-brand{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--chk-p-brand,#f0a8c4);font-weight:700;margin-bottom:12px}
 .chk-poster-title{font-family:var(--font-display);font-size:44px;font-weight:700;color:#fff;line-height:1.15}
-.chk-poster-subtitle{font-size:14.5px;color:#e3b9cf;margin-top:8px}
+.chk-poster-subtitle{font-size:14.5px;color:var(--chk-p-subtitle,#e3b9cf);margin-top:8px}
 .chk-poster-progress{display:flex;align-items:center;justify-content:center;gap:14px;margin:28px auto 0;max-width:440px}
 .chk-poster-progress-track{flex:1;height:10px;border-radius:6px;background:rgba(255,255,255,0.12);overflow:hidden}
-.chk-poster-progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#c94f7c,#f2a8c8)}
-.chk-poster-progress-count{font-family:var(--font-display);font-weight:700;font-size:17px;color:#f7c7dd;white-space:nowrap}
-.chk-poster-divider{text-align:center;margin:26px 0 6px;color:#e0729a;font-size:15px;letter-spacing:.4em;opacity:.65}
+.chk-poster-progress-fill{height:100%;border-radius:6px;background:var(--chk-p-progress,linear-gradient(90deg,#c94f7c,#f2a8c8))}
+.chk-poster-progress-count{font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--chk-p-progress-count,#f7c7dd);white-space:nowrap}
+.chk-poster-divider{text-align:center;margin:26px 0 6px;color:var(--chk-p-accent,#e0729a);font-size:15px;letter-spacing:.4em;opacity:.65}
 .chk-poster-cols{column-count:var(--chk-cols,3);column-gap:26px;margin-top:34px}
 .chk-poster-col{break-inside:avoid;-webkit-column-break-inside:avoid;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:16px 16px 12px;margin-bottom:22px;position:relative;overflow:hidden}
 .chk-poster-col::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--chk-col-color,#e0729a)}
@@ -3159,12 +3173,12 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
 .chk-poster-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.10)}
 .chk-poster-item:last-child{border-bottom:none}
 .chk-poster-check{width:19px;height:19px;flex-shrink:0;margin-top:1px;border-radius:6px;border:2px solid rgba(255,255,255,0.35);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;background:rgba(255,255,255,0.04)}
-.chk-poster-item.done .chk-poster-check{background:linear-gradient(135deg,#e0729a,#c94f7c);border-color:#e0729a;box-shadow:0 0 0 3px rgba(224,114,154,0.18)}
+.chk-poster-item.done .chk-poster-check{background:var(--chk-p-progress,linear-gradient(135deg,#e0729a,#c94f7c));border-color:var(--chk-p-accent,#e0729a);box-shadow:0 0 0 3px var(--chk-p-accent-soft,rgba(224,114,154,0.18))}
 .chk-poster-item-title{font-size:13px;font-weight:600;color:#f6e9f0;line-height:1.3}
-.chk-poster-item.done .chk-poster-item-title{text-decoration:line-through;text-decoration-color:#e0729a;opacity:.55}
+.chk-poster-item.done .chk-poster-item-title{text-decoration:line-through;text-decoration-color:var(--chk-p-accent,#e0729a);opacity:.55}
 .chk-poster-item-type{font-size:9.5px;color:#c99bb2;margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
 .chk-poster-footer{text-align:center;margin-top:14px;padding-top:20px;border-top:1px dashed rgba(255,255,255,0.15)}
-.chk-poster-footer .brand{font-family:var(--font-display);font-size:14px;color:#f0a8c4;letter-spacing:.05em}
+.chk-poster-footer .brand{font-family:var(--font-display);font-size:14px;color:var(--chk-p-brand,#f0a8c4);letter-spacing:.05em}
 .chk-poster-footer .date{font-size:11.5px;color:#a988a0;margin-top:4px}
 
 </style>
@@ -3205,37 +3219,48 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
         <div class="navbar-search-results" id="navSearchResultsMobile" style="display:none"></div>
       </div>
       <button class="nav-link active" id="tabCal" onclick="switchTab('cal');closeMobileMenu()">Calendario</button>
-      <button class="nav-link" id="tabList" onclick="switchTab('list');closeMobileMenu()">Series</button>
-      <button class="nav-link" id="tabMovies" onclick="switchTab('movies');closeMobileMenu()">Películas</button>
-      <button class="nav-link" id="tabUpcoming" onclick="switchTab('upcoming');closeMobileMenu()">Próximamente</button>
+
+      <!-- Explorar (mega-dropdown de catálogo) -->
+      <div class="nav-explore-wrap" id="navExploreWrap">
+        <button class="nav-link" id="tabExplore" type="button" onclick="toggleExploreDrop(event)" aria-haspopup="true" aria-expanded="false">
+          Explorar <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
+        </button>
+        <div class="nav-explore-drop" id="navExploreDrop" role="menu">
+          <div class="explore-col">
+            <span class="explore-col-title">Series & Pelis</span>
+            <button class="explore-item" id="tabList" role="menuitem" onclick="closeExploreDrop();switchTab('list');closeMobileMenu()">Series</button>
+            <button class="explore-item" id="tabMovies" role="menuitem" onclick="closeExploreDrop();switchTab('movies');closeMobileMenu()">Películas</button>
+            <button class="explore-item" id="tabUpcoming" role="menuitem" onclick="closeExploreDrop();switchTab('upcoming');closeMobileMenu()">Próximamente</button>
+          </div>
+          <div class="explore-col">
+            <span class="explore-col-title">Más contenido</span>
+            <button class="explore-item" id="tabAnime" role="menuitem" onclick="closeExploreDrop();switchTab('anime');closeMobileMenu()">Anime</button>
+            <button class="explore-item" id="tabRealities" role="menuitem" onclick="closeExploreDrop();switchTab('realities');closeMobileMenu()">Realities</button>
+            <button class="explore-item" id="tabDocumentales" role="menuitem" onclick="closeExploreDrop();switchTab('documentales');closeMobileMenu()">Documentales</button>
+            <button class="explore-item" id="tabBooks" role="menuitem" onclick="closeExploreDrop();switchTab('books');closeMobileMenu()">Libros</button>
+          </div>
+          <div class="explore-col">
+            <span class="explore-col-title">Personas</span>
+            <button class="explore-item" id="tabActresses" role="menuitem" onclick="closeExploreDrop();switchTab('actresses');closeMobileMenu()">Actrices</button>
+            <button class="explore-item" id="tabProductoras" role="menuitem" onclick="closeExploreDrop();switchTab('productoras');closeMobileMenu()">Productoras</button>
+          </div>
+        </div>
+      </div>
+
       <button class="nav-link" id="tabShips" onclick="switchTab('ships');closeMobileMenu()">Ships Thais</button>
 
-      <!-- Mis Picks con subtabs -->
+      <!-- Mis Picks: subtabs de picks + herramientas personales -->
       <div class="nav-picks-wrap" id="navPicksWrap">
         <button class="nav-link nav-picks-btn" id="tabPicksGroup" type="button" onclick="togglePicksDrop(event)" aria-haspopup="true" aria-expanded="false">
-          Mis picks <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
+          Extra <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
         </button>
         <div class="nav-picks-drop" id="navPicksDrop" role="menu">
           <button class="nav-picks-item" id="tabTop10" role="menuitem" onclick="closePicksDrop();switchTab('top10');closeMobileMenu()">Picks generales</button>
           <button class="nav-picks-item" id="tabPicks2026" role="menuitem" onclick="closePicksDrop();switchTab('picks2026');closeMobileMenu()">Picks 2026</button>
-        </div>
-      </div>
-
-      <!-- Más (desplegable) -->
-      <div class="tab-more-wrap" id="tabMoreWrap">
-        <button class="nav-link" id="tabMore" type="button" onclick="toggleMoreDrop(event)" aria-haspopup="true" aria-expanded="false">
-          Más <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
-        </button>
-        <div class="tab-more-drop" id="tabMoreDrop" role="menu">
-          <button class="tab-more-item" id="tabChecklist" role="menuitem" onclick="closeMoreDrop();switchTab('checklist');closeMobileMenu()">✅ Checklist</button>
-          <button class="tab-more-item" id="tabListas" role="menuitem" onclick="closeMoreDrop();switchTab('listas');closeMobileMenu()">📋 Listas GL</button>
-          <button class="tab-more-item" id="tabRuleta" role="menuitem" onclick="closeMoreDrop();switchTab('ruleta');closeMobileMenu()">🎡 Ruleta GL</button>
-          <button class="tab-more-item" id="tabAnime" role="menuitem" onclick="closeMoreDrop();switchTab('anime');closeMobileMenu()">Anime</button>
-          <button class="tab-more-item" id="tabRealities" role="menuitem" onclick="closeMoreDrop();switchTab('realities');closeMobileMenu()">Realities</button>
-          <button class="tab-more-item" id="tabDocumentales" role="menuitem" onclick="closeMoreDrop();switchTab('documentales');closeMobileMenu()">Documentales</button>
-          <button class="tab-more-item" id="tabBooks" role="menuitem" onclick="closeMoreDrop();switchTab('books');closeMobileMenu()">Libros</button>
-          <button class="tab-more-item" id="tabActresses" role="menuitem" onclick="closeMoreDrop();switchTab('actresses');closeMobileMenu()">Actrices</button>
-          <button class="tab-more-item" id="tabProductoras" role="menuitem" onclick="closeMoreDrop();switchTab('productoras');closeMobileMenu()">Productoras</button>
+          <div class="nav-picks-sep"></div>
+          <button class="nav-picks-item" id="tabChecklist" role="menuitem" onclick="closePicksDrop();switchTab('checklist');closeMobileMenu()">✅ Checklist</button>
+          <button class="nav-picks-item" id="tabListas" role="menuitem" onclick="closePicksDrop();switchTab('listas');closeMobileMenu()">📋 Listas GL</button>
+          <button class="nav-picks-item" id="tabRuleta" role="menuitem" onclick="closePicksDrop();switchTab('ruleta');closeMobileMenu()">🎡 Ruleta GL</button>
         </div>
       </div>
     </div>
@@ -3586,7 +3611,7 @@ function filtrarTropos(tropos,dinamica){
   return tropos.filter(t=>!(TROPO_CUBIERTO_POR_DINAMICA[t]&&dinamica.includes(TROPO_CUBIERTO_POR_DINAMICA[t])));
 }
 
-let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[],checklist:{thai:{titulo:'',subtitulo:'',items:[]},china:{titulo:'',subtitulo:'',items:[]},japan:{titulo:'',subtitulo:'',items:[]}}};
+let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[],checklist:{thai:{titulo:'',subtitulo:'',items:[]},china:{titulo:'',subtitulo:'',items:[]},japan:{titulo:'',subtitulo:'',items:[]},korea:{titulo:'',subtitulo:'',items:[]}}};
 
 // ── LOGOS DE PLATAFORMAS ──────────────────────────────────────────
 // Logos predefinidos (favicons oficiales vía Google S2)
@@ -3908,19 +3933,24 @@ function genEps(s){
 const CHK_COUNTRIES = {
   thai:  { flag:'🇹🇭', label:'GL Thai',  storageKey:'tsThaiChecklistProgress',  filePart:'thai',  defaultTitulo:'GL Thai ~ Checklist' },
   china: { flag:'🇨🇳', label:'GL China', storageKey:'tsChinaChecklistProgress', filePart:'china', defaultTitulo:'GL China ~ Checklist' },
-  japan: { flag:'🇯🇵', label:'GL Japón', storageKey:'tsJapanChecklistProgress', filePart:'japan', defaultTitulo:'GL Japón ~ Checklist' }
+  japan: { flag:'🇯🇵', label:'GL Japón', storageKey:'tsJapanChecklistProgress', filePart:'japan', defaultTitulo:'GL Japón ~ Checklist' },
+  korea: { flag:'🇰🇷', label:'GL Corea', storageKey:'tsKoreaChecklistProgress', filePart:'korea', defaultTitulo:'GL Corea ~ Checklist' }
 };
+const CHK_TYPE_LABELS = { serie:'Serie', pelicula:'Película', novela:'Novela', anime:'Anime', webserie:'Web serie' };
+let chkActiveCountry = 'thai';
+let chkState = { thai:{activeType:'todos',q:''}, china:{activeType:'todos',q:''}, japan:{activeType:'todos',q:''}, korea:{activeType:'todos',q:''} };
+let chkChecked = { thai:null, china:null, japan:null, korea:null };
 function _chkDefaultList(country){ return { titulo: CHK_COUNTRIES[country].defaultTitulo, subtitulo:'Marca las que ya has visto o leído', items: [] }; }
 // Migra un checklist con el formato antiguo (plano, sin países) al nuevo formato por país
 function normalizeChecklist(raw){
-  if(raw && (raw.thai||raw.china||raw.japan)){
-    return { thai: raw.thai||_chkDefaultList('thai'), china: raw.china||_chkDefaultList('china'), japan: raw.japan||_chkDefaultList('japan') };
+  if(raw && (raw.thai||raw.china||raw.japan||raw.korea)){
+    return { thai: raw.thai||_chkDefaultList('thai'), china: raw.china||_chkDefaultList('china'), japan: raw.japan||_chkDefaultList('japan'), korea: raw.korea||_chkDefaultList('korea') };
   }
   if(raw && Array.isArray(raw.items)){
     // Formato antiguo: un único objeto plano → se asume que era la checklist de Thai
-    return { thai: raw, china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+    return { thai: raw, china:_chkDefaultList('china'), japan:_chkDefaultList('japan'), korea:_chkDefaultList('korea') };
   }
-  return { thai:_chkDefaultList('thai'), china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+  return { thai:_chkDefaultList('thai'), china:_chkDefaultList('china'), japan:_chkDefaultList('japan'), korea:_chkDefaultList('korea') };
 }
 
 async function loadData(){
@@ -7186,8 +7216,8 @@ function renderPicks2026(){
 function switchTab(tab, fromPopstate=false){
   state.tab=tab;
   saveSession();
-  const moreTabs=['books','actresses','anime','realities','documentales','productoras','listas','ruleta','checklist'];
-  const picksTabs=['top10','picks2026'];
+  const exploreTabs=['list','movies','upcoming','books','actresses','anime','realities','documentales','productoras'];
+  const picksTabs=['top10','picks2026','listas','ruleta','checklist'];
   const allTabs=['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','productoras','canceladas','listas','ruleta','checklist'];
 
   allTabs.forEach(t=>{
@@ -7196,8 +7226,8 @@ function switchTab(tab, fromPopstate=false){
     const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
     if(!btn) return;
     const isActive=tab===t;
-    if(moreTabs.includes(t)){
-      btn.className='tab-more-item'+(isActive?' active':'');
+    if(exploreTabs.includes(t)){
+      btn.className='explore-item'+(isActive?' active':'');
     } else if(picksTabs.includes(t)){
       btn.className='nav-picks-item'+(isActive?' active':'');
     } else {
@@ -7205,9 +7235,9 @@ function switchTab(tab, fromPopstate=false){
     }
   });
 
-  // "Más" button highlight
-  const moreBtn=document.getElementById('tabMore');
-  if(moreBtn) moreBtn.className='nav-link'+(moreTabs.includes(tab)?' active':'');
+  // "Explorar" button highlight
+  const exploreBtn=document.getElementById('tabExplore');
+  if(exploreBtn) exploreBtn.className='nav-link'+(exploreTabs.includes(tab)?' active':'');
 
   // "Mis picks" button highlight
   const picksBtn=document.getElementById('tabPicksGroup');
@@ -8063,19 +8093,19 @@ window.addEventListener('popstate', function(e){
   closeMobileMenu();
 });
 
-function toggleMoreDrop(e){
+function toggleExploreDrop(e){
   e.stopPropagation();
-  const drop=document.getElementById('tabMoreDrop');
-  const btn=document.getElementById('tabMore');
+  const drop=document.getElementById('navExploreDrop');
+  const btn=document.getElementById('tabExplore');
   const isOpen=drop.classList.contains('open');
   drop.classList.toggle('open',!isOpen);
   if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
   // close picks
   document.getElementById('navPicksDrop')?.classList.remove('open');
 }
-function closeMoreDrop(){
-  document.getElementById('tabMoreDrop')?.classList.remove('open');
-  document.getElementById('tabMore')?.setAttribute('aria-expanded','false');
+function closeExploreDrop(){
+  document.getElementById('navExploreDrop')?.classList.remove('open');
+  document.getElementById('tabExplore')?.setAttribute('aria-expanded','false');
 }
 function togglePicksDrop(e){
   e.stopPropagation();
@@ -8084,8 +8114,8 @@ function togglePicksDrop(e){
   const isOpen=drop.classList.contains('open');
   drop.classList.toggle('open',!isOpen);
   if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
-  // close más
-  document.getElementById('tabMoreDrop')?.classList.remove('open');
+  // close explorar
+  document.getElementById('navExploreDrop')?.classList.remove('open');
 }
 function closePicksDrop(){
   document.getElementById('navPicksDrop')?.classList.remove('open');
@@ -8111,7 +8141,7 @@ function toggleNavMobile(){
   }
 }
 document.addEventListener('click',e=>{
-  if(!document.getElementById('tabMoreWrap')?.contains(e.target)) closeMoreDrop();
+  if(!document.getElementById('navExploreWrap')?.contains(e.target)) closeExploreDrop();
   if(!document.getElementById('navPicksWrap')?.contains(e.target)) closePicksDrop();
   if(!document.getElementById('mainNavbar')?.contains(e.target)) document.getElementById('navbarLinks')?.classList.remove('open');
 });
@@ -8302,6 +8332,13 @@ document.addEventListener('keydown',e=>{
     renderStats();
     renderRecentlyAdded();
     loadSession();
+    // Si la URL trae ?tab=xxx (p.ej. un enlace compartido), tiene prioridad sobre
+    // la pestaña guardada en sessionStorage — si no, un enlace directo a una pestaña
+    // concreta se ignoraba en la primera carga y solo funcionaba tras refrescar
+    // varias veces (cuando ya había quedado esa pestaña guardada en la sesión).
+    const CHK_VALID_TABS=['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','canceladas','productoras','listas','ruleta','checklist'];
+    const urlTab=new URLSearchParams(location.search).get('tab');
+    if(urlTab && CHK_VALID_TABS.includes(urlTab)) state.tab=urlTab;
     const savedTab=state.tab||'cal';
     // Show the saved tab's view, hide others
     ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','canceladas','productoras','listas','ruleta','checklist'].forEach(t=>{
@@ -8400,13 +8437,29 @@ const INFO_CONTENT = {
       <p style="font-size:13.5px;color:var(--muted);line-height:1.75;margin-bottom:1rem">
         Nuestro objetivo es que ninguna historia quede sin ser descubierta. Por eso recopilamos, organizamos y compartimos todo lo que encontramos — desde producciones asiáticas hasta series occidentales, pasando por cortos, documentales y animación.
       </p>
-      <p style="font-size:13.5px;color:var(--muted);line-height:1.75;margin-bottom:1.25rem">
+      <p style="font-size:13.5px;color:var(--muted);line-height:1.75;margin-bottom:1rem">
         Este proyecto lo mantenemos con mucho cariño desde nuestro tiempo libre. Si encuentras algo desactualizado o quieres sugerir un título, puedes escribirnos por X — siempre estamos dispuestas a escuchar.
+      </p>
+      <p style="font-size:13.5px;color:var(--muted);line-height:1.75;margin-bottom:1.25rem">
+        TINTA Sapphic es un proyecto de fans, sin ánimo de lucro: no vendemos nada, no hay publicidad ni suscripciones, y no se recauda ningún dinero por su uso — es totalmente gratuita. La información de series, películas, fechas de estreno y sinopsis se recopila de fuentes públicas como <strong style="color:var(--text)">MyDramaList</strong>, <strong style="color:var(--text)">IMDb</strong> y <strong style="color:var(--text)">TMDB</strong>, entre otras, solo con fines informativos para la comunidad.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1.25rem">
+        <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);width:100%">Fuentes de datos e imágenes</span>
+        <a href="https://www.themoviedb.org/" target="_blank" rel="noopener" title="The Movie Database (TMDB)" style="display:inline-flex;align-items:center;height:26px">
+          <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB" style="height:20px" onerror="this.outerHTML='<span style=&quot;font-size:12.5px;font-weight:700;color:var(--accent)&quot;>TMDB</span>'">
+        </a>
+        <a href="https://www.imdb.com/" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none;padding:4px 10px;border-radius:6px;background:var(--accent-soft)">IMDb ↗</a>
+        <a href="https://mydramalist.com/" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none;padding:4px 10px;border-radius:6px;background:var(--accent-soft)">MyDramaList ↗</a>
+      </div>
+      <p style="font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:1.25rem;opacity:.85">
+        Este sitio utiliza datos e imágenes de TMDB pero no está respaldado ni certificado por TMDB. Todas las marcas, logos e imágenes pertenecen a sus respectivos propietarios.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem">
         <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2);font-weight:600">✨ Hecho con amor</span>
         <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,.2);font-weight:600">🌍 Contenido global GL</span>
         <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.2);font-weight:600">📅 Actualización continua</span>
+        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--gold-soft);color:var(--gold);border:1px solid rgba(212,168,68,.2);font-weight:600">💌 100% gratuita</span>
+        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--surface3);color:var(--muted);border:1px solid var(--border2);font-weight:600">🎗️ Sin ánimo de lucro</span>
       </div>
     `
   },
@@ -8448,6 +8501,8 @@ const INFO_CONTENT = {
       <div style="display:flex;flex-direction:column;gap:14px">
         ${[
           ['🎬','Contenido informativo','La información de series, películas, fechas y plataformas se ofrece solo con fines informativos. Hacemos todo lo posible por mantenerla actualizada, pero no garantizamos su exactitud en todo momento.'],
+          ['📚','Fuentes de datos','Los datos, sinopsis y fechas de estreno se recopilan de fuentes públicas como <a href="https://mydramalist.com/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none">MyDramaList</a>, <a href="https://www.imdb.com/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none">IMDb</a> y <a href="https://www.themoviedb.org/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none">TMDB</a>, entre otras. Los derechos de esa información pertenecen a sus respectivos propietarios. Este producto usa datos de TMDB pero no está respaldado ni certificado por TMDB.'],
+          ['🎗️','Sin ánimo de lucro','TINTA Sapphic es un proyecto de fans totalmente gratuito. No hay publicidad, suscripciones ni ningún tipo de recaudación económica por su uso.'],
           ['🚫','Sin uso comercial','Queda prohibido reproducir, vender o utilizar el contenido de esta web con fines comerciales sin autorización expresa.'],
           ['🔗','Enlaces de terceros','Los enlaces a plataformas de streaming son externos. No nos hacemos responsables del contenido, disponibilidad o políticas de dichas plataformas.'],
           ['🌸','Comunidad respetuosa','Este es un espacio seguro para la comunidad GL. No se tolera ningún tipo de discriminación, odio o contenido inapropiado en ninguna de nuestras redes.'],
@@ -9182,10 +9237,6 @@ function buildSimilarHtml(item, type){
 // ══════════════════════════════════════════════════════════════════════════════
 // CHECKLIST (Thai / China / Japón)
 // ══════════════════════════════════════════════════════════════════════════════
-const CHK_TYPE_LABELS = { serie:'Serie', pelicula:'Película', novela:'Novela', anime:'Anime', webserie:'Web serie' };
-let chkActiveCountry = 'thai';
-let chkState = { thai:{activeType:'todos',q:''}, china:{activeType:'todos',q:''}, japan:{activeType:'todos',q:''} };
-let chkChecked = { thai:null, china:null, japan:null };
 
 function _chkLoadChecked(country){
   if(chkChecked[country]) return chkChecked[country];
@@ -9327,6 +9378,40 @@ function _chkLoadExportLibs(){
 
 const CHK_YEAR_COLORS=['#e0729a','#8b72be','#4aada0','#d4a844','#e08a4a','#5d8fc9','#c9648f','#6fbfa8'];
 
+// Temas visuales del póster (imagen/PDF) por país — cada uno con su propia paleta,
+// para que la checklist descargada de Thai/China/Japón/Corea no se vea igual.
+const CHK_POSTER_THEMES = {
+  thai:  {
+    bg:'radial-gradient(circle at 15% 0%,#3a1a3a 0%,#1c0f22 55%,#150b1a 100%)',
+    accent:'#e0729a', accentSoft:'rgba(224,114,154,0.18)',
+    brand:'#f0a8c4', subtitle:'#e3b9cf', progressCount:'#f7c7dd',
+    progress:'linear-gradient(90deg,#c94f7c,#f2a8c8)',
+    yearColors:['#e0729a','#8b72be','#4aada0','#d4a844','#e08a4a','#5d8fc9','#c9648f','#6fbfa8']
+  },
+  china: {
+    bg:'radial-gradient(circle at 15% 0%,#4a1616 0%,#230a0a 55%,#180707 100%)',
+    accent:'#e2554f', accentSoft:'rgba(226,85,79,0.20)',
+    brand:'#f0c46a', subtitle:'#e6bba6', progressCount:'#f7d98c',
+    progress:'linear-gradient(90deg,#c9302a,#e8b34a)',
+    yearColors:['#e2554f','#e8b34a','#c9648f','#b8860b','#e08a4a','#a83232','#d4a844','#8b3a3a']
+  },
+  japan: {
+    bg:'radial-gradient(circle at 15% 0%,#1a2340 0%,#0e1226 55%,#0a0d1c 100%)',
+    accent:'#e893b5', accentSoft:'rgba(232,147,181,0.18)',
+    brand:'#c9a6e8', subtitle:'#b7c3e6', progressCount:'#f2c9dc',
+    progress:'linear-gradient(90deg,#7fb0d9,#e893b5)',
+    yearColors:['#e893b5','#7fb0d9','#c9a6e8','#e0729a','#4aada0','#d4a844','#8b72be','#5d8fc9']
+  },
+  korea: {
+    bg:'radial-gradient(circle at 15% 0%,#2a1f45 0%,#160f2b 55%,#100a1f 100%)',
+    accent:'#8b9ff2', accentSoft:'rgba(139,159,242,0.20)',
+    brand:'#a6b8f5', subtitle:'#c3c9ec', progressCount:'#c9d2f7',
+    progress:'linear-gradient(90deg,#8b9ff2,#f2b8d4)',
+    yearColors:['#8b9ff2','#f2b8d4','#6fbfa8','#c9a6e8','#e0a34a','#5d8fc9','#e08a4a','#4aada0']
+  }
+};
+function _chkPosterTheme(country){ return CHK_POSTER_THEMES[country]||CHK_POSTER_THEMES.thai; }
+
 // Normaliza un título para poder compararlo con los nombres del catálogo (series/películas)
 function _chkNormCatalogTitle(str){
   return String(str||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
@@ -9375,8 +9460,9 @@ function _chkBuildPosterHtml(data, items){
   const checkedSet=_chkLoadChecked(chkActiveCountry);
   const done=items.filter(i=>checkedSet.has(i.id)).length;
 
+  const yearColors=_chkPosterTheme(chkActiveCountry).yearColors||CHK_YEAR_COLORS;
   const colsHtml=years.map((y,idx)=>{
-    const color=CHK_YEAR_COLORS[idx%CHK_YEAR_COLORS.length];
+    const color=yearColors[idx%yearColors.length];
     const itemsHtml=byYear[y].map(i=>{
       const isChecked=checkedSet.has(i.id);
       // La etiqueta de tipo solo se muestra si NO es una serie (para no repetir "SERIE" en cada fila)
@@ -9424,9 +9510,17 @@ async function chkExportAs(kind){
   let posterEl=null;
   try{
     await _chkLoadExportLibs();
+    const theme=_chkPosterTheme(country);
     posterEl=document.createElement('div');
     posterEl.className='chk-poster-wrap';
     posterEl.style.position='relative';
+    posterEl.style.setProperty('--chk-p-bg', theme.bg);
+    posterEl.style.setProperty('--chk-p-accent', theme.accent);
+    posterEl.style.setProperty('--chk-p-accent-soft', theme.accentSoft);
+    posterEl.style.setProperty('--chk-p-brand', theme.brand);
+    posterEl.style.setProperty('--chk-p-subtitle', theme.subtitle);
+    posterEl.style.setProperty('--chk-p-progress-count', theme.progressCount);
+    posterEl.style.setProperty('--chk-p-progress', theme.progress);
     posterEl.innerHTML=_chkBuildPosterHtml(data, items);
     document.body.appendChild(posterEl);
     const canvas=await html2canvas(posterEl,{backgroundColor:null,scale:2,useCORS:true});

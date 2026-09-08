@@ -794,6 +794,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
       <button type="button" class="chk-country-tab active" data-country="thai" onclick="switchChkCountry('thai',this)">🇹🇭 GL Thai</button>
       <button type="button" class="chk-country-tab" data-country="china" onclick="switchChkCountry('china',this)">🇨🇳 GL China</button>
       <button type="button" class="chk-country-tab" data-country="japan" onclick="switchChkCountry('japan',this)">🇯🇵 GL Japón</button>
+      <button type="button" class="chk-country-tab" data-country="korea" onclick="switchChkCountry('korea',this)">🇰🇷 GL Corea</button>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem">
@@ -1241,24 +1242,25 @@ let productoras = [];  // Productoras
 let listas = [];  // Listas temáticas curadas
 let platformLogos = {};  // Logos personalizados de plataformas
 const CHK_COUNTRIES = {
-  thai:  { flag:'🇹🇭', label:'GL Thai',  catalogCountry:'Tailandia', defaultTitulo:'GL Thai ~ Checklist' },
-  china: { flag:'🇨🇳', label:'GL China', catalogCountry:'China',     defaultTitulo:'GL China ~ Checklist' },
-  japan: { flag:'🇯🇵', label:'GL Japón', catalogCountry:'Japón',     defaultTitulo:'GL Japón ~ Checklist' }
+  thai:  { flag:'🇹🇭', label:'GL Thai',  catalogCountry:'Tailandia',    defaultTitulo:'GL Thai ~ Checklist' },
+  china: { flag:'🇨🇳', label:'GL China', catalogCountry:'China',        defaultTitulo:'GL China ~ Checklist' },
+  japan: { flag:'🇯🇵', label:'GL Japón', catalogCountry:'Japón',        defaultTitulo:'GL Japón ~ Checklist' },
+  korea: { flag:'🇰🇷', label:'GL Corea', catalogCountry:'Corea del Sur', defaultTitulo:'GL Corea ~ Checklist' }
 };
 function _chkDefaultList(country){ return { titulo: CHK_COUNTRIES[country].defaultTitulo, subtitulo:'Marca las que ya has visto o leído', items: [] }; }
-// Checklist con 3 secciones independientes por país
-let checklist = { thai:_chkDefaultList('thai'), china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+// Checklist con 4 secciones independientes por país
+let checklist = { thai:_chkDefaultList('thai'), china:_chkDefaultList('china'), japan:_chkDefaultList('japan'), korea:_chkDefaultList('korea') };
 let chkCountry = 'thai';
 // Migra un checklist con el formato antiguo (plano, sin países) al nuevo formato por país
 function normalizeChecklist(raw){
-  if(raw && (raw.thai||raw.china||raw.japan)){
-    return { thai: raw.thai||_chkDefaultList('thai'), china: raw.china||_chkDefaultList('china'), japan: raw.japan||_chkDefaultList('japan') };
+  if(raw && (raw.thai||raw.china||raw.japan||raw.korea)){
+    return { thai: raw.thai||_chkDefaultList('thai'), china: raw.china||_chkDefaultList('china'), japan: raw.japan||_chkDefaultList('japan'), korea: raw.korea||_chkDefaultList('korea') };
   }
   if(raw && Array.isArray(raw.items)){
     // Formato antiguo: un único objeto plano → se asume que era la checklist de Thai
-    return { thai: raw, china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+    return { thai: raw, china:_chkDefaultList('china'), japan:_chkDefaultList('japan'), korea:_chkDefaultList('korea') };
   }
-  return { thai:_chkDefaultList('thai'), china:_chkDefaultList('china'), japan:_chkDefaultList('japan') };
+  return { thai:_chkDefaultList('thai'), china:_chkDefaultList('china'), japan:_chkDefaultList('japan'), korea:_chkDefaultList('korea') };
 }
 let currentStab = 'active';
 
