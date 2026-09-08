@@ -1852,10 +1852,12 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 .detail-hero{display:flex;gap:22px;align-items:flex-start;margin-bottom:4px}
 .detail-poster{width:170px;flex:0 0 170px;aspect-ratio:2/3;object-fit:cover;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,.22);display:block}
 .detail-poster-ph{width:170px;flex:0 0 170px;aspect-ratio:2/3;border-radius:12px;background:linear-gradient(135deg,var(--accent-soft),var(--lavender-soft));display:flex;align-items:center;justify-content:center;font-size:40px}
+.detail-poster-col{flex:0 0 170px;width:170px}
 .detail-info{flex:1;min-width:0;padding-top:2px}
 @media(max-width:600px){
   .detail-hero{flex-direction:column;align-items:center;text-align:center}
   .detail-poster,.detail-poster-ph{width:150px;flex:0 0 auto}
+  .detail-poster-col{width:150px;flex:0 0 auto}
 }
 /* Barra de sección coloreada tipo "DETAILS / WHERE TO WATCH / MAIN CAST" */
 .section-bar{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:8px 14px;border-radius:8px;margin:20px 0 10px}
@@ -2075,24 +2077,24 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 .modal-watch-block{
   background:linear-gradient(135deg, rgba(201,79,124,0.06) 0%, rgba(139,114,190,0.06) 100%);
   border:1.5px solid rgba(201,79,124,0.22);
-  border-radius:14px;
-  padding:14px 16px;
-  margin-bottom:14px;
+  border-radius:12px;
+  padding:9px 10px;
+  margin-bottom:0;
 }
 html[data-theme="dark"] .modal-watch-block{
   background:linear-gradient(135deg, rgba(224,114,154,0.08) 0%, rgba(169,141,224,0.08) 100%);
   border-color:rgba(224,114,154,0.20);
 }
 .modal-watch-label{
-  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
-  color:var(--accent);margin-bottom:10px;
-  display:flex;align-items:center;gap:7px;
+  font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--accent);margin-bottom:7px;
+  display:flex;align-items:center;gap:6px;
 }
 .modal-watch-label::before{
   content:'▶';display:inline-block;
-  width:18px;height:18px;border-radius:50%;
+  width:15px;height:15px;border-radius:50%;
   background:var(--accent);color:#fff;
-  font-size:7px;
+  font-size:6px;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
 }
@@ -2101,34 +2103,34 @@ html[data-theme="dark"] .modal-watch-block{
   color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px;
 }
 .watch-links-label::before{content:'';display:block;width:14px;height:1px;background:var(--muted);opacity:.5}
-.watch-links{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:0;align-items:center}
+.watch-links{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:0;align-items:center}
 /* Logo-style watch link */
 .watch-link{
   display:inline-flex;align-items:center;justify-content:center;
   text-decoration:none;
   background:var(--surface);
-  border-radius:12px;
+  border-radius:9px;
   border:1.5px solid var(--border2);
   transition:all .2s cubic-bezier(.25,.8,.25,1);
-  box-shadow:0 2px 8px rgba(0,0,0,0.07);
+  box-shadow:0 2px 6px rgba(0,0,0,0.06);
   overflow:hidden;
-  width:56px;height:56px;
+  width:38px;height:38px;
   flex-shrink:0;
   position:relative;
 }
 .watch-link:hover{
   border-color:var(--accent2);
-  transform:translateY(-3px);
-  box-shadow:0 8px 22px rgba(201,79,124,0.22);
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(201,79,124,0.22);
 }
 /* Logo image inside */
 .watch-link-logo{
-  width:36px;height:36px;object-fit:contain;display:block;border-radius:6px;
+  width:24px;height:24px;object-fit:contain;display:block;border-radius:5px;
 }
 /* Text fallback (no logo) */
 .watch-link-text{
-  font-size:10px;font-weight:700;color:var(--accent);
-  text-align:center;line-height:1.2;padding:6px 4px;
+  font-size:8px;font-weight:700;color:var(--accent);
+  text-align:center;line-height:1.15;padding:4px 3px;
   word-break:break-word;
 }
 /* Tooltip on hover */
@@ -4472,12 +4474,12 @@ function buildAwardsHtml(item){
 function sourceTypeBadge(s){
   if(!s.basedOnBook) return '';
   const types={
-    'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa',
-    'manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica',
-    'webtoon':'📱 Webtoon','libro':'📕 Libro',
+    'novela':'novela','webnovel':'webnovel','manhwa':'manhwa',
+    'manga':'manga','manhua':'manhua','novela-grafica':'novela gráfica',
+    'webtoon':'webtoon','libro':'libro',
   };
-  const icon=s.sourceType&&types[s.sourceType]?types[s.sourceType]:'📖 Libro';
-  return `<span class="badge badge-book">${icon}</span>`;
+  const label=s.sourceType&&types[s.sourceType]?types[s.sourceType]:'libro';
+  return `<span class="badge badge-book">📖 Basado en ${label}</span>`;
 }
 function moodPillsHtml(moods,max=3){
   if(!moods||!moods.length) return '';
@@ -5534,29 +5536,36 @@ function openSeries(si){
   if(isFinished&&lastEpDate) detailsLines+=`<div class="details-line"><span class="details-line-key">Fecha final</span><span class="details-line-val">${fmtDate(lastEpDate)}</span></div>`;
   detailsLines+=`<div class="details-line"><span class="details-line-key">Episodios</span><span class="details-line-val">${totalEps}${seasons.length>1?` (${seasons.length}T)`:''}</span></div>`;
   if(durInfo.epDuration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span></div>`;
+  if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
+  const _ft=filtrarTropos(s.tropos||[],s.dinamica||[]);
+  if(_ft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_ft.map(t=>`<span onclick="closeModal();seriesFilters.tropo='${t.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
+  if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamica='${d.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
+  if(s.basedOnBook){
+    const _btypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
+    const _blabel=s.sourceType&&_btypes[s.sourceType]?_btypes[s.sourceType]:'📖 Libro';
+    detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
+  }
 
   let html=`<div class="modal-body">
   <div class="detail-hero">
-    ${posterEl.replace('modal-poster-full','detail-poster').replace('modal-poster-full-ph','detail-poster-ph')}
+    <div class="detail-poster-col">
+      ${posterEl.replace('modal-poster-full','detail-poster').replace('modal-poster-full-ph','detail-poster-ph')}
+      ${(nextBadgeHtml||progressBlock)?`<div style="margin-top:10px">${nextBadgeHtml}${progressBlock}</div>`:''}
+      ${watchLinksHtml?`<div style="margin-top:8px">${watchLinksHtml}</div>`:''}
+    </div>
     <div class="detail-info">
-      <div class="modal-badges">${sourceTypeBadge(s)}${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.seriesType==='webserie'?'<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">Web serie</span>':''}</div>
+      <div class="modal-badges">${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.seriesType==='webserie'?'<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">Web serie</span>':''}</div>
       <div class="modal-title">${s.name}</div>
       ${s.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${s.nameEn}</div>`:''}
-      ${s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px">${s.genres.map(g=>`<span style="font-size:11.5px;font-weight:700;padding:3px 11px;border-radius:20px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2)">${g}</span>`).join('')}</div>`:''}
-      ${s.moods&&s.moods.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 4px">${s.moods.map(m=>`<span style="font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.25)">${m}</span>`).join('')}</div>`:''}
-      ${(()=>{const ft=filtrarTropos(s.tropos||[],s.dinamica||[]);return ft.length?`<div style="display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px;align-items:center"><span style="font-size:9.5px;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-right:4px;flex-shrink:0">Tropos</span>${ft.map(t=>`<span onclick="closeModal();seriesFilters.tropo='${t.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:6px;background:var(--surface2);color:var(--text);border:1px solid var(--border2);cursor:pointer;transition:all .15s" onmouseover="this.style.background='var(--accent-soft)';this.style.color='var(--accent)'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text)'" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join('')}</div>`:''})()}
-      ${s.dinamica&&s.dinamica.length?`<div style="display:flex;flex-wrap:wrap;gap:5px;margin:4px 0 10px;align-items:center"><span style="font-size:9.5px;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-right:4px;flex-shrink:0">Dinámica</span>${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamica='${d.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:6px;background:var(--surface2);color:var(--text);border:1px solid var(--border2);cursor:pointer;transition:all .15s" onmouseover="this.style.background='var(--teal-soft)';this.style.color='var(--teal)'" onmouseout="this.style.background='var(--surface2)';this.style.color='var(--text)'" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join('')}</div>`:''}
-      ${nextBadgeHtml}
-      ${progressBlock}
+      ${s.moods&&s.moods.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 4px">${s.moods.map(m=>`<span style="font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.25)">${m}</span>`).join('')}</div>`:''}
+      <div class="section-bar" style="margin-top:10px">ℹ️ Ficha técnica</div>
+      <div class="details-box">${detailsLines}</div>
     </div>
   </div>
   ${s.synopsis?`<div class="synopsis" style="margin-top:16px">${s.synopsis}</div>`:''}
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${buildAwardsHtml(s)}
   ${bookHtml}
-  ${watchLinksHtml?`<div class="section-bar">📺 Dónde ver</div>${watchLinksHtml}`:''}
-  <div class="section-bar">ℹ️ Ficha técnica</div>
-  <div class="details-box">${detailsLines}</div>
   <div class="divider"></div>
   <div class="modal-tabs">
     <button class="modal-tab active" id="stab_eps" onclick="switchSeriesModalTab('eps')">📋 Episodios</button>
