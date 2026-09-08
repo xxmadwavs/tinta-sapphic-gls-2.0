@@ -24237,7 +24237,7 @@
         },
         {
           "label": "Temporada 2",
-          "startDate": "2026-08-21",
+          "startDate": "2025-08-21",
           "totalEpisodes": 11,
           "emissionDays": [
             4
@@ -24260,7 +24260,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-08T19:33:44.625Z"
+      "updatedAt": "2026-09-08T20:03:37.932Z"
     },
     {
       "id": "1788896181091",
@@ -38867,5 +38867,5 @@
       ]
     }
   },
-  "exportedAt": "2026-09-08T19:36:22.618Z"
+  "exportedAt": "2026-09-08T20:04:11.396Z"
 }
