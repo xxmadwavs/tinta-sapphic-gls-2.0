@@ -1412,6 +1412,40 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 .subtab.active .subtab-count{background:var(--accent);color:#fff}
 @media(max-width:480px){.subtabs{width:100%}.subtab{font-size:12px;padding:5px 10px}}
 
+/* Píldoras de estado rápido (arriba, independientes del lateral) */
+.status-pillbar{display:flex;gap:6px;background:var(--surface);border:1.5px solid var(--border2);border-radius:24px;padding:4px;width:fit-content;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-bottom:1.25rem}
+.status-pillbar::-webkit-scrollbar{display:none}
+.status-pill{padding:7px 18px;border-radius:20px;cursor:pointer;font-size:12.5px;font-weight:700;color:var(--muted);background:transparent;border:none;font-family:var(--font-body);white-space:nowrap;flex-shrink:0;transition:all .18s;display:flex;align-items:center;gap:6px}
+.status-pill:hover:not(.active){color:var(--text);background:var(--surface2)}
+.status-pill.active{background:var(--accent);color:#fff}
+.status-pill .subtab-count{font-size:10.5px;background:var(--border2);color:var(--muted);border-radius:20px;padding:1px 7px;font-weight:700}
+.status-pill.active .subtab-count{background:rgba(255,255,255,.3);color:#fff}
+@media(max-width:480px){.status-pillbar{width:100%}.status-pill{font-size:12px;padding:6px 12px}}
+
+/* Filtros: layout con barra lateral */
+.filters-layout{display:flex;gap:26px;align-items:flex-start}
+.filters-sidebar{width:230px;flex-shrink:0;position:sticky;top:14px;max-height:calc(100vh - 28px);overflow-y:auto;padding-right:6px}
+.filters-main{flex:1;min-width:0}
+.fside-group{margin-bottom:22px}
+.fside-title{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.fside-row{display:flex;align-items:center;gap:9px;padding:5px 0;cursor:pointer;font-size:13px;color:var(--text);user-select:none}
+.fside-row input[type=checkbox]{width:15px;height:15px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
+.fside-row .fside-label{flex:1;line-height:1.3}
+.fside-row .fside-count{font-size:11px;color:var(--muted);flex-shrink:0}
+.fside-row:hover .fside-label{color:var(--accent)}
+.fside-more{font-size:12px;color:var(--accent);cursor:pointer;font-weight:600;margin-top:2px;background:none;border:none;padding:4px 0;font-family:var(--font-body)}
+.fside-more:hover{text-decoration:underline}
+.fside-clear-all{font-size:12px;color:var(--muted);cursor:pointer;background:none;border:1.5px solid var(--border2);border-radius:20px;padding:7px 12px;font-family:var(--font-body);margin-bottom:18px;width:100%;text-align:center;transition:all .15s}
+.fside-clear-all:hover{color:var(--accent);border-color:var(--accent)}
+.fside-mobile-toggle{display:none;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--text);background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;padding:7px 14px;margin-bottom:1rem;cursor:pointer;font-family:var(--font-body)}
+@media(max-width:900px){
+  .filters-layout{flex-direction:column}
+  .filters-sidebar{display:none;width:100%;position:static;max-height:none;order:2;border-top:1.5px solid var(--border2);padding-top:16px;margin-top:8px}
+  .filters-sidebar.mob-open{display:block}
+  .filters-main{order:1}
+  .fside-mobile-toggle{display:flex}
+}
+
 /* Stats bar (kept as fallback hidden) */
 .stats-bar{display:none}
 
@@ -3521,6 +3555,16 @@ const DINAMICAS=[
   'Tímida × Extrovertida','Vampira × Humana','Veterana × Novata',
 ];
 
+// Foco sáfico: cuánto peso tiene la relación WLW en la trama
+const WLW_FOCUS=[
+  {value:'trama-principal',label:'Trama principal'},
+  {value:'trama-secundaria',label:'Trama secundaria'},
+  {value:'trasfondo',label:'Trasfondo'},
+  {value:'subtexto',label:'Subtexto'},
+  {value:'sin-etiquetar',label:'Sin etiquetar'},
+];
+function seriesWlwFocus(s){ return s.wlwFocus||'sin-etiquetar'; }
+
 // ═══ TRADUCCIONES AL INGLÉS (para mostrar entre paréntesis) ═══
 const TROPOS_EN={
   'Age Gap':'Age Gap',
@@ -4497,11 +4541,11 @@ function tropoPillsHtml(tropos,max=3,dinamica=[]){
   if(!tropos||!tropos.length) return '';
   const filtered=filtrarTropos(tropos,dinamica);
   if(!filtered.length) return '';
-  return `<div class="sc-tropos">${filtered.slice(0,max).map(t=>`<span class="sc-tropo-pill" onclick="seriesFilters.tropo='${t.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="cursor:pointer" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join('')}</div>`;
+  return `<div class="sc-tropos">${filtered.slice(0,max).map(t=>`<span class="sc-tropo-pill" onclick="seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join('')}</div>`;
 }
 function dinamicaPillsHtml(dinamica,max=3){
   if(!dinamica||!dinamica.length) return '';
-  return `<div class="sc-dinamicas">${dinamica.slice(0,max).map(d=>`<span class="sc-dinamica-pill" onclick="seriesFilters.dinamica='${d.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="cursor:pointer" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join('')}</div>`;
+  return `<div class="sc-dinamicas">${dinamica.slice(0,max).map(d=>`<span class="sc-dinamica-pill" onclick="seriesFilters.dinamicas=['${d.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join('')}</div>`;
 }
 function countryFlag(country){
   const parts=parseCountryParts(country);
@@ -4607,9 +4651,35 @@ function buildCountryPicker(id, onChange, availableCountries){
   return wrap;
 }
 
-let seriesSubtab='airing';
+let seriesSubtab='all';
 let seriesFinishedSubtab='all';
-let seriesFilters={q:'',countries:[],sort:'recent',book:'all',year:'',genre:'',type:'',region:'',tropo:'',dinamica:'',mood:'',status:''};
+let seriesFilters={q:'',countries:[],sort:'recent',book:'all',years:[],genres:[],types:[],region:'',tropos:[],dinamicas:[],moods:[],wlwFocus:[],networks:[]};
+let seriesFilterExpanded={};
+
+/** Alterna un valor dentro de un array de filtro (multi-select tipo checkbox). */
+function toggleSeriesFilterValue(key,value){
+  const arr=seriesFilters[key]||(seriesFilters[key]=[]);
+  const i=arr.indexOf(value);
+  if(i>=0) arr.splice(i,1); else arr.push(value);
+  resetSeriesPages();
+  renderListResults();
+}
+
+/** Construye un grupo de checkboxes con contador para el panel lateral de filtros.
+ *  filterKey = clave dentro de seriesFilters (debe ser un array). */
+function buildSideCheckGroup(filterKey,title,options){
+  if(!options.length) return '';
+  const selectedArr=seriesFilters[filterKey]||[];
+  const expanded=!!seriesFilterExpanded[filterKey];
+  const visible=expanded?options:options.slice(0,8);
+  const rows=visible.map(o=>`<label class="fside-row">
+      <input type="checkbox" ${selectedArr.includes(o.value)?'checked':''} onchange="toggleSeriesFilterValue('${filterKey}','${o.value.replace(/'/g,"\\'")}')">
+      <span class="fside-label">${o.label}</span>
+      <span class="fside-count">${o.count}</span>
+    </label>`).join('');
+  const moreBtn=options.length>8?`<button class="fside-more" onclick="seriesFilterExpanded['${filterKey}']=${!expanded};renderListResults()">${expanded?'Mostrar menos':`Ver todas (${options.length})`}</button>`:'';
+  return `<div class="fside-group"><div class="fside-title">${title}</div>${rows}${moreBtn}</div>`;
+}
 // Pagination state
 const PAGE_SIZE=20;
 const paginationState={series:{airing:1,notstarted:1,finished:1,finished_serie:1,finished_webserie:1},movies:1,upcoming:1};
@@ -4633,41 +4703,88 @@ function paginationHtml(current,total,onPageFn){
   return html;
 }
 
+/** Cuenta ocurrencias de un valor (o array de valores) devuelto por getter() para cada item. */
+function _countByGetter(arr,getter){
+  const map={};
+  arr.forEach(s=>{
+    const v=getter(s);
+    (Array.isArray(v)?v:[v]).forEach(x=>{ if(x===undefined||x===null||x==='') return; map[x]=(map[x]||0)+1; });
+  });
+  return map;
+}
+
+/** Construye el panel lateral de filtros (checkboxes con contador) a partir del set base "active". */
+function buildSeriesSidebarHtml(active){
+  const az=(a,b)=>a.label.localeCompare(b.label,'es');
+
+  const wlwMap=_countByGetter(active,s=>seriesWlwFocus(s));
+  const wlwOpts=WLW_FOCUS.map(o=>({value:o.value,label:o.label,count:wlwMap[o.value]||0})).filter(o=>o.count>0);
+
+  const genreMap=_countByGetter(active,s=>s.genres||[]);
+  const genreOpts=GENRES.map(g=>({value:g,label:g,count:genreMap[g]||0})).filter(o=>o.count>0).sort(az);
+
+  const tropoMap=_countByGetter(active,s=>s.tropos||[]);
+  const tropoOpts=TROPOS.map(t=>({value:t,label:tropoLabel(t),count:tropoMap[t]||0})).filter(o=>o.count>0).sort(az);
+
+  const dinamicaMap=_countByGetter(active,s=>s.dinamica||[]);
+  const dinamicaOpts=DINAMICAS.map(d=>({value:d,label:dinamicaLabel(d),count:dinamicaMap[d]||0})).filter(o=>o.count>0).sort(az);
+
+  const moodMap=_countByGetter(active,s=>s.moods||[]);
+  const moodOpts=Object.keys(moodMap).map(m=>({value:m,label:m,count:moodMap[m]})).sort(az);
+
+  const countryMap={};
+  active.forEach(s=>{ parseCountryParts(s.country||'').forEach(p=>{ if(p) countryMap[p]=(countryMap[p]||0)+1; }); });
+  const countryOpts=Object.keys(countryMap).map(c=>({value:c,label:`${countryFlag(c)} ${c}`,count:countryMap[c]})).sort(az);
+
+  const networkMap=_countByGetter(active,s=>s.network||'');
+  const networkOpts=Object.keys(networkMap).map(n=>({value:n,label:n,count:networkMap[n]})).sort(az);
+
+  const yearMap={};
+  active.forEach(s=>{
+    const seasons=getSeasons(s);
+    const yrs=new Set((seasons.length?seasons.map(t=>t.startDate?t.startDate.substring(0,4):''):[s.startDate?s.startDate.substring(0,4):'']).filter(Boolean));
+    yrs.forEach(y=>{yearMap[y]=(yearMap[y]||0)+1;});
+  });
+  const yearOpts=Object.keys(yearMap).sort((a,b)=>b.localeCompare(a)).map(y=>({value:y,label:y,count:yearMap[y]}));
+
+  const typeMap=_countByGetter(active,s=>s.seriesType||'serie');
+  const typeOpts=[{value:'serie',label:'Serie',count:typeMap.serie||0},{value:'webserie',label:'Web serie',count:typeMap.webserie||0}].filter(o=>o.count>0);
+
+  return `<button class="fside-clear-all" onclick="clearAllSeriesFilters()">Limpiar filtros</button>
+    ${buildSideCheckGroup('wlwFocus','Foco sáfico',wlwOpts)}
+    ${buildSideCheckGroup('genres','Género',genreOpts)}
+    ${buildSideCheckGroup('tropos','Tropo',tropoOpts)}
+    ${buildSideCheckGroup('dinamicas','Dinámica',dinamicaOpts)}
+    ${buildSideCheckGroup('moods','Mood',moodOpts)}
+    ${buildSideCheckGroup('countries','País',countryOpts)}
+    ${buildSideCheckGroup('networks','Cadena',networkOpts)}
+    ${buildSideCheckGroup('years','Año',yearOpts)}
+    ${buildSideCheckGroup('types','Tipo',typeOpts)}`;
+}
+
+function clearAllSeriesFilters(){
+  seriesFilters.countries=[];seriesFilters.book='all';seriesFilters.years=[];seriesFilters.genres=[];
+  seriesFilters.types=[];seriesFilters.tropos=[];seriesFilters.dinamicas=[];seriesFilters.moods=[];
+  seriesFilters.wlwFocus=[];seriesFilters.networks=[];
+  const bookSel=document.getElementById('seriesBookSel'); if(bookSel) bookSel.value='all';
+  resetSeriesPages();
+  renderListResults();
+}
+
 function renderListResults(){
   const resultsEl=document.getElementById('listResults');
   if(!resultsEl) return;
-  // Sync select values in case called from filter clear
   const sortSel=document.getElementById('seriesSortSel');
   const bookSel=document.getElementById('seriesBookSel');
-  const yearSel=document.getElementById('seriesYearSel');
-  const genreSel=document.getElementById('seriesGenreSel');
-  const clearBtn=document.getElementById('seriesClearBtn');
-  const typeSel=document.getElementById('seriesTypeSel');
-  const tropoSel=document.getElementById('seriesTropoSel');
-  const dinamicaSel=document.getElementById('seriesDinamicaSel');
-  const moodSel=document.getElementById('seriesMoodSel');
-  const statusSel=document.getElementById('seriesStatusSel');
   if(sortSel) sortSel.value=seriesFilters.sort;
   if(bookSel) bookSel.value=seriesFilters.book;
-  if(genreSel) genreSel.value=seriesFilters.genre;
-  if(typeSel) typeSel.value=seriesFilters.type||'';
-  if(tropoSel) tropoSel.value=seriesFilters.tropo||'';
-  if(dinamicaSel) dinamicaSel.value=seriesFilters.dinamica||'';
-  if(moodSel) moodSel.value=seriesFilters.mood||'';
-  if(statusSel) statusSel.value=seriesFilters.status||'';
-  if(clearBtn) clearBtn.style.display=(seriesFilters.countries&&seriesFilters.countries.length||seriesFilters.book!=='all'||seriesFilters.year||seriesFilters.genre||seriesFilters.type||seriesFilters.region||seriesFilters.tropo||seriesFilters.dinamica||seriesFilters.mood||seriesFilters.status)?'':'none';
-  // Refresh region pills active state
-  const regionPillsEl=document.getElementById('seriesRegionPills');
-  if(regionPillsEl){
-    regionPillsEl.querySelectorAll('.region-pill').forEach(btn=>{
-      const r=btn.getAttribute('onclick')||'';
-      const match=r.match(/region='([^']*)'/);
-      const pillRegion=match?match[1]:'';
-      btn.classList.toggle('active',pillRegion===seriesFilters.region);
-    });
-  }
 
   const active=state.series.filter(s=>!s.upcoming&&s.category!=='anime'&&s.category!=='reality');
+
+  // Panel lateral: se reconstruye en cada render para reflejar el estado actual de los checkboxes
+  const sidebarEl=document.getElementById('seriesFiltersSidebar');
+  if(sidebarEl) sidebarEl.innerHTML=buildSeriesSidebarHtml(active);
+
   const filtered=applySeriesFilters(active);
   const now=new Date();
 
@@ -4678,14 +4795,13 @@ function renderListResults(){
     const hasFuture=eps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
     return hasAired&&hasFuture;
   });
-  // Ordenar "en emisión" por día de la semana del próximo ep (lun=0 … dom=6)
   airing.sort((a,b)=>{
     const nextEp=s=>{const eps=genEps(s);return eps.find(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);};
     const dayOf=s=>{const ep=nextEp(s);if(!ep)return 7;return(new Date(ep.date+'T12:00:00').getDay()+6)%7;};
     return dayOf(a)-dayOf(b);
   });
 
-  // "Estreno Próximo": todos los episodios son futuros, ninguno emitido aún
+  // "Próximamente" (dentro de Series): todos los episodios son futuros, ninguno emitido aún
   const notStarted=filtered.filter(s=>{
     const eps=genEps(s);
     const hasAired=eps.some(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped);
@@ -4693,7 +4809,7 @@ function renderListResults(){
     return hasFuture&&!hasAired;
   });
 
-  // "Finalizadas": sin episodios futuros
+  // "Emitidas": sin episodios futuros
   const finished=filtered.filter(s=>{
     const eps=genEps(s);
     return !eps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
@@ -4701,66 +4817,34 @@ function renderListResults(){
   const finishedSeries=finished.filter(s=>s.seriesType!=='webserie');
   const finishedWebseries=finished.filter(s=>s.seriesType==='webserie');
 
-  // Auto-switch subtab if current subtab has no results
-  if(seriesSubtab==='airing'&&!airing.length){
-    if(notStarted.length) seriesSubtab='notstarted';
-    else if(finished.length) seriesSubtab='finished';
-  }
-  if(seriesSubtab==='notstarted'&&!notStarted.length){
-    if(airing.length) seriesSubtab='airing';
-    else if(finished.length) seriesSubtab='finished';
-  }
-  if(seriesSubtab==='finished'&&!finished.length){
-    if(airing.length) seriesSubtab='airing';
-    else if(notStarted.length) seriesSubtab='notstarted';
+  // "Canceladas"
+  const cancelled=filtered.filter(s=>s.cancelStatus);
+
+  // Auto-cambio de píldora si la actual se queda sin resultados
+  const hasBucket={all:filtered.length,airing:airing.length,notstarted:notStarted.length,finished:finished.length,cancelled:cancelled.length};
+  if(!hasBucket[seriesSubtab]){
+    seriesSubtab = filtered.length ? 'all' : seriesSubtab;
   }
 
   if(!filtered.length){
+    const pillbarEl=document.getElementById('seriesStatusPillbar');
+    if(pillbarEl) pillbarEl.innerHTML='';
     resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna serie con esos filtros.</div>';
     return;
   }
 
-  // When status filter is active → flat grid without subtabs
-  if(seriesFilters.status){
-    window.setSeriesPage_statusfiltered=p=>{paginationState.series._statusFiltered=p;saveSession();renderListResults();scrollToResults('listResults');};
-    if(!paginationState.series._statusFiltered) paginationState.series._statusFiltered=1;
-    const page=paginationState.series._statusFiltered;
-    const totalPages=Math.ceil(filtered.length/PAGE_SIZE);
-    const safePage=Math.min(page,totalPages);
-    paginationState.series._statusFiltered=safePage;
-    const slice=filtered.slice((safePage-1)*PAGE_SIZE,safePage*PAGE_SIZE);
-    const statusLabel={airing:'En emisión',notstarted:'Estreno próximo',finished:'Finalizadas'}[seriesFilters.status]||'';
-    let html2=`<div class="subtabs"><span class="subtab active" style="cursor:default">${statusLabel}<span class="subtab-count">${filtered.length}</span></span></div>`;
-    html2+=`<div class="books-count">Mostrando <strong>${(safePage-1)*PAGE_SIZE+1}–${Math.min(safePage*PAGE_SIZE,filtered.length)}</strong> de <strong>${filtered.length}</strong> serie${filtered.length!==1?'s':''}</div><div class="series-grid">`;
-    slice.forEach(s=>{ html2+=seriesCardHtml(s, state.series.indexOf(s)); });
-    html2+='</div>';
-    html2+=paginationHtml(safePage,totalPages,'setSeriesPage_statusfiltered');
-    const cancelledSeries2=(state.series||[]).filter(s=>s.cancelStatus);
-    if(cancelledSeries2.length){
-      const items2=cancelledSeries2.slice(0,4).map(s=>`<span style="font-weight:600">${s.name}</span>`).join(', ');
-      const extra2=cancelledSeries2.length>4?` y ${cancelledSeries2.length-4} más`:'';
-      html2=`<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fde8e8;border:1.5px solid rgba(201,64,64,.2);border-radius:12px;margin-bottom:1rem;font-size:12.5px;flex-wrap:wrap"><span style="font-size:16px;flex-shrink:0">❌</span><span style="color:#c94040;font-weight:600">${cancelledSeries2.length} serie${cancelledSeries2.length!==1?'s':''} cancelada${cancelledSeries2.length!==1?'s':''}:</span><span style="color:#8a3030">${items2}${extra2}</span><button onclick="switchTab('canceladas')" style="margin-left:auto;padding:4px 11px;border-radius:20px;border:1.5px solid rgba(201,64,64,.3);background:white;color:#c94040;font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--font-body)">Ver sección ›</button></div>`+html2;
-    }
-    resultsEl.innerHTML=html2;
-    return;
+  // Píldoras de estado rápido (arriba, independientes del panel lateral)
+  const pillbarEl=document.getElementById('seriesStatusPillbar');
+  if(pillbarEl){
+    let pillsHtml=`<button class="status-pill${seriesSubtab==='all'?' active':''}" onclick="switchSeriesSubtab('all')">Todas<span class="subtab-count">${filtered.length}</span></button>
+      <button class="status-pill${seriesSubtab==='airing'?' active':''}" onclick="switchSeriesSubtab('airing')">Emisión<span class="subtab-count">${airing.length}</span></button>`;
+    if(notStarted.length) pillsHtml+=`<button class="status-pill${seriesSubtab==='notstarted'?' active':''}" onclick="switchSeriesSubtab('notstarted')">Próximamente<span class="subtab-count">${notStarted.length}</span></button>`;
+    pillsHtml+=`<button class="status-pill${seriesSubtab==='finished'?' active':''}" onclick="switchSeriesSubtab('finished')">Emitidas<span class="subtab-count">${finished.length}</span></button>`;
+    if(cancelled.length) pillsHtml+=`<button class="status-pill${seriesSubtab==='cancelled'?' active':''}" onclick="switchSeriesSubtab('cancelled')">Canceladas<span class="subtab-count">${cancelled.length}</span></button>`;
+    pillbarEl.innerHTML=`<div class="status-pillbar">${pillsHtml}</div>`;
   }
 
-  // Build subtabs — only show "Estreno Próximo" tab if there are any
-  let tabsHtml=`<div class="subtabs">
-    <button class="subtab${seriesSubtab==='airing'?' active':''}" onclick="switchSeriesSubtab('airing')">
-      En emisión<span class="subtab-count">${airing.length}</span>
-    </button>`;
-  if(notStarted.length){
-    tabsHtml+=`<button class="subtab${seriesSubtab==='notstarted'?' active':''}" onclick="switchSeriesSubtab('notstarted')">
-      Estreno próximo<span class="subtab-count">${notStarted.length}</span>
-    </button>`;
-  }
-  tabsHtml+=`<button class="subtab${seriesSubtab==='finished'?' active':''}" onclick="switchSeriesSubtab('finished')">
-      Finalizadas<span class="subtab-count">${finished.length}</span>
-    </button>
-  </div>`;
-
-  let html=tabsHtml;
+  let html='';
 
   function renderSubtabGrid(list, emptyMsg, pageKey){
     if(!list.length){ return '<div class="search-empty">'+emptyMsg+'</div>'; }
@@ -4778,18 +4862,24 @@ function renderListResults(){
   }
 
   // Expose page setters globally
+  window.setSeriesPage_all=p=>{paginationState.series.all=p;saveSession();renderListResults();scrollToResults('listResults');};
   window.setSeriesPage_airing=p=>{paginationState.series.airing=p;saveSession();renderListResults();scrollToResults('listResults');};
   window.setSeriesPage_notstarted=p=>{paginationState.series.notstarted=p;saveSession();renderListResults();scrollToResults('listResults');};
   window.setSeriesPage_finished=p=>{paginationState.series.finished=p;saveSession();renderListResults();scrollToResults('listResults');};
   window.setSeriesPage_finished_serie=p=>{paginationState.series.finished_serie=p;saveSession();renderListResults();scrollToResults('listResults');};
   window.setSeriesPage_finished_webserie=p=>{paginationState.series.finished_webserie=p;saveSession();renderListResults();scrollToResults('listResults');};
+  window.setSeriesPage_cancelled=p=>{paginationState.series.cancelled=p;saveSession();renderListResults();scrollToResults('listResults');};
 
-  if(seriesSubtab==='airing'){
+  if(seriesSubtab==='all'){
+    html+=renderSubtabGrid(filtered,'No hay series con esos filtros.','all');
+  } else if(seriesSubtab==='airing'){
     html+=renderSubtabGrid(airing,'No hay series en emisión con esos filtros.','airing');
   } else if(seriesSubtab==='notstarted'){
-    html+=renderSubtabGrid(notStarted,'No hay series con estreno próximo con esos filtros.','notstarted');
+    html+=renderSubtabGrid(notStarted,'No hay series próximamente con esos filtros.','notstarted');
+  } else if(seriesSubtab==='cancelled'){
+    html+=renderSubtabGrid(cancelled,'No hay series canceladas con esos filtros.','cancelled');
   } else {
-    // Finalizadas: sub-subtabs Serie / Web Serie siempre visibles
+    // Emitidas: sub-subtabs Serie / Web Serie siempre visibles
     if(seriesFinishedSubtab==='webserie'&&!finishedWebseries.length) seriesFinishedSubtab='all';
     if(seriesFinishedSubtab==='serie'&&!finishedSeries.length) seriesFinishedSubtab='all';
     html+=`<div class="subtabs" style="margin-top:10px;margin-bottom:14px">
@@ -4805,21 +4895,7 @@ function renderListResults(){
     </div>`;
     const shownFinished=seriesFinishedSubtab==='serie'?finishedSeries:seriesFinishedSubtab==='webserie'?finishedWebseries:finished;
     const finishedKey=seriesFinishedSubtab==='serie'?'finished_serie':seriesFinishedSubtab==='webserie'?'finished_webserie':'finished';
-    html+=renderSubtabGrid(shownFinished,'No hay series finalizadas con esos filtros.',finishedKey);
-  }
-
-  // Banner canceladas/limbo
-  const cancelledSeries=(state.series||[]).filter(s=>s.cancelStatus);
-  if(cancelledSeries.length){
-    const labels={cancelled:'❌ Cancelada',limbo:'⏸️ En limbo',closed:'🏢 Prod. cerrada'};
-    const items=cancelledSeries.slice(0,4).map(s=>`<span style="font-weight:600">${s.name}</span>`).join(', ');
-    const extra=cancelledSeries.length>4?` y ${cancelledSeries.length-4} más`:'';
-    html=`<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fde8e8;border:1.5px solid rgba(201,64,64,.2);border-radius:12px;margin-bottom:1rem;font-size:12.5px;flex-wrap:wrap">
-      <span style="font-size:16px;flex-shrink:0">❌</span>
-      <span style="color:#c94040;font-weight:600">${cancelledSeries.length} serie${cancelledSeries.length!==1?'s':''} cancelada${cancelledSeries.length!==1?'s':''}:</span>
-      <span style="color:#8a3030">${items}${extra}</span>
-      <button onclick="switchTab('canceladas')" style="margin-left:auto;padding:4px 11px;border-radius:20px;border:1.5px solid rgba(201,64,64,.3);background:white;color:#c94040;font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--font-body)">Ver sección ›</button>
-    </div>`+html;
+    html+=renderSubtabGrid(shownFinished,'No hay series emitidas con esos filtros.',finishedKey);
   }
 
   resultsEl.innerHTML=html;
@@ -4867,24 +4943,14 @@ function applySeriesFilters(arr){
   if(seriesFilters.countries&&seriesFilters.countries.length) r=r.filter(s=>itemMatchesCountries(s,seriesFilters.countries));
   if(seriesFilters.book==='yes') r=r.filter(s=>s.basedOnBook);
   if(seriesFilters.book==='no') r=r.filter(s=>!s.basedOnBook);
-  if(seriesFilters.year) r=r.filter(s=>{ const seasons=getSeasons(s); return seasons.some(t=>t.startDate&&t.startDate.startsWith(seriesFilters.year))||(s.startDate&&s.startDate.startsWith(seriesFilters.year)); });
-  if(seriesFilters.genre) r=r.filter(s=>s.genres&&s.genres.includes(seriesFilters.genre));
-  if(seriesFilters.tropo) r=r.filter(s=>s.tropos&&s.tropos.includes(seriesFilters.tropo));
-  if(seriesFilters.dinamica) r=r.filter(s=>s.dinamica&&s.dinamica.includes(seriesFilters.dinamica));
-  if(seriesFilters.mood) r=r.filter(s=>s.moods&&s.moods.includes(seriesFilters.mood));
-  if(seriesFilters.status){
-    const now2=new Date();
-    r=r.filter(s=>{
-      const eps=genEps(s);
-      const hasAired=eps.some(e=>new Date(e.date+'T12:00:00')<=now2&&!e.skipped);
-      const hasFuture=eps.some(e=>new Date(e.date+'T12:00:00')>now2&&!e.skipped);
-      if(seriesFilters.status==='airing') return hasAired&&hasFuture;
-      if(seriesFilters.status==='notstarted') return hasFuture&&!hasAired;
-      if(seriesFilters.status==='finished') return !hasFuture;
-      return true;
-    });
-  }
-  if(seriesFilters.type) r=r.filter(s=>(s.seriesType||'serie')===seriesFilters.type);
+  if(seriesFilters.years&&seriesFilters.years.length) r=r.filter(s=>{ const seasons=getSeasons(s); return seriesFilters.years.some(y=>seasons.some(t=>t.startDate&&t.startDate.startsWith(y))||(s.startDate&&s.startDate.startsWith(y))); });
+  if(seriesFilters.genres&&seriesFilters.genres.length) r=r.filter(s=>s.genres&&s.genres.some(g=>seriesFilters.genres.includes(g)));
+  if(seriesFilters.tropos&&seriesFilters.tropos.length) r=r.filter(s=>s.tropos&&s.tropos.some(t=>seriesFilters.tropos.includes(t)));
+  if(seriesFilters.dinamicas&&seriesFilters.dinamicas.length) r=r.filter(s=>s.dinamica&&s.dinamica.some(d=>seriesFilters.dinamicas.includes(d)));
+  if(seriesFilters.moods&&seriesFilters.moods.length) r=r.filter(s=>s.moods&&s.moods.some(m=>seriesFilters.moods.includes(m)));
+  if(seriesFilters.wlwFocus&&seriesFilters.wlwFocus.length) r=r.filter(s=>seriesFilters.wlwFocus.includes(seriesWlwFocus(s)));
+  if(seriesFilters.networks&&seriesFilters.networks.length) r=r.filter(s=>s.network&&seriesFilters.networks.includes(s.network));
+  if(seriesFilters.types&&seriesFilters.types.length) r=r.filter(s=>seriesFilters.types.includes(s.seriesType||'serie'));
   if(seriesFilters.region){
     const regionCountries=COUNTRY_REGIONS[seriesFilters.region]||[];
     r=r.filter(s=>parseCountryParts(s.country||'').some(c=>regionCountries.includes(c)));
@@ -4897,45 +4963,22 @@ function applySeriesFilters(arr){
   else if(seriesFilters.sort==='recent') r.sort((a,b)=>{const ua=a.updatedAt||'';const ub=b.updatedAt||'';return ub.localeCompare(ua);});
   return r;
 }
-function resetSeriesPages(){ paginationState.series.airing=1; paginationState.series.notstarted=1; paginationState.series.finished=1; }
+function resetSeriesPages(){ paginationState.series.all=1; paginationState.series.airing=1; paginationState.series.notstarted=1; paginationState.series.finished=1; paginationState.series.cancelled=1; }
 function resetMoviesPage(){ paginationState.movies=1; }
 function resetUpcomingPage(){ paginationState.upcoming=1; }
 
 function renderList(){
   const view=document.getElementById('viewList');
-  // First render: build the static toolbar shell
+  // First render: build the static shell (barra de búsqueda + layout de sidebar)
   if(!view.querySelector('.list-toolbar-shell')){
-    const allYears=[...new Set([...state.series].flatMap(s=>{ const seasons=getSeasons(s); return seasons.length?seasons.map(t=>t.startDate?t.startDate.substring(0,4):''):[s.startDate?s.startDate.substring(0,4):'']; }).filter(Boolean))].sort((a,b)=>b-a);
-    const yearsOpts=allYears.map(y=>`<option value="${y}"${seriesFilters.year===y?' selected':''}>${y}</option>`).join('');
-    const genreOpts=GENRES.map(g=>`<option value="${g}">${g}</option>`).join('');
-    view.innerHTML=`<div class="list-toolbar-shell books-toolbar">
+    view.innerHTML=`<div class="list-toolbar-shell">
       <div class="toolbar-search-row">
-        <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
+        <div class="search-wrap" style="position:relative;margin-bottom:0;flex:1">
           <span class="search-icon">🔍</span>
           <input id="seriesSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${seriesFilters.q}" oninput="seriesFilters.q=this.value;resetSeriesPages();debounceRender('series',renderListResults)" autocomplete="off">
         </div>
-      </div>
-      <div class="toolbar-filters-row" id="seriesFiltersRow">
-        <div class="filter-group" id="seriesCountryPickerSlot">
-          <span class="filter-label">País</span>
-        </div>
         <div class="filter-group">
-          <span class="filter-label">Género</span>
-          <select id="seriesGenreSel" class="filter-select" onchange="seriesFilters.genre=this.value;resetSeriesPages();renderListResults()">
-          <option value="">Género</option>${genreOpts}
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Tipo</span>
-          <select id="seriesTypeSel" class="filter-select" onchange="seriesFilters.type=this.value;resetSeriesPages();renderListResults()">
-            <option value="">Tipo</option>
-            <option value="serie"${seriesFilters.type==='serie'?' selected':''}>Serie</option>
-            <option value="webserie"${seriesFilters.type==='webserie'?' selected':''}>Web serie</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Orden</span>
-          <select id="seriesSortSel" class="filter-select" onchange="seriesFilters.sort=this.value;resetSeriesPages();renderListResults()">
+          <select id="seriesSortSel" class="filter-select" title="Orden" onchange="seriesFilters.sort=this.value;resetSeriesPages();renderListResults()">
             <option value="az"${seriesFilters.sort==='az'?' selected':''}>A → Z</option>
             <option value="za"${seriesFilters.sort==='za'?' selected':''}>Z → A</option>
             <option value="eps"${seriesFilters.sort==='eps'?' selected':''}>+ Episodios</option>
@@ -4945,56 +4988,22 @@ function renderList(){
           </select>
         </div>
         <div class="filter-group">
-          <span class="filter-label">Libro</span>
-          <select id="seriesBookSel" class="filter-select" onchange="seriesFilters.book=this.value;resetSeriesPages();renderListResults()">
+          <select id="seriesBookSel" class="filter-select" title="Libro" onchange="seriesFilters.book=this.value;resetSeriesPages();renderListResults()">
             <option value="all">Libro</option>
             <option value="yes">Con libro</option>
             <option value="no">Sin libro</option>
           </select>
         </div>
-        <div class="filter-group">
-          <span class="filter-label">Año</span>
-          <select id="seriesYearSel" class="filter-select" onchange="seriesFilters.year=this.value;resetSeriesPages();renderListResults()">
-            <option value="">Año</option>${allYears.map(y=>`<option value="${y}">${y}</option>`).join('')}
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Tropo</span>
-          <select id="seriesTropoSel" class="filter-select" onchange="seriesFilters.tropo=this.value;resetSeriesPages();renderListResults()">
-            <option value="">Tropo</option>${TROPOS.map(t=>`<option value="${t}"${seriesFilters.tropo===t?' selected':''}>${t}</option>`).join('')}
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Dinámica</span>
-          <select id="seriesDinamicaSel" class="filter-select" onchange="seriesFilters.dinamica=this.value;resetSeriesPages();renderListResults()">
-            <option value="">Dinámica</option>${DINAMICAS.map(d=>`<option value="${d}"${seriesFilters.dinamica===d?' selected':''}>${d}</option>`).join('')}
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Mood</span>
-          <select id="seriesMoodSel" class="filter-select" onchange="seriesFilters.mood=this.value;resetSeriesPages();renderListResults()">
-            <option value="">Mood</option>${[...new Set(state.series.filter(s=>!s.upcoming&&s.category!=='anime'&&s.category!=='reality').flatMap(s=>s.moods||[]))].sort().map(m=>`<option value="${m}"${seriesFilters.mood===m?' selected':''}>${m}</option>`).join('')}
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Estado</span>
-          <select id="seriesStatusSel" class="filter-select" onchange="seriesFilters.status=this.value;resetSeriesPages();renderListResults()">
-            <option value="">Estado</option>
-            <option value="airing"${seriesFilters.status==='airing'?' selected':''}>En emisión</option>
-            <option value="notstarted"${seriesFilters.status==='notstarted'?' selected':''}>Estreno próximo</option>
-            <option value="finished"${seriesFilters.status==='finished'?' selected':''}>Finalizadas</option>
-          </select>
-        </div>
-        <button id="seriesClearBtn" class="filter-clear-btn" onclick="seriesFilters.countries=[];seriesFilters.book='all';seriesFilters.year='';seriesFilters.genre='';seriesFilters.type='';seriesFilters.region='';seriesFilters.tropo='';seriesFilters.dinamica='';seriesFilters.mood='';seriesFilters.status='';document.getElementById('seriesBookSel').value='all';document.getElementById('seriesYearSel').value='';document.getElementById('seriesGenreSel').value='';document.getElementById('seriesTypeSel').value='';document.getElementById('seriesTropoSel').value='';document.getElementById('seriesDinamicaSel').value='';document.getElementById('seriesMoodSel').value='';document.getElementById('seriesStatusSel').value='';const scp=document.getElementById('cpWrap_series');if(scp&&scp._reset)scp._reset();resetSeriesPages();renderListResults()" style="display:none">Limpiar</button>
       </div>
     </div>
-    <div id="listResults"></div>`;
-    // Inject country picker with countries from active series
-    const slot=document.getElementById('seriesCountryPickerSlot');
-    const activeCountries=getCountries(state.series.filter(s=>!s.upcoming));
-    const picker=buildCountryPicker('series',countries=>{seriesFilters.countries=countries;resetSeriesPages();renderListResults();},activeCountries);
-    slot.appendChild(picker);
-    _initMobileFilterToggle(view.querySelector('.list-toolbar-shell'));
+    <div class="filters-layout">
+      <aside class="filters-sidebar" id="seriesFiltersSidebar"></aside>
+      <div class="filters-main">
+        <button class="fside-mobile-toggle" onclick="document.getElementById('seriesFiltersSidebar').classList.toggle('mob-open')">🔎 Filtros</button>
+        <div id="seriesStatusPillbar"></div>
+        <div id="listResults"></div>
+      </div>
+    </div>`;
   }
   renderListResults();
 }
@@ -5554,8 +5563,8 @@ function openSeries(si){
   if(durInfo.epDuration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span></div>`;
   if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
   const _ft=filtrarTropos(s.tropos||[],s.dinamica||[]);
-  if(_ft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_ft.map(t=>`<span onclick="closeModal();seriesFilters.tropo='${t.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
-  if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamica='${d.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
+  if(_ft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_ft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
+  if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamicas=['${d.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
   if(s.basedOnBook){
     const _btypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
     const _blabel=s.sourceType&&_btypes[s.sourceType]?_btypes[s.sourceType]:'📖 Libro';
@@ -5661,8 +5670,8 @@ function openUpcoming(si){
   if(s.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año aprox.</span><span class="details-line-val">${s.year}</span></div>`;
   if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
   const _uft=filtrarTropos(s.tropos||[],s.dinamica||[]);
-  if(_uft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_uft.map(t=>`<span onclick="closeModal();seriesFilters.tropo='${t.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
-  if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamica='${d.replace(/'/g,"\\'")}';switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
+  if(_uft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_uft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
+  if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamicas=['${d.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
   if(s.basedOnBook){
     const _btypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
     const _blabel=s.sourceType&&_btypes[s.sourceType]?_btypes[s.sourceType]:'📖 Libro';
@@ -7994,16 +8003,16 @@ function getRecentlyAdded(){
     if(!ts) return;
     const isAnime=s.category==='anime';
     const bucket=isAnime?animeItems:seriesItems;
-    bucket.push({ts,name:s.name,poster:s.poster,country:s.country,
-      type:s.upcoming?'upcoming':(isAnime?'anime':'serie'),si,isMovie:false});
+    bucket.push({ts,id:s.id,name:s.name,poster:s.poster,country:s.country,
+      type:s.upcoming?'upcoming':(isAnime?'anime':'serie'),si,isMovie:false,srcType:'series'});
   });
   (state.movies||[]).forEach((mv,mi)=>{
     const ts=parseInt(mv.id||0,10);
     if(!ts) return;
     const isAnime=mv.category==='anime';
     const bucket=isAnime?animeItems:moviesItems;
-    bucket.push({ts,name:mv.name,poster:mv.poster,country:mv.country,
-      type:isAnime?'anime':'movie',si:mi,isMovie:!isAnime});
+    bucket.push({ts,id:mv.id,name:mv.name,poster:mv.poster,country:mv.country,
+      type:isAnime?'anime':'movie',si:mi,isMovie:!isAnime,srcType:'movie'});
   });
   const sortSlice=arr=>[...arr].sort((a,b)=>b.ts-a.ts).slice(0,6);
   return {series:sortSlice(seriesItems), movies:sortSlice(moviesItems), anime:sortSlice(animeItems)};
@@ -8020,9 +8029,9 @@ function _buildRaCards(items){
       :'background:var(--teal-soft);color:var(--teal)';
     const flag=item.country?countryFlag(item.country):'';
     const clickFn=item.isMovie?`openMovie(${item.si})`
-      :(item.type==='upcoming'?`switchTab('upcoming');setTimeout(()=>openUpcoming(${item.si}),60)`
-      :(item.type==='anime'?`switchTab('anime');setTimeout(()=>{},60)`
-      :`switchTab('list');setTimeout(()=>openSeries(${item.si}),60)`));
+      :(item.type==='upcoming'?`openUpcoming(${item.si})`
+      :(item.type==='anime'?`openAnimeDetail('${item.srcType==='movie'?'movie':'series'}','${item.id}')`
+      :`openSeries(${item.si})`));
     const posterEl=item.poster
       ?`<img class="ra-poster" src="${item.poster}" alt="${item.name}" onerror="this.parentElement.style.background='var(--surface2)';this.style.display='none'" loading="lazy">`
       :`<div class="ra-poster-ph">🎬</div>`;
