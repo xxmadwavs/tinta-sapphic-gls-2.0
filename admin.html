@@ -319,6 +319,8 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 }
 .wlw-focus-chip:hover{border-color:var(--accent);background:rgba(212,96,138,0.18);color:#8f2c56}
 .wlw-focus-chip.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+.wlw-quick-select{margin-top:6px;font-size:11px;font-weight:700;padding:4px 8px;border-radius:20px;border:1.5px solid rgba(212,96,138,0.35);background:rgba(212,96,138,0.06);color:#b0396a;font-family:'Nunito',sans-serif;cursor:pointer;max-width:100%;outline:none}
+.wlw-quick-select:focus{border-color:var(--accent)}
 .platform-del-btn{width:30px;height:30px;border-radius:8px;border:1.5px solid rgba(212,92,92,.3);background:transparent;color:var(--danger);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-family:'Nunito',sans-serif}
 .award-admin-row{display:grid;grid-template-columns:1fr 1fr 1fr auto auto;gap:6px;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;margin-bottom:6px}
 .award-admin-row input,.award-admin-row select{padding:6px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:12.5px;font-family:'Nunito',sans-serif;outline:none;width:100%}
@@ -346,6 +348,26 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .paste-bar-status{font-size:12px;margin-top:8px;color:var(--muted);min-height:16px}
 .paste-bar-status.ok{color:var(--success)}
 .paste-bar-status.err{color:var(--danger)}
+.tmdb-bar{background:linear-gradient(135deg,rgba(1,180,228,0.07) 0%,rgba(3,37,65,0.07) 100%);border:1.5px solid rgba(1,180,228,0.3);border-radius:14px;padding:14px 16px;margin-bottom:18px;}
+.tmdb-bar-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#01b4e4;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;justify-content:space-between}
+.tmdb-bar-label .tmdb-bar-tools{display:flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-weight:600}
+.tmdb-bar-tools select{font-size:11px;padding:2px 5px;border-radius:6px;border:1px solid rgba(1,180,228,0.4);background:var(--surface);color:var(--text)}
+.tmdb-bar-tools button{font-size:11px;padding:2px 7px;border-radius:6px;border:1px solid rgba(1,180,228,0.4);background:transparent;color:#01b4e4;cursor:pointer}
+.tmdb-bar-row{display:flex;gap:7px;align-items:flex-start;margin-top:6px}
+.tmdb-bar-row input{flex:1;padding:9px 13px;border-radius:10px;border:1.5px solid rgba(1,180,228,0.35);background:var(--surface);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;outline:none}
+.tmdb-bar-row button{padding:9px 16px;border-radius:10px;border:none;cursor:pointer;background:linear-gradient(135deg,#01b4e4 0%,#032541 100%);color:#fff;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;white-space:nowrap}
+.tmdb-bar-row button:hover{opacity:.88}
+.tmdb-results{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tmdb-result-card{width:110px;cursor:pointer;border-radius:10px;overflow:hidden;border:1.5px solid rgba(1,180,228,0.25);background:var(--surface);transition:transform .1s,border-color .1s}
+.tmdb-result-card:hover{transform:translateY(-2px);border-color:#01b4e4}
+.tmdb-result-card img{width:100%;height:150px;object-fit:cover;display:block;background:#222}
+.tmdb-result-card .tmdb-rc-info{padding:5px 6px}
+.tmdb-result-card .tmdb-rc-title{font-size:11px;font-weight:700;line-height:1.25;color:var(--text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tmdb-result-card .tmdb-rc-year{font-size:10px;color:var(--muted);margin-top:2px}
+.tmdb-bar-status{font-size:12px;margin-top:8px;color:var(--muted);min-height:16px}
+.tmdb-bar-status.ok{color:var(--success)}
+.tmdb-bar-status.err{color:var(--danger)}
+.tmdb-attribution{font-size:10px;color:var(--muted);margin-top:8px;opacity:.75}
 
 /* ═══ QUICK NAV BAR ═══ */
 .quicknav{
@@ -650,6 +672,17 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
           <option value="progress">Progreso</option>
         </select>
       </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Foco sáfico</span>
+        <select id="adminSeriesWlwFilter" onchange="pages.series=1;render()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="">Todos</option>
+          <option value="sin-asignar">Sin asignar</option>
+          <option value="pareja-principal">Pareja principal</option>
+          <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="personaje">Personaje</option>
+          <option value="subtexto">Subtexto</option>
+        </select>
+      </div>
     </div>
     <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%" onclick="openAddSeries()">+ Añadir nueva serie</button>
     <div class="series-count-label" id="seriesCountLabel"></div>
@@ -670,6 +703,17 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
           <option value="az">A → Z</option>
           <option value="za">Z → A</option>
           <option value="date">Fecha estreno</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Foco sáfico</span>
+        <select id="adminMoviesWlwFilter" onchange="pages.movies=1;renderMovies()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="">Todos</option>
+          <option value="sin-asignar">Sin asignar</option>
+          <option value="pareja-principal">Pareja principal</option>
+          <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="personaje">Personaje</option>
+          <option value="subtexto">Subtexto</option>
         </select>
       </div>
     </div>
@@ -693,6 +737,17 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
           <option value="za">Z → A</option>
         </select>
       </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Foco sáfico</span>
+        <select id="adminAnimeWlwFilter" onchange="pages.anime=1;renderAnimeGrid()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="">Todos</option>
+          <option value="sin-asignar">Sin asignar</option>
+          <option value="pareja-principal">Pareja principal</option>
+          <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="personaje">Personaje</option>
+          <option value="subtexto">Subtexto</option>
+        </select>
+      </div>
     </div>
     <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:#7c5cbf;border-color:#7c5cbf" onclick="openAddAnime()">+ Añadir anime</button>
     <div class="series-count-label" id="animeCountLabel"></div>
@@ -712,6 +767,17 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
           <option value="added">Orden de añadido</option>
           <option value="az">A → Z</option>
           <option value="za">Z → A</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Foco sáfico</span>
+        <select id="adminRealitiesWlwFilter" onchange="pages.realities=1;renderRealitiesGrid()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="">Todos</option>
+          <option value="sin-asignar">Sin asignar</option>
+          <option value="pareja-principal">Pareja principal</option>
+          <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="personaje">Personaje</option>
+          <option value="subtexto">Subtexto</option>
         </select>
       </div>
     </div>
@@ -1110,6 +1176,28 @@ function getSelectedWlwFocus(containerId){
   const _el=_findInModal(containerId)||document.getElementById(containerId);
   const sel=_el?_el.querySelector('.wlw-focus-chip.selected'):document.querySelector(`#${containerId} .wlw-focus-chip.selected`);
   return sel?sel.dataset.value:'';
+}
+
+// Selector rápido de Foco sáfico directamente sobre la tarjeta del listado (sin abrir el modal)
+function wlwQuickSelectHtml(kind, idx, current){
+  const opts=['<option value=""'+(current?'':' selected')+'>Foco sáfico…</option>']
+    .concat(WLW_FOCUS.map(w=>`<option value="${w.value}" ${current===w.value?'selected':''}>${w.label}</option>`));
+  return `<select class="wlw-quick-select" onclick="event.stopPropagation()" onchange="quickSetWlwFocus('${kind}',${idx},this.value)">${opts.join('')}</select>`;
+}
+function quickSetWlwFocus(kind, idx, value){
+  const arr=kind==='movie'?movies:series;
+  const item=arr[idx];
+  if(!item) return;
+  item.wlwFocus=value;
+  item.updatedAt=new Date().toISOString();
+  save();
+}
+// Filtra un array de series/películas según el valor elegido en el <select> de Foco sáfico de esa sección
+function applyWlwFilter(list, selectId){
+  const val=document.getElementById(selectId)?.value||'';
+  if(!val) return list;
+  if(val==='sin-asignar') return list.filter(x=>!x.wlwFocus);
+  return list.filter(x=>x.wlwFocus===val);
 }
 
 const GENRES=[
@@ -1573,6 +1661,7 @@ function render(){
     }
     return true;
   });
+  filtered=applyWlwFilter(filtered, 'adminSeriesWlwFilter');
 
   // Ordenación
   const sort=(document.getElementById('adminSeriesSort')?.value)||'added';
@@ -1649,6 +1738,7 @@ function render(){
       info.innerHTML=`<div class="series-name">${escapeHtml(s.name)} ${statusBadge}${bookBadge}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">Renovada</span>':''}${s.category==="anime"?'<span class="badge badge-anime">Anime</span>':s.category==="reality"?'<span class="badge badge-reality">Reality</span>':`${s.myPick?'<span class="badge" style="background:#fce8f1;color:#c94f7c;border:1px solid rgba(201,79,124,0.3)">Pick</span>':''}${s.myPick2026?'<span class="badge" style="background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.3)">2026</span>':''}`}</div>
         <div class="series-meta">${metaStr}</div>
         ${genrePills}
+        ${wlwQuickSelectHtml('series', si, s.wlwFocus||'')}
         ${!s.upcoming?`<div class="progress-wrap" style="margin-top:6px;height:4px;background:var(--border);border-radius:2px;overflow:hidden"><div class="progress-fill" style="width:${(()=>{const eps2=genEpisodes(s),now2=new Date(),seasons2=getSeasons(s),tot=seasons2.reduce((a,t)=>a+t.totalEpisodes,0),a=eps2.filter(e=>new Date(e.date+'T12:00:00')<=now2&&!e.skipped).length;return Math.round(a/Math.max(tot,1)*100)})()}%;background:${col}"></div></div>`:''}`;
       div.appendChild(info);
       const actions=document.createElement('div'); actions.className='series-actions';
@@ -1672,6 +1762,7 @@ function renderMovies(){
     return mv.name.toLowerCase().includes(q)||(mv.country||'').toLowerCase().includes(q)||(mv.network||'').toLowerCase().includes(q)||
       (mv.watchLinks||[]).some(l=>(l.name||'').toLowerCase().includes(q)||(l.url||'').toLowerCase().includes(q));
   });
+  filtered=applyWlwFilter(filtered, 'adminMoviesWlwFilter');
 
   if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
   else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
@@ -1717,7 +1808,7 @@ function renderMovies(){
     const mvGenrePills=mv.genres&&mv.genres.length
       ?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">${mv.genres.map(g=>`<span style="font-size:10px;padding:2px 8px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--muted);font-weight:600">${escapeHtml(g)}</span>`).join('')}</div>`:'';
     const info=document.createElement('div'); info.className='series-info';
-    info.innerHTML=`<div class="series-name">${safeName} ${bookBadge}${statusBadge}</div><div class="series-meta">${metaStr}</div>${mvGenrePills}`;
+    info.innerHTML=`<div class="series-name">${safeName} ${bookBadge}${statusBadge}</div><div class="series-meta">${metaStr}</div>${mvGenrePills}${wlwQuickSelectHtml('movie', mi, mv.wlwFocus||'')}`;
     const actions=document.createElement('div'); actions.className='series-actions';
     const editBtn=document.createElement('button'); editBtn.className='btn small'; editBtn.textContent='Editar';
     editBtn.onclick=()=>openEditMovie(mi);
@@ -2909,6 +3000,7 @@ function renderAnimeGrid(){
     if(!q) return true;
     return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q);
   });
+  filtered=applyWlwFilter(filtered, 'adminAnimeWlwFilter');
 
   if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
   else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
@@ -2939,6 +3031,7 @@ function renderAnimeGrid(){
         <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-anime">Anime</span>${s.basedOnBook?'<span class="badge badge-book"></span>':''}${s.animeSeason?`<span class="anime-season-badge">${escapeHtml(s.animeSeason)}</span>`:''}</div>
         <div class="series-meta">${[s.country,s.network,s.year].filter(Boolean).map(escapeHtml).join(' · ')} · ${total2} eps</div>
         <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:#7c5cbf"></div></div>
+        ${wlwQuickSelectHtml('series', si, s.wlwFocus||'')}
       </div>
       <div class="series-actions">
         <button type="button" class="btn small" onclick="openEpsAnime(${si})">Eps</button>
@@ -2962,6 +3055,7 @@ function renderRealitiesGrid(){
     if(!q) return true;
     return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q);
   });
+  filtered=applyWlwFilter(filtered, 'adminRealitiesWlwFilter');
 
   if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
   else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
@@ -2992,6 +3086,7 @@ function renderRealitiesGrid(){
         <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-reality">Reality</span>${s.basedOnBook?'<span class="badge badge-book"></span>':''}${s.animeSeason?`<span class="anime-season-badge">${escapeHtml(s.animeSeason)}</span>`:''}</div>
         <div class="series-meta">${[s.country,s.network,s.year].filter(Boolean).map(escapeHtml).join(' · ')} · ${total2} eps</div>
         <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:#3a9e94"></div></div>
+        ${wlwQuickSelectHtml('series', si, s.wlwFocus||'')}
       </div>
       <div class="series-actions">
         <button type="button" class="btn small" onclick="openEps(${si})">Eps</button>
@@ -3953,6 +4048,166 @@ function chkPickerAddSelected(){
   closeAll();
 }
 
+/* ═══ TMDB (+ JustWatch) SEARCH ═══ */
+const TMDB_API_BASE = 'https://api.themoviedb.org/3';
+const TMDB_IMG_BASE  = 'https://image.tmdb.org/t/p/w200';
+const TMDB_REGIONS = [
+  ['ES','España'],['MX','México'],['AR','Argentina'],['CO','Colombia'],['CL','Chile'],
+  ['PE','Perú'],['US','Estados Unidos'],['VE','Venezuela'],['EC','Ecuador'],['UY','Uruguay']
+];
+
+function tmdbGetKey(){ return localStorage.getItem('tmdbApiKey') || ''; }
+function tmdbConfigureKey(){
+  const current = tmdbGetKey();
+  const key = prompt('Pega tu API key (v3 auth) de TMDB.\n\nLa consigues gratis en:\nhttps://www.themoviedb.org/settings/api', current || '');
+  if(key !== null){ localStorage.setItem('tmdbApiKey', key.trim()); }
+  return tmdbGetKey();
+}
+function tmdbGetRegion(){ return localStorage.getItem('tmdbRegion') || 'ES'; }
+function tmdbSetRegion(sel){ localStorage.setItem('tmdbRegion', sel.value); }
+function tmdbRegionOptionsHtml(){
+  const current = tmdbGetRegion();
+  return TMDB_REGIONS.map(([code,label])=>`<option value="${code}" ${code===current?'selected':''}>${label}</option>`).join('');
+}
+
+function tmdbBarHtml(type){
+  return '<div class="tmdb-bar">'
+    +'<div class="tmdb-bar-label"><span>🔎 Buscar en TMDB <span style="font-weight:400;opacity:.8">(streaming vía JustWatch)</span></span>'
+    +'<span class="tmdb-bar-tools">'
+    +'<select onchange="tmdbSetRegion(this)" title="Región para las plataformas de streaming">'+tmdbRegionOptionsHtml()+'</select>'
+    +'<button type="button" onclick="tmdbConfigureKey()" title="Configurar API key de TMDB">⚙ API key</button>'
+    +'</span></div>'
+    +'<div class="tmdb-bar-row">'
+    +`<input type="text" id="tmdbQuery" placeholder="Nombre de la serie/película...">`
+    +`<button type="button" onclick="tmdbSearch('${type}')">Buscar</button>`
+    +'</div>'
+    +'<div class="tmdb-bar-status" id="tmdbStatus"></div>'
+    +'<div class="tmdb-results" id="tmdbResults"></div>'
+    +'<div class="tmdb-attribution">Datos de streaming proporcionados por JustWatch a través de la API de TMDB.</div>'
+    +'</div>';
+}
+
+async function tmdbSearch(type){
+  const status = document.getElementById('tmdbStatus');
+  const results = document.getElementById('tmdbResults');
+  const q = (document.getElementById('tmdbQuery')?.value || '').trim();
+  results.innerHTML = '';
+  if(!q){ status.className='tmdb-bar-status err'; status.textContent='⚠ Escribe primero un título.'; return; }
+  let key = tmdbGetKey();
+  if(!key){ key = tmdbConfigureKey(); if(!key){ status.className='tmdb-bar-status err'; status.textContent='⚠ Necesitas una API key de TMDB.'; return; } }
+  const kind = type === 'movie' ? 'movie' : 'tv';
+  status.className='tmdb-bar-status'; status.textContent='Buscando...';
+  try{
+    const url = `${TMDB_API_BASE}/search/${kind}?api_key=${encodeURIComponent(key)}&language=es-ES&query=${encodeURIComponent(q)}`;
+    const r = await fetch(url);
+    if(r.status===401){ status.className='tmdb-bar-status err'; status.textContent='⚠ API key inválida. Configúrala de nuevo (⚙).'; return; }
+    const data = await r.json();
+    const list = (data.results||[]).slice(0,10);
+    if(!list.length){ status.className='tmdb-bar-status err'; status.textContent='✕ Sin resultados en TMDB.'; return; }
+    status.className='tmdb-bar-status ok'; status.textContent=`${list.length} resultado(s). Haz clic en el correcto:`;
+    results.innerHTML = list.map(it=>{
+      const title = it.name || it.title || '(sin título)';
+      const date = it.first_air_date || it.release_date || '';
+      const year = date ? date.slice(0,4) : '';
+      const poster = it.poster_path ? TMDB_IMG_BASE+it.poster_path : '';
+      return `<div class="tmdb-result-card" onclick="tmdbApplyResult(${it.id},'${kind}','${type}')">`
+        +(poster?`<img src="${poster}" alt="">`:`<div style="width:100%;height:150px;background:#333;display:flex;align-items:center;justify-content:center;color:#888;font-size:10px">Sin imagen</div>`)
+        +`<div class="tmdb-rc-info"><div class="tmdb-rc-title">${escapeHtml(title)}</div><div class="tmdb-rc-year">${year}</div></div></div>`;
+    }).join('');
+  }catch(e){
+    status.className='tmdb-bar-status err'; status.textContent='✕ Error al conectar con TMDB.';
+  }
+}
+
+async function tmdbApplyResult(id, kind, type){
+  const status = document.getElementById('tmdbStatus');
+  const key = tmdbGetKey();
+  const region = tmdbGetRegion();
+  status.className='tmdb-bar-status'; status.textContent='Cargando detalles...';
+  try{
+    const url = `${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=es-ES&append_to_response=watch/providers,videos`;
+    const r = await fetch(url);
+    const d = await r.json();
+
+    // Sinopsis: si no hay en español, probamos en inglés como respaldo
+    let synopsis = d.overview || '';
+    if(!synopsis){
+      try{
+        const r2 = await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=en-US`);
+        const d2 = await r2.json();
+        synopsis = d2.overview || '';
+      }catch(e){}
+    }
+
+    const name = d.name || d.title || '';
+    const dateStr = d.first_air_date || d.release_date || '';
+    const year = dateStr ? parseInt(dateStr.slice(0,4)) : '';
+    const poster = d.poster_path ? 'https://image.tmdb.org/t/p/w500'+d.poster_path : '';
+
+    // Plataformas de streaming (dato de JustWatch vía TMDB) para la región elegida
+    const wp = (d['watch/providers']||{}).results || {};
+    const rwp = wp[region] || {};
+    const provNames = arr => (arr||[]).map(p=>p.provider_name);
+    let providers = provNames(rwp.flatrate);
+    if(!providers.length) providers = provNames(rwp.free);
+    if(!providers.length) providers = provNames(rwp.ads);
+    if(!providers.length) providers = provNames(rwp.rent);
+    if(!providers.length) providers = provNames(rwp.buy);
+    const networkStr = providers.join(', ');
+    const watchLink = rwp.link || '';
+
+    // Tráiler de YouTube
+    let trailerUrl = '';
+    const vids = (d.videos||{}).results || [];
+    const trailer = vids.find(v=>v.site==='YouTube' && v.type==='Trailer') || vids.find(v=>v.site==='YouTube');
+    if(trailer) trailerUrl = 'https://www.youtube.com/watch?v='+trailer.key;
+
+    function setVal(elId,val){
+      const el=document.getElementById(elId);
+      if(el && val!==null && val!==undefined && String(val)!==''){ el.value=val; }
+    }
+
+    if(type==='movie'){
+      setVal('mf_name', name);
+      setVal('mf_synopsis', synopsis);
+      setVal('mf_year', year);
+      setVal('mf_net', networkStr);
+      setVal('mf_poster', poster);
+      setVal('mf_trailer', trailerUrl);
+      if(poster) posterSetImage(poster);
+      if(dateStr) setVal('mf_date', dateStr);
+      if(providers.length){
+        const mwl=document.getElementById('moviePlatformsList');
+        if(mwl){ mwl.innerHTML=''; providers.forEach((p,i)=>addMoviePlatformRow(p, i===0?watchLink:'')); }
+      }
+    } else {
+      setVal('f_name', name);
+      setVal('f_synopsis', synopsis);
+      setVal('f_year', year);
+      setVal('f_net', networkStr);
+      setVal('f_poster', poster);
+      setVal('f_trailer', trailerUrl);
+      if(poster) posterSetImage(poster);
+      if(d.number_of_episodes){
+        const sl=_findInModal('seasonsList')||document.getElementById('seasonsList');
+        if(sl && !sl.children.length){
+          addSeasonBlock({label:'Temporada 1',startDate:dateStr||'',totalEpisodes:d.number_of_episodes,emissionDays:[1],skipDates:[],episodes:[]});
+        }
+      }
+      if(providers.length){
+        const wl=_findInModal('platformsList')||document.getElementById('platformsList');
+        if(wl){ wl.innerHTML=''; providers.forEach((p,i)=>addPlatformRow(p, i===0?watchLink:'')); }
+      }
+    }
+    status.className='tmdb-bar-status ok';
+    status.textContent = providers.length
+      ? `✓ Datos aplicados. Streaming en ${region} (vía JustWatch): ${networkStr}.`
+      : `✓ Datos aplicados. No hay plataformas de streaming listadas para ${region}.`;
+  }catch(e){
+    status.className='tmdb-bar-status err'; status.textContent='✕ Error al obtener los detalles de TMDB.';
+  }
+}
+
 /* ═══ PASTE AUTOFILL ═══ */
 function pasteBarHtml(type){
   window._pasteType = type;
@@ -3964,7 +4219,8 @@ function pasteBarHtml(type){
     +'<button type="button" class="paste-bar-btn" onclick="runPasteAutofill(window._pasteType)">Rellenar</button>'
     +'</div>'
     +'<div class="paste-bar-status" id="pasteStatus"></div>'
-    +'</div>';
+    +'</div>'
+    +tmdbBarHtml(type);
 }
 
 function runPasteAutofill(type){
@@ -4256,6 +4512,7 @@ function runPasteAutofill(type){
     status.className='paste-bar-status ok';
     status.textContent='\u2713 Rellenados: '+det.join(', ')+'. Revisa y completa lo que falte.';
     ta.value='';
+    if(info.name){ var tq=document.getElementById('tmdbQuery'); if(tq) tq.value=info.name; }
   } else {
     status.className='paste-bar-status err';
     status.textContent='\u2715 No se detectaron datos. Comprueba el formato de la ficha.';
