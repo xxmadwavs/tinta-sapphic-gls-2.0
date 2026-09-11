@@ -4753,13 +4753,13 @@ function buildSeriesSidebarHtml(active){
   return `<button class="fside-clear-all" onclick="clearAllSeriesFilters()">Limpiar filtros</button>
     ${buildSideCheckGroup('wlwFocus','Foco sáfico',wlwOpts)}
     ${buildSideCheckGroup('genres','Género',genreOpts)}
-    ${buildSideCheckGroup('tropos','Tropo',tropoOpts)}
-    ${buildSideCheckGroup('dinamicas','Dinámica',dinamicaOpts)}
-    ${buildSideCheckGroup('moods','Mood',moodOpts)}
+    ${buildSideCheckGroup('years','Año',yearOpts)}
+    ${buildSideCheckGroup('types','Tipo',typeOpts)}
     ${buildSideCheckGroup('countries','País',countryOpts)}
     ${buildSideCheckGroup('networks','Cadena',networkOpts)}
-    ${buildSideCheckGroup('years','Año',yearOpts)}
-    ${buildSideCheckGroup('types','Tipo',typeOpts)}`;
+    ${buildSideCheckGroup('tropos','Tropo',tropoOpts)}
+    ${buildSideCheckGroup('dinamicas','Dinámica',dinamicaOpts)}
+    ${buildSideCheckGroup('moods','Mood',moodOpts)}`;
 }
 
 function clearAllSeriesFilters(){
@@ -5904,14 +5904,20 @@ function renderMovies(){
         </div>
       </div>
       <div class="toolbar-filters-row">
-        <div class="filter-group" id="moviesCountryPickerSlot">
-          <span class="filter-label">País</span>
-        </div>
         <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="moviesGenreSel" class="filter-select" onchange="handleMoviesGenreChange(this.value)">
             <option value="">Género</option>${genreOpts}
           </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Año</span>
+          <select id="moviesYearSel" class="filter-select" onchange="moviesFilters.year=this.value;resetMoviesPage();renderMoviesResults()">
+            <option value="">Año</option>${yearsOpts}
+          </select>
+        </div>
+        <div class="filter-group" id="moviesCountryPickerSlot">
+          <span class="filter-label">País</span>
         </div>
         <div class="filter-group">
           <span class="filter-label">Orden</span>
@@ -5929,12 +5935,6 @@ function renderMovies(){
             <option value="all">Libro</option>
             <option value="yes">Con libro</option>
             <option value="no">Sin libro</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Año</span>
-          <select id="moviesYearSel" class="filter-select" onchange="moviesFilters.year=this.value;resetMoviesPage();renderMoviesResults()">
-            <option value="">Año</option>${yearsOpts}
           </select>
         </div>
         <button id="moviesClearBtn" class="filter-clear-btn" style="display:none"
@@ -6466,15 +6466,21 @@ function renderAnime(){
       </div>
       <div class="toolbar-filters-row">
         <div class="filter-group">
-          <span class="filter-label">País</span>
-          <select class="filter-select" onchange="animeFilters.countries=this.value?[this.value]:[];paginationAnime={series:1,movies:1};renderAnimeResults()">
-            <option value="">País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
-          </select>
-        </div>
-        <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="animeGenreSel" class="filter-select" onchange="animeFilters.genre=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()">
             <option value="">Género</option>${genreOpts}
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Año</span>
+          <select id="animeYearSel" class="filter-select" onchange="animeFilters.year=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()">
+            <option value="">Año</option>${yearsOpts}
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">País</span>
+          <select class="filter-select" onchange="animeFilters.countries=this.value?[this.value]:[];paginationAnime={series:1,movies:1};renderAnimeResults()">
+            <option value="">País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
           </select>
         </div>
         <div class="filter-group">
@@ -6483,12 +6489,6 @@ function renderAnime(){
             <option value="all">Origen</option>
             <option value="yes">Con manga/novela</option>
             <option value="no">Original</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Año</span>
-          <select id="animeYearSel" class="filter-select" onchange="animeFilters.year=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()">
-            <option value="">Año</option>${yearsOpts}
           </select>
         </div>
         <div class="filter-group">
@@ -6815,12 +6815,6 @@ function renderRealities(){
       </div>
       <div class="toolbar-filters-row">
         <div class="filter-group">
-          <span class="filter-label">País</span>
-          <select class="filter-select" onchange="realitiesFilters.countries=this.value?[this.value]:[];paginationRealities={series:1,movies:1};renderRealitiesResults()">
-            <option value="">País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
-          </select>
-        </div>
-        <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="realitiesGenreSel" class="filter-select" onchange="realitiesFilters.genre=this.value;paginationRealities={series:1,movies:1};renderRealitiesResults()">
             <option value="">Tipo</option>${genreOpts}
@@ -6830,6 +6824,12 @@ function renderRealities(){
           <span class="filter-label">Año</span>
           <select id="realitiesYearSel" class="filter-select" onchange="realitiesFilters.year=this.value;paginationRealities={series:1,movies:1};renderRealitiesResults()">
             <option value="">Año</option>${yearsOpts}
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">País</span>
+          <select class="filter-select" onchange="realitiesFilters.countries=this.value?[this.value]:[];paginationRealities={series:1,movies:1};renderRealitiesResults()">
+            <option value="">País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
           </select>
         </div>
         <div class="filter-group">
@@ -6991,12 +6991,6 @@ function renderDocumentales(){
       </div>
       <div class="toolbar-filters-row">
         <div class="filter-group">
-          <span class="filter-label">País</span>
-          <select class="filter-select" onchange="documentalesFilters.countries=this.value?[this.value]:[];paginationDocumentales={page:1};renderDocumentalesResults()">
-            <option value="">País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
-          </select>
-        </div>
-        <div class="filter-group">
           <span class="filter-label">Género</span>
           <select id="documentalesGenreSel" class="filter-select" onchange="documentalesFilters.genre=this.value;paginationDocumentales={page:1};renderDocumentalesResults()">
             <option value="">Tipo</option>${genreOpts}
@@ -7006,6 +7000,12 @@ function renderDocumentales(){
           <span class="filter-label">Año</span>
           <select id="documentalesYearSel" class="filter-select" onchange="documentalesFilters.year=this.value;paginationDocumentales={page:1};renderDocumentalesResults()">
             <option value="">Año</option>${yearsOpts}
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">País</span>
+          <select class="filter-select" onchange="documentalesFilters.countries=this.value?[this.value]:[];paginationDocumentales={page:1};renderDocumentalesResults()">
+            <option value="">País</option>${allCountries.map(c=>`<option value="${c}">${countryFlag(c)} ${c}</option>`).join('')}
           </select>
         </div>
         <div class="filter-group">
