@@ -128,7 +128,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-23T18:35:48.386Z",
+      "updatedAt": "2026-09-11T23:04:46.748Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -219,7 +219,8 @@
         "Femme × Femme",
         "Rica × Pobre"
       ],
-      "awards": []
+      "awards": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776889141176",
@@ -318,7 +319,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-23T18:21:18.709Z",
+      "updatedAt": "2026-09-11T23:04:50.321Z",
       "nameEn": "รักเติมเต็ม",
       "episodeDuration": 47,
       "myPick": false,
@@ -335,7 +336,8 @@
       "dinamica": [
         "Femme × Femme"
       ],
-      "awards": []
+      "awards": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776889264943",
@@ -394,7 +396,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:27:24.862Z",
+      "updatedAt": "2026-09-11T23:04:53.789Z",
       "nameEn": "ใต้เงารัก",
       "cast": [
         {
@@ -412,7 +414,19 @@
       ],
       "episodeDuration": 12,
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1776889333282",
@@ -492,7 +506,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-23T18:21:54.816Z",
+      "updatedAt": "2026-09-11T23:04:57.090Z",
       "nameEn": "คุณแฟนบ้านนอก",
       "episodeDuration": 51,
       "myPick": false,
@@ -506,13 +520,14 @@
       "sourceType": "novela",
       "moods": [],
       "tropos": [
-        "Tropo de los celos",
-        "Matrimonio de conveniencia"
+        "Matrimonio de conveniencia",
+        "Tropo de los celos"
       ],
       "dinamica": [
         "Masc × Femme"
       ],
-      "awards": []
+      "awards": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776889365998",
@@ -24350,13 +24365,22 @@
         }
       ],
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "category": "movie",
       "movieType": "film",
       "duration": 95,
-      "updatedAt": "2026-05-13T09:21:51.651Z"
+      "updatedAt": "2026-09-11T23:05:10.607Z",
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cast": [],
+      "productoraId": ""
     },
     {
       "id": "1776966535594",
@@ -38867,5 +38891,5 @@
       ]
     }
   },
-  "exportedAt": "2026-09-08T20:04:11.396Z"
+  "exportedAt": "2026-09-11T23:05:16.964Z"
 }
