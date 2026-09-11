@@ -71,6 +71,14 @@ body::before{content:'';position:fixed;inset:0;background:
 .modal-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--text)}
 .form-row{margin-bottom:14px}
 .form-label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.collapsible-field{margin-bottom:0}
+.collapsible-field summary.form-label{cursor:pointer;list-style:none;display:flex;align-items:center;gap:6px;user-select:none}
+.collapsible-field summary.form-label::-webkit-details-marker{display:none}
+.collapsible-field summary.form-label::before{content:'▸';font-size:10px;color:var(--accent);transition:transform .15s;flex-shrink:0}
+.collapsible-field[open] summary.form-label::before{transform:rotate(90deg)}
+.collapsible-field summary.form-label:hover{color:var(--text)}
+.collapsible-field>div{margin-top:8px}
+.collapsible-count{text-transform:none;letter-spacing:0;font-weight:700;color:var(--accent)}
 .form-row input,.form-row select,.form-row textarea{width:100%;padding:9px 14px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:14px;font-family:'Nunito',sans-serif;outline:none;transition:border-color .15s}
 .form-row textarea{resize:vertical;min-height:70px;line-height:1.5}
 .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--accent)}
@@ -302,6 +310,15 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 }
 .source-type-chip:hover{border-color:var(--yellow);background:rgba(232,193,106,0.3);color:#6a5000}
 .source-type-chip.selected{background:var(--yellow);border-color:var(--yellow);color:#fff}
+.wlw-focus-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.wlw-focus-chip{
+  padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;
+  border:1.5px solid rgba(212,96,138,0.35);background:rgba(212,96,138,0.08);
+  color:#b0396a;cursor:pointer;transition:all .15s;
+  font-family:'Nunito',sans-serif;user-select:none;
+}
+.wlw-focus-chip:hover{border-color:var(--accent);background:rgba(212,96,138,0.18);color:#8f2c56}
+.wlw-focus-chip.selected{background:var(--accent);border-color:var(--accent);color:#fff}
 .platform-del-btn{width:30px;height:30px;border-radius:8px;border:1.5px solid rgba(212,92,92,.3);background:transparent;color:var(--danger);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-family:'Nunito',sans-serif}
 .award-admin-row{display:grid;grid-template-columns:1fr 1fr 1fr auto auto;gap:6px;align-items:center;padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;margin-bottom:6px}
 .award-admin-row input,.award-admin-row select{padding:6px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);font-size:12.5px;font-family:'Nunito',sans-serif;outline:none;width:100%}
@@ -525,7 +542,6 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   box-shadow:0 20px 50px rgba(212,96,138,0.2);
   padding:1.5rem;text-align:center;
 }
-.confirm-modal-icon{font-size:36px;margin-bottom:.75rem}
 .confirm-modal-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--text);margin-bottom:.5rem}
 .confirm-modal-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:1.25rem}
 .confirm-modal-btns{display:flex;gap:8px;justify-content:center}
@@ -570,35 +586,35 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 </head>
 <body>
 <div class="topbar">
-  <span class="logo">🌸 GL Series Calendar <span class="logo-badge">ADMIN</span></span>
+  <span class="logo">GL Series Calendar <span class="logo-badge">ADMIN</span></span>
   <div class="topbar-actions">
-    <button type="button" class="btn small" onclick="document.getElementById('importFile').click()">⬆ Importar data.json</button>
+    <button type="button" class="btn small" onclick="document.getElementById('importFile').click()">Importar data.json</button>
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
-    <button type="button" class="btn small" onclick="window.open('index.html','_blank')">👁 Ver público</button>
+    <button type="button" class="btn small" onclick="window.open('index.html','_blank')">Ver público</button>
     <div class="export-btn-wrap">
-      <button type="button" class="btn export small" id="exportTopBtn" onclick="exportData()">⬇ Exportar data.json</button>
+      <button type="button" class="btn export small" id="exportTopBtn" onclick="exportData()">Exportar data.json</button>
       <span class="export-dot" id="exportDot"></span>
     </div>
   </div>
 </div>
 <div class="unsaved-bar" id="unsavedBar">
-  <span>⚠️ Tienes cambios sin exportar. Recuerda exportar <code>data.json</code> y subirlo a GitHub.</span>
-  <button type="button" class="btn small export" onclick="exportData()">⬇ Exportar ahora</button>
+  <span>Tienes cambios sin exportar. Recuerda exportar <code>data.json</code> y subirlo a GitHub.</span>
+  <button type="button" class="btn small export" onclick="exportData()">Exportar ahora</button>
 </div>
 <!-- Quick navigation bar -->
 <nav class="quicknav" id="quicknav">
   <span class="quicknav-label">Ir a →</span>
-  <a class="qnav-btn" href="#section-series" onclick="document.getElementById('section-series').scrollIntoView({behavior:'smooth'});return false;">🌷 Series</a>
-  <a class="qnav-btn" href="#section-movies" onclick="document.getElementById('section-movies').scrollIntoView({behavior:'smooth'});return false;">🎥 Películas</a>
-  <a class="qnav-btn" href="#section-anime" onclick="document.getElementById('section-anime').scrollIntoView({behavior:'smooth'});return false;">🌸 Anime</a>
-  <a class="qnav-btn" href="#section-realities" onclick="document.getElementById('section-realities').scrollIntoView({behavior:'smooth'});return false;">🎤 Realities</a>
-  <a class="qnav-btn" href="#section-books" onclick="document.getElementById('section-books').scrollIntoView({behavior:'smooth'});return false;">📚 Libros</a>
-  <a class="qnav-btn" href="#section-actresses" onclick="document.getElementById('section-actresses').scrollIntoView({behavior:'smooth'});return false;">🎭 Actrices</a>
-  <a class="qnav-btn" href="#section-ships" onclick="document.getElementById('section-ships').scrollIntoView({behavior:'smooth'});return false;">💕 Ships</a>
-  <a class="qnav-btn" href="#section-listas" onclick="document.getElementById('section-listas').scrollIntoView({behavior:'smooth'});return false;">📋 Listas</a>
-  <a class="qnav-btn" href="#section-productoras" onclick="document.getElementById('section-productoras').scrollIntoView({behavior:'smooth'});return false;">🏢 Productoras</a>
-  <a class="qnav-btn" href="#section-platform-logos" onclick="document.getElementById('section-platform-logos').scrollIntoView({behavior:'smooth'});return false;">🎬 Logos</a>
-  <a class="qnav-btn" href="#section-checklist" onclick="document.getElementById('section-checklist').scrollIntoView({behavior:'smooth'});return false;">✅ Checklist</a>
+  <a class="qnav-btn" href="#section-series" onclick="document.getElementById('section-series').scrollIntoView({behavior:'smooth'});return false;">Series</a>
+  <a class="qnav-btn" href="#section-movies" onclick="document.getElementById('section-movies').scrollIntoView({behavior:'smooth'});return false;">Películas</a>
+  <a class="qnav-btn" href="#section-anime" onclick="document.getElementById('section-anime').scrollIntoView({behavior:'smooth'});return false;">Anime</a>
+  <a class="qnav-btn" href="#section-realities" onclick="document.getElementById('section-realities').scrollIntoView({behavior:'smooth'});return false;">Realities</a>
+  <a class="qnav-btn" href="#section-books" onclick="document.getElementById('section-books').scrollIntoView({behavior:'smooth'});return false;">Libros</a>
+  <a class="qnav-btn" href="#section-actresses" onclick="document.getElementById('section-actresses').scrollIntoView({behavior:'smooth'});return false;">Actrices</a>
+  <a class="qnav-btn" href="#section-ships" onclick="document.getElementById('section-ships').scrollIntoView({behavior:'smooth'});return false;">Ships</a>
+  <a class="qnav-btn" href="#section-listas" onclick="document.getElementById('section-listas').scrollIntoView({behavior:'smooth'});return false;">Listas</a>
+  <a class="qnav-btn" href="#section-productoras" onclick="document.getElementById('section-productoras').scrollIntoView({behavior:'smooth'});return false;">Productoras</a>
+  <a class="qnav-btn" href="#section-platform-logos" onclick="document.getElementById('section-platform-logos').scrollIntoView({behavior:'smooth'});return false;">Logos</a>
+  <a class="qnav-btn" href="#section-checklist" onclick="document.getElementById('section-checklist').scrollIntoView({behavior:'smooth'});return false;">Checklist</a>
   <div class="quicknav-sep"></div>
   <button type="button" class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
   <button type="button" class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
@@ -607,31 +623,31 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 </nav>
 
 <div class="container">
-  <h1 class="page-title">✦ Panel de administración</h1>
+  <h1 class="page-title">Panel de administración</h1>
   <p class="page-sub">Gestiona las series GL y exporta para actualizar la web.</p>
   <div class="notice"><strong>¿Cómo funciona?</strong> Añade aquí todas las series. Cuando quieras que tus amig@s vean los cambios, pulsa <strong>"Exportar data.json"</strong> y súbelo a GitHub.</div>
 
   <div class="card" id="section-series">
-    <div class="card-title">🌷 Series</div>
+    <div class="card-title">Series</div>
     <div class="admin-toolbar">
       <div class="admin-search-wrap">
-        <span class="admin-search-icon">🔍</span>
+        <span class="admin-search-icon"></span>
         <input class="admin-search-input" id="adminSeriesQ" placeholder="Buscar por nombre, país, plataforma…" oninput="pages.series=1;render()">
       </div>
       <div class="admin-filter-pills" id="adminStatusPills">
         <button type="button" class="admin-pill active" data-status="all" onclick="setAdminStatus('all',this)">Todas</button>
-        <button type="button" class="admin-pill" data-status="airing" onclick="setAdminStatus('airing',this)">🌸 Emisión</button>
+        <button type="button" class="admin-pill" data-status="airing" onclick="setAdminStatus('airing',this)">Emisión</button>
         <button type="button" class="admin-pill" data-status="finished" onclick="setAdminStatus('finished',this)">✓ Finalizadas</button>
-        <button type="button" class="admin-pill" data-status="upcoming" onclick="setAdminStatus('upcoming',this)">📅 Próximas</button>
+        <button type="button" class="admin-pill" data-status="upcoming" onclick="setAdminStatus('upcoming',this)">Próximas</button>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
         <select id="adminSeriesSort" onchange="pages.series=1;render()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
-          <option value="added">📋 Orden de añadido</option>
-          <option value="az">🔤 A → Z</option>
-          <option value="za">🔤 Z → A</option>
-          <option value="next">📅 Próximo episodio</option>
-          <option value="progress">📊 Progreso</option>
+          <option value="added">Orden de añadido</option>
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
+          <option value="next">Próximo episodio</option>
+          <option value="progress">Progreso</option>
         </select>
       </div>
     </div>
@@ -641,19 +657,19 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 
   <div class="card" id="section-movies">
-    <div class="card-title">🎥 Películas</div>
+    <div class="card-title">Películas</div>
     <div class="admin-toolbar">
       <div class="admin-search-wrap">
-        <span class="admin-search-icon">🔍</span>
+        <span class="admin-search-icon"></span>
         <input class="admin-search-input" id="adminMoviesQ" placeholder="Buscar por nombre, país, plataforma…" oninput="pages.movies=1;renderMovies()">
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
         <select id="adminMoviesSort" onchange="pages.movies=1;renderMovies()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
-          <option value="added">📋 Orden de añadido</option>
-          <option value="az">🔤 A → Z</option>
-          <option value="za">🔤 Z → A</option>
-          <option value="date">📅 Fecha estreno</option>
+          <option value="added">Orden de añadido</option>
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
+          <option value="date">Fecha estreno</option>
         </select>
       </div>
     </div>
@@ -663,18 +679,18 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 
   <div class="card section-anime" id="section-anime">
-    <div class="card-title">🌸 Anime GL</div>
+    <div class="card-title">Anime GL</div>
     <div class="admin-toolbar">
       <div class="admin-search-wrap">
-        <span class="admin-search-icon">🔍</span>
+        <span class="admin-search-icon"></span>
         <input class="admin-search-input" id="adminAnimeQ" placeholder="Buscar por nombre, país, plataforma…" oninput="pages.anime=1;renderAnimeGrid()">
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
         <select id="adminAnimeSort" onchange="pages.anime=1;renderAnimeGrid()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
-          <option value="added">📋 Orden de añadido</option>
-          <option value="az">🔤 A → Z</option>
-          <option value="za">🔤 Z → A</option>
+          <option value="added">Orden de añadido</option>
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
         </select>
       </div>
     </div>
@@ -684,18 +700,18 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 
   <div class="card section-reality" id="section-realities">
-    <div class="card-title">🎤 Realities & Documentales GL</div>
+    <div class="card-title">Realities & Documentales GL</div>
     <div class="admin-toolbar">
       <div class="admin-search-wrap">
-        <span class="admin-search-icon">🔍</span>
+        <span class="admin-search-icon"></span>
         <input class="admin-search-input" id="adminRealitiesQ" placeholder="Buscar por nombre, país, plataforma…" oninput="pages.realities=1;renderRealitiesGrid()">
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
         <select id="adminRealitiesSort" onchange="pages.realities=1;renderRealitiesGrid()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
-          <option value="added">📋 Orden de añadido</option>
-          <option value="az">🔤 A → Z</option>
-          <option value="za">🔤 Z → A</option>
+          <option value="added">Orden de añadido</option>
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
         </select>
       </div>
     </div>
@@ -706,13 +722,13 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
   <div class="card" id="section-books">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem">
-      <div class="card-title" style="margin-bottom:0">📚 Libros registrados</div>
+      <div class="card-title" style="margin-bottom:0">Libros registrados</div>
       <button type="button" onclick="toggleBooksSection()" id="booksSectionToggle" style="background:none;border:1.5px solid var(--border2);border-radius:20px;padding:3px 12px;font-size:11.5px;font-weight:700;color:var(--muted);cursor:pointer">▼ Mostrar</button>
     </div>
     <div id="booksContent" style="display:none">
       <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Libros enlazados desde series o películas marcadas como <strong>"Basada en libro"</strong>.</p>
       <div class="admin-search-wrap" style="margin-bottom:1rem">
-        <span class="admin-search-icon">🔍</span>
+        <span class="admin-search-icon"></span>
         <input class="admin-search-input" id="adminBooksQ" placeholder="Buscar libro o serie…" oninput="renderBooks()">
       </div>
       <div class="series-count-label" id="booksCountLabel"></div>
@@ -721,10 +737,10 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 
   <div class="card" id="section-actresses">
-    <div class="card-title">🎭 Actrices</div>
+    <div class="card-title">Actrices</div>
     <div class="admin-toolbar">
       <div class="admin-search-wrap">
-        <span class="admin-search-icon">🔍</span>
+        <span class="admin-search-icon"></span>
         <input class="admin-search-input" id="adminActressQ" placeholder="Buscar actriz…" oninput="renderActressesGrid()">
       </div>
     </div>
@@ -737,7 +753,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
   <div class="card" id="section-listas">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-      <div class="card-title" style="margin-bottom:0">📋 Listas temáticas curadas</div>
+      <div class="card-title" style="margin-bottom:0">Listas temáticas curadas</div>
     </div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Crea colecciones curadas de series y películas: "Para empezar en GL", "Las mejores de 2025", "Final feliz garantizado", etc. Aparecen en la pestaña <strong>Listas</strong> del índice.</p>
     <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:var(--lavender);border-color:var(--lavender)" onclick="openAddLista()">+ Crear lista temática</button>
@@ -747,12 +763,12 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
   <div class="card" id="section-ships">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-      <div class="card-title" style="margin-bottom:0">💕 Ships</div>
+      <div class="card-title" style="margin-bottom:0">Ships</div>
     </div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Define los ships manualmente: ponles nombre, elige las actrices que los forman. Las series en común se detectarán automáticamente.</p>
     <div class="admin-toolbar">
       <div class="admin-search-wrap">
-        <span class="admin-search-icon">🔍</span>
+        <span class="admin-search-icon"></span>
         <input class="admin-search-input" id="adminShipsQ" placeholder="Buscar ship o actriz…" oninput="renderShipsAdmin()">
       </div>
     </div>
@@ -763,12 +779,12 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
   <div class="card" id="section-productoras">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-      <div class="card-title" style="margin-bottom:0">🏢 Productoras</div>
+      <div class="card-title" style="margin-bottom:0">Productoras</div>
     </div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Define las productoras y asócialas luego a cada serie o película desde su formulario de edición.</p>
     <div class="admin-toolbar">
       <div class="admin-search-wrap">
-        <span class="admin-search-icon">🔍</span>
+        <span class="admin-search-icon"></span>
         <input class="admin-search-input" id="adminProductorasQ" placeholder="Buscar productora…" oninput="renderProductorasAdmin()">
       </div>
     </div>
@@ -779,7 +795,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
   <div class="card" id="section-platform-logos">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem">
-      <div class="card-title" style="margin-bottom:0">🎬 Logos de plataformas</div>
+      <div class="card-title" style="margin-bottom:0">Logos de plataformas</div>
     </div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Todas las plataformas que aparecen en el catálogo. Edita cualquiera para cambiar su logo. Los cambios se guardan en <code>data.json</code>.</p>
     <div id="platformLogosGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:12px"></div>
@@ -787,7 +803,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 
   <div class="card" id="section-checklist">
-    <div class="card-title">✅ Checklist</div>
+    <div class="card-title">Checklist</div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Gestiona los títulos de la checklist pública (pestaña "Checklist" en la web). Cada país tiene su propia lista independiente. Se guarda dentro del mismo <code>data.json</code>, junto con series y películas.</p>
 
     <div class="chk-country-tabs" id="chkCountryTabs">
@@ -803,7 +819,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     </div>
 
     <div style="margin-bottom:1rem">
-      <button type="button" class="btn primary" style="background:#4aada0;border-color:#4aada0" onclick="openChkPicker()" id="chkPickerOpenBtn">📥 Añadir series/pelis thai ya en la app</button>
+      <button type="button" class="btn primary" style="background:#4aada0;border-color:#4aada0" onclick="openChkPicker()" id="chkPickerOpenBtn">Añadir series/pelis thai ya en la app</button>
       <span style="font-size:12px;color:var(--muted);margin-left:.5rem">Elige de tu catálogo en vez de escribir a mano</span>
     </div>
 
@@ -835,12 +851,12 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   </div>
 
   <div class="card">
-    <div class="card-title">📤 Cómo publicar cambios</div>
+    <div class="card-title">Cómo publicar cambios</div>
     <div class="export-box"><div class="export-instructions">Cada vez que hagas cambios, sigue estos pasos:
       <ol>
         <li>Pulsa <strong>"Exportar data.json"</strong> arriba.</li>
         <li>Ve a tu repositorio en <strong>github.com</strong>.</li>
-        <li>Haz clic en el archivo <code>data.json</code> y luego en el icono del lápiz ✏️</li>
+        <li>Haz clic en el archivo <code>data.json</code> y luego en el icono del lápiz</li>
         <li>Borra todo el contenido y pega el del archivo descargado.</li>
         <li>Pulsa <strong>"Commit changes"</strong>. En segundos tus amig@s verán los cambios.</li>
       </ol>
@@ -895,7 +911,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 <!-- Modal editar episodio -->
 <div class="modal-bg" id="epEditModal">
   <div class="modal">
-    <div class="modal-title">✏️ Editar episodio</div>
+    <div class="modal-title">Editar episodio</div>
     <div id="epEditBody"></div>
   </div>
 </div>
@@ -1066,15 +1082,35 @@ function syncTroposDinamica(troposId,dinamicaId){
 }
 
 const SOURCE_TYPES=[
-  {value:'novela',label:'📚 Novela'},
-  {value:'webnovel',label:'🌐 Webnovel'},
-  {value:'manhwa',label:'📖 Manhwa'},
-  {value:'manga',label:'🎌 Manga'},
-  {value:'manhua',label:'🐉 Manhua'},
-  {value:'novela-grafica',label:'🖼️ Novela gráfica'},
-  {value:'webtoon',label:'📱 Webtoon'},
-  {value:'libro',label:'📕 Libro'},
+  {value:'novela',label:'Novela'},
+  {value:'webnovel',label:'Webnovel'},
+  {value:'manhwa',label:'Manhwa'},
+  {value:'manga',label:'Manga'},
+  {value:'manhua',label:'Manhua'},
+  {value:'novela-grafica',label:'Novela gráfica'},
+  {value:'webtoon',label:'Webtoon'},
+  {value:'libro',label:'Libro'},
 ];
+
+// Foco sáfico: qué papel juega la relación/personaje WLW en la obra
+const WLW_FOCUS=[
+  {value:'pareja-principal',label:'Pareja principal'},
+  {value:'pareja-secundaria',label:'Pareja secundaria'},
+  {value:'personaje',label:'Personaje'},
+  {value:'subtexto',label:'Subtexto'},
+];
+function wlwFocusChipsHtml(selected=''){
+  return WLW_FOCUS.map(w=>`<span class="wlw-focus-chip${selected===w.value?' selected':''}" data-value="${w.value}" onclick="selectWlwFocus(this)">${w.label}</span>`).join('');
+}
+function selectWlwFocus(el){
+  el.closest('.wlw-focus-grid').querySelectorAll('.wlw-focus-chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.toggle('selected');
+}
+function getSelectedWlwFocus(containerId){
+  const _el=_findInModal(containerId)||document.getElementById(containerId);
+  const sel=_el?_el.querySelector('.wlw-focus-chip.selected'):document.querySelector(`#${containerId} .wlw-focus-chip.selected`);
+  return sel?sel.dataset.value:'';
+}
 
 const GENRES=[
   'Academia mágica','Acción','Amistad','Animación','Anime','Año Nuevo',
@@ -1185,7 +1221,7 @@ const PRESET_COUNTRIES_ADMIN=[
 function countryPresetSelectHtml(){
   return `<option value="">— Seleccionar país —</option>`
     + PRESET_COUNTRIES_ADMIN.map(c=>`<option value="${c.name}">${c.flag} ${c.name}</option>`).join('')
-    + `<option value="__otro__">✏️ Otro…</option>`;
+    + `<option value="__otro__">Otro…</option>`;
 }
 
 function _countrySelectChange(sel){
@@ -1318,7 +1354,7 @@ function save(){
   if(dot) dot.classList.add('visible');
   // Update bar text with change count
   const barSpan=document.querySelector('#unsavedBar span');
-  if(barSpan) barSpan.innerHTML=`⚠️ <strong>${_unsavedCount} cambio${_unsavedCount!==1?'s':''}</strong> sin exportar. Recuerda exportar <code>data.json</code> y subirlo.`;
+  if(barSpan) barSpan.innerHTML=`<strong>${_unsavedCount} cambio${_unsavedCount!==1?'s':''}</strong> sin exportar. Recuerda exportar <code>data.json</code> y subirlo.`;
 }
 
 async function initData(){
@@ -1356,7 +1392,7 @@ function showImportBanner(){
   banner.id = 'importBanner';
   banner.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;background:var(--surface);border:2px solid var(--accent2);border-radius:16px;padding:14px 22px;box-shadow:0 8px 32px rgba(212,96,138,0.18);display:flex;align-items:center;gap:14px;max-width:520px;width:90%';
   banner.innerHTML = `
-    <span style="font-size:22px">📂</span>
+    <span style="font-size:22px"></span>
     <div style="flex:1">
       <div style="font-weight:700;color:var(--text);font-size:14px">Carga tu <code>data.json</code> para ver las series</div>
       <div style="font-size:12px;color:var(--muted);margin-top:2px">Al abrir admin localmente el navegador no puede leer el archivo automáticamente.</div>
@@ -1568,7 +1604,7 @@ function render(){
 
   if(!filtered.length){
     pages.series = 1;
-    grid.innerHTML=`<div class="empty">${q?'🔍 No se encontró ninguna serie con esa búsqueda.':adminSeriesStatus==='upcoming'?'📅 No hay series próximamente.':'🌸 No hay series todavía.'}</div>`;
+    grid.innerHTML=`<div class="empty">${q?'No se encontró ninguna serie con esa búsqueda.':adminSeriesStatus==='upcoming'?'No hay series próximamente.':'No hay series todavía.'}</div>`;
   } else {
     // If current page would show no results (e.g. after filtering), reset to page 1
     const _maxPg = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
@@ -1586,13 +1622,13 @@ function render(){
         img.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='flex';};
         div.appendChild(img);
       }
-      const ph=document.createElement('div'); ph.className='series-poster-ph'; ph.textContent='🎬';
+      const ph=document.createElement('div'); ph.className='series-poster-ph'; ph.textContent='';
       if(s.poster) ph.style.display='none';
       div.appendChild(ph);
       let metaStr='';
       const statusBadge=s.upcoming
-        ?'<span class="badge badge-upcoming">📅 Próximamente</span>'
-        :status==='airing'?'<span class="badge badge-airing">🌸 En emisión</span>'
+        ?'<span class="badge badge-upcoming">Próximamente</span>'
+        :status==='airing'?'<span class="badge badge-airing">En emisión</span>'
         :'<span class="badge badge-finished">✓ Finalizada</span>';
       if(s.upcoming){
         metaStr=`${s.year?escapeHtml(String(s.year))+' · ':''}${escapeHtml(s.country||'')}`;
@@ -1606,11 +1642,11 @@ function render(){
         const daysLabel=((lastSeason?.emissionDays&&lastSeason.emissionDays.length)?lastSeason.emissionDays:[lastSeason?.dayOfWeek||0]).map(d=>DAYS_ES[d]).join(' y ');
         metaStr=`${s.network?escapeHtml(s.network)+' · ':''}${totalEps} ep${seasons.length>1?' · '+seasons.length+'T':''} · ${daysLabel}`;
       }
-      const bookBadge=s.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':'';
+      const bookBadge=s.basedOnBook?'<span class="badge badge-book">Libro</span>':'';
       const genrePills=s.genres&&s.genres.length
         ?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">${s.genres.map(g=>`<span style="font-size:10px;padding:2px 8px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--muted);font-weight:600">${escapeHtml(g)}</span>`).join('')}</div>`:'';
       const info=document.createElement('div'); info.className='series-info';
-      info.innerHTML=`<div class="series-name">${escapeHtml(s.name)} ${statusBadge}${bookBadge}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.category==="anime"?'<span class="badge badge-anime">🌸 Anime</span>':s.category==="reality"?'<span class="badge badge-reality">🎤 Reality</span>':`${s.myPick?'<span class="badge" style="background:#fce8f1;color:#c94f7c;border:1px solid rgba(201,79,124,0.3)">⭐ Pick</span>':''}${s.myPick2026?'<span class="badge" style="background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.3)">🌟 2026</span>':''}`}</div>
+      info.innerHTML=`<div class="series-name">${escapeHtml(s.name)} ${statusBadge}${bookBadge}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">Renovada</span>':''}${s.category==="anime"?'<span class="badge badge-anime">Anime</span>':s.category==="reality"?'<span class="badge badge-reality">Reality</span>':`${s.myPick?'<span class="badge" style="background:#fce8f1;color:#c94f7c;border:1px solid rgba(201,79,124,0.3)">Pick</span>':''}${s.myPick2026?'<span class="badge" style="background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.3)">2026</span>':''}`}</div>
         <div class="series-meta">${metaStr}</div>
         ${genrePills}
         ${!s.upcoming?`<div class="progress-wrap" style="margin-top:6px;height:4px;background:var(--border);border-radius:2px;overflow:hidden"><div class="progress-fill" style="width:${(()=>{const eps2=genEpisodes(s),now2=new Date(),seasons2=getSeasons(s),tot=seasons2.reduce((a,t)=>a+t.totalEpisodes,0),a=eps2.filter(e=>new Date(e.date+'T12:00:00')<=now2&&!e.skipped).length;return Math.round(a/Math.max(tot,1)*100)})()}%;background:${col}"></div></div>`:''}`;
@@ -1652,7 +1688,7 @@ function renderMovies(){
 
   if(!filtered.length){
     pages.movies=1;
-    grid.innerHTML=`<div class="empty">${q?'🔍 No se encontró ninguna película con esa búsqueda.':'🎥 No hay películas todavía.'}</div>`;
+    grid.innerHTML=`<div class="empty">${q?'No se encontró ninguna película con esa búsqueda.':'No hay películas todavía.'}</div>`;
     return;
   }
 
@@ -1670,13 +1706,13 @@ function renderMovies(){
       div.appendChild(img);
     }
     const ph=document.createElement('div');
-    ph.className='series-poster-ph'; ph.textContent='🎥';
+    ph.className='series-poster-ph'; ph.textContent='';
     if(mv.poster) ph.style.display='none';
     div.appendChild(ph);
-    const bookBadge=mv.basedOnBook?'<span class="badge badge-book">📖 Libro</span>':'';
+    const bookBadge=mv.basedOnBook?'<span class="badge badge-book">Libro</span>':'';
     const now=new Date();
     const isPast=mv.date&&new Date(mv.date+'T12:00:00')<=now;
-    const statusBadge=mv.date?(isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge badge-upcoming">📅 Pendiente</span>'):'<span class="badge" style="background:var(--surface2);color:var(--muted)">Sin fecha</span>';
+    const statusBadge=mv.date?(isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge badge-upcoming">Pendiente</span>'):'<span class="badge" style="background:var(--surface2);color:var(--muted)">Sin fecha</span>';
     const metaStr=`${mv.network?escapeHtml(mv.network)+' · ':''}${mv.date?fmtDate(mv.date):'Fecha por confirmar'}`;
     const mvGenrePills=mv.genres&&mv.genres.length
       ?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">${mv.genres.map(g=>`<span style="font-size:10px;padding:2px 8px;border-radius:20px;background:var(--surface2);border:1px solid var(--border2);color:var(--muted);font-weight:600">${escapeHtml(g)}</span>`).join('')}</div>`:'';
@@ -1927,7 +1963,7 @@ function togglePosterExpand(){
   const expanded=row.classList.toggle('expanded');
   // Update all "Ampliar" buttons in the active form
   document.querySelectorAll('[onclick="togglePosterExpand()"]').forEach(btn=>{
-    if(btn.tagName==='BUTTON') btn.textContent = expanded ? '🔽 Reducir' : '🔍 Ampliar';
+    if(btn.tagName==='BUTTON') btn.textContent = expanded ? 'Reducir' : 'Ampliar';
   });
 }
 function toggleBookFields(){
@@ -2003,7 +2039,7 @@ function addSeasonBlock(seasonData=null, idx=null){
     <div class="form-row" style="margin-bottom:10px">
       <label class="toggle-row s-allday-toggle" style="margin-bottom:8px;cursor:pointer">
         <input type="checkbox" class="s-allday" ${seasonData?.allInOneDay?'checked':''} style="width:auto;accent-color:var(--accent)" onchange="toggleAllInOneDay(this)">
-        <div><div class="toggle-label">📦 Estreno completo en un día</div><div class="toggle-desc">Todos los episodios se emiten el mismo día (ej: Netflix drop)</div></div>
+        <div><div class="toggle-label">Estreno completo en un día</div><div class="toggle-desc">Todos los episodios se emiten el mismo día (ej: Netflix drop)</div></div>
       </label>
       <div class="s-dow-wrap" style="${seasonData?.allInOneDay?'display:none':''}">
         <label class="form-label">Días de emisión regular *</label>
@@ -2014,11 +2050,11 @@ function addSeasonBlock(seasonData=null, idx=null){
     <div class="form-row" style="margin-bottom:10px;${seasonData?.allInOneDay?'display:none':''}">
       <label class="toggle-row" style="cursor:pointer;margin-bottom:0">
         <input type="checkbox" class="s-special-toggle" ${hasSpecial?'checked':''} style="width:auto;accent-color:var(--yellow)" onchange="toggleSpecialSchedule(this)">
-        <div><div class="toggle-label" style="color:#7a5a00">⚡ Emisión irregular (fechas especiales)</div><div class="toggle-desc">Ej: eps 1-3 el sábado, eps 4-6 una semana después, luego semanal</div></div>
+        <div><div class="toggle-label" style="color:#7a5a00">Emisión irregular (fechas especiales)</div><div class="toggle-desc">Ej: eps 1-3 el sábado, eps 4-6 una semana después, luego semanal</div></div>
       </label>
       <div class="s-special-wrap" style="${hasSpecial?'':'display:none'}">
         <div class="premiere-block">
-          <div class="premiere-block-title">⚡ Grupos de episodios con fechas fijas</div>
+          <div class="premiere-block-title">Grupos de episodios con fechas fijas</div>
           <div style="font-size:11px;color:#b08a00;margin-bottom:10px;line-height:1.6">
             Define qué episodios se emiten en qué fecha. El resto seguirá el patrón semanal de arriba empezando justo después del último grupo.
           </div>
@@ -2038,7 +2074,7 @@ function addSeasonBlock(seasonData=null, idx=null){
               </div>`).join(''):''}
           </div>
           <button type="button" class="platform-add-btn" style="margin-top:8px" onclick="addPremiereRow(this.closest('.season-block'))">+ Añadir grupo</button>
-          <div class="premiere-continue-info">✅ El patrón semanal continuará automáticamente desde el primer día de emisión regular <strong>después del último grupo</strong>.</div>
+          <div class="premiere-continue-info">El patrón semanal continuará automáticamente desde el primer día de emisión regular <strong>después del último grupo</strong>.</div>
         </div>
       </div>
     </div>
@@ -2047,7 +2083,7 @@ function addSeasonBlock(seasonData=null, idx=null){
       <input type="number" class="s-eps" min="1" max="500" value="${totalEps}"/>
     </div>
     <div class="form-row" style="margin-top:10px;margin-bottom:0">
-      <label class="form-label">⏱ Duración por episodio <span style="font-size:10px;opacity:.5;font-weight:400;text-transform:none">(si difiere de la general)</span></label>
+      <label class="form-label">Duración por episodio <span style="font-size:10px;opacity:.5;font-weight:400;text-transform:none">(si difiere de la general)</span></label>
       <div style="display:flex;align-items:center;gap:8px">
         <input type="text" class="s-ep-duration" placeholder="Ej: 45min · déjalo vacío si es igual que la general" value="${seasonData?.episodeDuration?formatDurationDisplay(seasonData.episodeDuration):''}" oninput="previewSeasonDuration(this)" style="max-width:260px"/>
         <span class="s-ep-duration-hint" style="font-size:11px;color:var(--muted)"></span>
@@ -2172,7 +2208,7 @@ function formHtml(s, forcedCategory=null){
 
     <!-- ══ COLUMNA IZQUIERDA: datos básicos ══ -->
     <div class="form-col-left">
-      <div class="form-section-hd">📋 Datos básicos</div>
+      <div class="form-section-hd">Datos básicos</div>
 
       <div class="form-row">
         <label class="form-label">Nombre *</label>
@@ -2190,8 +2226,8 @@ function formHtml(s, forcedCategory=null){
         <div class="poster-editor-wrap" id="posterEditorWrap">
           <!-- Tabs -->
           <div class="poster-editor-tabs">
-            <button type="button" class="poster-tab active" data-ptab="url" onclick="switchPosterTab('url',this)">🔗 URL</button>
-            <button type="button" class="poster-tab" data-ptab="upload" onclick="switchPosterTab('upload',this)">📁 Subir imagen</button>
+            <button type="button" class="poster-tab active" data-ptab="url" onclick="switchPosterTab('url',this)">URL</button>
+            <button type="button" class="poster-tab" data-ptab="upload" onclick="switchPosterTab('upload',this)">Subir imagen</button>
           </div>
           <!-- Panel URL -->
           <div class="poster-tab-panel active" id="posterPanel_url">
@@ -2202,7 +2238,7 @@ function formHtml(s, forcedCategory=null){
           <div class="poster-tab-panel" id="posterPanel_upload">
             <div class="poster-upload-zone" id="posterDropZone" onclick="document.getElementById('posterFileInput').click()" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="posterHandleDrop(event)">
               <input type="file" id="posterFileInput" accept="image/*" onchange="posterHandleFile(this.files[0])">
-              <div style="font-size:1.8rem;margin-bottom:5px">🖼️</div>
+              <div style="font-size:1.8rem;margin-bottom:5px"></div>
               <div>Haz clic o arrastra una imagen aquí</div>
               <div style="font-size:11px;margin-top:3px;opacity:.7">JPG, PNG, WEBP…</div>
             </div>
@@ -2218,7 +2254,7 @@ function formHtml(s, forcedCategory=null){
                 <div class="poster-edit-btns">
                   <button type="button" class="poster-edit-btn" onclick="posterRotate(-90)" title="Rotar -90°">↺ -90°</button>
                   <button type="button" class="poster-edit-btn" onclick="posterRotate(90)" title="Rotar +90°">↻ +90°</button>
-                  <button type="button" class="poster-edit-btn" onclick="posterRotate(180)" title="Girar 180°">↕ 180°</button>
+                  <button type="button" class="poster-edit-btn" onclick="posterRotate(180)" title="Girar 180°">180°</button>
                   <button type="button" class="poster-edit-btn" onclick="posterFlip()" title="Voltear horizontal">⇔ Voltear</button>
                 </div>
               </div>
@@ -2239,7 +2275,7 @@ function formHtml(s, forcedCategory=null){
                 <input type="range" class="poster-edit-slider" id="posterPanV" min="-1" max="1" step="0.01" value="0" oninput="posterPan('y',this.value)">
               </div>
               <button type="button" class="poster-clear-btn" onclick="posterClear()">✕ Quitar portada</button>
-              <button type="button" class="poster-edit-btn" onclick="togglePosterExpand()" style="margin-top:4px;border-color:var(--accent);color:var(--accent);background:var(--accent-soft)">🔍 Ampliar</button>
+              <button type="button" class="poster-edit-btn" onclick="togglePosterExpand()" style="margin-top:4px;border-color:var(--accent);color:var(--accent);background:var(--accent-soft)">Ampliar</button>
             </div>
           </div>
         </div>
@@ -2253,17 +2289,17 @@ function formHtml(s, forcedCategory=null){
       </div>
 
       <div class="form-row">
-        <label class="form-label">▶ Trailer (YouTube URL)</label>
+        <label class="form-label">Trailer (YouTube URL)</label>
         <input id="f_trailer" placeholder="https://youtu.be/..." value="${s&&s.trailerUrl?s.trailerUrl:''}"/>
       </div>
 
-      <div class="form-section-hd" style="margin-top:14px">🏷 Info adicional</div>
+      <div class="form-section-hd" style="margin-top:14px">Info adicional</div>
 
       <div class="form-row">
         <label class="form-label">Tipo de serie</label>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-          <div data-stype="serie" onclick="selectSeriesType('serie',this)" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(93,138,210,0.4);font-size:12px;font-weight:700;background:${!s||!s.seriesType||s.seriesType==='serie'?'#deeafa':'transparent'};color:${!s||!s.seriesType||s.seriesType==='serie'?'#2a5ea8':'#888'}">📺 Serie (por defecto)</div>
-          <div data-stype="webserie" onclick="selectSeriesType('webserie',this)" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(42,125,191,0.4);font-size:12px;font-weight:700;background:${s&&s.seriesType==='webserie'?'#e8f4fd':'transparent'};color:${s&&s.seriesType==='webserie'?'#2a7dbf':'#888'}">🌐 Web Serie</div>
+          <div data-stype="serie" onclick="selectSeriesType('serie',this)" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(93,138,210,0.4);font-size:12px;font-weight:700;background:${!s||!s.seriesType||s.seriesType==='serie'?'#deeafa':'transparent'};color:${!s||!s.seriesType||s.seriesType==='serie'?'#2a5ea8':'#888'}">Serie (por defecto)</div>
+          <div data-stype="webserie" onclick="selectSeriesType('webserie',this)" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(42,125,191,0.4);font-size:12px;font-weight:700;background:${s&&s.seriesType==='webserie'?'#e8f4fd':'transparent'};color:${s&&s.seriesType==='webserie'?'#2a7dbf':'#888'}">Web Serie</div>
         </div>
         <input type="hidden" id="f_seriesType" value="${s&&s.seriesType?s.seriesType:'serie'}">
         <div class="form-hint">Web Serie: publicada solo online (YouTube, etc.) y ya finalizada.</div>
@@ -2272,9 +2308,9 @@ function formHtml(s, forcedCategory=null){
       <div class="form-row">
         <label class="form-label">Categoría</label>
         <div class="cat-chips" id="f_cat_chips">
-          <div class="cat-chip${cat==='series'?' selected-series':''}" onclick="selectCategory('series')" data-cat="series">🌷 Serie GL</div>
-          <div class="cat-chip${cat==='anime'?' selected-anime':''}" onclick="selectCategory('anime')" data-cat="anime">🌸 Anime</div>
-          <div class="cat-chip${cat==='reality'?' selected-reality':''}" onclick="selectCategory('reality')" data-cat="reality">🎤 Reality</div>
+          <div class="cat-chip${cat==='series'?' selected-series':''}" onclick="selectCategory('series')" data-cat="series">Serie GL</div>
+          <div class="cat-chip${cat==='anime'?' selected-anime':''}" onclick="selectCategory('anime')" data-cat="anime">Anime</div>
+          <div class="cat-chip${cat==='reality'?' selected-reality':''}" onclick="selectCategory('reality')" data-cat="reality">Reality</div>
         </div>
         <input type="hidden" id="f_category" value="${cat}">
       </div>
@@ -2301,11 +2337,11 @@ function formHtml(s, forcedCategory=null){
           <option value="">— Sin productora —</option>
           ${(productoras||[]).sort((a,b)=>a.name.localeCompare(b.name,'es')).map(p=>`<option value="${escapeHtml(p.id)}" ${s&&s.productoraId===p.id?'selected':''}>${escapeHtml(p.name)}${p.country?' ('+escapeHtml(p.country)+')':''}</option>`).join('')}
         </select>
-        ${!(productoras||[]).length?`<div style="font-size:11.5px;color:var(--muted);margin-top:4px">Aún no has creado productoras. Ve a la sección <strong>🏢 Productoras</strong> para añadirlas.</div>`:''}
+        ${!(productoras||[]).length?`<div style="font-size:11.5px;color:var(--muted);margin-top:4px">Aún no has creado productoras. Ve a la sección <strong>Productoras</strong> para añadirlas.</div>`:''}
       </div>
 
       <div class="form-row" style="margin-top:10px">
-        <label class="form-label">⏱ Duración por episodio <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(media si varía)</span></label>
+        <label class="form-label">Duración por episodio <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(media si varía)</span></label>
         <div style="display:flex;align-items:center;gap:8px">
           <input id="f_epDuration" type="text" placeholder="Ej: 45  ó  1h 20min  ó  45min" value="${s&&s.episodeDuration?formatDurationDisplay(s.episodeDuration):''}" oninput="previewEpDuration(this)" style="max-width:220px"/>
           <span id="f_epDuration_hint" style="font-size:11px;color:var(--muted)"></span>
@@ -2330,7 +2366,7 @@ function formHtml(s, forcedCategory=null){
       </div>
 
       <div class="form-row">
-        <label class="form-label">🔗 Dónde ver</label>
+        <label class="form-label">Dónde ver</label>
         <div class="platforms-list" id="platformsList"></div>
         <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">
           <span class="qf-chip" onclick="quickAddPlatform('GagaOOLala','https://www.gagaoolala.com')">Gaga</span>
@@ -2351,13 +2387,17 @@ function formHtml(s, forcedCategory=null){
       </div>
 
       <div class="form-row">
-        <label class="form-label">💘 Tropos narrativos <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona los que apliquen)</span></label>
-        <div class="tropo-chips" id="f_tropos">${troposChipsHtml(s&&s.tropos?s.tropos:[])}</div>
+        <details class="collapsible-field">
+          <summary class="form-label">Tropos narrativos <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona los que apliquen)</span>${(s&&s.tropos&&s.tropos.length)?`<span class="collapsible-count">· ${s.tropos.length} seleccionados</span>`:''}</summary>
+          <div class="tropo-chips" id="f_tropos">${troposChipsHtml(s&&s.tropos?s.tropos:[])}</div>
+        </details>
       </div>
 
       <div class="form-row">
-        <label class="form-label">💞 Dinámica de pareja <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona las que apliquen)</span></label>
-        <div class="dinamica-chips" id="f_dinamica">${dinamicaChipsHtml(s&&s.dinamica?s.dinamica:[])}</div>
+        <details class="collapsible-field">
+          <summary class="form-label">Dinámica de pareja <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona las que apliquen)</span>${(s&&s.dinamica&&s.dinamica.length)?`<span class="collapsible-count">· ${s.dinamica.length} seleccionadas</span>`:''}</summary>
+          <div class="dinamica-chips" id="f_dinamica">${dinamicaChipsHtml(s&&s.dinamica?s.dinamica:[])}</div>
+        </details>
       </div>
 
       <div class="form-row">
@@ -2366,7 +2406,7 @@ function formHtml(s, forcedCategory=null){
       </div>
 
       <div class="form-row">
-        <label class="form-label">🏆 Premios y festivales <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(opcional)</span></label>
+        <label class="form-label">Premios y festivales <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(opcional)</span></label>
         <div id="awardsAdminList" style="display:flex;flex-direction:column;gap:0"></div>
         <button type="button" class="platform-add-btn" onclick="addAwardRow('awardsAdminList')" style="margin-top:4px;background:var(--yellow-soft);color:#7a5800;border-color:var(--yellow)">+ Añadir premio / nominación</button>
       </div>
@@ -2374,7 +2414,7 @@ function formHtml(s, forcedCategory=null){
       <div class="divider"></div>
       <label class="toggle-row" onclick="">
         <input type="checkbox" id="f_book" ${s&&s.basedOnBook?'checked':''} style="width:auto;accent-color:var(--accent)" onchange="toggleBookFields()">
-        <div><div class="toggle-label">📖 Basada en libro / novela / manhwa</div><div class="toggle-desc">Se mostrará una etiqueta especial</div></div>
+        <div><div class="toggle-label">Basada en libro / novela / manhwa</div><div class="toggle-desc">Se mostrará una etiqueta especial</div></div>
       </label>
       <div id="bookExtraFields" style="${s&&s.basedOnBook?'':'display:none'}">
         <div class="form-row" style="margin-top:8px">
@@ -2405,7 +2445,11 @@ function formHtml(s, forcedCategory=null){
     <!-- ══ COLUMNA DERECHA: temporadas ══ -->
     <!-- Cast always visible regardless of upcoming toggle -->
     <div class="form-col-right" style="padding:1rem 1.5rem;border-right:1px solid var(--border2)">
-      <div class="form-section-hd">🎭 Reparto GL</div>
+      <div class="form-row" style="margin-bottom:14px">
+        <label class="form-label">Foco sáfico <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(qué peso tiene la relación/personaje WLW)</span></label>
+        <div class="wlw-focus-grid" id="f_wlwFocus">${wlwFocusChipsHtml(s&&s.wlwFocus?s.wlwFocus:'')}</div>
+      </div>
+      <div class="form-section-hd">Reparto GL</div>
       <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas en la sección Actrices. Indica el personaje y a qué pareja pertenece (P1, P2…)</div>
       <button type="button" class="platform-add-btn" onclick="addCastMember(null)" style="margin-bottom:8px">+ Añadir actriz al reparto</button>
       <div id="castList" style="margin-bottom:8px;overflow:visible;position:relative"></div>
@@ -2414,22 +2458,22 @@ function formHtml(s, forcedCategory=null){
 
       <label class="toggle-row" style="margin-top:8px">
         <input type="checkbox" id="f_upcoming" ${isUpcoming?'checked':''} style="width:auto;accent-color:var(--lavender)" onchange="toggleUpcomingFields()">
-        <div><div class="toggle-label">📅 Próximamente (sin fecha de emisión)</div><div class="toggle-desc">Aparece en la sección "Próximamente"</div></div>
+        <div><div class="toggle-label">Próximamente (sin fecha de emisión)</div><div class="toggle-desc">Aparece en la sección "Próximamente"</div></div>
       </label>
       <label class="toggle-row" style="margin-top:6px;${isUpcoming?'display:none':''}">
         <input type="checkbox" id="f_renewed" ${s&&s.renewedNextSeason?'checked':''} style="width:auto;accent-color:var(--teal)">
-        <div><div class="toggle-label" style="color:var(--teal)">🔄 Renovada para nueva temporada</div><div class="toggle-desc">Muestra el badge "Renovada" en index cuando la serie finaliza</div></div>
+        <div><div class="toggle-label" style="color:var(--teal)">Renovada para nueva temporada</div><div class="toggle-desc">Muestra el badge "Renovada" en index cuando la serie finaliza</div></div>
       </label>
       <!-- CANCELACIÓN -->
       <div style="margin-top:10px;padding:10px 12px;background:rgba(201,64,64,.06);border:1.5px solid rgba(201,64,64,.18);border-radius:10px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c94040;margin-bottom:8px">❌ Estado de cancelación</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c94040;margin-bottom:8px">Estado de cancelación</div>
         <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
           <span style="font-size:12px;font-weight:600;color:var(--text);min-width:80px">Estado</span>
           <select id="f_cancelStatus" style="flex:1;padding:5px 8px;border:1.5px solid var(--border2);border-radius:7px;font-size:12px;font-family:var(--font-body);background:var(--surface)">
             <option value="" ${!s||!s.cancelStatus?'selected':''}>— Sin cambios —</option>
-            <option value="cancelled" ${s&&s.cancelStatus==='cancelled'?'selected':''}>❌ Cancelada</option>
-            <option value="limbo" ${s&&s.cancelStatus==='limbo'?'selected':''}>⏸️ En limbo / Sin noticias</option>
-            <option value="closed" ${s&&s.cancelStatus==='closed'?'selected':''}>🏢 Productora cerrada</option>
+            <option value="cancelled" ${s&&s.cancelStatus==='cancelled'?'selected':''}>Cancelada</option>
+            <option value="limbo" ${s&&s.cancelStatus==='limbo'?'selected':''}>En limbo / Sin noticias</option>
+            <option value="closed" ${s&&s.cancelStatus==='closed'?'selected':''}>Productora cerrada</option>
           </select>
         </label>
         <label style="display:flex;align-items:flex-start;gap:8px">
@@ -2440,26 +2484,26 @@ function formHtml(s, forcedCategory=null){
       <label class="toggle-row" style="margin-top:6px">
         <input type="checkbox" id="f_myPick" ${s&&s.myPick?'checked':''} style="width:auto;accent-color:#c94f7c">
         <div style="flex:1">
-          <div class="toggle-label" style="color:#c94f7c">⭐ Mis picks (recomendaciones generales)</div>
-          <div class="toggle-desc">Aparece en la pestaña "⭐ Mis picks" del index</div>
+          <div class="toggle-label" style="color:#c94f7c">Mis picks (recomendaciones generales)</div>
+          <div class="toggle-desc">Aparece en la pestaña "Mis picks" del index</div>
         </div>
       </label>
       <label class="toggle-row" style="margin-top:6px">
         <input type="checkbox" id="f_myPick2026" ${s&&s.myPick2026?'checked':''} style="width:auto;accent-color:#8b72be">
         <div style="flex:1">
-          <div class="toggle-label" style="color:#8b72be">🌟 Picks 2026</div>
-          <div class="toggle-desc">Aparece en la pestaña "🌟 Picks 2026" del index</div>
+          <div class="toggle-label" style="color:#8b72be">Picks 2026</div>
+          <div class="toggle-desc">Aparece en la pestaña "Picks 2026" del index</div>
         </div>
       </label>
 
       <div class="divider" style="margin:14px 0"></div>
-      <div class="form-section-hd">📅 Temporadas y emisión</div>
+      <div class="form-section-hd">Temporadas y emisión</div>
 
       <!-- Temporada anime / documental -->
       <div class="form-row" id="animeSeason_wrap" style="margin-bottom:14px;${(cat!=='anime'&&cat!=='reality')?'display:none':''}">
-        <label class="form-label">${cat==='reality'?'📅 Temporada documental':'🌸 Temporada anime'}</label>
+        <label class="form-label">${cat==='reality'?'Temporada documental':'Temporada anime'}</label>
         <div class="anime-season-wrap">
-          ${['Invierno','Primavera','Verano','Otoño'].map(st=>`<div class="anime-season-chip${(s&&s.animeSeason&&s.animeSeason.startsWith(st))?' selected':''}" data-season="${st}" onclick="selectAnimeSeason(this)">${st==='Invierno'?'❄️ ':st==='Primavera'?'🌸 ':st==='Verano'?'☀️ ':'🍂 '}${st}</div>`).join('')}
+          ${['Invierno','Primavera','Verano','Otoño'].map(st=>`<div class="anime-season-chip${(s&&s.animeSeason&&s.animeSeason.startsWith(st))?' selected':''}" data-season="${st}" onclick="selectAnimeSeason(this)">${st==='Invierno'?'':st==='Primavera'?'':st==='Verano'?'':''}${st}</div>`).join('')}
           <input type="number" id="f_anime_year" class="anime-season-year" placeholder="${new Date().getFullYear()}" min="2000" max="2040" value="${s&&s.animeSeason?s.animeSeason.split(' ').pop():''}">
           <input type="hidden" id="f_anime_season_name" value="${s&&s.animeSeason?s.animeSeason.split(' ').slice(0,-1).join(' '):''}">
         </div>
@@ -2473,13 +2517,13 @@ function formHtml(s, forcedCategory=null){
       <!-- Checkbox "Próximamente" visible también cuando upcoming=true -->
       <label class="toggle-row" style="margin-bottom:10px">
         <input type="checkbox" id="f_upcoming_mirror" checked style="width:auto;accent-color:var(--lavender)" onchange="document.getElementById('f_upcoming').checked=this.checked;toggleUpcomingFields()">
-        <div><div class="toggle-label">📅 Próximamente (sin fecha de emisión)</div><div class="toggle-desc">Desmarcar para asignar fecha y temporadas</div></div>
+        <div><div class="toggle-label">Próximamente (sin fecha de emisión)</div><div class="toggle-desc">Desmarcar para asignar fecha y temporadas</div></div>
       </label>
       ${(cat==='anime'||cat==='reality')?`
       <div class="form-row" id="animeSeason_wrap_upcoming" style="margin-bottom:14px">
-        <label class="form-label">${cat==='reality'?'📅 Temporada documental':'🌸 Temporada anime'}</label>
+        <label class="form-label">${cat==='reality'?'Temporada documental':'Temporada anime'}</label>
         <div class="anime-season-wrap">
-          ${['Invierno','Primavera','Verano','Otoño'].map(st=>`<div class="anime-season-chip${(s&&s.animeSeason&&s.animeSeason.startsWith(st))?' selected':''}" data-season="${st}" onclick="selectAnimeSeason(this)">${st==='Invierno'?'❄️ ':st==='Primavera'?'🌸 ':st==='Verano'?'☀️ ':'🍂 '}${st}</div>`).join('')}
+          ${['Invierno','Primavera','Verano','Otoño'].map(st=>`<div class="anime-season-chip${(s&&s.animeSeason&&s.animeSeason.startsWith(st))?' selected':''}" data-season="${st}" onclick="selectAnimeSeason(this)">${st==='Invierno'?'':st==='Primavera'?'':st==='Verano'?'':''}${st}</div>`).join('')}
           <input type="number" id="f_anime_year_upcoming" class="anime-season-year" placeholder="${new Date().getFullYear()}" min="2000" max="2040" value="${s&&s.animeSeason?s.animeSeason.split(' ').pop():''}">
           <input type="hidden" id="f_anime_season_name_upcoming" value="${s&&s.animeSeason?s.animeSeason.split(' ').slice(0,-1).join(' '):''}">
         </div>
@@ -2487,11 +2531,11 @@ function formHtml(s, forcedCategory=null){
       </div>`:''}
       <!-- ══ SIN NOVEDADES ══ -->
       <div style="margin-bottom:14px;padding:12px 14px;background:rgba(176,128,48,.07);border:1.5px solid rgba(176,128,48,.25);border-radius:12px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9a7000;margin-bottom:10px">🕰️ Sin novedades</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9a7000;margin-bottom:10px">Sin novedades</div>
         <label class="toggle-row" style="margin-bottom:10px;background:transparent;border:none;padding:0;cursor:pointer">
           <input type="checkbox" id="f_sinNovedades" ${s&&s.sinNovedades?'checked':''} style="width:auto;accent-color:#b08000">
           <div style="flex:1">
-            <div class="toggle-label" style="color:#9a7000">📭 Marcar como "Sin novedades"</div>
+            <div class="toggle-label" style="color:#9a7000">Marcar como "Sin novedades"</div>
             <div class="toggle-desc">Aparece en la pestaña "Sin novedades" de Próximamente</div>
           </div>
         </label>
@@ -2506,14 +2550,14 @@ function formHtml(s, forcedCategory=null){
       </div>
       <!-- CANCELACIÓN (también disponible en modo próximamente) -->
       <div style="margin-top:10px;padding:10px 12px;background:rgba(201,64,64,.06);border:1.5px solid rgba(201,64,64,.18);border-radius:10px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c94040;margin-bottom:8px">❌ Estado de cancelación</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c94040;margin-bottom:8px">Estado de cancelación</div>
         <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
           <span style="font-size:12px;font-weight:600;color:var(--text);min-width:80px">Estado</span>
           <select id="f_cancelStatus_up" style="flex:1;padding:5px 8px;border:1.5px solid var(--border2);border-radius:7px;font-size:12px;font-family:var(--font-body);background:var(--surface)" onchange="document.getElementById('f_cancelStatus').value=this.value">
             <option value="" ${!s||!s.cancelStatus?'selected':''}>— Sin cambios —</option>
-            <option value="cancelled" ${s&&s.cancelStatus==='cancelled'?'selected':''}>❌ Cancelada</option>
-            <option value="limbo" ${s&&s.cancelStatus==='limbo'?'selected':''}>⏸️ En limbo / Sin noticias</option>
-            <option value="closed" ${s&&s.cancelStatus==='closed'?'selected':''}>🏢 Productora cerrada</option>
+            <option value="cancelled" ${s&&s.cancelStatus==='cancelled'?'selected':''}>Cancelada</option>
+            <option value="limbo" ${s&&s.cancelStatus==='limbo'?'selected':''}>En limbo / Sin noticias</option>
+            <option value="closed" ${s&&s.cancelStatus==='closed'?'selected':''}>Productora cerrada</option>
           </select>
         </label>
         <label style="display:flex;align-items:flex-start;gap:8px">
@@ -2522,7 +2566,7 @@ function formHtml(s, forcedCategory=null){
         </label>
       </div>
       <div style="text-align:center;padding:2rem 1rem;color:var(--muted);font-size:13px">
-        <div style="font-size:2rem;margin-bottom:8px">📅</div>
+        <div style="font-size:2rem;margin-bottom:8px"></div>
         Las temporadas se configuran<br>cuando la serie tenga fecha confirmada.
       </div>
     </div>
@@ -2532,7 +2576,7 @@ function formHtml(s, forcedCategory=null){
 
 
 function openAddSeries(){
-  document.getElementById('seriesModalTitle').textContent='🌸 Añadir serie GL';
+  document.getElementById('seriesModalTitle').textContent='Añadir serie GL';
   document.getElementById('seriesModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null)+
@@ -2546,7 +2590,7 @@ function openAddSeries(){
   syncTroposDinamica('f_tropos','f_dinamica');
 }
 function openEdit(si){
-  document.getElementById('seriesModalTitle').textContent='✏️ Editar serie';
+  document.getElementById('seriesModalTitle').textContent='Editar serie';
   document.getElementById('seriesModalBody').innerHTML=
     formHtml(series[si])+
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
@@ -2616,11 +2660,11 @@ const LANG_OPTIONS=[
   {val:'fr',flag:'🇫🇷',label:'Français'},
   {val:'de',flag:'🇩🇪',label:'Deutsch'},
   {val:'it',flag:'🇮🇹',label:'Italiano'},
-  {val:'other',flag:'🌐',label:'Otro'},
+  {val:'other',flag:'',label:'Otro'},
 ];
 const STORE_OPTIONS=['Amazon','MEB','Fnac','BookDepository','Kobo','Apple Books','Google Play','Web oficial','Otro'];
 
-function langFlag(val){ return (LANG_OPTIONS.find(l=>l.val===val)||{flag:'🌐'}).flag; }
+function langFlag(val){ return (LANG_OPTIONS.find(l=>l.val===val)||{flag:''}).flag; }
 
 function buildEditionRow(listId, lang='es', store='Amazon', url=''){
   const list=document.getElementById(listId); if(!list) return;
@@ -2697,7 +2741,7 @@ function checkDupName(inp){
   // Skip warning if user is just editing and name hasn't changed
   if(originalName&&q===originalName){warn.style.display='none';return;}
 
-  const catLabels={series:'🌷 Serie GL',anime:'🌸 Anime',reality:'🎤 Reality / Docuserie'};
+  const catLabels={series:'Serie GL',anime:'Anime',reality:'Reality / Docuserie'};
   const matches=[];
 
   series.forEach(s=>{
@@ -2709,7 +2753,7 @@ function checkDupName(inp){
   });
   (movies||[]).forEach(mv=>{
     if(mv.name.trim().toLowerCase()===q){
-      const cat=mv.category==='anime'?'🌸 Anime Película':mv.category==='reality'?'🎤 Documental':'🎥 Película';
+      const cat=mv.category==='anime'?'Anime Película':mv.category==='reality'?'Documental':'Película';
       matches.push({section:'Películas', cat, name:mv.name, type:'película'});
     }
   });
@@ -2718,7 +2762,7 @@ function checkDupName(inp){
 
   const lines=matches.map(m=>`<strong>${m.name}</strong> — ${m.cat} (sección <em>${m.section}</em>)`).join('<br>');
   warn.style.display='block';
-  warn.innerHTML=`⚠️ Este título ya existe en la base de datos:<br>${lines}<br><span style="font-size:11px;color:#b08a00">Comprueba que no sea un duplicado antes de guardar.</span>`;
+  warn.innerHTML=`Este título ya existe en la base de datos:<br>${lines}<br><span style="font-size:11px;color:#b08a00">Comprueba que no sea un duplicado antes de guardar.</span>`;
 }
 
 
@@ -2792,7 +2836,7 @@ function selectSeriesType(type, el){
 
 /* ═══ ANIME FUNCTIONS ═══ */
 function openAddAnime(){
-  document.getElementById('animeModalTitle').textContent='🌸 Añadir anime GL';
+  document.getElementById('animeModalTitle').textContent='Añadir anime GL';
   document.getElementById('animeModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null,'anime')+
@@ -2805,7 +2849,7 @@ function openAddAnime(){
   initCast([]);
 }
 function openEditAnime(si){
-  document.getElementById('animeModalTitle').textContent='✏️ Editar anime';
+  document.getElementById('animeModalTitle').textContent='Editar anime';
   document.getElementById('animeModalBody').innerHTML=
     formHtml(series[si],'anime')+
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si},'anime')" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
@@ -2824,7 +2868,7 @@ function openEpsAnime(si){ openEps(si); } // reuse same modal
 
 /* ═══ REALITY FUNCTIONS ═══ */
 function openAddReality(){
-  document.getElementById('realityModalTitle').textContent='🎤 Añadir reality / docuserie GL';
+  document.getElementById('realityModalTitle').textContent='Añadir reality / docuserie GL';
   document.getElementById('realityModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null,'reality')+
@@ -2837,7 +2881,7 @@ function openAddReality(){
   initCast([]);
 }
 function openEditReality(si){
-  document.getElementById('realityModalTitle').textContent='✏️ Editar reality';
+  document.getElementById('realityModalTitle').textContent='Editar reality';
   document.getElementById('realityModalBody').innerHTML=
     formHtml(series[si],'reality')+
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si},'reality')" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
@@ -2876,7 +2920,7 @@ function renderAnimeGrid(){
 
   if(!filtered.length){
     pages.anime=1;
-    grid.innerHTML=`<div class="empty">${q?'🔍 No se encontró ningún anime con esa búsqueda.':'🌸 Ningún anime todavía. Pulsa "+ Añadir anime".'}</div>`;
+    grid.innerHTML=`<div class="empty">${q?'No se encontró ningún anime con esa búsqueda.':'Ningún anime todavía. Pulsa "+ Añadir anime".'}</div>`;
     return;
   }
   const {items, totalPages, page} = paginate(filtered, 'anime');
@@ -2888,18 +2932,18 @@ function renderAnimeGrid(){
     const aired=eps.filter(e=>e.date&&_validDate(e.date)&&new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
     const total2=s.seasons?s.seasons.reduce((a,t)=>a+t.totalEpisodes,0):(s.totalEpisodes||0);
     const pct=Math.round(aired/Math.max(total2,1)*100);
-    const cover=s.poster?`<img class="series-poster" src="${escapeHtml(s.poster)}" alt="" onerror="this.outerHTML='<div class=series-poster-ph>🌸</div>'">`:`<div class="series-poster-ph">🌸</div>`;
+    const cover=s.poster?`<img class="series-poster" src="${escapeHtml(s.poster)}" alt="" onerror="this.outerHTML='<div class=series-poster-ph></div>'">`:`<div class="series-poster-ph"></div>`;
     const div=document.createElement('div'); div.className='series-item';
     div.innerHTML=`${cover}
       <div class="series-info">
-        <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-anime">Anime</span>${s.basedOnBook?'<span class="badge badge-book">📖</span>':''}${s.animeSeason?`<span class="anime-season-badge">🌸 ${escapeHtml(s.animeSeason)}</span>`:''}</div>
+        <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-anime">Anime</span>${s.basedOnBook?'<span class="badge badge-book"></span>':''}${s.animeSeason?`<span class="anime-season-badge">${escapeHtml(s.animeSeason)}</span>`:''}</div>
         <div class="series-meta">${[s.country,s.network,s.year].filter(Boolean).map(escapeHtml).join(' · ')} · ${total2} eps</div>
         <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:#7c5cbf"></div></div>
       </div>
       <div class="series-actions">
-        <button type="button" class="btn small" onclick="openEpsAnime(${si})">📋 Eps</button>
-        <button type="button" class="btn small" onclick="openEditAnime(${si})">✏️</button>
-        <button type="button" class="btn small danger" onclick="delSeries(${si})">🗑</button>
+        <button type="button" class="btn small" onclick="openEpsAnime(${si})">Eps</button>
+        <button type="button" class="btn small" onclick="openEditAnime(${si})">Editar</button>
+        <button type="button" class="btn small danger" onclick="delSeries(${si})">Eliminar</button>
       </div>`;
     grid.appendChild(div);
   });
@@ -2929,7 +2973,7 @@ function renderRealitiesGrid(){
 
   if(!filtered.length){
     pages.realities=1;
-    grid.innerHTML=`<div class="empty">${q?'🔍 No se encontró ningún reality con esa búsqueda.':'🎤 Ningún reality todavía. Pulsa "+ Añadir reality".'}</div>`;
+    grid.innerHTML=`<div class="empty">${q?'No se encontró ningún reality con esa búsqueda.':'Ningún reality todavía. Pulsa "+ Añadir reality".'}</div>`;
     return;
   }
   const {items, totalPages, page} = paginate(filtered, 'realities');
@@ -2941,18 +2985,18 @@ function renderRealitiesGrid(){
     const aired=eps.filter(e=>e.date&&_validDate(e.date)&&new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
     const total2=s.seasons?s.seasons.reduce((a,t)=>a+t.totalEpisodes,0):(s.totalEpisodes||0);
     const pct=Math.round(aired/Math.max(total2,1)*100);
-    const cover=s.poster?`<img class="series-poster" src="${escapeHtml(s.poster)}" alt="" onerror="this.outerHTML='<div class=series-poster-ph>🎤</div>'">`:`<div class="series-poster-ph">🎤</div>`;
+    const cover=s.poster?`<img class="series-poster" src="${escapeHtml(s.poster)}" alt="" onerror="this.outerHTML='<div class=series-poster-ph></div>'">`:`<div class="series-poster-ph"></div>`;
     const div=document.createElement('div'); div.className='series-item';
     div.innerHTML=`${cover}
       <div class="series-info">
-        <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-reality">Reality</span>${s.basedOnBook?'<span class="badge badge-book">📖</span>':''}${s.animeSeason?`<span class="anime-season-badge">📅 ${escapeHtml(s.animeSeason)}</span>`:''}</div>
+        <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-reality">Reality</span>${s.basedOnBook?'<span class="badge badge-book"></span>':''}${s.animeSeason?`<span class="anime-season-badge">${escapeHtml(s.animeSeason)}</span>`:''}</div>
         <div class="series-meta">${[s.country,s.network,s.year].filter(Boolean).map(escapeHtml).join(' · ')} · ${total2} eps</div>
         <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:#3a9e94"></div></div>
       </div>
       <div class="series-actions">
-        <button type="button" class="btn small" onclick="openEps(${si})">📋 Eps</button>
-        <button type="button" class="btn small" onclick="openEditReality(${si})">✏️</button>
-        <button type="button" class="btn small danger" onclick="delSeries(${si})">🗑</button>
+        <button type="button" class="btn small" onclick="openEps(${si})">Eps</button>
+        <button type="button" class="btn small" onclick="openEditReality(${si})">Editar</button>
+        <button type="button" class="btn small danger" onclick="delSeries(${si})">Eliminar</button>
       </div>`;
     grid.appendChild(div);
   });
@@ -2977,9 +3021,9 @@ async function saveSeries(si, forcedCategory=null){
   const dupSeries=series.find((s,i)=>i!==si&&s.name.trim().toLowerCase()===name.toLowerCase());
   const dupMovie=(movies||[]).find(mv=>mv.name.trim().toLowerCase()===name.toLowerCase());
   if(dupSeries){
-    if(!confirm(`⚠️ Ya existe una serie llamada "${dupSeries.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
+    if(!confirm(`Ya existe una serie llamada "${dupSeries.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
   } else if(dupMovie){
-    if(!confirm(`⚠️ Ya existe una película llamada "${dupMovie.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
+    if(!confirm(`Ya existe una película llamada "${dupMovie.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
   }
   const trailerUrl=document.getElementById('f_trailer')?.value.trim()||'';
   const bookLinks=getBookEditions('bookEditionsList');
@@ -2989,6 +3033,7 @@ async function saveSeries(si, forcedCategory=null){
   const tropos=getSelectedTropos('f_tropos');
   const dinamica=getSelectedDinamica('f_dinamica');
   const sourceType=getSelectedSourceType('f_sourceType');
+  const wlwFocus=getSelectedWlwFocus('f_wlwFocus');
   const awards=getAwards('awardsAdminList');
   const category=forcedCategory||(document.getElementById('f_category')?.value||'series');
   const seriesType=document.getElementById('f_seriesType')?.value||'serie';
@@ -3005,7 +3050,7 @@ async function saveSeries(si, forcedCategory=null){
   const snLastUpdate=document.getElementById('f_snLastUpdate')?.value.trim()||'';
   const snNote=document.getElementById('f_snNote')?.value.trim()||'';
   const productoraId=document.getElementById('f_productora')?.value||'';
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,awards,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId};
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -3024,7 +3069,7 @@ async function saveSeries(si, forcedCategory=null){
 }
 
 async function delSeries(si){
-  const ok = await showConfirm({title:`¿Eliminar "${series[si].name}"?`, desc:'Se eliminará permanentemente. Esta acción no se puede deshacer.', icon:'🗑️'});
+  const ok = await showConfirm({title:`¿Eliminar "${series[si].name}"?`, desc:'Se eliminará permanentemente. Esta acción no se puede deshacer.'});
   if(!ok) return;
   series.splice(si,1); save(); render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
 }
@@ -3034,7 +3079,7 @@ function openEps(si){
   document.getElementById('epEditModal').classList.remove('open');
   const s=series[si], allEps=genEpisodes(s), now=new Date();
   const seasons=getSeasons(s);
-  document.getElementById('epsModalTitle').textContent=`📋 ${s.name}`;
+  document.getElementById('epsModalTitle').textContent=`${s.name}`;
   let html=`<p style="font-size:12px;color:var(--muted);margin-bottom:10px">Pulsa un episodio para editar su fecha o marcarlo como no emitido.</p>`;
   seasons.forEach((season,sIdx)=>{
     const seasonEps=allEps.filter(e=>e.season===sIdx+1);
@@ -3043,7 +3088,7 @@ function openEps(si){
     if(!season.allInOneDay){
       html+=`<button type="button" class="btn small" style="margin-bottom:8px;width:100%" onclick="openAddSkip(${si},${sIdx})">+ Añadir descanso en ${season.label||'T'+(sIdx+1)}</button>`;
     } else {
-      html+=`<div style="font-size:12px;color:var(--teal);background:var(--teal-soft);border-radius:8px;padding:6px 12px;margin-bottom:8px">📦 Estreno completo — todos los eps el ${fmtDate(season.startDate)}</div>`;
+      html+=`<div style="font-size:12px;color:var(--teal);background:var(--teal-soft);border-radius:8px;padding:6px 12px;margin-bottom:8px">Estreno completo — todos los eps el ${fmtDate(season.startDate)}</div>`;
     }
     const legendHtml=`<div class="ep-legend">
       <span class="ep-legend-item"><span class="ep-legend-dot" style="background:var(--teal)"></span>Emitido</span>
@@ -3083,7 +3128,7 @@ function openEps(si){
     allDates.forEach(date=>{
       if(skipDates.has(date)){
         html+=`<div class="ep-row" style="background:#f5f5f5;border-color:#e0e0e0;cursor:default;justify-content:space-between">
-          <span style="font-size:12px;color:#aaa">🚫 Descanso</span>
+          <span style="font-size:12px;color:#aaa">Descanso</span>
           <span class="ep-date" style="color:#aaa">${fmtDate(date)}</span>
           <button type="button" class="btn small danger" onclick="removeSkip(${si},${sIdx},'${date}')">✕</button>
         </div>`;
@@ -3169,8 +3214,8 @@ function openEpEdit(si, sIdx, epNum){
     <div class="ep-edit-info">
       <strong>${s.name}</strong> · ${season.label||'T'+(sIdx+1)} · Episodio ${epNum}<br>
       Fecha actual: <strong>${fmtDate(ep.date)}</strong>
-      ${hasOv?'<br><span style="color:#b08a00;font-weight:600">⚠ Fecha cambiada manualmente</span>':''}
-      ${isInGroup?'<br><span style="color:#b08a00">📦 Parte de un grupo especial</span>':''}
+      ${hasOv?'<br><span style="color:#b08a00;font-weight:600">Fecha cambiada manualmente</span>':''}
+      ${isInGroup?'<br><span style="color:#b08a00">Parte de un grupo especial</span>':''}
     </div>
     <div class="section-label">Cambiar fecha de este episodio</div>
     <div class="form-row"><label class="form-label">Nueva fecha</label><input id="fe_date" type="date" value="${ep.date}"/>
@@ -3182,7 +3227,7 @@ function openEpEdit(si, sIdx, epNum){
       <input type="checkbox" id="fe_skip" ${ep.skipped?'checked':''} style="width:auto;accent-color:var(--accent)"/>
       Marcar como no emitido (semana de descanso)
     </label></div>
-    ${hasOv?`<div class="divider"></div><div style="text-align:center"><button type="button" class="btn danger small" onclick="resetEp(${si},${sIdx},${epNum})">↩ Restablecer fecha automática</button></div>`:''}
+    ${hasOv?`<div class="divider"></div><div style="text-align:center"><button type="button" class="btn danger small" onclick="resetEp(${si},${sIdx},${epNum})">Restablecer fecha automática</button></div>`:''}
     <div class="btn-row" style="margin-top:1rem"><button type="button" class="btn" onclick="openEps(${si})">← Volver</button><button type="button" class="btn primary" onclick="saveEp(${si},${sIdx},${epNum})">Guardar</button></div>`;
   document.getElementById('epEditModal').classList.add('open');
 }
@@ -3225,8 +3270,8 @@ function movieFormHtml(mv){
     <label class="form-label">Portada</label>
     <div class="poster-editor-wrap" id="posterEditorWrap">
       <div class="poster-editor-tabs">
-        <button type="button" class="poster-tab active" data-ptab="url" onclick="switchPosterTab('url',this)">🔗 URL</button>
-        <button type="button" class="poster-tab" data-ptab="upload" onclick="switchPosterTab('upload',this)">📁 Subir imagen</button>
+        <button type="button" class="poster-tab active" data-ptab="url" onclick="switchPosterTab('url',this)">URL</button>
+        <button type="button" class="poster-tab" data-ptab="upload" onclick="switchPosterTab('upload',this)">Subir imagen</button>
       </div>
       <div class="poster-tab-panel active" id="posterPanel_url">
         <input type="text" id="mf_poster" placeholder="https://image.tmdb.org/..." value="${mv&&mv.poster&&!mv.poster.startsWith('data:')?mv.poster:''}"/>
@@ -3235,7 +3280,7 @@ function movieFormHtml(mv){
       <div class="poster-tab-panel" id="posterPanel_upload">
         <div class="poster-upload-zone" id="posterDropZone" onclick="document.getElementById('posterFileInput').click()" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="posterHandleDrop(event)">
           <input type="file" id="posterFileInput" accept="image/*" onchange="posterHandleFile(this.files[0])">
-          <div style="font-size:1.8rem;margin-bottom:5px">🖼️</div>
+          <div style="font-size:1.8rem;margin-bottom:5px"></div>
           <div>Haz clic o arrastra una imagen aquí</div>
           <div style="font-size:11px;margin-top:3px;opacity:.7">JPG, PNG, WEBP…</div>
         </div>
@@ -3250,7 +3295,7 @@ function movieFormHtml(mv){
             <div class="poster-edit-btns">
               <button type="button" class="poster-edit-btn" onclick="posterRotate(-90)" title="Rotar -90°">↺ -90°</button>
               <button type="button" class="poster-edit-btn" onclick="posterRotate(90)" title="Rotar +90°">↻ +90°</button>
-              <button type="button" class="poster-edit-btn" onclick="posterRotate(180)" title="Girar 180°">↕ 180°</button>
+              <button type="button" class="poster-edit-btn" onclick="posterRotate(180)" title="Girar 180°">180°</button>
               <button type="button" class="poster-edit-btn" onclick="posterFlip()" title="Voltear horizontal">⇔ Voltear</button>
             </div>
           </div>
@@ -3271,7 +3316,7 @@ function movieFormHtml(mv){
             <input type="range" class="poster-edit-slider" id="posterPanV" min="-1" max="1" step="0.01" value="0" oninput="posterPan('y',this.value)">
           </div>
           <button type="button" class="poster-clear-btn" onclick="posterClear()">✕ Quitar portada</button>
-          <button type="button" class="poster-edit-btn" onclick="togglePosterExpand()" style="margin-top:4px;border-color:var(--accent);color:var(--accent);background:var(--accent-soft)">🔍 Ampliar</button>
+          <button type="button" class="poster-edit-btn" onclick="togglePosterExpand()" style="margin-top:4px;border-color:var(--accent);color:var(--accent);background:var(--accent-soft)">Ampliar</button>
         </div><!-- /poster-edit-controls -->
       </div><!-- /poster-editor-preview-row -->
     </div><!-- /poster-editor-wrap -->
@@ -3300,14 +3345,14 @@ function movieFormHtml(mv){
       <option value="">— Sin productora —</option>
       ${(productoras||[]).sort((a,b)=>a.name.localeCompare(b.name,'es')).map(p=>`<option value="${escapeHtml(p.id)}" ${mv&&mv.productoraId===p.id?'selected':''}>${escapeHtml(p.name)}${p.country?' ('+escapeHtml(p.country)+')':''}</option>`).join('')}
     </select>
-    ${!(productoras||[]).length?`<div style="font-size:11.5px;color:var(--muted);margin-top:4px">Aún no has creado productoras. Ve a la sección <strong>🏢 Productoras</strong> para añadirlas.</div>`:''}
+    ${!(productoras||[]).length?`<div style="font-size:11.5px;color:var(--muted);margin-top:4px">Aún no has creado productoras. Ve a la sección <strong>Productoras</strong> para añadirlas.</div>`:''}
   </div>
   <div class="form-row-half">
     <div class="form-row" style="margin-bottom:0">
       <label class="form-label">Tipo de película</label>
       <select id="mf_movieType" style="width:100%;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:'Nunito',sans-serif;font-weight:600;outline:none">
-        <option value="film" ${!mv||!mv.movieType||mv.movieType==='film'?'selected':''}>🎥 Película</option>
-        <option value="short" ${mv&&mv.movieType==='short'?'selected':''}>🎞️ Cortometraje</option>
+        <option value="film" ${!mv||!mv.movieType||mv.movieType==='film'?'selected':''}>Película</option>
+        <option value="short" ${mv&&mv.movieType==='short'?'selected':''}>Cortometraje</option>
       </select>
       <div class="form-hint">Cortometraje si dura menos de ~40 min.</div>
     </div>
@@ -3320,9 +3365,9 @@ function movieFormHtml(mv){
   <div class="form-row">
     <label class="form-label">Categoría</label>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-      <div class="cat-chip${mv&&mv.category==='anime'?' selected-anime':(!mv||!mv.category||mv.category==='movie'?'':'')} movie-cat-chip${mv&&mv.category==='anime'?' selected-anime':''}" onclick="selectMovieCat('anime',this)" data-cat="anime" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(124,92,191,0.4);font-size:12px;font-weight:700;background:${mv&&mv.category==='anime'?'#ede7f8':'transparent'};color:${mv&&mv.category==='anime'?'#7c5cbf':'#888'}">🌸 Anime</div>
-      <div class="cat-chip${mv&&mv.category==='reality'?' selected-reality':''} movie-cat-chip${mv&&mv.category==='reality'?' selected-reality':''}" onclick="selectMovieCat('reality',this)" data-cat="reality" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(58,158,148,0.4);font-size:12px;font-weight:700;background:${mv&&mv.category==='reality'?'#d4f0ed':'transparent'};color:${mv&&mv.category==='reality'?'#3a9e94':'#888'}">🎞️ Documental/Reality</div>
-      <div class="movie-cat-chip${!mv||!mv.category||mv.category==='movie'?' movie-cat-active':''}" onclick="selectMovieCat('movie',this)" data-cat="movie" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(139,114,190,0.4);font-size:12px;font-weight:700;background:${!mv||!mv.category||mv.category==='movie'?'var(--lavender-soft)':'transparent'};color:${!mv||!mv.category||mv.category==='movie'?'var(--lavender)':'#888'}">🎥 Película GL (por defecto)</div>
+      <div class="cat-chip${mv&&mv.category==='anime'?' selected-anime':(!mv||!mv.category||mv.category==='movie'?'':'')} movie-cat-chip${mv&&mv.category==='anime'?' selected-anime':''}" onclick="selectMovieCat('anime',this)" data-cat="anime" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(124,92,191,0.4);font-size:12px;font-weight:700;background:${mv&&mv.category==='anime'?'#ede7f8':'transparent'};color:${mv&&mv.category==='anime'?'#7c5cbf':'#888'}">Anime</div>
+      <div class="cat-chip${mv&&mv.category==='reality'?' selected-reality':''} movie-cat-chip${mv&&mv.category==='reality'?' selected-reality':''}" onclick="selectMovieCat('reality',this)" data-cat="reality" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(58,158,148,0.4);font-size:12px;font-weight:700;background:${mv&&mv.category==='reality'?'#d4f0ed':'transparent'};color:${mv&&mv.category==='reality'?'#3a9e94':'#888'}">Documental/Reality</div>
+      <div class="movie-cat-chip${!mv||!mv.category||mv.category==='movie'?' movie-cat-active':''}" onclick="selectMovieCat('movie',this)" data-cat="movie" style="cursor:pointer;padding:5px 14px;border-radius:20px;border:1.5px solid rgba(139,114,190,0.4);font-size:12px;font-weight:700;background:${!mv||!mv.category||mv.category==='movie'?'var(--lavender-soft)':'transparent'};color:${!mv||!mv.category||mv.category==='movie'?'var(--lavender)':'#888'}">Película GL (por defecto)</div>
     </div>
     <input type="hidden" id="mf_category" value="${mv&&mv.category?mv.category:'movie'}">
     <div class="form-hint">Elige "Anime" si es una película anime, "Documental/Reality" si es un documental o reality, o déjalo en Película GL por defecto.</div>
@@ -3332,28 +3377,32 @@ function movieFormHtml(mv){
     <div class="genre-chips" id="mf_genres">${genreChipsHtml(mv&&mv.genres?mv.genres:[])}</div>
   </div>
   <div class="form-row">
-    <label class="form-label">💘 Tropos narrativos <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona los que apliquen)</span></label>
-    <div class="tropo-chips" id="mf_tropos">${troposChipsHtml(mv&&mv.tropos?mv.tropos:[])}</div>
+    <details class="collapsible-field">
+      <summary class="form-label">Tropos narrativos <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona los que apliquen)</span>${(mv&&mv.tropos&&mv.tropos.length)?`<span class="collapsible-count">· ${mv.tropos.length} seleccionados</span>`:''}</summary>
+      <div class="tropo-chips" id="mf_tropos">${troposChipsHtml(mv&&mv.tropos?mv.tropos:[])}</div>
+    </details>
   </div>
   <div class="form-row">
-    <label class="form-label">💞 Dinámica de pareja <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona las que apliquen)</span></label>
-    <div class="dinamica-chips" id="mf_dinamica">${dinamicaChipsHtml(mv&&mv.dinamica?mv.dinamica:[])}</div>
+    <details class="collapsible-field">
+      <summary class="form-label">Dinámica de pareja <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona las que apliquen)</span>${(mv&&mv.dinamica&&mv.dinamica.length)?`<span class="collapsible-count">· ${mv.dinamica.length} seleccionadas</span>`:''}</summary>
+      <div class="dinamica-chips" id="mf_dinamica">${dinamicaChipsHtml(mv&&mv.dinamica?mv.dinamica:[])}</div>
+    </details>
   </div>
   <div class="form-row">
     <label class="form-label">Tono / Mood <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(atmósfera emocional)</span></label>
     <div class="mood-chips" id="mf_moods">${moodChipsHtml(mv&&mv.moods?mv.moods:[])}</div>
   </div>
   <div class="form-row">
-    <label class="form-label">🏆 Premios y festivales <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(opcional)</span></label>
+    <label class="form-label">Premios y festivales <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(opcional)</span></label>
     <div id="movieAwardsAdminList" style="display:flex;flex-direction:column;gap:0"></div>
     <button type="button" class="platform-add-btn" onclick="addAwardRow('movieAwardsAdminList')" style="margin-top:4px;background:var(--yellow-soft);color:#7a5800;border-color:var(--yellow)">+ Añadir premio / nominación</button>
   </div>
   <div class="form-row">
-    <label class="form-label">🔗 Dónde ver <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(puedes añadir varias)</span></label>
+    <label class="form-label">Dónde ver <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(puedes añadir varias)</span></label>
     <div class="platforms-list" id="moviePlatformsList"></div>
     <button type="button" class="platform-add-btn" onclick="addMoviePlatformRow()">+ Añadir plataforma</button>
   </div>
-  <div class="form-row"><label class="form-label">▶ URL del trailer (YouTube)</label><input id="mf_trailer" placeholder="https://www.youtube.com/watch?v=..." value="${mv&&mv.trailerUrl?mv.trailerUrl:''}"/>
+  <div class="form-row"><label class="form-label">URL del trailer (YouTube)</label><input id="mf_trailer" placeholder="https://www.youtube.com/watch?v=..." value="${mv&&mv.trailerUrl?mv.trailerUrl:''}"/>
     <div class="form-hint">Pega la URL normal de YouTube. Si no tiene trailer, déjalo vacío.</div>
   </div>
   <div class="form-row"><label class="form-label">Fecha de estreno</label><input id="mf_date" type="date" value="${mv&&mv.date?mv.date:''}"/>
@@ -3362,7 +3411,7 @@ function movieFormHtml(mv){
   <div class="divider"></div>
   <label class="toggle-row">
     <input type="checkbox" id="mf_book" ${mv&&mv.basedOnBook?'checked':''} style="width:auto;accent-color:var(--accent)" onchange="toggleMovieBookFields()">
-    <div><div class="toggle-label">📖 Basada en libro / novela / manhwa</div><div class="toggle-desc">Se mostrará una etiqueta especial y la info del libro</div></div>
+    <div><div class="toggle-label">Basada en libro / novela / manhwa</div><div class="toggle-desc">Se mostrará una etiqueta especial y la info del libro</div></div>
   </label>
   <div id="movieBookFields" style="${mv&&mv.basedOnBook?'':'display:none'}">
     <div class="form-row"><label class="form-label">Tipo de fuente</label><div class="source-type-grid" id="mf_sourceType">${sourceTypeChipsHtml(mv&&mv.sourceType?mv.sourceType:'')}</div></div>
@@ -3380,7 +3429,11 @@ function movieFormHtml(mv){
     </div>
   </div>
   <div class="divider" style="margin:14px 0 10px"></div>
-  <div class="form-section-hd" style="padding:0 0 8px">🎭 Reparto GL</div>
+  <div class="form-row" style="margin-bottom:14px">
+    <label class="form-label">Foco sáfico <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(qué peso tiene la relación/personaje WLW)</span></label>
+    <div class="wlw-focus-grid" id="mf_wlwFocus">${wlwFocusChipsHtml(mv&&mv.wlwFocus?mv.wlwFocus:'')}</div>
+  </div>
+  <div class="form-section-hd" style="padding:0 0 8px">Reparto GL</div>
   <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas. Indica el personaje si quieres.</div>
   <button type="button" class="platform-add-btn" onclick="addMovieCastMember(null)" style="margin-bottom:8px">+ Añadir actriz</button>
   <div id="movieCastList" style="margin-bottom:8px;overflow:visible;position:relative"></div>
@@ -3499,7 +3552,7 @@ function selectMovieCat(cat, el){
 }
 
 function openAddMovie(){
-  document.getElementById('movieModalTitle').textContent='🎥 Añadir película';
+  document.getElementById('movieModalTitle').textContent='Añadir película';
   document.getElementById('movieModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('movie')}</div>`+
     movieFormHtml(null)+
@@ -3512,7 +3565,7 @@ function openAddMovie(){
   syncTroposDinamica('mf_tropos','mf_dinamica');
 }
 function openEditMovie(mi){
-  document.getElementById('movieModalTitle').textContent='✏️ Editar película';
+  document.getElementById('movieModalTitle').textContent='Editar película';
   document.getElementById('movieModalBody').innerHTML=movieFormHtml(movies[mi])+
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(${mi})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('movieModal').classList.add('open');
@@ -3555,9 +3608,9 @@ async function saveMovie(mi){
   const dupMovie=movies.find((mv,i)=>i!==mi&&mv.name.trim().toLowerCase()===name.toLowerCase());
   const dupSeries=(series||[]).find(s=>s.name.trim().toLowerCase()===name.toLowerCase());
   if(dupMovie){
-    if(!confirm(`⚠️ Ya existe una película llamada "${dupMovie.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
+    if(!confirm(`Ya existe una película llamada "${dupMovie.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
   } else if(dupSeries){
-    if(!confirm(`⚠️ Ya existe una serie llamada "${dupSeries.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
+    if(!confirm(`Ya existe una serie llamada "${dupSeries.name}". ¿Seguro que quieres guardar de todas formas?`)) return;
   }
   const watchLinks=getMovieWatchLinks();
   const bookLinks=getBookEditions('movieBookEditionsList');
@@ -3566,6 +3619,7 @@ async function saveMovie(mi){
   const tropos=getSelectedTropos('mf_tropos');
   const dinamica=getSelectedDinamica('mf_dinamica');
   const sourceType=getSelectedSourceType('mf_sourceType');
+  const wlwFocus=getSelectedWlwFocus('mf_wlwFocus');
   const awards=getAwards('movieAwardsAdminList');
   const movieCategory=document.getElementById('mf_category')?.value||'movie';
   const payload={
@@ -3590,6 +3644,7 @@ async function saveMovie(mi){
     tropos,
     dinamica,
     sourceType,
+    wlwFocus,
     awards,
     category:movieCategory,
     movieType:document.getElementById('mf_movieType')?.value||'film',
@@ -3603,7 +3658,7 @@ async function saveMovie(mi){
   save(); closeAll(); render(); renderMovies(); renderBooks();
 }
 async function delMovie(mi){
-  const ok = await showConfirm({title:`¿Eliminar "${movies[mi].name}"?`, desc:'Se eliminará permanentemente. Esta acción no se puede deshacer.', icon:'🗑️'});
+  const ok = await showConfirm({title:`¿Eliminar "${movies[mi].name}"?`, desc:'Se eliminará permanentemente. Esta acción no se puede deshacer.'});
   if(!ok) return;
   movies.splice(mi,1); save(); render(); renderMovies(); renderBooks();
 }
@@ -3639,15 +3694,15 @@ function renderBooks(){
   const filtered=q?books.filter(b=>b.title.toLowerCase().includes(q)||b.from.toLowerCase().includes(q)):books;
   if(lbl) lbl.textContent=filtered.length+' libros'+(q?' encontrados':'');
   if(!filtered.length){
-    grid.innerHTML=q?'<div class="empty">Sin resultados para esa búsqueda.</div>':'<div class="empty">📚 Ninguna serie o película marcada como "Basada en libro" todavía.</div>';
+    grid.innerHTML=q?'<div class="empty">Sin resultados para esa búsqueda.</div>':'<div class="empty">Ninguna serie o película marcada como "Basada en libro" todavía.</div>';
     return;
   }
   grid.innerHTML=filtered.map(b=>{
-    const coverEl=b.cover?`<img class="book-item-cover" src="${escapeHtml(b.cover)}" alt="${escapeHtml(b.title)}" onerror="this.outerHTML='<div class=book-item-cover-ph>📖</div>'">`:`<div class="book-item-cover-ph">📖</div>`;
+    const coverEl=b.cover?`<img class="book-item-cover" src="${escapeHtml(b.cover)}" alt="${escapeHtml(b.title)}" onerror="this.outerHTML='<div class=book-item-cover-ph></div>'">`:`<div class="book-item-cover-ph"></div>`;
     const editionLinks=b.editions.map(e=>`<a href="${escapeHtml(e.url)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;color:#b08a00;text-decoration:none;background:rgba(176,138,0,0.1);border-radius:20px;padding:2px 9px;border:1px solid rgba(176,138,0,0.25);white-space:nowrap">${langFlag(e.lang)} ${escapeHtml(e.store)} →</a>`).join('');
     return `<div class="book-item">${coverEl}
       <div class="book-item-info">
-        <div class="book-item-title">📖 ${escapeHtml(b.title)}</div>
+        <div class="book-item-title">${escapeHtml(b.title)}</div>
         <div class="book-item-meta" style="margin-bottom:5px">Adaptada en <strong>${escapeHtml(b.from)}</strong> · ${escapeHtml(b.fromType)}</div>
         ${b.editions.length?`<div style="display:flex;flex-wrap:wrap;gap:4px">${editionLinks}</div>`:''}
       </div>
@@ -3712,7 +3767,7 @@ function switchChkCountry(country, btn){
   chkResetForm();
   const meta=CHK_COUNTRIES[country];
   const openBtn=document.getElementById('chkPickerOpenBtn');
-  if(openBtn) openBtn.textContent = `📥 Añadir series/pelis ${meta.label.replace('GL ','')} ya en la app`;
+  if(openBtn) openBtn.textContent = `Añadir series/pelis ${meta.label.replace('GL ','')} ya en la app`;
   const titleInp=document.getElementById('chkMetaTitle');
   if(titleInp) titleInp.placeholder = meta.defaultTitulo;
   renderChecklistAdmin();
@@ -3785,7 +3840,7 @@ function chkEditItem(id){
 
 async function chkDeleteItem(id){
   const it=(checklist[chkCountry].items||[]).find(i=>i.id===id);
-  const ok=await showConfirm({title:`¿Eliminar "${it?it.title:''}" de la checklist?`, desc:'Esta acción no se puede deshacer.', icon:'🗑️'});
+  const ok=await showConfirm({title:`¿Eliminar "${it?it.title:''}" de la checklist?`, desc:'Esta acción no se puede deshacer.'});
   if(!ok) return;
   checklist[chkCountry].items=(checklist[chkCountry].items||[]).filter(i=>i.id!==id);
   save(); renderChecklistAdmin();
@@ -3902,7 +3957,7 @@ function chkPickerAddSelected(){
 function pasteBarHtml(type){
   window._pasteType = type;
   return '<div class="paste-bar">'
-    +'<div class="paste-bar-label">✦ Autocompletar desde ficha</div>'
+    +'<div class="paste-bar-label">Autocompletar desde ficha</div>'
     +'<div class="paste-bar-hint">Pega tu ficha completa (formato propio o bloque de MyDramaList). Las URLs entre <strong>__ __</strong> se detectan como imagen o enlace.</div>'
     +'<div class="paste-bar-row">'
     +'<textarea class="paste-bar-textarea" id="pasteInput" placeholder="Pega aquí la ficha..."></textarea>'
@@ -4221,7 +4276,7 @@ function renderActressesGrid(){
   grid.innerHTML=list.map(a=>{
     const ai=actresses.indexOf(a);
     const photoPos=a.photoPosition||'center 15%';
-    const photo=a.photo?`<img src="${escapeHtml(a.photo)}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(photoPos)};border:2.5px solid var(--border2);margin-bottom:6px" onerror="this.outerHTML='<div style=\'width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px\'>🎭</div>'">`:'<div style="width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px">🎭</div>';
+    const photo=a.photo?`<img src="${escapeHtml(a.photo)}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(photoPos)};border:2.5px solid var(--border2);margin-bottom:6px" onerror="this.outerHTML='<div style=\'width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px\'></div>'">`:'<div style="width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px"></div>';
     const seriesCount=series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===a.id)).length;
     const moviesCount=movies.filter(m=>m.cast&&m.cast.some(m2=>m2.actressId===a.id)).length;
     const total=seriesCount+moviesCount;
@@ -4231,8 +4286,8 @@ function renderActressesGrid(){
       ${a.country?`<div style="font-size:10.5px;color:var(--muted)">${escapeHtml(a.country)}</div>`:''}
       <div style="font-size:10px;color:var(--accent);font-weight:600;margin-top:3px">${total?total+' aparición'+(total!==1?'es':''):'Sin apariciones'}</div>
       <div style="display:flex;gap:4px;margin-top:6px">
-        <button type="button" class="btn small" onclick="openEditActress(${ai})" style="font-size:10px;padding:2px 8px">✏️ Editar</button>
-        <button type="button" class="btn small" onclick="delActress(${ai})" style="font-size:10px;padding:2px 8px;color:#c0392b">🗑</button>
+        <button type="button" class="btn small" onclick="openEditActress(${ai})" style="font-size:10px;padding:2px 8px">Editar</button>
+        <button type="button" class="btn small" onclick="delActress(${ai})" style="font-size:10px;padding:2px 8px;color:#c0392b">Eliminar</button>
       </div>
     </div>`;
   }).join('');
@@ -4251,7 +4306,7 @@ function actressFormHtml(a){
     <div class="form-row">
       <label class="form-label">Posición de foto <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(si la cara sale cortada)</span></label>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">
-        ${[['center 5%','⬆ Muy arriba'],['center 15%','↑ Arriba (defecto)'],['center 35%','⬆ Centro-arriba'],['center 50%','· Centro'],['center 65%','↓ Centro-abajo'],['center 80%','⬇ Abajo']].map(([val,label])=>`<span onclick="document.getElementById('af_photoPos').value='${val}';document.querySelectorAll('.af-pos-chip').forEach(c=>{c.style.background='var(--surface2)';c.style.borderColor='var(--border2)';c.style.color='var(--text)'});this.style.background='var(--accent-soft)';this.style.borderColor='var(--accent2)';this.style.color='var(--accent)';document.getElementById('af_photo_prev').style.objectPosition='${val}'" class="af-pos-chip" style="cursor:pointer;padding:4px 11px;border-radius:20px;border:1.5px solid ${(a&&a.photoPosition===val)?'var(--accent2)':'var(--border2)'};font-size:12px;font-weight:600;color:${(a&&a.photoPosition===val)?'var(--accent)':'var(--text)'};background:${(a&&a.photoPosition===val)?'var(--accent-soft)':'var(--surface2)'};transition:all .15s;user-select:none">${label}</span>`).join('')}
+        ${[['center 5%','Muy arriba'],['center 15%','↑ Arriba (defecto)'],['center 35%','Centro-arriba'],['center 50%','· Centro'],['center 65%','↓ Centro-abajo'],['center 80%','Abajo']].map(([val,label])=>`<span onclick="document.getElementById('af_photoPos').value='${val}';document.querySelectorAll('.af-pos-chip').forEach(c=>{c.style.background='var(--surface2)';c.style.borderColor='var(--border2)';c.style.color='var(--text)'});this.style.background='var(--accent-soft)';this.style.borderColor='var(--accent2)';this.style.color='var(--accent)';document.getElementById('af_photo_prev').style.objectPosition='${val}'" class="af-pos-chip" style="cursor:pointer;padding:4px 11px;border-radius:20px;border:1.5px solid ${(a&&a.photoPosition===val)?'var(--accent2)':'var(--border2)'};font-size:12px;font-weight:600;color:${(a&&a.photoPosition===val)?'var(--accent)':'var(--text)'};background:${(a&&a.photoPosition===val)?'var(--accent-soft)':'var(--surface2)'};transition:all .15s;user-select:none">${label}</span>`).join('')}
       </div>
       <input id="af_photoPos" placeholder="O escribe valor CSS, ej: center 20%" value="${a&&a.photoPosition?escapeHtml(a.photoPosition):'center 15%'}" oninput="document.getElementById('af_photo_prev').style.objectPosition=this.value" style="font-size:12px"/>
     </div>
@@ -4283,7 +4338,7 @@ function actressFormHtml(a){
 }
 
 function openAddActress(){
-  document.getElementById('actressModalTitle').textContent='🎭 Nueva actriz';
+  document.getElementById('actressModalTitle').textContent='Nueva actriz';
   document.getElementById('actressModalBody').innerHTML=actressFormHtml(null);
   document.getElementById('actressModalFooter').innerHTML=
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button><button type="button" class="btn primary" onclick="saveActress(-1)">Guardar</button></div>`;
@@ -4291,7 +4346,7 @@ function openAddActress(){
 }
 
 function openEditActress(ai){
-  document.getElementById('actressModalTitle').textContent='✏️ Editar actriz';
+  document.getElementById('actressModalTitle').textContent='Editar actriz';
   document.getElementById('actressModalBody').innerHTML=actressFormHtml(actresses[ai]);
   document.getElementById('actressModalFooter').innerHTML=
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button><button type="button" class="btn primary" onclick="saveActress(${ai})">Guardar cambios</button></div>`;
@@ -4321,7 +4376,7 @@ function saveActress(ai){
 }
 
 async function delActress(ai){
-  const ok = await showConfirm({title:`¿Eliminar a "${actresses[ai].name}"?`, desc:'Se borrará de todas las series y películas donde aparezca. Esta acción no se puede deshacer.', icon:'🎭'});
+  const ok = await showConfirm({title:`¿Eliminar a "${actresses[ai].name}"?`, desc:'Se borrará de todas las series y películas donde aparezca. Esta acción no se puede deshacer.'});
   if(!ok) return;
   const id=actresses[ai].id;
   series.forEach(s=>{if(s.cast) s.cast=s.cast.filter(m=>m.actressId!==id);});
@@ -4341,7 +4396,7 @@ function addCastMember(data){
   const list=_findInModal('castList');
   if(!list) return;
   if(!actresses.length){
-    alert('Primero añade actrices en la sección "🎭 Actrices".');
+    alert('Primero añade actrices en la sección "Actrices".');
     return;
   }
   const actressId=data&&data.actressId?data.actressId:'';
@@ -4370,8 +4425,8 @@ function addCastMember(data){
       <div style="display:grid;grid-template-columns:1fr 112px 48px;gap:5px">
         <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif">
         <select class="cast-type-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:10px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
-          <option value="main" ${coupleType==='main'?'selected':''}>💕 Principal</option>
-          <option value="secondary" ${coupleType==='secondary'?'selected':''}>🌸 Secundaria</option>
+          <option value="main" ${coupleType==='main'?'selected':''}>Principal</option>
+          <option value="secondary" ${coupleType==='secondary'?'selected':''}>Secundaria</option>
           <option value="other" ${coupleType==='other'?'selected':''}>Otro</option>
         </select>
         <select class="cast-num-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
@@ -4389,7 +4444,7 @@ function filterCastDropdown(inp, uid){
   if(!dd) return;
   const matches=actresses.filter(a=>!q||a.name.toLowerCase().includes(q)||(a.country&&a.country.toLowerCase().includes(q)));
   const namePrefill=inp.value.trim();
-  const btnLabel='✔ Crear actriz'+(namePrefill?' “'+namePrefill+'”':' nueva')+'…';
+  const btnLabel='Crear actriz'+(namePrefill?' “'+namePrefill+'”':' nueva')+'…';
   const safeName=namePrefill.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
   const createBtn='<div class="cast-dropdown-create">'
     +'<button type="button" class="cast-create-btn" onmousedown="quickCreateActress(\''+safeName+'\',\''+uid+'\')">'
@@ -4413,7 +4468,7 @@ function filterCastDropdown(inp, uid){
  *  al guardar, selecciona automáticamente la actriz en el campo de cast. */
 function quickCreateActress(prefillName, castUid){
   closeCastDropdown(castUid);
-  document.getElementById('actressModalTitle').textContent='🎭 Nueva actriz';
+  document.getElementById('actressModalTitle').textContent='Nueva actriz';
   document.getElementById('actressModalBody').innerHTML=actressFormHtml(null);
   document.getElementById('actressModalFooter').innerHTML=
     `<div class="modal-footer-btns">
@@ -4476,7 +4531,7 @@ function closeCastDropdown(uid){
 function getActressThumb(actressId){
   const a=actresses.find(x=>x.id===actressId);
   if(a&&a.photo) return `<img src="${escapeHtml(a.photo)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(a.photoPosition||'center 15%')};border:1.5px solid var(--border2)">`;
-  return `<div style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px">🎭</div>`;
+  return `<div style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px"></div>`;
 }
 
 function getCastData(){
@@ -4508,7 +4563,7 @@ function addMovieCastMember(data){
   const list=document.getElementById('movieCastList');
   if(!list) return;
   if(!actresses.length){
-    alert('Primero añade actrices en la sección "🎭 Actrices".');
+    alert('Primero añade actrices en la sección "Actrices".');
     return;
   }
   const actressId=data&&data.actressId?data.actressId:'';
@@ -4537,8 +4592,8 @@ function addMovieCastMember(data){
       <div style="display:grid;grid-template-columns:1fr 112px 48px;gap:5px">
         <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif">
         <select class="cast-type-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:10px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
-          <option value="main" ${coupleType==='main'?'selected':''}>💕 Principal</option>
-          <option value="secondary" ${coupleType==='secondary'?'selected':''}>🌸 Secundaria</option>
+          <option value="main" ${coupleType==='main'?'selected':''}>Principal</option>
+          <option value="secondary" ${coupleType==='secondary'?'selected':''}>Secundaria</option>
           <option value="other" ${coupleType==='other'?'selected':''}>Otro</option>
         </select>
         <select class="cast-num-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
@@ -4611,8 +4666,8 @@ function showActressToast(name, photo, isNew){
     document.body.appendChild(t);
   }
   const avatarHtml=photo
-    ?`<img class="toast-avatar" src="${escapeHtml(photo)}" onerror="this.outerHTML='<div class=\'toast-avatar-ph\'>🎭</div>'">`
-    :`<div class="toast-avatar-ph">🎭</div>`;
+    ?`<img class="toast-avatar" src="${escapeHtml(photo)}" onerror="this.outerHTML='<div class=\'toast-avatar-ph\'></div>'">`
+    :`<div class="toast-avatar-ph"></div>`;
   const label=isNew?'Actriz añadida ✓':'Actriz actualizada ✓';
   const sub=isNew?`Ya hay <strong style="color:var(--accent)">${actresses.length}</strong> actrices en total`:'Los cambios se han guardado';
   t.innerHTML=`${avatarHtml}<div class="toast-text"><strong>${escapeHtml(name)}</strong><span>${sub}</span></div>`;
@@ -4628,7 +4683,6 @@ function showActressToast(name, photo, isNew){
 <!-- ─── Confirm Modal ─── -->
 <div class="confirm-modal-bg" id="confirmModalBg">
   <div class="confirm-modal">
-    <div class="confirm-modal-icon" id="confirmModalIcon">⚠️</div>
     <div class="confirm-modal-title" id="confirmModalTitle">¿Confirmar acción?</div>
     <div class="confirm-modal-desc" id="confirmModalDesc">Esta acción no se puede deshacer.</div>
     <div class="confirm-modal-btns">
@@ -4641,11 +4695,10 @@ function showActressToast(name, photo, isNew){
 <script>
 // ─── Confirm Dialog helper ───
 let _confirmResolve = null;
-function showConfirm({title='¿Eliminar?', desc='Esta acción no se puede deshacer.', okLabel='Eliminar', icon='⚠️'}={}){
+function showConfirm({title='¿Eliminar?', desc='Esta acción no se puede deshacer.', okLabel='Eliminar'}={}){
   document.getElementById('confirmModalTitle').textContent = title;
   document.getElementById('confirmModalDesc').textContent = desc;
   document.getElementById('confirmModalOkBtn').textContent = okLabel;
-  document.getElementById('confirmModalIcon').textContent = icon;
   document.getElementById('confirmModalBg').classList.add('open');
   document.body.style.overflow = 'hidden';
   return new Promise(resolve => { _confirmResolve = resolve; });
@@ -4711,13 +4764,13 @@ function renderShipsAdmin(){
     const photosHtml=members.map(a=>{
       const pos=a.photoPosition||'center 15%';
       return a.photo
-        ?`<img src="${escapeHtml(a.photo)}" title="${escapeHtml(a.name)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(pos)};border:2px solid var(--border2);flex-shrink:0" onerror="this.outerHTML='<div style=\\'width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--border2)\\'>🎭</div>'">`
-        :`<div title="${escapeHtml(a.name)}" style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--border2);flex-shrink:0">🎭</div>`;
-    }).join('<span style="font-size:14px;color:var(--accent2);margin:0 2px">💞</span>');
+        ?`<img src="${escapeHtml(a.photo)}" title="${escapeHtml(a.name)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(pos)};border:2px solid var(--border2);flex-shrink:0" onerror="this.outerHTML='<div style=\\'width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--border2)\\'></div>'">`
+        :`<div title="${escapeHtml(a.name)}" style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--border2);flex-shrink:0"></div>`;
+    }).join('<span style="font-size:14px;color:var(--accent2);margin:0 2px"></span>');
     const seriesText=shared.length
-      ?`<span style="font-size:11px;color:var(--teal);font-weight:600">📺 ${shared.length} serie${shared.length!==1?'s':''} en común</span>`
+      ?`<span style="font-size:11px;color:var(--teal);font-weight:600">${shared.length} serie${shared.length!==1?'s':''} en común</span>`
       :`<span style="font-size:11px;color:var(--muted)">Sin series en común aún</span>`;
-    const retiredBadge=sh.retired?`<span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;background:rgba(100,80,90,.1);color:#7a6070;border:1px solid rgba(100,80,90,.2);letter-spacing:.03em;text-transform:uppercase">💔 Retirada</span>`:'';
+    const retiredBadge=sh.retired?`<span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;background:rgba(100,80,90,.1);color:#7a6070;border:1px solid rgba(100,80,90,.2);letter-spacing:.03em;text-transform:uppercase">Retirada</span>`:'';
     const namesText=members.map(a=>a.name).join(' & ');
     return `<div class="series-item">
       <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">${photosHtml}</div>
@@ -4727,8 +4780,8 @@ function renderShipsAdmin(){
         <div style="margin-top:3px">${seriesText}</div>
       </div>
       <div class="series-actions">
-        <button type="button" class="btn small" onclick="openEditShip(${si})">✏️ Editar</button>
-        <button type="button" class="btn small danger" onclick="delShip(${si})">🗑</button>
+        <button type="button" class="btn small" onclick="openEditShip(${si})">Editar</button>
+        <button type="button" class="btn small danger" onclick="delShip(${si})">Eliminar</button>
       </div>
     </div>`;
   }).join('');
@@ -4745,7 +4798,7 @@ function shipFormHtml(sh){
     const pos=a.photoPosition||'center 15%';
     const photo=a.photo
       ?`<img src="${escapeHtml(a.photo)}" style="width:30px;height:30px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(pos)};border:1.5px solid var(--border2);flex-shrink:0">`
-      :`<div style="width:30px;height:30px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:12px;border:1.5px solid var(--border2);flex-shrink:0">🎭</div>`;
+      :`<div style="width:30px;height:30px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:12px;border:1.5px solid var(--border2);flex-shrink:0"></div>`;
     return `<label class="toggle-row" style="cursor:pointer;gap:8px;padding:7px 10px">
       <input type="checkbox" name="ship_actress" value="${escapeHtml(a.id)}" ${checked?'checked':''} style="accent-color:var(--accent);width:15px;height:15px;flex-shrink:0">
       ${photo}
@@ -4771,7 +4824,7 @@ function shipFormHtml(sh){
         <div style="display:flex;flex-direction:column;gap:8px">
           <div>
             <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between">
-              <span>↔ Desplazar horizontal</span>
+              <span>Desplazar horizontal</span>
               <span id="sf_posX_val" style="color:var(--accent)">50%</span>
             </label>
             <input type="range" id="sf_posX" min="0" max="100" step="1" value="${sfExtractPosX(sh?.couplePhotoPosition)}"
@@ -4779,7 +4832,7 @@ function shipFormHtml(sh){
           </div>
           <div>
             <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between">
-              <span>↕ Desplazar vertical</span>
+              <span>Desplazar vertical</span>
               <span id="sf_posY_val" style="color:var(--accent)">20%</span>
             </label>
             <input type="range" id="sf_posY" min="0" max="100" step="1" value="${sfExtractPosY(sh?.couplePhotoPosition)}"
@@ -4787,7 +4840,7 @@ function shipFormHtml(sh){
           </div>
           <div>
             <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between">
-              <span>🔍 Zoom</span>
+              <span>Zoom</span>
               <span id="sf_zoom_val" style="color:var(--accent)">${Math.round((sh?.couplePhotoZoom||1)*100)}%</span>
             </label>
             <input type="range" id="sf_zoom" min="100" max="200" step="1" value="${Math.round((sh?.couplePhotoZoom||1)*100)}"
@@ -4806,7 +4859,7 @@ function shipFormHtml(sh){
       <label class="toggle-row" style="cursor:pointer;gap:10px;padding:10px 12px;background:rgba(100,80,90,.06);border-radius:10px;border:1.5px solid rgba(100,80,90,.15)">
         <input type="checkbox" id="sf_retired" ${sh?.retired?'checked':''} style="accent-color:#c94f7c;width:16px;height:16px;flex-shrink:0">
         <div>
-          <div style="font-size:13px;font-weight:700;color:var(--text)">💔 Ship retirado</div>
+          <div style="font-size:13px;font-weight:700;color:var(--text)">Ship retirado</div>
           <div style="font-size:11.5px;color:var(--muted);margin-top:2px">Marca esto cuando las actrices ya no trabajan juntas como dúo oficial (su serie terminó y no tienen proyectos en común). Aparecerán en la pestaña "Retiradas" del frontend.</div>
         </div>
       </label>
@@ -4815,7 +4868,7 @@ function shipFormHtml(sh){
       <label class="form-label">Actrices del ship</label>
       <div style="font-size:11.5px;color:var(--muted);margin-bottom:8px">Selecciona al menos 2. Las series en común se detectarán automáticamente.</div>
       <div class="admin-search-wrap" style="margin-bottom:8px">
-        <span class="admin-search-icon">🔍</span>
+        <span class="admin-search-icon"></span>
         <input class="admin-search-input" id="sf_actressQ" placeholder="Filtrar actrices…" oninput="filterShipActresses(this.value)" style="font-size:13px">
       </div>
       <div id="shipActressPicker" style="max-height:280px;overflow-y:auto;border:1.5px solid var(--border2);border-radius:10px;padding:4px">
@@ -4837,7 +4890,7 @@ function filterShipActresses(q){
 }
 
 function openAddShip(){
-  document.getElementById('shipModalTitle').textContent='💕 Nuevo ship';
+  document.getElementById('shipModalTitle').textContent='Nuevo ship';
   document.getElementById('shipModalBody').innerHTML=shipFormHtml(null);
   document.getElementById('shipModalFooter').innerHTML=
     `<button type="button" class="btn" onclick="document.getElementById('shipModal').classList.remove('open')">Cancelar</button>
@@ -4846,7 +4899,7 @@ function openAddShip(){
 }
 
 function openEditShip(si){
-  document.getElementById('shipModalTitle').textContent='✏️ Editar ship';
+  document.getElementById('shipModalTitle').textContent='Editar ship';
   document.getElementById('shipModalBody').innerHTML=shipFormHtml(ships[si]);
   document.getElementById('shipModalFooter').innerHTML=
     `<button type="button" class="btn" onclick="document.getElementById('shipModal').classList.remove('open')">Cancelar</button>
@@ -4918,7 +4971,7 @@ function sfResetPos(){
 }
 
 async function delShip(si){
-  const ok=await showConfirm({title:`¿Eliminar el ship "${ships[si]?.name}"?`,desc:'Esta acción no se puede deshacer.',icon:'💕'});
+  const ok=await showConfirm({title:`¿Eliminar el ship "${ships[si]?.name}"?`,desc:'Esta acción no se puede deshacer.'});
   if(!ok) return;
   ships.splice(si,1);
   save(); renderShipsAdmin();
@@ -4939,7 +4992,7 @@ async function delShip(si){
 <div class="modal-bg" id="shipModal" style="z-index:290">
   <div class="modal" style="display:flex;flex-direction:column;max-height:92vh">
     <div class="modal-header" style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
-      <div class="modal-title" id="shipModalTitle">💕 Nuevo ship</div>
+      <div class="modal-title" id="shipModalTitle">Nuevo ship</div>
       <button type="button" class="modal-close" onclick="document.getElementById('shipModal').classList.remove('open')">✕</button>
     </div>
     <div id="shipModalBody" style="overflow-y:auto;flex:1;padding:1.25rem 1.75rem"></div>
@@ -4949,7 +5002,7 @@ async function delShip(si){
 <div class="modal-bg" id="productoraModal" style="z-index:290">
   <div class="modal" style="display:flex;flex-direction:column;max-height:92vh">
     <div class="modal-header" style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
-      <div class="modal-title" id="productoraModalTitle">🏢 Nueva productora</div>
+      <div class="modal-title" id="productoraModalTitle">Nueva productora</div>
       <button type="button" class="modal-close" onclick="document.getElementById('productoraModal').classList.remove('open')">✕</button>
     </div>
     <div id="productoraModalBody" style="overflow-y:auto;flex:1;padding:1.25rem 1.75rem"></div>
@@ -4974,7 +5027,7 @@ function renderProductorasAdmin(){
     const count=[...(series||[]),...(movies||[])].filter(s=>s.productoraId===p.id).length;
     const logoHtml=p.logo
       ?`<img src="${escapeHtml(p.logo)}" style="width:36px;height:36px;border-radius:8px;object-fit:contain;border:1.5px solid var(--border2);background:#fff;flex-shrink:0">`
-      :`<div style="width:36px;height:36px;border-radius:8px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🏢</div>`;
+      :`<div style="width:36px;height:36px;border-radius:8px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0"></div>`;
     return `<div class="series-item">
       ${logoHtml}
       <div class="series-info">
@@ -4982,8 +5035,8 @@ function renderProductorasAdmin(){
         <div class="series-meta">${[p.country,p.founded?'Fundada '+escapeHtml(p.founded):null,count?count+' contenido'+(count!==1?'s asignados':'asignado'):null].filter(Boolean).join(' · ')}</div>
       </div>
       <div class="series-actions">
-        <button type="button" class="btn small" onclick="openEditProductora(${realIdx})">✏️ Editar</button>
-        <button type="button" class="btn small danger" onclick="delProductora(${realIdx})">🗑</button>
+        <button type="button" class="btn small" onclick="openEditProductora(${realIdx})">Editar</button>
+        <button type="button" class="btn small danger" onclick="delProductora(${realIdx})">Eliminar</button>
       </div>
     </div>`;
   }).join('');
@@ -4998,7 +5051,7 @@ function productoraFormHtml(p){
       const checked=selectedIds.includes(a.id)?'checked':'';
       const photoHtml=a.photo
         ?`<img src="${escapeHtml(a.photo)}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0" onerror="this.style.display='none'">`
-        :`<span style="font-size:14px;flex-shrink:0">🎭</span>`;
+        :`<span style="font-size:14px;flex-shrink:0"></span>`;
       const displayName=a.name.replace(/^"[^"]*"\s*/,'').split(' ').slice(0,2).join(' ')||a.name;
       return `<label style="display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);transition:background .12s" class="pf-actress-item">
         <input type="checkbox" value="${a.id}" ${checked} style="width:14px;height:14px;accent-color:var(--accent);flex-shrink:0;cursor:pointer" onchange="pfActressUpdate()">
@@ -5024,9 +5077,9 @@ function productoraFormHtml(p){
     <div class="form-row"><label class="form-label">Descripción <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
       <textarea id="pf_desc" placeholder="Breve descripción…" style="min-height:70px">${escapeHtml(p?.desc||'')}</textarea></div>
     <div class="form-row">
-      <label class="form-label">🎭 Actrices <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(selecciona las asociadas a esta productora)</span></label>
+      <label class="form-label">Actrices <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(selecciona las asociadas a esta productora)</span></label>
       <div style="position:relative;margin-bottom:6px">
-        <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;pointer-events:none">🔍</span>
+        <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;pointer-events:none"></span>
         <input id="pf_actress_q" placeholder="Filtrar actrices…" style="width:100%;padding:7px 10px 7px 32px;border:1.5px solid var(--border2);border-radius:8px;font-size:12px;font-family:var(--font-body);background:var(--surface2);outline:none" oninput="pfActressFilter(this.value)">
       </div>
       <div id="pf_actress_count" style="font-size:11px;color:var(--accent);font-weight:600;margin-bottom:6px">${selectedIds.length?selectedIds.length+' seleccionada'+(selectedIds.length!==1?'s':''):'Ninguna seleccionada'}</div>
@@ -5051,7 +5104,7 @@ function pfActressUpdate(){
 }
 
 function openAddProductora(){
-  document.getElementById('productoraModalTitle').textContent='🏢 Nueva productora';
+  document.getElementById('productoraModalTitle').textContent='Nueva productora';
   document.getElementById('productoraModalBody').innerHTML=productoraFormHtml(null);
   document.getElementById('productoraModalFooter').innerHTML=
     `<button type="button" class="btn" onclick="document.getElementById('productoraModal').classList.remove('open')">Cancelar</button>
@@ -5060,7 +5113,7 @@ function openAddProductora(){
 }
 
 function openEditProductora(pi){
-  document.getElementById('productoraModalTitle').textContent='✏️ Editar productora';
+  document.getElementById('productoraModalTitle').textContent='Editar productora';
   document.getElementById('productoraModalBody').innerHTML=productoraFormHtml(productoras[pi]);
   document.getElementById('productoraModalFooter').innerHTML=
     `<button type="button" class="btn" onclick="document.getElementById('productoraModal').classList.remove('open')">Cancelar</button>
@@ -5090,7 +5143,7 @@ function saveProductora(pi){
 }
 
 async function delProductora(pi){
-  const ok=await showConfirm({title:`¿Eliminar "${productoras[pi]?.name}"?`,desc:'Las series/películas con esta productora asignada quedarán sin productora.',icon:'🏢'});
+  const ok=await showConfirm({title:`¿Eliminar "${productoras[pi]?.name}"?`,desc:'Las series/películas con esta productora asignada quedarán sin productora.'});
   if(!ok) return;
   productoras.splice(pi,1);
   save(); renderProductorasAdmin();
@@ -5116,7 +5169,7 @@ function renderListasAdmin(){
   if(label) label.textContent = listas.length + ' lista' + (listas.length!==1?'s':'');
   grid.innerHTML = listas.map((l, li)=>{
     const count = (l.seriesIds||[]).length + (l.movieIds||[]).length;
-    const emoji = l.emoji || '📋';
+    const emoji = l.emoji || '';
     const safeId = (l.id||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     return `<div class="series-item" style="align-items:flex-start;gap:12px">
       <div style="font-size:2rem;line-height:1;flex-shrink:0;padding-top:2px">${emoji}</div>
@@ -5126,8 +5179,8 @@ function renderListasAdmin(){
         <div style="margin-top:4px;font-size:11px;color:var(--muted)">${count} título${count!==1?'s':''}</div>
       </div>
       <div class="series-actions">
-        <button class="btn small" onclick="openEditLista(${li})">✏️ Editar</button>
-        <button class="btn small danger" onclick="delLista('${safeId}')">🗑</button>
+        <button class="btn small" onclick="openEditLista(${li})">Editar</button>
+        <button class="btn small danger" onclick="delLista('${safeId}')">Eliminar</button>
       </div>
     </div>`;
   }).join('');
@@ -5157,7 +5210,7 @@ function _listaFormHtml(l){
   return `<div style="padding:1.25rem 1.75rem;display:flex;flex-direction:column;gap:14px">
     <div class="form-row">
       <label class="form-label">Emoji representativo</label>
-      <input id="lf_emoji" placeholder="📋" value="${l&&l.emoji?l.emoji:''}" style="width:80px;font-size:1.4rem;text-align:center"/>
+      <input id="lf_emoji" placeholder="" value="${l&&l.emoji?l.emoji:''}" style="width:80px;font-size:1.4rem;text-align:center"/>
     </div>
     <div class="form-row">
       <label class="form-label">Título de la lista <span style="color:var(--danger)">*</span></label>
@@ -5174,7 +5227,7 @@ function _listaFormHtml(l){
     <div class="form-row">
       <label class="form-label">Títulos incluidos <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona los que quieras)</span></label>
       <div style="margin-top:4px;margin-bottom:6px;display:flex;gap:8px">
-        <input id="lf_q" placeholder="🔍 Filtrar por nombre…" oninput="filterListaItems()" style="flex:1;padding:7px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;outline:none"/>
+        <input id="lf_q" placeholder="Filtrar por nombre…" oninput="filterListaItems()" style="flex:1;padding:7px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;outline:none"/>
       </div>
       <div id="lf_items" style="max-height:320px;overflow-y:auto;border:1.5px solid var(--border2);border-radius:12px;background:var(--surface2);display:flex;flex-direction:column;gap:2px;padding:4px">
         ${itemRows}
@@ -5184,7 +5237,7 @@ function _listaFormHtml(l){
   </div>
   <div class="modal-footer-btns">
     <button type="button" class="btn" onclick="closeLista()">Cancelar</button>
-    <button type="button" class="btn primary" onclick="saveLista()">💾 Guardar lista</button>
+    <button type="button" class="btn primary" onclick="saveLista()">Guardar lista</button>
   </div>`;
 }
 
@@ -5203,14 +5256,14 @@ function _updateListaCount(){
 }
 
 function openAddLista(){
-  document.getElementById('listaModalTitle').textContent = '📋 Nueva lista temática';
+  document.getElementById('listaModalTitle').textContent = 'Nueva lista temática';
   document.getElementById('listaModalBody').innerHTML = _listaFormHtml(null);
   document.getElementById('listaModal').classList.add('open');
   document.getElementById('lf_items').addEventListener('change', _updateListaCount);
 }
 
 function openEditLista(li){
-  document.getElementById('listaModalTitle').textContent = '✏️ Editar lista';
+  document.getElementById('listaModalTitle').textContent = 'Editar lista';
   document.getElementById('listaModalBody').innerHTML = _listaFormHtml(listas[li]);
   document.getElementById('listaModal').dataset.liId = listas[li].id;
   document.getElementById('listaModal').classList.add('open');
@@ -5225,7 +5278,7 @@ function closeLista(){
 function saveLista(){
   const title = document.getElementById('lf_title')?.value.trim();
   if(!title){ alert('El título es obligatorio'); return; }
-  const emoji = document.getElementById('lf_emoji')?.value.trim()||'📋';
+  const emoji = document.getElementById('lf_emoji')?.value.trim()||'';
   const desc  = document.getElementById('lf_desc')?.value.trim()||'';
   const order = parseInt(document.getElementById('lf_order')?.value)||99;
   const checked = [...document.querySelectorAll('#lf_items input:checked')];
@@ -5250,7 +5303,7 @@ function saveLista(){
 async function delLista(listaId){
   const li = listas.findIndex(l=>l.id===listaId);
   if(li<0) return;
-  const ok = await showConfirm({title:`¿Eliminar "${listas[li]?.title}"?`, desc:'Esta acción no se puede deshacer.', icon:'📋'});
+  const ok = await showConfirm({title:`¿Eliminar "${listas[li]?.title}"?`, desc:'Esta acción no se puede deshacer.'});
   if(!ok) return;
   listas.splice(li,1);
   save(); renderListasAdmin();
@@ -5272,8 +5325,8 @@ function addAwardRow(containerId, award){
     <input placeholder="Categoría" value="${award&&award.category?award.category:''}" data-field="category" title="Ej: Mejor actriz principal, Mejor pareja…">
     <input type="number" placeholder="Año" value="${award&&award.year?award.year:new Date().getFullYear()}" data-field="year" style="width:72px" min="2000" max="2040">
     <select data-field="result" style="width:110px">
-      <option value="nominated" ${!award||award.result!=='won'?'selected':''}>🎖 Nominada</option>
-      <option value="won" ${award&&award.result==='won'?'selected':''}>🏆 Ganadora</option>
+      <option value="nominated" ${!award||award.result!=='won'?'selected':''}>Nominada</option>
+      <option value="won" ${award&&award.result==='won'?'selected':''}>Ganadora</option>
     </select>
     <button type="button" class="platform-del-btn" onclick="this.closest('.award-admin-row').remove()" title="Eliminar">✕</button>`;
   list.appendChild(row);
@@ -5403,7 +5456,7 @@ function renderPlatformLogosSection(){
   // Count hidden entries to show restore button
   const hiddenCount=Object.values(custom).filter(v=>v==='__hidden__').length;
   const hiddenBar=hiddenCount>0
-    ?`<div style="grid-column:1/-1;font-size:12px;color:var(--muted);padding:4px 0;display:flex;align-items:center;gap:10px"><span>${hiddenCount} entrada${hiddenCount!==1?'s':''} oculta${hiddenCount!==1?'s':''}</span><button type="button" class="btn small" onclick="restoreAllHidden()" style="font-size:11px;padding:3px 10px">↩ Restaurar todas</button></div>`
+    ?`<div style="grid-column:1/-1;font-size:12px;color:var(--muted);padding:4px 0;display:flex;align-items:center;gap:10px"><span>${hiddenCount} entrada${hiddenCount!==1?'s':''} oculta${hiddenCount!==1?'s':''}</span><button type="button" class="btn small" onclick="restoreAllHidden()" style="font-size:11px;padding:3px 10px">Restaurar todas</button></div>`
     :'';
 
   grid.innerHTML=hiddenBar+allNames.map(name=>{
@@ -5413,7 +5466,7 @@ function renderPlatformLogosSection(){
     const imgHtml=logo
       ?`<img src="${logo}" style="width:32px;height:32px;object-fit:contain;display:block" alt="${name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
       :'';
-    const phHtml=`<span style="font-size:18px;display:${logo?'none':'flex'}">🎬</span>`;
+    const phHtml=`<span style="font-size:18px;display:${logo?'none':'flex'}"></span>`;
     return `<div class="platform-logo-row" id="plrow_${CSS.escape(name)}" style="background:var(--surface2);border-radius:12px;padding:10px 12px;border:1.5px solid ${isCustomized?'var(--accent2)':'var(--border2)'};display:flex;align-items:center;gap:10px">
       <div style="width:44px;height:44px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">
         ${imgHtml}${phHtml}
@@ -5423,8 +5476,8 @@ function renderPlatformLogosSection(){
         <div style="font-size:10px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${logo||''}">${logo||'<em>sin logo</em>'}</div>
       </div>
       <div style="display:flex;gap:5px;flex-shrink:0">
-        <button type="button" class="platform-del-btn" style="background:var(--surface);border:1.5px solid var(--border2);color:var(--muted);border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer" onclick="editPlatformLogo('${escapedName}')" title="Editar logo">✏️</button>
-        <button type="button" class="platform-del-btn" style="background:var(--surface);border:1.5px solid rgba(200,60,60,0.3);color:#c83c3c;border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer" onclick="hidePlatformEntry('${escapedName}')" title="Ocultar esta entrada">🗑</button>
+        <button type="button" class="platform-del-btn" style="background:var(--surface);border:1.5px solid var(--border2);color:var(--muted);border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer" onclick="editPlatformLogo('${escapedName}')" title="Editar logo">Editar</button>
+        <button type="button" class="platform-del-btn" style="background:var(--surface);border:1.5px solid rgba(200,60,60,0.3);color:#c83c3c;border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer" onclick="hidePlatformEntry('${escapedName}')" title="Ocultar esta entrada">Ocultar</button>
       </div>
     </div>`;
   }).join('');
@@ -5459,12 +5512,12 @@ function editPlatformLogo(name){
     <div style="font-weight:700;font-size:13px;color:var(--text)">Editando: <em>${name}</em></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
       <input id="${eid}_url" placeholder="URL del logo (https://…)" value="${currentLogo}" style="flex:1;min-width:200px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;outline:none">
-      <button type="button" class="btn small" onclick="previewPlEdit('${eid}')" style="background:var(--surface2);flex-shrink:0">👁 Ver</button>
+      <button type="button" class="btn small" onclick="previewPlEdit('${eid}')" style="background:var(--surface2);flex-shrink:0">Ver</button>
     </div>
-    <div style="font-size:11px;color:var(--muted)">💡 Favicon rápida: <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;cursor:pointer" onclick="document.getElementById('${eid}_url').value='https://www.google.com/s2/favicons?sz=64&domain='">https://www.google.com/s2/favicons?sz=64&domain=<strong>dominio.com</strong></code></div>
+    <div style="font-size:11px;color:var(--muted)">Favicon rápida: <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;cursor:pointer" onclick="document.getElementById('${eid}_url').value='https://www.google.com/s2/favicons?sz=64&domain='">https://www.google.com/s2/favicons?sz=64&domain=<strong>dominio.com</strong></code></div>
     <div style="display:flex;gap:8px;align-items:center">
       <div id="${eid}_prev" style="width:44px;height:44px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">
-        ${currentLogo?`<img src="${currentLogo}" style="width:32px;height:32px;object-fit:contain" onerror="this.outerHTML='<span style=font-size:18px>❌</span>'">`:  '<span style="font-size:18px">🎬</span>'}
+        ${currentLogo?`<img src="${currentLogo}" style="width:32px;height:32px;object-fit:contain" onerror="this.outerHTML='<span style=font-size:18px>×</span>'">`:  '<span style="font-size:11px;color:var(--muted)">Sin logo</span>'}
       </div>
       <button type="button" class="btn primary small" onclick="savePlEdit('${name.replace(/'/g,"\\'")}','${eid}')">Guardar</button>
       <button type="button" class="btn small" onclick="this.closest('.pl-edit-form').remove()">Cancelar</button>
@@ -5478,8 +5531,8 @@ function previewPlEdit(eid){
   const prev=document.getElementById(eid+'_prev');
   if(!prev) return;
   prev.innerHTML=url
-    ?`<img src="${url}" style="width:32px;height:32px;object-fit:contain" onerror="this.outerHTML='<span style=font-size:18px>❌</span>'">`
-    :'<span style="font-size:18px">🎬</span>';
+    ?`<img src="${url}" style="width:32px;height:32px;object-fit:contain" onerror="this.outerHTML='<span style=font-size:18px>×</span>'">`
+    :'<span style="font-size:11px;color:var(--muted)">Sin logo</span>';
 }
 
 function savePlEdit(name, eid){
@@ -5513,10 +5566,10 @@ function addPlatformLogoRow(){
       <input id="${eid}_name" placeholder="Nombre (ej: Vigloo)" style="flex:1;min-width:130px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;outline:none">
       <input id="${eid}_url" placeholder="URL del logo (https://…)" style="flex:2;min-width:200px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:13px;font-family:inherit;outline:none">
     </div>
-    <div style="font-size:11px;color:var(--muted)">💡 Favicon rápida: <code style="background:var(--surface2);padding:2px 6px;border-radius:4px">https://www.google.com/s2/favicons?sz=64&domain=dominio.com</code></div>
+    <div style="font-size:11px;color:var(--muted)">Favicon rápida: <code style="background:var(--surface2);padding:2px 6px;border-radius:4px">https://www.google.com/s2/favicons?sz=64&domain=dominio.com</code></div>
     <div style="display:flex;gap:8px;align-items:center">
-      <div id="${eid}_prev" style="width:44px;height:44px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0"><span style="font-size:18px">🎬</span></div>
-      <button type="button" class="btn small" onclick="previewPlEdit('${eid}')" style="background:var(--surface2)">👁 Ver</button>
+      <div id="${eid}_prev" style="width:44px;height:44px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0"><span style="font-size:18px"></span></div>
+      <button type="button" class="btn small" onclick="previewPlEdit('${eid}')" style="background:var(--surface2)">Ver</button>
       <button type="button" class="btn primary small" onclick="saveNewPlatform('${eid}')">Guardar</button>
       <button type="button" class="btn small" onclick="this.closest('.pl-edit-form').remove()">Cancelar</button>
     </div>`;

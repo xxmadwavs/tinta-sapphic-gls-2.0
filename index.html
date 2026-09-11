@@ -1038,7 +1038,7 @@ html[data-theme="dark"] .day-cell.has-eps{background:var(--surface3)}
 html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a08090;border:1px solid rgba(180,140,160,.18)}
 /* Retired card: desaturated + broken-heart overlay */
 .ship-card.is-retired .ship-couple-banner::after{
-  content:'💔';
+  content:'';
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
   font-size:28px;
@@ -2133,7 +2133,7 @@ html[data-theme="dark"] .modal-watch-block{
   display:flex;align-items:center;gap:6px;
 }
 .modal-watch-label::before{
-  content:'▶';display:inline-block;
+  content:'';display:inline-block;
   width:15px;height:15px;border-radius:50%;
   background:var(--accent);color:#fff;
   font-size:6px;
@@ -3250,7 +3250,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
 <div class="search-overlay" id="searchOverlay" onclick="if(event.target===this)closeSearch()">
   <div class="search-overlay-box">
     <div style="position:relative">
-      <span class="search-overlay-icon">🔍</span>
+      <span class="search-overlay-icon"></span>
       <input class="search-overlay-input" id="searchOverlayInput" placeholder="Buscar series, películas…" oninput="debounceRender('searchOverlay',()=>renderSearchResults(this.value))" autocomplete="off">
     </div>
     <div class="search-overlay-results" id="searchOverlayResults"></div>
@@ -3318,9 +3318,9 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
           <button class="nav-picks-item" id="tabTop10" role="menuitem" onclick="closePicksDrop();switchTab('top10');closeMobileMenu()">Picks generales</button>
           <button class="nav-picks-item" id="tabPicks2026" role="menuitem" onclick="closePicksDrop();switchTab('picks2026');closeMobileMenu()">Picks 2026</button>
           <div class="nav-picks-sep"></div>
-          <button class="nav-picks-item" id="tabChecklist" role="menuitem" onclick="closePicksDrop();switchTab('checklist');closeMobileMenu()">✅ Checklist</button>
-          <button class="nav-picks-item" id="tabListas" role="menuitem" onclick="closePicksDrop();switchTab('listas');closeMobileMenu()">📋 Listas GL</button>
-          <button class="nav-picks-item" id="tabRuleta" role="menuitem" onclick="closePicksDrop();switchTab('ruleta');closeMobileMenu()">🎡 Ruleta GL</button>
+          <button class="nav-picks-item" id="tabChecklist" role="menuitem" onclick="closePicksDrop();switchTab('checklist');closeMobileMenu()">Checklist</button>
+          <button class="nav-picks-item" id="tabListas" role="menuitem" onclick="closePicksDrop();switchTab('listas');closeMobileMenu()">Listas GL</button>
+          <button class="nav-picks-item" id="tabRuleta" role="menuitem" onclick="closePicksDrop();switchTab('ruleta');closeMobileMenu()">Ruleta GL</button>
         </div>
       </div>
     </div>
@@ -3332,7 +3332,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
         <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
       </div>
-      <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()" title="Cambiar modo oscuro/claro" aria-label="Modo oscuro">🌙</button>
+      <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()" title="Cambiar modo oscuro/claro" aria-label="Modo oscuro"></button>
       <a class="navbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X" aria-label="X / Twitter">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
@@ -3359,7 +3359,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
   <!-- ── CTA: Checklist GL Thai ── -->
   <div class="chk-cta-banner" id="checklistCtaBanner" onclick="switchTab('checklist')">
     <div class="chk-cta-left">
-      <span class="chk-cta-icon">✅</span>
+      <span class="chk-cta-icon"></span>
       <div>
         <div class="chk-cta-title">Haz CheckList series</div>
         <div class="chk-cta-subtitle">Marca las series, películas y novelas GL Thai, China y Japón que ya has visto o leído</div>
@@ -3400,7 +3400,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
     <!-- Month calendar toggle -->
     <div class="month-toggle-wrap">
       <button class="month-toggle-btn" id="monthToggleBtn" onclick="toggleMonthCal()">
-        <span id="monthToggleIcon">📅</span> Ver calendario mensual
+        <span id="monthToggleIcon"></span> Ver calendario mensual
       </button>
       <div class="month-cal-wrap" id="monthCalWrap">
         <div class="cal-nav" style="margin-top:1rem">
@@ -3423,7 +3423,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
       <div id="raSection_series" style="display:none" class="ra-category-block">
         <div class="ra-header">
           <div class="ra-header-left">
-            <span class="ra-icon">🌸</span>
+            <span class="ra-icon"></span>
             <div>
               <div class="ra-title">Últimas series añadidas</div>
               <div class="ra-subtitle">Series GL nuevas en la base de datos</div>
@@ -3437,7 +3437,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
       <div id="raSection_movies" style="display:none" class="ra-category-block">
         <div class="ra-header">
           <div class="ra-header-left">
-            <span class="ra-icon">🎬</span>
+            <span class="ra-icon"></span>
             <div>
               <div class="ra-title">Últimas películas añadidas</div>
               <div class="ra-subtitle">Películas y documentales nuevos en la base de datos</div>
@@ -3451,7 +3451,7 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
       <div id="raSection_anime" style="display:none" class="ra-category-block">
         <div class="ra-header">
           <div class="ra-header-left">
-            <span class="ra-icon">🎌</span>
+            <span class="ra-icon"></span>
             <div>
               <div class="ra-title">Últimos animes añadidos</div>
               <div class="ra-subtitle">Anime GL nuevo en la base de datos</div>
@@ -3555,11 +3555,11 @@ const DINAMICAS=[
   'Tímida × Extrovertida','Vampira × Humana','Veterana × Novata',
 ];
 
-// Foco sáfico: cuánto peso tiene la relación WLW en la trama
+// Foco sáfico: qué papel juega la relación/personaje WLW en la obra
 const WLW_FOCUS=[
-  {value:'trama-principal',label:'Trama principal'},
-  {value:'trama-secundaria',label:'Trama secundaria'},
-  {value:'trasfondo',label:'Trasfondo'},
+  {value:'pareja-principal',label:'Pareja principal'},
+  {value:'pareja-secundaria',label:'Pareja secundaria'},
+  {value:'personaje',label:'Personaje'},
   {value:'subtexto',label:'Subtexto'},
   {value:'sin-etiquetar',label:'Sin etiquetar'},
 ];
@@ -4171,9 +4171,9 @@ function renderWeekView(){
       items.forEach(({type,s,ep,si})=>{
         const col=type==='movie'?'var(--lavender)':PALETTE[si%PALETTE.length];
         const bg=type==='movie'?'var(--lavender-soft)':PALETTE_SOFT[si%PALETTE_SOFT.length];
-        const icon=type==='movie'?'🎥':'🎬';
+        const icon=type==='movie'?'':'';
         const seasons=type==='series'?getSeasons(s):[];
-        const lbl=type==='series'?epLabel(ep,seasons):'🎥 Película';
+        const lbl=type==='series'?epLabel(ep,seasons):'Película';
         const clickFn=type==='movie'?`openMovie(${si})`:`openSeries(${si})`;
 
         const todayDot=isToday?`<div class="week-item-today-dot">HOY</div>`:'';
@@ -4217,7 +4217,7 @@ function toggleMonthCal(){
   const isOpen=wrap.classList.contains('open');
   wrap.classList.toggle('open');
   btn.classList.toggle('open');
-  icon.textContent=isOpen?'📅':'🗓️';
+  icon.textContent=isOpen?'':'';
   btn.childNodes[1].textContent=isOpen?' Ver calendario mensual':' Ocultar calendario';
   if(!isOpen){
     // Render month cal on first open
@@ -4245,12 +4245,12 @@ function renderWeekPanel(){
   const panel=document.getElementById('weekPanel');
   if(!panel) return;
   if(!items.length){panel.innerHTML='';return;}
-  let html=`<div class="week-panel"><div class="week-panel-title">🌸 Hoy</div><div class="week-panel-list">`;
+  let html=`<div class="week-panel"><div class="week-panel-title">Hoy</div><div class="week-panel-list">`;
   items.forEach(({type,s,ep,si})=>{
     if(type==='movie'){
       html+=`<div class="week-ep-row" onclick="openMovie(${si})">
         <div class="week-ep-dot" style="background:var(--lavender)"></div>
-        <div class="week-ep-name">🎥 ${s.name}</div>
+        <div class="week-ep-name">${s.name}</div>
         <span class="week-ep-today">HOY</span>
       </div>`;
     } else {
@@ -4320,7 +4320,7 @@ function renderCal(){
       if(type==='movie'){
         const bg='rgba(155,130,201,0.15)';
         const thumb=s.poster?`<img class="ep-thumb" src="${s.poster}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:'' ;
-        const ph=`<div class="ep-thumb-ph" style="${s.poster?'display:none':''}background:${bg}">🎥</div>`;
+        const ph=`<div class="ep-thumb-ph" style="${s.poster?'display:none':''}background:${bg}"></div>`;
         html+=`<div class="ep-pill movie-pill" style="background:${bg}">
           ${thumb}${ph}
           <div class="ep-pill-text" style="color:var(--lavender)">
@@ -4330,7 +4330,7 @@ function renderCal(){
       } else {
         const col=PALETTE[si%PALETTE.length], bg=PALETTE_SOFT[si%PALETTE_SOFT.length];
         const thumb=s.poster?`<img class="ep-thumb" src="${s.poster}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:'' ;
-        const ph=`<div class="ep-thumb-ph" style="${s.poster?'display:none':''}background:${bg}">🎬</div>`;
+        const ph=`<div class="ep-thumb-ph" style="${s.poster?'display:none':''}background:${bg}"></div>`;
         const calSeasons=getSeasons(s);
         const calLbl=epLabel(ep,calSeasons);
         html+=`<div class="ep-pill${ep.skipped?' skipped':''}" style="background:${bg}">
@@ -4392,19 +4392,19 @@ function seriesCardHtml(s, si){
   const flagEl=s.country?`<span class="sc-country-flag">${countryFlag(s.country)}</span>`:'';
   const synopsisOverlay=s.synopsis?`<div class="sc-synopsis-overlay"><div class="sc-synopsis-text">${s.synopsis}</div><div class="sc-synopsis-more">Ver más →</div></div>`:'';
   const posterEl=s.poster
-    ?`<div class="series-card-poster-wrap">${flagEl}<img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph>🎬</div>'">${synopsisOverlay}</div>`
-    :`<div class="series-card-poster-wrap">${flagEl}<div class="series-card-poster-ph">🎬</div>${synopsisOverlay}</div>`;
+    ?`<div class="series-card-poster-wrap">${flagEl}<img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'">${synopsisOverlay}</div>`
+    :`<div class="series-card-poster-wrap">${flagEl}<div class="series-card-poster-ph"></div>${synopsisOverlay}</div>`;
 
   // ── Badges
   const badges=[];
-  if(s.seriesType==='webserie') badges.push(`<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">🌐 Web</span>`);
+  if(s.seriesType==='webserie') badges.push(`<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">Web</span>`);
   if(s.basedOnBook) badges.push(sourceTypeBadge(s));
   if(seasons.length>1) badges.push(`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">T${seasons.length}</span>`);
   if(s.awards&&s.awards.length){
     const wins=s.awards.filter(a=>a.result==='won').length;
     badges.push(wins>0
-      ?`<span class="badge badge-award">🏆 ${wins} premio${wins!==1?'s':''}</span>`
-      :`<span class="badge badge-award">🎖 Nominada</span>`);
+      ?`<span class="badge badge-award">${wins} premio${wins!==1?'s':''}</span>`
+      :`<span class="badge badge-award">Nominada</span>`);
   }
   const badgesHtml=`<div class="card-badges">${badges.join('')}</div>`;
 
@@ -4416,14 +4416,14 @@ function seriesCardHtml(s, si){
   // ── Estado y próximo episodio
   let statusPill='';
   if(todayEps.length){
-    statusPill=`<div class="sc-status-pill today">🌸 Hoy · ${epLabel(todayEps[0],seasons)}</div>`;
+    statusPill=`<div class="sc-status-pill today">Hoy · ${epLabel(todayEps[0],seasons)}</div>`;
   } else if(next){
     const du=daysUntil(next.date);
     const lbl=epLabel(next,seasons);
     const when=du===0?'hoy':du===1?'mañana':du<=7?`${du}d`:'';
-    statusPill=`<div class="sc-status-pill airing">▶ ${lbl}${when?' · '+when:''}</div>`;
+    statusPill=`<div class="sc-status-pill airing">${lbl}${when?' · '+when:''}</div>`;
   } else {
-    const renewedTxt=s.renewedNextSeason?' · 🔄':'';
+    const renewedTxt=s.renewedNextSeason?' ·':'';
     statusPill=`<div class="sc-status-pill finished">✓ Finalizada${renewedTxt}</div>`;
   }
 
@@ -4447,7 +4447,7 @@ function seriesCardHtml(s, si){
 
   // ── Duración
   const durInfo=getSeriesDurationInfo(s);
-  const durChip=durInfo.epDuration?`<span style="font-size:10px;color:var(--muted);font-weight:600">⏱ ${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span>`:'';
+  const durChip=durInfo.epDuration?`<span style="font-size:10px;color:var(--muted);font-weight:600">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span>`:'';
 
   return `<div class="series-card" onclick="openSeries(${si})">
     ${posterEl}
@@ -4498,12 +4498,12 @@ function parseCountryParts(country){
 
 /**
  * countryFlag(country) — acepta valores simples ('Tailandia') o compuestos ('Tailandia / Japón').
- * Devuelve las banderas de todos los países concatenadas, o 🌐 si ninguno se reconoce.
+ * Devuelve las banderas de todos los países concatenadas, o si ninguno se reconoce.
  */
 function buildAwardsHtml(item){
   if(!item.awards||!item.awards.length) return '';
   const rows = item.awards.map(a=>{
-    const icon = a.result==='won'?'🏆':'🎖';
+    const icon = a.result==='won'?'':'';
     const resultHtml = a.result==='won'
       ?'<span class="award-result won">Ganadora</span>'
       :'<span class="award-result nominated">Nominada</span>';
@@ -4518,7 +4518,7 @@ function buildAwardsHtml(item){
     </div>`;
   }).join('');
   return `<div class="awards-block">
-    <div class="awards-block-title">🏆 Premios y festivales</div>
+    <div class="awards-block-title">Premios y festivales</div>
     <div class="awards-list">${rows}</div>
   </div>`;
 }
@@ -4531,7 +4531,7 @@ function sourceTypeBadge(s){
     'webtoon':'webtoon','libro':'libro',
   };
   const label=s.sourceType&&types[s.sourceType]?types[s.sourceType]:'libro';
-  return `<span class="badge badge-book">📖 Basado en ${label}</span>`;
+  return `<span class="badge badge-book">Basado en ${label}</span>`;
 }
 function moodPillsHtml(moods,max=3){
   if(!moods||!moods.length) return '';
@@ -4549,9 +4549,9 @@ function dinamicaPillsHtml(dinamica,max=3){
 }
 function countryFlag(country){
   const parts=parseCountryParts(country);
-  if(!parts.length) return '🌐';
+  if(!parts.length) return '';
   const flags=parts.map(p=>COUNTRY_FLAGS[p]||'').filter(Boolean);
-  return flags.length?flags.join(''):'🌐';
+  return flags.length?flags.join(''):'';
 }
 
 function getRegion(country){
@@ -5052,7 +5052,7 @@ function renderList(){
     view.innerHTML=`<div class="list-toolbar-shell">
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;flex:1">
-          <span class="search-icon">🔍</span>
+          <span class="search-icon"></span>
           <input id="seriesSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${seriesFilters.q}" oninput="seriesFilters.q=this.value;resetSeriesPages();debounceRender('series',renderListResults)" autocomplete="off">
         </div>
         <div class="filter-group">
@@ -5077,7 +5077,7 @@ function renderList(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="seriesFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('seriesFiltersSidebar').classList.toggle('mob-open')">🔎 Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('seriesFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
         <div id="seriesStatusPillbar"></div>
         <div id="listResults"></div>
       </div>
@@ -5115,7 +5115,7 @@ function applyUpcomingFilters(arr){
 function renderUpcoming(){
   const allUpcoming=state.series.filter(s=>s.upcoming&&s.category!=='anime'&&s.category!=='reality');
   const view=document.getElementById('viewUpcoming');
-  if(!allUpcoming.length){view.innerHTML='<div class="empty">✨ No hay series próximamente de momento. ¡Pronto habrá novedades!</div>';return;}
+  if(!allUpcoming.length){view.innerHTML='<div class="empty">No hay series próximamente de momento. ¡Pronto habrá novedades!</div>';return;}
 
   if(!view.querySelector('.upcoming-toolbar-shell')){
     const upYears=[...new Set(allUpcoming.map(s=>s.startDate?s.startDate.substring(0,4):'').filter(Boolean))].sort((a,b)=>b-a);
@@ -5125,7 +5125,7 @@ function renderUpcoming(){
     const now_count=new Date();
     const staleAuto=allUpcoming.filter(s=>!s.sinNovedades&&!s.cancelStatus&&s.updatedAt&&Math.floor((now_count-new Date(s.updatedAt))/(1000*60*60*24))>=14).length;
     const staleTotal=staleManual+staleAuto;
-    view.innerHTML=`<div class="section-heading" style="margin-bottom:.25rem">✨ Próximamente</div>
+    view.innerHTML=`<div class="section-heading" style="margin-bottom:.25rem">Próximamente</div>
     <p class="section-desc" style="margin-bottom:.6rem">Series anunciadas que aún no tienen fecha de emisión confirmada.</p>
     <div style="display:flex;gap:4px;margin-bottom:1rem;flex-wrap:wrap">
       <button class="ships-subtab active" id="upSubNormal" onclick="upcomingFilters.subview='normal';document.getElementById('upSubNormal').className='ships-subtab active';document.getElementById('upSubStale').className='ships-subtab';renderUpcomingResults()">Con novedades</button>
@@ -5134,7 +5134,7 @@ function renderUpcoming(){
     <div class="upcoming-toolbar-shell books-toolbar">
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
-          <span class="search-icon">🔍</span>
+          <span class="search-icon"></span>
           <input id="upcomingSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${upcomingFilters.q}" oninput="upcomingFilters.q=this.value;resetUpcomingPage();debounceRender('upcoming',renderUpcomingResults)" autocomplete="off">
         </div>
       </div>
@@ -5222,7 +5222,7 @@ function renderUpcomingResults(){
     }
 
     let snHtml=`<div class="sinnovedades-intro">
-      🕰️ Series anunciadas de las que no hay noticias recientes. Pueden estar retrasadas o esperando confirmación.
+      Series anunciadas de las que no hay noticias recientes. Pueden estar retrasadas o esperando confirmación.
       &ensp;<strong style="color:#c94040">${totalCount} serie${totalCount!==1?'s':''}</strong>
     </div><div class="sinnovedades-grid">`;
 
@@ -5230,14 +5230,14 @@ function renderUpcomingResults(){
     manualStale.forEach(s=>{
       const si=state.series.indexOf(s);
       const poster=s.poster
-        ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph>🎬</div>'">`
-        :`<div class="sn-poster-ph">🎬</div>`;
-      const cancelLabels={cancelled:'❌ Cancelada',limbo:'⏸️ En limbo',closed:'🏢 Prod. cerrada'};
+        ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph></div>'">`
+        :`<div class="sn-poster-ph"></div>`;
+      const cancelLabels={cancelled:'Cancelada',limbo:'En limbo',closed:'Prod. cerrada'};
       const lastInfo=s.cancelStatus
-        ?`<span class="sn-stale-high" style="color:#c94040">${cancelLabels[s.cancelStatus]||'❌ Cancelada'}</span>`
+        ?`<span class="sn-stale-high" style="color:#c94040">${cancelLabels[s.cancelStatus]||'Cancelada'}</span>`
         :s.snLastUpdate
-          ?`<span class="sn-stale-high" title="${s.snLastUpdate}">📭 ${s.snLastUpdate.length>30?s.snLastUpdate.slice(0,28)+'…':s.snLastUpdate}</span>`
-          :`<span class="sn-stale-high">📭 Sin novedades</span>`;
+          ?`<span class="sn-stale-high" title="${s.snLastUpdate}">${s.snLastUpdate.length>30?s.snLastUpdate.slice(0,28)+'…':s.snLastUpdate}</span>`
+          :`<span class="sn-stale-high">Sin novedades</span>`;
       const noteHtml=(s.cancelNote||s.snNote)
         ?`<div class="sn-meta" style="font-style:italic;margin-top:2px" title="${s.cancelNote||s.snNote}">${(s.cancelNote||s.snNote).length>50?(s.cancelNote||s.snNote).slice(0,48)+'…':(s.cancelNote||s.snNote)}</div>`
         :'';
@@ -5255,12 +5255,12 @@ function renderUpcomingResults(){
     // Luego las detectadas automáticamente por antigüedad
     autoStale.forEach(({s,si,days})=>{
       const poster=s.poster
-        ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph>🎬</div>'">`
-        :`<div class="sn-poster-ph">🎬</div>`;
+        ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph></div>'">`
+        :`<div class="sn-poster-ph"></div>`;
       snHtml+=`<div class="sn-card" onclick="openUpcoming(${si})">
         ${poster}
         <div class="sn-body">
-          <span class="sn-stale-mid">🕰️ ${snStaleLabel(days)}</span>
+          <span class="sn-stale-mid">${snStaleLabel(days)}</span>
           <div class="sn-name">${s.name}</div>
           <div class="sn-meta">${[s.country?countryFlag(s.country)+' '+s.country:null,s.network].filter(Boolean).join(' · ')||'Sin detalles'}</div>
         </div>
@@ -5288,14 +5288,14 @@ function renderUpcomingResults(){
   upSlice.forEach((s)=>{
     const si=state.series.indexOf(s);
     const posterEl=s.poster
-      ?`<div class="upcoming-poster-wrap"><img class="upcoming-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=upcoming-poster-ph>🎬</div>'"></div>`
-      :`<div class="upcoming-poster-wrap"><div class="upcoming-poster-ph">🎬</div></div>`;
+      ?`<div class="upcoming-poster-wrap"><img class="upcoming-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=upcoming-poster-ph></div>'"></div>`
+      :`<div class="upcoming-poster-wrap"><div class="upcoming-poster-ph"></div></div>`;
     const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
-    const watchRow=links.length?`<div class="upcoming-watch-row">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+    const watchRow=links.length?`<div class="upcoming-watch-row">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
     html+=`<div class="upcoming-card" onclick="openUpcoming(${si})">
       ${posterEl}
       <div class="upcoming-body">
-        <div class="card-badges"><span class="badge badge-upcoming">📅 Próximamente</span>${sourceTypeBadge(s)}</div>
+        <div class="card-badges"><span class="badge badge-upcoming">Próximamente</span>${sourceTypeBadge(s)}</div>
         <div class="upcoming-name">${s.name}</div>
         <div class="upcoming-meta">${[s.year,s.country?(countryFlag(s.country)+' '+s.country):null,s.network].filter(Boolean).join(' · ')||'Sin detalles aún'}</div>
         ${watchRow}
@@ -5317,15 +5317,15 @@ function openDay(dateStr){
     if(type==='movie'){
       const isPast=new Date(ep.date+'T12:00:00')<=now;
       const st=isPast?'aired':'pending', lb=isPast?'Estrenada':'Pendiente';
-      const thumb=s.poster?`<img class="day-ep-thumb" src="${s.poster}" alt="" onerror="this.outerHTML='<div class=day-ep-thumb-ph>🎥</div>'">`:`<div class="day-ep-thumb-ph">🎥</div>`;
+      const thumb=s.poster?`<img class="day-ep-thumb" src="${s.poster}" alt="" onerror="this.outerHTML='<div class=day-ep-thumb-ph></div>'">`:`<div class="day-ep-thumb-ph"></div>`;
       html+=`<div class="day-ep-row" onclick="openMovie(${si})">${thumb}
         <div class="day-ep-info"><div class="day-ep-name" style="color:var(--lavender)">${s.name}</div>
-        <div class="day-ep-meta">🎥 Película${s.network?' · '+s.network:''}</div></div>
+        <div class="day-ep-meta">Película${s.network?' · '+s.network:''}</div></div>
         <span class="chip ${st}">${lb}</span></div>`;
     } else {
       const col=PALETTE[si%PALETTE.length], isPast=new Date(ep.date+'T12:00:00')<=now;
       const st=ep.skipped?'skipped':isPast?'aired':'pending', lb=ep.skipped?'No emitido':isPast?'Emitido':'Pendiente';
-      const thumb=s.poster?`<img class="day-ep-thumb" src="${s.poster}" alt="" onerror="this.outerHTML='<div class=day-ep-thumb-ph>🎬</div>'">`:`<div class="day-ep-thumb-ph">🎬</div>`;
+      const thumb=s.poster?`<img class="day-ep-thumb" src="${s.poster}" alt="" onerror="this.outerHTML='<div class=day-ep-thumb-ph></div>'">`:`<div class="day-ep-thumb-ph"></div>`;
       const daySeasons=getSeasons(s);
       const dayLbl=epLabel(ep,daySeasons);
       html+=`<div class="day-ep-row" onclick="openSeries(${si})">${thumb}
@@ -5368,7 +5368,7 @@ function buildCastHtml(cast){
     if(!valid.length) return '';
     if(valid.length===1){
       const {m,a}=valid[0];
-      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
+      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph></div>'">`:'<div class="cast-photo-ph"></div>';
       return `<div class="couple-card ${cardClass}">
         <div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>
       </div>`;
@@ -5376,15 +5376,15 @@ function buildCastHtml(cast){
     // Dos o más: mostrar las dos primeras juntas con separador, el resto debajo
     const pair=valid.slice(0,2);
     const extra=valid.slice(2);
-    const heart=cardClass==='main-couple'?'💕':'🌸';
+    const heart=cardClass==='main-couple'?'':'';
     let inner=pair.map(({m,a})=>{
-      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
+      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph></div>'">`:'<div class="cast-photo-ph"></div>';
       return `<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
     }).join(`<div class="couple-sep"><div class="couple-sep-line"></div><div class="couple-sep-heart">${heart}</div><div class="couple-sep-line"></div></div>`);
     // Actrices extra (raras veces habrá más de 2 en una pareja)
     if(extra.length){
       const extraHtml=extra.map(({m,a})=>{
-        const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
+        const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph></div>'">`:'<div class="cast-photo-ph"></div>';
         return `<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
       }).join('');
       inner+=`<div style="display:flex;flex-wrap:wrap;justify-content:center;width:100%;margin-top:6px">${extraHtml}</div>`;
@@ -5396,7 +5396,7 @@ function buildCastHtml(cast){
 
   // ── Parejas principales ──
   if(mainKeys.length){
-    const title=mainKeys.length>1?'💕 Parejas principales':'💕 Pareja principal';
+    const title=mainKeys.length>1?'Parejas principales':'Pareja principal';
     html+=`<div class="cast-section"><div class="cast-section-title">${title}</div><div class="cast-couples-grid">`;
     mainKeys.forEach(key=>{ html+=coupleCardHtml(grouped[key],'main-couple'); });
     html+=`</div></div>`;
@@ -5404,7 +5404,7 @@ function buildCastHtml(cast){
 
   // ── Parejas secundarias ──
   if(secKeys.length){
-    const title=secKeys.length>1?'🌸 Parejas secundarias':'🌸 Pareja secundaria';
+    const title=secKeys.length>1?'Parejas secundarias':'Pareja secundaria';
     html+=`<div class="cast-section"><div class="cast-section-title">${title}</div><div class="cast-couples-grid">`;
     secKeys.forEach(key=>{ html+=coupleCardHtml(grouped[key],'sec-couple'); });
     html+=`</div></div>`;
@@ -5416,7 +5416,7 @@ function buildCastHtml(cast){
     otherMembers.forEach(m=>{
       const a=actresses.find(x=>x.id===m.actressId);
       if(!a) return;
-      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph>🎭</div>'">`:'<div class="cast-photo-ph">🎭</div>';
+      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph></div>'">`:'<div class="cast-photo-ph"></div>';
       html+=`<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
     });
     html+=`</div></div>`;
@@ -5437,7 +5437,7 @@ function openActressProfile(actressId){
   const inSeries=_sortItems(state.series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===actressId)));
   const inMovies=_sortItems(state.movies.filter(mv=>mv.cast&&mv.cast.some(m=>m.actressId===actressId)));
 
-  const photo=a.photo?`<img class="detail-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=detail-photo-ph>🎭</div>'">`:`<div class="detail-photo-ph">🎭</div>`;
+  const photo=a.photo?`<img class="detail-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=detail-photo-ph></div>'">`:`<div class="detail-photo-ph"></div>`;
 
   const _seriesStatus=s=>{
     if(s.upcoming) return {label:'Próx.',cls:'ship-upcoming'};
@@ -5497,8 +5497,8 @@ function openActressProfile(actressId){
       ${detailsLines?`<div class="details-box" style="margin-top:10px">${detailsLines}</div>`:''}
     </div>
   </div>
-  ${inSeries.length?`<div class="section-bar">📺 Series</div><div class="details-box">${seriesRows}</div>`:''}
-  ${inMovies.length?`<div class="section-bar">🎬 Películas</div><div class="details-box">${movieRows}</div>`:''}
+  ${inSeries.length?`<div class="section-bar">Series</div><div class="details-box">${seriesRows}</div>`:''}
+  ${inMovies.length?`<div class="section-bar">Películas</div><div class="details-box">${movieRows}</div>`:''}
   ${(!inSeries.length&&!inMovies.length)?`<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px 0">Sin series ni películas registradas.</div>`:''}
   <div style="display:flex;justify-content:flex-end;margin-top:1.25rem"><button class="btn" onclick="closeActressModal()">Cerrar</button></div>
   </div>`;
@@ -5531,22 +5531,22 @@ function openSeries(si){
   let nextBadgeHtml='';
   if(todayEps.length){
     const lbl=epLabel(todayEps[0],seasons);
-    nextBadgeHtml=`<div class="modal-next-badge today">🌸 Hoy · ${lbl}</div>`;
+    nextBadgeHtml=`<div class="modal-next-badge today">Hoy · ${lbl}</div>`;
   } else if(next){
     const du=daysUntil(next.date);
     const label=du===1?'mañana':du===0?'hoy':`en ${du} días`;
     const lbl=epLabel(next,seasons);
-    nextBadgeHtml=`<div class="modal-next-badge soon">▶ ${lbl} — ${fmtDate(next.date)} · ${label}</div>`;
+    nextBadgeHtml=`<div class="modal-next-badge soon">${lbl} — ${fmtDate(next.date)} · ${label}</div>`;
   } else {
-    const renewedBadge=s.renewedNextSeason?` <span style="font-size:11px;background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3);border-radius:20px;padding:2px 10px;font-weight:700;margin-left:6px">🔄 Renovada</span>`:'';
+    const renewedBadge=s.renewedNextSeason?` <span style="font-size:11px;background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3);border-radius:20px;padding:2px 10px;font-weight:700;margin-left:6px">Renovada</span>`:'';
     nextBadgeHtml=`<div class="modal-next-badge done">✓ Serie finalizada${renewedBadge}</div>`;
   }
   let datesRowHtml='<div class="modal-dates-row">';
-  if(firstEpDate) datesRowHtml+=`<span class="modal-date-chip">🎬 Inicio: ${fmtDate(firstEpDate)}</span>`;
-  if(isFinished && lastEpDate) datesRowHtml+=`<span class="modal-date-chip">🏁 Final: ${fmtDate(lastEpDate)}</span>`;
+  if(firstEpDate) datesRowHtml+=`<span class="modal-date-chip">Inicio: ${fmtDate(firstEpDate)}</span>`;
+  if(isFinished && lastEpDate) datesRowHtml+=`<span class="modal-date-chip">Final: ${fmtDate(lastEpDate)}</span>`;
   if(s.country) datesRowHtml+=`<span class="modal-date-chip">${countryFlag(s.country)} ${s.country}</span>`;
   datesRowHtml+='</div>';
-  const posterEl=s.poster?`<img class="modal-poster-full" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=modal-poster-full-ph>🎬</div>'">`:`<div class="modal-poster-full-ph">🎬</div>`;
+  const posterEl=s.poster?`<img class="modal-poster-full" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=modal-poster-full-ph></div>'">`:`<div class="modal-poster-full-ph"></div>`;
   let metaGrid='';
   if(s.year) metaGrid+=`<div class="meta-item"><div class="meta-key">Año</div><div class="meta-val">${s.year}</div></div>`;
   if(s.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(s.country)} ${s.country}</div></div>`;
@@ -5554,8 +5554,8 @@ function openSeries(si){
   metaGrid+=`<div class="meta-item"><div class="meta-key">Episodios</div><div class="meta-val">${totalEps}${seasons.length>1?` (${seasons.length}T)`:''}</div></div>`;
   const durInfo=getSeriesDurationInfo(s);
   if(durInfo.epDuration){
-    metaGrid+=`<div class="meta-item"><div class="meta-key">⏱ Por episodio</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}</div></div>`.replace('</div></div>',`${fmtDuration(durInfo.epDuration)}</div></div>`);
-    if(durInfo.totalMins) metaGrid+=`<div class="meta-item"><div class="meta-key">⏱ Total serie</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.totalMins)}</div></div>`;
+    metaGrid+=`<div class="meta-item"><div class="meta-key">Por episodio</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}</div></div>`.replace('</div></div>',`${fmtDuration(durInfo.epDuration)}</div></div>`);
+    if(durInfo.totalMins) metaGrid+=`<div class="meta-item"><div class="meta-key">Total serie</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.totalMins)}</div></div>`;
   }
   const watchLinksHtml=buildWatchLinksHtml(s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]),'','','');
   const progressBlock=`<div class="modal-progress-block">
@@ -5589,7 +5589,7 @@ function openSeries(si){
       const isLastActive=idx===seasons.length-1||seasonEps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
       const colId=`sCollapse_${idx}`;
       const seasonDurMin=season.episodeDuration||s.episodeDuration||null;
-      const seasonDurStr=seasonDurMin?` · ⏱ ${fmtDuration(seasonDurMin)}/ep`:'';
+      const seasonDurStr=seasonDurMin?` · ${fmtDuration(seasonDurMin)}/ep`:'';
       epsHtml+=`<div class="season-collapse">
         <div class="season-collapse-header${isLastActive?' open':''}" onclick="toggleSeasonCollapse('${colId}',this)" role="button" tabindex="0">
           <div>
@@ -5622,10 +5622,10 @@ function openSeries(si){
     const hasTitle=s.bookSource&&s.bookSource.trim();
     const editions=s.bookLinks&&s.bookLinks.length?s.bookLinks:(s.bookUrl?[{lang:'es',store:'Amazon',url:s.bookUrl}]:[]);
     if(!hasCover&&!hasTitle&&!editions.length) return '';
-    const coverEl=hasCover?`<img class="book-cover" src="${s.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph>📖</div>'">`:`<div class="book-cover-ph">📖</div>`;
+    const coverEl=hasCover?`<img class="book-cover" src="${s.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph></div>'">`:`<div class="book-cover-ph"></div>`;
     const edPills=editions.map(e=>`<a class="book-edition-pill" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`).join('');
-    const stypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
-    const stLabel=s.sourceType&&stypes[s.sourceType]?stypes[s.sourceType]:'📖 Libro';
+    const stypes={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. gráfica','webtoon':'Webtoon','libro':'Libro'};
+    const stLabel=s.sourceType&&stypes[s.sourceType]?stypes[s.sourceType]:'Libro';
     return `<div class="book-block">${coverEl}<div class="book-info"><div class="book-source-type" style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px">${stLabel}</div>${hasTitle?`<div class="book-title-text">${s.bookSource}</div>`:''}${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}</div></div>`;
   })():'';
 
@@ -5644,8 +5644,8 @@ function openSeries(si){
   if(_ft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_ft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
   if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamicas=['${d.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
   if(s.basedOnBook){
-    const _btypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
-    const _blabel=s.sourceType&&_btypes[s.sourceType]?_btypes[s.sourceType]:'📖 Libro';
+    const _btypes={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. gráfica','webtoon':'Webtoon','libro':'Libro'};
+    const _blabel=s.sourceType&&_btypes[s.sourceType]?_btypes[s.sourceType]:'Libro';
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
@@ -5657,11 +5657,11 @@ function openSeries(si){
       ${watchLinksHtml?`<div style="margin-top:8px">${watchLinksHtml}</div>`:''}
     </div>
     <div class="detail-info">
-      <div class="modal-badges">${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">🔄 Renovada</span>':''}${s.seriesType==='webserie'?'<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">Web serie</span>':''}</div>
+      <div class="modal-badges">${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.3)">Renovada</span>':''}${s.seriesType==='webserie'?'<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">Web serie</span>':''}</div>
       <div class="modal-title">${s.name}</div>
       ${s.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${s.nameEn}</div>`:''}
       ${s.moods&&s.moods.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 4px">${s.moods.map(m=>`<span style="font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.25)">${m}</span>`).join('')}</div>`:''}
-      <div class="section-bar" style="margin-top:10px">ℹ️ Ficha técnica</div>
+      <div class="section-bar" style="margin-top:10px">Ficha técnica</div>
       <div class="details-box">${detailsLines}</div>
     </div>
   </div>
@@ -5671,8 +5671,8 @@ function openSeries(si){
   ${bookHtml}
   <div class="divider"></div>
   <div class="modal-tabs">
-    <button class="modal-tab active" id="stab_eps" onclick="switchSeriesModalTab('eps')">📋 Episodios</button>
-    <button class="modal-tab" id="stab_cast" onclick="switchSeriesModalTab('cast')">🎭 Cast${castCount?` <span style="font-size:10px;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span>`:''}
+    <button class="modal-tab active" id="stab_eps" onclick="switchSeriesModalTab('eps')">Episodios</button>
+    <button class="modal-tab" id="stab_cast" onclick="switchSeriesModalTab('cast')">Cast${castCount?` <span style="font-size:10px;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span>`:''}
     </button>
   </div>
   <div id="spanel_eps">${epsHtml}</div>
@@ -5720,7 +5720,7 @@ function openUpcoming(si){
   const pctInfo=Math.round(filled/fields.length*100);
   const infoLabel=pctInfo>=80?'Info completa':pctInfo>=50?'Info parcial':'Info básica';
 
-  const posterEl=s.poster?`<img class="detail-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=detail-poster-ph>🎬</div>'">`:`<div class="detail-poster-ph">🎬</div>`;
+  const posterEl=s.poster?`<img class="detail-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=detail-poster-ph></div>'">`:`<div class="detail-poster-ph"></div>`;
   const watchLinksHtml=buildWatchLinksHtml(s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]),'','','');
 
   const castHtml=buildCastHtml(s.cast||[]);
@@ -5731,10 +5731,10 @@ function openUpcoming(si){
     const hasTitle=s.bookSource&&s.bookSource.trim();
     const editions=s.bookLinks&&s.bookLinks.length?s.bookLinks:(s.bookUrl?[{lang:'es',store:'Amazon',url:s.bookUrl}]:[]);
     if(!hasCover&&!hasTitle&&!editions.length) return '';
-    const coverEl=hasCover?`<img class="book-cover" src="${s.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph>📖</div>'">`:`<div class="book-cover-ph">📖</div>`;
+    const coverEl=hasCover?`<img class="book-cover" src="${s.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph></div>'">`:`<div class="book-cover-ph"></div>`;
     const edPills=editions.map(e=>`<a class="book-edition-pill" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`).join('');
     return `<div class="book-block">${coverEl}<div class="book-info">
-      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px">${(()=>{const _t={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. Gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};return s.sourceType&&_t[s.sourceType]?_t[s.sourceType]:'📖 Libro'})()}</div>
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px">${(()=>{const _t={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. Gráfica','webtoon':'Webtoon','libro':'Libro'};return s.sourceType&&_t[s.sourceType]?_t[s.sourceType]:'Libro'})()}</div>
       ${hasTitle?`<div class="book-title-text">${s.bookSource}</div>`:''}
       ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
     </div></div>`;
@@ -5751,8 +5751,8 @@ function openUpcoming(si){
   if(_uft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_uft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
   if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamicas=['${d.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
   if(s.basedOnBook){
-    const _btypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
-    const _blabel=s.sourceType&&_btypes[s.sourceType]?_btypes[s.sourceType]:'📖 Libro';
+    const _btypes={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. gráfica','webtoon':'Webtoon','libro':'Libro'};
+    const _blabel=s.sourceType&&_btypes[s.sourceType]?_btypes[s.sourceType]:'Libro';
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
@@ -5763,23 +5763,23 @@ function openUpcoming(si){
       ${watchLinksHtml?`<div style="margin-top:8px">${watchLinksHtml}</div>`:''}
     </div>
     <div class="detail-info">
-      <div class="modal-badges"><span class="badge badge-upcoming">📅 Próximamente</span></div>
+      <div class="modal-badges"><span class="badge badge-upcoming">Próximamente</span></div>
       <div class="modal-title">${s.name}</div>
       <div class="modal-completeness" style="margin-top:8px">
         <span style="font-weight:700;color:var(--text);white-space:nowrap">${infoLabel}</span>
         <div class="modal-completeness-bar"><div class="modal-completeness-fill" style="width:${pctInfo}%"></div></div>
         <span style="white-space:nowrap">${pctInfo}%</span>
       </div>
-      <div class="section-bar" style="margin-top:10px">ℹ️ Ficha técnica</div>
+      <div class="section-bar" style="margin-top:10px">Ficha técnica</div>
       <div class="details-box">${detailsLines}</div>
     </div>
   </div>
-  ${s.synopsis?`<div class="synopsis" style="margin-top:16px">${s.synopsis}</div>`:`<div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:13px;font-style:italic;margin-top:16px">📝 Sinopsis no disponible aún</div>`}
+  ${s.synopsis?`<div class="synopsis" style="margin-top:16px">${s.synopsis}</div>`:`<div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:13px;font-style:italic;margin-top:16px">Sinopsis no disponible aún</div>`}
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${upBookHtml}
   ${castCount?`<div class="divider"></div>
   <div class="modal-tabs">
-    <button class="modal-tab active" id="uptab_cast" onclick="switchUpcomingModalTab('cast')">🎭 Cast<span style="font-size:10px;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span></button>
+    <button class="modal-tab active" id="uptab_cast" onclick="switchUpcomingModalTab('cast')">Cast<span style="font-size:10px;background:var(--accent-soft);color:var(--accent);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span></button>
   </div>
   <div id="uppanel_cast">${castHtml}</div>`:''}
   ${buildSimilarHtml(s,'serie')}
@@ -5803,7 +5803,7 @@ function switchUpcomingModalTab(tab){
 function openMovie(mi){
   const mv=state.movies[mi], now=new Date();
   const isPast=mv.date&&new Date(mv.date+'T12:00:00')<=now;
-  const posterEl=mv.poster?`<img class="detail-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=detail-poster-ph>🎥</div>'">`:`<div class="detail-poster-ph">🎥</div>`;
+  const posterEl=mv.poster?`<img class="detail-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=detail-poster-ph></div>'">`:`<div class="detail-poster-ph"></div>`;
   // Release badge
   let releaseBadgeHtml='';
   if(mv.date){
@@ -5812,14 +5812,14 @@ function openMovie(mi){
     } else {
       const du=daysUntil(mv.date);
       const label=du===0?'¡Hoy!':du===1?'Mañana':`En ${du} días`;
-      releaseBadgeHtml=`<div class="modal-next-badge soon">🎬 Estreno: ${fmtDate(mv.date)} · ${label}</div>`;
+      releaseBadgeHtml=`<div class="modal-next-badge soon">Estreno: ${fmtDate(mv.date)} · ${label}</div>`;
     }
   } else {
-    releaseBadgeHtml=`<div class="modal-next-badge soon" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border)">📅 Fecha de estreno por confirmar</div>`;
+    releaseBadgeHtml=`<div class="modal-next-badge soon" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border)">Fecha de estreno por confirmar</div>`;
   }
 
   const mvModalTypeBadge=mv.movieType==='short'
-    ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">🎞️ Cortometraje</span>`
+    ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">Cortometraje</span>`
     :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">Película</span>`;
   const bookBlock=(()=>{
     if(!mv.basedOnBook) return '';
@@ -5827,10 +5827,10 @@ function openMovie(mi){
     const hasTitle=mv.bookSource&&mv.bookSource.trim();
     const editions=mv.bookLinks&&mv.bookLinks.length?mv.bookLinks:(mv.bookUrl?[{lang:'es',store:'Amazon',url:mv.bookUrl}]:[]);
     if(!hasCover&&!hasTitle&&!editions.length) return '';
-    const coverEl=hasCover?`<img class="book-cover" src="${mv.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph>📖</div>'">`:`<div class="book-cover-ph">📖</div>`;
+    const coverEl=hasCover?`<img class="book-cover" src="${mv.bookCoverUrl}" alt="Portada del libro" onerror="this.outerHTML='<div class=book-cover-ph></div>'">`:`<div class="book-cover-ph"></div>`;
     const edPills=editions.map(e=>`<a class="book-edition-pill" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`).join('');
     return `<div class="book-block">${coverEl}<div class="book-info">
-      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px">${(()=>{const _t={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. Gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};return mv.sourceType&&_t[mv.sourceType]?_t[mv.sourceType]:'📖 Libro'})()}</div>
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px">${(()=>{const _t={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. Gráfica','webtoon':'Webtoon','libro':'Libro'};return mv.sourceType&&_t[mv.sourceType]?_t[mv.sourceType]:'Libro'})()}</div>
       ${hasTitle?`<div class="book-title-text">${mv.bookSource}</div>`:''}
       ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
     </div></div>`;
@@ -5846,11 +5846,11 @@ function openMovie(mi){
   if(mv.network) detailsLines+=`<div class="details-line"><span class="details-line-key">Estreno / Cadena</span><span class="details-line-val">${mv.network}</span></div>`;
   if(mv.date) detailsLines+=`<div class="details-line"><span class="details-line-key">Estreno</span><span class="details-line-val">${fmtDate(mv.date)}</span></div>`;
   else if(mv.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año</span><span class="details-line-val">${mv.year}</span></div>`;
-  if(mv.duration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">⏱ ${fmtDuration(mv.duration)}</span></div>`;
+  if(mv.duration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${fmtDuration(mv.duration)}</span></div>`;
   if(mv.genres&&mv.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${mv.genres.join(', ')}</span></div>`;
   if(mv.basedOnBook){
-    const _btypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
-    const _blabel=mv.sourceType&&_btypes[mv.sourceType]?_btypes[mv.sourceType]:'📖 Libro';
+    const _btypes={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. gráfica','webtoon':'Webtoon','libro':'Libro'};
+    const _blabel=mv.sourceType&&_btypes[mv.sourceType]?_btypes[mv.sourceType]:'Libro';
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
@@ -5862,11 +5862,11 @@ function openMovie(mi){
       ${watchLinksHtml?`<div style="margin-top:8px">${watchLinksHtml}</div>`:''}
     </div>
     <div class="detail-info">
-      <div class="modal-badges">${mvModalTypeBadge}${isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge" style="background:var(--accent-soft);color:var(--accent)">⏳ Próximamente</span>'}</div>
+      <div class="modal-badges">${mvModalTypeBadge}${isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge" style="background:var(--accent-soft);color:var(--accent)">Próximamente</span>'}</div>
       <div class="modal-title">${mv.name}</div>
       ${mv.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${mv.nameEn}</div>`:''}
       ${mv.moods&&mv.moods.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 4px">${mv.moods.map(m=>`<span style="font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,0.25)">${m}</span>`).join('')}</div>`:''}
-      <div class="section-bar" style="margin-top:10px">ℹ️ Ficha técnica</div>
+      <div class="section-bar" style="margin-top:10px">Ficha técnica</div>
       <div class="details-box">${detailsLines}</div>
     </div>
   </div>
@@ -5876,7 +5876,7 @@ function openMovie(mi){
   ${bookBlock}
   ${castCount?`<div class="divider"></div>
   <div class="modal-tabs">
-    <button class="modal-tab active" id="mvtab_cast" onclick="switchMovieModalTab('cast')">🎭 Cast <span style="font-size:10px;background:var(--lavender-soft);color:var(--lavender);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span></button>
+    <button class="modal-tab active" id="mvtab_cast" onclick="switchMovieModalTab('cast')">Cast <span style="font-size:10px;background:var(--lavender-soft);color:var(--lavender);border-radius:20px;padding:1px 7px;margin-left:3px;font-weight:700">${castCount}</span></button>
   </div>
   <div id="mvpanel_cast">${castHtml}</div>`:''}
   ${buildSimilarHtml(mv,'pelicula')}
@@ -5915,24 +5915,24 @@ function movieCardHtml(mv){
   const now=new Date();
   const isPast=mv.date&&new Date(mv.date+'T12:00:00')<=now;
   const posterEl=mv.poster
-    ?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎥</div>'"></div>`
-    :`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph">🎥</div></div>`;
+    ?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'"></div>`
+    :`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph"></div></div>`;
   const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
-  const watchRow=links.length?`<div class="movie-card-watch">${links.map(l=>`<a class="card-watch-pill" style="background:var(--movie-bar);color:var(--movie-accent);border-color:var(--movie-border)" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+  const watchRow=links.length?`<div class="movie-card-watch">${links.map(l=>`<a class="card-watch-pill" style="background:var(--movie-bar);color:var(--movie-accent);border-color:var(--movie-border)" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
   const dateEl=mv.date
     ?(isPast?`<div class="movie-card-date" style="color:var(--teal)">✓ ${fmtDate(mv.date)}</div>`
-            :`<div class="movie-card-date" style="color:var(--movie-accent)">🎬 ${fmtDate(mv.date)}</div>`)
+            :`<div class="movie-card-date" style="color:var(--movie-accent)">${fmtDate(mv.date)}</div>`)
     :'<div class="movie-card-date" style="color:var(--muted)">Fecha por confirmar</div>';
   const mvGenrePills=mv.genres&&mv.genres.length
     ?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-weight:600;cursor:pointer" onclick="event.stopPropagation();moviesFilters.genres=['${g}'];renderMoviesResults()">${g}</span>`).join('')}${mv.genres.length>3?`<span style="font-size:9.5px;padding:2px 6px;border-radius:20px;background:var(--surface2);color:var(--muted)">+${mv.genres.length-3}</span>`:''}</div>`:'';
   const mvMoodPills=moodPillsHtml(mv.moods,2);
   const typeBadge=mv.movieType==='short'
-    ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">🎞️ Corto</span>`
+    ?`<span class="badge" style="background:#fdf3e7;color:#c47b1a;border:1px solid rgba(196,123,26,.3)">Corto</span>`
     :`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">Película</span>`;
-  const durationEl=mv.duration?`<span style="font-size:10.5px;color:var(--muted);font-weight:600">⏱ ${fmtDuration(mv.duration)}</span>`:'';
+  const durationEl=mv.duration?`<span style="font-size:10.5px;color:var(--muted);font-weight:600">${fmtDuration(mv.duration)}</span>`:'';
   return `<div class="movie-card" onclick="openMovie(${mi})">${posterEl}
     <div class="movie-card-body">
-      <div class="card-badges">${typeBadge}${sourceTypeBadge(mv)}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}${mv.awards&&mv.awards.length?(mv.awards.filter(a=>a.result==='won').length>0?`<span class="badge badge-award">🏆 ${mv.awards.filter(a=>a.result==='won').length} premio${mv.awards.filter(a=>a.result==='won').length!==1?'s':''}</span>`:`<span class="badge badge-award">🎖 Nominada</span>`):''}</div>
+      <div class="card-badges">${typeBadge}${sourceTypeBadge(mv)}${mv.country?`<span class="badge" style="background:var(--surface2);color:var(--muted)">${countryFlag(mv.country)} ${mv.country}</span>`:''}${mv.awards&&mv.awards.length?(mv.awards.filter(a=>a.result==='won').length>0?`<span class="badge badge-award">${mv.awards.filter(a=>a.result==='won').length} premio${mv.awards.filter(a=>a.result==='won').length!==1?'s':''}</span>`:`<span class="badge badge-award">Nominada</span>`):''}</div>
       <div class="movie-card-name">${mv.name}</div>
       ${mv.nameEn?`<div style="font-size:10px;color:var(--muted);font-style:italic;line-height:1.3;margin-top:1px;margin-bottom:1px">${mv.nameEn}</div>`:''}
       <div class="movie-card-meta" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${mv.network?`<span>${mv.network}</span>`:''}${durationEl}</div>
@@ -5949,13 +5949,13 @@ let moviesSubtab='all';
 
 function renderMovies(){
   const view=document.getElementById('viewMovies');
-  if(!state.movies.length){view.innerHTML='<div class="empty">🎥 No hay películas todavía.</div>';return;}
+  if(!state.movies.length){view.innerHTML='<div class="empty">No hay películas todavía.</div>';return;}
 
   if(!view.querySelector('.movies-toolbar-shell')){
     view.innerHTML=`<div class="movies-toolbar-shell books-toolbar">
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
-          <span class="search-icon">🔍</span>
+          <span class="search-icon"></span>
           <input id="moviesSearchInput" class="search-input" placeholder="Buscar película, país, plataforma…" value="${moviesFilters.q}" oninput="moviesFilters.q=this.value;resetMoviesPage();debounceRender('movies',renderMoviesResults)" autocomplete="off">
         </div>
       </div>
@@ -5984,7 +5984,7 @@ function renderMovies(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="moviesFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('moviesFiltersSidebar').classList.toggle('mob-open')">🔎 Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('moviesFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
         <div id="moviesResults"></div>
       </div>
     </div>`;
@@ -6314,8 +6314,8 @@ function loadTrailerIframe(el, platform, id, extra){
   el.replaceWith(iframe);
 }
 
-const LANG_META={es:{flag:'🇪🇸',label:'Español'},en:{flag:'🇬🇧',label:'English'},pt:{flag:'🇧🇷',label:'Português'},th:{flag:'🇹🇭',label:'ภาษาไทย'},ko:{flag:'🇰🇷',label:'한국어'},ja:{flag:'🇯🇵',label:'日本語'},zh:{flag:'🇨🇳',label:'中文'},fr:{flag:'🇫🇷',label:'Français'},de:{flag:'🇩🇪',label:'Deutsch'},it:{flag:'🇮🇹',label:'Italiano'},other:{flag:'🌐',label:'Otro'}};
-function langFlag(val){return (LANG_META[val]||{flag:'🌐'}).flag;}
+const LANG_META={es:{flag:'🇪🇸',label:'Español'},en:{flag:'🇬🇧',label:'English'},pt:{flag:'🇧🇷',label:'Português'},th:{flag:'🇹🇭',label:'ภาษาไทย'},ko:{flag:'🇰🇷',label:'한국어'},ja:{flag:'🇯🇵',label:'日本語'},zh:{flag:'🇨🇳',label:'中文'},fr:{flag:'🇫🇷',label:'Français'},de:{flag:'🇩🇪',label:'Deutsch'},it:{flag:'🇮🇹',label:'Italiano'},other:{flag:'',label:'Otro'}};
+function langFlag(val){return (LANG_META[val]||{flag:''}).flag;}
 function langLabel(val){return (LANG_META[val]||{label:val}).label;}
 
 let booksState={q:'',sort:'az',type:'all',letter:'',lang:''};
@@ -6341,18 +6341,18 @@ function renderBooks(){
   const view=document.getElementById('viewBooks');
   const allBooks=getAllBooks();
   if(!allBooks.length){
-    view.innerHTML='<div class="empty">📚 Todavía no hay libros. Marca series como "basada en libro" en el admin para que aparezcan aquí.</div>';
+    view.innerHTML='<div class="empty">Todavía no hay libros. Marca series como "basada en libro" en el admin para que aparezcan aquí.</div>';
     return;
   }
 
   if(!view.querySelector('.books-toolbar-shell')){
     const allLangs=[...new Set(allBooks.flatMap(b=>b.editions.map(e=>e.lang)).filter(Boolean))].sort();
     const langOpts=allLangs.map(l=>`<option value="${l}">${langFlag(l)} ${langLabel(l)}</option>`).join('');
-    view.innerHTML=`<div class="section-heading" style="margin-bottom:.25rem">📚 Fuentes literarias</div>
+    view.innerHTML=`<div class="section-heading" style="margin-bottom:.25rem">Fuentes literarias</div>
     <p class="section-desc" style="margin-bottom:.85rem">Libros, novelas y manhwas en los que se basan las series y películas de la lista.</p>
     <div class="books-toolbar-shell books-toolbar">
       <div class="search-wrap" style="position:relative">
-        <span class="search-icon">🔍</span>
+        <span class="search-icon"></span>
         <input id="booksSearchInput" class="search-input" placeholder="Buscar libro o serie…" value="${booksState.q}" oninput="booksState.q=this.value;debounceRender('books',renderBooksResults)" autocomplete="off">
       </div>
       <div class="filter-group">
@@ -6435,7 +6435,7 @@ function renderBooksResults(){
   let html=`<div class="books-count">Mostrando <strong>${books.length}</strong> de <strong>${allBooks.length}</strong> libro${allBooks.length!==1?'s':''}</div>`;
   html+='<div class="books-grid">';
   books.forEach(b=>{
-    const coverEl=b.cover?`<img class="book-card-cover" src="${b.cover}" alt="${b.title}" onerror="this.outerHTML='<div class=book-card-cover-ph>📖</div>'">`:`<div class="book-card-cover-ph">📖</div>`;
+    const coverEl=b.cover?`<img class="book-card-cover" src="${b.cover}" alt="${b.title}" onerror="this.outerHTML='<div class=book-card-cover-ph></div>'">`:`<div class="book-card-cover-ph"></div>`;
     const editionPills=b.editions.map(e=>{
       const isActive=booksState.lang&&e.lang===booksState.lang;
       return `<a class="book-edition-pill${isActive?' book-edition-pill-active':''}" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`;
@@ -6498,7 +6498,7 @@ function renderAnime(){
 
   view.innerHTML=`
     <div style="margin-bottom:1.25rem">
-      <div class="section-heading">🌸 Anime GL</div>
+      <div class="section-heading">Anime GL</div>
       <div class="section-desc">Series y películas de anime con historias de amor entre chicas (yuri, GL y subtexto sáfico)</div>
     </div>
     <div class="subtabs" id="animeSubtabs">
@@ -6508,7 +6508,7 @@ function renderAnime(){
     <div class="books-toolbar" id="animeToolbar">
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
-          <span class="search-icon">🔍</span>
+          <span class="search-icon"></span>
           <input id="animeSearchInput" class="search-input" placeholder="Buscar anime, país, plataforma…" value="${animeFilters.q}" oninput="animeFilters.q=this.value;paginationAnime={series:1,movies:1};debounceRender('anime',renderAnimeResults)" autocomplete="off">
         </div>
       </div>
@@ -6536,10 +6536,10 @@ function renderAnime(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="animeFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('animeFiltersSidebar').classList.toggle('mob-open')">🔎 Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('animeFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
         <div id="animeResults"></div>
         <div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,rgba(139,114,190,0.07),rgba(201,79,124,0.05));border:1.5px dashed rgba(139,114,190,0.25);border-radius:var(--radius-lg);text-align:center">
-          <div style="font-size:13px;font-weight:700;color:var(--lavender);margin-bottom:4px">🌸 ¿Falta algún anime?</div>
+          <div style="font-size:13px;font-weight:700;color:var(--lavender);margin-bottom:4px">¿Falta algún anime?</div>
           <div style="font-size:12px;color:var(--muted)">Esta sección crece con el tiempo. Puedes sugerir animes GL a través de la cuenta de X <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);font-weight:600">@xxmadwavs</a></div>
         </div>
       </div>
@@ -6578,9 +6578,9 @@ function renderAnimeResults(){
     let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> anime${filtered.length!==1?'s':''}</div><div class="series-grid">`;
     paged.forEach((s,i)=>{
       const si=i;
-      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph>🌸</div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph">🌸</div></div>`;
+      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph"></div></div>`;
       const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
-      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
       const genrePills=s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${s.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--lavender-soft);border:1px solid rgba(139,114,190,0.2);color:var(--lavender);font-weight:600">${g}</span>`).join('')}</div>`:'';
       const year=s.year||(s.startDate||'').substring(0,4)||'';
       html+=`<div class="series-card" onclick="openAnimeDetail('series','${s.id||s.name}')">
@@ -6588,7 +6588,7 @@ function renderAnimeResults(){
         <div class="series-card-body">
           <div class="card-badges">${sourceTypeBadge(s)}${s.country?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${countryFlag(s.country)} ${s.country}</span>`:''}</div>
           <div class="series-card-name">${s.name}</div>
-          <div class="series-card-meta">${[s.network,year?'📅 '+year:null,s.totalEpisodes?'📺 '+s.totalEpisodes+' ep.':null].filter(Boolean).join(' · ')}</div>
+          <div class="series-card-meta">${[s.network,year?''+year:null,s.totalEpisodes?''+s.totalEpisodes+' ep.':null].filter(Boolean).join(' · ')}</div>
           ${genrePills}
           ${watchRow}
         </div>
@@ -6607,17 +6607,17 @@ function renderAnimeResults(){
     if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna película de anime con esos filtros.</div>';return;}
     let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> película${filtered.length!==1?'s':''}</div><div class="movies-grid">`;
     paged.forEach((mv,mi)=>{
-      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph>🌸</div>'">`:`<div class="movie-card-poster-ph">🌸</div>`;
+      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'">`:`<div class="movie-card-poster-ph"></div>`;
       const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
       const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
-      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
       const genrePills=mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--lavender-soft);border:1px solid rgba(139,114,190,0.2);color:var(--lavender);font-weight:600">${g}</span>`).join('')}</div>`:'';
       html+=`<div class="movie-card" onclick="openAnimeDetail('movie','${mv.id||mv.name}')">
         ${posterEl}
         <div class="movie-card-body">
           <div class="card-badges">${sourceTypeBadge(mv)}${mv.country?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
           <div class="movie-card-name">${mv.name}</div>
-          <div class="movie-card-meta">🎥 Película · ${dateStr}</div>
+          <div class="movie-card-meta">Película · ${dateStr}</div>
           ${genrePills}
           ${watchRow}
         </div>
@@ -6657,7 +6657,7 @@ function openRichDetail(item, opts){
     } else if(next){
       const du=daysUntil(next.date);
       const label=du===1?'mañana':du===0?'hoy':`en ${du} días`;
-      nextBadgeHtml=`<div class="modal-next-badge soon">▶ Ep. ${next.seasonNum} — ${fmtDate(next.date)} · ${label}</div>`;
+      nextBadgeHtml=`<div class="modal-next-badge soon">Ep. ${next.seasonNum} — ${fmtDate(next.date)} · ${label}</div>`;
     } else {
       nextBadgeHtml=`<div class="modal-next-badge done">✓ Finalizada</div>`;
     }
@@ -6685,10 +6685,10 @@ function openRichDetail(item, opts){
     const hasTitle=item.bookSource&&item.bookSource.trim();
     const editions=item.bookLinks&&item.bookLinks.length?item.bookLinks:(item.bookUrl?[{lang:'es',store:'Amazon',url:item.bookUrl}]:[]);
     if(hasCover||hasTitle||editions.length){
-      const coverEl=hasCover?`<img class="book-cover" src="${item.bookCoverUrl}" alt="Portada" onerror="this.outerHTML='<div class=book-cover-ph>📖</div>'">`:`<div class="book-cover-ph">📖</div>`;
+      const coverEl=hasCover?`<img class="book-cover" src="${item.bookCoverUrl}" alt="Portada" onerror="this.outerHTML='<div class=book-cover-ph></div>'">`:`<div class="book-cover-ph"></div>`;
       const edPills=editions.map(e=>`<a class="book-edition-pill" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`).join('');
       bookBlock=`<div class="book-block">${coverEl}<div class="book-info">
-        <div class="book-title-text">📖 ${hasTitle?item.bookSource:'Basado en manga/novela'}</div>
+        <div class="book-title-text">${hasTitle?item.bookSource:'Basado en manga/novela'}</div>
         ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
       </div></div>`;
     }
@@ -6712,8 +6712,8 @@ function openRichDetail(item, opts){
   if(_rft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_rft.map(t=>tropoLabel(t)).join(', ')}</span></div>`;
   if(item.dinamica&&item.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${item.dinamica.map(d=>dinamicaLabel(d)).join(', ')}</span></div>`;
   if(item.basedOnBook){
-    const _btypes={'novela':'📚 Novela','webnovel':'🌐 Webnovel','manhwa':'📖 Manhwa','manga':'🎌 Manga','manhua':'🐉 Manhua','novela-grafica':'🖼️ Nov. gráfica','webtoon':'📱 Webtoon','libro':'📕 Libro'};
-    const _blabel=item.sourceType&&_btypes[item.sourceType]?_btypes[item.sourceType]:'📖 Libro';
+    const _btypes={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. gráfica','webtoon':'Webtoon','libro':'Libro'};
+    const _blabel=item.sourceType&&_btypes[item.sourceType]?_btypes[item.sourceType]:'Libro';
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
@@ -6772,14 +6772,14 @@ function openRichDetail(item, opts){
         <div class="modal-badges">${badgeHtml}</div>
         <div class="modal-title">${item.name}</div>
         ${item.nameEn?`<div style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:2px;margin-top:-2px">${item.nameEn}</div>`:''}
-        <div class="section-bar" style="margin-top:10px">ℹ️ Ficha técnica</div>
+        <div class="section-bar" style="margin-top:10px">Ficha técnica</div>
         <div class="details-box">${detailsLines}</div>
       </div>
     </div>
     ${synopsis}
     ${trailerSection}
     ${bookBlock}
-    ${epListHtml?`<div class="divider"></div><div class="section-bar">📋 Episodios</div>${epListHtml}`:''}
+    ${epListHtml?`<div class="divider"></div><div class="section-bar">Episodios</div>${epListHtml}`:''}
     <div style="display:flex;justify-content:flex-end;margin-top:1.25rem"><button class="btn" onclick="closeModal()">Cerrar</button></div>
   </div>`;
   document.getElementById('modalBg').classList.add('open');
@@ -6796,7 +6796,7 @@ function openAnimeDetail(type,key){
     accentBorder:'rgba(139,114,190,0.2)',
     isSeries: type==='series',
     typeLabel: type==='series'?'Anime Serie':'Anime Pelicula',
-    typeIcon:'🌸'
+    typeIcon:''
   });
 }
 
@@ -6842,7 +6842,7 @@ function renderRealities(){
 
   view.innerHTML=`
     <div style="margin-bottom:1.25rem">
-      <div class="section-heading">🎤 Realities GL</div>
+      <div class="section-heading">Realities GL</div>
       <div class="section-desc">Reality shows y docuseries con protagonismo lésbico, bisexual o queer</div>
     </div>
     <div class="subtabs" id="realitiesSubtabs">
@@ -6851,7 +6851,7 @@ function renderRealities(){
     <div class="books-toolbar" id="realitiesToolbar">
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
-          <span class="search-icon">🔍</span>
+          <span class="search-icon"></span>
           <input id="realitiesSearchInput" class="search-input" placeholder="Buscar reality, docuserie, país, red…" value="${realitiesFilters.q}" oninput="realitiesFilters.q=this.value;paginationRealities={series:1,movies:1};debounceRender('realities',renderRealitiesResults)" autocomplete="off">
         </div>
       </div>
@@ -6871,10 +6871,10 @@ function renderRealities(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="realitiesFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('realitiesFiltersSidebar').classList.toggle('mob-open')">🔎 Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('realitiesFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
         <div id="realitiesResults"></div>
         <div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,rgba(74,173,160,0.07),rgba(201,79,124,0.05));border:1.5px dashed rgba(74,173,160,0.25);border-radius:var(--radius-lg);text-align:center">
-          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">🎤 ¿Conoces más realities con representación GL?</div>
+          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">¿Conoces más realities con representación GL?</div>
           <div style="font-size:12px;color:var(--muted)">Escríbenos en X <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);font-weight:600">@xxmadwavs</a> y lo añadimos</div>
         </div>
       </div>
@@ -6911,9 +6911,9 @@ function renderRealitiesResults(){
     if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún reality con esos filtros.</div>';return;}
     let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> programa${filtered.length!==1?'s':''}</div><div class="series-grid">`;
     paged.forEach((s,i)=>{
-      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph>🎤</div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph">🎤</div></div>`;
+      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph"></div></div>`;
       const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
-      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
       const genrePills=s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${s.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid rgba(74,173,160,0.2);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
       const year=s.year||(s.startDate||'').substring(0,4)||'';
       const seasonsCount=s.seasons&&s.seasons.length>1?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">T${s.seasons.length}</span>`:'';
@@ -6922,7 +6922,7 @@ function renderRealitiesResults(){
         <div class="series-card-body">
           <div class="card-badges">${seasonsCount}${s.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(s.country)} ${s.country}</span>`:''}</div>
           <div class="series-card-name">${s.name}</div>
-          <div class="series-card-meta">${[s.network,year?'📅 '+year:null,s.totalEpisodes?'📺 '+s.totalEpisodes+' ep.':null].filter(Boolean).join(' · ')}</div>
+          <div class="series-card-meta">${[s.network,year?''+year:null,s.totalEpisodes?''+s.totalEpisodes+' ep.':null].filter(Boolean).join(' · ')}</div>
           ${genrePills}
           ${watchRow}
         </div>
@@ -6940,17 +6940,17 @@ function renderRealitiesResults(){
     if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún documental con esos filtros.</div>';return;}
     let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> documental${filtered.length!==1?'es':''}</div><div class="movies-grid">`;
     paged.forEach((mv,mi)=>{
-      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎤</div>'">`:`<div class="movie-card-poster-ph">🎤</div>`;
+      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'">`:`<div class="movie-card-poster-ph"></div>`;
       const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
       const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
-      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
       const genrePills=mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid rgba(74,173,160,0.2);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
       html+=`<div class="movie-card" onclick="openRealityDetail('movie','${mv.id||mv.name}')">
         ${posterEl}
         <div class="movie-card-body">
           <div class="card-badges">${mv.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
           <div class="movie-card-name">${mv.name}</div>
-          <div class="movie-card-meta">📹 Documental · ${dateStr}${mv.totalEpisodes?' · 📺 '+mv.totalEpisodes+' ep.':''}</div>
+          <div class="movie-card-meta">Documental · ${dateStr}${mv.totalEpisodes?' · '+mv.totalEpisodes+' ep.':''}</div>
           ${genrePills}
           ${watchRow}
         </div>
@@ -6971,7 +6971,7 @@ function openRealityDetail(type,key){
     accentBorder:'rgba(74,173,160,0.2)',
     isSeries: type==='series',
     typeLabel: type==='series'?'Reality / Docuserie':'Documental',
-    typeIcon:'🎤'
+    typeIcon:''
   });
 }
 
@@ -7014,13 +7014,13 @@ function renderDocumentales(){
 
   view.innerHTML=`
     <div style="margin-bottom:1.25rem">
-      <div class="section-heading">🎞️ Documentales GL</div>
+      <div class="section-heading">Documentales GL</div>
       <div class="section-desc">Documentales con protagonismo lésbico, bisexual o queer</div>
     </div>
     <div class="books-toolbar" id="documentalesToolbar">
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
-          <span class="search-icon">🔍</span>
+          <span class="search-icon"></span>
           <input id="documentalesSearchInput" class="search-input" placeholder="Buscar documental, país, plataforma…" value="${documentalesFilters.q}" oninput="documentalesFilters.q=this.value;paginationDocumentales={page:1};debounceRender('documentales',renderDocumentalesResults)" autocomplete="off">
         </div>
       </div>
@@ -7040,10 +7040,10 @@ function renderDocumentales(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="documentalesFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('documentalesFiltersSidebar').classList.toggle('mob-open')">🔎 Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('documentalesFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
         <div id="documentalesResults"></div>
         <div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,rgba(74,173,160,0.07),rgba(201,79,124,0.05));border:1.5px dashed rgba(74,173,160,0.25);border-radius:var(--radius-lg);text-align:center">
-          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">🎞️ ¿Conoces más documentales GL?</div>
+          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">¿Conoces más documentales GL?</div>
           <div style="font-size:12px;color:var(--muted)">Escríbenos en X <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);font-weight:600">@xxmadwavs</a> y lo añadimos</div>
         </div>
       </div>
@@ -7074,10 +7074,10 @@ function renderDocumentalesResults(){
   if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún documental con esos filtros.</div>';return;}
   let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> documental${filtered.length!==1?'es':''}</div><div class="movies-grid">`;
   paged.forEach((mv,mi)=>{
-    const posterEl=mv.poster?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎞️</div>'"></div>`:`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph">🎞️</div></div>`;
+    const posterEl=mv.poster?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'"></div>`:`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph"></div></div>`;
     const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
     const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
-    const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+    const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
     const genrePills=mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid rgba(74,173,160,0.2);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
     const allDocs=getDocumentalesData();
     const realIdx=allDocs.indexOf(mv);
@@ -7086,7 +7086,7 @@ function renderDocumentalesResults(){
       <div class="movie-card-body">
         <div class="card-badges">${mv.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
         <div class="movie-card-name">${mv.name}</div>
-        <div class="movie-card-meta">🎞️ Documental · ${dateStr}${mv.totalEpisodes?' · 📺 '+mv.totalEpisodes+' ep.':''}</div>
+        <div class="movie-card-meta">Documental · ${dateStr}${mv.totalEpisodes?' · '+mv.totalEpisodes+' ep.':''}</div>
         ${genrePills}
         ${watchRow}
       </div>
@@ -7106,7 +7106,7 @@ function renderActressesTab(){
   if(!view.querySelector('.actresses-tab-shell')){
     view.innerHTML=`<div class="actresses-tab-shell">
       <div class="actress-tab-search-wrap">
-        <span class="search-icon">🔍</span>
+        <span class="search-icon"></span>
         <input class="search-input" id="actressTabSearch" placeholder="Buscar actriz…"
           value="${actressesTabState.q}"
           oninput="actressesTabState.q=this.value;debounceRender('actresses',renderActressesTabResults)" autocomplete="off">
@@ -7186,8 +7186,8 @@ function renderActressesTabResults(){
 
 function actressTabCardHtml(a, count){
   const photo=a.photo
-    ?`<img class="actress-tab-photo" src="${a.photo}" alt="${a.name}" loading="lazy" onerror="this.outerHTML='<div class=actress-tab-photo-ph>🎭</div>'">`
-    :`<div class="actress-tab-photo-ph">🎭</div>`;
+    ?`<img class="actress-tab-photo" src="${a.photo}" alt="${a.name}" loading="lazy" onerror="this.outerHTML='<div class=actress-tab-photo-ph></div>'">`
+    :`<div class="actress-tab-photo-ph"></div>`;
   const countBadge=count?`<span class="actress-tab-count">${count} obra${count!==1?'s':''}</span>`:'';
   const flag=a.country?`<span class="actress-tab-country">${countryFlag(a.country)} ${a.country}</span>`:'';
   return `<div class="actress-tab-card" onclick="openActressProfile('${a.id}')">
@@ -7201,10 +7201,10 @@ function actressTabCardHtml(a, count){
 /* ═══ MIS PICKS / PICKS 2026 ═══ */
 function _picksCardHtml(s, si, is2026=false){
   const cls=is2026?' pick2026':'';
-  const starLabel=is2026?'🌟 2026':'⭐ Pick';
+  const starLabel=is2026?'2026':'Pick';
   const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
   const watchRow=links.length
-    ?`<div class="pick-card-watch">${links.slice(0,2).map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${l.name}</a>`).join('')}</div>`:'';
+    ?`<div class="pick-card-watch">${links.slice(0,2).map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
   const genrePills=s.genres&&s.genres.length
     ?`<div class="pick-card-genres">${s.genres.slice(0,3).map(g=>`<span class="pick-card-genre">${g}</span>`).join('')}</div>`:'';
   const seasons=getSeasons(s);
@@ -7216,8 +7216,8 @@ function _picksCardHtml(s, si, is2026=false){
     totalEps?`${totalEps} ep.`:'',
   ].filter(Boolean);
   const posterEl=s.poster
-    ?`<img class="pick-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=pick-card-poster-ph>🎬</div>'">`
-    :`<div class="pick-card-poster-ph">🎬</div>`;
+    ?`<img class="pick-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=pick-card-poster-ph></div>'">`
+    :`<div class="pick-card-poster-ph"></div>`;
   const openFn=`switchTab('list');setTimeout(()=>openSeries(${si}),80)`;
   return `<div class="pick-card${cls}" onclick="${openFn}">
     <div class="pick-card-poster-wrap">
@@ -7270,10 +7270,10 @@ function renderTop10(){
   _renderPicksView(
     'viewTop10',
     s=>s.myPick,
-    '⭐',
+    '',
     'Mis <em>picks</em>',
     'Series GL que recomiendo especialmente. Sin orden concreto, solo las que más me han gustado.',
-    'Marca series en el admin con "⭐ Mis picks" para que aparezcan aquí.',
+    'Marca series en el admin con "Mis picks" para que aparezcan aquí.',
     false
   );
 }
@@ -7282,10 +7282,10 @@ function renderPicks2026(){
   _renderPicksView(
     'viewPicks2026',
     s=>s.myPick2026,
-    '🌟',
+    '',
     'Mis picks <em>2026</em>',
     'Lo mejor de este año hasta ahora. Series GL de 2026 que no me puedo dejar de recomendar.',
-    'Marca series en el admin con "🌟 Picks 2026" para que aparezcan aquí.',
+    'Marca series en el admin con "Picks 2026" para que aparezcan aquí.',
     true
   );
 }
@@ -7407,10 +7407,10 @@ function renderShips(){
   }
 
   view.innerHTML=`<div class="ships-shell">
-    <div class="section-heading" style="margin-bottom:.25rem">💕 Ships Oficiales Thais</div>
+    <div class="section-heading" style="margin-bottom:.25rem">Ships Oficiales Thais</div>
     <p class="section-desc" style="margin-bottom:.85rem">Parejas oficiales de series tailandesas: protagonistas y secundarias.</p>
     <div style="position:relative;margin-bottom:.85rem">
-      <span class="search-icon">🔍</span>
+      <span class="search-icon"></span>
       <input class="search-input" id="shipsSearchInput" placeholder="Buscar ship o actriz…"
         value="${shipsState.q}" oninput="shipsState.q=this.value;debounceRender('ships',renderShipsResults)" autocomplete="off">
     </div>
@@ -7466,7 +7466,7 @@ function renderShipsResults(){
   activeShips.sort(sortByName);
   retiredShips.sort(sortByName);
 
-  const statusLabel={ongoing:'▶ En emisión',upcoming:'🔜 Próximamente',finished:'✓ Finalizada',retired:'💔 Ruptura'};
+  const statusLabel={ongoing:'En emisión',upcoming:'Próximamente',finished:'✓ Finalizada',retired:'Ruptura'};
   const statusClass={ongoing:'ship-ongoing',upcoming:'ship-upcoming',finished:'ship-finished',retired:'ship-retired'};
 
   function buildShipCard(sh,idx,isRetired,clickHandler){
@@ -7487,10 +7487,10 @@ function renderShipsResults(){
         const [a1,a2]=members;
         const half1=a1?.photo
           ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" loading="lazy" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
-          :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+          :`<div class="ship-couple-half"><div class="ship-couple-half-ph"></div></div>`;
         const half2=a2?.photo
           ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" loading="lazy" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
-          :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+          :`<div class="ship-couple-half"><div class="ship-couple-half-ph"></div></div>`;
         coupleBanner=`<div class="ship-couple-banner">${half1}${half2}<div class="ship-couple-divider"></div></div>`;
       }
       const chipsHtml=shared.slice(0,3).map(s=>{
@@ -7516,10 +7516,10 @@ function renderShipsResults(){
       const a2auto=actMap[pair[1]?.actressId];
       const half1auto=a1auto?.photo
         ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1auto.id}')"><img src="${a1auto.photo}" alt="${a1auto.name}" loading="lazy" style="object-position:${a1auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
-        :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+        :`<div class="ship-couple-half"><div class="ship-couple-half-ph"></div></div>`;
       const half2auto=a2auto?.photo
         ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" loading="lazy" style="object-position:${a2auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
-        :`<div class="ship-couple-half"><div class="ship-couple-half-ph">🎭</div></div>`;
+        :`<div class="ship-couple-half"><div class="ship-couple-half-ph"></div></div>`;
       return `<div class="ship-card" onclick="${clickHandler}">
         <div class="ship-couple-banner">${half1auto}${half2auto}<div class="ship-couple-divider"></div></div>
         <div class="ship-card-inner">
@@ -7541,7 +7541,7 @@ function renderShipsResults(){
 
   // Active ships section
   if(activeShips.length){
-    html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px">💕 Ships — ${activeShips.length}</div>`;
+    html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px">Ships — ${activeShips.length}</div>`;
     html+=`<div class="ships-grid">`;
     activeShips.forEach((sh,i)=>{
       const filteredIdx=i; // position in _filtered
@@ -7554,7 +7554,7 @@ function renderShipsResults(){
   // Rupturas section
   if(retiredShips.length){
     html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:22px 0 10px;display:flex;align-items:center;gap:8px">
-      <span>💔 Rupturas — ${retiredShips.length}</span>
+      <span>Rupturas — ${retiredShips.length}</span>
     </div>`;
     html+=`<div class="ships-grid">`;
     retiredShips.forEach((sh,i)=>{
@@ -7579,7 +7579,7 @@ function openShipDetail(idx){
   const members=sh.members||[];
   const shared=sh.shared||[];
   const seriesStatus=view._seriesStatus||function(){return 'finished';};
-  const statusLabel={ongoing:'En emisión',upcoming:'Próximamente',finished:'Finalizada',retired:'Retirada 💔'};
+  const statusLabel={ongoing:'En emisión',upcoming:'Próximamente',finished:'Finalizada',retired:'Retirada'};
   const statusClass={ongoing:'ship-ongoing',upcoming:'ship-upcoming',finished:'ship-finished',retired:'ship-retired'};
 
   // Foto: pareja (couplePhoto) o las dos actrices lado a lado, como miniatura tipo ficha
@@ -7587,7 +7587,7 @@ function openShipDetail(idx){
   if(sh.sh?.couplePhoto){
     const cpPos=sh.sh.couplePhotoPosition||'50% 20%';
     const cpZoom=sh.sh.couplePhotoZoom||1;
-    photoHtml=`<div class="detail-photo" style="overflow:hidden;padding:0"><img src="${sh.sh.couplePhoto}" style="width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=detail-photo-ph>💞</div>'"></div>`;
+    photoHtml=`<div class="detail-photo" style="overflow:hidden;padding:0"><img src="${sh.sh.couplePhoto}" style="width:100%;height:100%;object-fit:cover;object-position:${cpPos};transform:scale(${cpZoom});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=detail-photo-ph></div>'"></div>`;
   } else {
     const [a1,a2]=members;
     const half=(m)=>m?.photo
@@ -7602,7 +7602,7 @@ function openShipDetail(idx){
   const isRetiredModal=!!(sh.sh?.retired);
   const retiredBannerHtml=isRetiredModal
     ?`<div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:rgba(100,80,90,.08);border-radius:10px;border:1px solid rgba(100,80,90,.18);margin-top:10px">
-        <span style="font-size:15px">💔</span>
+        <span style="font-size:15px"></span>
         <span style="font-size:12px;color:#7a6070;font-weight:600">Este ship ya no está activo como dúo oficial</span>
        </div>`
     :'';
@@ -7628,7 +7628,7 @@ function openShipDetail(idx){
       ${retiredBannerHtml}
     </div>
   </div>
-  <div class="section-bar">📺 Series en común · ${shared.length}</div>
+  <div class="section-bar">Series en común · ${shared.length}</div>
   <div class="details-box">${seriesRows||'<div style="padding:14px 4px;color:var(--muted);font-size:13px;text-align:center">Sin series en común registradas.</div>'}</div>
   <div style="display:flex;justify-content:flex-end;margin-top:1.25rem"><button class="btn" onclick="closeShipDetail()">Cerrar</button></div>
   </div>`;
@@ -7673,27 +7673,27 @@ function renderCanceladas(){
   const hasCancelled=canceladas.length>0;
 
   view.innerHTML=`<div class="canceladas-shell">
-    <div class="section-heading" style="margin-bottom:.25rem">❌ Canceladas & Limbo</div>
+    <div class="section-heading" style="margin-bottom:.25rem">Canceladas & Limbo</div>
     <p class="section-desc" style="margin-bottom:.85rem">Series canceladas, pausadas indefinidamente o productoras cerradas.</p>
-    ${hasCancelled?renderCanceladasGrid(canceladas):'<div class="search-empty" style="margin-top:1.5rem">📭 No hay series marcadas como canceladas todavía.</div>'}
+    ${hasCancelled?renderCanceladasGrid(canceladas):'<div class="search-empty" style="margin-top:1.5rem">No hay series marcadas como canceladas todavía.</div>'}
   </div>`;
 }
 
 function renderCanceladasGrid(list){
-  const statusLabel={cancelled:'❌ Cancelada',limbo:'⏸️ En limbo',closed:'🏢 Prod. cerrada'};
+  const statusLabel={cancelled:'Cancelada',limbo:'En limbo',closed:'Prod. cerrada'};
   const statusBadge={cancelled:'badge-cancelled',limbo:'badge-limbo',closed:'badge-closed'};
   let html=`<div class="canceladas-grid">`;
   list.forEach((s,i)=>{
     const si=state.series.indexOf(s);
     const st=s.cancelStatus||'cancelled';
     const poster=s.poster
-      ?`<div class="cancelled-poster-wrap"><img class="cancelled-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=cancelled-poster-ph>🚫</div>'"></div>`
-      :`<div class="cancelled-poster-wrap"><div class="cancelled-poster-ph">🚫</div></div>`;
-    const reason=s.cancelNote?`<div class="cancelled-reason">💬 ${s.cancelNote}</div>`:'';
+      ?`<div class="cancelled-poster-wrap"><img class="cancelled-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=cancelled-poster-ph></div>'"></div>`
+      :`<div class="cancelled-poster-wrap"><div class="cancelled-poster-ph"></div></div>`;
+    const reason=s.cancelNote?`<div class="cancelled-reason">${s.cancelNote}</div>`:'';
     html+=`<div class="cancelled-card" onclick="openSeries(${si})">
       ${poster}
       <div class="cancelled-body">
-        <div class="card-badges"><span class="badge ${statusBadge[st]}">${statusLabel[st]||'❌'}</span>${s.country?`<span class="badge">${countryFlag(s.country)}</span>`:''}</div>
+        <div class="card-badges"><span class="badge ${statusBadge[st]}">${statusLabel[st]||''}</span>${s.country?`<span class="badge">${countryFlag(s.country)}</span>`:''}</div>
         <div class="cancelled-name">${s.name}</div>
         <div class="cancelled-meta">${[s.year,s.network].filter(Boolean).join(' · ')||''}</div>
         ${reason}
@@ -7737,15 +7737,15 @@ function renderSinNovedades(){
   }
 
   let html=`<div class="sinnovedades-shell">
-    <div class="section-heading" style="margin-bottom:.25rem">📭 Próximamente — Sin Novedades</div>
+    <div class="section-heading" style="margin-bottom:.25rem">Próximamente — Sin Novedades</div>
     <p class="section-desc" style="margin-bottom:.85rem">Series anunciadas cuya información no se ha actualizado recientemente.</p>
     <div class="sinnovedades-intro">
-      🕰️ Estas series están marcadas como <em>Próximamente</em> pero llevan días sin actualizaciones. 
+      Estas series están marcadas como <em>Próximamente</em> pero llevan días sin actualizaciones. 
       Puede que estén retrasadas, sin fecha confirmada, o simplemente esperando noticias.
     </div>
     <div style="display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap">
-      <button class="ships-subtab${sinNovedadesState.sort==='stale'?' active':''}" onclick="sinNovedadesState.sort='stale';renderSinNovedades()">🕰️ Más antiguas primero</button>
-      <button class="ships-subtab${sinNovedadesState.sort==='recent'?' active':''}" onclick="sinNovedadesState.sort='recent';renderSinNovedades()">🕐 Recientes primero</button>
+      <button class="ships-subtab${sinNovedadesState.sort==='stale'?' active':''}" onclick="sinNovedadesState.sort='stale';renderSinNovedades()">Más antiguas primero</button>
+      <button class="ships-subtab${sinNovedadesState.sort==='recent'?' active':''}" onclick="sinNovedadesState.sort='recent';renderSinNovedades()">Recientes primero</button>
       <button class="ships-subtab${sinNovedadesState.sort==='az'?' active':''}" onclick="sinNovedadesState.sort='az';renderSinNovedades()">A → Z</button>
     </div>
     <div class="ships-count">
@@ -7760,8 +7760,8 @@ function renderSinNovedades(){
 
   sorted.forEach(({s,si,days})=>{
     const poster=s.poster
-      ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph>🎬</div>'">`
-      :`<div class="sn-poster-ph">🎬</div>`;
+      ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph></div>'">`
+      :`<div class="sn-poster-ph"></div>`;
     html+=`<div class="sn-card" onclick="openUpcoming(${si})">
       ${poster}
       <div class="sn-body">
@@ -7807,7 +7807,7 @@ function renderProductoras(){
 
   if(!productorasList.length){
     view.innerHTML=`<div class="productoras-shell">
-      <div class="section-heading" style="margin-bottom:.25rem">🏢 Productoras</div>
+      <div class="section-heading" style="margin-bottom:.25rem">Productoras</div>
       <p class="section-desc">Aún no se han añadido productoras. Puedes gestionarlas desde el panel de administración.</p>
     </div>`;
     return;
@@ -7828,10 +7828,10 @@ function renderProductoras(){
   }).sort((a,b)=>b.total-a.total || a.p.name.localeCompare(b.p.name,'es'));
 
   view.innerHTML=`<div class="productoras-shell">
-    <div class="section-heading" style="margin-bottom:.25rem">🏢 Productoras</div>
+    <div class="section-heading" style="margin-bottom:.25rem">Productoras</div>
     <p class="section-desc" style="margin-bottom:.85rem">Series y películas agrupadas por productora. Haz clic para expandir.</p>
     <div style="position:relative;margin-bottom:1rem">
-      <span class="search-icon">🔍</span>
+      <span class="search-icon"></span>
       <input class="search-input" id="productorasSearch" placeholder="Buscar productora o serie…"
         value="${productorasState.q}" oninput="productorasState.q=this.value;debounceRender('productoras',renderProductorasResults)" autocomplete="off">
     </div>
@@ -7872,11 +7872,11 @@ function renderProductorasResults(){
     ].filter(Boolean).join(' · ');
 
     const logoEl=p.logo
-      ?`<img class="productora-logo" src="${p.logo}" alt="${p.name}" onerror="this.outerHTML='<div class=productora-logo-ph>🏢</div>'">`
-      :`<div class="productora-logo-ph">🏢</div>`;
+      ?`<img class="productora-logo" src="${p.logo}" alt="${p.name}" onerror="this.outerHTML='<div class=productora-logo-ph></div>'">`
+      :`<div class="productora-logo-ph"></div>`;
 
     const webBtn=p.website
-      ?`<a href="${p.website}" target="_blank" rel="noopener" class="productora-web-btn" onclick="event.stopPropagation()">🌐 Web</a>`
+      ?`<a href="${p.website}" target="_blank" rel="noopener" class="productora-web-btn" onclick="event.stopPropagation()">Web</a>`
       :'';
 
     const allItems=[...ps,...pm].sort((a,b)=>{
@@ -7890,8 +7890,8 @@ function renderProductorasResults(){
       const onclick=si>=0?`openSeries(${si})`:mi>=0?`openMovie(${mi})`:'';
       return `<div class="prod-item" onclick="${onclick}">
         ${item.poster
-          ?`<img class="prod-item-poster" src="${item.poster}" alt="${item.name}" onerror="this.outerHTML='<div class=prod-item-ph>🎬</div>'">`
-          :`<div class="prod-item-ph">🎬</div>`}
+          ?`<img class="prod-item-poster" src="${item.poster}" alt="${item.name}" onerror="this.outerHTML='<div class=prod-item-ph></div>'">`
+          :`<div class="prod-item-ph"></div>`}
         <div class="prod-item-name">${item.name}</div>
       </div>`;
     }).join('');
@@ -7904,12 +7904,12 @@ function renderProductorasResults(){
     const prodActresses=prodActressIds.map(id=>(state.actresses||[]).find(a=>a.id===id)).filter(Boolean);
     const actressesHtml=prodActresses.length
       ?`<div class="prod-actresses-section">
-        <div class="prod-actresses-title">🎭 Actrices</div>
+        <div class="prod-actresses-title">Actrices</div>
         <div class="prod-actresses-grid">${prodActresses.map(a=>`
           <div class="prod-actress-chip" onclick="event.stopPropagation();openActressProfile('${a.id}')">
             ${a.photo
-              ?`<img src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=prod-actress-chip-ph>🎭</div>'">`
-              :`<div class="prod-actress-chip-ph">🎭</div>`}
+              ?`<img src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=prod-actress-chip-ph></div>'">`
+              :`<div class="prod-actress-chip-ph"></div>`}
             <span class="prod-actress-chip-name">${a.name.split('"').filter(Boolean)[0]?.trim()||a.name}</span>
           </div>`).join('')}
         </div>
@@ -7954,7 +7954,7 @@ function renderProductorasResults(){
 // tag: 'new' | 'feature' | 'fix' | 'design'
 // date: 'YYYY-MM-DD' (ISO) para el filtro de 30 días. También se muestra como texto.
 const CHANGELOG=[
-  {tag:'new',    title:'Ships retiradas 💔',                   desc:'Nueva pestaña "Retiradas" en Ships Thais para dúos que ya no trabajan juntos. Las cards aparecen en escala de grises y con efecto al pasar el cursor.',  date:'2026-05-24'},
+  {tag:'new',    title:'Ships retiradas',                   desc:'Nueva pestaña "Retiradas" en Ships Thais para dúos que ya no trabajan juntos. Las cards aparecen en escala de grises y con efecto al pasar el cursor.',  date:'2026-05-24'},
   {tag:'feature',title:'Carrusel separado por categorías',     desc:'Las "Últimas añadidas" del inicio ahora se dividen en tres filas independientes: Series, Películas y Anime.',              date:'2026-05-24'},
   {tag:'new',    title:'Novedades web y series recientes',     desc:'Nuevo panel de últimas novedades de la web y carrusel de series añadidas recientemente.',                                    date:'2026-05-20'},
   {tag:'new',    title:'Próximamente ordenado por última modificación', desc:'Las series en Próximamente ahora aparecen por orden de última actualización por defecto.',                          date:'2026-05-20'},
@@ -8061,7 +8061,7 @@ function _buildRaCards(items){
       :`openSeries(${item.si})`));
     const posterEl=item.poster
       ?`<img class="ra-poster" src="${item.poster}" alt="${item.name}" onerror="this.parentElement.style.background='var(--surface2)';this.style.display='none'" loading="lazy">`
-      :`<div class="ra-poster-ph">🎬</div>`;
+      :`<div class="ra-poster-ph"></div>`;
     return `<div class="ra-card" onclick="${clickFn}" style="animation-delay:${i*0.06}s">
       <div class="ra-poster-wrap">
         ${posterEl}
@@ -8216,7 +8216,7 @@ function navSearchHandler(q){
   const typeLabel={serie:'Serie',anime:'Anime',reality:'Reality',pelicula:'Película'};
   const html=results.length
     ? results.slice(0,8).map(r=>{
-        const poster=r.poster?`<img src="${r.poster}" onerror="this.outerHTML='<div class=nsearch-item-ph>🎬</div>'" loading="lazy">`:'<div class="nsearch-item-ph">🎬</div>';
+        const poster=r.poster?`<img src="${r.poster}" onerror="this.outerHTML='<div class=nsearch-item-ph></div>'" loading="lazy">`:'<div class="nsearch-item-ph"></div>';
         let onclick='';
         if(r.type==='serie') onclick=`navSearchPick();switchTab('list');setTimeout(()=>openSeries(${r.si}),60)`;
         else if(r.type==='pelicula') onclick=`navSearchPick();switchTab('movies');setTimeout(()=>openMovie(${r.si}),60)`;
@@ -8337,9 +8337,9 @@ function renderSearchResults(q){
   });
   if(!results.length){box.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:1rem">Sin resultados para "'+q+'"</div>';return;}
   box.innerHTML=results.slice(0,12).map(r=>{
-    const icons={serie:'🎬',pelicula:'🎥',anime:'🌸','anime-movie':'🌸',reality:'🎤','reality-movie':'🎤',actress:'🎭',ship:'💞',productora:'🏢'};
+    const icons={serie:'',pelicula:'',anime:'','anime-movie':'',reality:'','reality-movie':'',actress:'',ship:'',productora:''};
     const labels={serie:'Serie GL',pelicula:'Película GL',anime:'Anime GL','anime-movie':'Película Anime',reality:'Reality/Docuserie','reality-movie':'Documental GL',actress:'Actriz',ship:'Ship',productora:'Productora'};
-    const icon=icons[r.type]||'🎬';
+    const icon=icons[r.type]||'';
     const label=labels[r.type]||r.type;
     const imgSrc=r.s.poster||r.s.photo||r.s.couplePhoto||r.s.logo||'';
     const thumb=imgSrc
@@ -8482,7 +8482,7 @@ document.addEventListener('keydown',e=>{
 const INFO_CONTENT = {
   sobre: {
     title: 'Sobre nosotras',
-    emoji: '🌸',
+    emoji: '',
     html: `
       <p style="font-size:13.5px;color:var(--muted);line-height:1.75;margin-bottom:1rem">
         <strong style="color:var(--text)">TINTA Sapphic</strong> nació de un amor compartido por las historias que nos representan. Somos un espacio dedicado al contenido GL (girls' love) de todo el mundo: series, películas, anime, libros y más.
@@ -8501,24 +8501,24 @@ const INFO_CONTENT = {
         <a href="https://www.themoviedb.org/" target="_blank" rel="noopener" title="The Movie Database (TMDB)" style="display:inline-flex;align-items:center;height:26px">
           <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB" style="height:20px" onerror="this.outerHTML='<span style=&quot;font-size:12.5px;font-weight:700;color:var(--accent)&quot;>TMDB</span>'">
         </a>
-        <a href="https://www.imdb.com/" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none;padding:4px 10px;border-radius:6px;background:var(--accent-soft)">IMDb ↗</a>
-        <a href="https://mydramalist.com/" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none;padding:4px 10px;border-radius:6px;background:var(--accent-soft)">MyDramaList ↗</a>
+        <a href="https://www.imdb.com/" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none;padding:4px 10px;border-radius:6px;background:var(--accent-soft)">IMDb</a>
+        <a href="https://mydramalist.com/" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none;padding:4px 10px;border-radius:6px;background:var(--accent-soft)">MyDramaList</a>
       </div>
       <p style="font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:1.25rem;opacity:.85">
         Este sitio utiliza datos e imágenes de TMDB pero no está respaldado ni certificado por TMDB. Todas las marcas, logos e imágenes pertenecen a sus respectivos propietarios.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem">
-        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2);font-weight:600">✨ Hecho con amor</span>
-        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,.2);font-weight:600">🌍 Contenido global GL</span>
-        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.2);font-weight:600">📅 Actualización continua</span>
-        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--gold-soft);color:var(--gold);border:1px solid rgba(212,168,68,.2);font-weight:600">💌 100% gratuita</span>
-        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--surface3);color:var(--muted);border:1px solid var(--border2);font-weight:600">🎗️ Sin ánimo de lucro</span>
+        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(201,79,124,.2);font-weight:600">Hecho con amor</span>
+        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(139,114,190,.2);font-weight:600">Contenido global GL</span>
+        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--teal-soft);color:var(--teal);border:1px solid rgba(74,173,160,.2);font-weight:600">Actualización continua</span>
+        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--gold-soft);color:var(--gold);border:1px solid rgba(212,168,68,.2);font-weight:600">100% gratuita</span>
+        <span style="font-size:11.5px;padding:4px 12px;border-radius:20px;background:var(--surface3);color:var(--muted);border:1px solid var(--border2);font-weight:600">Sin ánimo de lucro</span>
       </div>
     `
   },
   privacidad: {
     title: 'Política de privacidad',
-    emoji: '🔒',
+    emoji: '',
     html: `
       <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:1rem">
         Tu privacidad nos importa. Esta página no recopila ningún dato personal identificable. No hay registro de usuarios, no hay formularios de datos y no compartimos ninguna información con terceros.
@@ -8546,20 +8546,20 @@ const INFO_CONTENT = {
   },
   terminos: {
     title: 'Términos de uso',
-    emoji: '📋',
+    emoji: '',
     html: `
       <p style="font-size:13.5px;color:var(--muted);line-height:1.75;margin-bottom:1.25rem">
         Al usar TINTA Sapphic aceptas las siguientes condiciones. Son sencillas — básicamente: úsalo bien y con respeto.
       </p>
       <div style="display:flex;flex-direction:column;gap:14px">
         ${[
-          ['🎬','Contenido informativo','La información de series, películas, fechas y plataformas se ofrece solo con fines informativos. Hacemos todo lo posible por mantenerla actualizada, pero no garantizamos su exactitud en todo momento.'],
-          ['📚','Fuentes de datos','Los datos, sinopsis y fechas de estreno se recopilan de fuentes públicas como <a href="https://mydramalist.com/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none">MyDramaList</a>, <a href="https://www.imdb.com/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none">IMDb</a> y <a href="https://www.themoviedb.org/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none">TMDB</a>, entre otras. Los derechos de esa información pertenecen a sus respectivos propietarios. Este producto usa datos de TMDB pero no está respaldado ni certificado por TMDB.'],
-          ['🎗️','Sin ánimo de lucro','TINTA Sapphic es un proyecto de fans totalmente gratuito. No hay publicidad, suscripciones ni ningún tipo de recaudación económica por su uso.'],
-          ['🚫','Sin uso comercial','Queda prohibido reproducir, vender o utilizar el contenido de esta web con fines comerciales sin autorización expresa.'],
-          ['🔗','Enlaces de terceros','Los enlaces a plataformas de streaming son externos. No nos hacemos responsables del contenido, disponibilidad o políticas de dichas plataformas.'],
-          ['🌸','Comunidad respetuosa','Este es un espacio seguro para la comunidad GL. No se tolera ningún tipo de discriminación, odio o contenido inapropiado en ninguna de nuestras redes.'],
-          ['✏️','Modificaciones','Nos reservamos el derecho de actualizar estos términos en cualquier momento. Los cambios se publicarán en esta misma página.'],
+          ['','Contenido informativo','La información de series, películas, fechas y plataformas se ofrece solo con fines informativos. Hacemos todo lo posible por mantenerla actualizada, pero no garantizamos su exactitud en todo momento.'],
+          ['','Fuentes de datos','Los datos, sinopsis y fechas de estreno se recopilan de fuentes públicas como <a href="https://mydramalist.com/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none">MyDramaList</a>, <a href="https://www.imdb.com/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none">IMDb</a> y <a href="https://www.themoviedb.org/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none">TMDB</a>, entre otras. Los derechos de esa información pertenecen a sus respectivos propietarios. Este producto usa datos de TMDB pero no está respaldado ni certificado por TMDB.'],
+          ['','Sin ánimo de lucro','TINTA Sapphic es un proyecto de fans totalmente gratuito. No hay publicidad, suscripciones ni ningún tipo de recaudación económica por su uso.'],
+          ['','Sin uso comercial','Queda prohibido reproducir, vender o utilizar el contenido de esta web con fines comerciales sin autorización expresa.'],
+          ['','Enlaces de terceros','Los enlaces a plataformas de streaming son externos. No nos hacemos responsables del contenido, disponibilidad o políticas de dichas plataformas.'],
+          ['','Comunidad respetuosa','Este es un espacio seguro para la comunidad GL. No se tolera ningún tipo de discriminación, odio o contenido inapropiado en ninguna de nuestras redes.'],
+          ['','Modificaciones','Nos reservamos el derecho de actualizar estos términos en cualquier momento. Los cambios se publicarán en esta misma página.'],
         ].map(([icon,title,text])=>`
           <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border)">
             <span style="font-size:18px;flex-shrink:0;margin-top:1px">${icon}</span>
@@ -8631,7 +8631,7 @@ function renderListas(){
 function _renderListasGrid(view, listas){
   if(!listas.length){
     view.innerHTML = `<div style="text-align:center;padding:3rem 1rem">
-      <div style="font-size:3rem;margin-bottom:1rem;opacity:.4">📋</div>
+      <div style="font-size:3rem;margin-bottom:1rem;opacity:.4"></div>
       <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--text);margin-bottom:.5rem">Sin listas todavía</div>
       <div style="font-size:13px;color:var(--muted)">Las listas temáticas curadas aparecerán aquí cuando las crees desde el panel de administración.</div>
     </div>`;
@@ -8653,14 +8653,14 @@ function _renderListasGrid(view, listas){
 
     const strip = stripItems.map(it=>
       it.poster
-        ? `<div class="lista-poster-thumb"><img src="${it.poster}" alt="${it.name}" loading="lazy" onerror="this.outerHTML='<div class=lista-poster-ph>🎬</div>'"></div>`
-        : `<div class="lista-poster-thumb"><div class="lista-poster-ph">🎬</div></div>`
+        ? `<div class="lista-poster-thumb"><img src="${it.poster}" alt="${it.name}" loading="lazy" onerror="this.outerHTML='<div class=lista-poster-ph></div>'"></div>`
+        : `<div class="lista-poster-thumb"><div class="lista-poster-ph"></div></div>`
     ).join('');
 
     return `<div class="lista-card" onclick="openLista(${li})">
       ${strip ? `<div class="lista-posters-strip">${strip}</div>` : ''}
       <div class="lista-card-header">
-        <div class="lista-card-emoji">${l.emoji||'📋'}</div>
+        <div class="lista-card-emoji">${l.emoji||''}</div>
         <div class="lista-card-meta">
           <div class="lista-card-title">${l.title}</div>
           ${l.desc ? `<div class="lista-card-desc">${l.desc}</div>` : ''}
@@ -8700,8 +8700,8 @@ function _renderListaOpen(view, l){
     const seasons = getSeasons(s);
     const totalEps = seasons.reduce((a,t)=>a+t.totalEpisodes,0);
     const poster = s.poster
-      ? `<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph>🎬</div>'">${s.country?`<span class="sc-country-flag">${countryFlag(s.country)}</span>`:''}</div>`
-      : `<div class="series-card-poster-wrap"><div class="series-card-poster-ph">🎬</div></div>`;
+      ? `<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'">${s.country?`<span class="sc-country-flag">${countryFlag(s.country)}</span>`:''}</div>`
+      : `<div class="series-card-poster-wrap"><div class="series-card-poster-ph"></div></div>`;
     const moodsPills = moodPillsHtml(s.moods, 2);
     return `<div class="series-card" onclick="openSeries(${si})">
       ${poster}
@@ -8720,8 +8720,8 @@ function _renderListaOpen(view, l){
     if(!mv) return '';
     const mi = allMovies.indexOf(mv);
     const poster = mv.poster
-      ? `<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph>🎬</div>'"></div>`
-      : `<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph">🎥</div></div>`;
+      ? `<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'"></div>`
+      : `<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph"></div></div>`;
     return `<div class="movie-card" onclick="openMovie(${mi})">
       ${poster}
       <div class="movie-card-body">
@@ -8740,7 +8740,7 @@ function _renderListaOpen(view, l){
   view.innerHTML = `
     <button class="lista-back-btn" onclick="listasViewMode='grid';renderListas()">← Volver a listas</button>
     <div class="lista-panel-header">
-      <div class="lista-panel-emoji">${l.emoji||'📋'}</div>
+      <div class="lista-panel-emoji">${l.emoji||''}</div>
       <div>
         <div class="lista-panel-title">${l.title}</div>
         ${l.desc?`<div class="lista-panel-desc">${l.desc}</div>`:''}
@@ -8799,7 +8799,7 @@ function getSimilarItems(item, type, limit=6){
 // ══════════════════════════════════════════════════════════════════════════════
 
 /**
- * Inyecta el botón "⚙ Filtros" en un .toolbar-search-row que tenga un
+ * Inyecta el botón "Filtros" en un .toolbar-search-row que tenga un
  * .toolbar-filters-row hermano. Se llama después de cada render de toolbar.
  * Es idempotente: no añade el botón si ya existe.
  */
@@ -8873,7 +8873,7 @@ function _syncDarkBtn(){
   const btn = document.getElementById('darkToggleBtn');
   if(!btn) return;
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  btn.textContent = isDark ? '☀️' : '🌙';
+  btn.textContent = isDark ? '' : '';
   btn.title = isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
 }
 
@@ -9016,12 +9016,12 @@ function renderRuleta(){
 }
 </style>
 <div class="ruleta-shell">
-  <div class="ruleta-heading">Ruleta <em>GL</em> 🎡</div>
+  <div class="ruleta-heading">Ruleta <em>GL</em></div>
   <div class="ruleta-desc">¿No sabes qué ver? Gira la ruleta y deja que el destino decida.</div>
 
   <div class="ruleta-mode-tabs">
-    <button class="ruleta-mode-btn${ruletaState.mode==='movies'?' active':''}" onclick="ruletaSetMode('movies')">🎥 Películas</button>
-    <button class="ruleta-mode-btn${ruletaState.mode==='series'?' active':''}" onclick="ruletaSetMode('series')">🎬 Series</button>
+    <button class="ruleta-mode-btn${ruletaState.mode==='movies'?' active':''}" onclick="ruletaSetMode('movies')">Películas</button>
+    <button class="ruleta-mode-btn${ruletaState.mode==='series'?' active':''}" onclick="ruletaSetMode('series')">Series</button>
   </div>
 
   <div class="ruleta-toggles" id="ruletaToggles">
@@ -9035,9 +9035,9 @@ function renderRuleta(){
     <div class="ruleta-wheel-outer">
       <div class="ruleta-needle"></div>
       <canvas class="ruleta-canvas" id="ruletaCanvas" width="280" height="280"></canvas>
-      <div class="ruleta-center-btn" id="ruletaCenterBtn" onclick="spinRuleta()">🎡</div>
+      <div class="ruleta-center-btn" id="ruletaCenterBtn" onclick="spinRuleta()"></div>
     </div>
-    <button class="ruleta-spin-btn" id="ruletaSpinBtn" onclick="spinRuleta()">✨ ¡Girar!</button>
+    <button class="ruleta-spin-btn" id="ruletaSpinBtn" onclick="spinRuleta()">¡Girar!</button>
     <div class="ruleta-pool-count" id="ruletaPoolCount"></div>
   </div>
 
@@ -9173,7 +9173,7 @@ function spinRuleta(){
     } else {
       ruletaState.spinning=false;
       ruletaState.lastResult=winner;
-      if(spinBtn){spinBtn.disabled=false;spinBtn.textContent='🔄 Girar de nuevo';}
+      if(spinBtn){spinBtn.disabled=false;spinBtn.textContent='Girar de nuevo';}
       if(centerBtn) centerBtn.classList.remove('spinning');
       // After landing, refresh slices again for next spin visual variety
       _refreshRuletaSlices();
@@ -9193,17 +9193,17 @@ function _showRuletaResult(item){
   const idx=isMovie?allMovies.indexOf(item):allSeries.indexOf(item);
   const typeLabel=isMovie?(item.movieType==='short'?'Corto':'Película'):(item.seriesType==='webserie'?'Web serie':'Serie');
   const poster=item.poster
-    ?`<div class="ruleta-result-poster"><img src="${item.poster}" alt="${item.name}" onerror="this.parentElement.outerHTML='<div class=ruleta-result-poster-ph>🎬</div>'"></div>`
-    :`<div class="ruleta-result-poster-ph">🎬</div>`;
+    ?`<div class="ruleta-result-poster"><img src="${item.poster}" alt="${item.name}" onerror="this.parentElement.outerHTML='<div class=ruleta-result-poster-ph></div>'"></div>`
+    :`<div class="ruleta-result-poster-ph"></div>`;
   const metaParts=[item.country?countryFlag(item.country)+' '+item.country:null,item.year||null,item.network||null].filter(Boolean);
   const genres=(item.genres||[]).slice(0,3).map(g=>`<span class="sc-genre-pill">${g}</span>`).join('');
   const synopsisEl=item.synopsis?`<div class="ruleta-result-synopsis">${item.synopsis}</div>`:'';
   const openFn=isMovie&&idx>=0?`switchTab('movies');setTimeout(()=>openMovie(${idx}),60)`:(!isMovie&&idx>=0?`switchTab('list');setTimeout(()=>openSeries(${idx}),60)`:'');
   const openBtn=openFn?`<button class="ruleta-result-btn primary" onclick="${openFn}">Ver ficha →</button>`:'';
-  const watchBtn=(item.watchLinks||[]).length?`<a href="${item.watchLinks[0].url}" target="_blank" rel="noopener" class="ruleta-result-btn secondary" style="display:flex;align-items:center">▶ Ver ahora</a>`:'';
-  const againBtn=`<button class="ruleta-result-btn secondary" onclick="spinRuleta()">🎡 Otra</button>`;
+  const watchBtn=(item.watchLinks||[]).length?`<a href="${item.watchLinks[0].url}" target="_blank" rel="noopener" class="ruleta-result-btn secondary" style="display:flex;align-items:center">Ver ahora</a>`:'';
+  const againBtn=`<button class="ruleta-result-btn secondary" onclick="spinRuleta()">Otra</button>`;
   resultEl.innerHTML=`
-    <div style="font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;text-align:center">✨ ¡Te ha tocado!</div>
+    <div style="font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;text-align:center">¡Te ha tocado!</div>
     <div class="ruleta-result">
       ${poster}
       <div class="ruleta-result-info">
@@ -9254,8 +9254,8 @@ function buildSimilarHtml(item, type){
     const reason = reasonParts.slice(0,2).join(' · ');
 
     const poster = it.poster
-      ? `<img class="similar-poster" src="${it.poster}" alt="${it.name}" loading="lazy" onerror="this.outerHTML='<div class=similar-poster-ph>🎬</div>'">`
-      : `<div class="similar-poster-ph">🎬</div>`;
+      ? `<img class="similar-poster" src="${it.poster}" alt="${it.name}" loading="lazy" onerror="this.outerHTML='<div class=similar-poster-ph></div>'">`
+      : `<div class="similar-poster-ph"></div>`;
 
     return `<div class="similar-card" onclick="${onClick}">
       ${poster}
@@ -9278,7 +9278,7 @@ function buildSimilarHtml(item, type){
   if(showArrows) setTimeout(()=>updateSimilarArrows(stripId), 50);
   return `<div class="similar-section">
     <div class="similar-header">
-      <div class="similar-title">✦ Si te gustó esta, prueba…</div>
+      <div class="similar-title">Si te gustó esta, prueba…</div>
       ${arrowsHtml}
     </div>
     <div class="similar-scroll-wrap">
@@ -9323,7 +9323,7 @@ function renderChecklist(){
     view.innerHTML=`<div class="chk-wrap">
       <div class="chk-country-tabs">${tabsHtml}</div>
       <div class="chk-header"><h1>${escapeHtmlChk(data.titulo||CHK_COUNTRIES[country].defaultTitulo)}</h1></div>
-      <div class="chk-empty">✨ Todavía no hay títulos en esta checklist. Añádelos desde el panel de administración.</div>
+      <div class="chk-empty">Todavía no hay títulos en esta checklist. Añádelos desde el panel de administración.</div>
     </div>`;
     return;
   }
@@ -9351,8 +9351,8 @@ function renderChecklist(){
     <div class="chk-list" id="chkListEl"></div>
     <div class="chk-action-bar">
       <button type="button" class="chk-btn chk-btn-ghost" onclick="chkResetProgress()">↺ Reiniciar</button>
-      <button type="button" class="chk-btn chk-btn-primary" id="chkImgBtn" onclick="chkExportAs('img')">🖼 Descargar imagen</button>
-      <button type="button" class="chk-btn chk-btn-primary" id="chkPdfBtn" onclick="chkExportAs('pdf')">📄 Descargar PDF</button>
+      <button type="button" class="chk-btn chk-btn-primary" id="chkImgBtn" onclick="chkExportAs('img')">Descargar imagen</button>
+      <button type="button" class="chk-btn chk-btn-primary" id="chkPdfBtn" onclick="chkExportAs('pdf')">Descargar PDF</button>
     </div>
   </div>`;
   _chkRenderList();
@@ -9381,8 +9381,8 @@ function _chkRenderList(){
     listEl.innerHTML=filtered.map(i=>{
       const isChecked=checkedSet.has(i.id);
       const poster=i.poster
-        ? `<img class="chk-poster" src="${escapeHtmlChk(i.poster)}" alt="" onerror="this.outerHTML='<div class=chk-poster-ph>🎬</div>'">`
-        : `<div class="chk-poster-ph">🎬</div>`;
+        ? `<img class="chk-poster" src="${escapeHtmlChk(i.poster)}" alt="" onerror="this.outerHTML='<div class=chk-poster-ph></div>'">`
+        : `<div class="chk-poster-ph"></div>`;
       const meta=[i.year,CHK_TYPE_LABELS[i.type]||i.type].filter(Boolean).join(' · ');
       return `<div class="chk-item-row${isChecked?' checked':''}" onclick="chkToggle('${i.id}')">
         <div class="chk-check-box">${isChecked?'✓':''}</div>
