@@ -3,7 +3,7 @@
     {
       "id": "1776889021472",
       "name": "Girl Rules",
-      "poster": "https://i.mydramalist.com/73Jq1j_4f.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/unQdk4o5Smhd9uZRVa8ychZUerO.jpg",
       "startDate": "2026-03-09",
       "dayOfWeek": 0,
       "emissionDays": [
@@ -49,7 +49,7 @@
           "skipped": false
         }
       ],
-      "synopsis": "Un grupo de amigas se sume en el caos cuando sus lazos se ponen a prueba de diversas maneras, comenzando con el regreso de una exnovia. \n\nPrim y Min dirigen juntas una agencia de publicidad cuando aparece Bambi, la exnovia de Prim, una nueva clienta que quiere volver con ella. A su círculo se suman Gorya, la joven estilista de Prim, que busca una conexión más profunda; Shasha, la modelo promiscua y encantadora; y Praew, la fotógrafa lesbiana del bar que frecuenta Min, quien siente curiosidad por la bisexualidad.",
+      "synopsis": "Un grupo de amigas se ve sumido en el caos cuando sus lazos se ven puestos a prueba de diversas formas, empezando por el regreso de una exnovia.\n\nPrim y Min dirigen juntas una agencia de publicidad cuando aparece una nueva clienta, Bambi, la exnovia de Prim, que quiere volver con ella. A su círculo se suman Gorya, la joven estilista de Prim que busca una relación más profunda; Shasha, una modelo promiscua y encantadora; y Praew, la fotógrafa lesbiana del bar bicurioso al que acude Min.",
       "year": 2026,
       "country": "Tailandia",
       "bookSource": "Girl Rules",
@@ -128,7 +128,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-11T23:04:46.748Z",
+      "updatedAt": "2026-09-11T23:39:00.696Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -225,7 +225,7 @@
     {
       "id": "1776889141176",
       "name": "Fulfill",
-      "poster": "https://i.mydramalist.com/mOQ2eP_4f.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/kwaFICOw9wyh0k6mCLurCU1pLjA.jpg",
       "startDate": "2026-04-24",
       "dayOfWeek": 4,
       "emissionDays": [
@@ -235,7 +235,7 @@
       "network": "CH3+",
       "skipDates": [],
       "episodes": [],
-      "synopsis": "De novias universitarias a compañeras de vida, Pafun y Aioon construyen una vida juntas llena de amor y devoción, soñando con una familia que parece inalcanzable. Cuando el anhelo de Pafun por la maternidad se intensifica, su esperanza crece ante la promesa de adoptar un hijo algún día.\n\nTodo cambia cuando su mejor amiga, Nubnueng, regresa inesperadamente y les trae una oportunidad que les cambiará la vida. Mientras el amor, la pérdida y la responsabilidad se entrelazan, la pareja debe afrontar el desamor, la resiliencia y los desafíos de convertirse en madres primerizas.\n\nFulfill es un viaje tierno y emotivo que celebra la familia elegida y el poder del amor para completar lo que la vida deja inconcluso.",
+      "synopsis": "Desde que se conocieron en la universidad hasta convertirse en compañeras de vida, Pafun y Aioon construyen juntas una vida llena de amor y dedicación, soñando con una familia que parece estar fuera de su alcance. Cuando el deseo de Pafun de ser madre se hace más intenso, su esperanza crece en torno a la promesa de adoptar un niño algún día. Todo cambia cuando su mejor amiga, Nubnueng, regresa inesperadamente y les brinda una oportunidad que les cambiará la vida. Mientras el amor, la pérdida y la responsabilidad chocan entre sí, la pareja debe lidiar con el desengaño, la resiliencia y los retos que supone convertirse en madres primerizas.  \"Fulfill\" es un viaje tierno y emotivo que celebra a la familia elegida y el poder del amor para completar lo que la vida deja sin terminar.",
       "year": 2026,
       "country": "Tailandia",
       "bookSource": "",
@@ -319,7 +319,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-11T23:04:50.321Z",
+      "updatedAt": "2026-09-11T23:39:14.919Z",
       "nameEn": "รักเติมเต็ม",
       "episodeDuration": 47,
       "myPick": false,
@@ -341,8 +341,8 @@
     },
     {
       "id": "1776889264943",
-      "name": "Shadow of Love",
-      "poster": "https://i.mydramalist.com/81jwDW_4f.jpg",
+      "name": "Shadow Of Love",
+      "poster": "https://image.tmdb.org/t/p/w500/gyZ79fHS4lBLD4XMsqpfizBK5yO.jpg",
       "startDate": "2026-03-24",
       "dayOfWeek": 1,
       "emissionDays": [
@@ -354,7 +354,7 @@
       "network": "Youtube",
       "skipDates": [],
       "episodes": [],
-      "synopsis": "Su relación comenzó con una falta de afecto, pero vivir en la misma familia y estrechar lazos entre ellas dio lugar a sentimientos que trascendieron la dinámica habitual entre hermanas. A pesar de sus intentos por reprimir sus emociones, no pudieron resistirse a lo que sentían la una por la otra.",
+      "synopsis": "Su relación comenzó sin mucho cariño, pero el hecho de vivir en la misma familia y de crear un vínculo entre ellas dio lugar a unos sentimientos que trascendían la dinámica habitual entre \"hermanas\". A pesar de sus intentos por contener esos sentimientos, no pudieron resistirse a lo que sentían la una por la otra.",
       "year": 2026,
       "country": "Tailandia",
       "bookSource": "",
@@ -396,7 +396,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-11T23:04:53.789Z",
+      "updatedAt": "2026-09-11T23:39:43.024Z",
       "nameEn": "ใต้เงารัก",
       "cast": [
         {
@@ -637,7 +637,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-23T18:26:35.674Z",
+      "updatedAt": "2026-09-11T23:10:22.416Z",
       "nameEn": "นทีร้อยเล่ห์",
       "episodeDuration": 64,
       "myTop10": true,
@@ -660,7 +660,8 @@
         "Jefa × Subordinada",
         "Gruñona × Sunshine",
         "Masc × Femme"
-      ]
+      ],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776889415383",
@@ -783,7 +784,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-23T18:22:56.113Z",
+      "updatedAt": "2026-09-11T23:10:23.601Z",
       "nameEn": "เสน่หาวาโย",
       "episodeDuration": "",
       "myPick": false,
@@ -803,7 +804,8 @@
       ],
       "dinamica": [
         "Masc × Femme"
-      ]
+      ],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776889447326",
@@ -903,7 +905,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-23T18:23:00.299Z",
+      "updatedAt": "2026-09-11T23:10:25.040Z",
       "nameEn": "ลัลล์ไม่ชอบไวน์",
       "episodeDuration": 50,
       "myPick": false,
@@ -925,7 +927,8 @@
       "dinamica": [
         "Femme × Femme"
       ],
-      "awards": []
+      "awards": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776889488147",
@@ -995,7 +998,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-23T18:22:50.286Z",
+      "updatedAt": "2026-09-11T23:10:26.867Z",
       "episodeDuration": 66,
       "myPick": false,
       "myPick2026": false,
@@ -1011,7 +1014,8 @@
         "Age Gap"
       ],
       "dinamica": [],
-      "awards": []
+      "awards": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776930878872",
@@ -1102,7 +1106,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-24T15:57:26.480Z",
+      "updatedAt": "2026-09-11T23:10:28.383Z",
       "nameEn": "โซ่รักอัคนี",
       "episodeDuration": "",
       "myPick": false,
@@ -1137,7 +1141,8 @@
           "episodes": [],
           "premiereSchedule": []
         }
-      ]
+      ],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776931938317",
@@ -1196,7 +1201,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-06-17T08:32:31.161Z",
+      "updatedAt": "2026-09-11T23:10:29.794Z",
       "nameEn": "วาดฝันวันวิวาห์",
       "episodeDuration": "",
       "myPick": false,
@@ -1229,7 +1234,8 @@
           "episodes": [],
           "premiereSchedule": []
         }
-      ]
+      ],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776932166717",
@@ -1277,7 +1283,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-08-26T21:21:26.533Z",
+      "updatedAt": "2026-09-11T23:10:31.601Z",
       "nameEn": "รักได้ไหม",
       "episodeDuration": "",
       "myPick": false,
@@ -1311,7 +1317,8 @@
           "episodes": [],
           "premiereSchedule": []
         }
-      ]
+      ],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776932289648",
@@ -1365,7 +1372,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:44:54.611Z",
+      "updatedAt": "2026-09-11T23:10:32.848Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -1376,7 +1383,8 @@
       "snNote": "",
       "productoraId": "1779136303417",
       "sourceType": "novela",
-      "moods": []
+      "moods": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776932412578",
@@ -1481,7 +1489,7 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-23T18:36:06.758Z",
+      "updatedAt": "2026-09-11T23:10:34.901Z",
       "nameEn": "온앤오프 ON&OFF 3",
       "cast": [
         {
@@ -1515,7 +1523,8 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": ""
+      "productoraId": "",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776965675311",
@@ -1587,7 +1596,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-23T18:45:47.760Z",
+      "updatedAt": "2026-09-11T23:10:36.121Z",
       "nameEn": "เพื่อเธออีกครั้ง",
       "episodeDuration": 55,
       "myTop10": false,
@@ -1612,7 +1621,8 @@
         "Protectora × Delicada",
         "Rica × Pobre"
       ],
-      "awards": []
+      "awards": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776965794937",
@@ -1677,7 +1687,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-07-01T10:55:11.903Z",
+      "updatedAt": "2026-09-11T23:10:38.127Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -1691,7 +1701,8 @@
       "moods": [],
       "tropos": [],
       "dinamica": [],
-      "awards": []
+      "awards": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776966024996",
@@ -1732,7 +1743,7 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T07:25:09.514Z",
+      "updatedAt": "2026-09-11T23:10:39.374Z",
       "nameEn": "",
       "cast": [
         {
@@ -1759,7 +1770,8 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": ""
+      "productoraId": "",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776966161759",
@@ -1884,7 +1896,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": true,
-      "updatedAt": "2026-06-06T13:18:23.867Z",
+      "updatedAt": "2026-09-11T23:10:41.349Z",
       "nameEn": "เด็ก เรียบ ร้าย",
       "episodeDuration": 48,
       "myPick": false,
@@ -1907,7 +1919,8 @@
       ],
       "dinamica": [
         "Femme × Femme"
-      ]
+      ],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776966800863",
@@ -2005,7 +2018,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T07:25:13.713Z",
+      "updatedAt": "2026-09-11T23:10:42.808Z",
       "nameEn": "วิวาห์ปฐพี",
       "episodeDuration": 55,
       "myPick": false,
@@ -2018,7 +2031,8 @@
       "productoraId": "1779135760151",
       "sourceType": "novela",
       "moods": [],
-      "awards": []
+      "awards": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776966975487",
@@ -2069,7 +2083,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-23T18:36:19.108Z",
+      "updatedAt": "2026-09-11T23:10:44.052Z",
       "nameEn": "เลือดห้ามรัก",
       "episodeDuration": "",
       "sourceType": "novela",
@@ -2086,7 +2100,8 @@
       "tropos": [],
       "dinamica": [
         "Vampira × Humana"
-      ]
+      ],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776967103985",
@@ -2168,7 +2183,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-23T18:37:05.360Z",
+      "updatedAt": "2026-09-11T23:12:38.656Z",
       "sourceType": "novela",
       "moods": [],
       "episodeDuration": "",
@@ -2184,7 +2199,8 @@
         "Romance en el trabajo"
       ],
       "dinamica": [],
-      "awards": []
+      "awards": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776971232987",
@@ -4754,9 +4770,10 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:28:11.628Z",
+      "updatedAt": "2026-09-11T23:12:20.706Z",
       "myPick": false,
-      "myPick2026": false
+      "myPick2026": false,
+      "wlwFocus": "personaje"
     },
     {
       "id": "1777102056290",
@@ -9808,7 +9825,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:48:59.334Z",
+      "updatedAt": "2026-09-11T23:12:39.999Z",
       "nameEn": "คลับฟรายเดย์เดอะซีรีส์ Theory of Love ไม่มีทฤษฎีไหนใช้ได้กับทุกความรัก ตอน ความดีชนะใจ",
       "category": "series",
       "seriesType": "serie",
@@ -9823,7 +9840,8 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135954653"
+      "productoraId": "1779135954653",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1777460464400",
@@ -10462,7 +10480,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T12:11:12.107Z",
+      "updatedAt": "2026-09-11T23:11:46.712Z",
       "nameEn": "双镜",
       "category": "series",
       "seriesType": "serie",
@@ -10482,7 +10500,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 46
+      "episodeDuration": 46,
+      "wlwFocus": "subtexto"
     },
     {
       "id": "1777584568429",
@@ -17910,8 +17929,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-09T21:28:44.405Z",
-      "nameEn": ""
+      "updatedAt": "2026-09-11T23:13:55.123Z",
+      "nameEn": "",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778362313804",
@@ -17996,8 +18016,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-09T21:34:08.719Z",
-      "nameEn": ""
+      "updatedAt": "2026-09-11T23:14:02.317Z",
+      "nameEn": "",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778396322251",
@@ -19182,7 +19203,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T07:51:21.243Z",
+      "updatedAt": "2026-09-11T23:13:24.141Z",
       "seriesType": "serie",
       "cast": [],
       "renewedNextSeason": false,
@@ -19198,7 +19219,8 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": ""
+      "productoraId": "",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778406327495",
@@ -19239,12 +19261,13 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:56:39.384Z",
+      "updatedAt": "2026-09-11T23:13:25.185Z",
       "seriesType": "serie",
       "cast": [],
       "renewedNextSeason": false,
       "nameEn": "ささやくように恋を唄う",
-      "episodeDuration": 24
+      "episodeDuration": 24,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778406423279",
@@ -19290,12 +19313,13 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:56:58.081Z",
+      "updatedAt": "2026-09-11T23:13:26.405Z",
       "seriesType": "serie",
       "cast": [],
       "renewedNextSeason": false,
       "nameEn": "",
-      "episodeDuration": 24
+      "episodeDuration": 24,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778406629965",
@@ -19340,12 +19364,13 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:57:18.303Z",
+      "updatedAt": "2026-09-11T23:13:27.648Z",
       "seriesType": "serie",
       "cast": [],
       "renewedNextSeason": false,
       "nameEn": "推しが武道館いってくれたら死ぬ",
-      "episodeDuration": ""
+      "episodeDuration": "",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778408041578",
@@ -19384,8 +19409,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-10T10:14:01.578Z",
-      "nameEn": ""
+      "updatedAt": "2026-09-11T23:14:04.217Z",
+      "nameEn": "",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778499401369",
@@ -19552,12 +19578,13 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:57:37.602Z",
+      "updatedAt": "2026-09-11T23:13:29.013Z",
       "seriesType": "serie",
       "cast": [],
       "renewedNextSeason": false,
       "nameEn": "桜Trick",
-      "episodeDuration": 24
+      "episodeDuration": 24,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778501119595",
@@ -19602,12 +19629,13 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:57:57.289Z",
+      "updatedAt": "2026-09-11T23:13:31.198Z",
       "seriesType": "serie",
       "cast": [],
       "renewedNextSeason": false,
       "nameEn": "私を喰べたい、ひとでなし",
-      "episodeDuration": 24
+      "episodeDuration": 24,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778501225180",
@@ -19653,12 +19681,13 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:58:14.205Z",
+      "updatedAt": "2026-09-11T23:13:32.144Z",
       "seriesType": "serie",
       "cast": [],
       "renewedNextSeason": false,
       "nameEn": "安達としまむら",
-      "episodeDuration": 24
+      "episodeDuration": 24,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778610979789",
@@ -20173,8 +20202,9 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T07:58:38.153Z",
-      "episodeDuration": ""
+      "updatedAt": "2026-09-11T23:13:33.105Z",
+      "episodeDuration": "",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778878515414",
@@ -20222,7 +20252,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-15T20:55:15.414Z"
+      "updatedAt": "2026-09-11T23:14:05.668Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778878607815",
@@ -20271,7 +20302,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-21T11:26:27.104Z",
+      "updatedAt": "2026-09-11T23:14:07.815Z",
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -20279,7 +20310,8 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": ""
+      "productoraId": "",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778878773209",
@@ -20451,7 +20483,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T12:12:10.043Z"
+      "updatedAt": "2026-09-11T23:13:34.396Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778933524418",
@@ -20504,7 +20537,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T12:12:04.417Z"
+      "updatedAt": "2026-09-11T23:13:07.519Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778935478163",
@@ -20558,7 +20592,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T12:44:38.163Z"
+      "updatedAt": "2026-09-11T23:13:38.115Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778935908927",
@@ -21292,7 +21327,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T07:40:53.021Z"
+      "updatedAt": "2026-09-11T23:13:39.385Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1779616671400",
@@ -21430,7 +21466,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-24T16:11:06.759Z"
+      "updatedAt": "2026-09-11T23:13:40.324Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1779639218592",
@@ -21491,7 +21528,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-24T16:13:38.592Z"
+      "updatedAt": "2026-09-11T23:13:41.400Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1779991449685",
@@ -21893,7 +21931,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-08-31T18:21:51.839Z"
+      "updatedAt": "2026-09-11T23:13:42.887Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1781080190265",
@@ -22774,7 +22813,8 @@
       "snLastUpdate": "",
       "snNote": "",
       "productoraId": "",
-      "updatedAt": "2026-08-09T19:41:37.845Z"
+      "updatedAt": "2026-09-11T23:13:45.141Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1786304715513",
@@ -22836,7 +22876,8 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-08-09T19:45:15.513Z"
+      "updatedAt": "2026-09-11T23:13:47.741Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1786305415447",
@@ -22893,7 +22934,8 @@
           "episodeDuration": 3
         }
       ],
-      "updatedAt": "2026-08-09T19:56:55.447Z"
+      "updatedAt": "2026-09-11T23:13:48.906Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1786349054932",
@@ -23411,7 +23453,8 @@
       "snLastUpdate": "",
       "snNote": "",
       "productoraId": "",
-      "updatedAt": "2026-08-26T20:55:22.275Z"
+      "updatedAt": "2026-09-11T23:13:51.322Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1787777994531",
@@ -24501,7 +24544,8 @@
       "category": "movie",
       "movieType": "film",
       "duration": "",
-      "updatedAt": "2026-05-13T09:24:38.578Z"
+      "updatedAt": "2026-09-11T23:12:49.789Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1778408173610",
@@ -24527,10 +24571,11 @@
       "bookUrl": "",
       "genres": [],
       "category": "reality",
-      "updatedAt": "2026-05-14T08:40:20.809Z",
+      "updatedAt": "2026-09-11T23:12:51.350Z",
       "movieType": "film",
       "duration": 82,
-      "cast": []
+      "cast": [],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1700000000000",
@@ -24868,9 +24913,10 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:27:47.217Z",
+      "updatedAt": "2026-09-11T23:13:01.113Z",
       "movieType": "film",
-      "duration": 89
+      "duration": 89,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1700000000012",
@@ -34301,8 +34347,8 @@
       "id": "1780769465406",
       "name": "Never Fade",
       "nameEn": "",
-      "poster": "https://girlsloveinfo.com/wp-content/uploads/2026/05/Never-Fade-Movie-PosterNeverFadeProjectNeverFadeProjectPresentedbyAuraBangkokClinic-818x1024.jpg",
-      "synopsis": "",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/5/5/1/3/8/1/1551381-never-fade-0-600-0-900-crop.jpg?v=e4a87fa79d",
+      "synopsis": "«Never Fade» es un proyecto creativo multidimensional dirigido por la actriz tailandesa Yoko Apasra Lertprasert, conocida sobre todo por su papel en la serie de «Girls’ Love» (GL) «Blank». Se trata de una marca personal y una productora que puso en marcha tras su salida de NineStar Studios. Se espera que la película explore temas emocionales relacionados con la resiliencia.",
       "year": 2026,
       "country": "Tailandia",
       "network": "YouTube",
@@ -34338,7 +34384,8 @@
         }
       ],
       "productoraId": "",
-      "updatedAt": "2026-06-06T18:11:05.406Z"
+      "updatedAt": "2026-09-11T23:17:25.553Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1781685870982",
@@ -34374,7 +34421,8 @@
       "duration": 15,
       "cast": [],
       "productoraId": "",
-      "updatedAt": "2026-06-17T08:44:30.982Z"
+      "updatedAt": "2026-09-11T23:14:59.478Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1781686263186",
@@ -34415,7 +34463,8 @@
       "duration": 102,
       "cast": [],
       "productoraId": "",
-      "updatedAt": "2026-06-17T08:51:03.186Z"
+      "updatedAt": "2026-09-11T23:17:31.859Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1781686367883",
@@ -34449,7 +34498,8 @@
       "duration": "",
       "cast": [],
       "productoraId": "",
-      "updatedAt": "2026-06-17T08:52:47.883Z"
+      "updatedAt": "2026-09-11T23:17:33.323Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1787683987871",
@@ -34482,7 +34532,8 @@
       "duration": 95,
       "cast": [],
       "productoraId": "",
-      "updatedAt": "2026-08-25T18:53:07.871Z"
+      "updatedAt": "2026-09-11T23:17:34.757Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1787776941440",
@@ -34516,7 +34567,8 @@
       "duration": 116,
       "cast": [],
       "productoraId": "",
-      "updatedAt": "2026-08-26T20:42:21.440Z"
+      "updatedAt": "2026-09-11T23:17:37.423Z",
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1787777112778",
@@ -34696,7 +34748,8 @@
       "duration": 78,
       "cast": [],
       "productoraId": "",
-      "updatedAt": "2026-09-06T17:20:43.320Z"
+      "updatedAt": "2026-09-11T23:17:46.039Z",
+      "wlwFocus": "subtexto"
     },
     {
       "id": "1788715474577",
@@ -38891,5 +38944,5 @@
       ]
     }
   },
-  "exportedAt": "2026-09-11T23:05:16.964Z"
+  "exportedAt": "2026-09-11T23:39:55.934Z"
 }

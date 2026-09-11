@@ -2683,9 +2683,11 @@ function openAddSeries(){
 function openEdit(si){
   document.getElementById('seriesModalTitle').textContent='Editar serie';
   document.getElementById('seriesModalBody').innerHTML=
+    `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${tmdbBarHtml('series')}</div>`+
     formHtml(series[si])+
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('seriesModal').classList.add('open');
+  const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
   bindPoster();
   const links=series[si].watchLinks||(series[si].networkUrl?[{name:series[si].network||'Ver serie',url:series[si].networkUrl}]:[]);
   initPlatforms(links);
@@ -2942,9 +2944,11 @@ function openAddAnime(){
 function openEditAnime(si){
   document.getElementById('animeModalTitle').textContent='Editar anime';
   document.getElementById('animeModalBody').innerHTML=
+    `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${tmdbBarHtml('series')}</div>`+
     formHtml(series[si],'anime')+
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si},'anime')" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('animeModal').classList.add('open');
+  const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
   bindPoster();
   const s=series[si];
   const links=s.watchLinks||(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
@@ -2974,9 +2978,11 @@ function openAddReality(){
 function openEditReality(si){
   document.getElementById('realityModalTitle').textContent='Editar reality';
   document.getElementById('realityModalBody').innerHTML=
+    `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${tmdbBarHtml('series')}</div>`+
     formHtml(series[si],'reality')+
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si},'reality')" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('realityModal').classList.add('open');
+  const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
   bindPoster();
   const s=series[si];
   const links=s.watchLinks||(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
@@ -3661,9 +3667,12 @@ function openAddMovie(){
 }
 function openEditMovie(mi){
   document.getElementById('movieModalTitle').textContent='Editar película';
-  document.getElementById('movieModalBody').innerHTML=movieFormHtml(movies[mi])+
+  document.getElementById('movieModalBody').innerHTML=
+    `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${tmdbBarHtml('movie')}</div>`+
+    movieFormHtml(movies[mi])+
     `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(${mi})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('movieModal').classList.add('open');
+  const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=movies[mi].name||'';
   bindMovieForm();
   const mv=movies[mi];
   const links=mv.watchLinks||(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);
