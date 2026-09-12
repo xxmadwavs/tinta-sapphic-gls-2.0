@@ -336,10 +336,6 @@
           "character": "Risa"
         },
         {
-          "actressId": "1778672828977",
-          "character": "Lalin"
-        },
-        {
           "actressId": "1778672885792",
           "character": "Nubdao"
         },
@@ -1449,10 +1445,6 @@
       "category": "series",
       "seriesType": "serie",
       "cast": [
-        {
-          "actressId": "1778672828977",
-          "character": "Pheem"
-        },
         {
           "actressId": "1778672885792",
           "character": "Pan"
@@ -2640,8 +2632,8 @@
     {
       "id": "1776971232987",
       "name": "Chasing Love",
-      "poster": "https://i.mydramalist.com/AB60Zq_4c.jpg?v=1",
-      "synopsis": "Tres mujeres que huyen del amor se cruzan con otras tres que se niegan a renunciar a perseguir sus corazones, demostrando que el amor es lo que mantiene vivo el espíritu humano. No importa cuánto intentemos escapar, al final, todas queremos amar y ser amadas.",
+      "poster": "https://image.tmdb.org/t/p/w500/qcAnXu9nUJgtnesr6M12xAduJOz.jpg",
+      "synopsis": "Song, una guapa empollona e investigadora gastronómica, concertó un rollo de una noche con una mujer misteriosa bajo una condición estricta: sin ataduras. Sin embargo, la otra parte incumplió los términos y le pidió una conexión emocional. Song puso fin al apasionado encuentro y se marchó.\n\nPero el mundo es realmente pequeño. Aquella mujer resultó ser Piangrawin, la hija de la presidenta de la empresa en la que trabajaba Song. Y Piangrawin no se rendía fácilmente. La persiguió con una devoción digna de un cachorro, enredando el corazón y la rutina de Song con un encanto temerario. Incluso afirmó que ya le había puesto nombre a su futuro hijo.",
       "year": 2026,
       "country": "Tailandia",
       "network": "Netflix",
@@ -2652,7 +2644,7 @@
           "url": "https://www.netflix.com/es/title/82761937"
         }
       ],
-      "trailerUrl": "https://youtu.be/YVECcuW7swA",
+      "trailerUrl": "https://www.youtube.com/watch?v=LTuNFLRnh7U",
       "bookSource": "Chasing Love",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/344632/Thumbnail/book_detail_large.gif?8",
@@ -2679,6 +2671,7 @@
       ],
       "totalEpisodes": 8,
       "genres": [
+        "Drama",
         "Romance"
       ],
       "category": "series",
@@ -2721,12 +2714,77 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-05-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 54,
+              "still": "https://image.tmdb.org/t/p/w300/n31QIKU42tP25y9c6gQQbay5uIg.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-06-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/aIiJJoS3WxhJCVtoesA2kYTNGMc.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2026-06-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/Z9houXJcDFMa1WAoePWAsz6Esc.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2026-06-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 55,
+              "still": "https://image.tmdb.org/t/p/w300/iX1e9zi8KuNkRY7G88AUp9QzNep.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2026-06-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 64,
+              "still": "https://image.tmdb.org/t/p/w300/8tzqa8gIJJsPm0njBUByQ6F6y3U.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2026-07-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 71,
+              "still": "https://image.tmdb.org/t/p/w300/9QDbbQYgzWnnCZe75jFi4WNdHyo.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2026-07-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 72,
+              "still": "https://image.tmdb.org/t/p/w300/xXB6CNnyilMHeGH425bxv85yDIF.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2026-07-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 79,
+              "still": "https://image.tmdb.org/t/p/w300/a4UrNtpiRsSfowei74Ikcik1g1k.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-06-06T14:59:49.943Z",
-      "nameEn": "",
+      "updatedAt": "2026-09-12T11:53:39.331Z",
+      "nameEn": "พี่เองก็ลำบาก",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -2763,22 +2821,23 @@
           "1778783243230"
         ]
       ],
-      "tmdbId": 312588,
+      "tmdbId": "312588",
       "tmdbKind": "tv",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 9
+      "tmdbVoteCount": 9,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776971297117",
       "name": "Oxytoxin",
-      "poster": "https://i.mydramalist.com/l0Yj06_4f.jpg",
-      "synopsis": "La historia de un influyente grupo de amigas de la escuela secundaria conocido como Toxxxxin.",
+      "poster": "https://image.tmdb.org/t/p/w500/3ureFluaEBW49JdpRmtTRlf6whP.jpg",
+      "synopsis": "The story of a influential high school friend group known as Toxxxxin.",
       "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/QNvnpjbNrRg",
+      "trailerUrl": "https://www.youtube.com/watch?v=QNvnpjbNrRg",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -2792,7 +2851,7 @@
         "Escolar",
         "Romance"
       ],
-      "nameEn": "",
+      "nameEn": "จุนใจไอดาว",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -2819,7 +2878,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:53:35.462Z",
+      "updatedAt": "2026-09-12T11:53:40.848Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -2835,16 +2894,22 @@
           "1778783968952"
         ]
       ],
-      "tmdbId": 306936,
+      "tmdbId": "306936",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1776971352334",
       "name": "Juliet & Juliet",
-      "poster": "https://i.mydramalist.com/YYJ6YB_4c.jpg?v=1",
-      "synopsis": "Cuando las herederas de dos familias enemistadas se convierten en el primer amor de la otra, ¿terminará en amor o en tragedia?",
+      "poster": "https://image.tmdb.org/t/p/w500/sEDx1wyVpOWlXK2aEp7UYkSGJeN.jpg",
+      "synopsis": "When the heirs of two rival families turn out to be each other's first love, will the ending be love... or tragedy?",
       "year": 2026,
       "country": "Tailandia",
       "network": "oneD, GagaOOLala",
@@ -2887,7 +2952,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-06T17:17:24.766Z",
+      "updatedAt": "2026-09-12T11:53:42.107Z",
       "sourceType": "",
       "moods": [],
       "tropos": [
@@ -2914,7 +2979,70 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-09-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/zCIFlrrgVxXAv9pRFPRUTMow0rz.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-09-12",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "date": "2026-09-19",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "date": "2026-09-26",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "date": "2026-10-03",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "date": "2026-10-10",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "date": "2026-10-17",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "date": "2026-10-24",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "date": "2026-10-31",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "date": "2026-11-07",
+              "skipped": false,
+              "source": "tmdb"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
@@ -2924,16 +3052,17 @@
           "1778785101975"
         ]
       ],
-      "tmdbId": 305847,
+      "tmdbId": "315142",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776971502360",
       "name": "Moonshadow",
-      "poster": "https://i.mydramalist.com/5vkpeY_4f.jpg",
-      "synopsis": "Tras una dolorosa ruptura, Jan, dueña de un acogedor bar, cierra su corazón al amor y se centra únicamente en sobrevivir a la sombra de su pasado.\n\nTodo cambia cuando Key, una joven y atrevida cantante, irrumpe en su vida tras un encuentro de una noche, declarando abiertamente que quiere ser su sugar baby.\n\nLo que comienza como un acuerdo puramente físico se transforma en algo más profundo a medida que la calidez de Key empieza a derretir las barreras de hielo de Jan.\n\nJusto cuando sus sentimientos se vuelven innegables, la ex de Jan regresa inesperadamente, poniendo a prueba el frágil vínculo que se está formando entre ellas.",
+      "poster": "https://image.tmdb.org/t/p/w500/oAhfj5qv80jFgEriFm3frEjjwMT.jpg",
+      "synopsis": "Tras una dolorosa ruptura, Jan, la dueña de un acogedor bar, cierra su corazón al amor y se centra únicamente en sobrevivir a la sombra de su pasado. Todo cambia cuando Key, una joven y atrevida cantante, irrumpe en su mundo tras un encuentro de una noche y le declara abiertamente que quiere ser su \"sugar baby\".\n\nLo que comienza como un acuerdo puramente físico se transforma en algo más profundo a medida que la calidez de Key empieza a derretir las frías barreras de Jan. Justo cuando sus sentimientos se vuelven innegables, la ex de Jan regresa inesperadamente, poniendo a prueba el frágil vínculo que se está forjando entre ellas.",
       "year": 2026,
       "country": "Tailandia",
       "network": "iQiyi",
@@ -2986,9 +3115,9 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-01T07:56:17.264Z",
-      "nameEn": "",
-      "episodeDuration": "",
+      "updatedAt": "2026-09-12T11:53:58.226Z",
+      "nameEn": "เงาใต้พระจันทร์",
+      "episodeDuration": 64,
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -3017,7 +3146,78 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-08-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 64,
+              "still": "https://image.tmdb.org/t/p/w300/uiaqMyYOBRG9aJB22GOIlKzUmE9.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-08-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/nIA36HeH4R2Ae0wydayLM23dI7I.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2026-08-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/hspZkS0GMHuX1hEAoJRADLQNp36.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2026-09-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 52,
+              "still": "https://image.tmdb.org/t/p/w300/qD1tluGWqFnHzK3U79CcnNonAn3.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2026-09-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 66,
+              "still": "https://image.tmdb.org/t/p/w300/i0PbwGd0M9oP0UEdFCV2uMyKFqA.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2026-09-16",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "date": "2026-09-23",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "date": "2026-09-30",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "date": "2026-10-07",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "date": "2026-10-14",
+              "skipped": false,
+              "source": "tmdb"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
@@ -3027,16 +3227,17 @@
           "1778667585326"
         ]
       ],
-      "tmdbId": 307433,
+      "tmdbId": "307433",
       "tmdbKind": "tv",
       "tmdbRating": 8.5,
-      "tmdbVoteCount": 2
+      "tmdbVoteCount": 2,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776971628835",
       "name": "Remain",
-      "poster": "https://i.mydramalist.com/yWXkNk_4f.jpg",
-      "synopsis": "Tras un trágico accidente, una joven despierta con amnesia y sin recordar nada de su pasado.\n\nMientras reconstruye su identidad, se cruza con la compasiva dueña de una mina que le ofrece refugio y una nueva oportunidad. A medida que su vínculo se profundiza, fragmentos de su vida anterior comienzan a resurgir, junto con conflictos familiares ocultos y presiones sociales.\n\nAtrapada entre deseos reprimidos y recuerdos atormentadores, debe decidir si confiar en su corazón o alejarse de un amor que quizás estaba destinado a terminar.",
+      "poster": "https://image.tmdb.org/t/p/w500/zPh3Pu9A8raTlFfeqpmyUIICIqe.jpg",
+      "synopsis": "I knew that one day we would have to part ways, but my heart couldn't stop itself. Even though reality keeps reminding me of our situation, my heart, which has already fallen so deeply, just can't let go of you.",
       "year": 2026,
       "country": "Tailandia",
       "network": "",
@@ -3076,7 +3277,7 @@
         "Drama",
         "Romance"
       ],
-      "nameEn": "",
+      "nameEn": "สิ่งที่เหลืออยู่",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -3099,7 +3300,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:45:17.349Z",
+      "updatedAt": "2026-09-12T11:54:19.173Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3117,10 +3318,14 @@
           "1778785439675"
         ]
       ],
-      "tmdbId": 313346,
+      "tmdbId": "277141",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1776972053631",
@@ -5721,10 +5926,6 @@
       "category": "series",
       "seriesType": "serie",
       "cast": [
-        {
-          "actressId": "1778672828977",
-          "character": "Alin / \"Lin\""
-        },
         {
           "actressId": "1778672885792",
           "character": "Jane"
@@ -27043,6 +27244,1524 @@
       "tmdbRating": 4.6,
       "tmdbVoteCount": 12,
       "couples": []
+    },
+    {
+      "id": "1789214120107",
+      "name": "The Painter of the Wind",
+      "nameEn": "바람의 화원",
+      "poster": "https://image.tmdb.org/t/p/w500/c0zNS5qLkf39IN72WVH9IDi4ZRQ.jpg",
+      "synopsis": "Painter of the Wind is a 2008 South Korean historical television series starring Moon Geun-young and Park Shin-yang. Based on the bestselling historical fiction novel by Lee Jung-myung that took artistic license with the premise that perhaps the Joseon painter Shin Yun-bok had really been a woman, it centers on Yun-bok, a talented young painter who disguises herself as a boy to search for her father's murderer. She meets Kim Hong-do, a master painter who guides her into becoming a great artist, and they develop a strong friendship of mentor and disciple.\n\nThe drama has won numerous awards, including the Asian TV Series Special Award at the 2010 Shanghai Television Festival and the silver award at the 2010 Houston International Film Festival, while actress Moon Geun-young received the grand prize at the 2008 SBS Drama Awards, as well as Best TV Actress at the 2009 Baeksang Arts Awards and 2008 Grimae Awards for her role.",
+      "year": 2008,
+      "country": "Corea del Sur",
+      "network": "Kocowa",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=JMSE5TvR1ZI",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "subtexto",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_37941_mtybv8vr",
+          "character": "Shin Yun-bok"
+        },
+        {
+          "actressId": "tmdb_1248204_mtybv8vs",
+          "character": "Jung-hyang"
+        },
+        {
+          "actressId": "tmdb_39256_mtybv8vt",
+          "character": "Queen Jeongsun"
+        },
+        {
+          "actressId": "tmdb_140335_mtybv8vu",
+          "character": "Yun-bok (young)"
+        },
+        {
+          "actressId": "tmdb_1295464_mtybv8vw",
+          "character": "Mak-nyeon"
+        }
+      ],
+      "couples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 56,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "44573",
+      "tmdbKind": "tv",
+      "tmdbRating": 6.7,
+      "tmdbVoteCount": 10,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2008-09-24",
+          "totalEpisodes": 20,
+          "emissionDays": [
+            2,
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2008-09-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/qPZq0pzvIJPiEj6jDqWkrVScgGt.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2008-09-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/pbcF1DBl8FyLFxBeTTyiyGdJFHP.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2008-10-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/dx7zqgVPVmt8ENEyg5kiq7WvvfN.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2008-10-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/8B6K1XkHIN1sr1xlD7b04xwl3uB.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2008-10-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/8XFK2u0jGON6VgU8M6e4H3wKfGi.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2008-10-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/wjshhwCVTWEViXnV7Y8BAHGAWqg.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2008-10-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/iapnn3BrgoK5F1x0VoS78BcOM8t.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2008-10-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/a9MK52GFivWYzrkSZBZDxoBtwWb.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2008-10-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/jAVJASq2NhhCT4EpektrqQtnfcv.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2008-10-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/besWrYP8BqHF6Gj5NC2xmGmj1xg.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2008-11-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/22vFfod6BW3jyGamPVKYqpmWLEy.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2008-11-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/8My0GJ6RiFJc8mul06LtzoVvXCs.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2008-11-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/8OgXac255B0qJp0uac0gS2ejSbK.jpg"
+            },
+            {
+              "num": 14,
+              "date": "2008-11-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/h6VYfpph1iBULFronTmKwbhF8SC.jpg"
+            },
+            {
+              "num": 15,
+              "date": "2008-11-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/nyjcUxeHfzN2xmwbY9kTd4tRnhO.jpg"
+            },
+            {
+              "num": 16,
+              "date": "2008-11-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/fKCS0EbI3hKGQYPH4zROV2JK23k.jpg"
+            },
+            {
+              "num": 17,
+              "date": "2008-11-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/aO1ZYSJbV8GRiCDB8XEZMumpIBU.jpg"
+            },
+            {
+              "num": 18,
+              "date": "2008-11-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/wI9OdRgp0l55KvUYJspbXYEDhYa.jpg"
+            },
+            {
+              "num": 19,
+              "date": "2008-12-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/5nZqfrHsrfgETsAxOtqkwHHeKQL.jpg"
+            },
+            {
+              "num": 20,
+              "date": "2008-12-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/dmY1oEZOuwUhxpaepeXMSDCZGHl.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-09-12T11:55:20.107Z"
+    },
+    {
+      "id": "1789214238562",
+      "name": "Los hombres de Paco",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/o18qCrSlgQXoRIDwCRiIz9IPyqY.jpg",
+      "synopsis": "La serie sigue el día a día de la familia del inspector Paco Miranda, que es trasladado a la comisaría de San Antonio (ficticio barrio conflictivo de Madrid) junto a los subinspectores y amigos Mariano y Lucas. Paco empieza a trabajar en la comisaria del barrio en la cual su suegro, Don Lorenzo, es el comisario.",
+      "year": 2005,
+      "country": "España",
+      "network": "Amazon Prime Video, Movistar Plus+, Movistar Plus+ Ficción Total , Atres Player, Amazon Prime Video with Ads",
+      "networkUrl": "https://www.primevideo.com",
+      "watchLinks": [
+        {
+          "name": "Amazon Prime Video",
+          "url": "https://www.primevideo.com"
+        },
+        {
+          "name": "Amazon Prime Video with Ads",
+          "url": "https://www.primevideo.com"
+        }
+      ],
+      "trailerUrl": "https://www.youtube.com/watch?v=hTpGCEfdFVg",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Comedia",
+        "Crimen",
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-secundaria",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_1019849_mtybwdhs",
+          "character": "Silvia Castro"
+        },
+        {
+          "actressId": "1789214219969",
+          "character": "Pepa Miranda"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_1019849_mtybwdhs",
+          "1789214219969"
+        ]
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 90,
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "34376",
+      "tmdbKind": "tv",
+      "tmdbRating": 7.8,
+      "tmdbVoteCount": 209,
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2005-10-09",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            6
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2005-10-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 87,
+              "still": "https://image.tmdb.org/t/p/w300/tBduAVEypcgINr8MkLJrPMavYx4.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2005-10-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 90,
+              "still": "https://image.tmdb.org/t/p/w300/pjF3CR5nLEWvn8v8KQDx7GHbFXx.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2005-10-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 92,
+              "still": "https://image.tmdb.org/t/p/w300/tRMlQPesedSDhLiht7P8LkoNJM4.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2005-10-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 72,
+              "still": "https://image.tmdb.org/t/p/w300/k6PUAorBDER4sPyYuf1PzqfFacP.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2005-11-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 94,
+              "still": "https://image.tmdb.org/t/p/w300/5JZq8wcKKosO36aXLbP06ANVBpy.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2005-11-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 78,
+              "still": "https://image.tmdb.org/t/p/w300/xxjIEFrX3sfMr9b90BEcs6iuQDq.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2005-11-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 86,
+              "still": "https://image.tmdb.org/t/p/w300/4gxLYSQUpmI4UWpb0SGxVXObGlN.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2005-11-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 90,
+              "still": "https://image.tmdb.org/t/p/w300/tz9zXJsEOYM1ywvtZJHrP7bjut2.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2006-02-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 90,
+              "still": "https://image.tmdb.org/t/p/w300/mp7exZPwtR2PsHvcPU5opX9siiy.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2006-02-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 91,
+              "still": "https://image.tmdb.org/t/p/w300/AiQvdnP56ZEifPIrgT2drQwvC7j.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2006-02-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 92,
+              "still": "https://image.tmdb.org/t/p/w300/lAFZUKjY1NB3L9JbR8IyMTuY2Eu.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2006-03-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 82,
+              "still": "https://image.tmdb.org/t/p/w300/cz2LpiaimoIbaN5uLht0jt02V8t.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2006-03-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 77,
+              "still": "https://image.tmdb.org/t/p/w300/jIbDebLXti2Ec4yxR6MtIWgxxxS.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2006-03-16",
+          "totalEpisodes": 14,
+          "emissionDays": [
+            2,
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2006-03-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 91,
+              "still": "https://image.tmdb.org/t/p/w300/tCFTWu6Qm8za3LOU3jduyUOzBTA.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2006-03-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 84,
+              "still": "https://image.tmdb.org/t/p/w300/p6npWyd5VMFIU8hzKnHc3Ufqhuw.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2006-03-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 76,
+              "still": "https://image.tmdb.org/t/p/w300/iXO941dOR3yj9GQrTh9KypuQdTI.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2006-04-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 87,
+              "still": "https://image.tmdb.org/t/p/w300/fHArwewRfBQC8So8BzuzgPSaHS7.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2006-04-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 91,
+              "still": "https://image.tmdb.org/t/p/w300/jEAsMnrqLfnkkvnmrjU5fPxT6ZC.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2006-05-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 81,
+              "still": "https://image.tmdb.org/t/p/w300/1Ctn9xPkJ1dLhtIr0HOxZ2zWTaZ.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2006-05-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 88,
+              "still": "https://image.tmdb.org/t/p/w300/r17Gu64PW4lf5VLDNmB8NO4lEvq.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2006-05-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 85,
+              "still": "https://image.tmdb.org/t/p/w300/hzLuOZumvFtJzq6aWgXQjBHY0eu.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2006-05-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 79,
+              "still": "https://image.tmdb.org/t/p/w300/jhLOhhf40IxCS6VvcKxjox1NVlI.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2006-05-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 77,
+              "still": "https://image.tmdb.org/t/p/w300/6EN6h7UCUDIMqf6XvSqhWU22S7K.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2006-06-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 82,
+              "still": "https://image.tmdb.org/t/p/w300/gaybOzSS8j7cKUb5IRkb0slrjnb.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2006-06-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 70,
+              "still": "https://image.tmdb.org/t/p/w300/r1snCjzjIGCr2sHLybCAi9Dl02F.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2006-06-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 86,
+              "still": "https://image.tmdb.org/t/p/w300/nDPVmJEEt2dqnzPXncWhwglTKDW.jpg"
+            },
+            {
+              "num": 14,
+              "date": "2006-06-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 85,
+              "still": "https://image.tmdb.org/t/p/w300/emv1bjfxjLYU4SH5VKWO6khVdqA.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 3",
+          "startDate": "2007-01-10",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2007-01-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 80,
+              "still": "https://image.tmdb.org/t/p/w300/ulI7bDODkYQtQurRXL4E8sdMwmV.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2007-01-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 86,
+              "still": "https://image.tmdb.org/t/p/w300/sE0OU3yASmgcxqt9UOQ0LbzsJYu.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2007-01-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 93,
+              "still": "https://image.tmdb.org/t/p/w300/hoHReqGgRjqzjt6Jqq8UK02Eswp.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2007-01-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 89,
+              "still": "https://image.tmdb.org/t/p/w300/8Q64OaC2OSefnr0G0LFyV6eF1D4.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2007-02-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 76,
+              "still": "https://image.tmdb.org/t/p/w300/s5mh0cRbKzarRfvab1dZkLAV5Fz.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2007-02-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 91,
+              "still": "https://image.tmdb.org/t/p/w300/ezF7qocZ8hU8zx6bnRJljGl7vZ6.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2007-02-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 85,
+              "still": "https://image.tmdb.org/t/p/w300/ipPunb2gZCFWxfGYsqtIk50JnRY.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2007-02-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 87,
+              "still": "https://image.tmdb.org/t/p/w300/mDjYXF46UW85s1vivLcTjbpoPTz.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2007-03-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 85,
+              "still": "https://image.tmdb.org/t/p/w300/k6bEwtgZHeLK6oeRE00m8oww83Y.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2007-03-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 77,
+              "still": "https://image.tmdb.org/t/p/w300/qnAqY0SlQQY6RZZIjtYTWPjNLZm.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2007-03-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 86,
+              "still": "https://image.tmdb.org/t/p/w300/uWmGQTVOXnIpn1h99mAslrqJkPP.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2007-03-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 78,
+              "still": "https://image.tmdb.org/t/p/w300/YEdssGBUrzo3OHVleE32rC0fQl.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2007-04-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 88,
+              "still": "https://image.tmdb.org/t/p/w300/fiQ6Z3HUyWjvWAW24S0R37xHGOp.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 4",
+          "startDate": "2007-04-18",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2007-04-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 73,
+              "still": "https://image.tmdb.org/t/p/w300/rMQgT7qK7fXnqZP9IVw2irYen10.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2007-04-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 87,
+              "still": "https://image.tmdb.org/t/p/w300/uFeFgS65RZaLmG1zS4mVOqlx7te.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2007-05-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 82,
+              "still": "https://image.tmdb.org/t/p/w300/dj6lUo057jfPFR7zrtUVamPQa1l.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2007-05-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 87,
+              "still": "https://image.tmdb.org/t/p/w300/j9iYXW6ATaaXuygOaIpJYgpbyjB.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2007-05-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 87,
+              "still": "https://image.tmdb.org/t/p/w300/xbOt3EvFsXyMd52EBwddUwXZkGZ.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2007-06-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 86,
+              "still": "https://image.tmdb.org/t/p/w300/7mQgPT2lRVQqPJ0ut95xekAqyg4.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2007-06-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 73,
+              "still": "https://image.tmdb.org/t/p/w300/y2EjUCtXvjUPABUJWG13h3dy8Qk.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2007-06-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 85,
+              "still": "https://image.tmdb.org/t/p/w300/fhJtr5vWlmaLM3OaVfHHboj7Cbz.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2007-06-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 72,
+              "still": "https://image.tmdb.org/t/p/w300/kw9eDdO4dSeMHyTHbdSEloXJ7E9.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2007-07-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 75,
+              "still": "https://image.tmdb.org/t/p/w300/2b6clMJ17jFGglBOwvd4CntSwxV.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2007-07-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 94,
+              "still": "https://image.tmdb.org/t/p/w300/bqHiiR8UPn0cpkUymbgQWfdsVst.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2007-07-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 79,
+              "still": "https://image.tmdb.org/t/p/w300/qBswH2zsKaJFzioaB46eDHQH8bP.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2007-07-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 87,
+              "still": "https://image.tmdb.org/t/p/w300/t72JbnQneGkEugdAYlCC8VWfxNx.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 5",
+          "startDate": "2008-01-08",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            1
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2008-01-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 100,
+              "still": "https://image.tmdb.org/t/p/w300/8ZMd83AFRe7jlvC3Jyp2rSDnHPy.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2008-01-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 93,
+              "still": "https://image.tmdb.org/t/p/w300/do4QYHkObPCIoMnxbtY0x7PY8B.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2008-01-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 77,
+              "still": "https://image.tmdb.org/t/p/w300/rRYnrGDk04xF3HjoPbStqC7Ex5p.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2008-01-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 96,
+              "still": "https://image.tmdb.org/t/p/w300/3ecmAdjmU2ubG5UTEyE5Gvp11g0.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2008-02-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 75,
+              "still": "https://image.tmdb.org/t/p/w300/xk2WVsELidHKUiZQvvWf19AHiGh.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2008-02-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 71,
+              "still": "https://image.tmdb.org/t/p/w300/uBqaj2rE7HQ9II5QhqXACMagtyK.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2008-02-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 80,
+              "still": "https://image.tmdb.org/t/p/w300/wFx2U8CTVvi0hYgWyY9NhZdauav.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2008-02-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 83,
+              "still": "https://image.tmdb.org/t/p/w300/eMEFXTP6Uu6mKJGtVkGap5r6HQM.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2008-03-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 82,
+              "still": "https://image.tmdb.org/t/p/w300/evhy4BBQElzHmHQyj3SfHy4RD6d.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2008-03-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 83,
+              "still": "https://image.tmdb.org/t/p/w300/k6D8wqxCOBaqPIHUbjvt3I9SGwV.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2008-04-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 74,
+              "still": "https://image.tmdb.org/t/p/w300/6EmJ6ptA5SQCCzPO9KI2ljxY8qT.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2008-04-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 92,
+              "still": "https://image.tmdb.org/t/p/w300/5pFhbmcZI3XqI1sYcG8qQUdmkbi.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2008-04-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 81,
+              "still": "https://image.tmdb.org/t/p/w300/xPsZ2Kfw3Yj4vwNqgYGNa7tuTZO.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 6",
+          "startDate": "2008-04-22",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            1
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2008-04-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 83,
+              "still": "https://image.tmdb.org/t/p/w300/cmyUMo2NY5w2LV2sYZalDgbEwZH.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2008-05-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 85,
+              "still": "https://image.tmdb.org/t/p/w300/tTnjNU8YaCMFL1L0kfDRC3OmZEQ.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2008-05-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 83,
+              "still": "https://image.tmdb.org/t/p/w300/5o0pHYWFikYU3TdoPOoASPuWiUe.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2008-05-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 82,
+              "still": "https://image.tmdb.org/t/p/w300/ka8vJlSzxfCgi5fjMpMugGe8QrH.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2008-05-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 72,
+              "still": "https://image.tmdb.org/t/p/w300/cWNBqb4oMjsYPKhDe5zCfxwaNft.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2008-06-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 69,
+              "still": "https://image.tmdb.org/t/p/w300/atnSquCEacrpkuF00vfWB0AYNpO.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2008-06-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 81,
+              "still": "https://image.tmdb.org/t/p/w300/ntlpteagmOhINyENinMA6R7281j.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2008-06-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 69,
+              "still": "https://image.tmdb.org/t/p/w300/xMzkizAHPFwAvAa29XUcknwA1Fz.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2008-07-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 84,
+              "still": "https://image.tmdb.org/t/p/w300/7C9kEGltLozX4mK5VkEsdQWbNVe.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2008-07-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 83,
+              "still": "https://image.tmdb.org/t/p/w300/4VHL5zOmkkT3IDB49djaAkWTcBM.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2008-09-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 73,
+              "still": "https://image.tmdb.org/t/p/w300/6WKCvYhbamU5JIjnbeK9jY2C25j.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2008-09-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 76,
+              "still": "https://image.tmdb.org/t/p/w300/20DFogVKtwg0ZMcWgaiO5GUErQk.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2008-10-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 91,
+              "still": "https://image.tmdb.org/t/p/w300/gbMvvJbqauoPDpMCXOyfkGCRKQR.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 7",
+          "startDate": "2009-01-06",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            1,
+            2,
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2009-01-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 93,
+              "still": "https://image.tmdb.org/t/p/w300/56CG32BD5TvAkgb0IcTvpg2hJzl.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2009-01-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 80,
+              "still": "https://image.tmdb.org/t/p/w300/cwjom1Z5pXGPEu4CbszxmJ4B8N8.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2009-01-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 73,
+              "still": "https://image.tmdb.org/t/p/w300/11iI6U0rBmKcc7AXi919LrYYxu.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2009-01-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 72,
+              "still": "https://image.tmdb.org/t/p/w300/t0IP6zm2Sl0CL1cA4np3kwqU31j.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2009-02-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 82,
+              "still": "https://image.tmdb.org/t/p/w300/gf6dFyoC9cLJfaPr7ZronzZnDDO.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2009-02-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 68,
+              "still": "https://image.tmdb.org/t/p/w300/mJZIJAzZYu8ojMALi3vkokHzP6e.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2009-02-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 87,
+              "still": "https://image.tmdb.org/t/p/w300/d1p8hzwa2gFMN2fin00GCBQZTPt.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2009-02-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 83,
+              "still": "https://image.tmdb.org/t/p/w300/j4S7iRaX2iVWjnvcul7rEpZbsrA.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2009-03-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 74,
+              "still": "https://image.tmdb.org/t/p/w300/9C9oISO6Tzgzm8x5F30gdJeyRuy.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2009-03-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 72,
+              "still": "https://image.tmdb.org/t/p/w300/vBkt4na5k2i7oHhQKyGt4Iu3UC3.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2009-03-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 72,
+              "still": "https://image.tmdb.org/t/p/w300/rBdV28HCw6T7M7oxZcMukuvOBnD.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2009-03-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 74,
+              "still": "https://image.tmdb.org/t/p/w300/3c4RHxoEqELSqJreji70p5i8Z8O.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2009-04-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 77,
+              "still": "https://image.tmdb.org/t/p/w300/91eTbQZgxomIO86ac53cg3vAQt8.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 8",
+          "startDate": "2009-04-15",
+          "totalEpisodes": 12,
+          "emissionDays": [
+            2,
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2009-04-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 76,
+              "still": "https://image.tmdb.org/t/p/w300/lhPww4r9rJj5I7lUCJ4O0jF5y2f.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2009-04-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 78,
+              "still": "https://image.tmdb.org/t/p/w300/dDTmj4aB2SWj22DNBdjHf1jfX5H.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2009-05-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 90,
+              "still": "https://image.tmdb.org/t/p/w300/lhobj5g7Kw3Zq8xpUjmpKnIYfV6.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2009-05-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 87,
+              "still": "https://image.tmdb.org/t/p/w300/375Ph34ffbazPQhMkoFb8ymxnlM.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2009-05-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 78,
+              "still": "https://image.tmdb.org/t/p/w300/rtt0jdeT2NKPcmmF6xXJAIgJnNb.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2009-06-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 85,
+              "still": "https://image.tmdb.org/t/p/w300/3Gb5SKInS7WSETCCXzzv5FkErc8.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2009-06-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 82,
+              "still": "https://image.tmdb.org/t/p/w300/6GTzqyy0Xs9EBwdYBeqZEL2WPuO.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2009-06-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 96,
+              "still": "https://image.tmdb.org/t/p/w300/3MGZxiFlbyf8lY7tEstQJpJb6GD.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2009-06-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 93,
+              "still": "https://image.tmdb.org/t/p/w300/fDBwYunVfRIuR0zIEMNcbmI0nWF.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2009-07-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 76,
+              "still": "https://image.tmdb.org/t/p/w300/jTyr6Yzy1y47z4AsD0eDcHa1MKJ.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2009-07-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 75,
+              "still": "https://image.tmdb.org/t/p/w300/dLakdtmJ1wZtFEZLkFMQKPsFuOr.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2009-07-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 111,
+              "still": "https://image.tmdb.org/t/p/w300/8hhdAKbhUkbtpLVNyHz3Njql0AJ.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 9",
+          "startDate": "2010-02-17",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2010-02-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 96,
+              "still": "https://image.tmdb.org/t/p/w300/ua1tOYYVskqL1X6ZiQizy6ba4gc.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2010-02-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 86,
+              "still": "https://image.tmdb.org/t/p/w300/f5RPOVfMicSVjnkXQjZhBNhLp0V.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2010-03-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 92,
+              "still": "https://image.tmdb.org/t/p/w300/xPz9u3Lp1w1r9nY3NAS8cGzpIK2.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2010-03-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 83,
+              "still": "https://image.tmdb.org/t/p/w300/80eIG2ksEWPFd4LBZjHYpSoCKTr.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2010-03-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 84,
+              "still": "https://image.tmdb.org/t/p/w300/d03xl8qCl0pKpS0BrjNKD9Y79Q0.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2010-03-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 86,
+              "still": "https://image.tmdb.org/t/p/w300/hiz6khD1zHSRqxAJzKkUTkN2ItS.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2010-04-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 77,
+              "still": "https://image.tmdb.org/t/p/w300/uI31DKZLDxlLEAMLF9avPQTIaWf.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2010-04-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 74,
+              "still": "https://image.tmdb.org/t/p/w300/4wJyeMKZAgdFpvzTKZQBUK0u3of.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2010-04-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 74,
+              "still": "https://image.tmdb.org/t/p/w300/ig54sjmGnsMMO7Kk3iQbT5kK7CL.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2010-04-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 82,
+              "still": "https://image.tmdb.org/t/p/w300/deortRxGZ48Xm6QMUWd8rrzP9S8.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2010-05-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 75,
+              "still": "https://image.tmdb.org/t/p/w300/y3FemyD0fzuB8qexnIDadiEpNyU.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2010-05-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 76,
+              "still": "https://image.tmdb.org/t/p/w300/2fUprh7xQAZDk6ReRLDMB9KWf83.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2010-05-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 104,
+              "still": "https://image.tmdb.org/t/p/w300/2WC4T66gnT9Gz36v6PWq3AkSpMW.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 10",
+          "startDate": "2021-05-10",
+          "totalEpisodes": 16,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": true,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2021-05-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 54,
+              "still": "https://image.tmdb.org/t/p/w300/gSgiM7JbNdXcBzHouqeV4mQTdVZ.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2021-05-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 55,
+              "still": "https://image.tmdb.org/t/p/w300/i0O1M5Gi5QVS3JHl7YMMQnNqsGc.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2021-05-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 54,
+              "still": "https://image.tmdb.org/t/p/w300/2dDulfX1V4YWsWj7OKyjcy00XSV.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2021-05-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 54,
+              "still": "https://image.tmdb.org/t/p/w300/x0Ikku48V0XgFHmnFwhOGDFjNKY.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2021-05-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/j8PyxRjonBqGtfKGgIeAk2hrnAf.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2021-06-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/bwZWdX88yYLLR9NKJwSnz0xw6IT.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2021-06-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/tcGxnq3e8c3aaxHjmtG3Yu0eBRn.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2021-06-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/u7Px4pQOXWdZPoBmlnaqfPQw5Qj.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2021-07-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 49,
+              "still": "https://image.tmdb.org/t/p/w300/nwQyAAzgFNZw1zMDMRxP5hzXPeM.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2021-07-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/pSj43gAJnMHAQuqEz6VMAyDOS3O.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2021-08-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/hN7ki8VxKll3xLWTuG48MbOvbgH.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2021-08-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 52,
+              "still": "https://image.tmdb.org/t/p/w300/7QpBkVhzvSvNCouVvOJg1vrnopD.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2021-08-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 54,
+              "still": "https://image.tmdb.org/t/p/w300/uj4sJ9n1Am9PaWt6cQAvMF8IEwM.jpg"
+            },
+            {
+              "num": 14,
+              "date": "2021-08-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/x9pca7QqlGjJ5EraeTQ7SCY5sIy.jpg"
+            },
+            {
+              "num": 15,
+              "date": "2021-08-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/1jt7YH4r77cGqQ85D6UsRk9sycI.jpg"
+            },
+            {
+              "num": 16,
+              "date": "2021-09-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/rEKlxBgOfDkPpLdrGH6AZtkcu81.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-09-12T11:57:18.562Z"
     }
   ],
   "movies": [
@@ -28122,68 +29841,112 @@
     },
     {
       "id": "1700000000013",
-      "name": "But I’m a cheerleader",
-      "synopsis": "Megan Bloomfield es animadora en su colegio, tiene amigas animadoras y es novia del capitán del equipo de fútbol. Es vegetariana, no le gustan los besos de su novio y abraza cuando puede a sus amigas. Un día sus amigos/as, su novio y sus padres le tienen una trampa para enviarla a un campamento en el que curan la homosexualidad. Megan tiene que pasar varias pruebas, incluyendo la primera que es darse cuenta de que es lesbiana.\n\n(Source: TMDB)",
-      "year": 1999,
+      "name": "But I'm a Cheerleader",
+      "synopsis": "Megan Bloomfield es animadora en su colegio, tiene amigas animadoras y es novia del capitán del equipo de fútbol. Es vegetariana, no le gustan los besos de su novio y abraza cuando puede a sus amigas. Un día sus amigos/as, su novio y sus padres le tienen una trampa para enviarla a un campamento en el que curan la homosexualidad. Megan tiene que pasar varias pruebas, incluyendo la primera que es darse cuenta de que es lesbiana.",
+      "year": 2000,
       "country": "Estados Unidos",
-      "date": "1999-09-12",
+      "date": "2000-07-07",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=byKYpC0mDu4",
+      "trailerUrl": "https://www.youtube.com/watch?v=HnUvneNxoz8",
       "genres": [
-        "Romance",
-        "Drama"
+        "Comedia",
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/qXlNjN5LFuycqS4EHRwQeR6WOVt.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/qXlNjN5LFuycqS4EHRwQeR6WOVt.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:28:03.404Z",
+      "updatedAt": "2026-09-12T11:50:56.417Z",
       "movieType": "film",
       "duration": 85,
-      "tmdbId": 20770,
+      "tmdbId": "20770",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 883
+      "tmdbVoteCount": 883,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_10871_mtybpyn2",
+          "character": "Megan"
+        },
+        {
+          "actressId": "tmdb_20387_mtybpyn2",
+          "character": "Graham"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000014",
-      "name": "Better than chocolate",
-      "synopsis": "Dos atractivas jóvenes, Maggie y Kim, se conocen en Vancouver, comienzan un apasionado romance y se van a vivir juntas. Mientras tanto, Lila, la ingenua y conservadora madre de Maggie, se divorcia y decide irse a vivir con su hija. Será entonces cuando descubra la verdad sobre su hija y su poco convencional grupo de amigas.\n\n(Source: FILMAFFINITY)",
+      "name": "Mejor que el chocolate",
+      "synopsis": "Dos atractivas jóvenes, Maggie y Kim, se conocen en Vancouver, comienzan un apasionado romance y se van a vivir juntas. Mientras tanto, Lila, la ingenua y conservadora madre de Maggie, se divorcia y decide irse a vivir con su hija. Será entonces cuando descubra la verdad sobre su hija y su poco convencional grupo de amigas. (FILMAFFINITY)",
       "year": 1999,
-      "country": "Estados Unidos",
-      "date": "1999-08-07",
+      "country": "Canadá",
+      "date": "1999-07-08",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=TSXZnaRqNmQ",
+      "trailerUrl": "https://www.youtube.com/watch?v=MxS3znIIzfQ",
       "genres": [
-        "Romance",
-        "Drama"
+        "Comedia",
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/7FC2UK7MyEwlmbJGCIIFg4U7VPU.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/7FC2UK7MyEwlmbJGCIIFg4U7VPU.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:28:12.906Z",
+      "updatedAt": "2026-09-12T11:51:23.208Z",
       "movieType": "film",
       "duration": 101,
-      "tmdbId": 18212,
+      "tmdbId": "18212",
       "tmdbKind": "movie",
       "tmdbRating": 6,
-      "tmdbVoteCount": 109
+      "tmdbVoteCount": 109,
+      "nameEn": "Better than chocolate",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_104151_mtybqle1",
+          "character": "Maggie"
+        },
+        {
+          "actressId": "tmdb_28110_mtybqle2",
+          "character": "Kim"
+        },
+        {
+          "actressId": "tmdb_19957_mtybqle2",
+          "character": "Lila"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000015",
-      "name": "If These Walls Could Talk 2",
-      "synopsis": "Tres historias de amor lésbico tienen lugar en la misma casa, pero en épocas diferentes (1961, 1972 y 2000). La primera muestra una relación entre dos mujeres maduras, que es rechazada por sus familiares, y la situación de indefensión legal en que queda una de ellas cuando muere la otra. En la segunda, una chica tiene problemas con sus amigas, todas ellas lesbianas y feministas, por el hecho de haberse enamorado de una mujer muy masculina. El tercer relato aborda el debate de dos mujeres sobre la concepción de un hijo.\n\n(Source: TMDB)",
+      "name": "Mujer contra mujer",
+      "synopsis": "Tres historias de amor lésbico tienen lugar en la misma casa, pero en épocas diferentes (1961, 1972 y 2000). La primera muestra una relación entre dos mujeres maduras, que es rechazada por sus familiares, y la situación de indefensión legal en que queda una de ellas cuando muere la otra. En la segunda, una chica tiene problemas con sus amigas, todas ellas lesbianas y feministas, por el hecho de haberse enamorado de una mujer muy masculina. El tercer relato aborda el debate de dos mujeres sobre la concepción de un hijo.",
       "year": 2000,
       "country": "Estados Unidos",
       "date": "2000-03-05",
@@ -28192,118 +29955,210 @@
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=mp_h_ZqHhF0",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/5C1BgJh8xEFXjaYPd1drR1Sx2Cu.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/5C1BgJh8xEFXjaYPd1drR1Sx2Cu.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:28:27.759Z",
+      "updatedAt": "2026-09-12T11:51:46.500Z",
       "movieType": "film",
       "duration": 96,
-      "tmdbId": 28031,
+      "tmdbId": "28031",
       "tmdbKind": "movie",
       "tmdbRating": 6.6,
-      "tmdbVoteCount": 120
+      "tmdbVoteCount": 120,
+      "nameEn": "If These Walls Could Talk 2",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_13333_mtybr6tg",
+          "character": "Edith Tree"
+        },
+        {
+          "actressId": "tmdb_1812_mtybr6tg",
+          "character": "Linda"
+        },
+        {
+          "actressId": "tmdb_14_mtybr6th",
+          "character": "Kal"
+        },
+        {
+          "actressId": "tmdb_2838_mtybr6ti",
+          "character": "Amy"
+        },
+        {
+          "actressId": "tmdb_41293_mtybr6tj",
+          "character": "Abby Hedley"
+        },
+        {
+          "actressId": "tmdb_20_mtybr6tk",
+          "character": "Alice Hedley"
+        },
+        {
+          "actressId": "tmdb_9781_mtybr6tk",
+          "character": "Karen"
+        },
+        {
+          "actressId": "tmdb_10871_mtybpyn2",
+          "character": "Jeanne"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000016",
       "name": "The Truth About Jane",
-      "synopsis": "Jane, una adolescente de instituto, intenta lidiar con el descubrimiento de que es lesbiana tras entablar una intensa amistad con otra chica que le hace descubrir su verdadera sexualidad, lo cual es sólo el principio de los problemas de Jane cuando la inaceptable madre de ésta, Janice, lucha con la sorprendente revelación que le hace su única hija.\n\n(Source: TMDB)",
+      "synopsis": "High schooler Jane struggles with the self-discovery that she is a lesbian after developing an intense friendship with another girl. However, this is only the start of Jane's troubles when her unaccepting mother Janice also contends with the surprising revelation brought forth by her only daughter.",
       "year": 2000,
       "country": "Estados Unidos",
       "date": "2000-08-07",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/GgQUl7V1E30",
+      "trailerUrl": "https://www.youtube.com/watch?v=GgQUl7V1E30",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/e4BheMHfvzFxCKWOWG4CdV2YaOr.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/e4BheMHfvzFxCKWOWG4CdV2YaOr.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:28:36.331Z",
+      "updatedAt": "2026-09-12T12:00:20.394Z",
       "movieType": "film",
-      "duration": 87,
-      "tmdbId": 52805,
+      "duration": 91,
+      "tmdbId": "52805",
       "tmdbKind": "movie",
       "tmdbRating": 6.3,
-      "tmdbVoteCount": 58
+      "tmdbVoteCount": 58,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000017",
       "name": "Mulholland Drive",
-      "synopsis": "Betty, una joven aspirante a actriz, llega a Los Ángeles para convertirse en estrella de cine y se aloja en el apartamento de su tía. Allí conoce a Rita, una mujer que padece amnesia a causa de un accidente en Mulholland Drive. Las dos juntas deciden investigar quién es Rita y cómo llegó hasta allí.\n\n(Source: TMDB)",
+      "synopsis": "Betty, una joven aspirante a actriz, llega a Los Ángeles para convertirse en estrella de cine y se aloja en el apartamento de su tía. Allí conoce a Rita, una mujer que padece amnesia a causa de un accidente en Mulholland Drive. Las dos juntas deciden investigar quién es Rita y cómo llegó hasta allí.",
       "year": 2001,
       "country": "Estados Unidos",
-      "date": "2001-05-16",
-      "network": "Prime Video",
-      "networkUrl": "https://www.primevideo.com/dp/amzn1.dv.gti.e53de7c8-d5fa-42e6-8279-02368d660227?autoplay=0&ref_=atv_cf_strg_wb",
+      "date": "2001-06-06",
+      "network": "Filmin",
+      "networkUrl": "https://www.filmin.es",
       "watchLinks": [
         {
-          "name": "Prime Video",
-          "url": "https://www.primevideo.com/dp/amzn1.dv.gti.e53de7c8-d5fa-42e6-8279-02368d660227?autoplay=0&ref_=atv_cf_strg_wb"
+          "name": "Filmin",
+          "url": "https://www.filmin.es"
         }
       ],
-      "trailerUrl": "https://youtu.be/3oa64ktrwKY",
+      "trailerUrl": "https://www.youtube.com/watch?v=iDSsG6bephI",
       "genres": [
         "Drama",
+        "Misterio",
         "Thriller"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/kLpwkbimTwTbsYixCO3eAdNCQJ8.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/kLpwkbimTwTbsYixCO3eAdNCQJ8.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:28:44.517Z",
+      "updatedAt": "2026-09-12T12:00:26.295Z",
       "movieType": "film",
       "duration": 147,
-      "tmdbId": 1018,
+      "tmdbId": "1018",
       "tmdbKind": "movie",
       "tmdbRating": 7.8,
-      "tmdbVoteCount": 7269
+      "tmdbVoteCount": 7269,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000018",
-      "name": "The Hours",
-      "synopsis": "Las Horas es una tragedia melancólica, basada en el libro de Virginia Woolf \"Mrs. Dalloway\", sobre tres mujeres condenadas a la depresión. Stephaen Daldry, el director, presenta la vida y los cambios psicóticos de la excepcional autora inglesa interpretada por Nicole Kidman, que ganó el Oscar a la mejor actriz.\n\n(Source: TMDB)",
+      "name": "Las horas",
+      "synopsis": "Las Horas es una tragedia melancólica, basada en el libro de Virginia Woolf \"Mrs. Dalloway\", sobre tres mujeres condenadas a la depresión. Stephaen Daldry, el director, presenta  la vida y los cambios psicóticos de la excepcional autora inglesa interpretada por Nicole Kidman, que ganó el Oscar a la mejor actriz.",
       "year": 2002,
       "country": "Estados Unidos",
       "date": "2002-12-27",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
-      "trailerUrl": "https://youtu.be/CkPWXUxIiXs",
-      "genres": [
-        "Romance",
-        "Drama"
+      "network": "Apple TV Store, Rakuten TV, Amazon Video",
+      "networkUrl": "https://tv.apple.com",
+      "watchLinks": [
+        {
+          "name": "Apple TV Store",
+          "url": "https://tv.apple.com"
+        }
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/jq5fYgl8C0IEaMaagH6ct7heJrU.jpg",
+      "trailerUrl": "https://www.youtube.com/watch?v=CkPWXUxIiXs",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "poster": "https://image.tmdb.org/t/p/w500/jq5fYgl8C0IEaMaagH6ct7heJrU.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:28:55.426Z",
+      "updatedAt": "2026-09-12T12:00:54.645Z",
       "movieType": "film",
       "duration": 110,
-      "tmdbId": 590,
+      "tmdbId": "590",
       "tmdbKind": "movie",
       "tmdbRating": 7.3,
-      "tmdbVoteCount": 1907
+      "tmdbVoteCount": 1907,
+      "nameEn": "The Hours",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_2227_mtyc2uyn",
+          "character": "Virginia Woolf"
+        },
+        {
+          "actressId": "tmdb_1231_mtyc2uyo",
+          "character": "Laura Brown"
+        },
+        {
+          "actressId": "tmdb_5064_mtyc2uyo",
+          "character": "Clarissa Vaughan"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000019",
@@ -28340,174 +30195,349 @@
     {
       "id": "1700000000020",
       "name": "Monster",
-      "synopsis": "Basada en hechos reales. Aileen Wuornos es una prostituta que fue ejecutada en 2002 en el estado de Florida, tras confesarse autora de seis asesinatos, incluido un policía. Aileen declaró que había matado en defensa propia, como reacción a los violentos ataques que sufria mientras ejercía su oficio. Al borde de la desesperación y del suicidio, conoce un día en un bar a Selby Wall, una joven lesbiana, que ha sido enviada por sus padres a vivir con su tía para \"curar su homosexualidad\". Wuornos, víctima de una trágica infancia llena de abusos, rápidamente se enamora de Selby, encontrando en ella una razón para vivir. Incapaz de encontrar un trabajo digno, Wuornos sigue ejerciendo la prostitución. Cuando uno de sus clientes la maltrata, ella lo mata en defensa propia, comenzando así una trágica cadena de asesinatos. Esta es la historia de una asesina, pero también una historia de amor entre dos inadaptadas.\n\n(Source: TMDB)",
+      "synopsis": "Basada en hechos reales. Aileen Wuornos es una prostituta que fue ejecutada en 2002 en el estado de Florida, tras confesarse autora de seis asesinatos, incluido un policía. Aileen declaró que había matado en defensa propia, como reacción a los violentos ataques que sufria mientras ejercía su oficio. Al borde de la desesperación y del suicidio, conoce un día en un bar a Selby Wall, una joven lesbiana, que ha sido enviada por sus padres a vivir con su tía para \"curar su homosexualidad\". Wuornos, víctima de una trágica infancia llena de abusos, rápidamente se enamora de Selby, encontrando en ella una razón para vivir. Incapaz de encontrar un trabajo digno, Wuornos sigue ejerciendo la prostitución. Cuando uno de sus clientes la maltrata, ella lo mata en defensa propia, comenzando así una trágica cadena de asesinatos. Esta es la historia de una asesina, pero también una historia de amor entre dos inadaptadas.",
       "year": 2003,
       "country": "Estados Unidos",
-      "date": "2003-11-16",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
-      "trailerUrl": "https://youtu.be/vq70brIQP40",
+      "date": "2003-12-24",
+      "network": "Amazon Video, Apple TV Store, Google Play Movies, YouTube, Fandango At Home",
+      "networkUrl": "https://tv.apple.com",
+      "watchLinks": [
+        {
+          "name": "Apple TV Store",
+          "url": "https://tv.apple.com"
+        },
+        {
+          "name": "YouTube",
+          "url": "https://www.youtube.com"
+        }
+      ],
+      "trailerUrl": "https://www.youtube.com/watch?v=vq70brIQP40",
       "genres": [
+        "Crimen",
         "Drama"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/gaHEndERUUn3ZwdeeKYy0WBhgET.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/gaHEndERUUn3ZwdeeKYy0WBhgET.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:29:12.400Z",
+      "updatedAt": "2026-09-12T12:01:52.047Z",
       "movieType": "film",
       "duration": 109,
-      "tmdbId": 504,
+      "tmdbId": "504",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 2619
+      "tmdbVoteCount": 2619,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_6885_mtyc44mb",
+          "character": "Aileen Wuornos"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000021",
-      "name": "Saving Face",
-      "synopsis": "Para Wilhelmina \"Wil\" Pang, neoyorquina de 28 años, la vida es una representación de juegos malabares entre una prometedora carrera como cirujana y sus responsabilidades como hija obediente. Al igual que la línea 7 del metro que la lleva a visitar a su familia china una vez por semana, Wil está permanentemente en tránsito entre dos mundos. Las expectativas de la sociedad de Flushing, Queens, de la que procede, y su propio deseo de alejarse de ella han logrado que Wil esté satisfecha con la vida paralela que ha optado llevar, a pesar de que ello conlleve un involuntario juego de charadas con su madre viuda y el viejo mundo que ésta representa.\n\n(Source: FILMAFFINITY)",
+      "name": "Guardando las apariencias",
+      "synopsis": "Para Wilhelmina \"Wil\" Pang, neoyorquina de 28 años, la vida es una representación de juegos malabares entre una prometedora carrera como cirujana y sus responsabilidades como hija obediente. Al igual que la línea 7 del metro que la lleva a visitar a su familia china una vez por semana, Wil está permanentemente en tránsito entre dos mundos. Las expectativas de la sociedad de Flushing, Queens, de la que procede, y su propio deseo de alejarse de ella han logrado que Wil esté satisfecha con la vida paralela que ha optado llevar, a pesar de que ello conlleve un involuntario juego de charadas con su madre viuda y el viejo mundo que ésta representa. (FILMAFFINITY)",
       "year": 2004,
       "country": "Estados Unidos",
-      "date": "2004-05-14",
-      "network": "",
+      "date": "2004-09-12",
+      "network": "fuboTV, Howdy Amazon Channel",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=HF6rNrh60hI",
+      "trailerUrl": "https://www.youtube.com/watch?v=78h8WeP3Oas",
       "genres": [
-        "Romance",
-        "Drama"
+        "Comedia",
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/7XbbgkKi4nEMOu9iwiANXpjKKhe.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/7XbbgkKi4nEMOu9iwiANXpjKKhe.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:29:23.949Z",
+      "updatedAt": "2026-09-12T12:02:23.812Z",
       "movieType": "film",
-      "duration": 91,
-      "tmdbId": 19316,
+      "duration": 100,
+      "tmdbId": "19316",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 275
+      "tmdbVoteCount": 275,
+      "nameEn": "Saving Face",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_6720_mtyc4p5d",
+          "character": "Ma"
+        },
+        {
+          "actressId": "tmdb_55253_mtyc4p5e",
+          "character": "Wil"
+        },
+        {
+          "actressId": "tmdb_84462_mtyc4p5f",
+          "character": "Vivian"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_55253_mtyc4p5e",
+          "tmdb_84462_mtyc4p5f"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000022",
-      "name": "My Summer of Love",
-      "synopsis": "La película explora la relación entre dos mujeres jóvenes de diferentes clases. Mona una vez que su hermano se convirtió en un cristiano en prisión, conoce a Tamsin que sufre de falta de amor en su familia.\n\n(Source: TMDB)",
-      "year": 2004,
+      "name": "Mi verano de amor",
+      "synopsis": "La película explora la relación entre dos mujeres jóvenes de diferentes clases. Mona una vez que su hermano se convirtió en un cristiano en prisión, conoce a Tamsin que sufre de falta de amor en su familia.",
+      "year": 2005,
       "country": "Reino Unido",
-      "date": "2004-08-21",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
-      "trailerUrl": "https://youtu.be/G6fEOBmqUPo",
-      "genres": [
-        "Romance",
-        "Drama"
+      "date": "2005-05-05",
+      "network": "Amazon Video, Apple TV Store, Google Play Movies, YouTube, Fandango At Home",
+      "networkUrl": "https://tv.apple.com",
+      "watchLinks": [
+        {
+          "name": "Apple TV Store",
+          "url": "https://tv.apple.com"
+        },
+        {
+          "name": "YouTube",
+          "url": "https://www.youtube.com"
+        }
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/47eozMel2wZgEASToUzScsPVpDs.jpg",
+      "trailerUrl": "https://www.youtube.com/watch?v=M8kCxgyY7Bw",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "poster": "https://image.tmdb.org/t/p/w500/47eozMel2wZgEASToUzScsPVpDs.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:29:37.352Z",
+      "updatedAt": "2026-09-12T12:02:44.600Z",
       "movieType": "film",
       "duration": 86,
-      "tmdbId": 9709,
+      "tmdbId": "9709",
       "tmdbKind": "movie",
       "tmdbRating": 6.2,
-      "tmdbVoteCount": 331
+      "tmdbVoteCount": 331,
+      "nameEn": "My Summer of Love",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_37983_mtyc5crg",
+          "character": "Mona"
+        },
+        {
+          "actressId": "tmdb_5081_mtyc5crh",
+          "character": "Tamsin"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000023",
-      "name": "D.E.B.S",
-      "synopsis": "Historia de un grupo de sexys colegialas agentes secretos. Lucy Diamond (Jordana Brewster), la atractiva jefa de un grupo criminal, ha vuelto a Estados Unidos, y el D.E.B.S., un grupo de espías formado por chicas de instituto, le siguen la pista. Pero cuando su agente más importante, la bella Amy Bradshaw (Sara Foster), desaparece misteriosamente tras enfrentarse cara a cara con la delincuente, el D.E.B.S. comienza a buscar el escondite de Lucy, sin sospechar que quizá Amy no quiera ser rescatada...\n\n(Source: TMDB)",
-      "year": 2004,
+      "name": "D.E.B.S. (Espías en acción)",
+      "synopsis": "Historia de un grupo de sexys colegialas agentes secretos. Lucy Diamond (Jordana Brewster), la atractiva jefa de un grupo criminal, ha vuelto a Estados Unidos, y el D.E.B.S., un grupo de espías formado por chicas de instituto, le siguen la pista. Pero cuando su agente más importante, la bella Amy Bradshaw (Sara Foster), desaparece misteriosamente tras enfrentarse cara a cara con la delincuente, el D.E.B.S. comienza a buscar el escondite de Lucy, sin sospechar que quizá Amy no quiera ser rescatada...",
+      "year": 2005,
       "country": "Estados Unidos",
-      "date": "2004-01-21",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=R3Unq55oBxQ",
+      "date": "2005-03-25",
+      "network": "Amazon Prime Video, Amazon Prime Video with Ads, Howdy Amazon Channel",
+      "networkUrl": "https://www.primevideo.com",
+      "watchLinks": [
+        {
+          "name": "Amazon Prime Video",
+          "url": "https://www.primevideo.com"
+        },
+        {
+          "name": "Amazon Prime Video with Ads",
+          "url": "https://www.primevideo.com"
+        }
+      ],
+      "trailerUrl": "https://www.youtube.com/watch?v=AQsnHNt1Di8",
       "genres": [
+        "Acción",
+        "Comedia",
         "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/rvoShCoVA8rHJ6O1Kk4NxCZSSWF.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/rvoShCoVA8rHJ6O1Kk4NxCZSSWF.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:29:44.163Z",
+      "updatedAt": "2026-09-12T12:03:20.808Z",
       "movieType": "film",
-      "duration": 91,
-      "tmdbId": 178516,
+      "duration": 92,
+      "tmdbId": "540",
       "tmdbKind": "movie",
-      "tmdbRating": 6,
-      "tmdbVoteCount": 33
+      "tmdbRating": 6.5,
+      "tmdbVoteCount": 657,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_22121_mtyc5y1a",
+          "character": "Amy"
+        },
+        {
+          "actressId": "tmdb_22123_mtyc5y1a",
+          "character": "Lucy"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000024",
-      "name": "Imagine me and you",
-      "synopsis": "En el día de su boda, camino del altar, Rachel ve a la persona con la que quiere pasar el resto de su vida. No es su prometido, ni siquiera un invitado apuesto... es la chica encargada de las flores de la ceremonia. Todo empieza el día que Rachel se casa con Heck. Mientras sus amigos le ayudan y su familia no hace más que molestar, Luce - la florista - arregla las decoraciones florales en la iglesia. En el exterior, Luce se encuentra con Heck y con el padrino, Cooper, que se siente inmediatamente atraído por ella. Luce hace caso omiso a sus insinuaciones e intentará marcharse aunque al final le convencen para que se siente al lado de la hermana de Rachel de ocho años. Dos semanas después Rachel pasa por la tienda de Luce para invitarla a cenar. Planea emparejarla con Cooper, pero antes de la llegada de éste Luce le cuenta a Heck que es lesbiana. Cooper no tiene ni idea e intenta ligar con ella mientras Rachel y Luce discuten acerca de lo que es el amor....\n\n(Source: TMDB)",
-      "year": 2005,
+      "name": "Rosas rojas",
+      "synopsis": "En el día de su boda, camino del altar, Rachel ve a la persona con la que quiere pasar el resto de su vida. No es su prometido, ni siquiera un invitado apuesto... es la chica encargada de las flores de la ceremonia. Todo empieza el día que Rachel se casa con Heck. Mientras sus amigos le ayudan y su familia no hace más que molestar, Luce - la florista - arregla las decoraciones florales en la iglesia. En el exterior, Luce se encuentra con Heck y con el padrino, Cooper, que se siente inmediatamente atraído por ella. Luce hace caso omiso a sus insinuaciones e intentará marcharse aunque al final le convencen para que se siente al lado de la hermana de Rachel de ocho años. Dos semanas después Rachel pasa por la tienda de Luce para invitarla a cenar. Planea emparejarla con Cooper, pero antes de la llegada de éste Luce le cuenta a Heck que es lesbiana. Cooper no tiene ni idea e intenta ligar con ella mientras Rachel y Luce discuten acerca de lo que es el amor....",
+      "year": 2006,
       "country": "Reino Unido",
       "date": "2006-01-27",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=X-EEMiSmnNw",
+      "trailerUrl": "https://www.youtube.com/watch?v=F4G32PRmGjA",
       "genres": [
-        "Romance",
-        "Drama"
+        "Comedia",
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/2zTZoOV61Gc7UMjMHRzY9yCEljY.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/2zTZoOV61Gc7UMjMHRzY9yCEljY.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:29:52.246Z",
+      "updatedAt": "2026-09-12T12:05:56.390Z",
       "movieType": "film",
-      "duration": 103,
-      "tmdbId": 1544,
+      "duration": 93,
+      "tmdbId": "1544",
       "tmdbKind": "movie",
       "tmdbRating": 7.6,
-      "tmdbVoteCount": 1134
+      "tmdbVoteCount": 1134,
+      "nameEn": "Imagine me and you",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_15555_mtyc6n7z",
+          "character": "Rachel"
+        },
+        {
+          "actressId": "1789214735656",
+          "character": "Luce"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_15555_mtyc6n7z",
+          "1789214735656"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000025",
-      "name": "Lost and delirious",
-      "synopsis": "Mouse Bradford deja la pequeña ciudad donde ha nacido y crecido para ingresar en el elegante internado femenino Perkis College. Enseguida es aceptada por sus dos compañeras de habitación, la llamativa y perspicaz Pauline, y la atractiva y simpática Tory. Las tres están unidas por haber sufrido ya en sus jóvenes vidas. Mouse ha perdido a su madre, Pauline a sus padres que la dieron en adopción y Tony sabe que está perdiendo a sus padres, y las esperanzas que ellos han depositado en su hija. Aunque para Mouse ambas son sus mejores amigas, está desconcertada por la intensidad de la relación existente entre Pauline y Tory. Este mundo se le viene abajo cuando ambas son vistas en una muy comprometida situación amorosa.\n\n(Source: TMDB)",
-      "year": 2006,
-      "country": "Canadá",
-      "date": "2001-07-06",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=YMFkAjltF5U",
-      "genres": [
-        "Romance",
-        "Drama"
+      "name": "Lost and Delirious",
+      "synopsis": "Mouse Bradford deja la pequeña ciudad donde ha nacido y crecido para ingresar en el elegante internado femenino Perkis College. Enseguida es aceptada por sus dos compañeras de habitación, la llamativa y perspicaz Pauline, y la atractiva y simpática Tory. Las tres están unidas por haber sufrido ya en sus jóvenes vidas. Mouse ha perdido a su madre, Pauline a sus padres que la dieron en adopción y Tony sabe que está perdiendo a sus padres, y las esperanzas que ellos han depositado en su hija. Aunque para Mouse ambas son sus mejores amigas, está desconcertada por la intensidad de la relación existente entre Pauline y Tory. Este mundo se le viene abajo cuando ambas son vistas en una muy comprometida situación amorosa.",
+      "year": 2001,
+      "country": "Canadá / Estados Unidos",
+      "date": "2001-01-21",
+      "network": "Prime Video",
+      "networkUrl": "https://www.primevideo.com/dp/amzn1.dv.gti.f3a59c00-f773-409e-95b3-0f9b12972502?autoplay=0&ref_=atv_cf_strg_wb",
+      "watchLinks": [
+        {
+          "name": "Amazon Prime Video",
+          "url": "https://www.primevideo.com/dp/amzn1.dv.gti.f3a59c00-f773-409e-95b3-0f9b12972502?autoplay=0&ref_=atv_cf_strg_wb"
+        },
+        {
+          "name": "Filmin",
+          "url": "https://www.filmin.es/pelicula/lost-and-delirious-el-ultimo-suspiro"
+        }
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/3Cu95A09arsfTsOJfygVwhJe5qc.jpg",
+      "trailerUrl": "https://www.youtube.com/watch?v=c-My_lTpAgM",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "poster": "https://image.tmdb.org/t/p/w500/3Cu95A09arsfTsOJfygVwhJe5qc.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-10T11:02:55.491Z"
+      "updatedAt": "2026-09-12T12:08:29.823Z",
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "movieType": "film",
+      "duration": 103,
+      "cast": [
+        {
+          "actressId": "tmdb_11617_mtyca2z3",
+          "character": "Mary 'Mouse' Bedford"
+        },
+        {
+          "actressId": "tmdb_15555_mtyc6n7z",
+          "character": "Pauline 'Paulie' Oster"
+        },
+        {
+          "actressId": "tmdb_82096_mtycartd",
+          "character": "Victoria 'Tori' Moller"
+        }
+      ],
+      "couples": [],
+      "productoraId": "",
+      "tmdbId": "17612",
+      "tmdbKind": "movie",
+      "tmdbRating": 6.8,
+      "tmdbVoteCount": 541
     },
     {
       "id": "1700000000026",
@@ -39657,15 +41687,6 @@
       "height": 165
     },
     {
-      "id": "1778672828977",
-      "name": "\"Lena\" Lalina Lorena Schuett",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStxAy7Uvmfib5OVFMNB2Ohh-_RXyZErH2rDA&s",
-      "country": "Tailandia",
-      "notes": "Actriz",
-      "birthdate": "1999-11-25",
-      "height": 170
-    },
-    {
       "id": "1778672885792",
       "name": "\"Miu\" Natasha Taechamongkalapiwat",
       "photo": "https://i.redd.it/miu-natsha-photo-drop-shes-in-an-upcoming-show-called-my-v0-rwg5ud6cj5bf1.jpg?width=1170&format=pjpg&auto=webp&s=d5c1f40907a43051a6621cac4875eb3410c8e0e9",
@@ -41809,6 +43830,312 @@
       "photo": "https://image.tmdb.org/t/p/w300/oixdin5Au0v1DqlR8Rwfdniqath.jpg",
       "country": "Suecia",
       "birthdate": "1981-05-13"
+    },
+    {
+      "id": "tmdb_10871_mtybpyn2",
+      "name": "Natasha Lyonne",
+      "photo": "https://image.tmdb.org/t/p/w300/2QJoTBEIeYyjGSDot9qxv2ayPH3.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1979-04-04"
+    },
+    {
+      "id": "tmdb_20387_mtybpyn2",
+      "name": "Clea DuVall",
+      "photo": "https://image.tmdb.org/t/p/w300/yueygn1Lmmni7EaMQD9LslexDlu.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1977-09-25"
+    },
+    {
+      "id": "tmdb_104151_mtybqle1",
+      "name": "Karyn Dwyer",
+      "photo": "https://image.tmdb.org/t/p/w300/fuqGg7SVQ1DGSm3j9Tfk7vmixbJ.jpg",
+      "country": "Canadá",
+      "birthdate": "1975-03-22"
+    },
+    {
+      "id": "tmdb_28110_mtybqle2",
+      "name": "Christina Cox",
+      "photo": "https://image.tmdb.org/t/p/w300/xV2wWyJ8hEzot7vQ0cByVrmq9w2.jpg",
+      "country": "Canadá",
+      "birthdate": "1971-07-31"
+    },
+    {
+      "id": "tmdb_19957_mtybqle2",
+      "name": "Wendy Crewson",
+      "photo": "https://image.tmdb.org/t/p/w300/6hplkzK8KV5Cw8Z8SVKwlt3nU5I.jpg",
+      "country": "Canadá",
+      "birthdate": "1956-05-09"
+    },
+    {
+      "id": "tmdb_13333_mtybr6tg",
+      "name": "Vanessa Redgrave",
+      "photo": "https://image.tmdb.org/t/p/w300/hBsjc7cW1DA0V6APwe3A7ESH3Lv.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1937-01-30"
+    },
+    {
+      "id": "tmdb_1812_mtybr6tg",
+      "name": "Michelle Williams",
+      "photo": "https://image.tmdb.org/t/p/w300/jn3BVMVbIptz2gc6Fhxo1qwJVvW.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1980-09-09"
+    },
+    {
+      "id": "tmdb_14_mtybr6th",
+      "name": "Ellen DeGeneres",
+      "photo": "https://image.tmdb.org/t/p/w300/z8IEEid4z63CBlJtxrTKEfsW7NA.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1958-01-26"
+    },
+    {
+      "id": "tmdb_2838_mtybr6ti",
+      "name": "Chloë Sevigny",
+      "photo": "https://image.tmdb.org/t/p/w300/eM7KGAMCmZCzYDFV8gaSfknN675.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1974-11-18"
+    },
+    {
+      "id": "tmdb_41293_mtybr6tj",
+      "name": "Marian Seldes",
+      "photo": "https://image.tmdb.org/t/p/w300/farpPf0NJrZfdYJNnAmDlmhTURn.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1928-08-23"
+    },
+    {
+      "id": "tmdb_20_mtybr6tk",
+      "name": "Elizabeth Perkins",
+      "photo": "https://image.tmdb.org/t/p/w300/t9Cfx8R8hxB1Od46s9CXJMwwNTA.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1960-11-18"
+    },
+    {
+      "id": "tmdb_9781_mtybr6tk",
+      "name": "Nia Long",
+      "photo": "https://image.tmdb.org/t/p/w300/heVQkCGKUuKKRjRJaZIBrEKGhYA.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1970-10-30"
+    },
+    {
+      "id": "tmdb_37941_mtybv8vr",
+      "name": "Moon Geun-young",
+      "photo": "https://image.tmdb.org/t/p/w300/wnQhToleEfM1MnyJIx94cUoscT4.jpg",
+      "country": "Corea del Sur",
+      "birthdate": "1987-05-06"
+    },
+    {
+      "id": "tmdb_1248204_mtybv8vs",
+      "name": "Moon Chae-won",
+      "photo": "https://image.tmdb.org/t/p/w300/x8kARXMszobY1YRcc3nbWczqyeZ.jpg",
+      "country": "Corea del Sur",
+      "birthdate": "1986-11-13"
+    },
+    {
+      "id": "tmdb_39256_mtybv8vt",
+      "name": "Im Ji-eun",
+      "photo": "https://image.tmdb.org/t/p/w300/vCN0sbmE06VsiLFO2uegQzCZEzH.jpg",
+      "country": "Corea del Sur",
+      "birthdate": "1973-02-27"
+    },
+    {
+      "id": "tmdb_140335_mtybv8vu",
+      "name": "Kim You-jung",
+      "photo": "https://image.tmdb.org/t/p/w300/eFcMTDIgzSGLHZYXcsf1M42cvFt.jpg",
+      "country": "Corea del Sur",
+      "birthdate": "1999-09-22"
+    },
+    {
+      "id": "tmdb_1295464_mtybv8vw",
+      "name": "Kim Bo-mi",
+      "photo": "https://image.tmdb.org/t/p/w300/ceRi6eQFiz2zWgO1YC5kIvcIALH.jpg",
+      "country": "Corea del Sur",
+      "birthdate": "1987-05-15"
+    },
+    {
+      "id": "tmdb_1019849_mtybwdhs",
+      "name": "Marián Aguilera",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ2kJr5Ztqw-Qsddv-EXZgcSwUrtpods42M690oR6edxiwNXQnIofuStpZ2rw9gQoOaMEWxAMQkzyQsS6lsG_3Nmft3K60yQsH1yBqDg&s=10",
+      "country": "España",
+      "birthdate": "1977-03-12",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "notes": ""
+    },
+    {
+      "id": "1789214219969",
+      "name": "Laura Sánchez López",
+      "photo": "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTUTXsl8A1HRlYn3VTWLtZru8vgzM3TKVtmU6CTiO-MYrY88I9WKXM4dAET_NjlI7qoBYcf63S5wbhHklA",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "España",
+      "birthdate": "1981-05-29",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1789214365489",
+      "name": "Sara Ramírez",
+      "photo": "https://media.themoviedb.org/t/p/w300_and_h450_face/5hi4tZfMQe5Cw236c7eIFYi0D1F.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "México",
+      "birthdate": "1975-08-31",
+      "notes": "Actriz"
+    },
+    {
+      "id": "tmdb_1218072_mtyc27pp",
+      "name": "Ellen Muth",
+      "photo": "https://image.tmdb.org/t/p/w300/gdp6IFmpnkgHtOvZvGMvNNr3qmV.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1981-03-06"
+    },
+    {
+      "id": "tmdb_8893_mtyc27pq",
+      "name": "Stockard Channing",
+      "photo": "https://image.tmdb.org/t/p/w300/qAYBGvapAnnhpoZuYFyoqetncs5.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1944-02-13"
+    },
+    {
+      "id": "tmdb_47757_mtyc27pr",
+      "name": "Kelly Rowan",
+      "photo": "https://image.tmdb.org/t/p/w300/y4j0JO71WUBoFDwrtHpjmwjtdWt.jpg",
+      "country": "Canadá",
+      "birthdate": "1965-10-26"
+    },
+    {
+      "id": "tmdb_105659_mtyc27pt",
+      "name": "Alicia Lagano",
+      "photo": "https://image.tmdb.org/t/p/w300/zojPmYKhd64PEImAiuPhSHLn6e9.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1979-03-26"
+    },
+    {
+      "id": "tmdb_3819168_mtyc27pt",
+      "name": "Tiffany Westlie",
+      "photo": "https://image.tmdb.org/t/p/w300/3V9slUScchYwcL4zJgZuodq8V2m.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1981-08-12"
+    },
+    {
+      "id": "tmdb_1214816_mtyc27pu",
+      "name": "Amy Davidson",
+      "photo": "https://image.tmdb.org/t/p/w300/quMobgUrlhAXM52ua8d8ebO2o3A.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1979-09-15"
+    },
+    {
+      "id": "tmdb_1331793_mtyc27pu",
+      "name": "Molly Schaffer",
+      "photo": "https://image.tmdb.org/t/p/w300/yghNFAXDJKavZelY4DtGjvHzzDU.jpg",
+      "country": "Estados Unidos",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_2227_mtyc2uyn",
+      "name": "Nicole Kidman",
+      "photo": "https://image.tmdb.org/t/p/w300/qwtyWXOBQaMeKEqoWxTdza8Aarn.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1967-06-20"
+    },
+    {
+      "id": "tmdb_1231_mtyc2uyo",
+      "name": "Julianne Moore",
+      "photo": "https://image.tmdb.org/t/p/w300/3YF19rWusxWfEI59ZM33dFhasRq.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1960-12-03"
+    },
+    {
+      "id": "tmdb_5064_mtyc2uyo",
+      "name": "Meryl Streep",
+      "photo": "https://image.tmdb.org/t/p/w300/g5cVxQBAQ3AXt3LhdBXtbbN47Uc.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1949-06-22"
+    },
+    {
+      "id": "tmdb_6885_mtyc44mb",
+      "name": "Charlize Theron",
+      "photo": "https://image.tmdb.org/t/p/w300/gd7ShD0yt4bsR2STeQ19KQ6hvXL.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1975-08-07"
+    },
+    {
+      "id": "tmdb_6720_mtyc4p5d",
+      "name": "Joan Chen",
+      "photo": "https://image.tmdb.org/t/p/w300/jTu4mVKj8sQpgYnuaKchslor585.jpg",
+      "country": "China",
+      "birthdate": "1961-04-26"
+    },
+    {
+      "id": "tmdb_55253_mtyc4p5e",
+      "name": "Michelle Krusiec",
+      "photo": "https://image.tmdb.org/t/p/w300/s7JALfVV7irubRUuc9GL3Wfbx82.jpg",
+      "country": "Taiwán",
+      "birthdate": "1974-10-02"
+    },
+    {
+      "id": "tmdb_84462_mtyc4p5f",
+      "name": "Lynn Chen",
+      "photo": "https://image.tmdb.org/t/p/w300/hPG0uzNhECdYWta0eQ9FpK8IfZc.jpg",
+      "country": "Estados Unidos",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_37983_mtyc5crg",
+      "name": "Natalie Press",
+      "photo": "https://image.tmdb.org/t/p/w300/qE9GG6I2tyxIvHwWUW1wOt1Rgt3.jpg",
+      "country": "Reino Unido",
+      "birthdate": "1980-08-15"
+    },
+    {
+      "id": "tmdb_5081_mtyc5crh",
+      "name": "Emily Blunt",
+      "photo": "https://image.tmdb.org/t/p/w300/5nCSG5TL1bP1geD8aaBfaLnLLCD.jpg",
+      "country": "Reino Unido",
+      "birthdate": "1983-02-23"
+    },
+    {
+      "id": "tmdb_22121_mtyc5y1a",
+      "name": "Sara Foster",
+      "photo": "https://image.tmdb.org/t/p/w300/7RkEv9mi5BAa7uJ2YeNcTeNljxe.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1981-02-05"
+    },
+    {
+      "id": "tmdb_22123_mtyc5y1a",
+      "name": "Jordana Brewster",
+      "photo": "https://image.tmdb.org/t/p/w300/ceL0zxeVbWfCfhoIDZIE1NYqBWb.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1980-04-26"
+    },
+    {
+      "id": "tmdb_15555_mtyc6n7z",
+      "name": "Piper Perabo",
+      "photo": "https://image.tmdb.org/t/p/w300/5XrzISDEox0KubRDzJU668Oxmxy.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1976-10-31"
+    },
+    {
+      "id": "1789214735656",
+      "name": "Lena Headey",
+      "photo": "https://media.themoviedb.org/t/p/w300_and_h450_face/cDyZLf8ddz0EgoUjpv4jjzy7qxA.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "Reino Unido",
+      "birthdate": "1973-10-03",
+      "notes": "Actriz"
+    },
+    {
+      "id": "tmdb_11617_mtyca2z3",
+      "name": "Mischa Barton",
+      "photo": "https://image.tmdb.org/t/p/w300/j3eZsKKIz4uWdVwAvokv8GHU21w.jpg",
+      "country": "Canadá",
+      "birthdate": "1986-01-24"
+    },
+    {
+      "id": "tmdb_82096_mtycartd",
+      "name": "Jessica Paré",
+      "photo": "https://image.tmdb.org/t/p/w300/udvHIbFPW646vDkbnipb82wPUxs.jpg",
+      "country": "Canadá",
+      "birthdate": "1980-12-05"
     }
   ],
   "ships": [
@@ -43955,5 +46282,5 @@
       ]
     }
   },
-  "exportedAt": "2026-09-12T11:43:21.456Z"
+  "exportedAt": "2026-09-12T12:15:14.299Z"
 }
