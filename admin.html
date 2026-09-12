@@ -4261,6 +4261,19 @@ async function tmdbApplyResult(id, kind, type){
         rawCast = (jc.cast||[]).map(c=>({id:c.id,name:c.name,gender:c.gender,profile_path:c.profile_path,order:c.order,character:c.character||''}));
       }
       femaleCast = rawCast.filter(c=>c.gender===1).sort((a,b)=>(a.order??99)-(b.order??99)).slice(0,15);
+      // Si el nombre viene en escritura no latina (tailandés, coreano, chino...),
+      // buscamos una versión romanizada en la ficha de la persona (also_known_as)
+      const containsNonLatin = s => /[^\u0000-\u024F\u1E00-\u1EFF\u2000-\u206F\s'".,\-()&/]/.test(s||'');
+      await Promise.all(femaleCast.map(async person=>{
+        if(!containsNonLatin(person.name)) return;
+        try{
+          const rp = await fetch(`${TMDB_API_BASE}/person/${person.id}?api_key=${encodeURIComponent(key)}`);
+          const pj = await rp.json();
+          const candidates = [pj.name, ...(pj.also_known_as||[])].filter(Boolean);
+          const latin = candidates.find(n=>!containsNonLatin(n));
+          if(latin) person.name = latin;
+        }catch(e){}
+      }));
     }catch(e){}
 
     function setVal(elId,val){
@@ -4299,10 +4312,12 @@ async function tmdbApplyResult(id, kind, type){
       if(femaleCast.length){
         const mcl=document.getElementById('movieCastList');
         if(mcl){
-          mcl.innerHTML='';
+          const existingIds = new Set([...mcl.querySelectorAll('.cast-actress-sel')].map(inp=>inp.value).filter(Boolean));
           femaleCast.forEach(person=>{
             const actressId=tmdbFindOrCreateActress(person, movieOriginCountry);
+            if(existingIds.has(actressId)) return; // ya está en el reparto, no duplicar
             addMovieCastMember({actressId, character:person.character});
+            existingIds.add(actressId);
           });
         }
       }
@@ -4326,10 +4341,12 @@ async function tmdbApplyResult(id, kind, type){
       if(femaleCast.length){
         const cl=_findInModal('castList')||document.getElementById('castList');
         if(cl){
-          cl.innerHTML='';
+          const existingIds = new Set([...cl.querySelectorAll('.cast-actress-sel')].map(inp=>inp.value).filter(Boolean));
           femaleCast.forEach(person=>{
             const actressId=tmdbFindOrCreateActress(person, seriesOriginCountry);
+            if(existingIds.has(actressId)) return; // ya está en el reparto, no duplicar
             addCastMember({actressId, character:person.character});
+            existingIds.add(actressId);
           });
         }
       }
