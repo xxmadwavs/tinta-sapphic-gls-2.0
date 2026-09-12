@@ -5426,21 +5426,16 @@ function castPhotoHtml(a){
   const pos=a.photoPosition||'center 15%', zoom=a.photoZoom||1;
   return `<div class="cast-photo" style="overflow:hidden;padding:0"><img src="${a.photo}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;object-position:${pos};transform:scale(${zoom});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=cast-photo-ph></div>'"></div>`;
 }
-function buildCastHtml(cast){
+function buildCastHtml(cast, couples){
   if(!cast||!cast.length) return '<div style="color:var(--muted);font-size:13px;padding:8px 0">Sin información de reparto.</div>';
   const actresses=state.actresses||[];
+  couples=(couples||[]).filter(p=>Array.isArray(p)&&p.length===2);
 
-  // Agrupar por clave
-  const grouped={};
-  cast.forEach(m=>{
-    const key=m.coupleType==='other'?'other':(m.coupleType+'_'+(m.coupleNum||1));
-    if(!grouped[key]) grouped[key]=[];
-    grouped[key].push(m);
-  });
-
-  const mainKeys=Object.keys(grouped).filter(k=>k.startsWith('main_')).sort();
-  const secKeys=Object.keys(grouped).filter(k=>k.startsWith('secondary_')).sort();
-  const otherMembers=grouped['other']||[];
+  // Miembros del reparto que forman parte de alguna pareja marcada
+  const pairedIds=new Set();
+  couples.forEach(p=>{ pairedIds.add(p[0]); pairedIds.add(p[1]); });
+  const coupleGroups=couples.map(p=>p.map(id=>cast.find(m=>m.actressId===id)).filter(Boolean)).filter(g=>g.length===2);
+  const soloMembers=cast.filter(m=>!pairedIds.has(m.actressId));
 
   // Construye la tarjeta de una pareja (o actriz solitaria si solo hay 1)
   function coupleCardHtml(members, cardClass){
@@ -5474,26 +5469,18 @@ function buildCastHtml(cast){
 
   let html='';
 
-  // ── Parejas principales ──
-  if(mainKeys.length){
-    const title=mainKeys.length>1?'Parejas principales':'Pareja principal';
+  // ── Parejas ──
+  if(coupleGroups.length){
+    const title=coupleGroups.length>1?'Parejas':'Pareja';
     html+=`<div class="cast-section"><div class="cast-section-title">${title}</div><div class="cast-couples-grid">`;
-    mainKeys.forEach(key=>{ html+=coupleCardHtml(grouped[key],'main-couple'); });
+    coupleGroups.forEach(members=>{ html+=coupleCardHtml(members,'main-couple'); });
     html+=`</div></div>`;
   }
 
-  // ── Parejas secundarias ──
-  if(secKeys.length){
-    const title=secKeys.length>1?'Parejas secundarias':'Pareja secundaria';
-    html+=`<div class="cast-section"><div class="cast-section-title">${title}</div><div class="cast-couples-grid">`;
-    secKeys.forEach(key=>{ html+=coupleCardHtml(grouped[key],'sec-couple'); });
-    html+=`</div></div>`;
-  }
-
-  // ── Reparto adicional ──
-  if(otherMembers.length){
+  // ── Reparto (resto de actrices, sin pareja marcada) ──
+  if(soloMembers.length){
     html+=`<div class="cast-section"><div class="cast-section-title">Reparto</div><div class="cast-solo-grid">`;
-    otherMembers.forEach(m=>{
+    soloMembers.forEach(m=>{
       const a=actresses.find(x=>x.id===m.actressId);
       if(!a) return;
       const photo=castPhotoHtml(a);
@@ -5694,7 +5681,7 @@ function openSeries(si){
     });
   }
 
-  const castHtml=buildCastHtml(s.cast||[]);
+  const castHtml=buildCastHtml(s.cast||[], s.couples||[]);
   const hasCast=s.cast&&s.cast.length>0;
   const castCount=hasCast?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
@@ -5806,7 +5793,7 @@ function openUpcoming(si){
   const posterEl=s.poster?`<img class="detail-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=detail-poster-ph></div>'">`:`<div class="detail-poster-ph"></div>`;
   const watchLinksHtml=buildWatchLinksHtml(s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]),'','','');
 
-  const castHtml=buildCastHtml(s.cast||[]);
+  const castHtml=buildCastHtml(s.cast||[], s.couples||[]);
   const castCount=s.cast&&s.cast.length?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
   const upBookHtml=s.basedOnBook?(()=>{
@@ -5921,7 +5908,7 @@ function openMovie(mi){
     </div></div>`;
   })();
   const watchLinksHtml=buildWatchLinksHtml(mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]),'var(--movie-accent)','rgba(124,92,191,0.28)','var(--movie-bar)');
-  const castHtml=buildCastHtml(mv.cast||[]);
+  const castHtml=buildCastHtml(mv.cast||[], mv.couples||[]);
   const castCount=mv.cast&&mv.cast.length?mv.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
   let detailsLines='';
@@ -7472,19 +7459,11 @@ function renderShips(){
     // Fallback automático: extraer parejas de series tailandesas
     seriesList.forEach((s,si)=>{
       const isThai=s.country&&s.country.includes('Tailandia');
-      if(!isThai||!s.cast||!s.cast.length) return;
-      const grouped={};
-      s.cast.forEach(m=>{
-        if(m.coupleType==='other') return;
-        const key=m.coupleType+'_'+(m.coupleNum||1);
-        if(!grouped[key]) grouped[key]=[];
-        grouped[key].push(m);
-      });
-      Object.entries(grouped).forEach(([key,castMembers])=>{
-        const valid=castMembers.filter(m=>actMap[m.actressId]);
+      if(!isThai||!s.cast||!s.cast.length||!s.couples||!s.couples.length) return;
+      s.couples.forEach(pair=>{
+        const valid=pair.map(id=>s.cast.find(m=>m.actressId===id)).filter(m=>m&&actMap[m.actressId]);
         if(valid.length<2) return;
-        const [type]=key.split('_');
-        ships.push({s,si,type,members:valid,mode:'auto'});
+        ships.push({s,si,type:'main',members:valid,mode:'auto'});
       });
     });
   }
@@ -7590,9 +7569,7 @@ function renderShipsResults(){
       </div>`;
     } else {
       const status2=seriesStatus(sh.s);
-      const typeBadge=sh.type==='main'
-        ?`<span class="ship-type-badge ship-type-main">Principal</span>`
-        :`<span class="ship-type-badge ship-type-secondary">Secundaria</span>`;
+      const typeBadge=`<span class="ship-type-badge ship-type-main">Pareja</span>`;
       const statusBadge2=`<span class="ship-status-badge ${statusClass[status2]}">${statusLabel[status2]}</span>`;
       const pair=sh.members.slice(0,2);
       const a1auto=actMap[pair[0]?.actressId];

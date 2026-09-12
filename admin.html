@@ -618,6 +618,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <div class="topbar-actions">
     <button type="button" class="btn small" onclick="document.getElementById('importFile').click()">Importar data.json</button>
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    <button type="button" class="btn small" onclick="tmdbBulkLinkAll(this)" title="Busca en TMDB cada serie/película sin vincular y guarda solo su ID, tipo y valoración — no toca sinopsis, póster ni reparto">🔗 Vincular todas a TMDB</button>
     <button type="button" class="btn small" onclick="tmdbBulkRefreshRatings(this)" title="Vuelve a consultar TMDB para todas las series y películas ya vinculadas, y actualiza su valoración de una sola vez">🔄 Actualizar valoraciones TMDB</button>
     <button type="button" class="btn small" onclick="window.open('index.html','_blank')">Ver público</button>
     <div class="export-btn-wrap">
@@ -1452,6 +1453,36 @@ function save(){
   if(barSpan) barSpan.innerHTML=`<strong>${_unsavedCount} cambio${_unsavedCount!==1?'s':''}</strong> sin exportar. Recuerda exportar <code>data.json</code> y subirlo.`;
 }
 
+/* Migra el reparto del sistema viejo (coupleType/coupleNum) al nuevo array `couples`
+   de pares [actressIdA, actressIdB]. Agrupa por num dentro de "main" primero, luego "secondary";
+   las marcadas como "other" quedan sin pareja. No toca nada si la ficha ya usa el sistema nuevo. */
+function migrateCastCouples(item){
+  if(!item || !item.cast || !item.cast.length) return;
+  const hasOldSystem = item.cast.some(c=>c && (c.coupleType!==undefined || c.coupleNum!==undefined));
+  if(!hasOldSystem) return;
+  const groups={};
+  item.cast.forEach(c=>{
+    if(!c || !c.actressId) return;
+    const type=c.coupleType||'main';
+    if(type==='other') return;
+    const key=type+'_'+(c.coupleNum||1);
+    (groups[key]=groups[key]||[]).push(c.actressId);
+  });
+  const couples=[];
+  ['main','secondary'].forEach(type=>{
+    for(let n=1;n<=4;n++){
+      const ids=groups[type+'_'+n];
+      if(ids && ids.length>=2) couples.push([ids[0],ids[1]]);
+    }
+  });
+  if(!item.couples || !item.couples.length) item.couples=couples;
+  item.cast=item.cast.map(c=>({actressId:c.actressId, character:c.character||''}));
+}
+function migrateAllCastCouples(){
+  series.forEach(migrateCastCouples);
+  movies.forEach(migrateCastCouples);
+}
+
 async function initData(){
   // Si se abre como file://, fetch no funciona → mostrar aviso de importación
   const isFileProtocol = location.protocol === 'file:';
@@ -1468,6 +1499,7 @@ async function initData(){
         if(d.listas) listas = d.listas;
         if(d.platformLogos) platformLogos = d.platformLogos;
         checklist = normalizeChecklist(d.checklist);
+        migrateAllCastCouples();
         render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
         return;
       }
@@ -2565,6 +2597,15 @@ function formHtml(s, forcedCategory=null){
       <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas en la sección Actrices. Indica el personaje y a qué pareja pertenece (P1, P2…)</div>
       <button type="button" class="platform-add-btn" onclick="addCastMember(null)" style="margin-bottom:8px">+ Añadir actriz al reparto</button>
       <div id="castList" style="margin-bottom:8px;overflow:visible;position:relative"></div>
+      <div class="form-section-hd" style="margin-top:14px">Parejas</div>
+      <div class="form-hint" style="margin-bottom:8px">Marca qué actrices del reparto forman pareja/ship</div>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+        <select id="coupleSelA" onfocus="refreshCoupleSelects('series')" style="flex:1;min-width:110px;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"></select>
+        <span style="color:var(--muted)">+</span>
+        <select id="coupleSelB" onfocus="refreshCoupleSelects('series')" style="flex:1;min-width:110px;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"></select>
+        <button type="button" class="platform-add-btn" onclick="addCoupleFromSelects('series')">💕 Marcar pareja</button>
+      </div>
+      <div id="couplesList"></div>
     </div>
     <div class="form-col-right" id="schedFields" style="${isUpcoming?'display:none':''}">
 
@@ -2704,6 +2745,7 @@ function openAddSeries(){
   initCountries('countriesList','');
   initSeasons(null);
   initCast([]);
+  initCouples('series', []);
   syncTroposDinamica('f_tropos','f_dinamica');
 }
 function openEdit(si){
@@ -2721,6 +2763,7 @@ function openEdit(si){
   initCountries('countriesList', series[si].country||'');
   initSeasons(getSeasons(series[si]));
   initCast(series[si].cast||[]);
+  initCouples('series', series[si].couples||[]);
   populateAwards('awardsAdminList', series[si].awards||[]);
   syncTroposDinamica('f_tropos','f_dinamica');
 }
@@ -2966,6 +3009,7 @@ function openAddAnime(){
   initCountries('countriesList','Japón');
   initSeasons(null);
   initCast([]);
+  initCouples('series', []);
 }
 function openEditAnime(si){
   document.getElementById('animeModalTitle').textContent='Editar anime';
@@ -2983,6 +3027,7 @@ function openEditAnime(si){
   initCountries('countriesList', s.country||'');
   initSeasons(getSeasons(s));
   initCast(s.cast||[]);
+  initCouples('series', s.couples||[]);
   populateAwards('awardsAdminList', s.awards||[]);
 }
 function openEpsAnime(si){ openEps(si); } // reuse same modal
@@ -3000,6 +3045,7 @@ function openAddReality(){
   initCountries('countriesList','');
   initSeasons(null);
   initCast([]);
+  initCouples('series', []);
 }
 function openEditReality(si){
   document.getElementById('realityModalTitle').textContent='Editar reality';
@@ -3017,6 +3063,7 @@ function openEditReality(si){
   initCountries('countriesList', s.country||'');
   initSeasons(getSeasons(s));
   initCast(s.cast||[]);
+  initCouples('series', s.couples||[]);
   populateAwards('awardsAdminList', s.awards||[]);
 }
 
@@ -3165,6 +3212,7 @@ async function saveSeries(si, forcedCategory=null){
   const category=forcedCategory||(document.getElementById('f_category')?.value||'series');
   const seriesType=document.getElementById('f_seriesType')?.value||'serie';
   const cast=getCastData();
+  const couples=getCouplesData('series');
   const animeSeason=(category==='anime'||category==='reality')?getAnimeSeason():'';
   const renewedNextSeason=document.getElementById('f_renewed')?.checked||false;
   const nameEn=document.getElementById('f_nameEn')?.value.trim()||'';
@@ -3182,7 +3230,7 @@ async function saveSeries(si, forcedCategory=null){
   const tmdbRatingRaw=document.getElementById('f_tmdbRating')?.value.trim()||'';
   const tmdbRating=tmdbRatingRaw?parseFloat(tmdbRatingRaw):'';
   const tmdbVoteCount=parseInt(document.getElementById('f_tmdbVoteCount')?.value||'0')||0;
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount};
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,couples,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -3655,6 +3703,15 @@ function movieFormHtml(mv){
   <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas. Indica el personaje si quieres.</div>
   <button type="button" class="platform-add-btn" onclick="addMovieCastMember(null)" style="margin-bottom:8px">+ Añadir actriz</button>
   <div id="movieCastList" style="margin-bottom:8px;overflow:visible;position:relative"></div>
+  <div class="form-section-hd" style="margin-top:14px">Parejas</div>
+  <div class="form-hint" style="margin-bottom:8px">Marca qué actrices del reparto forman pareja/ship</div>
+  <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+    <select id="mCoupleSelA" onfocus="refreshCoupleSelects('movie')" style="flex:1;min-width:110px;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"></select>
+    <span style="color:var(--muted)">+</span>
+    <select id="mCoupleSelB" onfocus="refreshCoupleSelects('movie')" style="flex:1;min-width:110px;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"></select>
+    <button type="button" class="platform-add-btn" onclick="addCoupleFromSelects('movie')">💕 Marcar pareja</button>
+  </div>
+  <div id="movieCouplesList"></div>
   </div>`;
 }
 
@@ -3780,6 +3837,7 @@ function openAddMovie(){
   populateAwards('movieAwardsAdminList',[]);
   initCountries('movieCountriesList','');
   initMovieCast([]);
+  initCouples('movie', []);
   syncTroposDinamica('mf_tropos','mf_dinamica');
 }
 function openEditMovie(mi){
@@ -3798,6 +3856,7 @@ function openEditMovie(mi){
   populateAwards('movieAwardsAdminList', mv.awards||[]);
   initCountries('movieCountriesList', mv.country||'');
   initMovieCast(mv.cast||[]);
+  initCouples('movie', mv.couples||[]);
   syncTroposDinamica('mf_tropos','mf_dinamica');
 }
 function initMoviePlatforms(links){
@@ -3871,6 +3930,7 @@ async function saveMovie(mi){
     movieType:document.getElementById('mf_movieType')?.value||'film',
     duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
     cast:getMovieCastData(),
+    couples:getCouplesData('movie'),
     productoraId:document.getElementById('mf_productora')?.value||'',
     tmdbId:document.getElementById('mf_tmdbId')?.value.trim()||'',
     tmdbKind:document.getElementById('mf_tmdbKind')?.value.trim()||'',
@@ -3966,6 +4026,7 @@ function importData(e){
       if(d.listas) listas=d.listas;
       if(d.platformLogos) platformLogos=d.platformLogos;
       checklist=normalizeChecklist(d.checklist);
+      migrateAllCastCouples();
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
       save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
       alert('✓ Datos importados correctamente');
@@ -4650,6 +4711,73 @@ async function tmdbApplyResult(id, kind, type){
   }
 }
 
+async function tmdbBulkLinkAll(btn){
+  let key = tmdbGetKey();
+  if(!key){ key = tmdbConfigureKey(); if(!key) return; }
+  const targets = [];
+  series.forEach(s=>{ if(!s.tmdbId && s.name) targets.push({item:s, kind:'tv'}); });
+  movies.forEach(m=>{ if(!m.tmdbId && m.name) targets.push({item:m, kind:'movie'}); });
+  if(!targets.length){
+    alert('No hay fichas pendientes de vincular: todas las que tienen nombre ya tienen un tmdbId asignado.');
+    return;
+  }
+  const ok = await showConfirm({
+    title:`¿Buscar en TMDB ${targets.length} ficha${targets.length===1?'':'s'} sin vincular?`,
+    desc:'Se busca cada una por nombre (y año, si lo tiene puesto) y solo se guarda su ID, tipo y valoración de TMDB — no se toca sinopsis, póster ni reparto. Las que no encuentren un resultado fiable se dejan sin vincular para revisarlas a mano. Al terminar, recuerda exportar data.json.',
+    okLabel:'Vincular todas'
+  });
+  if(!ok) return;
+  const prevLabel = btn?btn.textContent:'';
+  let done=0, linked=0, skipped=0, errors=0;
+  for(const {item,kind} of targets){
+    if(btn){ btn.disabled=true; btn.textContent=`Vinculando ${done+1}/${targets.length}...`; }
+    try{
+      const url = `${TMDB_API_BASE}/search/${kind}?api_key=${encodeURIComponent(key)}&language=es-ES&query=${encodeURIComponent(item.name)}`;
+      const r = await fetch(url);
+      if(r.status===401){ alert('⚠ API key inválida. Configúrala de nuevo (⚙ en el buscador de TMDB).'); break; }
+      if(r.ok){
+        const data = await r.json();
+        const list = data.results||[];
+        let match = null;
+        const itemYear = item.year ? parseInt(item.year) : null;
+        if(list.length){
+          if(itemYear){
+            match = list.find(it=>{
+              const d = it.first_air_date || it.release_date || '';
+              const y = d ? parseInt(d.slice(0,4)) : null;
+              return y && Math.abs(y-itemYear)<=1;
+            }) || null;
+          } else if(list.length===1){
+            match = list[0];
+          } else {
+            match = list[0];
+          }
+        }
+        if(match){
+          item.tmdbId = match.id;
+          item.tmdbKind = kind;
+          item.tmdbRating = match.vote_average ? Math.round(match.vote_average*10)/10 : '';
+          item.tmdbVoteCount = match.vote_count || 0;
+          linked++;
+        } else {
+          skipped++;
+        }
+      } else {
+        errors++;
+      }
+    }catch(e){ errors++; }
+    done++;
+    await new Promise(res=>setTimeout(res, 250));
+  }
+  if(btn){ btn.disabled=false; btn.textContent=prevLabel||'🔗 Vincular todas a TMDB'; }
+  save();
+  try{ render(); }catch(e){}
+  try{ renderMovies(); }catch(e){}
+  try{ renderAnimeGrid(); }catch(e){}
+  try{ renderRealitiesGrid(); }catch(e){}
+  alert(`✓ Listo: ${linked} vinculada${linked===1?'':'s'}, ${skipped} sin match fiable (revísalas a mano)${errors?`, ${errors} con error de conexión`:''}.\n\nRecuerda exportar data.json para publicar los cambios.`);
+}
+
 async function tmdbBulkRefreshRatings(btn){
   let key = tmdbGetKey();
   if(!key){ key = tmdbConfigureKey(); if(!key) return; }
@@ -5257,10 +5385,6 @@ function addCastMember(data){
   }
   const actressId=data&&data.actressId?data.actressId:'';
   const char=data&&data.character?data.character:'';
-  const coupleType=data&&data.coupleType?data.coupleType:'main';
-  // Si no hay datos (fila nueva), calcular pareja automáticamente según posición
-  const existingRows=list.querySelectorAll('.cast-admin-row').length;
-  const coupleNum=data&&data.coupleNum?data.coupleNum:Math.floor(existingRows/2)+1;
   const uid='cp_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
   const selectedA=actressId?actresses.find(a=>a.id===actressId):null;
 
@@ -5278,24 +5402,15 @@ function addCastMember(data){
           onblur="setTimeout(()=>closeCastDropdown('${uid}'),150)">
         <div class="cast-dropdown" id="${uid}_dd"></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 112px 48px;gap:5px">
-        <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif">
-        <select class="cast-type-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:10px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
-          <option value="main" ${coupleType==='main'?'selected':''}>Principal</option>
-          <option value="secondary" ${coupleType==='secondary'?'selected':''}>Secundaria</option>
-          <option value="other" ${coupleType==='other'?'selected':''}>Otro</option>
-        </select>
-        <select class="cast-num-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
-          ${[1,2,3,4].map(n=>`<option value="${n}" ${coupleNum===n?'selected':''}>P${n}</option>`).join('')}
-        </select>
-      </div>
+      <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif;width:100%">
     </div>
     <div class="cast-btns-col">
       <button type="button" onclick="editActressFromCastRow(this)" class="cast-edit-btn" title="Editar esta actriz (nombre, mote, país, foto...)">✏️</button>
-      <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Quitar del reparto de esta serie">✕</button>
+      <button type="button" onclick="this.closest('.cast-admin-row').remove();refreshCoupleSelects('series')" class="cast-del-btn" title="Quitar del reparto de esta serie">✕</button>
       <button type="button" onclick="deleteActressFromCastRow(this)" class="cast-del-global-btn" title="Eliminar esta actriz de toda la web (no aparecerá en el listado de actrices)">🗑</button>
     </div>`;
   list.appendChild(row);
+  refreshCoupleSelects('series');
 }
 
 function editActressFromCastRow(btn){
@@ -5438,11 +5553,73 @@ function getCastData(){
     cast.push({
       actressId,
       character:row.querySelector('.cast-char-inp')?.value.trim()||'',
-      coupleType:row.querySelector('.cast-type-sel')?.value||'main',
-      coupleNum:parseInt(row.querySelector('.cast-num-sel')?.value)||1,
     });
   });
   return cast;
+}
+
+/* ─── Parejas del reparto (compartido entre series y películas) ─── */
+function refreshCoupleSelects(kind){
+  const isMovie = kind==='movie';
+  const list = isMovie ? document.getElementById('movieCastList') : (_findInModal('castList')||document.getElementById('castList'));
+  const selA = document.getElementById(isMovie?'mCoupleSelA':'coupleSelA');
+  const selB = document.getElementById(isMovie?'mCoupleSelB':'coupleSelB');
+  if(!list||!selA||!selB) return;
+  const opts=[...list.querySelectorAll('.cast-admin-row')].map(row=>{
+    const id=row.querySelector('.cast-actress-sel')?.value||'';
+    if(!id) return null;
+    const a=actresses.find(x=>x.id===id);
+    const char=row.querySelector('.cast-char-inp')?.value.trim()||'';
+    return {id, label:(a?a.name:'?')+(char?' ('+char+')':'')};
+  }).filter(Boolean);
+  const prevA=selA.value, prevB=selB.value;
+  const optsHtml='<option value="">— selecciona —</option>'+opts.map(o=>`<option value="${o.id}">${escapeHtml(o.label)}</option>`).join('');
+  selA.innerHTML=optsHtml; selB.innerHTML=optsHtml;
+  if(opts.some(o=>o.id===prevA)) selA.value=prevA;
+  if(opts.some(o=>o.id===prevB)) selB.value=prevB;
+}
+
+function initCouples(kind, couplesData){
+  const varName = kind==='movie' ? '_movieCouples' : '_seriesCouples';
+  window[varName] = (couplesData||[]).filter(c=>Array.isArray(c)&&c.length===2).map(c=>c.slice());
+  refreshCoupleSelects(kind);
+  renderCouplesList(kind);
+}
+
+function renderCouplesList(kind){
+  const varName = kind==='movie' ? '_movieCouples' : '_seriesCouples';
+  const container = document.getElementById(kind==='movie'?'movieCouplesList':'couplesList');
+  if(!container) return;
+  const couples = window[varName]||[];
+  if(!couples.length){ container.innerHTML='<div class="form-hint">Todavía no hay parejas marcadas.</div>'; return; }
+  container.innerHTML = couples.map((pair,idx)=>{
+    const names = pair.map(id=>{ const a=actresses.find(x=>x.id===id); return a?escapeHtml(a.name):'?'; }).join(' + ');
+    return `<div style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1.5px solid var(--border2);border-radius:20px;padding:5px 10px;margin:0 6px 6px 0;font-size:12px;font-weight:600">💕 ${names}<button type="button" onclick="removeCouple('${kind}',${idx})" style="border:none;background:none;color:var(--muted);cursor:pointer;font-size:13px;line-height:1;padding:0">✕</button></div>`;
+  }).join('');
+}
+
+function addCoupleFromSelects(kind){
+  const isMovie = kind==='movie';
+  const a=document.getElementById(isMovie?'mCoupleSelA':'coupleSelA')?.value||'';
+  const b=document.getElementById(isMovie?'mCoupleSelB':'coupleSelB')?.value||'';
+  if(!a||!b){ alert('Selecciona las dos actrices de la pareja.'); return; }
+  if(a===b){ alert('Selecciona dos actrices distintas.'); return; }
+  const varName = isMovie ? '_movieCouples' : '_seriesCouples';
+  const couples = window[varName] = window[varName]||[];
+  if(couples.some(p=>(p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a))){ alert('Esa pareja ya está marcada.'); return; }
+  couples.push([a,b]);
+  renderCouplesList(kind);
+}
+
+function removeCouple(kind, idx){
+  const varName = kind==='movie' ? '_movieCouples' : '_seriesCouples';
+  (window[varName]||[]).splice(idx,1);
+  renderCouplesList(kind);
+}
+
+function getCouplesData(kind){
+  const varName = kind==='movie' ? '_movieCouples' : '_seriesCouples';
+  return (window[varName]||[]).map(p=>p.slice());
 }
 
 /* ─── Cast functions for MOVIES (uses #movieCastList) ─── */
@@ -5462,10 +5639,6 @@ function addMovieCastMember(data){
   }
   const actressId=data&&data.actressId?data.actressId:'';
   const char=data&&data.character?data.character:'';
-  const coupleType=data&&data.coupleType?data.coupleType:'main';
-  // Si no hay datos (fila nueva), calcular pareja automáticamente según posición
-  const existingRows=list.querySelectorAll('.cast-admin-row').length;
-  const coupleNum=data&&data.coupleNum?data.coupleNum:Math.floor(existingRows/2)+1;
   const uid='mcp_'+Date.now()+'_'+Math.random().toString(36).slice(2,6);
   const selectedA=actressId?actresses.find(a=>a.id===actressId):null;
 
@@ -5483,25 +5656,15 @@ function addMovieCastMember(data){
           onblur="setTimeout(()=>closeCastDropdown('${uid}'),150)">
         <div class="cast-dropdown" id="${uid}_dd"></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 112px 48px;gap:5px">
-        <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif">
-        <select class="cast-type-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:10px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
-          <option value="main" ${coupleType==='main'?'selected':''}>Principal</option>
-          <option value="secondary" ${coupleType==='secondary'?'selected':''}>Secundaria</option>
-          <option value="other" ${coupleType==='other'?'selected':''}>Otro</option>
-        </select>
-        <select class="cast-num-sel" style="padding:5px 4px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11px;font-family:'Nunito',sans-serif;font-weight:600;width:100%">
-          ${[1,2,3,4].map(n=>`<option value="${n}" ${coupleNum===n?'selected':''}>P${n}</option>`).join('')}
-        </select>
-      </div>
-    </div>
+      <input placeholder="Personaje" value="${escapeHtml(char)}" class="cast-char-inp" style="padding:5px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:11.5px;font-family:'Nunito',sans-serif;width:100%">
     </div>
     <div class="cast-btns-col">
       <button type="button" onclick="editActressFromCastRow(this)" class="cast-edit-btn" title="Editar esta actriz (nombre, mote, país, foto...)">✏️</button>
-      <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Quitar del reparto de esta película">✕</button>
+      <button type="button" onclick="this.closest('.cast-admin-row').remove();refreshCoupleSelects('movie')" class="cast-del-btn" title="Quitar del reparto de esta película">✕</button>
       <button type="button" onclick="deleteActressFromCastRow(this)" class="cast-del-global-btn" title="Eliminar esta actriz de toda la web (no aparecerá en el listado de actrices)">🗑</button>
     </div>`;
   list.appendChild(row);
+  refreshCoupleSelects('movie');
 }
 
 function getMovieCastData(){
@@ -5513,8 +5676,6 @@ function getMovieCastData(){
     cast.push({
       actressId,
       character:row.querySelector('.cast-char-inp')?.value.trim()||'',
-      coupleType:row.querySelector('.cast-type-sel')?.value||'main',
-      coupleNum:parseInt(row.querySelector('.cast-num-sel')?.value)||1,
     });
   });
   return cast;
