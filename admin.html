@@ -2688,7 +2688,7 @@ function openEdit(si){
   document.getElementById('seriesModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${tmdbBarHtml('series')}</div>`+
     formHtml(series[si])+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" style="margin-right:auto;opacity:.7" onclick="convertSeriesToMovie(${si})" title="Mover esta ficha a la sección de Películas">🔁 Convertir a película</button><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('seriesModal').classList.add('open');
   const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
   bindPoster();
@@ -2936,7 +2936,7 @@ function openAddAnime(){
   document.getElementById('animeModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null,'anime')+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(-1,'anime')" title="Guardar (Ctrl+S)">Guardar anime</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(-1)" title="Guardar (Ctrl+S)">Guardar anime</button></div>`;
   document.getElementById('animeModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   populateAwards('awardsAdminList',[]);
@@ -2949,7 +2949,7 @@ function openEditAnime(si){
   document.getElementById('animeModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${tmdbBarHtml('series')}</div>`+
     formHtml(series[si],'anime')+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si},'anime')" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" style="margin-right:auto;opacity:.7" onclick="convertSeriesToMovie(${si})" title="Mover esta ficha a la sección de Películas">🔁 Convertir a película</button><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('animeModal').classList.add('open');
   const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
   bindPoster();
@@ -2970,7 +2970,7 @@ function openAddReality(){
   document.getElementById('realityModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${pasteBarHtml('series')}</div>`+
     formHtml(null,'reality')+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(-1,'reality')" title="Guardar (Ctrl+S)">Guardar</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(-1)" title="Guardar (Ctrl+S)">Guardar</button></div>`;
   document.getElementById('realityModal').classList.add('open');
   bindPoster(); initPlatforms([]); initBookEditions('bookEditionsList',[],null);
   populateAwards('awardsAdminList',[]);
@@ -2983,7 +2983,7 @@ function openEditReality(si){
   document.getElementById('realityModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${tmdbBarHtml('series')}</div>`+
     formHtml(series[si],'reality')+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si},'reality')" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" style="margin-right:auto;opacity:.7" onclick="convertSeriesToMovie(${si})" title="Mover esta ficha a la sección de Películas">🔁 Convertir a película</button><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('realityModal').classList.add('open');
   const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
   bindPoster();
@@ -3176,6 +3176,61 @@ async function delSeries(si){
   const ok = await showConfirm({title:`¿Eliminar "${series[si].name}"?`, desc:'Se eliminará permanentemente. Esta acción no se puede deshacer.'});
   if(!ok) return;
   series.splice(si,1); save(); render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+}
+
+async function convertSeriesToMovie(si){
+  const s=series[si];
+  if(!s) return;
+  const ok = await showConfirm({
+    title:`¿Convertir "${s.name}" a película?`,
+    desc:'Se moverá a la sección de Películas. Se perderá la información de temporadas y episodios (fechas de emisión, descansos, patrón semanal, etc.) — se usará la fecha de la primera temporada como fecha de estreno y la duración por episodio como duración de la película. Esta acción no se puede deshacer fácilmente.'
+  });
+  if(!ok) return;
+  const firstSeason=(s.seasons||[])[0]||{};
+  const moviePayload={
+    id: s.id || Date.now().toString(),
+    name:s.name, nameEn:s.nameEn||'', poster:s.poster||'', synopsis:s.synopsis||'',
+    year:s.year||'', country:s.country||'', network:s.network||'', networkUrl:s.networkUrl||'',
+    watchLinks:s.watchLinks||[], trailerUrl:s.trailerUrl||'',
+    date:firstSeason.startDate||'', movieType:'film',
+    duration:s.episodeDuration||firstSeason.episodeDuration||'',
+    basedOnBook:s.basedOnBook||false, bookSource:s.bookSource||'', sourceType:s.sourceType||'',
+    bookCoverUrl:s.bookCoverUrl||'', bookLinks:s.bookLinks||[], bookUrl:s.bookUrl||'',
+    genres:s.genres||[], moods:s.moods||[], tropos:s.tropos||[], dinamica:s.dinamica||[],
+    wlwFocus:s.wlwFocus||[], awards:s.awards||[], cast:s.cast||[],
+    category:'movie', productoraId:s.productoraId||'',
+    updatedAt:new Date().toISOString(),
+  };
+  movies.push(moviePayload);
+  series.splice(si,1);
+  save(); closeAll(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
+}
+
+async function convertMovieToSeries(mi){
+  const mv=movies[mi];
+  if(!mv) return;
+  const ok = await showConfirm({
+    title:`¿Convertir "${mv.name}" a serie?`,
+    desc:'Se moverá a la sección de Series, con una única temporada de 1 episodio basada en la fecha y duración de la película. Tendrás que revisar/completar el número real de episodios y el patrón de emisión. Esta acción no se puede deshacer fácilmente.'
+  });
+  if(!ok) return;
+  const seriesPayload={
+    id: mv.id || Date.now().toString(),
+    name:mv.name, nameEn:mv.nameEn||'', poster:mv.poster||'', synopsis:mv.synopsis||'',
+    year:mv.year||'', country:mv.country||'', network:mv.network||'', networkUrl:mv.networkUrl||'',
+    watchLinks:mv.watchLinks||[], trailerUrl:mv.trailerUrl||'',
+    basedOnBook:mv.basedOnBook||false, bookSource:mv.bookSource||'', sourceType:mv.sourceType||'',
+    bookCoverUrl:mv.bookCoverUrl||'', bookLinks:mv.bookLinks||[], bookUrl:mv.bookUrl||'',
+    genres:mv.genres||[], moods:mv.moods||[], tropos:mv.tropos||[], dinamica:mv.dinamica||[],
+    wlwFocus:mv.wlwFocus||[], awards:mv.awards||[], cast:mv.cast||[],
+    category:'series', seriesType:'serie', productoraId:mv.productoraId||'',
+    episodeDuration:mv.duration||'',
+    seasons:[{label:'Temporada 1', startDate:mv.date||'', totalEpisodes:1, emissionDays:mv.date?[getDow(mv.date)]:[1], allInOneDay:false, skipDates:[], episodes:[], premiereSchedule:[]}],
+    updatedAt:new Date().toISOString(),
+  };
+  series.push(seriesPayload);
+  movies.splice(mi,1);
+  save(); closeAll(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
 }
 
 function openEps(si){
@@ -3673,7 +3728,7 @@ function openEditMovie(mi){
   document.getElementById('movieModalBody').innerHTML=
     `<div style="padding:.6rem 1.75rem .4rem;border-bottom:1px solid var(--border2)">${tmdbBarHtml('movie')}</div>`+
     movieFormHtml(movies[mi])+
-    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(${mi})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
+    `<div class="modal-footer-btns"><button type="button" class="btn" style="margin-right:auto;opacity:.7" onclick="convertMovieToSeries(${mi})" title="Mover esta ficha a la sección de Series">🔁 Convertir a serie</button><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(${mi})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('movieModal').classList.add('open');
   const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=movies[mi].name||'';
   bindMovieForm();
@@ -4297,9 +4352,27 @@ async function tmdbApplyResult(id, kind, type){
       if(el && val!==null && val!==undefined && String(val)!==''){ el.value=val; }
     }
 
+    // Compara nombres teniendo en cuenta el formato que usas para actrices tailandesas:
+    // "Mote" Nombre completo — así "Freen Sarocha Chankimha" (TMDB) coincide con "Freen" Sarocha Chankimha (tu ficha)
+    function tmdbNormalizeName(s){
+      return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/["“”]/g,'').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
+    }
+    function tmdbActressNameMatches(localName, tmdbName){
+      const m = String(localName||'').match(/^"([^"]+)"\s*(.*)$/) || String(localName||'').match(/^“([^”]+)”\s*(.*)$/);
+      const nickname = m ? m[1] : '';
+      const real = m ? m[2] : localName;
+      const nReal = tmdbNormalizeName(real);
+      const nNick = tmdbNormalizeName(nickname);
+      const nTmdb = tmdbNormalizeName(tmdbName);
+      if(!nTmdb) return false;
+      if(nReal && (nReal===nTmdb || nReal.includes(nTmdb) || nTmdb.includes(nReal))) return true;
+      if(nNick && (nNick===nTmdb || nTmdb.startsWith(nNick+' ') || nTmdb===nNick)) return true;
+      return false;
+    }
+
     // Busca una actriz ya existente por nombre, o crea una nueva a partir de TMDB
     function tmdbFindOrCreateActress(person, fallbackCountry){
-      const existing = actresses.find(a=>a.name.trim().toLowerCase()===person.name.trim().toLowerCase());
+      const existing = actresses.find(a=>tmdbActressNameMatches(a.name, person.name));
       if(existing) return existing.id;
       const payload = {
         id: 'tmdb_'+person.id+'_'+Date.now().toString(36),
