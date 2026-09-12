@@ -3569,6 +3569,22 @@ const WLW_FOCUS=[
 function seriesWlwFocus(s){ return s.wlwFocus||'sin-etiquetar'; }
 function wlwFocusLabel(v){const o=WLW_FOCUS.find(x=>x.value===v);return o?o.label:v;}
 
+// Valoración y enlace de TMDB (se actualiza cada vez que se refresca desde el admin)
+function tmdbUrl(item,kindDefault){
+  if(!item||!item.tmdbId) return '';
+  const kind=item.tmdbKind||kindDefault||'tv';
+  return `https://www.themoviedb.org/${kind}/${item.tmdbId}`;
+}
+function tmdbDetailsLineHtml(item,kindDefault){
+  if(!item) return '';
+  const url=tmdbUrl(item,kindDefault);
+  if(!item.tmdbRating && !url) return '';
+  const ratingPart=item.tmdbRating?`★ ${item.tmdbRating}/10${item.tmdbVoteCount?` <span style="color:var(--muted);font-weight:400">(${item.tmdbVoteCount} votos)</span>`:''}`:'';
+  const linkPart=url?`<a href="${url}" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;text-decoration:none">Ver en TMDB ↗</a>`:'';
+  const val=[ratingPart,linkPart].filter(Boolean).join(ratingPart&&linkPart?' · ':'');
+  return `<div class="details-line"><span class="details-line-key">TMDB</span><span class="details-line-val">${val}</span></div>`;
+}
+
 // ═══ TRADUCCIONES AL INGLÉS (para mostrar entre paréntesis) ═══
 const TROPOS_EN={
   'Age Gap':'Age Gap',
@@ -5706,6 +5722,7 @@ function openSeries(si){
   if(durInfo.epDuration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span></div>`;
   if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
   detailsLines+=`<div class="details-line"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();seriesFilters.wlwFocus=['${seriesWlwFocus(s)}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(s))}</span></span></div>`;
+  detailsLines+=tmdbDetailsLineHtml(s,'tv');
   const _ft=filtrarTropos(s.tropos||[],s.dinamica||[]);
   if(_ft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_ft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
   if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamicas=['${d.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
@@ -5814,6 +5831,7 @@ function openUpcoming(si){
   if(s.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año aprox.</span><span class="details-line-val">${s.year}</span></div>`;
   if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
   detailsLines+=`<div class="details-line"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();seriesFilters.wlwFocus=['${seriesWlwFocus(s)}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(s))}</span></span></div>`;
+  detailsLines+=tmdbDetailsLineHtml(s,'tv');
   const _uft=filtrarTropos(s.tropos||[],s.dinamica||[]);
   if(_uft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_uft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
   if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamicas=['${d.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
@@ -5916,6 +5934,7 @@ function openMovie(mi){
   if(mv.duration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${fmtDuration(mv.duration)}</span></div>`;
   if(mv.genres&&mv.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${mv.genres.join(', ')}</span></div>`;
   detailsLines+=`<div class="details-line"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();moviesFilters.wlwFocus=['${seriesWlwFocus(mv)}'];switchTab('movies');renderMovies();renderMoviesResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(mv))}</span></span></div>`;
+  detailsLines+=tmdbDetailsLineHtml(mv,'movie');
   if(mv.basedOnBook){
     const _btypes={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. gráfica','webtoon':'Webtoon','libro':'Libro'};
     const _blabel=mv.sourceType&&_btypes[mv.sourceType]?_btypes[mv.sourceType]:'Libro';
@@ -6777,6 +6796,7 @@ function openRichDetail(item, opts){
   if(durInfo.epDuration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span></div>`;
   if(item.genres&&item.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${item.genres.join(', ')}</span></div>`;
   detailsLines+=`<div class="details-line"><span class="details-line-key">Foco sáfico</span><span class="details-line-val">${wlwFocusLabel(seriesWlwFocus(item))}</span></div>`;
+  detailsLines+=tmdbDetailsLineHtml(item,'tv');
   const _rft=filtrarTropos(item.tropos||[],item.dinamica||[]);
   if(_rft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_rft.map(t=>tropoLabel(t)).join(', ')}</span></div>`;
   if(item.dinamica&&item.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${item.dinamica.map(d=>dinamicaLabel(d)).join(', ')}</span></div>`;

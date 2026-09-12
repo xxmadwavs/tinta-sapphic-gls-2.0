@@ -618,6 +618,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <div class="topbar-actions">
     <button type="button" class="btn small" onclick="document.getElementById('importFile').click()">Importar data.json</button>
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    <button type="button" class="btn small" onclick="tmdbBulkRefreshRatings(this)" title="Vuelve a consultar TMDB para todas las series y películas ya vinculadas, y actualiza su valoración de una sola vez">🔄 Actualizar valoraciones TMDB</button>
     <button type="button" class="btn small" onclick="window.open('index.html','_blank')">Ver público</button>
     <div class="export-btn-wrap">
       <button type="button" class="btn export small" id="exportTopBtn" onclick="exportData()">Exportar data.json</button>
@@ -2393,6 +2394,17 @@ function formHtml(s, forcedCategory=null){
         <input id="f_trailer" placeholder="https://youtu.be/..." value="${s&&s.trailerUrl?s.trailerUrl:''}"/>
       </div>
 
+      <div class="form-row">
+        <label class="form-label">Valoración TMDB</label>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span id="f_tmdbRatingDisplay" style="font-size:13px;color:var(--muted)">${s&&s.tmdbRating?`★ ${s.tmdbRating}/10 (${s.tmdbVoteCount||0} votos)`:'Sin vincular a TMDB todavía'}</span>
+          <button type="button" class="platform-add-btn" onclick="tmdbRefreshRating('series',this)" style="border-color:rgba(1,180,228,.4);color:#01b4e4" title="Vuelve a consultar TMDB para traer la valoración más reciente (usa el ID vinculado con 🔎 Buscar en TMDB)">🔄 Actualizar valoración TMDB</button>
+        </div>
+        <input type="hidden" id="f_tmdbRating" value="${s&&s.tmdbRating?s.tmdbRating:''}">
+        <input type="hidden" id="f_tmdbVoteCount" value="${s&&s.tmdbVoteCount?s.tmdbVoteCount:''}">
+        <div class="form-hint">Se guarda al pulsar "Guardar" y aparece en la ficha pública. Actualízala de vez en cuando con el botón para que refleje la nota actual de TMDB.</div>
+      </div>
+
       <div class="form-section-hd" style="margin-top:14px">Info adicional</div>
 
       <div class="form-row">
@@ -3167,7 +3179,10 @@ async function saveSeries(si, forcedCategory=null){
   const productoraId=document.getElementById('f_productora')?.value||'';
   const tmdbId=document.getElementById('f_tmdbId')?.value.trim()||'';
   const tmdbKind=document.getElementById('f_tmdbKind')?.value.trim()||'';
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind};
+  const tmdbRatingRaw=document.getElementById('f_tmdbRating')?.value.trim()||'';
+  const tmdbRating=tmdbRatingRaw?parseFloat(tmdbRatingRaw):'';
+  const tmdbVoteCount=parseInt(document.getElementById('f_tmdbVoteCount')?.value||'0')||0;
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -3593,6 +3608,18 @@ function movieFormHtml(mv){
     <div class="platforms-list" id="moviePlatformsList"></div>
     <button type="button" class="platform-add-btn" onclick="addMoviePlatformRow()">+ Añadir plataforma</button>
   </div>
+  <div class="form-row">
+    <label class="form-label">Valoración TMDB</label>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span id="mf_tmdbRatingDisplay" style="font-size:13px;color:var(--muted)">${mv&&mv.tmdbRating?`★ ${mv.tmdbRating}/10 (${mv.tmdbVoteCount||0} votos)`:'Sin vincular a TMDB todavía'}</span>
+      <button type="button" class="platform-add-btn" onclick="tmdbRefreshRating('movie',this)" style="border-color:rgba(1,180,228,.4);color:#01b4e4" title="Vuelve a consultar TMDB para traer la valoración más reciente (usa el ID vinculado con 🔎 Buscar en TMDB)">🔄 Actualizar valoración TMDB</button>
+    </div>
+    <input type="hidden" id="mf_tmdbId" value="${mv&&mv.tmdbId?mv.tmdbId:''}">
+    <input type="hidden" id="mf_tmdbKind" value="${mv&&mv.tmdbKind?mv.tmdbKind:'movie'}">
+    <input type="hidden" id="mf_tmdbRating" value="${mv&&mv.tmdbRating?mv.tmdbRating:''}">
+    <input type="hidden" id="mf_tmdbVoteCount" value="${mv&&mv.tmdbVoteCount?mv.tmdbVoteCount:''}">
+    <div class="form-hint">Se guarda al pulsar "Guardar" y aparece en la ficha pública. Actualízala de vez en cuando con el botón para que refleje la nota actual de TMDB.</div>
+  </div>
   <div class="form-row"><label class="form-label">URL del trailer (YouTube)</label><input id="mf_trailer" placeholder="https://www.youtube.com/watch?v=..." value="${mv&&mv.trailerUrl?mv.trailerUrl:''}"/>
     <div class="form-hint">Pega la URL normal de YouTube. Si no tiene trailer, déjalo vacío.</div>
   </div>
@@ -3845,6 +3872,10 @@ async function saveMovie(mi){
     duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
     cast:getMovieCastData(),
     productoraId:document.getElementById('mf_productora')?.value||'',
+    tmdbId:document.getElementById('mf_tmdbId')?.value.trim()||'',
+    tmdbKind:document.getElementById('mf_tmdbKind')?.value.trim()||'',
+    tmdbRating:document.getElementById('mf_tmdbRating')?.value.trim()?parseFloat(document.getElementById('mf_tmdbRating').value.trim()):'',
+    tmdbVoteCount:parseInt(document.getElementById('mf_tmdbVoteCount')?.value||'0')||0,
   };
   const movieUpdatedAt=new Date().toISOString();
   if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
@@ -4377,6 +4408,8 @@ async function tmdbApplyResult(id, kind, type){
     const dateStr = d.first_air_date || d.release_date || '';
     const year = dateStr ? parseInt(dateStr.slice(0,4)) : '';
     const poster = d.poster_path ? 'https://image.tmdb.org/t/p/w500'+d.poster_path : '';
+    const tmdbRating = d.vote_average ? Math.round(d.vote_average*10)/10 : '';
+    const tmdbVoteCount = d.vote_count || 0;
 
     // Plataformas de streaming (dato de JustWatch vía TMDB) para la región elegida
     const wp = (d['watch/providers']||{}).results || {};
@@ -4490,6 +4523,12 @@ async function tmdbApplyResult(id, kind, type){
       setVal('mf_net', networkStr);
       setVal('mf_poster', poster);
       setVal('mf_trailer', trailerUrl);
+      setVal('mf_tmdbId', id);
+      setVal('mf_tmdbKind', kind);
+      setVal('mf_tmdbRating', tmdbRating);
+      setVal('mf_tmdbVoteCount', tmdbVoteCount);
+      const mfRatingDisp=document.getElementById('mf_tmdbRatingDisplay');
+      if(mfRatingDisp) mfRatingDisp.textContent = tmdbRating ? `★ ${tmdbRating}/10 (${tmdbVoteCount} votos)` : 'Sin valoración en TMDB todavía';
       if(poster) posterSetImage(poster);
       if(dateStr) setVal('mf_date', dateStr);
       if(runtimeMins) setVal('mf_duration', formatDurationDisplay(runtimeMins));
@@ -4522,6 +4561,10 @@ async function tmdbApplyResult(id, kind, type){
       setVal('f_trailer', trailerUrl);
       setVal('f_tmdbId', id);
       setVal('f_tmdbKind', kind);
+      setVal('f_tmdbRating', tmdbRating);
+      setVal('f_tmdbVoteCount', tmdbVoteCount);
+      const fRatingDisp=document.getElementById('f_tmdbRatingDisplay');
+      if(fRatingDisp) fRatingDisp.textContent = tmdbRating ? `★ ${tmdbRating}/10 (${tmdbVoteCount} votos)` : 'Sin valoración en TMDB todavía';
       if(poster) posterSetImage(poster);
       if(runtimeMins) setVal('f_epDuration', formatDurationDisplay(runtimeMins));
       tmdbApplyCountries(d.origin_country, 'series');
@@ -4604,6 +4647,85 @@ async function tmdbApplyResult(id, kind, type){
       + (femaleCast.length ? ` Reparto femenino añadido (${femaleCast.length}) — revisa y quita las que no interesen.` : '');
   }catch(e){
     status.className='tmdb-bar-status err'; status.textContent='✕ Error al obtener los detalles de TMDB.';
+  }
+}
+
+async function tmdbBulkRefreshRatings(btn){
+  let key = tmdbGetKey();
+  if(!key){ key = tmdbConfigureKey(); if(!key) return; }
+  const targets = [];
+  series.forEach(s=>{ if(s.tmdbId) targets.push({item:s, kind:s.tmdbKind||'tv'}); });
+  movies.forEach(m=>{ if(m.tmdbId) targets.push({item:m, kind:m.tmdbKind||'movie'}); });
+  if(!targets.length){
+    alert('Todavía no hay ninguna ficha vinculada a TMDB.\n\nVincula alguna primero con "🔎 Buscar en TMDB" al editarla (o con el botón "🔄 Actualizar valoración TMDB" de su ficha), y luego este botón podrá refrescarlas todas de golpe.');
+    return;
+  }
+  const ok = await showConfirm({
+    title:`¿Actualizar la valoración de ${targets.length} ficha${targets.length===1?'':'s'}?`,
+    desc:'Se consulta TMDB una a una, así que puede tardar un poco si tienes muchas fichas vinculadas. Al terminar, recuerda exportar data.json para publicar los cambios.',
+    okLabel:'Actualizar todas'
+  });
+  if(!ok) return;
+  const prevLabel = btn?btn.textContent:'';
+  let done=0, changed=0, errors=0;
+  for(const {item,kind} of targets){
+    if(btn){ btn.disabled=true; btn.textContent=`Actualizando ${done+1}/${targets.length}...`; }
+    try{
+      const r = await fetch(`${TMDB_API_BASE}/${kind}/${item.tmdbId}?api_key=${encodeURIComponent(key)}&language=es-ES`);
+      if(r.ok){
+        const d = await r.json();
+        const rating = d.vote_average ? Math.round(d.vote_average*10)/10 : '';
+        const voteCount = d.vote_count || 0;
+        if(rating!=='' && (item.tmdbRating!==rating || item.tmdbVoteCount!==voteCount)) changed++;
+        item.tmdbRating = rating;
+        item.tmdbVoteCount = voteCount;
+      } else {
+        errors++;
+      }
+    }catch(e){ errors++; }
+    done++;
+    // Pequeña pausa entre peticiones para no saturar la API de TMDB
+    await new Promise(res=>setTimeout(res, 250));
+  }
+  if(btn){ btn.disabled=false; btn.textContent=prevLabel||'🔄 Actualizar valoraciones TMDB'; }
+  save();
+  try{ render(); }catch(e){}
+  try{ renderMovies(); }catch(e){}
+  try{ renderAnimeGrid(); }catch(e){}
+  try{ renderRealitiesGrid(); }catch(e){}
+  alert(`✓ Listo: ${done} ficha${done===1?'':'s'} consultada${done===1?'':'s'}, ${changed} con la nota actualizada${errors?`, ${errors} con error de conexión`:''}.\n\nRecuerda exportar data.json para publicar los cambios.`);
+}
+
+async function tmdbRefreshRating(type, btn){
+  const isMovie = type==='movie';
+  const idEl = _findInModal(isMovie?'mf_tmdbId':'f_tmdbId') || document.getElementById(isMovie?'mf_tmdbId':'f_tmdbId');
+  const kindEl = _findInModal(isMovie?'mf_tmdbKind':'f_tmdbKind') || document.getElementById(isMovie?'mf_tmdbKind':'f_tmdbKind');
+  const id = idEl?.value.trim()||'';
+  const kind = kindEl?.value.trim()||(isMovie?'movie':'tv');
+  if(!id){
+    alert('Esta ficha aún no está vinculada a TMDB.\n\nBúscala primero con "🔎 Buscar en TMDB" (arriba) y selecciona el resultado correcto — a partir de ahí este botón ya podrá traer la valoración.');
+    return;
+  }
+  let key = tmdbGetKey();
+  if(!key){ key = tmdbConfigureKey(); if(!key) return; }
+  const prevLabel = btn?btn.textContent:'';
+  if(btn){ btn.disabled=true; btn.textContent='Actualizando...'; }
+  try{
+    const r = await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=es-ES`);
+    if(r.status===401){ alert('⚠ API key inválida. Configúrala de nuevo (⚙ en el buscador de TMDB).'); return; }
+    const d = await r.json();
+    const rating = d.vote_average ? Math.round(d.vote_average*10)/10 : '';
+    const voteCount = d.vote_count || 0;
+    const ratingEl = _findInModal(isMovie?'mf_tmdbRating':'f_tmdbRating') || document.getElementById(isMovie?'mf_tmdbRating':'f_tmdbRating');
+    const voteEl = _findInModal(isMovie?'mf_tmdbVoteCount':'f_tmdbVoteCount') || document.getElementById(isMovie?'mf_tmdbVoteCount':'f_tmdbVoteCount');
+    const dispEl = _findInModal(isMovie?'mf_tmdbRatingDisplay':'f_tmdbRatingDisplay') || document.getElementById(isMovie?'mf_tmdbRatingDisplay':'f_tmdbRatingDisplay');
+    if(ratingEl) ratingEl.value = rating;
+    if(voteEl) voteEl.value = voteCount;
+    if(dispEl) dispEl.textContent = rating ? `★ ${rating}/10 (${voteCount} votos) — actualizada ahora` : 'Sin valoración en TMDB todavía';
+  }catch(e){
+    alert('✕ Error al conectar con TMDB.');
+  }finally{
+    if(btn){ btn.disabled=false; btn.textContent=prevLabel||'🔄 Actualizar valoración TMDB'; }
   }
 }
 
