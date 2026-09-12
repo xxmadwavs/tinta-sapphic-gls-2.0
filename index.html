@@ -3567,6 +3567,7 @@ const WLW_FOCUS=[
   {value:'sin-etiquetar',label:'Sin etiquetar'},
 ];
 function seriesWlwFocus(s){ return s.wlwFocus||'sin-etiquetar'; }
+function wlwFocusLabel(v){const o=WLW_FOCUS.find(x=>x.value===v);return o?o.label:v;}
 
 // ═══ TRADUCCIONES AL INGLÉS (para mostrar entre paréntesis) ═══
 const TROPOS_EN={
@@ -5704,6 +5705,7 @@ function openSeries(si){
   detailsLines+=`<div class="details-line"><span class="details-line-key">Episodios</span><span class="details-line-val">${totalEps}${seasons.length>1?` (${seasons.length}T)`:''}</span></div>`;
   if(durInfo.epDuration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span></div>`;
   if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
+  detailsLines+=`<div class="details-line"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();seriesFilters.wlwFocus=['${seriesWlwFocus(s)}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(s))}</span></span></div>`;
   const _ft=filtrarTropos(s.tropos||[],s.dinamica||[]);
   if(_ft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_ft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
   if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamicas=['${d.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
@@ -5811,6 +5813,7 @@ function openUpcoming(si){
   if(s.network) detailsLines+=`<div class="details-line"><span class="details-line-key">Estreno / Cadena</span><span class="details-line-val">${s.network}</span></div>`;
   if(s.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año aprox.</span><span class="details-line-val">${s.year}</span></div>`;
   if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
+  detailsLines+=`<div class="details-line"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();seriesFilters.wlwFocus=['${seriesWlwFocus(s)}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(s))}</span></span></div>`;
   const _uft=filtrarTropos(s.tropos||[],s.dinamica||[]);
   if(_uft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_uft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
   if(s.dinamica&&s.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${s.dinamica.map(d=>`<span onclick="closeModal();seriesFilters.dinamicas=['${d.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por esta dinámica">${dinamicaLabel(d)}</span>`).join(', ')}</span></div>`;
@@ -5912,6 +5915,7 @@ function openMovie(mi){
   else if(mv.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año</span><span class="details-line-val">${mv.year}</span></div>`;
   if(mv.duration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${fmtDuration(mv.duration)}</span></div>`;
   if(mv.genres&&mv.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${mv.genres.join(', ')}</span></div>`;
+  detailsLines+=`<div class="details-line"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();moviesFilters.wlwFocus=['${seriesWlwFocus(mv)}'];switchTab('movies');renderMovies();renderMoviesResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(mv))}</span></span></div>`;
   if(mv.basedOnBook){
     const _btypes={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. gráfica','webtoon':'Webtoon','libro':'Libro'};
     const _blabel=mv.sourceType&&_btypes[mv.sourceType]?_btypes[mv.sourceType]:'Libro';
@@ -6772,6 +6776,7 @@ function openRichDetail(item, opts){
   if(item.totalEpisodes) detailsLines+=`<div class="details-line"><span class="details-line-key">Episodios</span><span class="details-line-val">${item.totalEpisodes}${item.seasons&&item.seasons.length>1?` (${item.seasons.length}T)`:''}</span></div>`;
   if(durInfo.epDuration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span></div>`;
   if(item.genres&&item.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${item.genres.join(', ')}</span></div>`;
+  detailsLines+=`<div class="details-line"><span class="details-line-key">Foco sáfico</span><span class="details-line-val">${wlwFocusLabel(seriesWlwFocus(item))}</span></div>`;
   const _rft=filtrarTropos(item.tropos||[],item.dinamica||[]);
   if(_rft.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Tropos</span><span class="details-line-val">${_rft.map(t=>tropoLabel(t)).join(', ')}</span></div>`;
   if(item.dinamica&&item.dinamica.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Dinámica</span><span class="details-line-val">${item.dinamica.map(d=>dinamicaLabel(d)).join(', ')}</span></div>`;
