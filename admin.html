@@ -547,6 +547,9 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .cast-dropdown-item img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:center 15%;flex-shrink:0}
 .cast-dropdown-empty{padding:10px;font-size:12px;color:var(--muted);text-align:center}
 .cast-del-btn{background:none;border:1.5px solid rgba(212,92,92,.3);border-radius:8px;color:var(--danger);font-size:14px;cursor:pointer;padding:0;width:30px;height:30px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'Nunito',sans-serif}
+.cast-del-global-btn{background:none;border:1.5px solid rgba(212,92,92,.3);border-radius:8px;color:var(--danger);font-size:12.5px;cursor:pointer;padding:0;width:30px;height:30px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'Nunito',sans-serif;opacity:.75}
+.cast-del-global-btn:hover{opacity:1;background:rgba(212,92,92,.12)}
+.cast-btns-col{display:flex;flex-direction:column;gap:6px}
 .cast-del-btn:hover{background:rgba(212,92,92,.1);border-color:var(--danger)}
 .cast-create-btn{width:100%;padding:6px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;text-align:left;transition:all .15s}
 .cast-create-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -4128,6 +4131,71 @@ async function tmdbSearch(type){
   }
 }
 
+function tmdbMatchPlatformUrl(providerName){
+  const norm = s => String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+  const target = norm(providerName);
+  if(!target) return '';
+  // Coincidencia exacta primero
+  let match = PLATFORMS.find(p => norm(p.name) === target);
+  if(match) return match.url;
+  // Luego, coincidencia parcial en cualquiera de las dos direcciones
+  // (cubre casos como "Netflix basic with Ads" → "Netflix", "Amazon Prime Video" → "Prime Video")
+  match = PLATFORMS.find(p => norm(p.name) && (target.includes(norm(p.name)) || norm(p.name).includes(target)));
+  return match ? match.url : '';
+}
+
+// Código de país TMDB (ISO 3166-1) → nombre tal como aparece en PRESET_COUNTRIES_ADMIN
+const TMDB_COUNTRY_MAP = {
+  TH:'Tailandia', KR:'Corea del Sur', JP:'Japón', CN:'China', TW:'Taiwán',
+  PH:'Filipinas', SG:'Singapur', MM:'Myanmar', VN:'Vietnam', ID:'Indonesia',
+  IN:'India', HK:'Hong Kong', ES:'España', GB:'Reino Unido', FR:'Francia',
+  DE:'Alemania', PT:'Portugal', IT:'Italia', SE:'Suecia', NO:'Noruega',
+  DK:'Dinamarca', PL:'Polonia', BE:'Bélgica', NL:'Países Bajos', IE:'Irlanda',
+  RU:'Rusia', TR:'Turquía', GE:'Georgia', LT:'Lituania', FI:'Finlandia',
+  US:'Estados Unidos', CA:'Canadá', MX:'México', AR:'Argentina', BR:'Brasil',
+  CO:'Colombia', CL:'Chile', VE:'Venezuela', PE:'Perú', AU:'Australia', NZ:'Nueva Zelanda',
+};
+
+// Géneros de TMDB (nombres en español) → nuestros chips de GENRES
+const TMDB_GENRE_MAP = {
+  'Acción':['Acción'], 'Acción y Aventura':['Acción','Aventura'], 'Aventura':['Aventura'],
+  'Animación':['Animación'], 'Comedia':['Comedia'], 'Crimen':['Crimen'],
+  'Documental':['Documental'], 'Drama':['Drama'], 'Familia':['Familia'],
+  'Fantasía':['Fantasía'], 'Ciencia ficción':['Ciencia Ficción'],
+  'Ciencia ficción y fantasía':['Ciencia Ficción','Fantasía'], 'Misterio':['Misterio'],
+  'Música':['Musical'], 'Musical':['Musical'], 'Romance':['Romance'], 'Terror':['Terror'],
+  'Suspense':['Thriller'], 'Historia':['Histórico'], 'Bélica':['Militar'],
+  'Guerra y política':['Militar','Político'], 'Bélica y política':['Militar','Político'],
+};
+
+function tmdbApplyCountries(originCountries, type){
+  if(!originCountries || !originCountries.length) return;
+  const names = originCountries.map(c=>TMDB_COUNTRY_MAP[c]).filter(Boolean);
+  if(!names.length) return;
+  const listId = type==='movie' ? 'movieCountriesList' : 'countriesList';
+  initCountries(listId, names.join(' / '));
+}
+
+function tmdbApplyGenres(tmdbGenres, type){
+  if(!tmdbGenres || !tmdbGenres.length) return;
+  const containerId = type==='movie' ? 'mf_genres' : 'f_genres';
+  const container = _findInModal(containerId) || document.getElementById(containerId);
+  if(!container) return;
+  const toSelect = new Set();
+  tmdbGenres.forEach(g=>{ (TMDB_GENRE_MAP[g.name]||[]).forEach(n=>toSelect.add(n)); });
+  container.querySelectorAll('.genre-chip').forEach(chip=>{
+    if(toSelect.has(chip.textContent)) chip.classList.add('selected');
+  });
+}
+
+async function tmdbFetchSeason(id, seasonNumber, key){
+  try{
+    const r = await fetch(`${TMDB_API_BASE}/tv/${id}/season/${seasonNumber}?api_key=${encodeURIComponent(key)}&language=es-ES`);
+    if(!r.ok) return null;
+    return await r.json();
+  }catch(e){ return null; }
+}
+
 async function tmdbApplyResult(id, kind, type){
   const status = document.getElementById('tmdbStatus');
   const key = tmdbGetKey();
@@ -4138,17 +4206,24 @@ async function tmdbApplyResult(id, kind, type){
     const r = await fetch(url);
     const d = await r.json();
 
-    // Sinopsis: si no hay en español, probamos en inglés como respaldo
+    // Sinopsis y tráiler: si no hay en español, probamos en inglés como respaldo
     let synopsis = d.overview || '';
-    if(!synopsis){
+    let vids = (d.videos||{}).results || [];
+    if(!synopsis || !vids.length){
       try{
-        const r2 = await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=en-US`);
+        const r2 = await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=en-US&append_to_response=videos`);
         const d2 = await r2.json();
-        synopsis = d2.overview || '';
+        if(!synopsis) synopsis = d2.overview || '';
+        if(!vids.length) vids = (d2.videos||{}).results || [];
       }catch(e){}
     }
 
     const name = d.name || d.title || '';
+    const originalName = d.original_name || d.original_title || '';
+    const originalLang = d.original_language || '';
+    // Solo la rellenamos si el idioma original no es inglés ni español
+    // (si no, el "nombre" principal ya suele ser el título real)
+    const origTitle = (originalName && originalLang!=='en' && originalLang!=='es' && originalName.toLowerCase()!==name.toLowerCase()) ? originalName : '';
     const dateStr = d.first_air_date || d.release_date || '';
     const year = dateStr ? parseInt(dateStr.slice(0,4)) : '';
     const poster = d.poster_path ? 'https://image.tmdb.org/t/p/w500'+d.poster_path : '';
@@ -4163,21 +4238,53 @@ async function tmdbApplyResult(id, kind, type){
     if(!providers.length) providers = provNames(rwp.rent);
     if(!providers.length) providers = provNames(rwp.buy);
     const networkStr = providers.join(', ');
-    const watchLink = rwp.link || '';
 
     // Tráiler de YouTube
     let trailerUrl = '';
-    const vids = (d.videos||{}).results || [];
     const trailer = vids.find(v=>v.site==='YouTube' && v.type==='Trailer') || vids.find(v=>v.site==='YouTube');
     if(trailer) trailerUrl = 'https://www.youtube.com/watch?v='+trailer.key;
+
+    // Duración por episodio / de la película
+    const runtimeMins = type==='movie' ? (d.runtime||null) : ((d.episode_run_time||[])[0]||null);
+
+    // Reparto: solo mujeres (gender===1 en TMDB), ordenadas por orden de aparición/créditos
+    let femaleCast = [];
+    try{
+      let rawCast = [];
+      if(kind==='tv'){
+        const rc = await fetch(`${TMDB_API_BASE}/tv/${id}/aggregate_credits?api_key=${encodeURIComponent(key)}&language=es-ES`);
+        const jc = await rc.json();
+        rawCast = (jc.cast||[]).map(c=>({id:c.id,name:c.name,gender:c.gender,profile_path:c.profile_path,order:c.order,character:(c.roles&&c.roles[0]&&c.roles[0].character)||''}));
+      } else {
+        const rc = await fetch(`${TMDB_API_BASE}/movie/${id}/credits?api_key=${encodeURIComponent(key)}&language=es-ES`);
+        const jc = await rc.json();
+        rawCast = (jc.cast||[]).map(c=>({id:c.id,name:c.name,gender:c.gender,profile_path:c.profile_path,order:c.order,character:c.character||''}));
+      }
+      femaleCast = rawCast.filter(c=>c.gender===1).sort((a,b)=>(a.order??99)-(b.order??99)).slice(0,15);
+    }catch(e){}
 
     function setVal(elId,val){
       const el=document.getElementById(elId);
       if(el && val!==null && val!==undefined && String(val)!==''){ el.value=val; }
     }
 
+    // Busca una actriz ya existente por nombre, o crea una nueva a partir de TMDB
+    function tmdbFindOrCreateActress(person, fallbackCountry){
+      const existing = actresses.find(a=>a.name.trim().toLowerCase()===person.name.trim().toLowerCase());
+      if(existing) return existing.id;
+      const payload = {
+        id: 'tmdb_'+person.id+'_'+Date.now().toString(36),
+        name: person.name,
+        photo: person.profile_path ? 'https://image.tmdb.org/t/p/w300'+person.profile_path : '',
+        country: fallbackCountry||'',
+      };
+      actresses.push(payload);
+      return payload.id;
+    }
+
     if(type==='movie'){
       setVal('mf_name', name);
+      setVal('mf_nameEn', origTitle);
       setVal('mf_synopsis', synopsis);
       setVal('mf_year', year);
       setVal('mf_net', networkStr);
@@ -4185,19 +4292,86 @@ async function tmdbApplyResult(id, kind, type){
       setVal('mf_trailer', trailerUrl);
       if(poster) posterSetImage(poster);
       if(dateStr) setVal('mf_date', dateStr);
+      if(runtimeMins) setVal('mf_duration', formatDurationDisplay(runtimeMins));
+      tmdbApplyCountries(d.origin_country || (d.production_countries||[]).map(c=>c.iso_3166_1), 'movie');
+      tmdbApplyGenres(d.genres, 'movie');
+      const movieOriginCountry = TMDB_COUNTRY_MAP[(d.origin_country||(d.production_countries||[]).map(c=>c.iso_3166_1))[0]] || '';
+      if(femaleCast.length){
+        const mcl=document.getElementById('movieCastList');
+        if(mcl){
+          mcl.innerHTML='';
+          femaleCast.forEach(person=>{
+            const actressId=tmdbFindOrCreateActress(person, movieOriginCountry);
+            addMovieCastMember({actressId, character:person.character});
+          });
+        }
+      }
       if(providers.length){
         const mwl=document.getElementById('moviePlatformsList');
-        if(mwl){ mwl.innerHTML=''; providers.forEach((p,i)=>addMoviePlatformRow(p, i===0?watchLink:'')); }
+        if(mwl){ mwl.innerHTML=''; providers.forEach(p=>addMoviePlatformRow(p, tmdbMatchPlatformUrl(p))); }
       }
     } else {
       setVal('f_name', name);
+      setVal('f_nameEn', origTitle);
       setVal('f_synopsis', synopsis);
       setVal('f_year', year);
       setVal('f_net', networkStr);
       setVal('f_poster', poster);
       setVal('f_trailer', trailerUrl);
       if(poster) posterSetImage(poster);
-      if(d.number_of_episodes){
+      if(runtimeMins) setVal('f_epDuration', formatDurationDisplay(runtimeMins));
+      tmdbApplyCountries(d.origin_country, 'series');
+      tmdbApplyGenres(d.genres, 'series');
+      const seriesOriginCountry = TMDB_COUNTRY_MAP[(d.origin_country||[])[0]] || '';
+      if(femaleCast.length){
+        const cl=_findInModal('castList')||document.getElementById('castList');
+        if(cl){
+          cl.innerHTML='';
+          femaleCast.forEach(person=>{
+            const actressId=tmdbFindOrCreateActress(person, seriesOriginCountry);
+            addCastMember({actressId, character:person.character});
+          });
+        }
+      }
+
+      // Temporadas: intentamos traer las fechas reales de cada episodio
+      let seasonsFilled = false;
+      const realSeasons = (d.seasons||[]).filter(s=>s.season_number>=1);
+      if(realSeasons.length){
+        status.textContent = 'Cargando fechas de episodios...';
+        const seasonBlocks = [];
+        for(const s of realSeasons){
+          const sd = await tmdbFetchSeason(id, s.season_number, key);
+          const eps = (sd && sd.episodes || []).filter(e=>e.air_date).sort((a,b)=>a.episode_number-b.episode_number);
+          if(eps.length){
+            const allInOneDay = eps.length>=2 && eps[0].air_date===eps[1].air_date;
+            let emissionDays=[getDow(eps[0].air_date)];
+            if(!allInOneDay && eps.length>=2){
+              const dows=new Set();
+              eps.slice(0, Math.min(eps.length,6)).forEach(e=>dows.add(getDow(e.air_date)));
+              emissionDays=[...dows].sort((a,b)=>a-b);
+            }
+            seasonBlocks.push({
+              label:`Temporada ${s.season_number}`,
+              startDate:eps[0].air_date,
+              totalEpisodes:eps.length,
+              emissionDays,
+              allInOneDay,
+              skipDates:[], episodes:[], premiereSchedule:[],
+            });
+          } else {
+            seasonBlocks.push({
+              label:`Temporada ${s.season_number}`,
+              startDate:s.air_date||'',
+              totalEpisodes:s.episode_count||12,
+              emissionDays:[0],
+              skipDates:[], episodes:[], premiereSchedule:[],
+            });
+          }
+        }
+        if(seasonBlocks.length){ initSeasons(seasonBlocks); seasonsFilled=true; }
+      }
+      if(!seasonsFilled && d.number_of_episodes){
         const sl=_findInModal('seasonsList')||document.getElementById('seasonsList');
         if(sl && !sl.children.length){
           addSeasonBlock({label:'Temporada 1',startDate:dateStr||'',totalEpisodes:d.number_of_episodes,emissionDays:[1],skipDates:[],episodes:[]});
@@ -4205,13 +4379,15 @@ async function tmdbApplyResult(id, kind, type){
       }
       if(providers.length){
         const wl=_findInModal('platformsList')||document.getElementById('platformsList');
-        if(wl){ wl.innerHTML=''; providers.forEach((p,i)=>addPlatformRow(p, i===0?watchLink:'')); }
+        if(wl){ wl.innerHTML=''; providers.forEach(p=>addPlatformRow(p, tmdbMatchPlatformUrl(p))); }
       }
     }
+    if(femaleCast.length){ save(); if(typeof renderActressesGrid==='function'){ try{ renderActressesGrid(); }catch(e){} } }
     status.className='tmdb-bar-status ok';
-    status.textContent = providers.length
+    status.textContent = (providers.length
       ? `✓ Datos aplicados. Streaming en ${region} (vía JustWatch): ${networkStr}.`
-      : `✓ Datos aplicados. No hay plataformas de streaming listadas para ${region}.`;
+      : `✓ Datos aplicados. No hay plataformas de streaming listadas para ${region}.`)
+      + (femaleCast.length ? ` Reparto femenino añadido (${femaleCast.length}) — revisa y quita las que no interesen.` : '');
   }catch(e){
     status.className='tmdb-bar-status err'; status.textContent='✕ Error al obtener los detalles de TMDB.';
   }
@@ -4700,8 +4876,28 @@ function addCastMember(data){
         </select>
       </div>
     </div>
-    <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Eliminar">✕</button>`;
+    <div class="cast-btns-col">
+      <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Quitar del reparto de esta serie">✕</button>
+      <button type="button" onclick="deleteActressFromCastRow(this)" class="cast-del-global-btn" title="Eliminar esta actriz de toda la web (no aparecerá en el listado de actrices)">🗑</button>
+    </div>`;
   list.appendChild(row);
+}
+
+async function deleteActressFromCastRow(btn){
+  const row=btn.closest('.cast-admin-row');
+  const actressId=row?.querySelector('.cast-actress-sel')?.value;
+  if(!actressId){ alert('Primero busca y selecciona una actriz en esta fila.'); return; }
+  const ai=actresses.findIndex(a=>a.id===actressId);
+  if(ai===-1){ row.remove(); return; }
+  const ok = await showConfirm({title:`¿Eliminar a "${actresses[ai].name}" de toda la web?`, desc:'Se borrará del listado de actrices y de todas las series y películas donde aparezca (incluida esta). Esta acción no se puede deshacer.'});
+  if(!ok) return;
+  const id=actresses[ai].id;
+  series.forEach(s=>{if(s.cast) s.cast=s.cast.filter(m=>m.actressId!==id);});
+  movies.forEach(m=>{if(m.cast) m.cast=m.cast.filter(m2=>m2.actressId!==id);});
+  actresses.splice(ai,1);
+  save();
+  if(typeof renderActressesGrid==='function'){ try{ renderActressesGrid(); }catch(e){} }
+  row.remove();
 }
 
 function filterCastDropdown(inp, uid){
@@ -4867,7 +5063,11 @@ function addMovieCastMember(data){
         </select>
       </div>
     </div>
-    <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Eliminar">✕</button>`;
+    </div>
+    <div class="cast-btns-col">
+      <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Quitar del reparto de esta película">✕</button>
+      <button type="button" onclick="deleteActressFromCastRow(this)" class="cast-del-global-btn" title="Eliminar esta actriz de toda la web (no aparecerá en el listado de actrices)">🗑</button>
+    </div>`;
   list.appendChild(row);
 }
 
