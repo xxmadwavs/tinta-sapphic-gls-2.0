@@ -4137,7 +4137,11 @@ function tmdbRegionOptionsHtml(){
   return TMDB_REGIONS.map(([code,label])=>`<option value="${code}" ${code===current?'selected':''}>${label}</option>`).join('');
 }
 
+function tmdbGetCastImportPref(){ return localStorage.getItem('tmdbImportCast')!=='false'; }
+function tmdbSetCastImportPref(cb){ localStorage.setItem('tmdbImportCast', cb.checked?'true':'false'); }
+
 function tmdbBarHtml(type){
+  const castChecked = tmdbGetCastImportPref();
   return '<div class="tmdb-bar">'
     +'<div class="tmdb-bar-label"><span>🔎 Buscar en TMDB <span style="font-weight:400;opacity:.8">(streaming vía JustWatch)</span></span>'
     +'<span class="tmdb-bar-tools">'
@@ -4148,6 +4152,10 @@ function tmdbBarHtml(type){
     +`<input type="text" id="tmdbQuery" placeholder="Nombre de la serie/película...">`
     +`<button type="button" onclick="tmdbSearch('${type}')">Buscar</button>`
     +'</div>'
+    +'<label style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:11.5px;color:var(--muted);cursor:pointer">'
+    +`<input type="checkbox" id="tmdbImportCastChk" ${castChecked?'checked':''} onchange="tmdbSetCastImportPref(this)" style="width:auto;accent-color:#01b4e4">`
+    +'Importar reparto (actrices) al aplicar un resultado'
+    +'</label>'
     +'<div class="tmdb-bar-status" id="tmdbStatus"></div>'
     +'<div class="tmdb-results" id="tmdbResults"></div>'
     +'<div class="tmdb-attribution">Datos de streaming proporcionados por JustWatch a través de la API de TMDB.</div>'
@@ -4303,8 +4311,10 @@ async function tmdbApplyResult(id, kind, type){
     const runtimeMins = type==='movie' ? (d.runtime||null) : ((d.episode_run_time||[])[0]||null);
 
     // Reparto: solo mujeres (gender===1 en TMDB), ordenadas por orden de aparición/créditos
+    // (solo si la casilla "Importar reparto" está marcada para esta búsqueda)
+    const importCast = document.getElementById('tmdbImportCastChk')?.checked ?? true;
     let femaleCast = [];
-    try{
+    if(importCast) try{
       let rawCast = [];
       if(kind==='tv'){
         const rc = await fetch(`${TMDB_API_BASE}/tv/${id}/aggregate_credits?api_key=${encodeURIComponent(key)}&language=es-ES`);
