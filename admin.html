@@ -1881,6 +1881,8 @@ function switchPosterTab(tab, btn){
   document.querySelectorAll('#posterEditorWrap .poster-tab').forEach(t=>t.classList.toggle('active',t.dataset.ptab===tab));
   (_findInModal('posterPanel_url')||document.getElementById('posterPanel_url')).classList.toggle('active',tab==='url');
   (_findInModal('posterPanel_upload')||document.getElementById('posterPanel_upload')).classList.toggle('active',tab==='upload');
+  const tmdbPanel=_findInModal('posterPanel_tmdb')||document.getElementById('posterPanel_tmdb');
+  if(tmdbPanel) tmdbPanel.classList.toggle('active',tab==='tmdb');
 }
 
 /* ── Preview using <img> + CSS (no CORS needed) ── */
@@ -2361,6 +2363,7 @@ function formHtml(s, forcedCategory=null){
           <div class="poster-editor-tabs">
             <button type="button" class="poster-tab active" data-ptab="url" onclick="switchPosterTab('url',this)">URL</button>
             <button type="button" class="poster-tab" data-ptab="upload" onclick="switchPosterTab('upload',this)">Subir imagen</button>
+            <button type="button" class="poster-tab" data-ptab="tmdb" onclick="switchPosterTab('tmdb',this)">TMDB</button>
           </div>
           <!-- Panel URL -->
           <div class="poster-tab-panel active" id="posterPanel_url">
@@ -2375,6 +2378,12 @@ function formHtml(s, forcedCategory=null){
               <div>Haz clic o arrastra una imagen aquí</div>
               <div style="font-size:11px;margin-top:3px;opacity:.7">JPG, PNG, WEBP…</div>
             </div>
+          </div>
+          <!-- Panel TMDB: elegir entre todas las portadas que TMDB tiene para esta ficha -->
+          <div class="poster-tab-panel" id="posterPanel_tmdb">
+            <button type="button" class="poster-edit-btn" onclick="tmdbLoadPosterGallery('series')" style="margin-bottom:8px">🖼️ Cargar portadas de TMDB</button>
+            <div class="tmdb-bar-status" id="posterTmdbStatus"></div>
+            <div class="tmdb-results" id="posterTmdbResults"></div>
           </div>
           <!-- Preview + edición (se muestra cuando hay imagen) -->
           <div class="poster-editor-preview-row" id="posterEditRow" style="${s&&s.poster?'':'display:none'}">
@@ -3526,6 +3535,7 @@ function movieFormHtml(mv){
       <div class="poster-editor-tabs">
         <button type="button" class="poster-tab active" data-ptab="url" onclick="switchPosterTab('url',this)">URL</button>
         <button type="button" class="poster-tab" data-ptab="upload" onclick="switchPosterTab('upload',this)">Subir imagen</button>
+        <button type="button" class="poster-tab" data-ptab="tmdb" onclick="switchPosterTab('tmdb',this)">TMDB</button>
       </div>
       <div class="poster-tab-panel active" id="posterPanel_url">
         <input type="text" id="mf_poster" placeholder="https://image.tmdb.org/..." value="${mv&&mv.poster&&!mv.poster.startsWith('data:')?mv.poster:''}"/>
@@ -3538,6 +3548,11 @@ function movieFormHtml(mv){
           <div>Haz clic o arrastra una imagen aquí</div>
           <div style="font-size:11px;margin-top:3px;opacity:.7">JPG, PNG, WEBP…</div>
         </div>
+      </div>
+      <div class="poster-tab-panel" id="posterPanel_tmdb">
+        <button type="button" class="poster-edit-btn" onclick="tmdbLoadPosterGallery('movie')" style="margin-bottom:8px">🖼️ Cargar portadas de TMDB</button>
+        <div class="tmdb-bar-status" id="posterTmdbStatus"></div>
+        <div class="tmdb-results" id="posterTmdbResults"></div>
       </div>
       <div class="poster-editor-preview-row" id="posterEditRow" style="${mv&&mv.poster?'':'display:none'}">
         <div class="poster-editor-img-wrap" onclick="togglePosterExpand()" title="Haz clic para ampliar">
@@ -4316,6 +4331,51 @@ async function tmdbSearch(type){
     }).join('');
   }catch(e){
     status.className='tmdb-bar-status err'; status.textContent='✕ Error al conectar con TMDB.';
+  }
+}
+
+// Muestra todas las portadas que TMDB tiene guardadas para la ficha ya vinculada
+// (idiomas distintos, con o sin texto…) para poder elegir la que coincide con
+// la que se ve dentro de la propia web de TMDB, en vez de quedarnos siempre
+// con la que TMDB devuelve por defecto para es-ES.
+async function tmdbLoadPosterGallery(type){
+  const idEl = type==='movie' ? (_findInModal('mf_tmdbId')||document.getElementById('mf_tmdbId')) : (_findInModal('f_tmdbId')||document.getElementById('f_tmdbId'));
+  const kindEl = type==='movie' ? (_findInModal('mf_tmdbKind')||document.getElementById('mf_tmdbKind')) : (_findInModal('f_tmdbKind')||document.getElementById('f_tmdbKind'));
+  const id = idEl?.value.trim()||'';
+  const kind = kindEl?.value.trim() || (type==='movie'?'movie':'tv');
+  const status = _findInModal('posterTmdbStatus')||document.getElementById('posterTmdbStatus');
+  const grid = _findInModal('posterTmdbResults')||document.getElementById('posterTmdbResults');
+  if(!id){
+    if(status){ status.className='tmdb-bar-status err'; status.textContent='⚠ Esta ficha aún no está vinculada a TMDB. Búscala primero con "🔎 Buscar en TMDB" (arriba del todo) y selecciona el resultado correcto.'; }
+    if(grid) grid.innerHTML='';
+    return;
+  }
+  let key = tmdbGetKey();
+  if(!key){ key = tmdbConfigureKey(); if(!key) return; }
+  if(status){ status.className='tmdb-bar-status'; status.textContent='Cargando portadas...'; }
+  if(grid) grid.innerHTML='';
+  try{
+    const url = `${TMDB_API_BASE}/${kind}/${id}/images?api_key=${encodeURIComponent(key)}&include_image_language=es,en,ja,ko,th,zh,null`;
+    const r = await fetch(url);
+    const d = await r.json();
+    const posters = (d.posters||[]).slice().sort((a,b)=>(b.vote_average||0)-(a.vote_average||0));
+    if(!posters.length){
+      if(status){ status.className='tmdb-bar-status err'; status.textContent='✕ TMDB no tiene portadas guardadas para esta ficha.'; }
+      return;
+    }
+    if(status){ status.className='tmdb-bar-status ok'; status.textContent=`${posters.length} portada(s) disponibles en TMDB. Haz clic en la que quieras usar:`; }
+    if(grid){
+      grid.innerHTML = posters.map(p=>{
+        const thumb = TMDB_IMG_BASE+p.file_path;
+        const full = 'https://image.tmdb.org/t/p/w500'+p.file_path;
+        const lang = p.iso_639_1 ? p.iso_639_1.toUpperCase() : 'Sin texto';
+        return `<div class="tmdb-result-card" onclick="posterSetImage('${full}')" title="Usar esta portada">`
+          +`<img src="${thumb}" alt="" loading="lazy">`
+          +`<div class="tmdb-rc-info"><div class="tmdb-rc-year">${lang}</div></div></div>`;
+      }).join('');
+    }
+  }catch(e){
+    if(status){ status.className='tmdb-bar-status err'; status.textContent='✕ Error al conectar con TMDB.'; }
   }
 }
 
