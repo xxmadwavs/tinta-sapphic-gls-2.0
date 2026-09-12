@@ -4491,7 +4491,9 @@ async function tmdbApplyResult(id, kind, type){
     // Duración por episodio / de la película
     const runtimeMins = type==='movie' ? (d.runtime||null) : ((d.episode_run_time||[])[0]||null);
 
-    // Reparto: solo mujeres (gender===1 en TMDB), ordenadas por orden de aparición/créditos
+    // Reparto: solo mujeres (gender===1 en TMDB) y solo las principales
+    // (para series: las que salen en un % relevante de episodios, no comparsas de 1 capítulo;
+    //  para películas: primeras en orden de créditos)
     // (solo si la casilla "Importar reparto" está marcada para esta búsqueda)
     const importCast = document.getElementById('tmdbImportCastChk')?.checked ?? true;
     let femaleCast = [];
@@ -4500,13 +4502,22 @@ async function tmdbApplyResult(id, kind, type){
       if(kind==='tv'){
         const rc = await fetch(`${TMDB_API_BASE}/tv/${id}/aggregate_credits?api_key=${encodeURIComponent(key)}&language=es-ES`);
         const jc = await rc.json();
-        rawCast = (jc.cast||[]).map(c=>({id:c.id,name:c.name,gender:c.gender,profile_path:c.profile_path,order:c.order,character:(c.roles&&c.roles[0]&&c.roles[0].character)||''}));
+        rawCast = (jc.cast||[]).map(c=>({id:c.id,name:c.name,gender:c.gender,profile_path:c.profile_path,order:c.order,character:(c.roles&&c.roles[0]&&c.roles[0].character)||'',episodeCount:c.total_episode_count||(c.roles&&c.roles[0]&&c.roles[0].episode_count)||0}));
       } else {
         const rc = await fetch(`${TMDB_API_BASE}/movie/${id}/credits?api_key=${encodeURIComponent(key)}&language=es-ES`);
         const jc = await rc.json();
         rawCast = (jc.cast||[]).map(c=>({id:c.id,name:c.name,gender:c.gender,profile_path:c.profile_path,order:c.order,character:c.character||''}));
       }
-      femaleCast = rawCast.filter(c=>c.gender===1).sort((a,b)=>(a.order??99)-(b.order??99)).slice(0,15);
+      const femaleAll = rawCast.filter(c=>c.gender===1).sort((a,b)=>(a.order??99)-(b.order??99));
+      if(kind==='tv' && d.number_of_episodes){
+        // Principal = sale en al menos ~70% de los episodios (evita comparsas/invitadas de 1-2 caps)
+        const minEpisodes = Math.max(2, Math.round(d.number_of_episodes*0.7));
+        let mainCast = femaleAll.filter(c=>c.episodeCount>=minEpisodes);
+        if(mainCast.length<2) mainCast = femaleAll.slice(0,8); // sin datos fiables de episodios: fallback por orden
+        femaleCast = mainCast.slice(0,10);
+      } else {
+        femaleCast = femaleAll.slice(0,8);
+      }
       // Para cada actriz pedimos su ficha de persona en TMDB: nos da
       // el nombre romanizado (also_known_as), su país de nacimiento real
       // y su fecha de nacimiento, para rellenar bien su ficha de actriz.
