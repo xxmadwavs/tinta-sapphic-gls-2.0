@@ -3260,22 +3260,33 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
 }
 @media(max-width:640px){
   .series-grid,.movies-grid{
-    grid-template-columns:repeat(2,1fr)!important;
-    gap:8px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:10px!important;
+  }
+  .series-card,.movie-card{
+    flex-direction:row!important;
+    align-items:flex-start!important;
+  }
+  .series-card-poster-wrap,.movie-card-poster-wrap{
+    width:92px!important;
+    flex-shrink:0!important;
   }
   .series-card-body,.movie-card-body{
-    padding:7px 8px!important;
-    gap:2px!important;
+    padding:9px 10px!important;
+    gap:3px!important;
+    flex:1!important;
+    min-width:0!important;
   }
   .series-card-name,.movie-card-name{
-    font-size:11px!important;
+    font-size:13px!important;
     -webkit-line-clamp:2;
     display:-webkit-box;
     -webkit-box-orient:vertical;
     overflow:hidden;
   }
   .series-card-meta,.movie-card-meta,.series-card-next,.series-card-done,.movie-card-date{
-    font-size:9.5px!important;
+    font-size:10.5px!important;
   }
   .card-badges{min-height:0;margin-bottom:2px}
   .badge{font-size:8.5px;padding:1px 6px}
