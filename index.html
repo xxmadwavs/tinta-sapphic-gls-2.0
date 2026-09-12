@@ -101,7 +101,18 @@ html[data-theme="dark"] {
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+html,body{max-width:100%;overflow-x:hidden}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.6;min-height:100vh}
+/* Evita que una tarjeta con contenido no-encogible (badges, textos largos)
+   ensanche su columna del grid más allá de la pantalla ("grid blowout") */
+.series-grid>*,.movies-grid>*,.upcoming-grid>*,.books-grid>*,.picks-grid>*,
+.canceladas-grid>*,.sinnovedades-grid>*,.listas-items-grid>*,.skeleton-grid>*{
+  min-width:0;
+}
+.series-card-name,.movie-card-name,.book-card-title,.pick-card-name,
+.upcoming-name,.cancelled-name,.sn-name{
+  overflow-wrap:break-word;word-break:break-word;
+}
 
 /* Background atmosphere */
 body::before{content:'';position:fixed;inset:0;background:
@@ -5124,13 +5135,16 @@ function renderList(){
   const view=document.getElementById('viewList');
   // First render: build the static shell (barra de búsqueda + layout de sidebar)
   if(!view.querySelector('.list-toolbar-shell')){
-    view.innerHTML=`<div class="list-toolbar-shell">
+    view.innerHTML=`<div class="list-toolbar-shell books-toolbar">
       <div class="toolbar-search-row">
         <div class="search-wrap" style="position:relative;margin-bottom:0;flex:1">
           <span class="search-icon"></span>
           <input id="seriesSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${seriesFilters.q}" oninput="seriesFilters.q=this.value;resetSeriesPages();debounceRender('series',renderListResults)" autocomplete="off">
         </div>
+      </div>
+      <div class="toolbar-filters-row">
         <div class="filter-group">
+          <span class="filter-label">Orden</span>
           <select id="seriesSortSel" class="filter-select" title="Orden" onchange="seriesFilters.sort=this.value;resetSeriesPages();renderListResults()">
             <option value="az"${seriesFilters.sort==='az'?' selected':''}>A → Z</option>
             <option value="za"${seriesFilters.sort==='za'?' selected':''}>Z → A</option>
@@ -5141,6 +5155,7 @@ function renderList(){
           </select>
         </div>
         <div class="filter-group">
+          <span class="filter-label">Libro</span>
           <select id="seriesBookSel" class="filter-select" title="Libro" onchange="seriesFilters.book=this.value;resetSeriesPages();renderListResults()">
             <option value="all">Libro</option>
             <option value="yes">Con libro</option>
@@ -5157,6 +5172,7 @@ function renderList(){
         <div id="listResults"></div>
       </div>
     </div>`;
+    _initMobileFilterToggle(view.querySelector('.list-toolbar-shell'));
   }
   renderListResults();
 }

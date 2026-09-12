@@ -1027,6 +1027,10 @@
         {
           "actressId": "1778668259606",
           "character": "Proud"
+        },
+        {
+          "actressId": "1789219190319",
+          "character": "\"Medsai\" Marisa"
         }
       ],
       "animeSeason": "",
@@ -1045,7 +1049,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-12T08:51:15.781Z",
+      "updatedAt": "2026-09-12T13:20:18.022Z",
       "nameEn": "ลัลล์ไม่ชอบไวน์",
       "episodeDuration": 50,
       "myPick": false,
@@ -1079,7 +1083,7 @@
           "1778668259606"
         ]
       ],
-      "tmdbId": 307432,
+      "tmdbId": "307432",
       "tmdbKind": "tv",
       "tmdbRating": 9.2,
       "tmdbVoteCount": 13
@@ -2831,7 +2835,7 @@
       "id": "1776971297117",
       "name": "Oxytoxin",
       "poster": "https://image.tmdb.org/t/p/w500/3ureFluaEBW49JdpRmtTRlf6whP.jpg",
-      "synopsis": "The story of a influential high school friend group known as Toxxxxin.",
+      "synopsis": "La historia de un influyente grupo de amigos del instituto conocido como Toxxxxin.",
       "year": "",
       "country": "Tailandia",
       "network": "",
@@ -2878,7 +2882,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-12T11:53:40.848Z",
+      "updatedAt": "2026-09-12T13:16:49.657Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -2909,7 +2913,7 @@
       "id": "1776971352334",
       "name": "Juliet & Juliet",
       "poster": "https://image.tmdb.org/t/p/w500/sEDx1wyVpOWlXK2aEp7UYkSGJeN.jpg",
-      "synopsis": "When the heirs of two rival families turn out to be each other's first love, will the ending be love... or tragedy?",
+      "synopsis": "Cuando los herederos de dos familias rivales resultan ser el primer amor el uno del otro, ¿el final será de amor… o de tragedia?",
       "year": 2026,
       "country": "Tailandia",
       "network": "oneD, GagaOOLala",
@@ -2952,7 +2956,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-12T11:53:42.107Z",
+      "updatedAt": "2026-09-12T13:16:42.977Z",
       "sourceType": "",
       "moods": [],
       "tropos": [
@@ -3111,11 +3115,15 @@
         {
           "actressId": "1778667631376",
           "character": "Jay"
+        },
+        {
+          "actressId": "1789219190319",
+          "character": "Peach"
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-12T11:53:58.226Z",
+      "updatedAt": "2026-09-12T13:20:00.237Z",
       "nameEn": "เงาใต้พระจันทร์",
       "episodeDuration": 64,
       "myPick": false,
@@ -3237,7 +3245,7 @@
       "id": "1776971628835",
       "name": "Remain",
       "poster": "https://image.tmdb.org/t/p/w500/zPh3Pu9A8raTlFfeqpmyUIICIqe.jpg",
-      "synopsis": "I knew that one day we would have to part ways, but my heart couldn't stop itself. Even though reality keeps reminding me of our situation, my heart, which has already fallen so deeply, just can't let go of you.",
+      "synopsis": "Sabía que algún día tendríamos que separarnos, pero mi corazón no podía evitarlo. Aunque la realidad no deja de recordarme nuestra situación, mi corazón, que ya se ha enamorado tan profundamente, simplemente no puede dejar de pensar en ti.",
       "year": 2026,
       "country": "Tailandia",
       "network": "",
@@ -3300,7 +3308,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-12T11:54:19.173Z",
+      "updatedAt": "2026-09-12T13:16:31.603Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3330,14 +3338,14 @@
     {
       "id": "1776972053631",
       "name": "Buy My Boss",
-      "poster": "https://pbs.twimg.com/media/HO9Psn2agAA6idY?format=jpg&name=small",
-      "synopsis": "Manfan, una recién graduada, está en bancarrota. Tiene el corazón roto y nada parece estar en orden. Sintiendo soledad, contrata a Araya, una escort, cuya calidez y encanto le brindan consuelo.\n\nJusto cuando su vida empieza a encarrilarse, consigue un trabajo prometedor y descubre que Araya es Issara, su nueva jefa.\n\nEste giro argumental desencadena una aventura llena de tensión romántica y emociones complejas.",
-      "year": "",
+      "poster": "https://image.tmdb.org/t/p/w500/3xyDKzRgb6IvYQYYyxrEftIT3OY.jpg",
+      "synopsis": "Manfan es una recién licenciada que actualmente se encuentra en bancarrota y con el corazón roto. En su soledad, contrata a una acompañante llamada Araya, cuya calidez y encanto le proporcionan el consuelo que tanto necesita. Justo cuando su vida empieza a estabilizarse y consigue un trabajo prometedor, descubre que Araya es en realidad Issara, su nueva jefa. Esta revelación inesperada da pie a un viaje lleno de tensión romántica y emociones complicadas.",
+      "year": 2026,
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/BsfJX88YUoU",
+      "trailerUrl": "https://www.youtube.com/watch?v=BsfJX88YUoU",
       "bookSource": "Buy My Boss",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/343259/Thumbnail/book_detail_large.gif?5",
@@ -3362,7 +3370,7 @@
         "Oficina / Trabajo",
         "Romance"
       ],
-      "nameEn": "",
+      "nameEn": "ฉันซื้อเจ้านายกิน",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -3372,12 +3380,12 @@
         },
         {
           "actressId": "1778786968294",
-          "character": ""
+          "character": "Manfan"
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-08-09T18:54:24.293Z",
+      "updatedAt": "2026-09-12T13:12:47.606Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3401,11 +3409,24 @@
           "startDate": "2026-10-28",
           "totalEpisodes": 8,
           "emissionDays": [
-            0
+            2
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-10-28",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "date": "2026-11-04",
+              "skipped": false,
+              "source": "tmdb"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
@@ -3415,22 +3436,23 @@
           "1778786968294"
         ]
       ],
-      "tmdbId": 275947,
+      "tmdbId": "275947",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776972122133",
       "name": "Under Her Rules",
-      "poster": "https://i.mydramalist.com/zBQNg1_4c.jpg?v=1",
-      "synopsis": "Alice, una recién graduada, conoce a su intensa y seductora jefa, Nannalin.\n\nA medida que se desdibujan los límites entre el trabajo, el deseo y el poder, Alice debe decidir: ¿escapar de su exigente jefa o someterse a sus reglas?",
-      "year": "",
+      "poster": "https://image.tmdb.org/t/p/w500/tfB0yqY4bIIALXXcgBzj4bDw8td.jpg",
+      "synopsis": "Alice, recién licenciada, conoce a su jefa, Nannalin, una mujer intensa y seductora. A medida que se difuminan los límites entre el trabajo, el deseo y el poder, Alice debe tomar una decisión: ¿huir de su exigente jefa o rendirse a sus reglas?",
+      "year": 2026,
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/Mrm0Ej8e_Yw",
+      "trailerUrl": "https://www.youtube.com/watch?v=Mrm0Ej8e_Yw",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -3460,8 +3482,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-08-26T21:21:58.579Z",
-      "nameEn": "",
+      "updatedAt": "2026-09-12T13:13:53.148Z",
+      "nameEn": "ใต้เงาจันทรา",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3486,7 +3508,14 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-10-17",
+              "skipped": false,
+              "source": "tmdb"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
@@ -3496,22 +3525,23 @@
           "1778762052809"
         ]
       ],
-      "tmdbId": 307427,
+      "tmdbId": "307427",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776972237357",
       "name": "Ditto",
-      "poster": "https://i.mydramalist.com/l0YJ2x_4f.jpg",
-      "synopsis": "Esta es la historia de dos mujeres muy diferentes.\n\nUna es una prometedora bailarina, rica y arrogante. La otra es una azafata de buenos modales, siempre con una sonrisa. Las dos no tienen nada en común... excepto un nombre: Rafah.\n\nDe alguna manera, el destino las une en una caída del cielo: una azafata con un ala fracturada y una bailarina con una pierna rota.",
+      "poster": "https://image.tmdb.org/t/p/w500/pXfDqdoEycd4vaQcbZOHWw4ojO3.jpg",
+      "synopsis": "Esta es la historia de dos mujeres muy diferentes. Una es una prometedora bailarina, rica y arrogante. La otra es una azafata de vuelo educada, siempre dispuesta a sonreír. Las dos no tienen nada en común… salvo un nombre: Rafah. De alguna manera, el destino las une en una caída del cielo: una azafata con un ala fracturada y una bailarina con una pierna rota.",
       "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/30LfbsWHCW4",
+      "trailerUrl": "https://www.youtube.com/watch?v=30LfbsWHCW4",
       "bookSource": "Ditto",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/409971/Thumbnail/book_detail_large.gif?2",
@@ -3561,8 +3591,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:45:25.094Z",
-      "nameEn": "",
+      "updatedAt": "2026-09-12T13:17:00.098Z",
+      "nameEn": "ระฟ้าหล่นสวรรค์",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3580,22 +3610,26 @@
           "1778667975177"
         ]
       ],
-      "tmdbId": 307420,
+      "tmdbId": "307420",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1776972424986",
-      "name": "Wish upon a Star",
-      "poster": "https://i.mydramalist.com/AB0n3Z_4f.jpg",
-      "synopsis": "Una historia sobre dos jóvenes que comparten el mismo nombre.\n\nTras la trágica muerte de Dao, la olvidada y solitaria Dao viaja en el tiempo a su época de instituto para salvarla.\n\nPara lograrlo, tendrá que encontrar el valor para hacer lo que nunca se atrevió a hacer y apoyarla.",
+      "name": "Wish Upon A Star",
+      "poster": "https://image.tmdb.org/t/p/w500/v8f2vj5ZKqH4z0Q1DslNoNrCKHl.jpg",
+      "synopsis": "La historia de dos jóvenes que comparten el mismo nombre. Tras la trágica muerte de la Dao que brilla con tanta intensidad, la Dao olvidada y solitaria viaja en el tiempo hasta el instituto para salvarle la vida. Para lograrlo, tendrá que encontrar el valor para hacer lo que nunca se atrevió a hacer y permanecer a su lado.",
       "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/gniuiRNJh10",
+      "trailerUrl": "https://www.youtube.com/watch?v=gniuiRNJh10",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -3624,8 +3658,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:54:24.723Z",
-      "nameEn": "",
+      "updatedAt": "2026-09-12T13:17:01.278Z",
+      "nameEn": "คืนนั้นฉันมองเห็นดาวด้วยตาเปล่า",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3641,10 +3675,16 @@
           "1778667559702"
         ]
       ],
-      "tmdbId": 306934,
+      "tmdbId": "306934",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1776972733396",
@@ -3694,14 +3734,14 @@
     {
       "id": "1776972993462",
       "name": "Love's Echoes",
-      "poster": "https://i.mydramalist.com/NdJldA_4f.jpg",
-      "synopsis": "Clara y New compartían el mismo sueño: convertirse en ídolos.\n\nHoy, una brilla con luz propia bajo los focos, mientras que la otra permanece en la sombra, dedicada a la escritura. Sus caminos se cruzan de nuevo cuando una novela de New se adapta al cine y Clara descubre la verdad tras su distanciamiento: New se retiró debido a un tumor que le deterioraba la audición.\n\nTras haber sido muy unidas, ¿les permitirá este reencuentro reavivar su vínculo... o quizás construir algo aún más fuerte?",
+      "poster": "https://image.tmdb.org/t/p/w500/pvVVuKwQIio9EDALLqAnZCsXFZu.jpg",
+      "synopsis": "Clara y New compartían el mismo sueño: convertirse en ídolos. Hoy, una de ellas brilla con fuerza bajo los focos, mientras que la otra permanece en la sombra, tras haberse dedicado a la escritura.\n\nSus caminos vuelven a cruzarse cuando una novela de New va a ser adaptada al cine y Clara descubre la verdad que se esconde tras su distanciamiento: New lo dejó debido a un tumor que le estaba deteriorando la audición.\n\nTras haber sido muy cercanas, ¿les permitirá este reencuentro reavivar su vínculo… o quizá construir algo aún más fuerte?",
       "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/R0ny7lQSr2k",
+      "trailerUrl": "https://www.youtube.com/watch?v=R0ny7lQSr2k",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -3718,18 +3758,26 @@
       "seriesType": "serie",
       "cast": [
         {
-          "actressId": "1778668109244",
+          "actressId": "1778668288034",
+          "character": "New"
+        },
+        {
+          "actressId": "tmdb_3742339_mtyet9vn",
           "character": "Clara"
         },
         {
-          "actressId": "1778668288034",
-          "character": "New"
+          "actressId": "tmdb_5420244_mtyet9vo",
+          "character": "Phapie"
+        },
+        {
+          "actressId": "tmdb_5840093_mtyet9vp",
+          "character": "Yumi"
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:54:29.031Z",
-      "nameEn": "",
+      "updatedAt": "2026-09-12T13:18:16.662Z",
+      "nameEn": "ให้รักกังวานในใจ",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3741,26 +3789,32 @@
       "productoraId": "1779134050424",
       "couples": [
         [
-          "1778668109244",
-          "1778668288034"
+          "1778668288034",
+          "tmdb_3742339_mtyet9vn"
         ]
       ],
-      "tmdbId": 306935,
+      "tmdbId": "306935",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1776973104361",
       "name": "Bake Love Feeling",
-      "poster": "https://i.mydramalist.com/JBYKQl_4f.jpg",
-      "synopsis": "Aunque empezamos mal, espero que nos acerquemos y que pueda trabajar bien contigo. No sé si es la cercanía o qué lo que me acelera el corazón.\n\nTengo que repetirme que la amabilidad que me has mostrado es solo por obligación, ¡no te lo tomes tan en serio!",
+      "poster": "https://image.tmdb.org/t/p/w500/4kum5E6sJputYZxmOtuKv5GWy0a.jpg",
+      "synopsis": "Aunque hemos tenido un mal comienzo, espero que nos acerquemos más y que pueda trabajar sin problemas contigo. No sé si es por la cercanía o qué es lo que me hace latir tan rápido el corazón. Tengo que seguir diciéndome a mí misma que la amabilidad que me has mostrado es solo por obligación, ¡no te lo tomes tan en serio!",
       "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/NFFWV0X4i_c",
+      "trailerUrl": "https://www.youtube.com/watch?v=NFFWV0X4i_c",
       "bookSource": "Bake Love Feelings",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/410048/Thumbnail/book_detail_large.gif?2",
@@ -3812,8 +3866,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-23T18:41:32.153Z",
-      "nameEn": "",
+      "updatedAt": "2026-09-12T13:20:43.683Z",
+      "nameEn": "ขนมปังชีสเนย",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3841,16 +3895,17 @@
           "1778667475076"
         ]
       ],
-      "tmdbId": 307047,
+      "tmdbId": "307047",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776973507673",
       "name": "Whale Store xoxo",
-      "poster": "https://i.mydramalist.com/nO6nPE_4f.jpg",
-      "synopsis": "En rápida sucesión, Wan pierde a su padre y se queda sin trabajo repentinamente, heredando de repente la tienda de comestibles paterna, que se hunde en tiempos difíciles.\n\nPronto conoce a Maewnam, una clienta habitual, trabajadora y coqueta. Maewnam apoya los esfuerzos de Wan por reflotar el negocio, pero oculta la verdad sobre su propio negocio familiar, lo que amenaza los planes de Wan.",
+      "poster": "https://image.tmdb.org/t/p/w500/kdTLb3tgekQO4ycf74yqiLoCnye.jpg",
+      "synopsis": "En un breve lapso de tiempo, Wan pierde a su padre y se queda sin trabajo de repente, heredando así de improviso la tienda de comestibles de su padre, que se está desmoronando debido a los tiempos difíciles. Pronto conoce a Maewnam, una clienta habitual de la tienda, trabajadora y coqueta. Maewnam apoya los esfuerzos de Wan por reflotar el negocio, pero oculta la verdad sobre el negocio familiar de su propia familia, lo que pone en peligro los planes de Wan.",
       "year": 2025,
       "country": "Tailandia",
       "network": "Netflix, youtube",
@@ -3865,7 +3920,7 @@
           "url": "https://www.youtube.com/watch?v=w8x8AedJzbY&list=PLszepnkojZI4qpSumzOHRdNa79JRiC-cE"
         }
       ],
-      "trailerUrl": "https://youtu.be/P2YZ7d1aI6k",
+      "trailerUrl": "https://www.youtube.com/watch?v=P2YZ7d1aI6k",
       "bookSource": "The Whale Store",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/347291/Thumbnail/book_detail_large.gif?2",
@@ -3897,6 +3952,7 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
+        "Comedia",
         "Drama",
         "Romance"
       ],
@@ -3912,10 +3968,6 @@
           "character": "\"Wan\" Thantara"
         },
         {
-          "actressId": "1778668109244",
-          "character": "Tonnam"
-        },
-        {
           "actressId": "1778668288034",
           "character": "Chomphu / \"Chom\""
         },
@@ -3926,6 +3978,10 @@
         {
           "actressId": "1778668360946",
           "character": "Noey"
+        },
+        {
+          "actressId": "1789219342893",
+          "character": "Tonnam"
         }
       ],
       "animeSeason": "",
@@ -3940,13 +3996,94 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2025-06-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/iya4aPmKblpedyzcjhQG9Gpx7SV.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2025-07-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/7eg6w56ZA3cgTPB9ikEjm3OcU2o.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2025-07-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/sysA8JmBoR019G8pd5qsyqY8Lfa.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2025-07-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 52,
+              "still": "https://image.tmdb.org/t/p/w300/6hsbC98Iq5BGCZzGna1kwg440YG.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2025-07-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 55,
+              "still": "https://image.tmdb.org/t/p/w300/51eixZACOvomWUswkqqHDwibNpI.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2025-07-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/8DDvic7Kk4oELtQu39ZsWp48nAx.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2025-08-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/9OMKPPTRfBdiY526JseKsE40cOQ.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2025-08-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/rbTodbL6QVSbAHgklnl0aFF4ST3.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2025-08-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 49,
+              "still": "https://image.tmdb.org/t/p/w300/a79Ot1hHGqFplgu4InUgRSd9haE.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2025-08-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/qIADvrh7XfXv2BNyumgn4ue5az8.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:45:29.727Z",
-      "nameEn": "",
-      "episodeDuration": "",
+      "updatedAt": "2026-09-12T13:22:44.059Z",
+      "nameEn": "คุณวาฬร้านชำ",
+      "episodeDuration": 60,
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -3963,21 +4100,25 @@
           "1778667975177"
         ],
         [
-          "1778668109244",
+          "1789219342893",
           "1778668288034"
         ]
       ],
-      "tmdbId": 278138,
+      "tmdbId": "278138",
       "tmdbKind": "tv",
       "tmdbRating": 8.5,
-      "tmdbVoteCount": 21
+      "tmdbVoteCount": 21,
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1776974136082",
       "name": "Khom Khlang",
-      "poster": "https://i.mydramalist.com/nOlYeW_4f.jpg",
-      "synopsis": "Una racional agente de policía se ve obligada a colaborar con una maestra espiritual que cree en la fe y los rituales ancestrales.\n\nJuntos, deben descubrir una verdad oculta en un mundo de escrituras sagradas, símbolos místicos y prácticas ocultas. A medida que la investigación se profundiza, también lo hace una conexión innegable entre ellas, una que se vuelve demasiado poderosa como para ignorarla.",
-      "year": "",
+      "poster": "https://image.tmdb.org/t/p/w500/jVHDDRuW3C5X7vZg2jQxFdnGB2X.jpg",
+      "synopsis": "Bulan, una mujer que irradia un aura de misterio, se cruza en el camino de Peem, una agente de policía desesperada por resolver un caso para el que la ley no ofrece respuestas. Recomendada como la única persona capaz de ayudarla, Bulan despierta en Peem dudas, atracción y un vínculo inesperado que pondrá a prueba sus creencias y su concepción de la justicia.",
+      "year": 2026,
       "country": "Tailandia",
       "network": "WeTV",
       "networkUrl": "https://wetv.vip/en/play/l8u24vqut3sseql/m41024a4o3e",
@@ -4013,11 +4154,12 @@
       "skipDates": [],
       "episodes": [],
       "genres": [
+        "Drama",
         "Misterio",
         "Romance",
         "Terror"
       ],
-      "nameEn": "",
+      "nameEn": "ข่มขลัง",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -4040,7 +4182,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-12T11:38:59.718Z",
+      "updatedAt": "2026-09-12T13:22:55.618Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -4065,7 +4207,70 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-09-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/wShtX367Fyy8BOWR6rxALrhtqas.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-09-14",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "date": "2026-09-21",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "date": "2026-09-28",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "date": "2026-10-05",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "date": "2026-10-12",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "date": "2026-10-19",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "date": "2026-10-26",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "date": "2026-11-02",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "date": "2026-11-09",
+              "skipped": false,
+              "source": "tmdb"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
@@ -4083,19 +4288,19 @@
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0,
-      "wlwFocus": ""
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1776974252950",
-      "name": "Hidden Heart",
+      "name": "Hidden Heart The Series",
       "poster": "https://i.mydramalist.com/3odRdm_4f.jpg",
-      "synopsis": "La persona adecuada en el momento adecuado es sin duda amor, pero la persona adecuada en el momento equivocado sólo puede ser valorada como...\n\nEl corazón oculto del amor.",
+      "synopsis": "La serie está basada en la novela de Flower of Memory y ofrece una historia más introspectiva y emotiva.\n\nLa narración se centra en un amor que surge en el momento menos oportuno, explorando el peso del destino, el silencio emocional y los sentimientos que permanecen ocultos.",
       "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/DBfacLBfsrA",
+      "trailerUrl": "https://www.youtube.com/watch?v=DBfacLBfsrA",
       "bookSource": "Hidden Heart",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/157052/Thumbnail/book_detail_large.gif?10",
@@ -4113,7 +4318,7 @@
       "genres": [
         "Romance"
       ],
-      "nameEn": "",
+      "nameEn": "รักพรางใจ",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -4124,7 +4329,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-19T07:54:54.118Z",
+      "updatedAt": "2026-09-12T13:23:04.746Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -4135,16 +4340,22 @@
       "snNote": "",
       "productoraId": "1779135573515",
       "couples": [],
-      "tmdbId": 308796,
+      "tmdbId": "308796",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "wlwFocus": "pareja-principal",
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": []
     },
     {
       "id": "1776974479970",
       "name": "My Only Sunshine",
-      "poster": "https://i.mydramalist.com/l0p7eE_4f.jpg",
-      "synopsis": "La prometedora actriz Sun lleva años intentando conquistar a Rafah, una influyente ejecutiva de coches de lujo y hermana mayor de su mejor amiga.\n\nPero cuando la química en pantalla de Sun con una actriz también en ascenso desata rumores de romance, los sentimientos reprimidos de Rafah se transforman en celos. Mientras escándalos, fotos filtradas y avistamientos sospechosos empiezan a surgir, Rafah se muda al apartamento de Sun para protegerla y controlarla.\n\nSin embargo, cuando Sun comienza a aparecer en lugares donde jura no haber estado nunca, empieza a dudar de todo. La verdad es más impactante que cualquier rumor: Sun tiene una hermana gemela perdida hace mucho tiempo.\n\nCon una exnovia decidida a recuperar a Rafah y un vídeo filtrado que amenaza con destruir la carrera de Sun, el amor se convierte en un campo de batalla de confianza, obsesión y secretos ocultos.",
+      "poster": "https://image.tmdb.org/t/p/w500/lt8vy3VR5AbPG7ptoUQHOU2mGUg.jpg",
+      "synopsis": "Sun, una actriz en ascenso, lleva años intentando conquistar el corazón de Rafah, una influyente ejecutiva del sector de los coches de lujo y hermana mayor de su mejor amiga. Pero cuando la química que Sun muestra en pantalla con un coprotagonista en alza desata rumores virales sobre una posible relación entre ambos, los sentimientos ocultos de Rafah estallan en forma de celos. A medida que comienzan a surgir escándalos, fotos filtradas y avistamientos sospechosos, Rafah se muda al piso de Sun para protegerla y controlarla. Pero cuando Sun empieza a aparecer en lugares en los que jura que nunca ha estado, comienza a cuestionárselo todo. La verdad es más impactante que cualquier rumor.\n\nCon una exnovia decidida a recuperar a Rafah y un vídeo filtrado que amenaza con destruir la carrera de Sun, el amor se convierte en un campo de batalla de confianza, obsesión y secretos ocultos.",
       "year": 2026,
       "country": "Tailandia",
       "network": "iQiyi",
@@ -4155,7 +4366,7 @@
           "url": "https://www.iq.com/album/my-only-sunshine-2026-1e2grren3yh?lang=en_us"
         }
       ],
-      "trailerUrl": "https://youtu.be/j-sUaX2b6lw",
+      "trailerUrl": "https://www.youtube.com/watch?v=dA2PCAo1xDw",
       "bookSource": "My Only Sunshine",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/211350/Thumbnail/book_detail_large.gif?11",
@@ -4196,7 +4407,7 @@
         "Drama",
         "Romance"
       ],
-      "nameEn": "",
+      "nameEn": "ตะวันระฟ้า",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -4231,15 +4442,74 @@
           "skipDates": [],
           "episodes": [
             {
+              "num": 1,
+              "date": "2026-02-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44,
+              "still": "https://image.tmdb.org/t/p/w300/9wGAF2Svv24kA7Bx6hSkXuPWP1V.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-03-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/ieG47nM2zEtPBsBWZZPs2KwZhiN.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2026-03-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 57,
+              "still": "https://image.tmdb.org/t/p/w300/5iIaZAuOTi4vs9BKaQPQTEVye6t.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2026-03-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/eMbFXNYoN9FHOZGFaJEIY9399ZV.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2026-03-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/rFggyrNL5tcYsQm5nFRgm8lVSMO.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2026-04-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/yRMYjCtw9lJg62z6uITdIlAKSDD.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2026-04-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 54,
+              "still": "https://image.tmdb.org/t/p/w300/sej557lIKw1jezd7lAP2L0ujWh5.jpg"
+            },
+            {
               "num": 8,
               "date": "2026-04-22",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/bG2ofHrll3pwlnw73I8HvXmaz3o.jpg"
             }
           ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:45:33.541Z",
+      "updatedAt": "2026-09-12T13:23:16.152Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -4261,16 +4531,20 @@
           "1778787338178"
         ]
       ],
-      "tmdbId": 276608,
+      "tmdbId": "276608",
       "tmdbKind": "tv",
       "tmdbRating": 5.8,
-      "tmdbVoteCount": 4
+      "tmdbVoteCount": 4,
+      "wlwFocus": "pareja-principal",
+      "tropos": [],
+      "dinamica": [],
+      "awards": []
     },
     {
       "id": "1776976144217",
-      "name": "Us",
-      "poster": "https://i.mydramalist.com/81bVe2_4f.jpg",
-      "synopsis": "Dokrak, de veinte años, decide tomarse un año sabático para encontrarse a sí misma tras terminar el instituto. Consigue un trabajo a tiempo parcial en una cafetería de la galería Art & Us. Allí conoce a Pam, una estudiante de odontología de veintidós años que frecuenta la cafetería para estudiar.\n\nA medida que la conoce, Dokrak se enamora de ella. Sin embargo, cuando su hermano la conoce, él también se enamora a primera vista. Kawi recurre a Dokrak y le pide que haga de celestina. Como lo quiere y desea verlo feliz, Dokrak accede a ayudarlo.\n\nCon el tiempo, sin embargo, se da cuenta de que no puede ignorar sus crecientes sentimientos por Pam. De repente, se descubre completamente enamorada, justo cuando Pam está a punto de convertirse en la novia de Kawi.",
+      "name": "US",
+      "poster": "https://image.tmdb.org/t/p/w500/aCMCQRumfYG9KigM4n0CAxZhi04.jpg",
+      "synopsis": "Dokrak, de veinte años, decide tomarse un año sabático para encontrarse a sí misma tras terminar el instituto. Tiene un trabajo a tiempo parcial en una cafetería de la galería Art & Us. Es allí donde se cruza con Pam, una estudiante de odontología de veintidós años que acude habitualmente a la cafetería para estudiar. A medida que va conociendo a Pam, Dokrak se enamora de ella. Sin embargo, cuando su hermano conoce a Pam, se enamora de ella a primera vista. Kawi recurre a Dokrak y le pide que haga de casamentera. Como le quiere y quiere verle feliz, Dokrak empieza a darle consejos. Sin embargo, con el paso del tiempo, se da cuenta de que no puede ignorar los sentimientos que cada vez son más fuertes hacia Pam. Antes de que se dé cuenta, está completamente enamorada, y Pam es la novia de Kawi.",
       "year": 2025,
       "country": "Tailandia",
       "network": "youtube",
@@ -4281,7 +4555,7 @@
           "url": "https://www.youtube.com/watch?v=1EauB0mRMGo&list=PLszepnkojZI7mOWtISfvxWVPikIM6yiXE"
         }
       ],
-      "trailerUrl": "https://youtu.be/E2KFC2etiWc",
+      "trailerUrl": "https://www.youtube.com/watch?v=E2KFC2etiWc",
       "bookSource": "US",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/203379/Thumbnail/book_detail_large.gif?5",
@@ -4343,13 +4617,110 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2025-01-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 54,
+              "still": "https://image.tmdb.org/t/p/w300/wSJYqfeQImbc11DBPWsUanA1oiW.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2025-01-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 70,
+              "still": "https://image.tmdb.org/t/p/w300/zSvitUahxDlbHTJbKnFeTU9JeUr.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2025-02-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/giZ2BM4ngGYQaWDsnkvq7qjHAjA.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2025-02-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/lQHj46U1wbP4CiwX7enPGyCF92P.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2025-02-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/x2fpSUXLSUwwyC45OfrcZG0snPL.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2025-02-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 60,
+              "still": "https://image.tmdb.org/t/p/w300/8i5Oo25U6mG8kpvt2r5FQ1ANWUl.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2025-03-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 63,
+              "still": "https://image.tmdb.org/t/p/w300/ztKV0K85k85M6ftu9kKRXk3w3IN.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2025-03-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 68,
+              "still": "https://image.tmdb.org/t/p/w300/kBcschqHa1bMkeHv2XUqVaGKJCz.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2025-03-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/moxR4wlyZHUCUhQCizhFFKO72uf.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2025-03-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 64,
+              "still": "https://image.tmdb.org/t/p/w300/6Yh6MhxT43UhbuCdKPfWqGeQdIJ.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2025-03-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 75,
+              "still": "https://image.tmdb.org/t/p/w300/3GwpiYp1dqhqH1ONWSiKLdUYzhV.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2025-04-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 68,
+              "still": "https://image.tmdb.org/t/p/w300/wp4lVqlT5ZgdG0k9tZe7170k7nA.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-23T18:42:23.807Z",
-      "nameEn": "",
-      "episodeDuration": "",
+      "updatedAt": "2026-09-12T13:23:40.778Z",
+      "nameEn": "Us รักของเรา",
+      "episodeDuration": 45,
       "myTop10": true,
       "top10Rank": 0,
       "myPick": true,
@@ -4380,16 +4751,17 @@
           "1778668089762"
         ]
       ],
-      "tmdbId": 252621,
+      "tmdbId": "252621",
       "tmdbKind": "tv",
       "tmdbRating": 8.7,
-      "tmdbVoteCount": 21
+      "tmdbVoteCount": 21,
+      "wlwFocus": ""
     },
     {
       "id": "1776976209757",
       "name": "When Love Returns",
-      "poster": "https://i.mydramalist.com/zB5xYd_4f.jpg",
-      "synopsis": "Cuando un amor perdido regresa con la misma \"ella\".",
+      "poster": "https://image.tmdb.org/t/p/w500/1zyiEoW1pTxUPfTE4Mg9iX2FdhA.jpg",
+      "synopsis": "Un amor del pasado resurge, trayendo de vuelta a la misma chica y la oportunidad de reavivar lo perdido.",
       "year": "",
       "country": "Tailandia",
       "network": "",
@@ -4425,7 +4797,7 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-05-22T07:25:25.085Z",
+      "updatedAt": "2026-09-12T13:23:27.008Z",
       "myPick": false,
       "myPick2026": false,
       "sourceType": "",
@@ -4443,10 +4815,13 @@
           "1778833491420"
         ]
       ],
-      "tmdbId": 307817,
+      "tmdbId": "307817",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": ""
     },
     {
       "id": "1776976249517",
@@ -4514,9 +4889,9 @@
     },
     {
       "id": "1776976364805",
-      "name": "Love on Hire",
-      "poster": "",
-      "synopsis": "Thitinan acepta cualquier trabajo: fingir ser la novia de alguien y romper una relación o, especialmente para la señorita Chat, convertirse en su entrenadora sexual.",
+      "name": "Love On Hire",
+      "poster": "https://image.tmdb.org/t/p/w500/hUmjaaGkHfISdpNApn7wopsQVbS.jpg",
+      "synopsis": "Thitinan aceptará cualquier trabajo: desde hacerse pasar por una novia falsa y romper una relación hasta, algo exclusivo para Miss Chat, convertirse en asesora sexual.",
       "year": "",
       "country": "Tailandia",
       "network": "",
@@ -4562,7 +4937,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-23T18:42:00.026Z",
+      "updatedAt": "2026-09-12T13:25:17.205Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -4583,10 +4958,11 @@
           "1778761175235"
         ]
       ],
-      "tmdbId": 307826,
+      "tmdbId": "307826",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "wlwFocus": ""
     },
     {
       "id": "1776976452500",
@@ -4638,7 +5014,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-12T11:21:13.231Z",
+      "updatedAt": "2026-09-12T13:25:26.622Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -4955,7 +5331,7 @@
       "id": "1777017989605",
       "name": "Yut Rai Hai Thoe Rak",
       "poster": "https://image.tmdb.org/t/p/w500/jPiDdpzmOlCQTPmlllII5Zl2tWf.jpg",
-      "synopsis": "Based on a novel of Flower of Memory",
+      "synopsis": "",
       "year": "",
       "country": "Tailandia",
       "network": "",
@@ -4988,7 +5364,7 @@
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
-      "updatedAt": "2026-09-12T11:24:44.507Z",
+      "updatedAt": "2026-09-12T13:25:48.340Z",
       "myPick": false,
       "myPick2026": false,
       "sourceType": "novela",
@@ -5225,7 +5601,7 @@
         "Drama",
         "Romance"
       ],
-      "updatedAt": "2026-09-12T11:26:57.726Z",
+      "updatedAt": "2026-09-12T13:26:04.684Z",
       "nameEn": "ถ้อยรักคำลวง",
       "category": "series",
       "seriesType": "serie",
@@ -5349,8 +5725,8 @@
     {
       "id": "1777048197930",
       "name": "The Loyal Pin",
-      "poster": "https://i.mydramalist.com/2wnwdR_4f.jpg",
-      "synopsis": "Su Alteza Serenísima Aninlaphat, o Princesa Anin, y Mamá Rajawongse Pilanthita, o Khunying Pin, han sido muy unidas desde pequeñas.\n\nCuando la Princesa Anin cumplió quince años, tuvo que viajar a Inglaterra para continuar sus estudios, separándola de su gran amiga Khunying Pin. Sin embargo, esta distancia le permitió a Anin conocerse mejor a sí misma y comprender profundamente sus sentimientos hacia ella.\n\nAl regresar a Tailandia, la Princesa Anin intentó por todos los medios acercarse a Khunying Pin para confesarle su amor. No obstante, parecía una tarea imposible, ya que Khunying Pin estaba comprometida con Khun Chai Kueakiat.",
+      "poster": "https://image.tmdb.org/t/p/w500/pXe2KRn8u18wdP4RLd29denSS0n.jpg",
+      "synopsis": "Su Serenísima Alteza Aninlaphat, o Princesa Anin, y la Sra. Rajawongse Pilanthita, o Khunying Pin, han estado cerca desde que eran jóvenes. Cuando la Princesa Anin cumple quince años, debe viajar a Inglaterra para sus estudios, separando a la princesa de su cercana amiga Khunying Pin por una gran distancia. Sin embargo, la distancia permite a Anin conocerse a sí misma, saber en el fondo cómo se ha sentido por Khunying Pin sin lugar a dudas. Una vez que regresa a Tailandia, la Princesa Anin intenta todo para acercarse a Khunying Pin donde puede encontrar la oportunidad de confesar su amor. Sin embargo, parece ser una tarea imposible ya que Khunying Pin está comprometida para casarse con Khun Chai Kueakiat.",
       "year": 2024,
       "country": "Tailandia",
       "network": "youtube",
@@ -5361,7 +5737,7 @@
           "url": "https://www.youtube.com/playlist?list=PL4D0KlUVq4IyqMr7kszWIINegVFFrztUD"
         }
       ],
-      "trailerUrl": "https://youtu.be/lzv--GYRrxQ",
+      "trailerUrl": "https://www.youtube.com/watch?v=lzv--GYRrxQ",
       "bookSource": "The Loyal Pin",
       "basedOnBook": true,
       "bookCoverUrl": "https://m.media-amazon.com/images/I/71ri015-O-L._SL1500_.jpg",
@@ -5432,11 +5808,140 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2024-08-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 63,
+              "still": "https://image.tmdb.org/t/p/w300/eIia59xMSeyQHgBIUE6hvLvaKd8.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2024-08-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 66,
+              "still": "https://image.tmdb.org/t/p/w300/y58o4vRJNq7rzODcbJ8Ui7g6Org.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2024-08-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/9jdeJSEsEtddo3xIMCt9Np6le4X.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2024-08-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 62,
+              "still": "https://image.tmdb.org/t/p/w300/gbqnSyZfbvxhQ3BOV8M3SiU4Cva.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2024-09-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 62,
+              "still": "https://image.tmdb.org/t/p/w300/yMhEXplujUrloWqdCEVC7ObBvdg.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2024-09-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 72,
+              "still": "https://image.tmdb.org/t/p/w300/gjq8lHVmHPIk5k9pYYhImxEzyRN.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2024-09-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 54,
+              "still": "https://image.tmdb.org/t/p/w300/unHiWopdhDZZManZhbDbiyg0dEt.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2024-09-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 65,
+              "still": "https://image.tmdb.org/t/p/w300/6zKMEQrxzo0dtUiujlj86Jbn2XH.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2024-09-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 67,
+              "still": "https://image.tmdb.org/t/p/w300/9nGFu3nmXtlu7S0rY1e4QgHUSry.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2024-10-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 65,
+              "still": "https://image.tmdb.org/t/p/w300/ogCJOncgTTTqTfNOHs0NSLrshxk.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2024-10-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 70,
+              "still": "https://image.tmdb.org/t/p/w300/1dD9xjGHj1Bf8Fm4hz3VEjL9Llu.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2024-10-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 60,
+              "still": "https://image.tmdb.org/t/p/w300/lMciX5cZf6B3GFbcApcj6YhuQrh.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2024-10-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 73,
+              "still": "https://image.tmdb.org/t/p/w300/vtehDeZPjrOaCFHW7h5tmW1aKHQ.jpg"
+            },
+            {
+              "num": 14,
+              "date": "2024-11-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/5px0DiK2xjVxWLg6CyrC4dEN3Of.jpg"
+            },
+            {
+              "num": 15,
+              "date": "2024-11-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 60,
+              "still": "https://image.tmdb.org/t/p/w300/lg9q6MS8wJWOg70W0TtB1aNCbeQ.jpg"
+            },
+            {
+              "num": 16,
+              "date": "2024-11-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 93,
+              "still": "https://image.tmdb.org/t/p/w300/exBmI9RY43cA00pZjxIJUsipr9c.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-23T18:45:23.285Z",
+      "updatedAt": "2026-09-12T13:26:13.344Z",
       "episodeDuration": 45,
       "myPick": false,
       "myPick2026": false,
@@ -5459,16 +5964,17 @@
           "1778668798059"
         ]
       ],
-      "tmdbId": 238754,
+      "tmdbId": "238754",
       "tmdbKind": "tv",
       "tmdbRating": 9.6,
-      "tmdbVoteCount": 107
+      "tmdbVoteCount": 107,
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1777048586253",
       "name": "Scandal Love",
-      "poster": "https://i.mydramalist.com/YYWkXW_4f.jpg",
-      "synopsis": "En la industria del K-pop, altamente comercializada, las emociones a menudo se fabrican y se venden como parte de la marca.\n\nScandal Love sigue a cuatro mujeres que se desenvuelven en diferentes niveles de poder dentro del sistema de un grupo femenino de K-pop. Mientras luchan con contratos estrictos, el abrumador escrutinio público y sus propios sentimientos genuinos, cada una se ve obligada a tomar decisiones imposibles.\n\nLa serie explora una pregunta central: ¿puede el amor verdadero sobrevivir dentro de relaciones cuidadosamente diseñadas y controladas?",
+      "poster": "https://image.tmdb.org/t/p/w500/hwBQuhP9ntGR7nUL5DOE1vgpwpe.jpg",
+      "synopsis": "En la industria de los ídolos, altamente comercializada, las emociones suelen fabricarse y venderse como parte de la marca. \"Scandal Love\" sigue a cuatro mujeres que se mueven por diferentes niveles de poder dentro del sistema de los grupos femeninos de K-pop. Mientras luchan contra contratos estrictos, un escrutinio público abrumador y sus propios sentimientos auténticos, cada una de ellas se ve obligada a tomar decisiones imposibles. La serie explora una pregunta central: ¿puede el amor verdadero sobrevivir dentro de relaciones que están cuidadosamente diseñadas y controladas?",
       "year": 2026,
       "country": "Corea del Sur",
       "network": "iQiyi",
@@ -5479,7 +5985,7 @@
           "url": "https://mydramalist.com/redirect?q=https%3A%2F%2Fwww.iq.com%2Falbum%2Fscandal-love-2026-1ljligb250d%3Flang%3Den_us&utm_source=mdl&utm_medium=page&utm_campaign=iqiyi&utm_content=807426"
         }
       ],
-      "trailerUrl": "https://youtu.be/mEqpVHvlLhY",
+      "trailerUrl": "https://www.youtube.com/watch?v=mEqpVHvlLhY",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -5518,26 +6024,111 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-04-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 38,
+              "still": "https://image.tmdb.org/t/p/w300/sfJP0rS2swcxbxatkHZDkYn2UE2.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-04-09",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "date": "2026-04-15",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "date": "2026-04-16",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "date": "2026-04-22",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "date": "2026-04-23",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "date": "2026-04-29",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "date": "2026-04-30",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "date": "2026-05-06",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "date": "2026-05-07",
+              "skipped": false,
+              "source": "tmdb"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-16T08:27:05.244Z",
+      "updatedAt": "2026-09-12T13:26:45.743Z",
       "nameEn": "스캔들러브",
-      "cast": [],
+      "cast": [
+        {
+          "actressId": "tmdb_6000699_mtyf58d8",
+          "character": "Kang Ye-bin"
+        },
+        {
+          "actressId": "tmdb_913196_mtyf58da",
+          "character": "Jeong Ji-eun"
+        }
+      ],
       "episodeDuration": 40,
       "myPick": false,
       "myPick2026": false,
-      "tmdbId": 313732,
+      "tmdbId": "313732",
       "tmdbKind": "tv",
       "tmdbRating": 3.7,
-      "tmdbVoteCount": 3
+      "tmdbVoteCount": 3,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "couples": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777065549680",
       "name": "Unlock Your Love",
-      "poster": "https://i.mydramalist.com/x4npLw_4f.jpg",
-      "synopsis": "El dolor y la decepción del amor llevan a Rain y Love a encontrarse. Con la ayuda de Dean y Pat, Love y Rain logran superar la barrera que el doloroso pasado de Rain había erigido.",
+      "poster": "https://image.tmdb.org/t/p/w500/z8HklevRUkAlVAxXLGgnKwpTf9o.jpg",
+      "synopsis": "El dolor y la decepción en el amor impulsan a Rain y Love a las órbitas de la otra. Con la ayuda de Dean y Pat, Love y Rain logran superar la barrera erigida por el doloroso pasado de Rain.",
       "year": 2024,
       "country": "Tailandia",
       "network": "GagaOOLala",
@@ -5548,7 +6139,7 @@
           "url": "https://www.gagaoolala.com/en/videos/4735/unlock-your-love-2024"
         }
       ],
-      "trailerUrl": "https://youtu.be/f7jwJWvgE5M",
+      "trailerUrl": "https://www.youtube.com/watch?v=f7jwJWvgE5M",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -5582,12 +6173,77 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2024-09-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/wqYTvpacePc9P4CEzZ3dWqM72AL.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2024-09-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/uknhvej9uqGYolErsdFYs9Yzc2y.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2024-09-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 52,
+              "still": "https://image.tmdb.org/t/p/w300/gZZmImWlVUOuI7MjC4dl3JUn6SE.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2024-10-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43,
+              "still": "https://image.tmdb.org/t/p/w300/hecjs2a6U3aIy1XMZa0zOzfqaj2.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2024-10-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/euRJjjmHnP0dxsCNk8u2LibZEWR.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2024-10-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44,
+              "still": "https://image.tmdb.org/t/p/w300/9I63msBYY6ZgcaAU36AALlbvsrf.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2024-10-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44,
+              "still": "https://image.tmdb.org/t/p/w300/kbQiGKpzqFZehrEmJBu1AKobOEN.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2024-10-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/45Lb9RkaIWbsv6iW9mhN4NhW3dX.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T07:55:55.362Z",
-      "nameEn": "รักได้ไหม? ยัยตัวร้าย",
+      "updatedAt": "2026-09-12T13:27:13.988Z",
+      "nameEn": "รักได้ไหม ยัยตัวร้าย",
       "cast": [
         {
           "actressId": "1778832868760",
@@ -5598,7 +6254,7 @@
           "character": "Rain"
         }
       ],
-      "episodeDuration": 40,
+      "episodeDuration": 47,
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -5613,16 +6269,22 @@
           "1778832823696"
         ]
       ],
-      "tmdbId": 254679,
+      "tmdbId": "254679",
       "tmdbKind": "tv",
       "tmdbRating": 5,
-      "tmdbVoteCount": 6
+      "tmdbVoteCount": 6,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1777068097582",
       "name": "Climax",
-      "poster": "https://i.mydramalist.com/mOpzwQ_4f.jpg",
-      "synopsis": "En un intento desesperado por reavivar su carrera estancada, el fiscal Bang Tae Seop (Ju Ji Hoon) elabora un plan descabellado y audaz, que consiste en acabar con la alcaldesa de Seúl. Para ello, se propone exponer la corrupción que la une a Lee Yang Mi (Cha Joo Young), la máxima responsable del grupo empresarial WR Group. Es así como Tae Seop recluta a Hwang Jeong Won (Nana) para que sea su informante y convence de unirse a su causa a Kwon Jong Uk (Oh Jung Se), heredero de WR Group que guarda rencor contra Yang Mi. Sin embargo, la situación se complica cuando Tae Seop descubre que su esposa, Chu Sang Ah (Ha Ji Won), quien una vez fue una reconocida actriz, podría ocultar secretos peligrosos.",
+      "poster": "https://image.tmdb.org/t/p/w500/vH5Eb3KtoXnVb6jQ0nbpiEF0BFb.jpg",
+      "synopsis": "Un ambicioso fiscal busca acabar con la alcaldesa de Seúl, pero antes deberá enfrentarse a otros rivales, y también a su esposa.",
       "year": 2026,
       "country": "Corea del Sur",
       "network": "Viki",
@@ -5633,7 +6295,7 @@
           "url": "https://www.viki.com/tv/41436c-climax#about"
         }
       ],
-      "trailerUrl": "https://youtu.be/lPn5YTdLfSc",
+      "trailerUrl": "https://www.youtube.com/watch?v=5-_100zrsz8",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -5690,11 +6352,92 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-03-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/l4hYZyNHsR0PkAdzMREiRUfPqm.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-03-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/h30y0OaRlYFFW1meIeI0D7zS4JC.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2026-03-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 58,
+              "still": "https://image.tmdb.org/t/p/w300/qJApM15kfoXPVlOO397CbBjEjnO.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2026-03-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/l3Hm06OceYYIBMfq4wnZNrYVvWO.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2026-03-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 63,
+              "still": "https://image.tmdb.org/t/p/w300/nTQB8Rhb2aRypOVexAyOnnyK2Xi.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2026-03-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 58,
+              "still": "https://image.tmdb.org/t/p/w300/wkxWkg4voPXZ8GtJpOuGcTy3ypL.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2026-04-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 60,
+              "still": "https://image.tmdb.org/t/p/w300/gtlsbdnIjSn6t2r0rPAiYTDUg4G.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2026-04-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 65,
+              "still": "https://image.tmdb.org/t/p/w300/kvsEmjyhpxfg1AZBKmmSBMMLB1w.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2026-04-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 68,
+              "still": "https://image.tmdb.org/t/p/w300/yR62xVzeDWW3OwA7VccXLXZgHin.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2026-04-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 64,
+              "still": "https://image.tmdb.org/t/p/w300/gsbiTkLfW004gdNlvTjVkFKubXZ.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-11T23:12:20.706Z",
+      "updatedAt": "2026-09-12T13:27:02.432Z",
       "myPick": false,
       "myPick2026": false,
       "wlwFocus": "personaje",
@@ -5704,16 +6447,27 @@
           "1778832439320"
         ]
       ],
-      "tmdbId": 241860,
+      "tmdbId": "241860",
       "tmdbKind": "tv",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 12
+      "tmdbVoteCount": 12,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777102056290",
       "name": "Lucky My Love",
-      "poster": "https://i.mydramalist.com/qYqNDB_4c.jpg?v=1",
-      "synopsis": "En su búsqueda del amor, Napdao lo ha intentado todo. Se ha hecho leer la fortuna y ha tenido varias citas a ciegas. Sin embargo, lamentablemente, nadie parece estar en la misma sintonía que ella.\n\nEmpieza a pensar que quizás su apuesto y atento jefe, Pheem, podría ser el indicado. Entonces aparece Wela, su nueva jefa de equipo, y revoluciona las cosas con su atención y cariño.\n\nA medida que la cercanía con Wela crece, Napdao comienza a cuestionar lo que realmente busca en una pareja, dividida entre la seguridad que proyecta Pheem y la conexión profunda y vibrante que siente con su nueva jefa.",
+      "poster": "https://image.tmdb.org/t/p/w500/z0BbneFoMrAczpbREfrp8nXGpfL.jpg",
+      "synopsis": "En su búsqueda del amor, Napdao lo ha intentado todo. Se ha hecho leer el futuro. Ha tenido una serie de citas a ciegas. Sin embargo, por desgracia, parece que nadie está en la misma onda que ella. Empieza a pensar que quizá su guapísimo y cariñoso jefe, Pheem, podría ser el hombre de su vida. Entonces entra en escena Wela, su nueva jefa de equipo, y lo cambia todo con su atención observadora y cariñosa.",
       "year": 2023,
       "country": "Tailandia",
       "network": "YouTube",
@@ -5724,7 +6478,7 @@
           "url": "https://youtube.com/playlist?list=PLZqIjfvyGXxYEgfNrqrThCwRxB5kDzGlN&si=rb1ggpgtj_jFwb6s"
         }
       ],
-      "trailerUrl": "https://www.youtube.com/watch?v=WG2nB5U_TTk",
+      "trailerUrl": "https://www.youtube.com/watch?v=QafvnQbGIuI",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -5758,11 +6512,52 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2023-10-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 19,
+              "still": "https://image.tmdb.org/t/p/w300/8D8jstZa91NmowfnW1i2O8FTdVQ.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2023-11-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 18,
+              "still": "https://image.tmdb.org/t/p/w300/hZHmQomW40ur8KmnUXEG56ec7xd.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2023-11-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 19,
+              "still": "https://image.tmdb.org/t/p/w300/47Yk5Lw8QmKo8uaDRL5nmBjnF4F.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2023-11-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 19,
+              "still": "https://image.tmdb.org/t/p/w300/hv5BaROOm6UcwgdStchBoFDv0y2.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2023-11-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 16,
+              "still": "https://image.tmdb.org/t/p/w300/sNKWjlMsvKgNG6mEj4M7jKOlo4j.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T07:56:01.313Z",
+      "updatedAt": "2026-09-12T13:27:12.647Z",
       "nameEn": "รักนี้มากับดวง",
       "cast": [
         {
@@ -5789,16 +6584,22 @@
           "1778832868760"
         ]
       ],
-      "tmdbId": 238273,
+      "tmdbId": "238273",
       "tmdbKind": "tv",
       "tmdbRating": 5.8,
-      "tmdbVoteCount": 6
+      "tmdbVoteCount": 6,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1777105535961",
       "name": "Play Park",
-      "poster": "https://i.mydramalist.com/mOdgE0_4f.jpg",
-      "synopsis": "La historia sigue a Ing, una madre soltera trabajadora y gerente de un parque de diversiones, cuya vida da un giro inesperado cuando el parque es adquirido por Lin, una heredera astuta y pragmática de una acaudalada familia de empresarios.\n\nSus mundos no podrían ser más diferentes, pero el destino —y la cercanía— comienzan a convertir la distancia en deseo.\n\n¿Podrán dos personas de vidas tan opuestas construir algo real? ¿Qué desafíos enfrentarán cuando el amor irrumpa inesperadamente?",
+      "poster": "https://image.tmdb.org/t/p/w500/ge5wHhO5wumJ3oEECV8v6c7IwVU.jpg",
+      "synopsis": "Lilit, una joven heredera de una familia prominente, decide invertir en un parque de atracciones, sin imaginar ni por asomo que allí conocería a Ing-Ing, una mujer que le roba el corazón a primera vista. Aunque su conexión parece perfecta, el romance se ve al borde del abismo cuando Ing-Ing descubre que Lilit compró los terrenos del parque a sus espaldas. A medida que su confianza empieza a desmoronarse, Lilit descubre una verdad impactante que lo cambia todo: Ing-Ing tiene un hijo.",
       "year": 2026,
       "country": "Tailandia",
       "network": "CH3+",
@@ -5813,7 +6614,7 @@
           "url": "https://www.netflix.com/title/82703322"
         }
       ],
-      "trailerUrl": "https://youtu.be/yd5h83dclpY",
+      "trailerUrl": "https://www.youtube.com/watch?v=y15ZuMleTKk",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -5858,11 +6659,76 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-02-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45,
+              "still": "https://image.tmdb.org/t/p/w300/uErdGnRmc2vQkBm5bF7wvgniEqr.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-02-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/bLzDwCR3X1TzNg3fOTvDYwGO3HQ.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2026-03-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/hlXw0VcM6uu8lLlrX4p9dGomwVr.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2026-03-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/4oisa9pEO4tUTKtzW6T0edToC1k.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2026-03-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/73U2ItEct02ekEt1WTODs2pXxzo.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2026-03-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/vOrIHiWnZwvfbn8kNQUVZ7rFGJM.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2026-04-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/k5y1EOZTQcufQ6PuzMD7YrCwXni.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2026-04-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/neyH4XXapY4T2bzlQE0XvxtRj51.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-18T20:46:43.353Z",
+      "updatedAt": "2026-09-12T13:27:24.272Z",
       "episodeDuration": 51,
       "myPick": false,
       "myPick2026": false,
@@ -5878,16 +6744,22 @@
           "1778669135059"
         ]
       ],
-      "tmdbId": 295351,
+      "tmdbId": "295351",
       "tmdbKind": "tv",
       "tmdbRating": 7,
-      "tmdbVoteCount": 7
+      "tmdbVoteCount": 7,
+      "wlwFocus": "pareja-principal",
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": []
     },
     {
       "id": "1777105656547",
       "name": "My Safe Zone",
-      "poster": "https://i.mydramalist.com/NdzDZn_4f.jpg",
-      "synopsis": "Alin y Jane son mejores amigas desde la infancia. Crecieron juntas, viviendo puerta con puerta, compartiendo cada secreto y cada sueño.\n\nSin que Alin lo sepa, Jane ha estado secretamente enamorada de ella durante mucho tiempo, guardando sus sentimientos en silencio para proteger su amistad. Sin embargo, un día, Alin deja a Jane para estudiar en el extranjero, dejando un vacío inmenso y una confesión pendiente.\n\nAños después, una ruptura sentimental la trae de vuelta a casa. Al reencontrarse, ambas se ven obligadas a enfrentarse a sentimientos que habían permanecido sin expresar, descubriendo si el tiempo ha enfriado su conexión o si ha fortalecido el vínculo que siempre las unió.",
+      "poster": "https://image.tmdb.org/t/p/w500/9vJMTObP0s8ijwwDu1TJaoK18nd.jpg",
+      "synopsis": "Alin y Jane son mejores amigas desde la infancia. Crecieron juntas, viviendo puerta con puerta. Sin que Alin lo supiera, Jane llevaba mucho tiempo sintiendo algo por ella en secreto. Un día, Alin se marcha para estudiar en el extranjero. Años más tarde, la ruptura de su compromiso la lleva de vuelta a casa, donde ambas se enfrentan a unos sentimientos que llevaban mucho tiempo sin expresarse.",
       "year": 2025,
       "country": "Tailandia",
       "network": "CH3+",
@@ -5902,7 +6774,7 @@
           "url": "https://www.netflix.com/my-en/title/82126918"
         }
       ],
-      "trailerUrl": "https://youtu.be/AcnOc-PX0XA",
+      "trailerUrl": "https://www.youtube.com/watch?v=6b4UnDCGYsI",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -5922,7 +6794,7 @@
       "totalEpisodes": 8,
       "skipDates": [],
       "episodes": [],
-      "nameEn": "",
+      "nameEn": "รักสุดท้าย",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -5947,11 +6819,76 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2025-10-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45,
+              "still": "https://image.tmdb.org/t/p/w300/souXob43YfjtqWW9v1VtQbPOow0.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2025-10-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/9q4xvtcVwObLELCPeifsbOUbLDL.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2025-11-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/d2rOZzs9fsD5y4DyXZQg8LQqOBV.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2025-11-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/ccMg4PMABX75indxIfffUyZLMYq.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2025-11-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/z1ovOnCFUXITibVfQVQWX57s93g.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2025-11-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/dtOrFPAFiB8DU7lBf9fGLwV1Xpz.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2025-12-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/fiMZ1UqdbHX6joCVNwgrbJ0CfsI.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2025-12-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/uvqIVk2DHfPAV23jrVpkxHCf0uL.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T07:56:27.911Z",
+      "updatedAt": "2026-09-12T13:28:36.207Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -5967,16 +6904,22 @@
           "1778672885792"
         ]
       ],
-      "tmdbId": 283543,
+      "tmdbId": "283543",
       "tmdbKind": "tv",
       "tmdbRating": 6.6,
-      "tmdbVoteCount": 13
+      "tmdbVoteCount": 13,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1777105780897",
       "name": "Only You",
-      "poster": "https://i.mydramalist.com/g0DPko_4f.jpg",
-      "synopsis": "Tras ocho años de separación, la misión de la guardaespaldas Tawan de proteger a su antigua compañera de escuela y primer amor, Ayla —ahora una artista famosa— se intensifica a medida que surgen sentimientos inesperados entre ellas.",
+      "poster": "https://image.tmdb.org/t/p/w500/uunNzunr9B94vzMysdremYfTLdZ.jpg",
+      "synopsis": "La asignación de una guardaespaldas para proteger a una excompañera de escuela —ahora una famosa artista— se profundiza a medida que surgen sentimientos inesperados entre ellas.",
       "year": 2025,
       "country": "Tailandia",
       "network": "CH3+",
@@ -5991,7 +6934,7 @@
           "url": "https://www.netflix.com/title/82050978"
         }
       ],
-      "trailerUrl": "https://youtu.be/lYoA6jBl4Vk",
+      "trailerUrl": "https://www.youtube.com/watch?v=lYoA6jBl4Vk",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -6021,6 +6964,10 @@
         {
           "actressId": "1778669037769",
           "character": "\"Ayla\" Sasina"
+        },
+        {
+          "actressId": "1778761227248",
+          "character": "Yam"
         }
       ],
       "animeSeason": "",
@@ -6035,11 +6982,124 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2025-07-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/6Wc3YvsjyqmhyYTAq6E2L8j1Hia.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2025-07-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/4ldWjcAudLtSMXjERXtUmunwqiB.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2025-08-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/tS43KmWkwoszLH4bkpP9Ue78V0U.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2025-08-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/b2VEayXngHYRdqoq1UC0q5SxAk2.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2025-08-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45,
+              "still": "https://image.tmdb.org/t/p/w300/5nR75W5xuUWPrznzD4P0E1hYHsx.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2025-08-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/ldYMInsZewFGM05k6WhgvS6Fgfl.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2025-08-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/fVPynDMQNL9zkKXM0GnKekZ6TX6.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2025-09-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/c162ExaFWrwpKqUnHbukz8LtVrs.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2025-09-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/c6yFTwcrOeGmQFaWcr1HQBOHNpL.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2025-09-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/adRlutze6gule98aBekMIKXxpzV.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2025-09-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/cU1dvnP5NwISKPFmdoi2265NWVh.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2025-10-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/2rCmoSnOHMCjFbUlhXEzgCt4GdL.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2025-10-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 49,
+              "still": "https://image.tmdb.org/t/p/w300/mStgGAQ5Lo9dcoj1oubDlwUSrwZ.jpg"
+            },
+            {
+              "num": 14,
+              "date": "2025-10-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 49,
+              "still": "https://image.tmdb.org/t/p/w300/1qLnfC5NVcaahhHkycpqZQojbhv.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-19T07:56:31.586Z",
+      "updatedAt": "2026-09-12T13:29:02.079Z",
       "episodeDuration": 47,
       "myPick": false,
       "myPick2026": false,
@@ -6055,16 +7115,22 @@
           "1778669037769"
         ]
       ],
-      "tmdbId": 271341,
+      "tmdbId": "271341",
       "tmdbKind": "tv",
       "tmdbRating": 6.4,
-      "tmdbVoteCount": 22
+      "tmdbVoteCount": 22,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "",
+      "awards": []
     },
     {
       "id": "1777106011444",
       "name": "The Secret of Us",
-      "poster": "https://i.mydramalist.com/rNzXKZ_4f.jpg",
-      "synopsis": "La Dra. Fahlada, cuyo alias es \"doctora ángel\", quedó marcada en su corazón por un antiguo amor, lo que le impide volver a abrirse a alguien. Se reencuentra con la despreocupada Earn, la exnovia que más le hirió el corazón, cuando esta se convierte en la imagen de la marca del hospital donde trabaja Fahlada.",
+      "poster": "https://image.tmdb.org/t/p/w500/70lBF4xXNrrF0VZ8Wi0Mn3a1obR.jpg",
+      "synopsis": "A la Dra. Fahlada, conocida como \"la doctora ángel\", un antiguo amor le dejó una cicatriz en el corazón que le impide volver a abrirse a otra persona. Se reencuentra con Earn, una chica de espíritu libre y su exnovia, la que más le hizo sufrir, cuando esta se convierte en la embajadora de la marca del hospital en el que trabaja Fahlada.",
       "year": 2024,
       "country": "Tailandia",
       "network": "CH3+",
@@ -6079,7 +7145,7 @@
           "url": "https://www.netflix.com/title/81756585"
         }
       ],
-      "trailerUrl": "https://youtu.be/IB_qPBSVMRI",
+      "trailerUrl": "https://www.youtube.com/watch?v=hANGeyWsdAk",
       "bookSource": "The Secret of Us",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/299275/Thumbnail/book_detail_large.gif?8",
@@ -6150,11 +7216,76 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2024-06-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/wBUuOasf1LAabBF4b3jSA3D9Tcs.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2024-07-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 49,
+              "still": "https://image.tmdb.org/t/p/w300/pqTB4KUXANgj2GXzBTV3h9IvWtQ.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2024-07-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/cYYkZPJW2kDPK6KsKJNfSOkYKaO.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2024-07-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 49,
+              "still": "https://image.tmdb.org/t/p/w300/7uHhOw2QOhFpetQ0jxLUuOosEA.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2024-07-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/7gMAs628O8G4liV40CQ2xbaOoZf.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2024-07-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/9ffo2jJW78ftL1qZ8rw72oCi9OJ.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2024-08-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/vh1Uh4aqP6O5xo5sb8JNCsFMzuo.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2024-08-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 52,
+              "still": "https://image.tmdb.org/t/p/w300/slGymdgiFaYMvP95Gqea6IGWXoT.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:46:27.642Z",
+      "updatedAt": "2026-09-12T13:29:10.097Z",
       "episodeDuration": 50,
       "myTop10": true,
       "top10Rank": 0,
@@ -6174,16 +7305,20 @@
           "1778669037769"
         ]
       ],
-      "tmdbId": 253710,
+      "tmdbId": "253710",
       "tmdbKind": "tv",
       "tmdbRating": 8,
-      "tmdbVoteCount": 54
+      "tmdbVoteCount": 54,
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "",
+      "awards": []
     },
     {
       "id": "1777106235834",
-      "name": "Apple My Love",
-      "poster": "https://i.mydramalist.com/E5Z7bb_4f.jpg",
-      "synopsis": "Tras recuperar la vista, Kris ve a una persona en sus sueños, pero al despertar, lo único que recuerda son un par de ojos. Empieza a dibujarlos para recordarlos, pero cuando ve a Karn por primera vez, reconoce que los ojos de sus sueños y los de Karn son los mismos.",
+      "name": "Apple My love",
+      "poster": "https://image.tmdb.org/t/p/w500/9FcTvQfo4pJCi3Wtut1mTvCvCxj.jpg",
+      "synopsis": "Después de recuperar la visión, Kris ve a una persona en sus sueños, pero cuando se despierta, lo único que puede recordar son un par de ojos. Comienza a dibujarlos para ayudarla a recordar, pero cuando ve a Karn por primera vez, reconoce que los ojos de sus sueños y los de Karn son lo mismo.",
       "year": 2024,
       "country": "Tailandia",
       "network": "YouTube",
@@ -6198,7 +7333,7 @@
           "url": "https://wetv.vip/en/album/s2h9lsllve02n3y"
         }
       ],
-      "trailerUrl": "https://youtu.be/Xg2DxxEfZ80",
+      "trailerUrl": "https://www.youtube.com/watch?v=Xg2DxxEfZ80",
       "bookSource": "Apple",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/290406/Thumbnail/book_detail_large.gif?3",
@@ -6229,7 +7364,7 @@
       "totalEpisodes": 6,
       "skipDates": [],
       "episodes": [],
-      "nameEn": "ถึงเธอที่รัก",
+      "nameEn": "Apple ถึงเธอ...ที่รัก",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -6254,12 +7389,340 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2024-10-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/8Ed0bn16mw02YU5TCF2EqwlDeoP.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2024-10-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/3n4VcrSgnt3BF238o05UyQL2KEb.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2024-10-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/c5io6kwzR6kUa92R6amO8WyMvos.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2024-11-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/2y1qTvJVcmw9kKr2Tj79KQGwJa.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2024-11-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45,
+              "still": "https://image.tmdb.org/t/p/w300/5Qbt8NjNavqUwO3QOAWruEcw0X4.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2024-11-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 68,
+              "still": "https://image.tmdb.org/t/p/w300/nf1TuEahCAM0WcOqMDfr3q1L0by.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2025-04-04",
+          "totalEpisodes": 33,
+          "emissionDays": [
+            4,
+            5,
+            6
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2025-04-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/sinZ5egbQXwVO2WVLZcyiliaQqt.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2025-04-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/2hcPd76HM5c2KqpqAw5nvePcari.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2025-04-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/tBGWccC4MCrpFqR8eyDdXBZlcj6.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2025-04-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/mcT8WFufpnlRUXVedIhIBpOhK5C.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2025-04-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/mzTL12npt5WvZDbcHddcT99uKDD.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2025-04-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/wFES21zYkPwVMohJkNmQk3qylTa.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2025-04-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 12,
+              "still": "https://image.tmdb.org/t/p/w300/l8VpaCGsYhqUEZXekzdZdRC8VPO.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2025-04-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/xj8F6DVFRT0wtzCEzC1eniYkKbo.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2025-04-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/bjZ93Vg7JreUhMMTsadO3tLDJ22.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2025-04-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/8Feoh89KcbVjWLPpZlCNW2uGYrK.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2025-04-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/4iH0wFRwIGdCQ8yK4o0lJ8CPNGA.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2025-04-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/9mYEkwY8wNJvvbX9tFuaalm9Xer.jpg"
+            },
+            {
+              "num": 13,
+              "date": "2025-05-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/wLyRl4SsXZC6Jd1pkdd7QPx7jTu.jpg"
+            },
+            {
+              "num": 14,
+              "date": "2025-05-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/6IJ7nBPr8lWskEkR5GA21Rn77EI.jpg"
+            },
+            {
+              "num": 15,
+              "date": "2025-05-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/vWRd2tIyk1fGVuJzAQGmZyBlzPc.jpg"
+            },
+            {
+              "num": 16,
+              "date": "2025-05-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/w0YJmivbGMnJjfCxCmrcVfkMeoO.jpg"
+            },
+            {
+              "num": 17,
+              "date": "2025-05-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/A2ak1e4XCvBSfH4saDnAwyZB4ib.jpg"
+            },
+            {
+              "num": 18,
+              "date": "2025-05-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/8rDSCRYNsxgTxysxRJAQ04Y0UhF.jpg"
+            },
+            {
+              "num": 19,
+              "date": "2025-05-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/fkFWNJVrYIJMlhrUohqTOMerlmr.jpg"
+            },
+            {
+              "num": 20,
+              "date": "2025-05-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/j2Psb0UTh6wK85z5XMBFb4ZVeBF.jpg"
+            },
+            {
+              "num": 21,
+              "date": "2025-05-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/gZuX0zxQnSxBgYruBjwwzLIfVsU.jpg"
+            },
+            {
+              "num": 22,
+              "date": "2025-05-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/6y2oHEsgzGVWZ4NFd0TURtqJbTt.jpg"
+            },
+            {
+              "num": 23,
+              "date": "2025-05-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 11,
+              "still": "https://image.tmdb.org/t/p/w300/qL0AuSrBWfp33jqzmfTNxMMFZ6P.jpg"
+            },
+            {
+              "num": 24,
+              "date": "2025-05-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/fplU8vrUgXGlNcMxme3BpV50hsS.jpg"
+            },
+            {
+              "num": 25,
+              "date": "2025-05-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 11,
+              "still": "https://image.tmdb.org/t/p/w300/nnj7npufHn8pedxJUMcUMSJk63w.jpg"
+            },
+            {
+              "num": 26,
+              "date": "2025-05-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 13,
+              "still": "https://image.tmdb.org/t/p/w300/fcLnHtGfRiCGfUwmtk6Varh0oOS.jpg"
+            },
+            {
+              "num": 27,
+              "date": "2025-06-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 13,
+              "still": "https://image.tmdb.org/t/p/w300/dr7YamfHy2gBnhv5CkxSVzgZ99N.jpg"
+            },
+            {
+              "num": 28,
+              "date": "2025-06-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 11,
+              "still": "https://image.tmdb.org/t/p/w300/wwRHs0nQ0IDnMzDNFdhPwYzKYN4.jpg"
+            },
+            {
+              "num": 29,
+              "date": "2025-06-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/rNSVykavQh9dgeS6qYncBJFC2LS.jpg"
+            },
+            {
+              "num": 30,
+              "date": "2025-06-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/9ZEtXVdcO3vA2c8x6Zw4KFJl63V.jpg"
+            },
+            {
+              "num": 31,
+              "date": "2025-06-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/qSSh3hLrKGR16HXjVTsm5YbRVQE.jpg"
+            },
+            {
+              "num": 32,
+              "date": "2025-06-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 13,
+              "still": "https://image.tmdb.org/t/p/w300/kBe5vuQyiS1aiEi6MEg24rnJgnJ.jpg"
+            },
+            {
+              "num": 33,
+              "date": "2025-06-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 12,
+              "still": "https://image.tmdb.org/t/p/w300/bGWw7SUhZUTcHKiqKQWqhrUIfcm.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-05-22T06:46:29.861Z",
-      "episodeDuration": 50,
+      "updatedAt": "2026-09-12T13:29:14.338Z",
+      "episodeDuration": 55,
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -6276,10 +7739,14 @@
           "1778781856216"
         ]
       ],
-      "tmdbId": 258447,
+      "tmdbId": "258447",
       "tmdbKind": "tv",
       "tmdbRating": 7,
-      "tmdbVoteCount": 19
+      "tmdbVoteCount": 19,
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "",
+      "awards": []
     },
     {
       "id": "1777106609486",
@@ -6372,20 +7839,24 @@
     },
     {
       "id": "1777107997520",
-      "name": "Warrior Nun",
-      "poster": "https://m.media-amazon.com/images/M/MV5BNWNmYjRiOGEtMDRiZS00ZTYwLThhNmUtYWQ1MmQzZDdjNTczXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "name": "La monja guerrera",
+      "poster": "https://image.tmdb.org/t/p/w500/pbqSEQvCyQK1QDYqG8lYlpS5oan.jpg",
       "synopsis": "Una joven huérfana despierta en una morgue y descubre que una secta secreta de monjas cazademonios le ha conferido superpoderes. Es la elegida: la portadora del halo.",
       "year": 2020,
-      "country": "Estados Unidos",
-      "network": "Netflix",
-      "networkUrl": "https://www.netflix.com/es/title/80242724",
+      "country": "Canadá",
+      "network": "Netflix, Netflix Standard with Ads",
+      "networkUrl": "https://www.netflix.com",
       "watchLinks": [
         {
           "name": "Netflix",
-          "url": "https://www.netflix.com/es/title/80242724"
+          "url": "https://www.netflix.com"
+        },
+        {
+          "name": "Netflix Standard with Ads",
+          "url": "https://www.netflix.com"
         }
       ],
-      "trailerUrl": "https://youtu.be/cwa6iQSFJkM",
+      "trailerUrl": "https://www.youtube.com/watch?v=cwa6iQSFJkM",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -6410,53 +7881,88 @@
           "emissionDays": [
             3
           ],
-          "allInOneDay": false,
+          "allInOneDay": true,
           "skipDates": [],
           "episodes": [
             {
+              "num": 1,
+              "date": "2020-07-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/esKvSpN04q7RNOLaFAVQ7rMHPM0.jpg"
+            },
+            {
               "num": 2,
               "date": "2020-07-02",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41,
+              "still": "https://image.tmdb.org/t/p/w300/eZ8LNZJTP4x3TCegbZoa4d8rff3.jpg"
             },
             {
               "num": 3,
               "date": "2020-07-02",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/kHMThWnO26sX2fByQ7CKubV0Sam.jpg"
             },
             {
               "num": 4,
               "date": "2020-07-02",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45,
+              "still": "https://image.tmdb.org/t/p/w300/bldn9q2czOiLfg1lvQXByIBUyAm.jpg"
             },
             {
               "num": 5,
               "date": "2020-07-02",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45,
+              "still": "https://image.tmdb.org/t/p/w300/pa6bpQCkqCdhG46ScTyybSjTzbd.jpg"
             },
             {
               "num": 6,
               "date": "2020-07-02",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/AbTneiMXY4VxKCvz0k3vYCzKrHE.jpg"
             },
             {
               "num": 7,
               "date": "2020-07-02",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 40,
+              "still": "https://image.tmdb.org/t/p/w300/8El8f3VUZS1XUG0BuNAOxBIPZL7.jpg"
             },
             {
               "num": 8,
               "date": "2020-07-02",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42,
+              "still": "https://image.tmdb.org/t/p/w300/3AScKHUYngUAWEWsYjx0p80rLzl.jpg"
             },
             {
               "num": 9,
               "date": "2020-07-02",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 37,
+              "still": "https://image.tmdb.org/t/p/w300/4it12A0QmFpNXLgDrWmHAWtlP1f.jpg"
             },
             {
               "num": 10,
               "date": "2020-07-02",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43,
+              "still": "https://image.tmdb.org/t/p/w300/1oUs7yFKmm9BHamFBD2n2tOconO.jpg"
             }
           ],
           "premiereSchedule": []
@@ -6468,49 +7974,78 @@
           "emissionDays": [
             3
           ],
-          "allInOneDay": false,
+          "allInOneDay": true,
           "skipDates": [],
           "episodes": [
             {
+              "num": 1,
+              "date": "2022-11-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41,
+              "still": "https://image.tmdb.org/t/p/w300/7ojyQRMVYt8tx1SLWQm7QxjmKxS.jpg"
+            },
+            {
               "num": 2,
               "date": "2022-11-10",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42,
+              "still": "https://image.tmdb.org/t/p/w300/jMzsiFVcYvnoy9BGsQAntlis3vV.jpg"
             },
             {
               "num": 3,
               "date": "2022-11-10",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 40,
+              "still": "https://image.tmdb.org/t/p/w300/s0sLcV9b0cGzVOnYDYpqwTztpKb.jpg"
             },
             {
               "num": 4,
-              "date": "2022-12-10",
-              "skipped": false
+              "date": "2022-11-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 40,
+              "still": "https://image.tmdb.org/t/p/w300/8T221EpwfGz0bjjqhysjQ3bAY2.jpg"
             },
             {
               "num": 5,
               "date": "2022-11-10",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/nNdJ9VB6H0T8hF7iBUKGHzBB9GC.jpg"
             },
             {
               "num": 6,
               "date": "2022-11-10",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51,
+              "still": "https://image.tmdb.org/t/p/w300/dOgEZeMney2UjWYmbDuTyhTkACJ.jpg"
             },
             {
               "num": 7,
               "date": "2022-11-10",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 37,
+              "still": "https://image.tmdb.org/t/p/w300/t55ExZuqhnjfFv9NF8PSc5NWr5Q.jpg"
             },
             {
               "num": 8,
               "date": "2022-11-10",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 52,
+              "still": "https://image.tmdb.org/t/p/w300/mI4gcdV5dxKTF30RZpApFCry9oT.jpg"
             }
           ],
           "premiereSchedule": []
         }
       ],
-      "nameEn": "",
+      "nameEn": "Warrior Nun",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -6525,8 +8060,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 41,
-      "updatedAt": "2026-05-16T08:28:24.166Z",
+      "episodeDuration": 42,
+      "updatedAt": "2026-09-12T13:30:02.712Z",
       "myPick": false,
       "myPick2026": false,
       "couples": [
@@ -6535,98 +8070,172 @@
           "1778833957230"
         ]
       ],
-      "tmdbId": 87689,
+      "tmdbId": "87689",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 1335
+      "tmdbVoteCount": 1335,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "subtexto",
+      "awards": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777115712295",
       "name": "Pluribus",
-      "poster": "https://m.media-amazon.com/images/M/MV5BOWNlM2E1MDMtYmI5MS00NDQ1LWI3NTctM2VlNjQ5OTAxYTNmXkEyXkFqcGc@._V1_.jpg",
-      "synopsis": "Una escritora se enfrenta a una misión crucial: debe impedir que el mundo sucumba ante una epidemia que amenaza con cambiar la humanidad para siempre.",
+      "poster": "https://image.tmdb.org/t/p/w500/stkYbERuo2YYuay37rYaE41Izyu.jpg",
+      "synopsis": "La persona más desgraciada de la Tierra tiene que salvar al mundo de la felicidad.",
       "year": 2025,
       "country": "Estados Unidos",
-      "network": "Apple TV+",
-      "networkUrl": "https://tv.apple.com/es/episode/nosotros-es-nosotros/umc.cmc.3qfbkp7tcby9ylcjpx2km05p7?at=1000l3V2&ct=tmdb_tvplus&itscg=30200&itsct=justwatch_tv&playableId=tvs.sbd.4000%3AA0152501001&showId=umc.cmc.37axgovs2yozlyh3c2cmwzlza",
+      "network": "Apple TV, Apple TV Amazon Channel",
+      "networkUrl": "https://tv.apple.com",
       "watchLinks": [
         {
-          "name": "Apple Tv",
-          "url": "https://tv.apple.com/es/episode/nosotros-es-nosotros/umc.cmc.3qfbkp7tcby9ylcjpx2km05p7?at=1000l3V2&ct=tmdb_tvplus&itscg=30200&itsct=justwatch_tv&playableId=tvs.sbd.4000%3AA0152501001&showId=umc.cmc.37axgovs2yozlyh3c2cmwzlza"
+          "name": "Apple TV",
+          "url": "https://tv.apple.com"
+        },
+        {
+          "name": "Apple TV Amazon Channel",
+          "url": "https://tv.apple.com"
         }
       ],
-      "trailerUrl": "https://youtu.be/aXUJi2zOINU",
+      "trailerUrl": "https://www.youtube.com/watch?v=aXUJi2zOINU",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "upcoming": false,
-      "genres": [],
+      "genres": [
+        "Drama"
+      ],
       "seasons": [
         {
           "label": "Temporada 1",
-          "startDate": "2025-11-07",
+          "startDate": "2025-11-06",
           "totalEpisodes": 9,
           "emissionDays": [
-            4
+            3
           ],
+          "allInOneDay": true,
           "skipDates": [],
           "episodes": [
             {
+              "num": 1,
+              "date": "2025-11-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 57,
+              "still": "https://image.tmdb.org/t/p/w300/5abqAAPKjFDqmNwLb0sCtGlS8aj.jpg"
+            },
+            {
               "num": 2,
-              "date": "2025-11-07",
-              "skipped": false
+              "date": "2025-11-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 63,
+              "still": "https://image.tmdb.org/t/p/w300/3uTzBoc6zkcKRexqB6nEhQYOglb.jpg"
             },
             {
               "num": 3,
-              "date": "2025-11-14",
-              "skipped": false
+              "date": "2025-11-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44,
+              "still": "https://image.tmdb.org/t/p/w300/b2PaM8KcHLS2TIwQOyTSyiIn9FF.jpg"
             },
             {
               "num": 4,
-              "date": "2025-11-21",
-              "skipped": false
+              "date": "2025-11-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/7HyFmXC7ydtA4aKzlimCPGLcdxJ.jpg"
             },
             {
               "num": 5,
-              "date": "2025-11-26",
-              "skipped": false
+              "date": "2025-11-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/7dQXHMP7irZNis7erI8mHL3p8Ve.jpg"
             },
             {
               "num": 6,
-              "date": "2025-12-05",
-              "skipped": false
+              "date": "2025-12-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/u7RyWMcyi3Fhyr5UPlyYFuVJTYP.jpg"
             },
             {
               "num": 7,
-              "date": "2025-12-12",
-              "skipped": false
+              "date": "2025-12-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 46,
+              "still": "https://image.tmdb.org/t/p/w300/kcIF01S5674EzsvwyNE2oY9Y65Q.jpg"
             },
             {
               "num": 8,
-              "date": "2025-12-19",
-              "skipped": false
+              "date": "2025-12-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43,
+              "still": "https://image.tmdb.org/t/p/w300/d3uHwrDjnyfXv6Vradm88Xw2nV1.jpg"
             },
             {
               "num": 9,
-              "date": "2025-12-26",
-              "skipped": false
+              "date": "2025-12-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 58,
+              "still": "https://image.tmdb.org/t/p/w300/gykreh1ZKPlQDucTvrNOYf7Ccxp.jpg"
             }
-          ]
+          ],
+          "premiereSchedule": []
         }
       ],
       "nameEn": "",
-      "tmdbId": 225171,
+      "tmdbId": "225171",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 1085
+      "tmdbVoteCount": 1085,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "subtexto",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "couples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "updatedAt": "2026-09-12T13:30:03.760Z"
     },
     {
       "id": "1777116291060",
-      "name": "On & Off",
-      "poster": "https://i.mydramalist.com/3oRzJe_4c.jpg?v=1",
-      "synopsis": "Esas miradas intensas, esa tensión... ¿De verdad me estás diciendo que no hay nada entre ellas? ¡La sutil corriente subterránea que fluye entre ellas crea un suspenso impresionante! ¿Compañeras? ¿Rivales? ¿Amantes? Los límites se están desdibujando.",
+      "name": "ON&OFF",
+      "poster": "https://image.tmdb.org/t/p/w500/uFMkVwxeGi2hp3HU4NsEOpHJSFg.jpg",
+      "synopsis": "Esas miradas intensas, esa tensión... ¿De verdad me estás diciendo que no hay nada entre ellas? ¡La sutil tensión que fluye entre ellas crea un suspense impresionante! ¿Compañeras de trabajo? ¿Rivales? ¿Amantes? Los límites se están difuminando.",
       "year": 2025,
       "country": "Corea del Sur",
       "network": "YouTube",
@@ -6637,7 +8246,7 @@
           "url": "https://youtu.be/h9u5l8ZtHgg?si=hLmCweftPXczOu5Z"
         }
       ],
-      "trailerUrl": "",
+      "trailerUrl": "https://www.youtube.com/watch?v=h9u5l8ZtHgg",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -6654,14 +8263,190 @@
       "seasons": [
         {
           "label": "Temporada 1",
-          "startDate": "2025-08-01",
+          "startDate": "2025-08-02",
           "totalEpisodes": 4,
           "emissionDays": [
+            4,
             5
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2025-08-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 8,
+              "still": "https://image.tmdb.org/t/p/w300/3RYWnhEVGXSLveVJuFxFSWzg87M.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2025-08-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/7sQXR1jmzst5PXvsVGoenxb2NwA.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2025-08-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 15,
+              "still": "https://image.tmdb.org/t/p/w300/3sxkZAb6q9fnWamaYY1fWFEZ6eE.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2025-08-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 11,
+              "still": "https://image.tmdb.org/t/p/w300/kCyG1lD3DUqcsxCgx9WmjZNZiQh.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2025-12-04",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2025-12-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 9,
+              "still": "https://image.tmdb.org/t/p/w300/aEy499KBt5gciSkmDESyrmRTw1q.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2025-12-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 7,
+              "still": "https://image.tmdb.org/t/p/w300/gNrlW1Ix2w5RwdTD95z0fvuOlH7.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2025-12-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 11,
+              "still": "https://image.tmdb.org/t/p/w300/7VgJ532RV9kLFKQzriGq3wtaQKM.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2025-12-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 11,
+              "still": "https://image.tmdb.org/t/p/w300/m4zmDNUwHoHDBQnQfzJdsMZzT3C.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2026-01-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 8,
+              "still": "https://image.tmdb.org/t/p/w300/dl7BgPks0W9fs2HQqj7ELzl8UWr.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2026-01-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 7,
+              "still": "https://image.tmdb.org/t/p/w300/8NsoFidhrcOCi5VbklE26DlNGHv.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2026-01-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 10,
+              "still": "https://image.tmdb.org/t/p/w300/hzhTDSkxztOGJQj2Suph2KIZEwJ.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2026-01-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 8,
+              "still": "https://image.tmdb.org/t/p/w300/k8KRrBrNNrFdCcWDEFUuARrP05C.jpg"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 3",
+          "startDate": "2026-03-06",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            1,
+            4
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-03-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 8
+            },
+            {
+              "num": 2,
+              "date": "2026-03-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 11
+            },
+            {
+              "num": 3,
+              "date": "2026-03-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 12
+            },
+            {
+              "num": 4,
+              "date": "2026-03-31",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "date": "2026-04-14",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "date": "2026-04-28",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "date": "2026-05-12",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "date": "2026-05-26",
+              "skipped": false,
+              "source": "tmdb"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
@@ -6669,7 +8454,7 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:26.197Z",
+      "updatedAt": "2026-09-12T13:30:00.234Z",
       "nameEn": "온앤오프",
       "cast": [
         {
@@ -6690,10 +8475,22 @@
           "1778788041530"
         ]
       ],
-      "tmdbId": 298587,
+      "tmdbId": "298587",
       "tmdbKind": "tv",
       "tmdbRating": 9.7,
-      "tmdbVoteCount": 3
+      "tmdbVoteCount": 3,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777116358969",
@@ -6742,7 +8539,7 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:28.671Z",
+      "updatedAt": "2026-09-12T13:29:58.502Z",
       "nameEn": "온앤오프 시즌2",
       "cast": [
         {
@@ -6762,13 +8559,14 @@
           "1778788012484",
           "1778788041530"
         ]
-      ]
+      ],
+      "wlwFocus": "pareja-principal"
     },
     {
       "id": "1777123893340",
       "name": "GAP",
-      "poster": "https://static.wikia.nocookie.net/drama/images/8/8a/GAP-8.jpg/revision/latest?cb=20221119105123&path-prefix=es",
-      "synopsis": "Mucho después de que Sam rescatara a Mon cuando eran niñas, Sam se convirtió, sin duda, en el ídolo de Mon. Con el firme deseo de estar cerca de ella, Mon consigue un trabajo bajo su supervisión.\n\nCuando finalmente se reencuentran en la oficina, Mon se sorprende por la actitud fría y distante de Sam, una faceta tan diferente de la imagen idealizada que guardaba y de la persona que ella misma aspira a ser.\n\nMon y Sam no solo son polos opuestos en su comportamiento; también pertenecen a clases sociales distintas y las separa una brecha de ocho años, factores que pondrán a prueba la admiración de Mon y la coraza emocional de Sam.",
+      "poster": "https://image.tmdb.org/t/p/w500/1NY4rLU5MQDMEzd9kZWKFgNCR8R.jpg",
+      "synopsis": "Mon ha admirado a Sam desde que esta la rescató cuando era niña. Ahora, Mon consigue un trabajo con su ídola. Pero Sam ya no es la persona cariñosa que Mon recuerda; ahora es fría y distante. Además, pertenecen a mundos diferentes y Sam es ocho años mayor que ella. ¿Podrá Mon seguir admirando a Sam, o la verdadera Sam lo cambiará todo?",
       "year": 2022,
       "country": "Tailandia",
       "network": "YouTube",
@@ -6779,7 +8577,7 @@
           "url": "https://youtu.be/o3gZsuz8w8o?si=HBAziAgulsuN7b8I"
         }
       ],
-      "trailerUrl": "https://youtu.be/f7Kso0QOaiE",
+      "trailerUrl": "https://www.youtube.com/watch?v=f7Kso0QOaiE",
       "bookSource": "GAP",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/181426/Thumbnail/book_detail_large.gif?5",
@@ -6816,7 +8614,104 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2022-11-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 76,
+              "still": "https://image.tmdb.org/t/p/w300/qE8LLbpjqd17QBCcTgS29FtEu2E.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2022-11-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 68,
+              "still": "https://image.tmdb.org/t/p/w300/aewEHcfVVX72vd85txcJAilumL5.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2022-12-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 67,
+              "still": "https://image.tmdb.org/t/p/w300/wT31mtaAawpLP2f07VekRWrJj0K.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2022-12-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 56,
+              "still": "https://image.tmdb.org/t/p/w300/q6ZunH40wRP5NfAVBHUdIpdSB5F.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2022-12-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 63,
+              "still": "https://image.tmdb.org/t/p/w300/6MjQqFQqIZ4w6Vu52kdSZqIUmKW.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2022-12-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 55,
+              "still": "https://image.tmdb.org/t/p/w300/7xJWMUqG1aLPlVyAMC6umDcfAhF.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2023-01-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 58,
+              "still": "https://image.tmdb.org/t/p/w300/wVDbXNW9RBxeAe77mOLDnA4K7n.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2023-01-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 68,
+              "still": "https://image.tmdb.org/t/p/w300/d7qCftQ0yIMZ9pftvAJEDXr4fEB.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2023-01-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 67,
+              "still": "https://image.tmdb.org/t/p/w300/xRjH6Nz2oVdKZ13iklAfqhnP8AB.jpg"
+            },
+            {
+              "num": 10,
+              "date": "2023-01-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/ppIINJkRVt4fWVeswQ0N5re8NFx.jpg"
+            },
+            {
+              "num": 11,
+              "date": "2023-02-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 62,
+              "still": "https://image.tmdb.org/t/p/w300/hiPY6wecqOVtYbEBUeO5AApb2Kl.jpg"
+            },
+            {
+              "num": 12,
+              "date": "2023-02-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 75,
+              "still": "https://image.tmdb.org/t/p/w300/5pSr4zGdaxVGYDPuRASko6GaWjf.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
@@ -6839,8 +8734,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:46:34.394Z",
-      "episodeDuration": 55,
+      "updatedAt": "2026-09-12T13:30:05.293Z",
+      "episodeDuration": 64,
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -6857,16 +8752,20 @@
           "1778668798059"
         ]
       ],
-      "tmdbId": 155513,
+      "tmdbId": "155513",
       "tmdbKind": "tv",
       "tmdbRating": 8.9,
-      "tmdbVoteCount": 131
+      "tmdbVoteCount": 131,
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": []
     },
     {
       "id": "1777149248949",
       "name": "Saneha Stories Season 4: Pratthana | Saneha",
-      "poster": "https://i.mydramalist.com/2yYvO_4f.jpg",
-      "synopsis": "Thongkwao se encuentra en una encrucijada emocional. A pesar de tener un novio desde hace mucho tiempo, la estabilidad de su relación se ve sacudida por una sensación desconocida: cada vez que se acerca a cierta mujer, su corazón da un vuelco que no puede ignorar.\n\nConfundida acerca de sus preferencias, Thongkwao se embarca en un viaje introspectivo para entender si lo que siente es una simple curiosidad o el despertar de sus verdaderos sentimientos.\n\nEn este proceso de autodescubrimiento, deberá decidir si se aferra a la seguridad de lo que conoce o si se atreve a explorar la atracción que está revolucionando su mundo.",
+      "poster": "https://image.tmdb.org/t/p/w500/9hV5kEEk43YOOGlqfkCUFRqm263.jpg",
+      "synopsis": "The return of the series Saneha Stories from the real life stories of singles from the popular dating shows, Take Me Out Thailand and Take Guy Out Thailand.\n\nThis season, stories will explore the theme of \"love has no gender limit\".",
       "year": 2022,
       "country": "Tailandia",
       "network": "",
@@ -6887,14 +8786,87 @@
       "seasons": [
         {
           "label": "Temporada 1",
-          "startDate": "2022-05-05",
-          "totalEpisodes": 2,
+          "startDate": "2022-04-07",
+          "totalEpisodes": 12,
           "emissionDays": [
             3
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2022-04-07",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "date": "2022-04-14",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "date": "2022-04-21",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "date": "2022-04-28",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "date": "2022-05-05",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "date": "2022-05-12",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "date": "2022-05-19",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "date": "2022-05-26",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "date": "2022-06-02",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "date": "2022-06-09",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 11,
+              "date": "2022-06-16",
+              "skipped": false,
+              "source": "tmdb"
+            },
+            {
+              "num": 12,
+              "date": "2022-06-23",
+              "skipped": false,
+              "source": "tmdb"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
@@ -6909,8 +8881,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "episodeDuration": 40,
-      "updatedAt": "2026-05-19T07:56:55.559Z",
+      "episodeDuration": 50,
+      "updatedAt": "2026-09-12T13:30:19.493Z",
       "myPick": false,
       "myPick2026": false,
       "cancelStatus": "",
@@ -6920,22 +8892,28 @@
       "snNote": "",
       "productoraId": "1779135954653",
       "couples": [],
-      "tmdbId": 198116,
+      "tmdbId": "198116",
       "tmdbKind": "tv",
       "tmdbRating": 8,
-      "tmdbVoteCount": 1
+      "tmdbVoteCount": 1,
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "",
+      "awards": []
     },
     {
       "id": "1777149412505",
       "name": "Show Me Love",
-      "poster": "https://i.mydramalist.com/eY075E_4f.jpg",
-      "synopsis": "Meena, una chica de pueblo, se muda a Bangkok para cumplir sus sueños. Allí conoce a Cherine, quien le propone unirse a una agencia para competir en el certamen de belleza Miss Grand. Al principio, Meena se niega porque no le interesa. Sin embargo, acepta tras recibir una oferta de una generosa suma mensual durante toda la competición. Comienza la aventura de Meena por la corona y surge un romance inesperado con Cherine.",
+      "poster": "https://image.tmdb.org/t/p/w500/8MiUFTHAWS4gCnxe4WKqZRPAuwX.jpg",
+      "synopsis": "Meena, una chica de una zona rural, se traslada a Bangkok con la esperanza de hacer realidad sus sueños. Por casualidad, conoce a Cherine, quien le propone que se una a una agencia para participar en el certamen de belleza Miss Grand. Aunque al principio se muestra reticente por falta de interés, Meena cambia de opinión al recibir una lucrativa oferta mensual por participar. Así, Meena se embarca en su aventura en busca de la corona y, en medio de la competición, surge un romance inesperado entre ella y Cherine.",
       "year": 2023,
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "",
+      "trailerUrl": "https://www.youtube.com/watch?v=yMOEhJt2Fik",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -6950,9 +8928,10 @@
       "seasons": [
         {
           "label": "Temporada 1",
-          "startDate": "2023-03-03",
+          "startDate": "2023-02-28",
           "totalEpisodes": 9,
           "emissionDays": [
+            1,
             4
           ],
           "allInOneDay": false,
@@ -6961,7 +8940,74 @@
             {
               "num": 1,
               "date": "2023-02-28",
-              "skipped": false
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42,
+              "still": "https://image.tmdb.org/t/p/w300/5nmOXwy6Rw2mumZowtgb6wDMkP1.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2023-03-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42,
+              "still": "https://image.tmdb.org/t/p/w300/udMiYLScYwghMTY12yToIR6N3LG.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2023-03-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 38,
+              "still": "https://image.tmdb.org/t/p/w300/cRPA76Mw1AnbIpXDIwwHdtJM65T.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2023-03-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44,
+              "still": "https://image.tmdb.org/t/p/w300/7ouSgty6nwThzjhJWXiet5XZs8r.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2023-03-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 39,
+              "still": "https://image.tmdb.org/t/p/w300/weY1ymZNxFfPvKmhmyWT0u3vvLC.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2023-04-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 39,
+              "still": "https://image.tmdb.org/t/p/w300/tR6271hjVQhKU7YbUeNxGJ0Pflf.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2023-04-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/v7FtEgWs1b83JjI6lyw4WegQrPu.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2023-04-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/dbd89gZeWvFQ80AUuhNuOEUwiEz.jpg"
+            },
+            {
+              "num": 9,
+              "date": "2023-04-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 33,
+              "still": "https://image.tmdb.org/t/p/w300/ehYGFScOFi8Fbj0EhC19IQ4kWIn.jpg"
             }
           ],
           "premiereSchedule": []
@@ -6982,8 +9028,8 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-16T08:28:36.171Z",
-      "episodeDuration": 43,
+      "updatedAt": "2026-09-12T13:30:25.584Z",
+      "episodeDuration": 42,
       "myPick": false,
       "myPick2026": false,
       "couples": [
@@ -6992,16 +9038,28 @@
           "1778669334143"
         ]
       ],
-      "tmdbId": 218672,
+      "tmdbId": "218672",
       "tmdbKind": "tv",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 25
+      "tmdbVoteCount": 25,
+      "wlwFocus": "pareja-principal",
+      "sourceType": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "awards": [],
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": ""
     },
     {
       "id": "1777149797784",
       "name": "Reverse 4 You",
-      "poster": "https://i.mydramalist.com/x4WDdz_4f.jpg",
-      "synopsis": "Jattawa, de diecinueve años, parece una estudiante de derecho común y corriente de primer año, pero guarda un secreto extraordinario: tiene la habilidad de controlar el tiempo. Por su parte, su hermana menor, Vivi, posee el don de ver el futuro.\n\nSin embargo, las visiones de Vivi han comenzado a fallar últimamente, lo que lleva a Jattawa a dudar profundamente de su última y más inquietante predicción: que su alma gemela es P'Four, una estudiante de cuarto año de negocios internacionales conocida por su mala reputación y carácter difícil.\n\nA pesar del escepticismo inicial, cuando las piezas del destino comienzan a encajar y su amor prometido parece estar condenado a la tragedia, Jattawa y P'Four se verán obligadas a unir fuerzas. En una carrera contra lo inevitable, ambas se disponen a luchar contra el tiempo y el destino para cambiar el final de su propia historia.",
+      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/fMIapgrFlDiztloEsMtoZXbxd6s.jpg",
+      "synopsis": "Jattawa, de diecinueve años, parece una estudiante de Derecho de primer curso como cualquier otra, pero tiene la capacidad de controlar el tiempo. Su hermana menor, Vivi, tiene la capacidad de ver el futuro. Sin embargo, últimamente las visiones de Vivi parecen fallar. Por eso, le resulta fácil no creer en su última predicción: que su alma gemela es P'Four, una estudiante de cuarto curso de Negocios Internacionales con mala reputación.\n\nCuando su amor prometido parece abocado a la tragedia, las dos se proponen luchar contra el destino.",
       "year": 2024,
       "country": "Tailandia",
       "network": "Netflix",
@@ -7012,7 +9070,7 @@
           "url": "https://www.netflix.com/es/title/81925635"
         }
       ],
-      "trailerUrl": "https://youtu.be/ThWo_Kf41DQ",
+      "trailerUrl": "https://www.youtube.com/watch?v=ThWo_Kf41DQ",
       "bookSource": "Reverse 4 You",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/268542/Thumbnail/book_detail_large.gif?2",
@@ -7052,23 +9110,96 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2024-09-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41,
+              "still": "https://image.tmdb.org/t/p/w300/x9FO4n0fUefP1oaQWtUNtOvwqfF.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2024-09-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 40,
+              "still": "https://image.tmdb.org/t/p/w300/danK7SPwVIsJP39JPMRy3acNMVR.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2024-09-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45,
+              "still": "https://image.tmdb.org/t/p/w300/a36ykaUoDA75TIHR4COcm5dbecC.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2024-09-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 38,
+              "still": "https://image.tmdb.org/t/p/w300/a9zE5fexN4pIk93I8EMVXmAf2EA.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2024-10-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 40,
+              "still": "https://image.tmdb.org/t/p/w300/kzD8K696XPxxPSwCYwSp9YMISJE.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2024-10-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 48,
+              "still": "https://image.tmdb.org/t/p/w300/h3y0b5wkhtCDmPrA7pkwwc9g1SB.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2024-10-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44,
+              "still": "https://image.tmdb.org/t/p/w300/xP6shGXo2fDHMIuegQmEvKFsnvF.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2024-10-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41,
+              "still": "https://image.tmdb.org/t/p/w300/lIzHcszp3IBT2R5WVTT3awwaClJ.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "nameEn": "Reverse 4 You ดาวบริวาร",
+      "nameEn": "ดาวบริวาร",
       "category": "series",
       "seriesType": "serie",
       "cast": [
         {
           "actressId": "1778705285700",
           "character": "Jattawa Phiangpradapkhwan"
+        },
+        {
+          "actressId": "tmdb_3843466_mtyfalyu",
+          "character": "Four"
+        },
+        {
+          "actressId": "1778760989113",
+          "character": "Jeans"
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-05-22T06:46:38.862Z",
-      "episodeDuration": 40,
+      "updatedAt": "2026-09-12T13:31:53.370Z",
+      "episodeDuration": 45,
       "myTop10": true,
       "top10Rank": 0,
       "myPick": true,
@@ -7083,14 +9214,18 @@
       "moods": [],
       "couples": [
         [
-          "1778705238403",
-          "1778705285700"
+          "1778705285700",
+          "tmdb_3843466_mtyfalyu"
         ]
       ],
-      "tmdbId": 216937,
+      "tmdbId": "216937",
       "tmdbKind": "tv",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 20
+      "tmdbVoteCount": 20,
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "",
+      "awards": []
     },
     {
       "id": "1777150051367",
@@ -8414,10 +10549,6 @@
         {
           "actressId": "1778668061135",
           "character": "Aylin"
-        },
-        {
-          "actressId": "1778668109244",
-          "character": "Luna"
         },
         {
           "actressId": "1778668259606",
@@ -30019,7 +32150,7 @@
     {
       "id": "1700000000016",
       "name": "The Truth About Jane",
-      "synopsis": "High schooler Jane struggles with the self-discovery that she is a lesbian after developing an intense friendship with another girl. However, this is only the start of Jane's troubles when her unaccepting mother Janice also contends with the surprising revelation brought forth by her only daughter.",
+      "synopsis": "Jane, una estudiante de instituto, se enfrenta al descubrimiento de que es lesbiana tras entablar una intensa amistad con otra chica. Sin embargo, esto no es más que el comienzo de los problemas de Jane, ya que su madre, Janice, que no acepta su orientación sexual, también tiene que lidiar con la sorprendente revelación de su única hija.",
       "year": 2000,
       "country": "Estados Unidos",
       "date": "2000-08-07",
@@ -30038,7 +32169,7 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-09-12T12:00:20.394Z",
+      "updatedAt": "2026-09-12T13:08:23.463Z",
       "movieType": "film",
       "duration": 91,
       "tmdbId": "52805",
@@ -30542,37 +32673,61 @@
     {
       "id": "1700000000026",
       "name": "Loving Annabelle",
-      "synopsis": "Narra la controvertida historia de una profesora de una escuela católica, Simone Bradley (Diane Gaidry), que tiene una aventura con una de sus alumnas, Annabelle (Erin Kelly). Remake de un film alemán de 1958, \"Mädchen in Uniform\", protagonizado por Romy Schneider, que a su vez era un remake de un film alemán de 1931 que adaptaba una obra de teatro que trataba el lesbianismo\n\n(Source: FILMAFFINITY)",
-      "year": 2006,
+      "synopsis": "Narra la controvertida historia de una profesora de una escuela católica, Simone Bradley (Diane Gaidry), que tiene una aventura con una de sus alumnas, Annabelle (Erin Kelly). Remake de un film alemán de 1958, \"Mädchen in Uniform\", protagonizado por Romy Schneider, que a su vez era un remake de un film alemán de 1931 que adaptaba una obra de teatro que trataba el lesbianismo. (FILMAFFINITY)",
+      "year": 2007,
       "country": "Estados Unidos",
-      "date": "2006-03-10",
+      "date": "2007-05-24",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=APNSXkJv4GU&pp=ygUZTG92aW5nIEFubmFiZWxsZSB0cmFpw7Flcg%3D%3D",
+      "trailerUrl": "https://www.youtube.com/watch?v=AEzcWmymuEk",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/ezgUinJ6bH0xOWQTqPpb0b7qzE6.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/a6p1Oexil6Z2XO5d1QVHR3F2OoM.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:29:58.145Z",
+      "updatedAt": "2026-09-12T13:07:23.991Z",
       "movieType": "film",
       "duration": 77,
-      "tmdbId": 19344,
+      "tmdbId": "19344",
       "tmdbKind": "movie",
       "tmdbRating": 6.6,
-      "tmdbVoteCount": 311
+      "tmdbVoteCount": 311,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_84513_mtyegava",
+          "character": "Annabelle Tillman"
+        },
+        {
+          "actressId": "tmdb_84514_mtyegavb",
+          "character": "Simone Bradley"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_84513_mtyegava",
+          "tmdb_84514_mtyegavb"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000027",
       "name": "Rome and Juliet",
-      "synopsis": "Rome and Juliet narra la historia de dos mujeres heterosexuales atrapadas en una red de amor prohibido, que se encuentran en una relación amorosa y romántica. Juliet (una conservadora maestra de preescolar) es una futura novia que se hace amiga de Rome (una empresaria liberada) y la contrata como organizadora de su boda. A medida que avanzan en los preparativos, Rome y Juliet desarrollan una profunda amistad, una conexión espiritual y un amor que se consuma físicamente. Pero surgen conflictos cuando Marc, el novio, un joven político, descubre sorprendentemente la relación en curso entre las dos mujeres. Enfadado y humillado, Marc cancela la boda y estalla un gran escándalo, que deja a Rome y Juliet en un estado de agitación emocional.\n\n(Source: TMDB)",
+      "synopsis": "«Rome and Juliet» narra el viaje romántico y el encuentro espiritual de dos mujeres heterosexuales atrapadas en una red de amor prohibido. Juliet (una profesora de guardería conservadora) es una futura novia que entabla amistad con Rome (una empresaria liberal) y la contrata como organizadora de su boda. A medida que avanzan con los preparativos, Rome y Juliet desarrollan una profunda amistad, una conexión espiritual y un amor que se consuma físicamente. Pero surgen conflictos cuando Marc, el novio, un joven político, descubre para su sorpresa la relación que mantienen ambas mujeres. Enfadado y humillado, Marc cancela la boda y estalla un enorme escándalo, lo que deja a Roma y Julieta sumidas en un estado de confusión emocional.",
       "year": 2006,
       "country": "Filipinas",
       "date": "2006-11-24",
@@ -30581,144 +32736,265 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/l2RvE18vzyk1CzQptmeNklkDBKP.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/l2RvE18vzyk1CzQptmeNklkDBKP.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:30:38.903Z",
+      "updatedAt": "2026-09-12T13:08:00.050Z",
       "movieType": "film",
       "duration": 135,
-      "tmdbId": 111632,
+      "tmdbId": "111632",
       "tmdbKind": "movie",
       "tmdbRating": 4.1,
-      "tmdbVoteCount": 7
+      "tmdbVoteCount": 7,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_1052351_mtyeh0c5",
+          "character": "Rome Miranda"
+        },
+        {
+          "actressId": "tmdb_1052349_mtyeh0c5",
+          "character": "Juliet Flores"
+        },
+        {
+          "actressId": "tmdb_1042864_mtyeh0c6",
+          "character": "Charo"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000028",
-      "name": "Love my Life",
-      "synopsis": "Película basada en un manga de Ebine Yamaji que trata sobre la relación de una pareja de lesbianas, Ichiko y Eri. Ambas deberán afrontar juntas los típicos problemas de pareja, además de una serie de conflictos derivados de su condición sexual.\n\n(Source: TMDB)",
+      "name": "Love My Life",
+      "synopsis": "Película basada en un manga de Ebine Yamaji que trata sobre la relación de una pareja de lesbianas, Ichiko y Eri. Ambas deberán afrontar juntas los típicos problemas de pareja, además de una serie de conflictos derivados de su condición sexual.",
       "year": 2006,
       "country": "Japón",
-      "date": "2006-09-12",
+      "date": "2006-12-09",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=HM7U8p3n6DQ",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/zkBtrb00RcCuLjtx9vWub7z2l60.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/zkBtrb00RcCuLjtx9vWub7z2l60.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:30:41.548Z",
+      "updatedAt": "2026-09-12T13:09:13.853Z",
       "movieType": "film",
       "duration": 96,
-      "tmdbId": 40701,
+      "tmdbId": "40701",
       "tmdbKind": "movie",
       "tmdbRating": 5.4,
-      "tmdbVoteCount": 25
+      "tmdbVoteCount": 25,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_124405_mtyeitqc",
+          "character": "Ichiko"
+        },
+        {
+          "actressId": "tmdb_124406_mtyeitqd",
+          "character": "Eri"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000029",
-      "name": "Nina’s Heavenly Delights",
-      "synopsis": "Nina Shah es una joven mujer indo-escocesa que sufre una crisis de la identidad que regresa a su hogar cuando su padre muere repentinamente, Nina es forzada entonces a volver, para hacer funcionar el negocio familiar, un restaurante de comida hindú: el Curry House. Así vuelve a encontrarse con su amigo Bobbi, una drag queen bollywoodense. Asímismo conoce a Lisa, una carismática joven a quien el padre de Nina (sumido en deudas) le vendió la mitad del negocio. Nina se embarca en una misión personal que consistirá en ganar la competencia de restaurantes, Best of the West, un trofeo altamente apreciado en el mundo de la cocina hindú. Mientras tanto los sentimientos de Nina también se van complicando cuando comienza a descubrir que se está enamorando de Lisa.\n\n(Source: TMDB)",
+      "name": "Nina's Heavenly Delights",
+      "synopsis": "Nina Shah es una joven mujer indo-escocesa que sufre una crisis de la identidad que regresa a su hogar cuando su padre muere repentinamente, Nina es forzada entonces a volver, para hacer funcionar el negocio familiar, un restaurante de comida hindú: el Curry House. Así vuelve a encontrarse con su amigo Bobbi, una drag queen bollywoodense. Asímismo conoce a Lisa, una carismática joven a quien el padre de Nina (sumido en deudas) le vendió la mitad del negocio. Nina se embarca en una misión personal que consistirá en ganar la competencia de restaurantes, Best of the West, un trofeo altamente apreciado en el mundo de la cocina hindú. Mientras tanto los sentimientos de Nina también se van complicando cuando comienza a descubrir que se está enamorando de Lisa.",
       "year": 2006,
-      "country": "Reino Unido",
+      "country": "Estados Unidos / Reino Unido",
       "date": "2006-09-28",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/YHE_jTzfGnk",
+      "trailerUrl": "https://www.youtube.com/watch?v=YHE_jTzfGnk",
       "genres": [
-        "Romance",
-        "Drama"
+        "Comedia",
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/tK6S01DNg0C1ObAXgb7vtwVZ5Tr.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/tK6S01DNg0C1ObAXgb7vtwVZ5Tr.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:30:44.267Z",
+      "updatedAt": "2026-09-12T13:09:29.420Z",
       "movieType": "film",
       "duration": 94,
-      "tmdbId": 12808,
+      "tmdbId": "12808",
       "tmdbKind": "movie",
       "tmdbRating": 6.7,
-      "tmdbVoteCount": 51
+      "tmdbVoteCount": 51,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_73707_mtyej9g9",
+          "character": "Nina"
+        },
+        {
+          "actressId": "tmdb_42279_mtyej9ga",
+          "character": "Lisa"
+        },
+        {
+          "actressId": "tmdb_63563_mtyej9gc",
+          "character": "Suman Shah"
+        },
+        {
+          "actressId": "tmdb_217300_mtyej9gg",
+          "character": "Janice"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000030",
-      "name": "Water Lilies",
-      "synopsis": "El verano ha llegado a los suburbios de París y, como siempre los adolescentes se aburren. En esas circunstancias, se conocen Marie, Anne y Floriane, las tres de quince años. Anne y Marie entabla una tierna e ingenua amistad, pero Floriane, mucho más desarrollada físicamente, se interpondrá entre ellas, pues Marie empieza a sentirse fascinada por esa chica que tanto atrae a los chicos.\n\n(Source: TMDB)",
+      "name": "Lirios de agua",
+      "synopsis": "El verano ha llegado a los suburbios de París y, como siempre los adolescentes se aburren. En esas circunstancias, se conocen Marie, Anne y Floriane, las tres de quince años. Anne y Marie entabla una tierna e ingenua amistad, pero Floriane, mucho más desarrollada físicamente, se interpondrá entre ellas, pues Marie empieza a sentirse fascinada por esa chica que tanto atrae a los chicos.",
       "year": 2007,
       "country": "Francia",
       "date": "2007-05-17",
-      "network": "",
+      "network": "Acontra Plus, Acontra Plus Amazon Channel",
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=Gurt0LXHw94",
       "genres": [
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/g5tjRY3Xhz60aQ1yO0Qcy7lok7u.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/g5tjRY3Xhz60aQ1yO0Qcy7lok7u.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T20:50:35.660Z",
+      "updatedAt": "2026-09-12T13:10:16.420Z",
       "movieType": "film",
       "duration": 85,
       "nameEn": "Naissance des pieuvres",
-      "cast": [],
-      "tmdbId": 582816,
+      "cast": [
+        {
+          "actressId": "tmdb_68814_mtyejmac",
+          "character": "Marie"
+        },
+        {
+          "actressId": "tmdb_68815_mtyejmad",
+          "character": "Anne"
+        },
+        {
+          "actressId": "tmdb_68816_mtyejt9w",
+          "character": "Floriane"
+        }
+      ],
+      "tmdbId": "10818",
       "tmdbKind": "movie",
-      "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbRating": 6.5,
+      "tmdbVoteCount": 483,
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000031",
       "name": "The World Unseen",
-      "synopsis": "Narra la historia de dos jóvenes mujeres que se enamoran y se embarcan en una peligrosa relación en la Sudáfrica del Apartheid. En la olla a presión de un país marcado por el racismo, dos mujeres se conocen y sus mundos se revolucionan. Miriam (Lisa Ray) es una madre hindú tradicional: trabajadora y modesta. Amina (Sheetal Sheth) rompe todas las reglas al abrir un café junto a un hombre de raza negra del lugar. Ante la desaprobación colérica, su relación florece. Pero el precio para Miriam será el descubrimiento de increíbles verdades sobre su matrimonio. En un sistema que separa a los blancos de los negros, a los negros de los asiáticos y a las mujeres de los hombres, ¿qué posibilidad existe de que un amor inesperado perdure?\n\n(Source: TMDB)",
+      "synopsis": "Narra la historia de dos jóvenes mujeres que se enamoran y se embarcan en una peligrosa relación en la Sudáfrica del Apartheid. En la olla a presión de un país marcado por el racismo, dos mujeres se conocen y sus mundos se revolucionan. Miriam (Lisa Ray) es una madre hindú tradicional: trabajadora y modesta. Amina (Sheetal Sheth) rompe todas las reglas al abrir un café junto a un hombre de raza negra del lugar. Ante la desaprobación colérica, su relación florece. Pero el precio para Miriam será el descubrimiento de increíbles verdades sobre su matrimonio. En un sistema que separa a los blancos de los negros, a los negros de los asiáticos y a las mujeres de los hombres, ¿qué posibilidad existe de que un amor inesperado perdure?",
       "year": 2007,
       "country": "Reino Unido",
       "date": "2007-09-09",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "network": "Apple TV Store",
+      "networkUrl": "https://tv.apple.com",
+      "watchLinks": [
+        {
+          "name": "Apple TV Store",
+          "url": "https://tv.apple.com"
+        }
+      ],
       "trailerUrl": "https://youtu.be/-lEAyVdsaks",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/faYQvkW1hGNHFwtaGnkCtru4cnd.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/faYQvkW1hGNHFwtaGnkCtru4cnd.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:31:12.126Z",
+      "updatedAt": "2026-09-12T13:10:51.750Z",
       "movieType": "film",
-      "duration": 93,
-      "tmdbId": 31031,
+      "duration": 94,
+      "tmdbId": "31031",
       "tmdbKind": "movie",
       "tmdbRating": 7,
-      "tmdbVoteCount": 105
+      "tmdbVoteCount": 105,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_52969_mtyekkgn",
+          "character": "Miriam"
+        },
+        {
+          "actressId": "tmdb_94308_mtyekkgn",
+          "character": "Amina Harjan"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_52969_mtyekkgn",
+          "tmdb_94308_mtyekkgn"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000032",
@@ -30755,32 +33031,61 @@
     {
       "id": "1700000000033",
       "name": "I Can't Think Straight",
-      "synopsis": "Tala (Lisa Ray), una palestina que vive en Londres, está preparando su boda cuando conoce a Leyla (Sheetal Sheth), una joven británica de origen indio que está saliendo con su mejor amigo. Las dos son muy diferentes, pero surge entre ellas una atracción inmediata, que pronto va mucho más allá de la simple amistad. Sin embargo, Tala no se ve capaz de enfrentarse a su familia, cancelar su boda y dar un giro de 180 grados a su vida...\n\n(Source: TMDB)",
+      "synopsis": "Tala (Lisa Ray), una palestina que vive en Londres, está preparando su boda cuando conoce a Leyla (Sheetal Sheth), una joven británica de origen indio que está saliendo con su mejor amigo. Las dos son muy diferentes, pero surge entre ellas una atracción inmediata, que pronto va mucho más allá de la simple amistad. Sin embargo, Tala no se ve capaz de enfrentarse a su familia, cancelar su boda y dar un giro de 180 grados a su vida...",
       "year": 2008,
       "country": "Reino Unido",
-      "date": "2008-11-21",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=1W8igqK_QWU",
-      "genres": [
-        "Romance",
-        "Drama"
+      "date": "2008-06-01",
+      "network": "Apple TV Store",
+      "networkUrl": "https://tv.apple.com",
+      "watchLinks": [
+        {
+          "name": "Apple TV Store",
+          "url": "https://tv.apple.com"
+        }
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/ePbH29RdMlz8mDEQyUkxRVcsB73.jpg",
+      "trailerUrl": "https://www.youtube.com/watch?v=KIetcsELZvo",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "poster": "https://image.tmdb.org/t/p/w500/ePbH29RdMlz8mDEQyUkxRVcsB73.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:31:32.135Z",
+      "updatedAt": "2026-09-12T13:11:29.045Z",
       "movieType": "film",
-      "duration": 80,
-      "tmdbId": 31216,
+      "duration": 82,
+      "tmdbId": "31216",
       "tmdbKind": "movie",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 334
+      "tmdbVoteCount": 334,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_52969_mtyekkgn",
+          "character": "Tala"
+        },
+        {
+          "actressId": "tmdb_94308_mtyekkgn",
+          "character": "Leyla"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_52969_mtyekkgn",
+          "tmdb_94308_mtyekkgn"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000034",
@@ -41385,15 +43690,6 @@
       "height": 160
     },
     {
-      "id": "1778668109244",
-      "name": "\"June\" Wanwimol Jaenasavamethee",
-      "photo": "https://static.wikia.nocookie.net/gmmtv/images/6/6f/June_Wanwimol_Jaenasavamethee_GMMTV_2026.png/revision/latest?cb=20260101174224",
-      "country": "Tailandia",
-      "notes": "Actriz",
-      "birthdate": "2000-04-29",
-      "height": 162
-    },
-    {
       "id": "1778668241744",
       "name": "\"Fond\" Natticha Chantaravareelekha",
       "photo": "https://static.wikia.nocookie.net/gmmtv/images/d/d7/Fond_Natticha_Chantaravareelekha_GMMTV_2026.png/revision/latest?cb=20260102171415",
@@ -41511,15 +43807,6 @@
       "birthdate": "1996-02-22",
       "height": 172,
       "photoPosition": "center 80%"
-    },
-    {
-      "id": "1778669191128",
-      "name": "\"Aom\" Punyawee Jungcharoen",
-      "photo": "https://i.mydramalist.com/0rXQK_5c.jpg",
-      "country": "Tailandia",
-      "notes": "Actriz",
-      "birthdate": "1995-09-20",
-      "height": null
     },
     {
       "id": "1778669226549",
@@ -41960,11 +44247,12 @@
     {
       "id": "1778761227248",
       "name": "\"Enjoy\" Thidarat Puerthong",
-      "photo": "https://girlsloveinfo.com/wp-content/uploads/2025/07/Thidarat-Puerthong.jpeg",
+      "photo": "https://media.themoviedb.org/t/p/w300_and_h450_face/aAkokIChwUtdToSs3vfKo67VCdh.jpg",
       "country": "Tailandia",
       "birthdate": "1997-10-13",
       "notes": "Actriz",
-      "height": null
+      "photoPosition": "50% 15%",
+      "photoZoom": 1
     },
     {
       "id": "1778761265957",
@@ -43097,15 +45385,6 @@
       "notes": "Actriz"
     },
     {
-      "id": "1779619234473",
-      "name": "\"Nina\" Jinnita Djadda",
-      "photo": "https://pbs.twimg.com/media/HIqLH_AagAAdL5-?format=jpg&name=large",
-      "photoPosition": "center 15%",
-      "country": "Tailandia",
-      "birthdate": "",
-      "notes": "Actriz"
-    },
-    {
       "id": "1779619343830",
       "name": "\"Nene\" Pawarun Hathaisantitham",
       "photo": "https://pbs.twimg.com/media/HIvhNcVaIAAsHa6?format=jpg&name=large",
@@ -44136,6 +46415,195 @@
       "photo": "https://image.tmdb.org/t/p/w300/udvHIbFPW646vDkbnipb82wPUxs.jpg",
       "country": "Canadá",
       "birthdate": "1980-12-05"
+    },
+    {
+      "id": "tmdb_84513_mtyegava",
+      "name": "Erin Kelly",
+      "photo": "https://image.tmdb.org/t/p/w300/8KnZTiqzJOqhFjI5ApL3dyTEbmV.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1981-08-21"
+    },
+    {
+      "id": "tmdb_84514_mtyegavb",
+      "name": "Diane Gaidry",
+      "photo": "",
+      "country": "Estados Unidos",
+      "birthdate": "1964-10-11"
+    },
+    {
+      "id": "tmdb_1052351_mtyeh0c5",
+      "name": "Mylene Dizon",
+      "photo": "https://image.tmdb.org/t/p/w300/cXNEkXQqJiKAT2KrqBpGLp6eCAp.jpg",
+      "country": "Filipinas",
+      "birthdate": "1976-09-06"
+    },
+    {
+      "id": "tmdb_1052349_mtyeh0c5",
+      "name": "Andrea Del Rosario",
+      "photo": "https://image.tmdb.org/t/p/w300/koqSBQmvUwAoy9YlIbgq2n5j8vt.jpg",
+      "country": "Filipinas",
+      "birthdate": "1977-11-27"
+    },
+    {
+      "id": "tmdb_1042864_mtyeh0c6",
+      "name": "Tessie Tomas",
+      "photo": "https://image.tmdb.org/t/p/w300/bLLthVq6WLAp0k0tkBkfj4vMkv5.jpg",
+      "country": "Filipinas",
+      "birthdate": "1950-10-31"
+    },
+    {
+      "id": "tmdb_124405_mtyeitqc",
+      "name": "Rei Yoshii",
+      "photo": "https://image.tmdb.org/t/p/w300/sBSRvKm7HekXM6Ss7Tek5pSGqdt.jpg",
+      "country": "Japón",
+      "birthdate": "1982-03-18"
+    },
+    {
+      "id": "tmdb_124406_mtyeitqd",
+      "name": "Asami Imajuku",
+      "photo": "https://image.tmdb.org/t/p/w300/kksZCUqf9XCXAgQVqFTJa69ULwA.jpg",
+      "country": "Japón",
+      "birthdate": "1978-01-07"
+    },
+    {
+      "id": "tmdb_73707_mtyej9g9",
+      "name": "Shelley Conn",
+      "photo": "https://image.tmdb.org/t/p/w300/pE7dDGnjwxJWD6jjJ1xIbp3G4PW.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1976-09-21"
+    },
+    {
+      "id": "tmdb_42279_mtyej9ga",
+      "name": "Laura Fraser",
+      "photo": "https://image.tmdb.org/t/p/w300/4aD3xDLA22CIf6jdK0IAs75h8pp.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1975-07-24"
+    },
+    {
+      "id": "tmdb_63563_mtyej9gc",
+      "name": "Veena Sood",
+      "photo": "https://image.tmdb.org/t/p/w300/yze2fvd4rvzovqyjtKbCpFaw1UM.jpg",
+      "country": "Estados Unidos",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_217300_mtyej9gg",
+      "name": "Kathleen McDermott",
+      "photo": "https://image.tmdb.org/t/p/w300/pBDgxUyzLndB4vpC4YwShRAhxf8.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1977-04-21"
+    },
+    {
+      "id": "tmdb_68814_mtyejmac",
+      "name": "Pauline Acquart",
+      "photo": "https://image.tmdb.org/t/p/w300/50FvVPu34CZmLQyb6x2lNSAg94c.jpg",
+      "country": "Francia",
+      "birthdate": "1992-12-17"
+    },
+    {
+      "id": "tmdb_68815_mtyejmad",
+      "name": "Louise Blachère",
+      "photo": "https://image.tmdb.org/t/p/w300/5SisLFpbsUkEtid7AMQZw4Sqg8R.jpg",
+      "country": "Francia",
+      "birthdate": "1989-07-28"
+    },
+    {
+      "id": "tmdb_68816_mtyejt9w",
+      "name": "Adèle Haenel",
+      "photo": "https://image.tmdb.org/t/p/w300/uf2BVprWBZB7hxv0lj1RO48EDEZ.jpg",
+      "country": "Francia",
+      "birthdate": "1989-02-11"
+    },
+    {
+      "id": "tmdb_52969_mtyekkgn",
+      "name": "Lisa Ray",
+      "photo": "https://image.tmdb.org/t/p/w300/38TeusBORjoJodJjwRjEIt8Zgx8.jpg",
+      "country": "Canadá",
+      "birthdate": "1972-04-04"
+    },
+    {
+      "id": "tmdb_94308_mtyekkgn",
+      "name": "Sheetal Sheth",
+      "photo": "https://image.tmdb.org/t/p/w300/6lLxAW5uRG3MiSKnK2HBZoyZQIa.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1976-06-24",
+      "photoPosition": "50% 39%",
+      "photoZoom": 1,
+      "notes": ""
+    },
+    {
+      "id": "tmdb_3742339_mtyet9vn",
+      "name": "\"Jaoying\" Krongkwan Nakornthap",
+      "photo": "https://image.tmdb.org/t/p/w300/mLNnXIZuYMzTKrcZmGZOF42UNLH.jpg",
+      "country": "Tailandia",
+      "birthdate": "2005-01-17",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "notes": ""
+    },
+    {
+      "id": "tmdb_5420244_mtyet9vo",
+      "name": "\"Chari\" Charisar Oldham",
+      "photo": "https://image.tmdb.org/t/p/w300/kN4UQV5Sp2VfRgepqjF1Xc9WRO1.jpg",
+      "country": "Tailandia",
+      "birthdate": "2002-10-04",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "notes": ""
+    },
+    {
+      "id": "tmdb_5840093_mtyet9vp",
+      "name": "\"Mook\" Chayada Akiyama",
+      "photo": "https://image.tmdb.org/t/p/w300/7JOlJGWgpWiQAp1Vf2HKTBehPvU.jpg",
+      "country": "Tailandia",
+      "birthdate": "2007-04-06",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "notes": ""
+    },
+    {
+      "id": "1789219190319",
+      "name": "\"Jamie\" Juthapich Indrajundra",
+      "photo": "https://media.themoviedb.org/t/p/w300_and_h450_face/ftXypjQ9xqs0WX02WlCNwwX74S7.jpg",
+      "photoPosition": "50% 6%",
+      "photoZoom": 1,
+      "country": "Tailandia",
+      "birthdate": "1997-12-12",
+      "notes": "Actriz"
+    },
+    {
+      "id": "1789219342893",
+      "name": "\"June\" Wanwimol Jaenasavamethee",
+      "photo": "https://media.themoviedb.org/t/p/w300_and_h450_face/pxqNzXk30atKiiBJIAxTZdITOD9.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "Tailandia",
+      "birthdate": "2000-04-19",
+      "notes": "Actriz"
+    },
+    {
+      "id": "tmdb_6000699_mtyf58d8",
+      "name": "Heo So Yoon",
+      "photo": "https://image.tmdb.org/t/p/w300/4IrWqVzjiJ3zvAnTxErYSjqdV6z.jpg",
+      "country": "Corea del Sur",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_913196_mtyf58da",
+      "name": "Kim Hyeon-soo",
+      "photo": "https://image.tmdb.org/t/p/w300/gMZ8YoCtv2cVdLvvIhm4SGLSlgU.jpg",
+      "country": "Corea del Sur",
+      "birthdate": "2000-06-23"
+    },
+    {
+      "id": "tmdb_3843466_mtyfalyu",
+      "name": "\"Christine\" Gulasatree Michalsky",
+      "photo": "https://image.tmdb.org/t/p/w300/gfu4tBkUuCzGFrdOfhHokt0yUXl.jpg",
+      "country": "Tailandia",
+      "birthdate": "1995-09-10",
+      "photoPosition": "50% 49%",
+      "photoZoom": 1,
+      "notes": ""
     }
   ],
   "ships": [
@@ -46282,5 +48750,5 @@
       ]
     }
   },
-  "exportedAt": "2026-09-12T12:15:14.299Z"
+  "exportedAt": "2026-09-12T13:32:57.582Z"
 }
