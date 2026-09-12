@@ -4261,17 +4261,33 @@ async function tmdbApplyResult(id, kind, type){
         rawCast = (jc.cast||[]).map(c=>({id:c.id,name:c.name,gender:c.gender,profile_path:c.profile_path,order:c.order,character:c.character||''}));
       }
       femaleCast = rawCast.filter(c=>c.gender===1).sort((a,b)=>(a.order??99)-(b.order??99)).slice(0,15);
-      // Si el nombre viene en escritura no latina (tailandés, coreano, chino...),
-      // buscamos una versión romanizada en la ficha de la persona (also_known_as)
+      // Para cada actriz pedimos su ficha de persona en TMDB: nos da
+      // el nombre romanizado (also_known_as), su país de nacimiento real
+      // y su fecha de nacimiento, para rellenar bien su ficha de actriz.
       const containsNonLatin = s => /[^\u0000-\u024F\u1E00-\u1EFF\u2000-\u206F\s'".,\-()&/]/.test(s||'');
+      const countryNamesSorted = PRESET_COUNTRIES_ADMIN.map(c=>c.name).sort((a,b)=>b.length-a.length);
       await Promise.all(femaleCast.map(async person=>{
-        if(!containsNonLatin(person.name)) return;
         try{
           const rp = await fetch(`${TMDB_API_BASE}/person/${person.id}?api_key=${encodeURIComponent(key)}`);
           const pj = await rp.json();
-          const candidates = [pj.name, ...(pj.also_known_as||[])].filter(Boolean);
-          const latin = candidates.find(n=>!containsNonLatin(n));
-          if(latin) person.name = latin;
+          if(containsNonLatin(person.name)){
+            const candidates = [pj.name, ...(pj.also_known_as||[])].filter(Boolean);
+            const latin = candidates.find(n=>!containsNonLatin(n));
+            if(latin) person.name = latin;
+          }
+          person.birthdate = pj.birthday || '';
+          // Intentamos sacar el país a partir del lugar de nacimiento (ej: "Bangkok, Thailand")
+          const pob = pj.place_of_birth || '';
+          const foundCountry = countryNamesSorted.find(cn=>pob.toLowerCase().includes(cn.toLowerCase()));
+          // Traducciones habituales en inglés que no coinciden literal con el nombre en español
+          const enToEs = {thailand:'Tailandia','south korea':'Corea del Sur',korea:'Corea del Sur',japan:'Japón',china:'China',taiwan:'Taiwán',philippines:'Filipinas',vietnam:'Vietnam',indonesia:'Indonesia',india:'India','hong kong':'Hong Kong',spain:'España','united kingdom':'Reino Unido',france:'Francia',germany:'Alemania',portugal:'Portugal',italy:'Italia',sweden:'Suecia',norway:'Noruega',denmark:'Dinamarca',poland:'Polonia',belgium:'Bélgica',netherlands:'Países Bajos',ireland:'Irlanda',russia:'Rusia',turkey:'Turquía',finland:'Finlandia','united states':'Estados Unidos',usa:'Estados Unidos',canada:'Canadá',mexico:'México',argentina:'Argentina',brazil:'Brasil',colombia:'Colombia',chile:'Chile',venezuela:'Venezuela',peru:'Perú',australia:'Australia'};
+          let matchedCountry = foundCountry || '';
+          if(!matchedCountry && pob){
+            const pobLower = pob.toLowerCase();
+            const enMatch = Object.keys(enToEs).find(k=>pobLower.includes(k));
+            if(enMatch) matchedCountry = enToEs[enMatch];
+          }
+          person.country = matchedCountry || '';
         }catch(e){}
       }));
     }catch(e){}
@@ -4289,7 +4305,8 @@ async function tmdbApplyResult(id, kind, type){
         id: 'tmdb_'+person.id+'_'+Date.now().toString(36),
         name: person.name,
         photo: person.profile_path ? 'https://image.tmdb.org/t/p/w300'+person.profile_path : '',
-        country: fallbackCountry||'',
+        country: person.country || fallbackCountry || '',
+        birthdate: person.birthdate || '',
       };
       actresses.push(payload);
       return payload.id;
