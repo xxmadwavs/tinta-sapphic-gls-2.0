@@ -988,8 +988,9 @@ html[data-theme="dark"] .day-cell.has-eps{background:var(--surface3)}
   width:100%;height:100%;
   object-fit:cover;object-position:center 15%;
   display:block;transition:transform .45s cubic-bezier(.25,0,.1,1);
+  transform:scale(var(--photo-zoom,1));transform-origin:center center;
 }
-.ship-card:hover .ship-couple-half img{transform:scale(1.05)}
+.ship-card:hover .ship-couple-half img{transform:scale(calc(var(--photo-zoom,1) * 1.05))}
 .ship-couple-half-ph{
   width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   background:var(--surface2);
@@ -2069,6 +2070,8 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 }
 .ep-detail-num{font-size:12px;color:var(--muted);min-width:28px;font-weight:700}
 .ep-detail-date{flex:1;font-size:13px;color:var(--text)}
+.ep-detail-thumb{width:52px;height:30px;border-radius:6px;object-fit:cover;flex-shrink:0;background:var(--surface3,#e5e2e0)}
+.ep-detail-dur{margin-left:8px;font-size:11px;color:var(--muted);font-weight:600}
 .chip{font-size:11px;padding:2px 10px;border-radius:20px;font-weight:600}
 .chip.aired{background:var(--teal-soft);color:var(--teal)}
 .chip.pending{background:var(--accent-soft);color:var(--accent)}
@@ -3824,6 +3827,61 @@ function fmtDuration(mins){
   return m?h+'h '+m+'min':h+'h';
 }
 
+// ── Signo del zodiaco (occidental) a partir de mes/día ──
+function zodiacSign(month, day){
+  const signs=[
+    {name:'Capricornio', emoji:'♑', from:[12,22], to:[1,19]},
+    {name:'Acuario',     emoji:'♒', from:[1,20],  to:[2,18]},
+    {name:'Piscis',      emoji:'♓', from:[2,19],  to:[3,20]},
+    {name:'Aries',       emoji:'♈', from:[3,21],  to:[4,19]},
+    {name:'Tauro',       emoji:'♉', from:[4,20],  to:[5,20]},
+    {name:'Géminis',     emoji:'♊', from:[5,21],  to:[6,20]},
+    {name:'Cáncer',      emoji:'♋', from:[6,21],  to:[7,22]},
+    {name:'Leo',         emoji:'♌', from:[7,23],  to:[8,22]},
+    {name:'Virgo',       emoji:'♍', from:[8,23],  to:[9,22]},
+    {name:'Libra',       emoji:'♎', from:[9,23],  to:[10,22]},
+    {name:'Escorpio',    emoji:'♏', from:[10,23], to:[11,21]},
+    {name:'Sagitario',   emoji:'♐', from:[11,22], to:[12,21]},
+  ];
+  for(const s of signs){
+    const [fm,fd]=s.from, [tm,td]=s.to;
+    if(fm<=tm){
+      if((month===fm&&day>=fd)||(month===tm&&day<=td)||(month>fm&&month<tm)) return s;
+    } else { // rango que cruza fin de año (Capricornio: 22 dic – 19 ene)
+      if((month===fm&&day>=fd)||(month===tm&&day<=td)) return s;
+    }
+  }
+  return null;
+}
+
+// ── Signo del zodiaco chino a partir del año ──
+function chineseZodiacSign(year){
+  const animals=[
+    {name:'Rata',      emoji:'🐀'},{name:'Buey',      emoji:'🐂'},
+    {name:'Tigre',     emoji:'🐅'},{name:'Conejo',    emoji:'🐇'},
+    {name:'Dragón',    emoji:'🐉'},{name:'Serpiente', emoji:'🐍'},
+    {name:'Caballo',   emoji:'🐎'},{name:'Cabra',     emoji:'🐐'},
+    {name:'Mono',      emoji:'🐒'},{name:'Gallo',     emoji:'🐓'},
+    {name:'Perro',     emoji:'🐕'},{name:'Cerdo',     emoji:'🐖'},
+  ];
+  const idx=((year-4)%12+12)%12;
+  return animals[idx];
+}
+
+// Construye una fila de episodio para las listas de detalle, incluyendo
+// miniatura y duración por episodio cuando se han definido en el admin.
+function epDetailRowHtml(ep, numColor, now, todayStr, fallbackDuration, todayBg){
+  const isPast=new Date(ep.date+'T12:00:00')<=now;
+  const isEpToday=ep.date===todayStr;
+  const st=ep.skipped?'skipped':isPast?'aired':'pending';
+  const lb=ep.skipped?'No emitido':isEpToday?'¡Hoy!':isPast?'Emitido':'Pendiente';
+  const thumbHtml=ep.still?`<img src="${ep.still}" class="ep-detail-thumb" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
+  const dur=ep.duration||fallbackDuration;
+  const durHtml=dur?`<span class="ep-detail-dur">${fmtDuration(dur)}</span>`:'';
+  const bg=todayBg||numColor;
+  return `<div class="ep-detail-row">${thumbHtml}<span class="ep-detail-num" style="color:${numColor}">E${ep.seasonNum}</span><span class="ep-detail-date">${fmtDate(ep.date)}${durHtml}</span><span class="chip ${isEpToday&&!ep.skipped?'pending':st}" style="${isEpToday&&!ep.skipped?'background:'+bg+';color:#fff':''}">${lb}</span></div>`;
+}
+
 /**
  * Devuelve info de duración para una serie:
  * - epDuration: minutos por episodio (media ponderada entre temporadas si cada una tiene la suya)
@@ -5346,6 +5404,11 @@ function daysUntil(dateStr){
   return Math.round((target-now)/(1000*60*60*24));
 }
 
+function castPhotoHtml(a){
+  if(!a.photo) return '<div class="cast-photo-ph"></div>';
+  const pos=a.photoPosition||'center 15%', zoom=a.photoZoom||1;
+  return `<div class="cast-photo" style="overflow:hidden;padding:0"><img src="${a.photo}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;object-position:${pos};transform:scale(${zoom});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=cast-photo-ph></div>'"></div>`;
+}
 function buildCastHtml(cast){
   if(!cast||!cast.length) return '<div style="color:var(--muted);font-size:13px;padding:8px 0">Sin información de reparto.</div>';
   const actresses=state.actresses||[];
@@ -5368,7 +5431,7 @@ function buildCastHtml(cast){
     if(!valid.length) return '';
     if(valid.length===1){
       const {m,a}=valid[0];
-      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph></div>'">`:'<div class="cast-photo-ph"></div>';
+      const photo=castPhotoHtml(a);
       return `<div class="couple-card ${cardClass}">
         <div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>
       </div>`;
@@ -5378,13 +5441,13 @@ function buildCastHtml(cast){
     const extra=valid.slice(2);
     const heart=cardClass==='main-couple'?'':'';
     let inner=pair.map(({m,a})=>{
-      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph></div>'">`:'<div class="cast-photo-ph"></div>';
+      const photo=castPhotoHtml(a);
       return `<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
     }).join(`<div class="couple-sep"><div class="couple-sep-line"></div><div class="couple-sep-heart">${heart}</div><div class="couple-sep-line"></div></div>`);
     // Actrices extra (raras veces habrá más de 2 en una pareja)
     if(extra.length){
       const extraHtml=extra.map(({m,a})=>{
-        const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph></div>'">`:'<div class="cast-photo-ph"></div>';
+        const photo=castPhotoHtml(a);
         return `<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
       }).join('');
       inner+=`<div style="display:flex;flex-wrap:wrap;justify-content:center;width:100%;margin-top:6px">${extraHtml}</div>`;
@@ -5416,7 +5479,7 @@ function buildCastHtml(cast){
     otherMembers.forEach(m=>{
       const a=actresses.find(x=>x.id===m.actressId);
       if(!a) return;
-      const photo=a.photo?`<img class="cast-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=cast-photo-ph></div>'">`:'<div class="cast-photo-ph"></div>';
+      const photo=castPhotoHtml(a);
       html+=`<div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>`;
     });
     html+=`</div></div>`;
@@ -5437,7 +5500,7 @@ function openActressProfile(actressId){
   const inSeries=_sortItems(state.series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===actressId)));
   const inMovies=_sortItems(state.movies.filter(mv=>mv.cast&&mv.cast.some(m=>m.actressId===actressId)));
 
-  const photo=a.photo?`<img class="detail-photo" src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=detail-photo-ph></div>'">`:`<div class="detail-photo-ph"></div>`;
+  const photo=a.photo?`<div class="detail-photo" style="overflow:hidden;padding:0"><img src="${a.photo}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;object-position:${a.photoPosition||'center 15%'};transform:scale(${a.photoZoom||1});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=detail-photo-ph></div>'"></div>`:`<div class="detail-photo-ph"></div>`;
 
   const _seriesStatus=s=>{
     if(s.upcoming) return {label:'Próx.',cls:'ship-upcoming'};
@@ -5469,7 +5532,7 @@ function openActressProfile(actressId){
   }).join('');
 
   // Calculate age from birthdate
-  let ageStr='', birthYearStr='';
+  let ageStr='', birthYearStr='', zodiacStr='', chineseZodiacStr='';
   if(a.birthdate){
     const bd=new Date(a.birthdate+'T00:00:00');
     const now2=new Date();
@@ -5480,12 +5543,18 @@ function openActressProfile(actressId){
     const monthNames=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
     ageStr=`${age} años`;
     birthYearStr=`${day} de ${monthNames[bd.getMonth()]} de ${bd.getFullYear()}`;
+    const zs=zodiacSign(bd.getMonth()+1, day);
+    if(zs) zodiacStr=`${zs.emoji} ${zs.name}`;
+    const cz=chineseZodiacSign(bd.getFullYear());
+    if(cz) chineseZodiacStr=`${cz.emoji} ${cz.name}`;
   }
 
   let detailsLines='';
   if(a.country) detailsLines+=`<div class="details-line"><span class="details-line-key">País</span><span class="details-line-val">${countryFlag(a.country)} ${a.country}</span></div>`;
   if(birthYearStr) detailsLines+=`<div class="details-line"><span class="details-line-key">Nacimiento</span><span class="details-line-val">${birthYearStr}</span></div>`;
   if(ageStr) detailsLines+=`<div class="details-line"><span class="details-line-key">Edad</span><span class="details-line-val">${ageStr}</span></div>`;
+  if(zodiacStr) detailsLines+=`<div class="details-line"><span class="details-line-key">Signo zodiacal</span><span class="details-line-val">${zodiacStr}</span></div>`;
+  if(chineseZodiacStr) detailsLines+=`<div class="details-line"><span class="details-line-key">Zodiaco chino</span><span class="details-line-val">${chineseZodiacStr}</span></div>`;
   if(a.height) detailsLines+=`<div class="details-line"><span class="details-line-key">Altura</span><span class="details-line-val">${a.height} cm</span></div>`;
 
   const html=`<div class="modal-body">
@@ -5572,11 +5641,9 @@ function openSeries(si){
   let epsHtml='';
   if(seasons.length===1){
     epsHtml='<div class="ep-detail-list">';
+    const seasonDurFallback=seasons[0]?.episodeDuration||s.episodeDuration||durInfo.epDuration||null;
     allEps.forEach(ep=>{
-      const isPast=new Date(ep.date+'T12:00:00')<=now;
-      const isEpToday=ep.date===todayStr;
-      const st=ep.skipped?'skipped':isPast?'aired':'pending',lb=ep.skipped?'No emitido':isEpToday?'¡Hoy!':isPast?'Emitido':'Pendiente';
-      epsHtml+=`<div class="ep-detail-row"><span class="ep-detail-num" style="color:${col}">E${ep.seasonNum}</span><span class="ep-detail-date">${fmtDate(ep.date)}</span><span class="chip ${isEpToday&&!ep.skipped?'pending':st}" style="${isEpToday&&!ep.skipped?'background:var(--accent);color:#fff':''}">${lb}</span></div>`;
+      epsHtml+=epDetailRowHtml(ep, col, now, todayStr, seasonDurFallback, 'var(--accent)');
     });
     epsHtml+='</div>';
   } else {
@@ -5604,10 +5671,7 @@ function openSeries(si){
         <div class="season-collapse-body${isLastActive?' open':''}" id="${colId}">
           <div class="ep-detail-list">`;
       seasonEps.forEach(ep=>{
-        const isPast=new Date(ep.date+'T12:00:00')<=now;
-        const isEpToday=ep.date===todayStr;
-        const st=ep.skipped?'skipped':isPast?'aired':'pending',lb=ep.skipped?'No emitido':isEpToday?'¡Hoy!':isPast?'Emitido':'Pendiente';
-        epsHtml+=`<div class="ep-detail-row"><span class="ep-detail-num" style="color:${col}">E${ep.seasonNum}</span><span class="ep-detail-date">${fmtDate(ep.date)}</span><span class="chip ${isEpToday&&!ep.skipped?'pending':st}" style="${isEpToday&&!ep.skipped?'background:var(--accent);color:#fff':''}">${lb}</span></div>`;
+        epsHtml+=epDetailRowHtml(ep, col, now, todayStr, seasonDurMin, 'var(--accent)');
       });
       epsHtml+='</div></div></div>';
     });
@@ -6726,12 +6790,9 @@ function openRichDetail(item, opts){
       const todayStr=toStr(now.getFullYear(),now.getMonth(),now.getDate());
       if(seasons.length===1){
         epListHtml=`<div class="ep-detail-list">`;
+        const seasonDurFallback=seasons[0]?.episodeDuration||item.episodeDuration||durInfo.epDuration||null;
         allEps.forEach(ep=>{
-          const isPast=new Date(ep.date+'T12:00:00')<=now;
-          const isEpToday=ep.date===todayStr;
-          const st=ep.skipped?'skipped':isPast?'aired':'pending';
-          const lb=ep.skipped?'No emitido':isEpToday?'¡Hoy!':isPast?'Emitido':'Pendiente';
-          epListHtml+=`<div class="ep-detail-row"><span class="ep-detail-num" style="color:${accentColor}">E${ep.seasonNum}</span><span class="ep-detail-date">${fmtDate(ep.date)}</span><span class="chip ${isEpToday&&!ep.skipped?'pending':st}" style="${isEpToday&&!ep.skipped?'background:'+accentColor+';color:#fff':''}">${lb}</span></div>`;
+          epListHtml+=epDetailRowHtml(ep, accentColor, now, todayStr, seasonDurFallback);
         });
         epListHtml+=`</div>`;
       } else {
@@ -6749,11 +6810,8 @@ function openRichDetail(item, opts){
             </div>
             <div class="ep-detail-list">`;
           seasonEps.forEach(ep=>{
-            const isPast=new Date(ep.date+'T12:00:00')<=now;
-            const isEpToday=ep.date===todayStr;
-            const st=ep.skipped?'skipped':isPast?'aired':'pending';
-            const lb=ep.skipped?'No emitido':isEpToday?'¡Hoy!':isPast?'Emitido':'Pendiente';
-            epListHtml+=`<div class="ep-detail-row"><span class="ep-detail-num" style="color:${accentColor}">E${ep.seasonNum}</span><span class="ep-detail-date">${fmtDate(ep.date)}</span><span class="chip ${isEpToday&&!ep.skipped?'pending':st}" style="${isEpToday&&!ep.skipped?'background:'+accentColor+';color:#fff':''}">${lb}</span></div>`;
+            const seasonDurFallback=season.episodeDuration||item.episodeDuration||durInfo.epDuration||null;
+            epListHtml+=epDetailRowHtml(ep, accentColor, now, todayStr, seasonDurFallback);
           });
           epListHtml+=`</div></div>`;
         });
@@ -7186,7 +7244,7 @@ function renderActressesTabResults(){
 
 function actressTabCardHtml(a, count){
   const photo=a.photo
-    ?`<img class="actress-tab-photo" src="${a.photo}" alt="${a.name}" loading="lazy" onerror="this.outerHTML='<div class=actress-tab-photo-ph></div>'">`
+    ?`<div class="actress-tab-photo" style="overflow:hidden;padding:0"><img src="${a.photo}" alt="${a.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:${a.photoPosition||'center 15%'};transform:scale(${a.photoZoom||1});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=actress-tab-photo-ph></div>'"></div>`
     :`<div class="actress-tab-photo-ph"></div>`;
   const countBadge=count?`<span class="actress-tab-count">${count} obra${count!==1?'s':''}</span>`:'';
   const flag=a.country?`<span class="actress-tab-country">${countryFlag(a.country)} ${a.country}</span>`:'';
@@ -7486,10 +7544,10 @@ function renderShipsResults(){
       } else {
         const [a1,a2]=members;
         const half1=a1?.photo
-          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" loading="lazy" style="object-position:${a1.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
+          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1.id}')"><img src="${a1.photo}" alt="${a1.name}" loading="lazy" style="object-position:${a1.photoPosition||'center 15%'};--photo-zoom:${a1.photoZoom||1}" onerror="this.style.opacity=0"></div>`
           :`<div class="ship-couple-half"><div class="ship-couple-half-ph"></div></div>`;
         const half2=a2?.photo
-          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" loading="lazy" style="object-position:${a2.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
+          ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2.id}')"><img src="${a2.photo}" alt="${a2.name}" loading="lazy" style="object-position:${a2.photoPosition||'center 15%'};--photo-zoom:${a2.photoZoom||1}" onerror="this.style.opacity=0"></div>`
           :`<div class="ship-couple-half"><div class="ship-couple-half-ph"></div></div>`;
         coupleBanner=`<div class="ship-couple-banner">${half1}${half2}<div class="ship-couple-divider"></div></div>`;
       }
@@ -7515,10 +7573,10 @@ function renderShipsResults(){
       const a1auto=actMap[pair[0]?.actressId];
       const a2auto=actMap[pair[1]?.actressId];
       const half1auto=a1auto?.photo
-        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1auto.id}')"><img src="${a1auto.photo}" alt="${a1auto.name}" loading="lazy" style="object-position:${a1auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
+        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a1auto.id}')"><img src="${a1auto.photo}" alt="${a1auto.name}" loading="lazy" style="object-position:${a1auto.photoPosition||'center 15%'};--photo-zoom:${a1auto.photoZoom||1}" onerror="this.style.opacity=0"></div>`
         :`<div class="ship-couple-half"><div class="ship-couple-half-ph"></div></div>`;
       const half2auto=a2auto?.photo
-        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" loading="lazy" style="object-position:${a2auto.photoPosition||'center 15%'}" onerror="this.style.opacity=0"></div>`
+        ?`<div class="ship-couple-half" onclick="event.stopPropagation();openActressProfile('${a2auto.id}')"><img src="${a2auto.photo}" alt="${a2auto.name}" loading="lazy" style="object-position:${a2auto.photoPosition||'center 15%'};--photo-zoom:${a2auto.photoZoom||1}" onerror="this.style.opacity=0"></div>`
         :`<div class="ship-couple-half"><div class="ship-couple-half-ph"></div></div>`;
       return `<div class="ship-card" onclick="${clickHandler}">
         <div class="ship-couple-banner">${half1auto}${half2auto}<div class="ship-couple-divider"></div></div>
@@ -7591,7 +7649,7 @@ function openShipDetail(idx){
   } else {
     const [a1,a2]=members;
     const half=(m)=>m?.photo
-      ?`<div style="flex:1;overflow:hidden;cursor:pointer" onclick="closeShipDetail();setTimeout(()=>openActressProfile('${m.id}'),80)"><img src="${m.photo}" style="width:100%;height:100%;object-fit:cover;object-position:${m.photoPosition||'center 15%'};display:block"></div>`
+      ?`<div style="flex:1;overflow:hidden;cursor:pointer" onclick="closeShipDetail();setTimeout(()=>openActressProfile('${m.id}'),80)"><img src="${m.photo}" style="width:100%;height:100%;object-fit:cover;object-position:${m.photoPosition||'center 15%'};transform:scale(${m.photoZoom||1});transform-origin:center center;display:block"></div>`
       :`<div style="flex:1;background:var(--surface2)"></div>`;
     photoHtml=`<div class="detail-photo" style="overflow:hidden;padding:0;display:flex">${half(a1)}${half(a2)}</div>`;
   }
@@ -7908,7 +7966,7 @@ function renderProductorasResults(){
         <div class="prod-actresses-grid">${prodActresses.map(a=>`
           <div class="prod-actress-chip" onclick="event.stopPropagation();openActressProfile('${a.id}')">
             ${a.photo
-              ?`<img src="${a.photo}" alt="${a.name}" onerror="this.outerHTML='<div class=prod-actress-chip-ph></div>'">`
+              ?`<div style="width:24px;height:24px;border-radius:50%;overflow:hidden;flex-shrink:0"><img src="${a.photo}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;object-position:${a.photoPosition||'center 15%'};transform:scale(${a.photoZoom||1});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=prod-actress-chip-ph></div>'"></div>`
               :`<div class="prod-actress-chip-ph"></div>`}
             <span class="prod-actress-chip-name">${a.name.split('"').filter(Boolean)[0]?.trim()||a.name}</span>
           </div>`).join('')}

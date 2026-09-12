@@ -145,6 +145,7 @@ body::before{content:'';position:fixed;inset:0;background:
 .ep-row.ep-skipped{background:#f8f8f8}
 .ep-row.ep-modified{background:#fffdf0}
 .ep-row.ep-today{background:linear-gradient(90deg,rgba(201,79,124,.08),rgba(224,122,160,.04))}
+.ep-still-thumb{width:42px;height:26px;border-radius:5px;object-fit:cover;flex-shrink:0;background:#ddd}
 .ep-num{
   font-size:11.5px;color:var(--muted);min-width:30px;
   font-weight:700;font-variant-numeric:tabular-nums;
@@ -549,6 +550,8 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .cast-del-btn{background:none;border:1.5px solid rgba(212,92,92,.3);border-radius:8px;color:var(--danger);font-size:14px;cursor:pointer;padding:0;width:30px;height:30px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'Nunito',sans-serif}
 .cast-del-global-btn{background:none;border:1.5px solid rgba(212,92,92,.3);border-radius:8px;color:var(--danger);font-size:12.5px;cursor:pointer;padding:0;width:30px;height:30px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'Nunito',sans-serif;opacity:.75}
 .cast-del-global-btn:hover{opacity:1;background:rgba(212,92,92,.12)}
+.cast-edit-btn{background:none;border:1.5px solid var(--border2);border-radius:8px;color:var(--accent);font-size:12px;cursor:pointer;padding:0;width:30px;height:30px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'Nunito',sans-serif;opacity:.8}
+.cast-edit-btn:hover{opacity:1;background:var(--accent-soft)}
 .cast-btns-col{display:flex;flex-direction:column;gap:6px}
 .cast-del-btn:hover{background:rgba(212,92,92,.1);border-color:var(--danger)}
 .cast-create-btn{width:100%;padding:6px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;text-align:left;transition:all .15s}
@@ -2119,6 +2122,7 @@ function addSeasonBlock(seasonData=null, idx=null){
   const block=document.createElement('div');
   block.className='season-block';
   block.dataset.seasonIdx=blockIdx;
+  block.dataset.episodes=JSON.stringify(seasonData?.episodes||[]);
   block.innerHTML=`
     <div class="season-block-header">
       <div class="season-block-title">
@@ -2286,7 +2290,9 @@ function getSeasonsData(){
     }
     const seasonDurRaw=block.querySelector('.s-ep-duration')?.value||'';
     const seasonDuration=parseDurationInput(seasonDurRaw)||'';
-    const seasonObj={label,startDate,totalEpisodes:totalEps,emissionDays,allInOneDay,skipDates:[],episodes:[],premiereSchedule};
+    let epOverrides=[];
+    try{ epOverrides=block.dataset.episodes?JSON.parse(block.dataset.episodes):[]; }catch(e){}
+    const seasonObj={label,startDate,totalEpisodes:totalEps,emissionDays,allInOneDay,skipDates:[],episodes:epOverrides,premiereSchedule};
     if(seasonDuration) seasonObj.episodeDuration=seasonDuration;
     seasons.push(seasonObj);
   }
@@ -2604,8 +2610,13 @@ function formHtml(s, forcedCategory=null){
         <div class="form-hint">Ej: Primavera 2025. Aparece en la ficha.</div>
       </div>
 
+      <input type="hidden" id="f_tmdbId" value="${s&&s.tmdbId?s.tmdbId:''}">
+      <input type="hidden" id="f_tmdbKind" value="${s&&s.tmdbKind?s.tmdbKind:'tv'}">
       <div class="seasons-list" id="seasonsList"></div>
-      <button type="button" class="platform-add-btn" onclick="addSeasonBlock()" style="margin-top:8px">+ Añadir temporada</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+        <button type="button" class="platform-add-btn" onclick="addSeasonBlock()">+ Añadir temporada</button>
+        <button type="button" class="platform-add-btn" onclick="tmdbAddNextSeasonFromForm(this)" style="border-color:rgba(1,180,228,.4);color:#01b4e4" title="Usa el ID de TMDB vinculado a esta serie (búscala arriba con 🔎 Buscar en TMDB si aún no está vinculada)">📡 Añadir siguiente temporada desde TMDB</button>
+      </div>
     </div>
     <div class="form-col-right" id="schedFieldsHidden" style="${isUpcoming?'':'display:none'}">
       <!-- Checkbox "Próximamente" visible también cuando upcoming=true -->
@@ -3154,7 +3165,9 @@ async function saveSeries(si, forcedCategory=null){
   const snLastUpdate=document.getElementById('f_snLastUpdate')?.value.trim()||'';
   const snNote=document.getElementById('f_snNote')?.value.trim()||'';
   const productoraId=document.getElementById('f_productora')?.value||'';
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId};
+  const tmdbId=document.getElementById('f_tmdbId')?.value.trim()||'';
+  const tmdbKind=document.getElementById('f_tmdbKind')?.value.trim()||'';
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -3162,7 +3175,10 @@ async function saveSeries(si, forcedCategory=null){
     const existing=si>=0?getSeasons(series[si]):[];
     seasons.forEach((s,i)=>{
       const prev=existing[i];
-      if(prev){s.skipDates=prev.skipDates||[];s.episodes=prev.episodes||[];}
+      if(prev){
+        s.skipDates=prev.skipDates||[];
+        if(!s.episodes||!s.episodes.length) s.episodes=prev.episodes||[];
+      }
     });
     payload={...payload,seasons};
   }
@@ -3263,13 +3279,14 @@ function openEps(si){
         const ep=seasonEps.find(e=>e.seasonNum===epNum);
         if(!ep) continue;
         const isPast=new Date(ep.date+'T12:00:00')<=now;
-        const hasOv=(season.episodes||[]).some(e=>e.num===epNum);
+        const ov=(season.episodes||[]).find(e=>e.num===epNum);
+        const hasManualOv=ov&&ov.source!=='tmdb';
         let st,lb;
         if(ep.skipped){st='skipped';lb='No emitido';}
-        else if(hasOv){st='modified';lb='Fecha cambiada';}
+        else if(hasManualOv){st='modified';lb='Fecha cambiada';}
         else if(isPast){st='aired';lb='Emitido';}
         else{st='pending';lb='Pendiente';}
-        html+=`<div class="ep-row ep-${st==="aired"?"aired":st==="skipped"?"skipped":st==="modified"?"modified":"pending"}" onclick="openEpEdit(${si},${sIdx},${epNum})"><span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
+        html+=`<div class="ep-row ep-${st==="aired"?"aired":st==="skipped"?"skipped":st==="modified"?"modified":"pending"}" onclick="openEpEdit(${si},${sIdx},${epNum})">${ep.still?`<img src="${ep.still}" class="ep-still-thumb" onerror="this.style.display='none'">`:''}<span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
       }
     } else {
     // Use genEpisodes results directly — they already account for special groups and overrides
@@ -3295,18 +3312,19 @@ function openEps(si){
         epMap[date].forEach(ep=>{
           const epNum=ep.seasonNum;
           const isPast=new Date(ep.date+'T12:00:00')<=now;
-          const hasOv=(season.episodes||[]).some(e=>e.num===epNum);
+          const ov=(season.episodes||[]).find(e=>e.num===epNum);
+          const hasManualOv=ov&&ov.source!=='tmdb';
           const isSpecialGroup=premiereSchedule.length>0&&premiereSchedule.some(gr=>{
             if(gr.fromEp!==undefined) return epNum>=gr.fromEp&&epNum<=gr.toEp;
             return false;
           });
           let st,lb;
           if(ep.skipped){st='skipped';lb='No emitido';}
-          else if(hasOv){st='modified';lb='Fecha cambiada';}
-          else if(isSpecialGroup&&!hasOv){st='modified';lb='Grupo especial';}
+          else if(hasManualOv){st='modified';lb='Fecha cambiada';}
+          else if(isSpecialGroup&&!hasManualOv){st='modified';lb='Grupo especial';}
           else if(isPast){st='aired';lb='Emitido';}
           else{st='pending';lb='Pendiente';}
-          html+=`<div class="ep-row ep-${st==="aired"?"aired":st==="skipped"?"skipped":st==="modified"?"modified":"pending"}" onclick="openEpEdit(${si},${sIdx},${epNum})"><span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
+          html+=`<div class="ep-row ep-${st==="aired"?"aired":st==="skipped"?"skipped":st==="modified"?"modified":"pending"}" onclick="openEpEdit(${si},${sIdx},${epNum})">${ep.still?`<img src="${ep.still}" class="ep-still-thumb" onerror="this.style.display='none'">`:''}<span class="ep-num">E${epNum}</span><span class="ep-date">${fmtDate(ep.date)}</span><span class="ep-status ${st}">${lb}</span></div>`;
         });
       }
     });
@@ -3364,7 +3382,9 @@ function openEpEdit(si, sIdx, epNum){
   const allEps=genEpisodes(s);
   const globalEps=allEps.filter(e=>e.season===sIdx+1);
   const ep=globalEps.find(e=>e.seasonNum===epNum);
-  const hasOv=(season.episodes||[]).some(e=>e.num===epNum);
+  const ovEntry=(season.episodes||[]).find(e=>e.num===epNum);
+  const hasOv=!!ovEntry;
+  const isTmdbOv=ovEntry&&ovEntry.source==='tmdb';
   const premiereSchedule=season.premiereSchedule||[];
   const isInGroup=premiereSchedule.length&&premiereSchedule.some(gr=>gr.fromEp!==undefined&&epNum>=gr.fromEp&&epNum<=gr.toEp);
   const totalEps=season.totalEpisodes;
@@ -3373,12 +3393,19 @@ function openEpEdit(si, sIdx, epNum){
     <div class="ep-edit-info">
       <strong>${s.name}</strong> · ${season.label||'T'+(sIdx+1)} · Episodio ${epNum}<br>
       Fecha actual: <strong>${fmtDate(ep.date)}</strong>
-      ${hasOv?'<br><span style="color:#b08a00;font-weight:600">Fecha cambiada manualmente</span>':''}
+      ${isTmdbOv?'<br><span style="color:#01b4e4;font-weight:600">Fecha exacta de TMDB</span>':hasOv?'<br><span style="color:#b08a00;font-weight:600">Fecha cambiada manualmente</span>':''}
       ${isInGroup?'<br><span style="color:#b08a00">Parte de un grupo especial</span>':''}
     </div>
     <div class="section-label">Cambiar fecha de este episodio</div>
     <div class="form-row"><label class="form-label">Nueva fecha</label><input id="fe_date" type="date" value="${ep.date}"/>
       <div class="form-hint">Solo afecta a este episodio. Si quieres que los episodios siguientes también cambien, usa los <strong>grupos especiales</strong> en la configuración de la temporada.</div>
+    </div>
+    <div class="form-row"><label class="form-label">Duración de este episodio <span style="font-size:10px;opacity:.5;font-weight:400;text-transform:none">(si difiere de la de la temporada)</span></label>
+      <input id="fe_duration" type="text" placeholder="Ej: 45min · vacío = igual que la temporada" value="${ep.duration?formatDurationDisplay(ep.duration):''}" style="max-width:280px"/>
+    </div>
+    <div class="form-row"><label class="form-label">Miniatura del episodio <span style="font-size:10px;opacity:.5;font-weight:400;text-transform:none">(opcional)</span></label>
+      <input id="fe_still" type="text" placeholder="https://image.tmdb.org/..." value="${ep.still||''}"/>
+      ${ep.still?`<img src="${ep.still}" style="margin-top:6px;width:130px;border-radius:8px;display:block" onerror="this.style.display='none'">`:''}
     </div>
     <div class="divider"></div>
     <div class="section-label">Estado</div>
@@ -3393,13 +3420,18 @@ function openEpEdit(si, sIdx, epNum){
 
 function saveEp(si, sIdx, epNum){
   const date=document.getElementById('fe_date').value, skipped=document.getElementById('fe_skip').checked;
+  const duration=parseDurationInput(document.getElementById('fe_duration')?.value||'')||'';
+  const still=document.getElementById('fe_still')?.value.trim()||'';
   const seasons=getSeasons(series[si]);
   if(!series[si].seasons) series[si].seasons=seasons;
   if(!series[si].seasons[sIdx].episodes) series[si].seasons[sIdx].episodes=[];
   const eps=series[si].seasons[sIdx].episodes;
   const idx=eps.findIndex(e=>e.num===epNum);
-  if(idx>=0) eps[idx]={num:epNum,date,skipped};
-  else eps.push({num:epNum,date,skipped});
+  const payload={num:epNum,date,skipped};
+  if(duration) payload.duration=duration;
+  if(still) payload.still=still;
+  if(idx>=0) eps[idx]=payload;
+  else eps.push(payload);
   save();
   document.getElementById('epEditModal').classList.remove('open');
   openEps(si);
@@ -4118,6 +4150,7 @@ function chkPickerAddSelected(){
 /* ═══ TMDB (+ JustWatch) SEARCH ═══ */
 const TMDB_API_BASE = 'https://api.themoviedb.org/3';
 const TMDB_IMG_BASE  = 'https://image.tmdb.org/t/p/w200';
+const TMDB_STILL_BASE = 'https://image.tmdb.org/t/p/w300';
 const TMDB_REGIONS = [
   ['ES','España'],['MX','México'],['AR','Argentina'],['CO','Colombia'],['CL','Chile'],
   ['PE','Perú'],['US','Estados Unidos'],['VE','Venezuela'],['EC','Ecuador'],['UY','Uruguay']
@@ -4257,6 +4290,60 @@ async function tmdbFetchSeason(id, seasonNumber, key){
     if(!r.ok) return null;
     return await r.json();
   }catch(e){ return null; }
+}
+
+async function tmdbAddNextSeasonFromForm(btn){
+  const id=document.getElementById('f_tmdbId')?.value.trim()||'';
+  if(!id){
+    alert('Esta ficha aún no está vinculada a TMDB.\n\nBusca la serie con "🔎 Buscar en TMDB" (arriba) y selecciona el resultado correcto — a partir de ahí este botón ya podrá traer temporadas nuevas directamente.');
+    return;
+  }
+  let key=tmdbGetKey();
+  if(!key){ key=tmdbConfigureKey(); if(!key) return; }
+  const list=_findInModal('seasonsList')||document.getElementById('seasonsList');
+  if(!list) return;
+  const nextNum=list.children.length+1;
+  const prevLabel=btn?btn.textContent:'';
+  if(btn){ btn.disabled=true; btn.textContent='Buscando en TMDB...'; }
+  try{
+    const sd=await tmdbFetchSeason(id, nextNum, key);
+    const allEpsRaw=(sd && sd.episodes || []).slice().sort((a,b)=>a.episode_number-b.episode_number);
+    if(!allEpsRaw.length){
+      alert(`TMDB todavía no tiene datos de la Temporada ${nextNum}. Puede que aún no esté anunciada.`);
+      return;
+    }
+    const eps=allEpsRaw.filter(e=>e.air_date);
+    let seasonData;
+    if(eps.length){
+      const allInOneDay=eps.length>=2 && eps[0].air_date===eps[1].air_date;
+      let emissionDays=[getDow(eps[0].air_date)];
+      if(!allInOneDay && eps.length>=2){
+        const dows=new Set();
+        eps.slice(0, Math.min(eps.length,6)).forEach(e=>dows.add(getDow(e.air_date)));
+        emissionDays=[...dows].sort((a,b)=>a-b);
+      }
+      const epOverrides=eps.map(e=>({
+        num:e.episode_number, date:e.air_date, skipped:false, source:'tmdb',
+        ...(e.runtime?{duration:e.runtime}:{}),
+        ...(e.still_path?{still:TMDB_STILL_BASE+e.still_path}:{}),
+      }));
+      seasonData={
+        label:`Temporada ${nextNum}`, startDate:eps[0].air_date,
+        totalEpisodes:allEpsRaw.length, emissionDays, allInOneDay,
+        skipDates:[], episodes:epOverrides, premiereSchedule:[],
+      };
+    } else {
+      seasonData={
+        label:`Temporada ${nextNum}`, startDate:'', totalEpisodes:allEpsRaw.length,
+        emissionDays:[0], skipDates:[], episodes:[], premiereSchedule:[],
+      };
+    }
+    addSeasonBlock(seasonData);
+  }catch(e){
+    alert('✕ Error al conectar con TMDB.');
+  }finally{
+    if(btn){ btn.disabled=false; btn.textContent=prevLabel||'📡 Añadir siguiente temporada desde TMDB'; }
+  }
 }
 
 async function tmdbApplyResult(id, kind, type){
@@ -4433,6 +4520,8 @@ async function tmdbApplyResult(id, kind, type){
       setVal('f_net', networkStr);
       setVal('f_poster', poster);
       setVal('f_trailer', trailerUrl);
+      setVal('f_tmdbId', id);
+      setVal('f_tmdbKind', kind);
       if(poster) posterSetImage(poster);
       if(runtimeMins) setVal('f_epDuration', formatDurationDisplay(runtimeMins));
       tmdbApplyCountries(d.origin_country, 'series');
@@ -4459,7 +4548,8 @@ async function tmdbApplyResult(id, kind, type){
         const seasonBlocks = [];
         for(const s of realSeasons){
           const sd = await tmdbFetchSeason(id, s.season_number, key);
-          const eps = (sd && sd.episodes || []).filter(e=>e.air_date).sort((a,b)=>a.episode_number-b.episode_number);
+          const allEpsRaw = (sd && sd.episodes || []).slice().sort((a,b)=>a.episode_number-b.episode_number);
+          const eps = allEpsRaw.filter(e=>e.air_date);
           if(eps.length){
             const allInOneDay = eps.length>=2 && eps[0].air_date===eps[1].air_date;
             let emissionDays=[getDow(eps[0].air_date)];
@@ -4468,13 +4558,20 @@ async function tmdbApplyResult(id, kind, type){
               eps.slice(0, Math.min(eps.length,6)).forEach(e=>dows.add(getDow(e.air_date)));
               emissionDays=[...dows].sort((a,b)=>a-b);
             }
+            // Fecha, duración y miniatura EXACTAS de cada episodio, directo de TMDB
+            // (los que aún no tengan fecha anunciada seguirán el patrón semanal de arriba)
+            const epOverrides = eps.map(e=>({
+              num:e.episode_number, date:e.air_date, skipped:false, source:'tmdb',
+              ...(e.runtime?{duration:e.runtime}:{}),
+              ...(e.still_path?{still:TMDB_STILL_BASE+e.still_path}:{}),
+            }));
             seasonBlocks.push({
               label:`Temporada ${s.season_number}`,
               startDate:eps[0].air_date,
-              totalEpisodes:eps.length,
+              totalEpisodes:allEpsRaw.length || eps.length,
               emissionDays,
               allInOneDay,
-              skipDates:[], episodes:[], premiereSchedule:[],
+              skipDates:[], episodes:epOverrides, premiereSchedule:[],
             });
           } else {
             seasonBlocks.push({
@@ -4835,7 +4932,8 @@ function renderActressesGrid(){
   grid.innerHTML=list.map(a=>{
     const ai=actresses.indexOf(a);
     const photoPos=a.photoPosition||'center 15%';
-    const photo=a.photo?`<img src="${escapeHtml(a.photo)}" style="width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(photoPos)};border:2.5px solid var(--border2);margin-bottom:6px" onerror="this.outerHTML='<div style=\'width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px\'></div>'">`:'<div style="width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px"></div>';
+    const photoZoom=a.photoZoom||1;
+    const photo=a.photo?`<div style="width:72px;height:72px;border-radius:50%;overflow:hidden;border:2.5px solid var(--border2);margin-bottom:6px"><img src="${escapeHtml(a.photo)}" style="width:100%;height:100%;object-fit:cover;object-position:${escapeHtml(photoPos)};transform:scale(${photoZoom});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div style=\'width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px\'></div>'"></div>`:'<div style="width:72px;height:72px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:6px"></div>';
     const seriesCount=series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===a.id)).length;
     const moviesCount=movies.filter(m=>m.cast&&m.cast.some(m2=>m2.actressId===a.id)).length;
     const total=seriesCount+moviesCount;
@@ -4857,17 +4955,43 @@ function actressFormHtml(a){
     <div class="form-row"><label class="form-label">Nombre *</label><input id="af_name" placeholder="Ej: Kim Sejeong" value="${a?escapeHtml(a.name):''}"/></div>
     <div class="form-row">
       <label class="form-label">Foto (URL)</label>
-      <div style="display:flex;gap:10px;align-items:flex-start">
-        <img id="af_photo_prev" style="width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:${a&&a.photoPosition?escapeHtml(a.photoPosition):'center 15%'};border:1.5px solid var(--border2);flex-shrink:0;${a&&a.photo?'':'display:none'}" src="${a&&a.photo?a.photo:''}">
-        <input id="af_photo" placeholder="https://..." value="${a&&a.photo?escapeHtml(a.photo):''}" oninput="const p=document.getElementById('af_photo_prev');if(this.value){p.src=this.value;p.style.display='block';}else p.style.display='none'"/>
+      <input id="af_photo" placeholder="https://..." value="${a&&a.photo?escapeHtml(a.photo):''}" oninput="afUpdatePhotoPreview()"/>
+      <div id="af_photo_editor" style="margin-top:10px;${a&&a.photo?'':'display:none'}">
+        <!-- Preview -->
+        <div id="af_photo_preview_wrap" style="border-radius:50%;overflow:hidden;width:130px;height:130px;border:1.5px solid var(--border2);position:relative;background:#eee;margin:0 auto 10px">
+          <img id="af_photo_prev" src="${a&&a.photo?escapeHtml(a.photo):''}"
+            style="width:100%;height:100%;object-fit:cover;object-position:${afExtractPosX(a&&a.photoPosition)}% ${afExtractPosY(a&&a.photoPosition)}%;transform:scale(${a&&a.photoZoom?a.photoZoom:1});transform-origin:center center;display:block">
+        </div>
+        <!-- Controles -->
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div>
+            <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between">
+              <span>Desplazar horizontal</span>
+              <span id="af_posX_val" style="color:var(--accent)">${afExtractPosX(a&&a.photoPosition)}%</span>
+            </label>
+            <input type="range" id="af_posX" min="0" max="100" step="1" value="${afExtractPosX(a&&a.photoPosition)}"
+              oninput="afUpdatePos()" style="width:100%;accent-color:var(--accent);cursor:pointer;margin-top:3px">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between">
+              <span>Desplazar vertical</span>
+              <span id="af_posY_val" style="color:var(--accent)">${afExtractPosY(a&&a.photoPosition)}%</span>
+            </label>
+            <input type="range" id="af_posY" min="0" max="100" step="1" value="${afExtractPosY(a&&a.photoPosition)}"
+              oninput="afUpdatePos()" style="width:100%;accent-color:var(--accent);cursor:pointer;margin-top:3px">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between">
+              <span>Zoom</span>
+              <span id="af_zoom_val" style="color:var(--accent)">${a&&a.photoZoom?Math.round(a.photoZoom*100):100}%</span>
+            </label>
+            <input type="range" id="af_zoom" min="100" max="250" step="1" value="${a&&a.photoZoom?Math.round(a.photoZoom*100):100}"
+              oninput="afUpdatePos()" style="width:100%;accent-color:var(--accent);cursor:pointer;margin-top:3px">
+          </div>
+          <button type="button" class="btn small" onclick="afResetPos()" style="align-self:flex-start">↺ Resetear posición</button>
+        </div>
       </div>
-    </div>
-    <div class="form-row">
-      <label class="form-label">Posición de foto <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(si la cara sale cortada)</span></label>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">
-        ${[['center 5%','Muy arriba'],['center 15%','↑ Arriba (defecto)'],['center 35%','Centro-arriba'],['center 50%','· Centro'],['center 65%','↓ Centro-abajo'],['center 80%','Abajo']].map(([val,label])=>`<span onclick="document.getElementById('af_photoPos').value='${val}';document.querySelectorAll('.af-pos-chip').forEach(c=>{c.style.background='var(--surface2)';c.style.borderColor='var(--border2)';c.style.color='var(--text)'});this.style.background='var(--accent-soft)';this.style.borderColor='var(--accent2)';this.style.color='var(--accent)';document.getElementById('af_photo_prev').style.objectPosition='${val}'" class="af-pos-chip" style="cursor:pointer;padding:4px 11px;border-radius:20px;border:1.5px solid ${(a&&a.photoPosition===val)?'var(--accent2)':'var(--border2)'};font-size:12px;font-weight:600;color:${(a&&a.photoPosition===val)?'var(--accent)':'var(--text)'};background:${(a&&a.photoPosition===val)?'var(--accent-soft)':'var(--surface2)'};transition:all .15s;user-select:none">${label}</span>`).join('')}
-      </div>
-      <input id="af_photoPos" placeholder="O escribe valor CSS, ej: center 20%" value="${a&&a.photoPosition?escapeHtml(a.photoPosition):'center 15%'}" oninput="document.getElementById('af_photo_prev').style.objectPosition=this.value" style="font-size:12px"/>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:6px">Ajusta los deslizantes hasta que la cara quede centrada y visible.</div>
     </div>
     <div class="form-row"><label class="form-label">País / Origen</label>
       <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px">
@@ -4912,6 +5036,56 @@ function openEditActress(ai){
   document.getElementById('actressModal').classList.add('open');
 }
 
+// Helpers para el editor de foto de actriz (posición X/Y + zoom)
+function afExtractPosX(pos){
+  if(!pos) return 50;
+  const t=String(pos).trim().split(/\s+/)[0];
+  if(t==='center') return 50;
+  if(t==='left') return 0;
+  if(t==='right') return 100;
+  const m=t.match(/^(\d+(?:\.\d+)?)%?/);
+  return m?Math.round(parseFloat(m[1])):50;
+}
+function afExtractPosY(pos){
+  if(!pos) return 15;
+  const parts=String(pos).trim().split(/\s+/);
+  const t=parts[1]!==undefined?parts[1]:parts[0];
+  if(t==='center') return 50;
+  if(t==='top') return 0;
+  if(t==='bottom') return 100;
+  const m=String(t).match(/^(\d+(?:\.\d+)?)%?/);
+  return m?Math.round(parseFloat(m[1])):15;
+}
+
+function afUpdatePhotoPreview(){
+  const url=document.getElementById('af_photo')?.value.trim();
+  const editor=document.getElementById('af_photo_editor');
+  const img=document.getElementById('af_photo_prev');
+  if(!editor||!img) return;
+  if(url){ img.src=url; editor.style.display=''; }
+  else { editor.style.display='none'; }
+}
+
+function afUpdatePos(){
+  const img=document.getElementById('af_photo_prev');
+  if(!img) return;
+  const x=document.getElementById('af_posX')?.value||'50';
+  const y=document.getElementById('af_posY')?.value||'15';
+  const z=document.getElementById('af_zoom')?.value||'100';
+  img.style.objectPosition=`${x}% ${y}%`;
+  img.style.transform=`scale(${parseFloat(z)/100})`;
+  const xLbl=document.getElementById('af_posX_val'); if(xLbl) xLbl.textContent=x+'%';
+  const yLbl=document.getElementById('af_posY_val'); if(yLbl) yLbl.textContent=y+'%';
+  const zLbl=document.getElementById('af_zoom_val'); if(zLbl) zLbl.textContent=z+'%';
+}
+
+function afResetPos(){
+  const xEl=document.getElementById('af_posX'); if(xEl) xEl.value=50;
+  const yEl=document.getElementById('af_posY'); if(yEl) yEl.value=15;
+  const zEl=document.getElementById('af_zoom'); if(zEl) zEl.value=100;
+  afUpdatePos();
+}
+
 function saveActress(ai){
   const name=document.getElementById('af_name').value.trim();
   if(!name){alert('El nombre es obligatorio');return;}
@@ -4920,7 +5094,8 @@ function saveActress(ai){
     id:isNew?Date.now().toString():(actresses[ai].id||Date.now().toString()),
     name,
     photo:document.getElementById('af_photo').value.trim(),
-    photoPosition:document.getElementById('af_photoPos').value.trim()||'center 15%',
+    photoPosition:`${document.getElementById('af_posX')?.value||50}% ${document.getElementById('af_posY')?.value||15}%`,
+    photoZoom:document.getElementById('af_zoom')?Number(document.getElementById('af_zoom').value)/100||1:1,
     country:document.getElementById('af_country').value.trim(),
     birthdate:document.getElementById('af_birthdate').value.trim(),
     height:document.getElementById('af_height').value.trim()?Number(document.getElementById('af_height').value.trim()):undefined,
@@ -4994,10 +5169,26 @@ function addCastMember(data){
       </div>
     </div>
     <div class="cast-btns-col">
+      <button type="button" onclick="editActressFromCastRow(this)" class="cast-edit-btn" title="Editar esta actriz (nombre, mote, país, foto...)">✏️</button>
       <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Quitar del reparto de esta serie">✕</button>
       <button type="button" onclick="deleteActressFromCastRow(this)" class="cast-del-global-btn" title="Eliminar esta actriz de toda la web (no aparecerá en el listado de actrices)">🗑</button>
     </div>`;
   list.appendChild(row);
+}
+
+function editActressFromCastRow(btn){
+  const row = btn.closest('.cast-admin-row');
+  const actressId = row?.querySelector('.cast-actress-sel')?.value;
+  if(!actressId){ alert('Primero busca y selecciona una actriz en esta fila.'); return; }
+  const ai = actresses.findIndex(a=>a.id===actressId);
+  if(ai===-1){ alert('No se encuentra esa actriz en el listado.'); return; }
+  const thumbEl = row.querySelector('[id$="_thumb"]');
+  const uid = thumbEl ? thumbEl.id.replace('_thumb','') : '';
+  openEditActress(ai);
+  // Sobreescribimos el botón de guardar para que, al terminar, refresque
+  // también el nombre/foto mostrados en esta fila del reparto
+  document.getElementById('actressModalFooter').innerHTML =
+    `<div class="modal-footer-btns"><button type="button" class="btn" onclick="document.getElementById('actressModal').classList.remove('open')">Cancelar</button><button type="button" class="btn primary" onclick="saveActress(${ai});selectCastActressById('${uid}','${actressId}',${ai})">Guardar cambios</button></div>`;
 }
 
 async function deleteActressFromCastRow(btn){
@@ -5067,6 +5258,8 @@ function saveActressAndSelect(ai, castUid){
   const payload={
     id:Date.now().toString(), name,
     photo:document.getElementById('af_photo').value.trim(),
+    photoPosition:`${document.getElementById('af_posX')?.value||50}% ${document.getElementById('af_posY')?.value||15}%`,
+    photoZoom:document.getElementById('af_zoom')?Number(document.getElementById('af_zoom').value)/100||1:1,
     country:document.getElementById('af_country').value.trim(),
     birthdate:document.getElementById('af_birthdate').value.trim(),
     height:document.getElementById('af_height').value.trim()?Number(document.getElementById('af_height').value.trim()):undefined,
@@ -5109,7 +5302,7 @@ function closeCastDropdown(uid){
 
 function getActressThumb(actressId){
   const a=actresses.find(x=>x.id===actressId);
-  if(a&&a.photo) return `<img src="${escapeHtml(a.photo)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(a.photoPosition||'center 15%')};border:1.5px solid var(--border2)">`;
+  if(a&&a.photo) return `<div style="width:38px;height:38px;border-radius:50%;overflow:hidden;border:1.5px solid var(--border2)"><img src="${escapeHtml(a.photo)}" style="width:100%;height:100%;object-fit:cover;object-position:${escapeHtml(a.photoPosition||'center 15%')};transform:scale(${a.photoZoom||1});transform-origin:center center;display:block"></div>`;
   return `<div style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:18px"></div>`;
 }
 
@@ -5182,6 +5375,7 @@ function addMovieCastMember(data){
     </div>
     </div>
     <div class="cast-btns-col">
+      <button type="button" onclick="editActressFromCastRow(this)" class="cast-edit-btn" title="Editar esta actriz (nombre, mote, país, foto...)">✏️</button>
       <button type="button" onclick="this.closest('.cast-admin-row').remove()" class="cast-del-btn" title="Quitar del reparto de esta película">✕</button>
       <button type="button" onclick="deleteActressFromCastRow(this)" class="cast-del-global-btn" title="Eliminar esta actriz de toda la web (no aparecerá en el listado de actrices)">🗑</button>
     </div>`;
@@ -5346,8 +5540,9 @@ function renderShipsAdmin(){
     const shared=sharedSeries(sh);
     const photosHtml=members.map(a=>{
       const pos=a.photoPosition||'center 15%';
+      const zoom=a.photoZoom||1;
       return a.photo
-        ?`<img src="${escapeHtml(a.photo)}" title="${escapeHtml(a.name)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:${escapeHtml(pos)};border:2px solid var(--border2);flex-shrink:0" onerror="this.outerHTML='<div style=\\'width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--border2)\\'></div>'">`
+        ?`<div title="${escapeHtml(a.name)}" style="width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid var(--border2);flex-shrink:0"><img src="${escapeHtml(a.photo)}" style="width:100%;height:100%;object-fit:cover;object-position:${escapeHtml(pos)};transform:scale(${zoom});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div style=\\'width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--border2)\\'></div>'"></div>`
         :`<div title="${escapeHtml(a.name)}" style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid var(--border2);flex-shrink:0"></div>`;
     }).join('<span style="font-size:14px;color:var(--accent2);margin:0 2px"></span>');
     const seriesText=shared.length
