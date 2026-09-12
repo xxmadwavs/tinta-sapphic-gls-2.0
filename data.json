@@ -1420,8 +1420,8 @@
       "synopsis": "Panapsorn lleva años sobreviviendo en el deslumbrante y despiadado mundo del entretenimiento nocturno, sin dejar de ser una persona de voz suave y desinteresada, y cargando con unas heridas que ha aprendido a ocultar tras sonrisas impecables. Phakinee, por su parte, nunca ha tenido que ocultar nada. Guapa, rica y con una mente aguda como una navaja, se mueve por la vida sin que le afecten las cosas que destrozan a la gente corriente, hasta que conoce a Panapsorn, cuya fuerza silenciosa la perturba de una forma que no puede explicar.\n\nUn encuentro inesperado se convierte en una atracción de la que ninguna de las dos mujeres puede escapar. Pero en un mundo gobernado por el poder, los secretos y los fantasmas del pasado, elegirse la una a la otra es un acto de valentía. Un romance lésbico moderno, intenso y conmovedor sobre dos mujeres: una que aprende que se merece el amor y otra que descubre que es capaz de sentirlo, mientras luchan por una conexión que ninguna de las dos vio venir.",
       "year": 2026,
       "country": "Tailandia",
-      "network": "",
-      "networkUrl": "",
+      "network": "iQIYI",
+      "networkUrl": "https://www.iq.com/album/pls-love-2026-wopu9fjxm5",
       "bookSource": "PLS LOVE",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/374428/Thumbnail/book_detail_large.gif?13",
@@ -1429,7 +1429,12 @@
       "upcoming": false,
       "skipDates": [],
       "episodes": [],
-      "watchLinks": [],
+      "watchLinks": [
+        {
+          "name": "iQIYI",
+          "url": "https://www.iq.com/album/pls-love-2026-wopu9fjxm5"
+        }
+      ],
       "trailerUrl": "https://youtu.be/N6bdFaf37Ms?si=0Gb8H5kWWnrD4FKY",
       "bookLinks": [
         {
@@ -1455,7 +1460,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-11T23:55:13.286Z",
+      "updatedAt": "2026-09-12T11:37:42.072Z",
       "nameEn": "รักได้ไหม",
       "episodeDuration": "",
       "myPick": false,
@@ -1497,7 +1502,7 @@
           "1778672885792"
         ]
       ],
-      "tmdbId": 316241,
+      "tmdbId": "316241",
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0
@@ -1738,7 +1743,7 @@
           "url": "https://www.iq.com/album/love-beyond-dreams-2026-q65t1dl2u9?"
         }
       ],
-      "trailerUrl": "https://youtu.be/YXBdhxza8Es",
+      "trailerUrl": "https://www.youtube.com/watch?v=YXBdhxza8Es",
       "bookSource": "",
       "basedOnBook": false,
       "bookCoverUrl": "",
@@ -1781,13 +1786,70 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-05-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/mEb5H7MD9EkCoECQR6zZAhNsQA7.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-05-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 52,
+              "still": "https://image.tmdb.org/t/p/w300/nuMO5D6beQhsxERHc3Z5BMmMfgd.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2026-05-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/6XOmEByeRfykrQrpengZ5Iy4PZx.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2026-05-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50,
+              "still": "https://image.tmdb.org/t/p/w300/6m2jGap0PbPwTnScyzRop1BUgrL.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2026-06-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 58,
+              "still": "https://image.tmdb.org/t/p/w300/1owTqFJehRV5UYLIlJr82evaaV0.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2026-06-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 59,
+              "still": "https://image.tmdb.org/t/p/w300/lcsBJ9NyAxzRoMEQHxTxAh6hWaj.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2026-06-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 68,
+              "still": "https://image.tmdb.org/t/p/w300/lL7EkhCWEbiKvXECLLcVsIkS6P0.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-11T23:56:04.819Z",
+      "updatedAt": "2026-09-12T11:32:37.140Z",
       "nameEn": "เพื่อเธออีกครั้ง",
-      "episodeDuration": 55,
+      "episodeDuration": 60,
       "myTop10": false,
       "top10Rank": 0,
       "myPick": false,
@@ -1818,7 +1880,7 @@
           "1778669789813"
         ]
       ],
-      "tmdbId": 308254,
+      "tmdbId": "308254",
       "tmdbKind": "tv",
       "tmdbRating": 8.5,
       "tmdbVoteCount": 8
@@ -1830,9 +1892,14 @@
       "synopsis": "Un día, llega un paquete a la puerta de Gen, una chica introvertida y peculiar. Al abrirlo, descubre una robot que parece de verdad humana, tan guapa como la chica de sus sueños. Mientras intenta encontrar la forma de devolver el robot, Gen pulsa sin querer un botón que hace que el robot abra los ojos y cobre vida. Con la robot guapa, coqueta, juguetona y sexy a su lado, Gen se deja seducir por completo y decide quedársela, poniéndole el nombre de Ai.",
       "year": 2026,
       "country": "Tailandia",
-      "network": "Youtube",
-      "networkUrl": "",
-      "watchLinks": [],
+      "network": "Youtube, iQiyi",
+      "networkUrl": "https://www.iq.com/album/ai-girl-2026-24kzqwa8351",
+      "watchLinks": [
+        {
+          "name": "iQIYI",
+          "url": "https://www.iq.com/album/ai-girl-2026-24kzqwa8351"
+        }
+      ],
       "trailerUrl": "https://www.youtube.com/watch?v=HBi2dQGsuJw",
       "bookSource": "",
       "basedOnBook": false,
@@ -1864,6 +1931,10 @@
         {
           "actressId": "1778781926481",
           "character": "Ai"
+        },
+        {
+          "actressId": "1778669744880",
+          "character": "Rann"
         }
       ],
       "animeSeason": "",
@@ -1878,11 +1949,68 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-07-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45,
+              "still": "https://image.tmdb.org/t/p/w300/aeF4nkyByag3vtHo8ylANBoStrw.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-07-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 54,
+              "still": "https://image.tmdb.org/t/p/w300/kXBEWdfyvLGHke0iMoG8CU4cBdx.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2026-07-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 63,
+              "still": "https://image.tmdb.org/t/p/w300/5eKPpeaIsn27t0OBcntOin8V1j5.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2026-07-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 57,
+              "still": "https://image.tmdb.org/t/p/w300/xKifaPiLu8V3nUBaKAcEnIkLiLk.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2026-07-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/tce7Dp6Ci9fDROk1ADYk2MnS4Ic.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2026-08-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 70,
+              "still": "https://image.tmdb.org/t/p/w300/wyuSgP0397WGEwCGXC4EyntbGyJ.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2026-08-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 58,
+              "still": "https://image.tmdb.org/t/p/w300/7uOMHty0YdauwFClkewSZZGBtd7.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-11T23:56:11.120Z",
+      "updatedAt": "2026-09-12T11:32:31.283Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -1904,7 +2032,7 @@
           "1778781926481"
         ]
       ],
-      "tmdbId": 310708,
+      "tmdbId": "310708",
       "tmdbKind": "tv",
       "tmdbRating": 7.7,
       "tmdbVoteCount": 7
@@ -1915,7 +2043,7 @@
       "poster": "https://image.tmdb.org/t/p/w500/p5KA4MPKZFNQDo4ok3WRUdBdR3I.jpg",
       "synopsis": "El amor es una fuerza tan profunda e impredecible como el propio mar.  Sé testigo del irresistible magnetismo entre dos mujeres de mundos diferentes, cuyas vidas se entrelazan en un viaje de autodescubrimiento y pasión.  La serie explora una conexión que desafía las mareas y desvela secretos ocultos. Se trata de una narrativa sensible, poderosa y visualmente impresionante.",
       "year": 2026,
-      "country": "Tailandia / Brasil",
+      "country": "Brasil",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
@@ -1948,7 +2076,7 @@
       "seriesType": "webserie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-11T23:56:17.385Z",
+      "updatedAt": "2026-09-12T11:32:47.241Z",
       "nameEn": "",
       "cast": [
         {
@@ -1980,7 +2108,11 @@
           "1778833188057",
           "1778833393567"
         ]
-      ]
+      ],
+      "tmdbId": "320329",
+      "tmdbKind": "tv",
+      "tmdbRating": "",
+      "tmdbVoteCount": 0
     },
     {
       "id": "1776966161759",
@@ -2135,9 +2267,9 @@
     },
     {
       "id": "1776966800863",
-      "name": "The Earth",
-      "poster": "https://i.mydramalist.com/nO8E6B_4f.jpg",
-      "synopsis": "Rose Thippapha, heredera de las tierras de Chomjan, regresa a Chiang Rai desde Estados Unidos cuando su padrastro cae en coma tras un sospechoso accidente. Allí, se encuentra en peligro por culpa de Wasu, un viticultor que intenta obligarla a casarse con él y apoderarse de sus tierras para sus negocios ilegales. Afortunadamente, Din Kasama Wathinwanit, amigo de la infancia de Rose y propietario de una granja de verduras orgánicas, acude en su ayuda. Para garantizar su seguridad, Rose y Din tendrán que casarse. \n\nAunque se trate de un matrimonio de conveniencia, su renovada cercanía poco a poco da lugar a sentimientos reales.",
+      "name": "The Earth (Saga The 4 Elements)",
+      "poster": "https://image.tmdb.org/t/p/w500/aKlkXhv85rPe4uEqW6vbJXdgVYf.jpg",
+      "synopsis": "【La saga de THE 4 ELEMENTS se centra en las cuatro primas de la familia ‘Watinwanit’ y sus romances.】\n\nThe Earth es la 1ª historia de esta saga.\n\nRose Thippapha, heredera de la finca Chomjan, regresa de Estados Unidos cuando su padre sufre un accidente y se ve en peligro por culpa de Wasu, un viticultor que pretende arrebatarle sus tierras para sus negocios ilegales. Por suerte, Din Kasama, amiga de la infancia de Rose y dueña de una granja de hortalizas orgánicas, llega para protegerla. Para garantizar su seguridad, ella y Din tendrán que casarse.\n\nAunque solo sea un matrimonio ficticio, su renovada cercanía poco a poco despierta sentimientos auténticos.",
       "year": 2026,
       "country": "Tailandia",
       "network": "iQiyi",
@@ -2148,7 +2280,7 @@
           "url": "https://www.iq.com/album/the-earth-4-elements-2026-16vh6ho38tl"
         }
       ],
-      "trailerUrl": "https://youtu.be/8ZEzEJQ3yqU",
+      "trailerUrl": "https://www.youtube.com/watch?v=8ZEzEJQ3yqU",
       "bookSource": "The Earth - Vows of the Land (4 Elements GL Series)",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/364467/Thumbnail/book_detail_large.gif?14",
@@ -2176,6 +2308,7 @@
       ],
       "genres": [
         "Comedia",
+        "Crimen",
         "Drama",
         "Romance"
       ],
@@ -2215,11 +2348,76 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-01-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 55,
+              "still": "https://image.tmdb.org/t/p/w300/7WvzBfZtLjGV3BTiWsfi88pN8kh.jpg"
+            },
+            {
+              "num": 2,
+              "date": "2026-01-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 62,
+              "still": "https://image.tmdb.org/t/p/w300/dGejyMuCyjSj127gRc6iuH5TljK.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2026-02-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 64,
+              "still": "https://image.tmdb.org/t/p/w300/ij3J1ZTDgWklCYxBd9gFtoalU09.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2026-02-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 61,
+              "still": "https://image.tmdb.org/t/p/w300/zL2bMuVuW13198Qvh3YBVHw3pjw.jpg"
+            },
+            {
+              "num": 5,
+              "date": "2026-02-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 58,
+              "still": "https://image.tmdb.org/t/p/w300/qVLw6RYGHAeWl1yvvhvFLB0076F.jpg"
+            },
+            {
+              "num": 6,
+              "date": "2026-02-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 68,
+              "still": "https://image.tmdb.org/t/p/w300/56csLoOm3h1S3g2iUsIC1FMkHKI.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2026-03-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 71,
+              "still": "https://image.tmdb.org/t/p/w300/wDj6IqrICTmmI6nykTAxNPKcpIr.jpg"
+            },
+            {
+              "num": 8,
+              "date": "2026-03-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 76,
+              "still": "https://image.tmdb.org/t/p/w300/uUOKwK7ifiU9rt5jzP7ckUOTEak.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-11T23:10:42.808Z",
+      "updatedAt": "2026-09-12T11:30:47.715Z",
       "nameEn": "วิวาห์ปฐพี",
       "episodeDuration": 55,
       "myPick": false,
@@ -2244,22 +2442,24 @@
           "1778669290609"
         ]
       ],
-      "tmdbId": 287115,
+      "tmdbId": "287115",
       "tmdbKind": "tv",
       "tmdbRating": 8.5,
-      "tmdbVoteCount": 17
+      "tmdbVoteCount": 17,
+      "tropos": [],
+      "dinamica": []
     },
     {
       "id": "1776966975487",
       "name": "The Hidden Blood",
-      "poster": "https://i.mydramalist.com/nO88Vx_4f.jpg",
-      "synopsis": "La joven Meen es portadora inconsciente de un linaje Pob. Cuando el amor comienza a crecer en su corazón, su cuerpo experimenta cambios repentinos. A medida que el Pob dentro de Meen continúa despertando, ella anhela poseer, anhela proteger; tiene hambre y sed. Mira, una chica demasiado cercana a Meen, podría ser quien provoque el despertar del monstruo que lleva dentro cuando los sentimientos incontrolables se vuelvan demasiado difíciles de reprimir. Mientras tanto, la misteriosa Sydney reaparece portando los poderes vampíricos de un linaje ancestral. Está dividida entre seguir las órdenes de Mamá, la dueña de su linaje, y la Maestra Pan, a quien su corazón nunca ha olvidado. Un grupo de amigas se enfrenta a fuerzas misteriosas, secretos, celos y miedo a lo que está tomando forma a su alrededor, sin saber quién es amiga y quién es monstruo.",
+      "poster": "https://image.tmdb.org/t/p/w500/pgfUBXuTD86s2tGXs2I4Wt8kOGl.jpg",
+      "synopsis": "Los silenciosos pasillos de un instituto local se convierten en el campo de batalla de una guerra secreta entre vampiros y los legendarios espíritus tailandeses conocidos como \"Pop\". Meen sigue sin ser consciente de la sangre demoníaca que corre por sus venas hasta que unos nuevos sentimientos románticos comienzan a cambiarla de formas que no puede explicar. Mientras tanto, Sidney debe lidiar con las peligrosas intrigas políticas de su clan de vampiros, al tiempo que lucha con su pasado vínculo con Parn, una mujer cuyo recuerdo sigue atormentando su corazón.",
       "year": 2026,
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=wfEgXrB5Xuo&pp=ygUQdGhlIGhpZGRlbiBibG9vZNIHCQnFCgGHKiGM7w%3D%3D",
+      "trailerUrl": "https://www.youtube.com/watch?v=wfEgXrB5Xuo",
       "bookSource": "เลือดห้ามรัก (THE HIDDEN BLOOD)",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/423525/Thumbnail/book_detail_large.gif?2",
@@ -2290,11 +2490,15 @@
         {
           "actressId": "1778762128045",
           "character": "Sydney"
+        },
+        {
+          "actressId": "1778787338178",
+          "character": "Jane"
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-11T23:10:44.052Z",
+      "updatedAt": "2026-09-12T11:33:57.267Z",
       "nameEn": "เลือดห้ามรัก",
       "episodeDuration": "",
       "sourceType": "novela",
@@ -2318,19 +2522,23 @@
           "1778762094028",
           "1778762128045"
         ]
-      ]
+      ],
+      "tmdbId": "297680",
+      "tmdbKind": "tv",
+      "tmdbRating": "",
+      "tmdbVoteCount": 0
     },
     {
       "id": "1776967103985",
       "name": "Built in Love",
-      "poster": "https://i.mydramalist.com/PxmZZz_4f.jpg",
-      "synopsis": "Soul es una arquitecta talentosa. Xinxin es una exitosa maestra de Feng Shui. Cuando estas dos mujeres con personalidades totalmente opuestas son contratadas para construir una casa juntas para sus propietarios, surge una batalla entre ellas. ¿Pero habrá espacio para que florezca el amor?",
+      "poster": "https://image.tmdb.org/t/p/w500/xyjVYwngsH8dU2lnngQd5JXxoIO.jpg",
+      "synopsis": "Soul es una arquitecta experta. Xinxin es una reconocida maestra de feng shui. Cuando estas dos mujeres, con personalidades diametralmente opuestas, son contratadas para construir juntas una casa para sus propietarios, se desata una batalla entre ellas. Pero, ¿habrá espacio para que florezca el amor?",
       "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/3fOkgCnjv5M",
+      "trailerUrl": "https://www.youtube.com/watch?v=3fOkgCnjv5M",
       "bookSource": "BUILT IN LOVE",
       "basedOnBook": true,
       "bookCoverUrl": "https://cdn-local.mebmarket.com/meb/server1/305897/Thumbnail/book_detail_large.gif?11",
@@ -2369,7 +2577,7 @@
         "Drama",
         "Romance"
       ],
-      "nameEn": "",
+      "nameEn": "ก่อร่างสร้างเลิฟ",
       "category": "series",
       "seriesType": "serie",
       "cast": [
@@ -2388,11 +2596,15 @@
         {
           "actressId": "1778782155854",
           "character": "Mim"
+        },
+        {
+          "actressId": "tmdb_2098568_mtyaz5d1",
+          "character": "Nan"
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-11T23:12:38.656Z",
+      "updatedAt": "2026-09-12T11:29:54.840Z",
       "sourceType": "novela",
       "moods": [],
       "episodeDuration": "",
@@ -2420,7 +2632,7 @@
           "1778782155854"
         ]
       ],
-      "tmdbId": 307831,
+      "tmdbId": "307831",
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0
@@ -3562,9 +3774,14 @@
       "synopsis": "Una racional agente de policía se ve obligada a colaborar con una maestra espiritual que cree en la fe y los rituales ancestrales.\n\nJuntos, deben descubrir una verdad oculta en un mundo de escrituras sagradas, símbolos místicos y prácticas ocultas. A medida que la investigación se profundiza, también lo hace una conexión innegable entre ellas, una que se vuelve demasiado poderosa como para ignorarla.",
       "year": "",
       "country": "Tailandia",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "network": "WeTV",
+      "networkUrl": "https://wetv.vip/en/play/l8u24vqut3sseql/m41024a4o3e",
+      "watchLinks": [
+        {
+          "name": "WeTV",
+          "url": "https://wetv.vip/en/play/l8u24vqut3sseql/m41024a4o3e"
+        }
+      ],
       "trailerUrl": "https://youtu.be/PNPqobabDiU?si=d_Bw8v5zDMX08P3z",
       "bookSource": "Formidable eyes",
       "basedOnBook": true,
@@ -3618,7 +3835,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-08-26T21:19:19.970Z",
+      "updatedAt": "2026-09-12T11:38:59.718Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -3657,10 +3874,11 @@
           "1778785354635"
         ]
       ],
-      "tmdbId": 308261,
+      "tmdbId": "308261",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "wlwFocus": ""
     },
     {
       "id": "1776974252950",
@@ -6641,10 +6859,6 @@
       "category": "series",
       "seriesType": "serie",
       "cast": [
-        {
-          "actressId": "1778705238403",
-          "character": "\"Four\" Simesa Narawatthanawet"
-        },
         {
           "actressId": "1778705285700",
           "character": "Jattawa Phiangpradapkhwan"
@@ -26835,19 +27049,19 @@
     {
       "id": "1776930747511",
       "name": "Girls Like Girls",
-      "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/8/1/2/3/0/1281230-girls-like-girls-0-1000-0-1500-crop.jpg?v=81265f1a60",
-      "synopsis": "El amor comienza cuando lo dejas entrar.\nColey, de 17 años y originaria de una zona rural de Oregón, intenta encontrar la intimidad tras el fallecimiento de su madre. Conocer a Sonya despierta nuevos sentimientos en ella, pero la inseguridad dificulta su conexión. Sonya, sin experiencia en citas con chicas, se muestra insegura. Juntas aprenden a aceptar sus emociones.",
+      "poster": "https://image.tmdb.org/t/p/w500/6i8ho7dRcR2722sJfoYHT1GIY36.jpg",
+      "synopsis": "Coley, una joven de 17 años del rural Oregón, enfrenta la intimidad tras la muerte de su madre. Conocer a Sonya despierta nuevos sentimientos, pero las dudas sobre sí misma dificultan su conexión.",
       "year": 2026,
       "country": "Estados Unidos",
       "network": "",
       "networkUrl": "",
-      "date": "2026-06-19",
+      "date": "2026-06-18",
       "basedOnBook": true,
       "bookSource": "A las chicas les gustan las chicas",
       "bookCoverUrl": "https://m.media-amazon.com/images/I/81VkKFSxr-L._SL1500_.jpg",
       "bookUrl": "https://amzn.eu/d/0iUIkBzi",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/ZC1kEknG2ro",
+      "trailerUrl": "https://www.youtube.com/watch?v=ZC1kEknG2ro",
       "bookLinks": [
         {
           "lang": "es",
@@ -26862,7 +27076,7 @@
       "category": "movie",
       "movieType": "film",
       "duration": 95,
-      "updatedAt": "2026-09-11T23:05:10.607Z",
+      "updatedAt": "2026-09-12T11:29:08.272Z",
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -26870,24 +27084,39 @@
       "sourceType": "",
       "wlwFocus": "pareja-principal",
       "awards": [],
-      "cast": [],
+      "cast": [
+        {
+          "actressId": "tmdb_4658358_mtyay0b4",
+          "character": "Coley"
+        },
+        {
+          "actressId": "tmdb_1937077_mtyay0b5",
+          "character": "Sonya"
+        }
+      ],
       "productoraId": "",
-      "tmdbId": 1397485,
+      "tmdbId": "1397485",
       "tmdbKind": "movie",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 58
+      "tmdbVoteCount": 58,
+      "couples": [
+        [
+          "tmdb_4658358_mtyay0b4",
+          "tmdb_1937077_mtyay0b5"
+        ]
+      ]
     },
     {
       "id": "1776966535594",
       "name": "I Fell, It's Fine",
-      "poster": "https://i.mydramalist.com/zBp46O_4f.jpg",
-      "synopsis": "Aromagicare es un centro de bienestar diseñado para la renovación. La gente viene a sanar, a soltar el pasado, a empezar de nuevo. Anne, su dueña, tranquila y disciplinada, cree en el orden y el control. Tras el fracaso de su matrimonio, se convence de que el desapego es fortaleza. \n\nEntonces aparece Chicks. \n\nLlega sin explicación, moviéndose por el centro con una libertad que Anne no comprende. Hace preguntas que Anne ha evitado durante mucho tiempo y ve cosas que Anne ha ocultado, despertando recuerdos y sentimientos que Anne creía olvidados. \n\nAtraída por ella a pesar de sí misma, Anne comienza a ablandarse. Su conexión es silenciosa, extraña y eléctrica, y empuja a Anne a confrontar la ternura que abandonó y el amor que aún es capaz de albergar. \n\nEn Aromagicare, Anne aprende que algunas heridas nunca sanan del todo. Pero a veces, regresan para guiarte.",
+      "poster": "https://image.tmdb.org/t/p/w500/5SWEjDI5lVZrKOWmtce12EZsd8j.jpg",
+      "synopsis": "Cuando Anne, la reservada propietaria de un centro de bienestar, conoce a una mujer de otro mundo llamada Chicks, su vida, tan cuidadosamente controlada, empieza a desmoronarse de la forma más sanadora posible.",
       "year": 2026,
       "country": "Filipinas",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/LSR6lyPDHKA",
+      "trailerUrl": "https://www.youtube.com/watch?v=LSR6lyPDHKA",
       "date": "2026-04-04",
       "basedOnBook": false,
       "bookSource": "",
@@ -26895,30 +27124,54 @@
       "bookUrl": "",
       "bookLinks": [],
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
       "category": "movie",
       "movieType": "film",
       "duration": 110,
-      "updatedAt": "2026-05-13T09:22:16.119Z",
-      "tmdbId": 1391450,
+      "updatedAt": "2026-09-12T11:34:41.291Z",
+      "tmdbId": "1391450",
       "tmdbKind": "movie",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_576037_mtyayktk",
+          "character": "Anne"
+        },
+        {
+          "actressId": "tmdb_227980_mtyayktl",
+          "character": "Chicks"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_576037_mtyayktk",
+          "tmdb_227980_mtyayktl"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1777101748048",
       "name": "Mother Mary",
-      "poster": "https://a.ltrbxd.com/resized/film-poster/9/9/4/3/5/3/994353-mother-mary-2026-0-1000-0-1500-crop.jpg?v=a2644168b4",
-      "synopsis": "Esto no es una historia de fantasmas.\nViejas heridas resurgen cuando la icónica estrella del pop, Mother Mary, se reencuentra con su mejor amiga, con quien estaba distanciada, y antigua diseñadora de vestuario, Sam Anselm, en vísperas de su actuación de regreso a los escenarios.",
+      "poster": "https://image.tmdb.org/t/p/w500/d4CWItPJIjdnnRsao1DPBO3u5AD.jpg",
+      "synopsis": "La intensa relación entre la cantante de pop Mary y Sam, una antigua amiga suya, diseñadora de moda, que se vuelven a reunir tras la necesidad de la primera de un vestido para su nueva gira de conciertos.",
       "year": 2026,
-      "country": "Estados Unidos / Alemania / Irlanda / Finlandia",
+      "country": "Estados Unidos",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/aqYHOsuje1E",
-      "date": "2026-04-26",
+      "trailerUrl": "https://www.youtube.com/watch?v=zw6OCs5nF-I",
+      "date": "2026-04-16",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
@@ -26926,83 +27179,159 @@
       "bookUrl": "",
       "genres": [
         "Drama",
+        "Musical",
         "Thriller"
       ],
       "category": "movie",
       "movieType": "film",
       "duration": 112,
-      "updatedAt": "2026-05-13T09:22:42.764Z",
-      "tmdbId": 1102883,
+      "updatedAt": "2026-09-12T11:34:39.371Z",
+      "tmdbId": "1102883",
       "tmdbKind": "movie",
       "tmdbRating": 5.7,
-      "tmdbVoteCount": 186
+      "tmdbVoteCount": 186,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "subtexto",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_1813_mtyb4s0x",
+          "character": "Mother Mary"
+        },
+        {
+          "actressId": "tmdb_1368012_mtyb4s0y",
+          "character": "Sam Anselm"
+        },
+        {
+          "actressId": "1778833874442",
+          "character": "Miel Contrera"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1777102156945",
-      "name": "SKIFF",
-      "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/9/0/0/1/5/1090015-skiff-0-1000-0-1500-crop.jpg?v=3f5144135e",
-      "synopsis": "Malou, de quince años, lucha consigo misma; su madre está casi siempre ausente y sus compañeros de remo la acosan, pero la única persona en la que puede confiar es su hermano Max. Cuando Malou se enamora de Nouria, la novia de Max, su vida se ve arrastrada por una corriente imparable. Malou tendrá que enfrentarse a su verdadera identidad, aunque eso signifique sacrificar a su hermano.",
+      "name": "Skiff",
+      "poster": "https://image.tmdb.org/t/p/w500/oFdeQB7zusOtmCpAVV2uCXzyoem.jpg",
+      "synopsis": "Fifteen-year-old Malou is struggling with herself; while her mother is mostly absent and her rowing teammates bully her, the one person she can rely on is her brother Max. When Malou develops feelings for Max’s girlfriend Nouria, her life is dragged in an unstoppable current. Malou has to face her true self, may it be at the expense of her brother.",
       "year": 2026,
-      "country": "Bélgica / Holanda",
+      "country": "Países Bajos / Bélgica",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/zSv_pEIC_7Q",
+      "trailerUrl": "https://www.youtube.com/watch?v=Yv1fpYk_6n0",
       "date": "2026-02-04",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
-      "genres": [],
+      "genres": [
+        "Drama"
+      ],
       "category": "movie",
       "movieType": "film",
       "duration": 106,
-      "updatedAt": "2026-05-13T09:23:05.361Z",
-      "tmdbId": 1205547,
+      "updatedAt": "2026-09-12T11:34:51.100Z",
+      "tmdbId": "1205547",
       "tmdbKind": "movie",
       "tmdbRating": 8.2,
-      "tmdbVoteCount": 2
+      "tmdbVoteCount": 2,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_3701928_mtyb5nq8",
+          "character": "Malou"
+        },
+        {
+          "actressId": "tmdb_85802_mtyb5nq9",
+          "character": "Annick"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1777102345039",
-      "name": "Teenage Sex and Death at Camp Miasma",
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/nLsFnXifieSTqSeWxjXSS8RvaUZ.jpg",
-      "synopsis": "Un nuevo tipo de remake de terror.\nTras años de secuelas chapuceras y una base de fans en declive, la franquicia de terror Camp Miasma se entrega a una joven y entusiasta directora para su resurrección. Pero cuando visita a la estrella de la película original, una actriz ahora recluida y envuelta en misterio, ambas mujeres se ven inmersas en un mundo sangriento de deseo, miedo y delirio.",
+      "name": "Adolescencia, sexo y muerte en campamento Miasma",
+      "poster": "https://image.tmdb.org/t/p/w500/8UTCpwvHxWPllCJ7YnaCbffmYyD.jpg",
+      "synopsis": "After years of slapdash sequels and waning fandom, the Camp Miasma slasher franchise is handed over to an enthusiastic young director for resurrection. But when she visits the original's star, a now-reclusive actress shrouded in mystery, the two women fall into a blood-soaked world of desire, fear, and delirium.",
       "year": 2026,
-      "country": "Estados Unidos / Reino Unido",
+      "country": "Estados Unidos",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/MA5NqUMEdbI",
-      "date": "2026-08-07",
+      "trailerUrl": "https://www.youtube.com/watch?v=j9TsiTgYZGw",
+      "date": "2026-08-06",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
-      "genres": [],
+      "genres": [
+        "Comedia",
+        "Romance",
+        "Terror"
+      ],
       "category": "movie",
       "movieType": "film",
-      "duration": 112,
-      "updatedAt": "2026-05-13T09:23:44.110Z",
-      "tmdbId": 1240889,
+      "duration": 106,
+      "updatedAt": "2026-09-12T11:35:19.343Z",
+      "tmdbId": "1240889",
       "tmdbKind": "movie",
       "tmdbRating": 6.7,
-      "tmdbVoteCount": 104
+      "tmdbVoteCount": 104,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_2559506_mtyb5xzi",
+          "character": "Kris"
+        },
+        {
+          "actressId": "tmdb_12214_mtyb5xzi",
+          "character": "Billy"
+        },
+        {
+          "actressId": "tmdb_3054663_mtyb5xzj",
+          "character": "Young Billy"
+        },
+        {
+          "actressId": "tmdb_1508653_mtyb5xzl",
+          "character": "Mari"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1777105227259",
       "name": "A Quiet Bloom",
-      "poster": "https://i.mydramalist.com/YYpNWB_4f.jpg",
-      "synopsis": "",
+      "poster": "https://image.tmdb.org/t/p/w500/rKnGcBDi7zjMtsL21AukDiBDJKi.jpg",
+      "synopsis": "Marketing specialist Iris returns to Cebu, dreading confrontations with her overly traditional mother who constantly pressures her about marriage. After a heated argument, she escapes on her motorcycle to the only place still open—a flower café where owner Hyacinth offers her warm tea and unexpected kindness. Iris returns nightly, needing the café's Wi-Fi for work. Hyacinth, whose struggling business could use marketing help, welcomes the arrangement. What begins as mutual convenience transforms into something deeper. Through late-night conversations, motorcycle rides, and shared dreams, they fall in love. But their relationship reveals painful differences. Hyacinth proudly introduces Iris as her girlfriend to her small café family. At Iris' home, Hyacinth is merely a \"friend.\" When Iris' mother arranges a date with a churchmate's son, Iris says nothing-paralyzed by fear and guilt. This makes Hyacinth question whether their level of commitment is the same.",
       "year": 2026,
       "country": "Filipinas",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "https://youtu.be/qrogBOEqKwA",
-      "date": "",
+      "date": "2026-06-24",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
@@ -27011,151 +27340,240 @@
       "genres": [],
       "category": "movie",
       "movieType": "film",
-      "duration": "",
-      "updatedAt": "2026-09-11T23:12:49.789Z",
+      "duration": 83,
+      "updatedAt": "2026-09-12T11:35:30.098Z",
       "wlwFocus": "pareja-principal",
-      "tmdbId": 1718642,
+      "tmdbId": "1718642",
       "tmdbKind": "movie",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "awards": [],
+      "cast": [],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1778408173610",
       "name": "A Secret Love",
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/28LNd4KEpqt9i8sgXrVcrdr2kgI.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/28LNd4KEpqt9i8sgXrVcrdr2kgI.jpg",
       "synopsis": "En tiempos cambiantes, dos mujeres mantuvieron en secreto su amor de décadas. Pero salir más tarde en la vida viene con su propio conjunto de desafíos.",
       "year": 2020,
       "country": "Estados Unidos",
-      "network": "Netflix",
-      "networkUrl": "https://www.netflix.com/watch/80209024?source=35",
+      "network": "Netflix, Netflix Standard with Ads",
+      "networkUrl": "https://www.netflix.com",
       "watchLinks": [
         {
           "name": "Netflix",
-          "url": "https://www.netflix.com/watch/80209024?source=35"
+          "url": "https://www.netflix.com"
+        },
+        {
+          "name": "Netflix Standard with Ads",
+          "url": "https://www.netflix.com"
         }
       ],
       "trailerUrl": "https://www.youtube.com/watch?v=ghv3-lpFOcc",
-      "date": "2020-04-19",
+      "date": "2020-04-06",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
-      "genres": [],
+      "genres": [
+        "Documental"
+      ],
       "category": "reality",
-      "updatedAt": "2026-09-11T23:12:51.350Z",
+      "updatedAt": "2026-09-12T11:35:43.102Z",
       "movieType": "film",
       "duration": 82,
-      "cast": [],
+      "cast": [
+        {
+          "actressId": "tmdb_2612782_mtyb6r11",
+          "character": "Self"
+        },
+        {
+          "actressId": "tmdb_2612783_mtyb6r12",
+          "character": "Self"
+        }
+      ],
       "wlwFocus": "pareja-principal",
-      "tmdbId": 687156,
+      "tmdbId": "687156",
       "tmdbKind": "movie",
       "tmdbRating": 7.4,
-      "tmdbVoteCount": 134
+      "tmdbVoteCount": 134,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "awards": [],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000000",
-      "name": "Mädchen in Uniform",
-      "synopsis": "Manuela es una adolescente que es enviada a un rígido internado después de la muerte de su madre. La directora del establecimiento es una convencida de que el hambre y la disciplina afirman el carácter de las niñas, pero Manuela tiene problemas ajustándose a la rígida disciplina de la directora. Así la niña es cuidada por la maestra Elizabeth Von Bernburg, que es la profesora más joven del internado y por la que todas las niñas (incluida Manuela) suspiran enamoradas... Basada en una obra de Christa Winsloe, fue la primera película que claramente trataba el tema del lesbianismo, y obtuvo un considerable éxito tanto en Europa como en Estados Unidos.\n\n(Source: TMDB)",
+      "name": "Muchachas de Uniforme",
+      "synopsis": "Manuela es una adolescente que es enviada a un rígido internado después de la muerte de su madre. La directora del establecimiento es una convencida de que el hambre y la disciplina afirman el carácter de las niñas, pero Manuela tiene problemas ajustándose a la rígida disciplina de la directora. Así la niña es cuidada por la maestra Elizabeth Von Bernburg, que es la profesora más joven del internado y por la que todas las niñas (incluida Manuela) suspiran enamoradas... Basada en una obra de Christa Winsloe, fue la primera película que claramente trataba el tema del lesbianismo, y obtuvo un considerable éxito tanto en Europa como en Estados Unidos.",
       "year": 1931,
       "country": "Alemania",
       "date": "1931-11-27",
       "network": "Filmin",
-      "networkUrl": "https://www.filmin.es/pelicula/muchachas-de-uniforme?awinaffid=400165&awinmid=82863",
+      "networkUrl": "https://www.filmin.es",
       "watchLinks": [
         {
           "name": "Filmin",
-          "url": "https://www.filmin.es/pelicula/muchachas-de-uniforme?awinaffid=400165&awinmid=82863"
+          "url": "https://www.filmin.es"
         }
       ],
-      "trailerUrl": "https://youtu.be/uPC7OBgY09Y",
+      "trailerUrl": "https://www.youtube.com/watch?v=uPC7OBgY09Y",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://media.themoviedb.org/t/p/w300_and_h450_face/pgReuxdyarkM8LTyllqjocSWZO8.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/pgReuxdyarkM8LTyllqjocSWZO8.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:25:33.939Z",
+      "updatedAt": "2026-09-12T11:36:12.676Z",
       "movieType": "film",
-      "duration": 87,
-      "tmdbId": 9653,
+      "duration": 88,
+      "tmdbId": "9653",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 123
+      "tmdbVoteCount": 123,
+      "nameEn": "Mädchen in Uniform",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_47313_mtyb70tm",
+          "character": "Headmistress of the Boarding School"
+        },
+        {
+          "actressId": "tmdb_28075_mtyb70tn",
+          "character": "Miss von Bernburg"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000001",
-      "name": "Girls in Uniform",
-      "synopsis": "En un estricto internado prusiano para niñas, la sensible estudiante Manuela von Meinhardis siente un amor prohibido por una de sus maestras, la compasiva Elisabeth von Bernburg.\n\n(Source: IMDB)",
+      "name": "Corrupción en el internado",
+      "synopsis": "Remake de un clásico del cine alemán \"Muchachas de uniforme\" (1931), el primer filme que trataba abiertamente el tema del lesbianismo en el cine, pero en una versión mucho menos crítica y mordaz que ésta. En el año 2006 en Hollywood se realizó otro remake titulado \"Loving Annabelle\".",
       "year": 1958,
       "country": "Alemania",
       "date": "1958-07-07",
       "network": "Filmin",
-      "networkUrl": "https://www.filmin.es/pelicula/corrupcion-en-el-internado?awinaffid=400165&awinmid=82863",
+      "networkUrl": "https://www.filmin.es",
       "watchLinks": [
         {
           "name": "Filmin",
-          "url": "https://www.filmin.es/pelicula/corrupcion-en-el-internado?awinaffid=400165&awinmid=82863"
+          "url": "https://www.filmin.es"
         }
       ],
-      "trailerUrl": "https://youtu.be/m7_pbo3NQco",
+      "trailerUrl": "https://www.youtube.com/watch?v=m7_pbo3NQco",
       "genres": [
         "Drama"
       ],
-      "poster": "https://media.themoviedb.org/t/p/w300_and_h450_face/Ak09wks8lCeufB4ruseFFaEgWAN.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/Ak09wks8lCeufB4ruseFFaEgWAN.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:25:43.337Z",
+      "updatedAt": "2026-09-12T11:36:39.482Z",
       "movieType": "film",
-      "duration": 91,
-      "tmdbId": 4955,
+      "duration": 95,
+      "tmdbId": "4955",
       "tmdbKind": "movie",
       "tmdbRating": 6.1,
-      "tmdbVoteCount": 59
+      "tmdbVoteCount": 59,
+      "nameEn": "Mädchen in Uniform",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_27932_mtyb7n6c",
+          "character": "Elisabeth von Bernburg"
+        },
+        {
+          "actressId": "tmdb_6250_mtyb7n6d",
+          "character": "Manuela von Meinhardis"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000002",
       "name": "Bilitis",
-      "synopsis": "David Hamilton es un prestigioso fotógrafo que llevaba varias décadas dedicado a un tipo de fotografía sensual, calmada y luminosa. En \"Bilitis\" lleva su estilo al cine contando una historia sobre unas adolescentes que descubren la sexualidad durante un verano en la playa. La banda sonora de Frances Lai consiguió el César de la Academia Francesa a la mejor música del año.\n\n(Source: TMDB)",
+      "synopsis": "David Hamilton es un prestigioso fotógrafo que llevaba varias décadas dedicado a un tipo de fotografía sensual, calmada y luminosa. En \"Bilitis\" lleva su estilo al cine contando una historia sobre unas adolescentes que descubren la sexualidad durante un verano en la playa. La banda sonora de Frances Lai consiguió el César de la Academia Francesa a la mejor música del año.",
       "year": 1977,
       "country": "Francia",
       "date": "1977-03-16",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/qHnemGXIDWg",
+      "trailerUrl": "https://www.youtube.com/watch?v=gpxRAfnd15U",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/dBvQyx0VgFjGVA5cJ1pJUlyVW8l.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/dBvQyx0VgFjGVA5cJ1pJUlyVW8l.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:25:52.612Z",
+      "updatedAt": "2026-09-12T11:37:03.006Z",
       "movieType": "film",
       "duration": 95,
-      "tmdbId": 50435,
+      "tmdbId": "50435",
       "tmdbKind": "movie",
       "tmdbRating": 5.4,
-      "tmdbVoteCount": 112
+      "tmdbVoteCount": 112,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_38160_mtyb8720",
+          "character": "Bilitis"
+        },
+        {
+          "actressId": "tmdb_931613_mtyb8721",
+          "character": "Melissa"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000003",
       "name": "Afternoon Breezes",
-      "synopsis": "Dos chicas jóvenes, Mitsu y Natsuko, comparten el mismo apartamento. Natsuko es lesbiana y está secretamente enamorada de Mitsu. Pero Mitsu es heterosexual y tiene novio. Con la esperanza de destruir la relación entre Mitsu y su novio, Natsuko lo seduce e intenta influir en él de otras maneras.\n\n(Source: TMDB)",
+      "synopsis": "La compañera de trabajo de Natsuko, Etsuko, le pregunta qué siente por los hombres. \"No para mí\", dice ella, \"no me degradaré\". Basado en una historia real de un periódico, Afternoon Breezes presenta el lesbianismo reprimido de Natsuko como un enamoramiento que se convierte en una obsesión con su compañera de cuarto Mitsu.",
       "year": 1980,
       "country": "Japón",
       "date": "1980-12-11",
@@ -27167,183 +27585,312 @@
         "Drama",
         "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/97SaWndhni3iao5aHBzSpTB7xfn.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/97SaWndhni3iao5aHBzSpTB7xfn.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T20:48:32.010Z",
+      "updatedAt": "2026-09-12T11:39:50.902Z",
       "movieType": "film",
       "duration": 105,
       "nameEn": "風たちの午後",
-      "cast": [],
-      "tmdbId": 338371,
+      "cast": [
+        {
+          "actressId": "tmdb_2223271_mtybbwh8",
+          "character": "Natsuko"
+        },
+        {
+          "actressId": "tmdb_2223272_mtybbwh9",
+          "character": "Mitsu"
+        }
+      ],
+      "tmdbId": "338371",
       "tmdbKind": "movie",
       "tmdbRating": 5.8,
-      "tmdbVoteCount": 13
+      "tmdbVoteCount": 13,
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000004",
-      "name": "Desert Hearts",
-      "synopsis": "1959, Vivian Bell, profesora de literatura inglesa, con un matrimonio sin futuro, llega a Reno, Nevada, para tramitar su divorcio de una manera rápida. Allí se alojará en un rancho para turistas. En él conocerá a Cay, una chica lesbiana, sin ambiciones, que trabaja en el casino. Ambas pasarán cada vez más tiempo juntas, consiguiendo que Vivian vuelva a sentir y vivir de nuevo.\n\n(Source: TMDB)",
+      "name": "Media hora más contigo",
+      "synopsis": "1959, Vivian Bell, profesora de literatura inglesa, con un matrimonio sin futuro, llega a Reno, Nevada, para tramitar su divorcio de una manera rápida. Allí se alojará en un rancho para turistas. En él conocerá a Cay, una chica lesbiana, sin ambiciones, que trabaja en el casino. Ambas pasarán cada vez más tiempo juntas, consiguiendo que Vivian vuelva a sentir y vivir de nuevo.",
       "year": 1985,
       "country": "Estados Unidos",
-      "date": "1986-03-07",
+      "date": "1985-10-01",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=kSWdJNso1NM",
+      "trailerUrl": "https://www.youtube.com/watch?v=m075dap8xP4",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/klAHoWOZgL8sR74Tnl7K7z4Lziq.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/klAHoWOZgL8sR74Tnl7K7z4Lziq.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:26:10.329Z",
+      "updatedAt": "2026-09-12T11:40:26.986Z",
       "movieType": "film",
       "duration": 96,
-      "tmdbId": 294,
+      "tmdbId": "294",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 181
+      "tmdbVoteCount": 181,
+      "nameEn": "Desert Hearts",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_4160_mtybcdkj",
+          "character": "Vivian Bell"
+        },
+        {
+          "actressId": "tmdb_4161_mtybcdkj",
+          "character": "Cay Rivvers"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000005",
-      "name": "Fried Green Tomatoes",
-      "synopsis": "Evelyn, una mujer madura que vive frustrada por su gordura y por la incomprensión de su marido, conoce en un asilo a Ninny, una anciana que le va contando poco a poco una dramática historia ocurrida en su pueblo, en Alabama. La trama gira en torno a la gran amistad entre dos mujeres y al misterioso asesinato del marido de una de ellas.\n\n(Source: TMDB)",
+      "name": "Tomates verdes fritos",
+      "synopsis": "Evelyn, una mujer madura que vive frustrada por su gordura y por la incomprensión de su marido, conoce en un asilo a Ninny, una anciana que le va contando poco a poco una dramática historia ocurrida en su pueblo, en Alabama. La trama gira en torno a la gran amistad entre dos mujeres y al misterioso asesinato del marido de una de ellas.",
       "year": 1991,
       "country": "Estados Unidos",
       "date": "1991-12-27",
-      "network": "",
+      "network": "Movistar Plus+, Movistar Plus+ Ficción Total",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/o5hb5mc-dfI",
+      "trailerUrl": "https://www.youtube.com/watch?v=vxDDX2V9LrQ",
       "genres": [
+        "Comedia",
         "Drama"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/zVWUSjYmmg4PQudX6NGPj0gbnV5.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/zVWUSjYmmg4PQudX6NGPj0gbnV5.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:26:19.600Z",
+      "updatedAt": "2026-09-12T11:40:49.394Z",
       "movieType": "film",
       "duration": 130,
-      "tmdbId": 1633,
+      "tmdbId": "1633",
       "tmdbKind": "movie",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 1522
+      "tmdbVoteCount": 1522,
+      "nameEn": "Fried Green Tomatoes",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_8534_mtybd4q7",
+          "character": "Evelyn Couch"
+        },
+        {
+          "actressId": "tmdb_5698_mtybd4q7",
+          "character": "Ninny Threadgoode"
+        },
+        {
+          "actressId": "tmdb_18248_mtybd4q8",
+          "character": "Ruth Jamison"
+        },
+        {
+          "actressId": "tmdb_31140_mtybd4q9",
+          "character": "Idgie Threadgoode"
+        },
+        {
+          "actressId": "tmdb_18249_mtybd4qa",
+          "character": "Sipsey"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000006",
-      "name": "The Incredibly True Adventure of Two Girls in Love",
-      "synopsis": "Historia de amor de dos lesbianas de diferentes clases sociales.\n\n(Source: TMDB)",
+      "name": "La increíble y verdadera historia de 2 mujeres enamoradas",
+      "synopsis": "Historia de amor de dos lesbianas de diferentes clases sociales.",
       "year": 1995,
       "country": "Estados Unidos",
       "date": "1995-06-16",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=CVyg1xk1HdM",
+      "trailerUrl": "https://www.youtube.com/watch?v=KJmFo2poQys",
       "genres": [
         "Comedia",
         "Drama",
         "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/dPbYJaH1j7sgj1NuA4VRyb7O4Mt.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/dPbYJaH1j7sgj1NuA4VRyb7O4Mt.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-15T18:49:44.161Z",
+      "updatedAt": "2026-09-12T11:41:17.809Z",
       "movieType": "film",
       "duration": 94,
-      "nameEn": "",
+      "nameEn": "The Incredibly True Adventure of Two Girls in Love",
       "cast": [
         {
           "actressId": "1778870892576",
           "character": "Randy Dean"
+        },
+        {
+          "actressId": "tmdb_74615_mtybdl38",
+          "character": "Evie Roy"
         }
       ],
       "couples": [],
-      "tmdbId": 29371,
+      "tmdbId": "29371",
       "tmdbKind": "movie",
       "tmdbRating": 6.3,
-      "tmdbVoteCount": 98
+      "tmdbVoteCount": 98,
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000007",
       "name": "The Watermelon Woman",
-      "synopsis": "Cheryl es una joven, negra y lesbiana, que trabaja en Filadelfia con su mejor amiga Tamara consumida por un proyecto de película: hacer un video sobre la búsqueda de una actriz negra de Filadelfia que apareció en películas en los años 30 y fue conocida como Watermelon Woman. Después de varios pistas, Cheryl descubre el nombre real de la actriz y conjeturas de que tuvo un largo romance con Martha Page, una mujer blanca y una de las pocas directoras de Hollywood. A medida que va descubriendo estos detalles, Cheryl se enamora de Diana, que también es blanca.\n\n(Source: TMDB)",
-      "year": 1996,
+      "synopsis": "Cheryl es una joven, negra y lesbiana, que trabaja en Filadelfia con su mejor amiga Tamara consumida por un proyecto de película: hacer un video sobre la búsqueda de una actriz negra de Filadelfia que apareció en películas en los años 30 y fue conocida como Watermelon Woman. Después de varios pistas, Cheryl descubre el nombre real de la actriz y conjeturas de que tuvo un largo romance con Martha Page, una mujer blanca y una de las pocas directoras de Hollywood. A medida que va descubriendo estos detalles, Cheryl se enamora de Diana, que también es blanca.",
+      "year": 1997,
       "country": "Estados Unidos",
-      "date": "1996-01-14",
-      "network": "",
+      "date": "1997-03-05",
+      "network": "MUBI, MUBI Amazon Channel",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=6LCT-kXNkzk",
+      "trailerUrl": "https://www.youtube.com/watch?v=mtU6Wo29VXI",
       "genres": [
-        "Romance",
+        "Comedia",
         "Drama",
-        "Comedia"
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/mBBqKfkvzSk6Rk7bfRXU9kR916N.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/mBBqKfkvzSk6Rk7bfRXU9kR916N.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:27:16.479Z",
+      "updatedAt": "2026-09-12T11:41:34.698Z",
       "movieType": "film",
-      "duration": 85,
-      "tmdbId": 44479,
+      "duration": 90,
+      "tmdbId": "44479",
       "tmdbKind": "movie",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 125
+      "tmdbVoteCount": 125,
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_232937_mtybe5o7",
+          "character": "Cheryl"
+        },
+        {
+          "actressId": "tmdb_32030_mtybe5o8",
+          "character": "Diana"
+        },
+        {
+          "actressId": "tmdb_1182959_mtybe5o8",
+          "character": "June Walker"
+        },
+        {
+          "actressId": "tmdb_1727035_mtybe5o9",
+          "character": "Martha Page"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000008",
-      "name": "Bound",
-      "synopsis": "Corky, una dura expresidiaria que trabaja en la renovación de un apartamento en un edificio de Chicago, conoce a la pareja que vive al lado, Caesar, un mafioso paranoico, y Violet, su seductora novia, que se siente inmediatamente atraída por ella…\n\n(Source: TMDB)",
+      "name": "Lazos ardientes",
+      "synopsis": "Corky, una dura expresidiaria que trabaja en la renovación de un apartamento en un edificio de Chicago, conoce a la pareja que vive al lado, Caesar, un mafioso paranoico, y Violet, su seductora novia, que se siente inmediatamente atraída por ella…",
       "year": 1996,
       "country": "Estados Unidos",
-      "date": "1996-09-06",
-      "network": "",
+      "date": "1996-09-13",
+      "network": "Rakuten TV, Google Play Movies",
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=ToCMwdOaWh4",
-      "genres": [],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/umrpj8XNAzvePGRXvTIh4x5TvxP.jpg",
+      "genres": [
+        "Crimen",
+        "Drama",
+        "Thriller"
+      ],
+      "poster": "https://image.tmdb.org/t/p/w500/HIKFcqvKJWnyXPxnnATeqLurBd.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:27:25.793Z",
+      "updatedAt": "2026-09-12T11:41:53.313Z",
       "movieType": "film",
       "duration": 105,
-      "tmdbId": 9303,
+      "tmdbId": "9303",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 1145
+      "tmdbVoteCount": 1145,
+      "nameEn": "Bound",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_11150_mtybej0r",
+          "character": "Corky"
+        },
+        {
+          "actressId": "tmdb_7906_mtybej0s",
+          "character": "Violet"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000009",
       "name": "Intimates",
-      "synopsis": "Foon escapes an arranged marriage by walking the road of a Ji Sor. After an affair with Shing, she becomes pregnant. An attempted abortion nearly costs Foon her life. Wan, the young owner of a silk factory, rescues her. Wan and Foon share their romances, reflecting the experience of women during the 40's.\n\n(Source: TMDB)",
+      "synopsis": "Foon escapes an arranged marriage by walking the road of a Ji Sor. After an affair with Shing, she becomes pregnant. An attempted abortion nearly costs Foon her life. Wan, the young owner of a silk factory, rescues her. Wan and Foon share their romances, reflecting the experience of women during the 40's.",
       "year": 1997,
       "country": "Hong Kong",
       "date": "1997-10-23",
@@ -27355,27 +27902,48 @@
         "Drama",
         "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/eh0Sn4fytCJDrS9ALyBX4t415Da.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/eh0Sn4fytCJDrS9ALyBX4t415Da.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T20:48:55.940Z",
+      "updatedAt": "2026-09-12T11:42:09.349Z",
       "movieType": "film",
       "duration": 117,
       "nameEn": "自梳",
-      "cast": [],
-      "tmdbId": 255863,
+      "cast": [
+        {
+          "actressId": "tmdb_12672_mtybexok",
+          "character": "Wan"
+        },
+        {
+          "actressId": "tmdb_66762_mtybexok",
+          "character": "Foon"
+        },
+        {
+          "actressId": "tmdb_172861_mtybexol",
+          "character": "Wai"
+        }
+      ],
+      "tmdbId": "255863",
       "tmdbKind": "movie",
       "tmdbRating": 6.1,
-      "tmdbVoteCount": 18
+      "tmdbVoteCount": 18,
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000010",
-      "name": "It’s in the Water",
-      "synopsis": "En un pequeño y apacible pueblo tejano llamado Azalea Springs vive Alex (Keri Jo Chapman), una mujer casada y miembro de una asociación, que va a hacer voluntariado en un hospicio de enfermos de sida. Le acompaña entre otras personas Sloan (Nancy Chartier), una mujer superficial y cotilla. En el hospicio trabaja como enfermera Grace (Teresa Garrett), antigua compañera de colegio de Alex. Este reencuentro despierta una llama entre ambas, que va más allá de la amistad... En el hospicio se encuentra internado Bruce (Larry Randolph), pareja de Spencer (John Hallum), y amigos ambos de Alex. Durante una fiesta en la que coinciden, un borracho Spencer dice que es homosexual por algo que bebió en el agua, y una igualmente borracha Sloan lo oye y empieza a correr el rumor.\n\n(Source: TMDB)",
+      "name": "Está en el agua",
+      "synopsis": "En un pequeño y apacible pueblo tejano llamado Azalea Springs vive Alex (Keri Jo Chapman), una mujer casada y miembro de una asociación, que va a hacer voluntariado en un hospicio de enfermos de sida. Le acompaña entre otras personas Sloan (Nancy Chartier), una mujer superficial y cotilla. En el hospicio trabaja como enfermera Grace (Teresa Garrett), antigua compañera de colegio de Alex. Este reencuentro despierta una llama entre ambas, que va más allá de la amistad... En el hospicio se encuentra internado Bruce (Larry Randolph), pareja de Spencer (John Hallum), y amigos ambos de Alex. Durante una fiesta en la que coinciden, un borracho Spencer dice que es homosexual por algo que bebió en el agua, y una igualmente borracha Sloan lo oye y empieza a correr el rumor.",
       "year": 1997,
       "country": "Estados Unidos",
       "date": "1997-01-30",
@@ -27384,92 +27952,173 @@
       "watchLinks": [],
       "trailerUrl": "",
       "genres": [
+        "Comedia",
         "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/ti2pf9W0TeCJ4dpOcUOXGO1urHp.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/ti2pf9W0TeCJ4dpOcUOXGO1urHp.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:27:39.422Z",
+      "updatedAt": "2026-09-12T11:42:22.330Z",
       "movieType": "film",
       "duration": 100,
-      "tmdbId": 21060,
+      "tmdbId": "21060",
       "tmdbKind": "movie",
       "tmdbRating": 5.9,
-      "tmdbVoteCount": 30
+      "tmdbVoteCount": 30,
+      "nameEn": "It’s in the Water",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_87045_mtybfaa6",
+          "character": "Alex Stratton"
+        },
+        {
+          "actressId": "tmdb_87046_mtybfaa7",
+          "character": "Grace Miller"
+        },
+        {
+          "actressId": "tmdb_87048_mtybfaa8",
+          "character": "Lily Talbott"
+        },
+        {
+          "actressId": "tmdb_87049_mtybfaa8",
+          "character": "Sloan"
+        }
+      ],
+      "couples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000011",
       "name": "Fucking Amal",
-      "synopsis": "La película relata la historia de Agnes Ahlberg y Elin Olsson, alumnas de secundario en el \"insignificante\" pueblo de Åmål. Elin es extrovertida, popular y ha estado con innumerables chicos, pero encuentra su vida exasperantemente aburrida. Agnes, por el contrario, es tímida y no ha conseguido hacer amigos desde que se mudó con su familia a Åmål hace un año.\n\n(Source: TMDB)",
+      "synopsis": "La película relata la historia de Agnes Ahlberg y Elin Olsson, alumnas de secundario en el \"insignificante\" pueblo de Åmål. Elin es extrovertida, popular y ha estado con innumerables chicos, pero encuentra su vida exasperantemente aburrida. Agnes, por el contrario, es tímida y no ha conseguido hacer amigos desde que se mudó con su familia a Åmål hace un año.",
       "year": 1998,
       "country": "Suecia",
       "date": "1998-10-23",
-      "network": "Prime Video, Filmin",
-      "networkUrl": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.bc299285-cead-4ceb-99dc-1639c146ab21&linkCode=xm2&tag=justesrsjd-21",
+      "network": "Amazon Prime Video, Filmin, Amazon Prime Video with Ads",
+      "networkUrl": "https://www.primevideo.com",
       "watchLinks": [
         {
-          "name": "Prime Video",
-          "url": "https://www.primevideo.com/detail?gti=amzn1.dv.gti.bc299285-cead-4ceb-99dc-1639c146ab21&linkCode=xm2&tag=justesrsjd-21"
+          "name": "Amazon Prime Video",
+          "url": "https://www.primevideo.com"
         },
         {
           "name": "Filmin",
-          "url": "https://www.filmin.es/pelicula/fucking-amal?awinaffid=400165&awinmid=82863"
+          "url": "https://www.filmin.es"
+        },
+        {
+          "name": "Amazon Prime Video with Ads",
+          "url": "https://www.primevideo.com"
         }
       ],
-      "trailerUrl": "https://www.youtube.com/watch?v=J54QQl0U_e0",
+      "trailerUrl": "https://www.youtube.com/watch?v=pJTa4EYcdy4",
       "genres": [
-        "Romance",
-        "Drama"
+        "Comedia",
+        "Drama",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/z6FZFPpIqXVdrHUK3T0M7BFYp2J.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/z6FZFPpIqXVdrHUK3T0M7BFYp2J.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-09-11T23:13:01.113Z",
+      "updatedAt": "2026-09-12T11:43:01.942Z",
       "movieType": "film",
       "duration": 89,
       "wlwFocus": "pareja-principal",
-      "tmdbId": 11634,
+      "tmdbId": "11634",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 610
+      "tmdbVoteCount": 610,
+      "nameEn": "Fucking Åmål",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_70092_mtybfkka",
+          "character": "Elin"
+        },
+        {
+          "actressId": "tmdb_70093_mtybfkkb",
+          "character": "Agnes"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_70092_mtybfkka",
+          "tmdb_70093_mtybfkkb"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000012",
-      "name": "Aimée & Jaguar",
-      "synopsis": "En el Berlín de la II Guerra Mundial, Lilly, esposa de un oficial nazi, ama de casa y madre de cuatro hijos, lleva una vida convencional. Felice es judía y trabaja para un periódico nazi bajo un nombre falso, además de suministrar información a la resistencia. Cuando se conocen inician una historia de amor apasionada. Se escriben a diario cartas y poemas con los nombres ficticios de Aimèe y Jaguar. Cuando Lilly llega a saber que Felice es judía, rompe con su vida y emprende una serie de acciones: se divorcia de su marido nazi y hace que Felice se traslade a su apartamento. Pero, un día, las SS están esperándolas en el apartamento de Lilly...\n\n(Source: TMDB)",
+      "name": "Aimée y Jaguar",
+      "synopsis": "En el Berlín de la II Guerra Mundial, Lilly, esposa de un oficial nazi, ama de casa y madre de cuatro hijos, lleva una vida convencional. Felice es judía y trabaja para un periódico nazi bajo un nombre falso, además de suministrar información a la resistencia. Cuando se conocen inician una historia de amor apasionada. Se escriben a diario cartas y poemas con los nombres ficticios de Aimèe y Jaguar. Cuando Lilly llega a saber que Felice es judía, rompe con su vida y emprende una serie de acciones: se divorcia de su marido nazi y hace que Felice se traslade a su apartamento. Pero, un día, las SS están esperándolas en el apartamento de Lilly...",
       "year": 1999,
       "country": "Alemania",
-      "date": "1999-02-10",
+      "date": "1999-02-11",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=4GzVeNXMfx0&pp=ygUYQWltw6llICYgSmFndWFyIHRyYWlsZXIg",
+      "trailerUrl": "https://www.youtube.com/watch?v=KGwcU31U_Lg",
       "genres": [
-        "Romance",
-        "Drama"
+        "Drama",
+        "Histórico",
+        "Romance"
       ],
-      "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/qxYtEluLXcqZbHDbM2eH5pMD8hx.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/6DXbzVRbAz5JmomAshoNhFwIcPK.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T09:27:54.000Z",
+      "updatedAt": "2026-09-12T11:43:06.095Z",
       "movieType": "film",
       "duration": 125,
-      "tmdbId": 2211,
+      "tmdbId": "2211",
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 115
+      "tmdbVoteCount": 115,
+      "nameEn": "Aimée & Jaguar",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "cast": [
+        {
+          "actressId": "tmdb_22686_mtyawydc",
+          "character": "Felice Schragenheim (Jaguar)"
+        },
+        {
+          "actressId": "tmdb_8797_mtyawydd",
+          "character": "Lilly Wust (Aimée)"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_22686_mtyawydc",
+          "tmdb_8797_mtyawydd"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000013",
@@ -39080,15 +39729,6 @@
       "height": null
     },
     {
-      "id": "1778705238403",
-      "name": "\"Christine\" Gulasatree Michalsky",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6TST2GG8LUAntC5cxunVhmCdehytDIJUhyg&s",
-      "country": "Tailandia",
-      "notes": "Actriz, Modelo",
-      "birthdate": "1995-09-10",
-      "height": 170
-    },
-    {
       "id": "1778705285700",
       "name": "\"Mae\" Methakarn Anektanasuwan",
       "photo": "https://artworks.thetvdb.com/banners/v4/actor/9130615/photo/66cde45ad5290.jpg",
@@ -40833,6 +41473,342 @@
       "photo": "https://image.tmdb.org/t/p/w300/tNXhj89xt1p60j6k2i8ijRvXC24.jpg",
       "country": "Tailandia",
       "birthdate": "1973-06-04"
+    },
+    {
+      "id": "tmdb_22686_mtyawydc",
+      "name": "Maria Schrader",
+      "photo": "https://image.tmdb.org/t/p/w300/sZuIcKq5D75GNKlYecK08O3X0hG.jpg",
+      "country": "Alemania",
+      "birthdate": "1965-09-27"
+    },
+    {
+      "id": "tmdb_8797_mtyawydd",
+      "name": "Juliane Köhler",
+      "photo": "https://image.tmdb.org/t/p/w300/v2eHSiEdAhu2mJWxEwa3Sqxtgg1.jpg",
+      "country": "Alemania",
+      "birthdate": "1965-08-06"
+    },
+    {
+      "id": "tmdb_4658358_mtyay0b4",
+      "name": "Maya da Costa",
+      "photo": "https://image.tmdb.org/t/p/w300/o9zEfcpeTtJopA0XDg2W5ZfJj8x.jpg",
+      "country": "Estados Unidos",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_1937077_mtyay0b5",
+      "name": "Myra Molloy",
+      "photo": "https://image.tmdb.org/t/p/w300/2c0fdDWWwZm6Mpymr03LpE7Z2nr.jpg",
+      "country": "Tailandia",
+      "birthdate": "1997-09-18"
+    },
+    {
+      "id": "tmdb_576037_mtyayktk",
+      "name": "Glaiza de Castro",
+      "photo": "https://image.tmdb.org/t/p/w300/diaNHAI1Ch2OkE7GGxxTZFNG1gB.jpg",
+      "country": "Filipinas",
+      "birthdate": "1988-01-21"
+    },
+    {
+      "id": "tmdb_227980_mtyayktl",
+      "name": "Rhian Ramos",
+      "photo": "https://image.tmdb.org/t/p/w300/fVQ8WMMUqP69r3d4adBiF4KLqE3.jpg",
+      "country": "Filipinas",
+      "birthdate": "1990-10-03"
+    },
+    {
+      "id": "tmdb_2098568_mtyaz5d1",
+      "name": "Samantha Melanie Coates",
+      "photo": "https://image.tmdb.org/t/p/w300/sqgj94GGrmX04ExDXSdXf4aiLR9.jpg",
+      "country": "Tailandia",
+      "birthdate": "1995-08-30"
+    },
+    {
+      "id": "tmdb_1813_mtyb4s0x",
+      "name": "Anne Hathaway",
+      "photo": "https://image.tmdb.org/t/p/w300/nbccV2pMoyLTCeg5DQip24Eq0Jp.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1982-11-12"
+    },
+    {
+      "id": "tmdb_1368012_mtyb4s0y",
+      "name": "Michaela Coel",
+      "photo": "https://image.tmdb.org/t/p/w300/rbN1F0R8DMUh6IYwl0owyD8LukN.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1988-10-01"
+    },
+    {
+      "id": "tmdb_3701928_mtyb5nq8",
+      "name": "Femke Vanhove",
+      "photo": "https://image.tmdb.org/t/p/w300/9JmGUMXm0yybW2087brXC4h9fhA.jpg",
+      "country": "Países Bajos",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_85802_mtyb5nq9",
+      "name": "Natali Broods",
+      "photo": "https://image.tmdb.org/t/p/w300/flgw9Gex0ppdaBQwXoNvzruIKAG.jpg",
+      "country": "Países Bajos",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_2559506_mtyb5xzi",
+      "name": "Hannah Einbinder",
+      "photo": "https://image.tmdb.org/t/p/w300/iWMeyJAghUYP3zxmOxzcYLU5G8Z.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1995-05-21"
+    },
+    {
+      "id": "tmdb_12214_mtyb5xzi",
+      "name": "Gillian Anderson",
+      "photo": "https://image.tmdb.org/t/p/w300/3Ny8ZYahb33vpqNEPNCE2IOXPew.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1968-08-09"
+    },
+    {
+      "id": "tmdb_3054663_mtyb5xzj",
+      "name": "Amanda Fix",
+      "photo": "https://image.tmdb.org/t/p/w300/ju3aa2yJL4h5msWcbEryh7cjXOt.jpg",
+      "country": "Canadá",
+      "birthdate": "2001-11-05"
+    },
+    {
+      "id": "tmdb_1508653_mtyb5xzl",
+      "name": "Jasmin Savoy Brown",
+      "photo": "https://image.tmdb.org/t/p/w300/yWaCA2iKmVps20SFxwiB1DvbN6j.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1994-03-21"
+    },
+    {
+      "id": "tmdb_2612782_mtyb6r11",
+      "name": "Terry Donahue",
+      "photo": "https://image.tmdb.org/t/p/w300/6MB1xMuU0m96uOWH6ZCSKUYk8rB.jpg",
+      "country": "Canadá",
+      "birthdate": "1925-08-22"
+    },
+    {
+      "id": "tmdb_2612783_mtyb6r12",
+      "name": "Pat Henschel",
+      "photo": "https://image.tmdb.org/t/p/w300/oMU1NjkMDEty96s1RAtNduBwhvU.jpg",
+      "country": "Canadá",
+      "birthdate": "1928-09-27"
+    },
+    {
+      "id": "tmdb_47313_mtyb70tm",
+      "name": "Emilia Unda",
+      "photo": "https://image.tmdb.org/t/p/w300/oE6ajDsmJA0wWdtfvbVgIFTSTy3.jpg",
+      "country": "Rusia",
+      "birthdate": "1879-01-28"
+    },
+    {
+      "id": "tmdb_28075_mtyb70tn",
+      "name": "Dorothea Wieck",
+      "photo": "https://image.tmdb.org/t/p/w300/kVngaKKcBlBWszLd36rDKaXXhR0.jpg",
+      "country": "Alemania",
+      "birthdate": "1908-01-03"
+    },
+    {
+      "id": "tmdb_27932_mtyb7n6c",
+      "name": "Lilli Palmer",
+      "photo": "https://image.tmdb.org/t/p/w300/n34gwTvKpvHF1r8KMrjtxMdK0N7.jpg",
+      "country": "Alemania",
+      "birthdate": "1914-05-24"
+    },
+    {
+      "id": "tmdb_6250_mtyb7n6d",
+      "name": "Romy Schneider",
+      "photo": "https://image.tmdb.org/t/p/w300/7ZM51RfI5oMx8Q5hpyYZ7MyD6Do.jpg",
+      "country": "Alemania",
+      "birthdate": "1938-09-23"
+    },
+    {
+      "id": "tmdb_38160_mtyb8720",
+      "name": "Patti D'Arbanville",
+      "photo": "https://image.tmdb.org/t/p/w300/gBv2vxPFPLpnqbIYw8Xu0xkVtFF.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1951-05-25"
+    },
+    {
+      "id": "tmdb_931613_mtyb8721",
+      "name": "Mona Kristensen",
+      "photo": "https://image.tmdb.org/t/p/w300/qQTcDLxvIwLBRYPJGAe1FEIxJ8S.jpg",
+      "country": "Francia",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_2223271_mtybbwh8",
+      "name": "Setsuko Aya",
+      "photo": "https://image.tmdb.org/t/p/w300/qdnfGrTzAr6X7jUHXrenmSpdTnq.jpg",
+      "country": "Japón",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_2223272_mtybbwh9",
+      "name": "Naomi Ito",
+      "photo": "https://image.tmdb.org/t/p/w300/9kO7fvo7CjJhLhNG3XElSsd8FEg.jpg",
+      "country": "Japón",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_4160_mtybcdkj",
+      "name": "Helen Shaver",
+      "photo": "https://image.tmdb.org/t/p/w300/4RcaswFfLR8D3bQBHVlxyBR0R0H.jpg",
+      "country": "Canadá",
+      "birthdate": "1951-02-24"
+    },
+    {
+      "id": "tmdb_4161_mtybcdkj",
+      "name": "Patricia Charbonneau",
+      "photo": "https://image.tmdb.org/t/p/w300/z0qQgrPp86Vzj8qkbYWVVU2eFHv.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1959-04-19"
+    },
+    {
+      "id": "tmdb_8534_mtybd4q7",
+      "name": "Kathy Bates",
+      "photo": "https://image.tmdb.org/t/p/w300/qZRTzTjV4OC1Ii9a0n8QBS9zMOd.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1948-06-28"
+    },
+    {
+      "id": "tmdb_5698_mtybd4q7",
+      "name": "Jessica Tandy",
+      "photo": "https://image.tmdb.org/t/p/w300/4qgLUP4sFC3xnzzcpyQcv8UKZAv.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1909-06-07"
+    },
+    {
+      "id": "tmdb_18248_mtybd4q8",
+      "name": "Mary-Louise Parker",
+      "photo": "https://image.tmdb.org/t/p/w300/ljaNmBF31BbOvrrawms7vCsIqBP.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1964-08-02"
+    },
+    {
+      "id": "tmdb_31140_mtybd4q9",
+      "name": "Mary Stuart Masterson",
+      "photo": "https://image.tmdb.org/t/p/w300/sxQksTRKrubxcfjA5f1cQIr7dk9.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1966-06-28"
+    },
+    {
+      "id": "tmdb_18249_mtybd4qa",
+      "name": "Cicely Tyson",
+      "photo": "https://image.tmdb.org/t/p/w300/iaQjeWcfENq6WYbQK078Vwrb8qf.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1924-12-19"
+    },
+    {
+      "id": "tmdb_74615_mtybdl38",
+      "name": "Nicole Ari Parker",
+      "photo": "https://image.tmdb.org/t/p/w300/uy630vFQOKWpuEDFF2DuCQ1Oiez.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1970-10-07"
+    },
+    {
+      "id": "tmdb_232937_mtybe5o7",
+      "name": "Cheryl Dunye",
+      "photo": "https://image.tmdb.org/t/p/w300/cvWpqZsUJhjgaF6miieSN2sA30A.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1966-05-13"
+    },
+    {
+      "id": "tmdb_32030_mtybe5o8",
+      "name": "Guinevere Turner",
+      "photo": "https://image.tmdb.org/t/p/w300/1j0RtYIayM7LOsT8bispVHsKBia.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1968-05-23"
+    },
+    {
+      "id": "tmdb_1182959_mtybe5o8",
+      "name": "Cheryl Clarke",
+      "photo": "https://image.tmdb.org/t/p/w300/eRSpMvV9U9IUNqi8WCWz4UOxNbe.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1947-05-16"
+    },
+    {
+      "id": "tmdb_1727035_mtybe5o9",
+      "name": "Alexandra Juhasz",
+      "photo": "https://image.tmdb.org/t/p/w300/prNwDrKHLGhO2mk0apV78MbAtvR.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1964-03-12"
+    },
+    {
+      "id": "tmdb_11150_mtybej0r",
+      "name": "Gina Gershon",
+      "photo": "https://image.tmdb.org/t/p/w300/khuZCNBmgNJ5jC4ejCkcsc8k79p.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1962-06-10"
+    },
+    {
+      "id": "tmdb_7906_mtybej0s",
+      "name": "Jennifer Tilly",
+      "photo": "https://image.tmdb.org/t/p/w300/9vYoYF385cVq9oDO3pDpXihP4vz.jpg",
+      "country": "Estados Unidos",
+      "birthdate": "1958-09-16"
+    },
+    {
+      "id": "tmdb_12672_mtybexok",
+      "name": "Carina Lau",
+      "photo": "https://image.tmdb.org/t/p/w300/5Va4jk69gkdAcABtkTtcUz85RLA.jpg",
+      "country": "China",
+      "birthdate": "1966-12-08"
+    },
+    {
+      "id": "tmdb_66762_mtybexok",
+      "name": "Charlie Yeung Choi-Nei",
+      "photo": "https://image.tmdb.org/t/p/w300/peIJZb7cc3RtMhZjRbHqR3u4ac3.jpg",
+      "country": "Taiwán",
+      "birthdate": "1974-05-23"
+    },
+    {
+      "id": "tmdb_172861_mtybexol",
+      "name": "Theresa Lee Yee-Hung",
+      "photo": "https://image.tmdb.org/t/p/w300/qQ4ninJLQcrWJAFiWxRZ5QCYBfB.jpg",
+      "country": "Hong Kong",
+      "birthdate": "1970-02-25"
+    },
+    {
+      "id": "tmdb_87045_mtybfaa6",
+      "name": "Keri Jo Chapman",
+      "photo": "",
+      "country": "Estados Unidos",
+      "birthdate": "1967-03-06"
+    },
+    {
+      "id": "tmdb_87046_mtybfaa7",
+      "name": "Teresa Garrett",
+      "photo": "https://image.tmdb.org/t/p/w300/3aF2sqkTUYt2Opwt7UcvmzKrfch.jpg",
+      "country": "Estados Unidos",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_87048_mtybfaa8",
+      "name": "Barbara Lasater",
+      "photo": "",
+      "country": "Estados Unidos",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_87049_mtybfaa8",
+      "name": "Nancy Chartier",
+      "photo": "",
+      "country": "Estados Unidos",
+      "birthdate": ""
+    },
+    {
+      "id": "tmdb_70092_mtybfkka",
+      "name": "Alexandra Dahlström",
+      "photo": "https://image.tmdb.org/t/p/w300/v2CDezrR9OyiSXN4BUcblAlMdHc.jpg",
+      "country": "Suecia",
+      "birthdate": "1984-02-12"
+    },
+    {
+      "id": "tmdb_70093_mtybfkkb",
+      "name": "Rebecka Liljeberg",
+      "photo": "https://image.tmdb.org/t/p/w300/oixdin5Au0v1DqlR8Rwfdniqath.jpg",
+      "country": "Suecia",
+      "birthdate": "1981-05-13"
     }
   ],
   "ships": [
@@ -42979,5 +43955,5 @@
       ]
     }
   },
-  "exportedAt": "2026-09-12T11:27:00.837Z"
+  "exportedAt": "2026-09-12T11:43:21.456Z"
 }
