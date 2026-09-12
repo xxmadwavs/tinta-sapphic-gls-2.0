@@ -1455,7 +1455,7 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 .fside-clear-all:hover{color:var(--accent);border-color:var(--accent)}
 .fside-mobile-toggle{display:none;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--text);background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;padding:7px 14px;margin-bottom:1rem;cursor:pointer;font-family:var(--font-body)}
 @media(max-width:900px){
-  .filters-layout{flex-direction:column}
+  .filters-layout{flex-direction:column;align-items:stretch}
   .filters-sidebar{display:none;width:100%;position:static;max-height:none;border-top:1.5px solid var(--border2);padding-top:16px;margin-top:8px}
   .filters-sidebar.mob-open{display:block}
   .fside-mobile-toggle{display:flex}
@@ -3266,11 +3266,19 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
   }
   .series-card,.movie-card{
     flex-direction:row!important;
-    align-items:flex-start!important;
+    align-items:stretch!important;
+    min-width:0!important;
   }
   .series-card-poster-wrap,.movie-card-poster-wrap{
     width:92px!important;
     flex-shrink:0!important;
+    height:auto!important;
+  }
+  .series-card-poster,.movie-card-poster,.series-card-poster-ph,.movie-card-poster-ph{
+    width:100%!important;
+    height:100%!important;
+    aspect-ratio:auto!important;
+    object-fit:cover!important;
   }
   .series-card-body,.movie-card-body{
     padding:9px 10px!important;
