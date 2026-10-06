@@ -7033,7 +7033,7 @@ function renderAnimeResults(){
     paged.forEach((s,i)=>{
       const si=i;
       const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph"></div></div>`;
-      const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
+      const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver');
       const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
       const genrePills=s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${s.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--lavender-soft);border:1px solid rgba(139,114,190,0.2);color:var(--lavender);font-weight:600">${g}</span>`).join('')}</div>`:'';
       const year=s.year||(s.startDate||'').substring(0,4)||'';
@@ -7063,7 +7063,7 @@ function renderAnimeResults(){
     paged.forEach((mv,mi)=>{
       const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'">`:`<div class="movie-card-poster-ph"></div>`;
       const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
-      const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
+      const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver');
       const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
       const genrePills=mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--lavender-soft);border:1px solid rgba(139,114,190,0.2);color:var(--lavender);font-weight:600">${g}</span>`).join('')}</div>`:'';
       html+=`<div class="movie-card" onclick="openAnimeDetail('movie','${mv.id||mv.name}')">
@@ -7128,7 +7128,7 @@ function openRichDetail(item, opts){
   }
 
   // Dónde ver
-  const links=item.watchLinks&&item.watchLinks.length?item.watchLinks:(item.networkUrl?[{name:item.network||'Ver',url:item.networkUrl}]:[]);
+  const links=_wlDisplayLinks(resolveWatchLinks(item),item,'Ver');
   const watchLinksHtml=buildWatchLinksHtml(links,accentColor,accentBorder,accentSoft);
 
   const trailerSection=item.trailerUrl?trailerHtml(item.trailerUrl):'';
@@ -7364,7 +7364,7 @@ function renderRealitiesResults(){
     let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> programa${filtered.length!==1?'s':''}</div><div class="series-grid">`;
     paged.forEach((s,i)=>{
       const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph"></div></div>`;
-      const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
+      const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver');
       const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
       const genrePills=s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${s.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid rgba(74,173,160,0.2);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
       const year=s.year||(s.startDate||'').substring(0,4)||'';
@@ -7394,7 +7394,7 @@ function renderRealitiesResults(){
     paged.forEach((mv,mi)=>{
       const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'">`:`<div class="movie-card-poster-ph"></div>`;
       const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
-      const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
+      const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver');
       const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
       const genrePills=mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid rgba(74,173,160,0.2);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
       html+=`<div class="movie-card" onclick="openRealityDetail('movie','${mv.id||mv.name}')">
@@ -7528,7 +7528,7 @@ function renderDocumentalesResults(){
   paged.forEach((mv,mi)=>{
     const posterEl=mv.poster?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'"></div>`:`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph"></div></div>`;
     const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
-    const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
+    const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver');
     const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
     const genrePills=mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:9.5px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid rgba(74,173,160,0.2);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
     const allDocs=getDocumentalesData();
@@ -7665,7 +7665,7 @@ function actressTabCardHtml(a, count){
 function _picksCardHtml(s, si, is2026=false){
   const cls=is2026?' pick2026':'';
   const starLabel=is2026?'2026':'Pick';
-  const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
+  const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver');
   const watchRow=links.length
     ?`<div class="pick-card-watch">${links.slice(0,2).map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
   const genrePills=s.genres&&s.genres.length
