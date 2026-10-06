@@ -334,6 +334,9 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 /* Status badges in admin list */
 .badge-airing{background:var(--accent-soft);color:var(--accent);border:1px solid var(--border2)}
 .badge-finished{background:var(--teal-soft);color:var(--teal);border:1px solid rgba(91,188,176,0.3)}
+.badge-cancelled{background:#fde8e8;color:#c94040;border:1px solid rgba(201,64,64,.3)}
+.badge-limbo{background:rgba(176,128,48,.12);color:#9a7000;border:1px solid rgba(176,128,48,.35)}
+.badge-closed{background:var(--lavender-soft);color:var(--lavender);border:1px solid rgba(155,130,201,0.3)}
 
 /* ═══ PASTE AUTOFILL ═══ */
 .paste-bar{background:linear-gradient(135deg,rgba(212,96,138,0.07) 0%,rgba(155,130,201,0.07) 100%);border:1.5px solid rgba(155,130,201,0.3);border-radius:14px;padding:14px 16px;margin-bottom:18px;}
@@ -420,6 +423,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 /* ═══ CATEGORY BADGE ═══ */
 .badge-anime{background:#ede7f8;color:#7c5cbf;border:1px solid rgba(124,92,191,0.3)}
 .badge-reality{background:#d4f0ed;color:#3a9e94;border:1px solid rgba(58,158,148,0.3)}
+.badge-bi{background:#fce8f1;color:#c94f7c;border:1px solid rgba(201,79,124,0.3)}
 .badge-series{background:#f7dce9;color:#d4608a;border:1px solid rgba(212,96,138,0.3)}
 .badge-movie{background:#ede7f8;color:#9b82c9;border:1px solid rgba(155,130,201,0.3)}
 
@@ -610,6 +614,15 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .chk-country-tab:hover{border-color:var(--accent2);color:var(--accent)}
 .chk-country-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 
+.tmdbimp-badge{display:inline-block;margin-top:3px;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:800;letter-spacing:.3px}
+.tmdbimp-badge.new{background:#d4f0ed;color:#3a9e94}.tmdbimp-badge.ex{background:#fdebd0;color:#b06a00}
+.tmdbimp-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px}.tmdbimp-head img{width:70px;border-radius:8px}
+.tmdbimp-row{border:1.5px solid var(--border2);border-radius:12px;padding:8px 10px;margin-bottom:8px;background:var(--surface2)}.tmdbimp-row.dis{opacity:.6}
+.tmdbimp-chk{display:flex;gap:6px;align-items:center;font-size:12.5px;cursor:pointer}.tmdbimp-chk input{width:auto}
+.tmdbimp-eq{font-size:10px;color:var(--success);font-weight:700}
+.tmdbimp-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;font-size:12px;word-break:break-word}.tmdbimp-cols img{max-width:80px;border-radius:6px}
+.tmdbimp-h{font-size:9.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:2px}
+.tmdbimp-note,.tmdbimp-warn{font-size:11.5px;margin-top:6px;color:#b06a00;font-weight:600}.tmdbimp-info{font-size:12px;margin:8px 0;color:var(--text)}
 </style>
 </head>
 <body>
@@ -619,7 +632,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     <button type="button" class="btn small" onclick="document.getElementById('importFile').click()">Importar data.json</button>
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
     <button type="button" class="btn small" onclick="tmdbBulkLinkAll(this)" title="Busca en TMDB cada serie/película sin vincular y guarda solo su ID, tipo y valoración — no toca sinopsis, póster ni reparto">🔗 Vincular todas a TMDB</button>
-    <button type="button" class="btn small" onclick="tmdbBulkRefreshRatings(this)" title="Vuelve a consultar TMDB para todas las series y películas ya vinculadas, y actualiza su valoración de una sola vez">🔄 Actualizar valoraciones TMDB</button>
+    <button type="button" class="btn small" onclick="tmdbBulkRefreshRatings(this)" title="Vuelve a consultar TMDB para todas las series y películas ya vinculadas, actualiza su valoración y rellena las portadas de episodios que aún falten (sin tocar las que ya tienen)">🔄 Actualizar valoraciones TMDB</button>
     <button type="button" class="btn small" onclick="window.open('index.html','_blank')">Ver público</button>
     <div class="export-btn-wrap">
       <button type="button" class="btn export small" id="exportTopBtn" onclick="exportData()">Exportar data.json</button>
@@ -669,6 +682,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
         <button type="button" class="admin-pill" data-status="airing" onclick="setAdminStatus('airing',this)">Emisión</button>
         <button type="button" class="admin-pill" data-status="finished" onclick="setAdminStatus('finished',this)">✓ Finalizadas</button>
         <button type="button" class="admin-pill" data-status="upcoming" onclick="setAdminStatus('upcoming',this)">Próximas</button>
+        <button type="button" class="admin-pill" data-status="cancelled" onclick="setAdminStatus('cancelled',this)">🚫 Canceladas</button>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Ordenar por</span>
@@ -687,8 +701,19 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
           <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
+          <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
           <option value="personaje">Personaje</option>
+          <option value="presencia-sin-desarrollo">Presencia sin desarrollo</option>
           <option value="subtexto">Subtexto</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Enlace</span>
+        <select id="adminSeriesLinkFilter" onchange="pages.series=1;render()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="">Todos</option>
+          <option value="con-enlace">Con enlace</option>
+          <option value="sin-enlace">Sin enlace</option>
         </select>
       </div>
     </div>
@@ -720,8 +745,19 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
           <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
+          <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
           <option value="personaje">Personaje</option>
+          <option value="presencia-sin-desarrollo">Presencia sin desarrollo</option>
           <option value="subtexto">Subtexto</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Enlace</span>
+        <select id="adminMoviesLinkFilter" onchange="pages.movies=1;renderMovies()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="">Todos</option>
+          <option value="con-enlace">Con enlace</option>
+          <option value="sin-enlace">Sin enlace</option>
         </select>
       </div>
     </div>
@@ -752,8 +788,19 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
           <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
+          <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
           <option value="personaje">Personaje</option>
+          <option value="presencia-sin-desarrollo">Presencia sin desarrollo</option>
           <option value="subtexto">Subtexto</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Enlace</span>
+        <select id="adminAnimeLinkFilter" onchange="pages.anime=1;renderAnimeGrid()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="">Todos</option>
+          <option value="con-enlace">Con enlace</option>
+          <option value="sin-enlace">Sin enlace</option>
         </select>
       </div>
     </div>
@@ -784,8 +831,19 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
           <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
+          <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
           <option value="personaje">Personaje</option>
+          <option value="presencia-sin-desarrollo">Presencia sin desarrollo</option>
           <option value="subtexto">Subtexto</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap">Enlace</span>
+        <select id="adminRealitiesLinkFilter" onchange="pages.realities=1;renderRealitiesGrid()" style="padding:6px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif;font-weight:600;outline:none;cursor:pointer">
+          <option value="">Todos</option>
+          <option value="con-enlace">Con enlace</option>
+          <option value="sin-enlace">Sin enlace</option>
         </select>
       </div>
     </div>
@@ -1170,7 +1228,10 @@ const SOURCE_TYPES=[
 const WLW_FOCUS=[
   {value:'pareja-principal',label:'Pareja principal'},
   {value:'pareja-secundaria',label:'Pareja secundaria'},
+  {value:'romance-secundario-protagonista',label:'Romance secundario de protagonista'},
+  {value:'subplot',label:'Subplot (pareja secundaria sin especificar)'},
   {value:'personaje',label:'Personaje'},
+  {value:'presencia-sin-desarrollo',label:'Presencia sin desarrollo'},
   {value:'subtexto',label:'Subtexto'},
 ];
 function wlwFocusChipsHtml(selected=''){
@@ -1206,6 +1267,21 @@ function applyWlwFilter(list, selectId){
   if(!val) return list;
   if(val==='sin-asignar') return list.filter(x=>!x.wlwFocus);
   return list.filter(x=>x.wlwFocus===val);
+}
+// ¿Tiene esta serie/película al menos un enlace de plataforma guardado (watchLinks o networkUrl)?
+function hasWatchLink(item){
+  if(!item) return false;
+  if((item.watchLinks||[]).some(l=>l&&l.url&&l.url.trim())) return true;
+  if(item.networkUrl&&item.networkUrl.trim()) return true;
+  return false;
+}
+// Filtra un array de series/películas según el valor elegido en el <select> de Enlace de esa sección
+function applyLinkFilter(list, selectId){
+  const val=document.getElementById(selectId)?.value||'';
+  if(!val) return list;
+  if(val==='con-enlace') return list.filter(hasWatchLink);
+  if(val==='sin-enlace') return list.filter(x=>!hasWatchLink(x));
+  return list;
 }
 
 const GENRES=[
@@ -1669,6 +1745,7 @@ function setAdminStatus(status, btn){
 }
 
 function getSeriesStatus(s){
+  if(s.cancelStatus) return 'cancelled';
   if(s.upcoming) return 'upcoming';
   const now=new Date();
   const eps=genEpisodes(s);
@@ -1701,6 +1778,7 @@ function render(){
     return true;
   });
   filtered=applyWlwFilter(filtered, 'adminSeriesWlwFilter');
+  filtered=applyLinkFilter(filtered, 'adminSeriesLinkFilter');
 
   // Ordenación
   const sort=(document.getElementById('adminSeriesSort')?.value)||'added';
@@ -1732,7 +1810,7 @@ function render(){
 
   if(!filtered.length){
     pages.series = 1;
-    grid.innerHTML=`<div class="empty">${q?'No se encontró ninguna serie con esa búsqueda.':adminSeriesStatus==='upcoming'?'No hay series próximamente.':'No hay series todavía.'}</div>`;
+    grid.innerHTML=`<div class="empty">${q?'No se encontró ninguna serie con esa búsqueda.':adminSeriesStatus==='upcoming'?'No hay series próximamente.':adminSeriesStatus==='cancelled'?'No hay series canceladas.':'No hay series todavía.'}</div>`;
   } else {
     // If current page would show no results (e.g. after filtering), reset to page 1
     const _maxPg = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
@@ -1754,7 +1832,11 @@ function render(){
       if(s.poster) ph.style.display='none';
       div.appendChild(ph);
       let metaStr='';
-      const statusBadge=s.upcoming
+      const cancelLabels={cancelled:'Cancelada',limbo:'En limbo',closed:'Prod. cerrada'};
+      const cancelBadgeClass={cancelled:'badge-cancelled',limbo:'badge-limbo',closed:'badge-closed'};
+      const statusBadge=s.cancelStatus
+        ?`<span class="badge ${cancelBadgeClass[s.cancelStatus]||'badge-cancelled'}">${cancelLabels[s.cancelStatus]||'Cancelada'}</span>`
+        :s.upcoming
         ?'<span class="badge badge-upcoming">Próximamente</span>'
         :status==='airing'?'<span class="badge badge-airing">En emisión</span>'
         :'<span class="badge badge-finished">✓ Finalizada</span>';
@@ -1802,6 +1884,7 @@ function renderMovies(){
       (mv.watchLinks||[]).some(l=>(l.name||'').toLowerCase().includes(q)||(l.url||'').toLowerCase().includes(q));
   });
   filtered=applyWlwFilter(filtered, 'adminMoviesWlwFilter');
+  filtered=applyLinkFilter(filtered, 'adminMoviesLinkFilter');
 
   if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
   else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
@@ -2672,6 +2755,14 @@ function formHtml(s, forcedCategory=null){
         <div class="form-hint">Ej: Primavera 2025. Aparece en la ficha.</div>
       </div>
 
+      <label class="toggle-row" id="biFormat_wrap" style="margin-bottom:14px;${cat!=='reality'?'display:none':''}">
+        <input type="checkbox" id="f_biFormat" ${s&&s.biFormat?'checked':''} style="width:auto;accent-color:#3a9e94">
+        <div style="flex:1">
+          <div class="toggle-label" style="color:#3a9e94">Formato bi (posible)</div>
+          <div class="toggle-desc">El formato del reality permite parejas de cualquier género (no es exclusivamente hetero)</div>
+        </div>
+      </label>
+
       <input type="hidden" id="f_tmdbId" value="${s&&s.tmdbId?s.tmdbId:''}">
       <input type="hidden" id="f_tmdbKind" value="${s&&s.tmdbKind?s.tmdbKind:'tv'}">
       <div class="seasons-list" id="seasonsList"></div>
@@ -2764,7 +2855,7 @@ function openEdit(si){
     formHtml(series[si])+
     `<div class="modal-footer-btns"><button type="button" class="btn" style="margin-right:auto;opacity:.7" onclick="convertSeriesToMovie(${si})" title="Mover esta ficha a la sección de Películas">🔁 Convertir a película</button><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('seriesModal').classList.add('open');
-  const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
+  const tq0=_findInModal('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
   bindPoster();
   const links=series[si].watchLinks||(series[si].networkUrl?[{name:series[si].network||'Ver serie',url:series[si].networkUrl}]:[]);
   initPlatforms(links);
@@ -2988,6 +3079,9 @@ function selectCategory(cat){
   // Show/hide anime season field
   const asWrap=document.getElementById('animeSeason_wrap');
   if(asWrap) asWrap.style.display=(cat==='anime'||cat==='reality')?'':'none';
+  // Show/hide "Formato bi (posible)" field (solo Reality)
+  const biWrap=document.getElementById('biFormat_wrap');
+  if(biWrap) biWrap.style.display=(cat==='reality')?'':'none';
 }
 
 function selectSeriesType(type, el){
@@ -3027,7 +3121,7 @@ function openEditAnime(si){
     formHtml(series[si],'anime')+
     `<div class="modal-footer-btns"><button type="button" class="btn" style="margin-right:auto;opacity:.7" onclick="convertSeriesToMovie(${si})" title="Mover esta ficha a la sección de Películas">🔁 Convertir a película</button><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#7c5cbf;border-color:#7c5cbf" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('animeModal').classList.add('open');
-  const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
+  const tq0=_findInModal('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
   bindPoster();
   const s=series[si];
   const links=s.watchLinks||(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
@@ -3063,7 +3157,7 @@ function openEditReality(si){
     formHtml(series[si],'reality')+
     `<div class="modal-footer-btns"><button type="button" class="btn" style="margin-right:auto;opacity:.7" onclick="convertSeriesToMovie(${si})" title="Mover esta ficha a la sección de Películas">🔁 Convertir a película</button><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" style="background:#3a9e94;border-color:#3a9e94" onclick="saveSeries(${si})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('realityModal').classList.add('open');
-  const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
+  const tq0=_findInModal('tmdbQuery'); if(tq0) tq0.value=series[si].name||'';
   bindPoster();
   const s=series[si];
   const links=s.watchLinks||(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
@@ -3086,9 +3180,12 @@ function renderAnimeGrid(){
   let animes=series.filter(s=>s.category==='anime');
   let filtered=animes.filter(s=>{
     if(!q) return true;
-    return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q);
+    return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q)||
+      (s.networkUrl||'').toLowerCase().includes(q)||
+      (s.watchLinks||[]).some(l=>(l.name||'').toLowerCase().includes(q)||(l.url||'').toLowerCase().includes(q));
   });
   filtered=applyWlwFilter(filtered, 'adminAnimeWlwFilter');
+  filtered=applyLinkFilter(filtered, 'adminAnimeLinkFilter');
 
   if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
   else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
@@ -3141,9 +3238,12 @@ function renderRealitiesGrid(){
   let realities=series.filter(s=>s.category==='reality');
   let filtered=realities.filter(s=>{
     if(!q) return true;
-    return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q);
+    return s.name.toLowerCase().includes(q)||(s.country||'').toLowerCase().includes(q)||(s.network||'').toLowerCase().includes(q)||
+      (s.networkUrl||'').toLowerCase().includes(q)||
+      (s.watchLinks||[]).some(l=>(l.name||'').toLowerCase().includes(q)||(l.url||'').toLowerCase().includes(q));
   });
   filtered=applyWlwFilter(filtered, 'adminRealitiesWlwFilter');
+  filtered=applyLinkFilter(filtered, 'adminRealitiesLinkFilter');
 
   if(sort==='az') filtered.sort((a,b)=>a.name.localeCompare(b.name,'es'));
   else if(sort==='za') filtered.sort((a,b)=>b.name.localeCompare(a.name,'es'));
@@ -3171,7 +3271,7 @@ function renderRealitiesGrid(){
     const div=document.createElement('div'); div.className='series-item';
     div.innerHTML=`${cover}
       <div class="series-info">
-        <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-reality">Reality</span>${s.basedOnBook?'<span class="badge badge-book"></span>':''}${s.animeSeason?`<span class="anime-season-badge">${escapeHtml(s.animeSeason)}</span>`:''}</div>
+        <div class="series-name">${escapeHtml(s.name)} <span class="badge badge-reality">Reality</span>${s.biFormat?'<span class="badge badge-bi">Bi</span>':''}${s.basedOnBook?'<span class="badge badge-book"></span>':''}${s.animeSeason?`<span class="anime-season-badge">${escapeHtml(s.animeSeason)}</span>`:''}</div>
         <div class="series-meta">${[s.country,s.network,s.year].filter(Boolean).map(escapeHtml).join(' · ')} · ${total2} eps</div>
         <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:#3a9e94"></div></div>
         ${wlwQuickSelectHtml('series', si, s.wlwFocus||'')}
@@ -3228,6 +3328,7 @@ async function saveSeries(si, forcedCategory=null){
   const episodeDuration=parseDurationInput(document.getElementById('f_epDuration')?.value||'')||'';
   const myPick=document.getElementById('f_myPick')?.checked||false;
   const myPick2026=document.getElementById('f_myPick2026')?.checked||false;
+  const biFormat=(category==='reality')?(document.getElementById('f_biFormat')?.checked||false):false;
   const cancelStatus=(upcoming?(document.getElementById('f_cancelStatus_up')?.value||document.getElementById('f_cancelStatus')?.value):document.getElementById('f_cancelStatus')?.value)||'';
   const cancelNote=(upcoming?(document.getElementById('f_cancelNote_up')?.value.trim()||document.getElementById('f_cancelNote')?.value.trim()):document.getElementById('f_cancelNote')?.value.trim())||'';
   const sinNovedades=document.getElementById('f_sinNovedades')?.checked||false;
@@ -3239,7 +3340,8 @@ async function saveSeries(si, forcedCategory=null){
   const tmdbRatingRaw=document.getElementById('f_tmdbRating')?.value.trim()||'';
   const tmdbRating=tmdbRatingRaw?parseFloat(tmdbRatingRaw):'';
   const tmdbVoteCount=parseInt(document.getElementById('f_tmdbVoteCount')?.value||'0')||0;
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,couples,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount};
+  const streaming=streamingApplyPending(streamingClone(si>=0&&series[si]?series[si].streaming:null),'f_streamingPending');   // 1C.3.2: se conserva tal cual · 1C.3.5: + región importada pendiente
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,couples,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,biFormat,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount,streaming};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -3287,6 +3389,7 @@ async function convertSeriesToMovie(si){
     genres:s.genres||[], moods:s.moods||[], tropos:s.tropos||[], dinamica:s.dinamica||[],
     wlwFocus:s.wlwFocus||[], awards:s.awards||[], cast:s.cast||[],
     category:'movie', productoraId:s.productoraId||'',
+    streaming:streamingClone(s.streaming),   // 1C.3.2
     updatedAt:new Date().toISOString(),
   };
   movies.push(moviePayload);
@@ -3312,6 +3415,7 @@ async function convertMovieToSeries(mi){
     genres:mv.genres||[], moods:mv.moods||[], tropos:mv.tropos||[], dinamica:mv.dinamica||[],
     wlwFocus:mv.wlwFocus||[], awards:mv.awards||[], cast:mv.cast||[],
     category:'series', seriesType:'serie', productoraId:mv.productoraId||'',
+    streaming:streamingClone(mv.streaming),   // 1C.3.2
     episodeDuration:mv.duration||'',
     seasons:[{label:'Temporada 1', startDate:mv.date||'', totalEpisodes:1, emissionDays:mv.date?[getDow(mv.date)]:[1], allInOneDay:false, skipDates:[], episodes:[], premiereSchedule:[]}],
     updatedAt:new Date().toISOString(),
@@ -3641,6 +3745,13 @@ function movieFormHtml(mv){
     <input type="hidden" id="mf_category" value="${mv&&mv.category?mv.category:'movie'}">
     <div class="form-hint">Elige "Anime" si es una película anime, "Documental/Reality" si es un documental o reality, o déjalo en Película GL por defecto.</div>
   </div>
+  <label class="toggle-row" id="mf_biFormat_wrap" style="margin-bottom:14px;${mv&&mv.category==='reality'?'':'display:none'}">
+    <input type="checkbox" id="mf_biFormat" ${mv&&mv.biFormat?'checked':''} style="width:auto;accent-color:#3a9e94">
+    <div style="flex:1">
+      <div class="toggle-label" style="color:#3a9e94">Formato bi (posible)</div>
+      <div class="toggle-desc">El formato del documental/reality permite parejas de cualquier género (no es exclusivamente hetero)</div>
+    </div>
+  </label>
   <div class="form-row">
     <label class="form-label">Géneros <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(selecciona todos los que apliquen)</span></label>
     <div class="genre-chips" id="mf_genres">${genreChipsHtml(mv&&mv.genres?mv.genres:[])}</div>
@@ -3839,6 +3950,8 @@ function selectMovieCat(cat, el){
   else { el.style.background='var(--lavender-soft)'; el.style.color='var(--lavender)'; el.style.borderColor='var(--lavender)'; }
   const hidden=document.getElementById('mf_category');
   if(hidden) hidden.value=cat;
+  const biWrap=document.getElementById('mf_biFormat_wrap');
+  if(biWrap) biWrap.style.display=(cat==='reality')?'':'none';
 }
 
 function openAddMovie(){
@@ -3862,7 +3975,7 @@ function openEditMovie(mi){
     movieFormHtml(movies[mi])+
     `<div class="modal-footer-btns"><button type="button" class="btn" style="margin-right:auto;opacity:.7" onclick="convertMovieToSeries(${mi})" title="Mover esta ficha a la sección de Series">🔁 Convertir a serie</button><button type="button" class="btn" onclick="closeAll()">Cancelar</button><button type="button" class="btn primary" onclick="saveMovie(${mi})" title="Guardar (Ctrl+S)">Guardar cambios</button></div>`;
   document.getElementById('movieModal').classList.add('open');
-  const tq0=document.getElementById('tmdbQuery'); if(tq0) tq0.value=movies[mi].name||'';
+  const tq0=_findInModal('tmdbQuery'); if(tq0) tq0.value=movies[mi].name||'';
   bindMovieForm();
   const mv=movies[mi];
   const links=mv.watchLinks||(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]);
@@ -3942,6 +4055,7 @@ async function saveMovie(mi){
     wlwFocus,
     awards,
     category:movieCategory,
+    biFormat:(movieCategory==='reality')?(document.getElementById('mf_biFormat')?.checked||false):false,
     movieType:document.getElementById('mf_movieType')?.value||'film',
     duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
     cast:getMovieCastData(),
@@ -3951,6 +4065,7 @@ async function saveMovie(mi){
     tmdbKind:document.getElementById('mf_tmdbKind')?.value.trim()||'',
     tmdbRating:document.getElementById('mf_tmdbRating')?.value.trim()?parseFloat(document.getElementById('mf_tmdbRating').value.trim()):'',
     tmdbVoteCount:parseInt(document.getElementById('mf_tmdbVoteCount')?.value||'0')||0,
+    streaming:streamingApplyPending(streamingClone(mi>=0&&movies[mi]?movies[mi].streaming:null),'mf_streamingPending'),   // 1C.3.2: se conserva tal cual · 1C.3.5: + región importada pendiente
   };
   const movieUpdatedAt=new Date().toISOString();
   if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
@@ -4292,10 +4407,6 @@ function tmdbBarHtml(type){
     +`<input type="text" id="tmdbQuery" placeholder="Nombre de la serie/película...">`
     +`<button type="button" onclick="tmdbSearch('${type}')">Buscar</button>`
     +'</div>'
-    +'<label style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:11.5px;color:var(--muted);cursor:pointer">'
-    +`<input type="checkbox" id="tmdbImportCastChk" ${castChecked?'checked':''} onchange="tmdbSetCastImportPref(this)" style="width:auto;accent-color:#01b4e4">`
-    +'Importar reparto (actrices) al aplicar un resultado'
-    +'</label>'
     +'<div class="tmdb-bar-status" id="tmdbStatus"></div>'
     +'<div class="tmdb-results" id="tmdbResults"></div>'
     +'<div class="tmdb-attribution">Datos de streaming proporcionados por JustWatch a través de la API de TMDB.</div>'
@@ -4303,9 +4414,9 @@ function tmdbBarHtml(type){
 }
 
 async function tmdbSearch(type){
-  const status = document.getElementById('tmdbStatus');
-  const results = document.getElementById('tmdbResults');
-  const q = (document.getElementById('tmdbQuery')?.value || '').trim();
+  const status = _findInModal('tmdbStatus');
+  const results = _findInModal('tmdbResults');
+  const q = (_findInModal('tmdbQuery')?.value || '').trim();
   results.innerHTML = '';
   if(!q){ status.className='tmdb-bar-status err'; status.textContent='⚠ Escribe primero un título.'; return; }
   let key = tmdbGetKey();
@@ -4325,9 +4436,9 @@ async function tmdbSearch(type){
       const date = it.first_air_date || it.release_date || '';
       const year = date ? date.slice(0,4) : '';
       const poster = it.poster_path ? TMDB_IMG_BASE+it.poster_path : '';
-      return `<div class="tmdb-result-card" onclick="tmdbApplyResult(${it.id},'${kind}','${type}')">`
+      return `<div class="tmdb-result-card" onclick="tmdbImpOpen(${it.id},'${kind}','${type}')">`
         +(poster?`<img src="${poster}" alt="">`:`<div style="width:100%;height:150px;background:#333;display:flex;align-items:center;justify-content:center;color:#888;font-size:10px">Sin imagen</div>`)
-        +`<div class="tmdb-rc-info"><div class="tmdb-rc-title">${escapeHtml(title)}</div><div class="tmdb-rc-year">${year}</div></div></div>`;
+        +`<div class="tmdb-rc-info"><div class="tmdb-rc-title">${escapeHtml(title)}</div><div class="tmdb-rc-year">${year}</div>${tmdbImpFindExisting(it.id,kind)?'<span class="tmdbimp-badge ex">YA ESTÁ EN TINTA</span>':'<span class="tmdbimp-badge new">NUEVO</span>'}</div></div>`;
     }).join('');
   }catch(e){
     status.className='tmdb-bar-status err'; status.textContent='✕ Error al conectar con TMDB.';
@@ -4499,7 +4610,7 @@ async function tmdbAddNextSeasonFromForm(btn){
 }
 
 async function tmdbApplyResult(id, kind, type){
-  const status = document.getElementById('tmdbStatus');
+  const status = _findInModal('tmdbStatus');
   const key = tmdbGetKey();
   const region = tmdbGetRegion();
   status.className='tmdb-bar-status'; status.textContent='Cargando detalles...';
@@ -4541,6 +4652,10 @@ async function tmdbApplyResult(id, kind, type){
     if(!providers.length) providers = provNames(rwp.ads);
     if(!providers.length) providers = provNames(rwp.rent);
     if(!providers.length) providers = provNames(rwp.buy);
+    // Amazon Prime Video: JustWatch/TMDB a veces la lista aparte como "Amazon Prime Video with Ads",
+    // pero el enlace es siempre el mismo, así que la unificamos con la versión sin ads y quitamos duplicados
+    providers = providers.map(p => /amazon prime video/i.test(p) ? 'Prime Video' : p);
+    providers = [...new Set(providers)];
     const networkStr = providers.join(', ');
 
     // Tráiler de YouTube
@@ -4555,7 +4670,7 @@ async function tmdbApplyResult(id, kind, type){
     // (para series: las que salen en un % relevante de episodios, no comparsas de 1 capítulo;
     //  para películas: primeras en orden de créditos)
     // (solo si la casilla "Importar reparto" está marcada para esta búsqueda)
-    const importCast = document.getElementById('tmdbImportCastChk')?.checked ?? true;
+    const importCast = _findInModal('tmdbImportCastChk')?.checked ?? true;
     let femaleCast = [];
     if(importCast) try{
       let rawCast = [];
@@ -4610,7 +4725,7 @@ async function tmdbApplyResult(id, kind, type){
     }catch(e){}
 
     function setVal(elId,val){
-      const el=document.getElementById(elId);
+      const el=_findInModal(elId);
       if(el && val!==null && val!==undefined && String(val)!==''){ el.value=val; }
     }
 
@@ -4659,7 +4774,7 @@ async function tmdbApplyResult(id, kind, type){
       setVal('mf_tmdbKind', kind);
       setVal('mf_tmdbRating', tmdbRating);
       setVal('mf_tmdbVoteCount', tmdbVoteCount);
-      const mfRatingDisp=document.getElementById('mf_tmdbRatingDisplay');
+      const mfRatingDisp=_findInModal('mf_tmdbRatingDisplay');
       if(mfRatingDisp) mfRatingDisp.textContent = tmdbRating ? `★ ${tmdbRating}/10 (${tmdbVoteCount} votos)` : 'Sin valoración en TMDB todavía';
       if(poster) posterSetImage(poster);
       if(dateStr) setVal('mf_date', dateStr);
@@ -4668,7 +4783,7 @@ async function tmdbApplyResult(id, kind, type){
       tmdbApplyGenres(d.genres, 'movie');
       const movieOriginCountry = TMDB_COUNTRY_MAP[(d.origin_country||(d.production_countries||[]).map(c=>c.iso_3166_1))[0]] || '';
       if(femaleCast.length){
-        const mcl=document.getElementById('movieCastList');
+        const mcl=_findInModal('movieCastList');
         if(mcl){
           const existingIds = new Set([...mcl.querySelectorAll('.cast-actress-sel')].map(inp=>inp.value).filter(Boolean));
           femaleCast.forEach(person=>{
@@ -4680,7 +4795,7 @@ async function tmdbApplyResult(id, kind, type){
         }
       }
       if(providers.length){
-        const mwl=document.getElementById('moviePlatformsList');
+        const mwl=_findInModal('moviePlatformsList');
         if(mwl){ mwl.innerHTML=''; providers.forEach(p=>addMoviePlatformRow(p, tmdbMatchPlatformUrl(p))); }
       }
     } else {
@@ -4695,7 +4810,7 @@ async function tmdbApplyResult(id, kind, type){
       setVal('f_tmdbKind', kind);
       setVal('f_tmdbRating', tmdbRating);
       setVal('f_tmdbVoteCount', tmdbVoteCount);
-      const fRatingDisp=document.getElementById('f_tmdbRatingDisplay');
+      const fRatingDisp=_findInModal('f_tmdbRatingDisplay');
       if(fRatingDisp) fRatingDisp.textContent = tmdbRating ? `★ ${tmdbRating}/10 (${tmdbVoteCount} votos)` : 'Sin valoración en TMDB todavía';
       if(poster) posterSetImage(poster);
       if(runtimeMins) setVal('f_epDuration', formatDurationDisplay(runtimeMins));
@@ -4782,6 +4897,465 @@ async function tmdbApplyResult(id, kind, type){
   }
 }
 
+
+/* ═══ TMDB IMPORT SEGURO (Fase 1B + 1C) — bloque nuevo y aislado ═══
+   Flujo: tmdbSearch → tmdbImpOpen → tmdbImpBuildDraft (sin DOM) → vista previa → tmdbImpApply (solo lo marcado).
+   No toca seasons, episodios, cast/actrices, couples ni campos editoriales. No llama a save(). */
+let _tmdbImpDraft=null;
+function tmdbImpFindExisting(id,kind){
+  const sid=String(id);
+  const f=(arr,def)=>(arr||[]).find(x=>x&&x.tmdbId!==undefined&&x.tmdbId!==null&&x.tmdbId!==''&&String(x.tmdbId)===sid&&(x.tmdbKind||def)===kind);
+  return f(series,'tv')||f(movies,'movie')||null;
+}
+function tmdbImpNorm(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''); }
+/* ═══ 1C.2 — Normalización de plataformas y URL estándar (aislado) ═══
+   Fuente de verdad de URLs: PLATFORMS. Sin includes() indiscriminado: coincidencia exacta de nombre normalizado + alias explícitos. */
+const TMDB_PROVIDER_ALIASES={amazonprimevideo:'Prime Video',primevideo:'Prime Video',amazonvideo:'Prime Video',disneyplus:'Disney+',appletvplus:'Apple TV+',rakutenviki:'Viki'};
+function tmdbNormalizeProviderName(raw){
+  // 1) quitar sufijos de plan con anuncios (inglés/español): "Netflix with Ads", "Netflix Standard with Ads", "Netflix con anuncios"
+  let s=String(raw||'').replace(/\s+(basic|standard|premium)?\s*(with|con)\s+(ads|anuncios|publicidad)\s*$/i,'').replace(/\s+/g,' ').trim();
+  const key=tmdbImpNorm(s);
+  if(!key) return '';
+  // 2) coincidencia exacta con un nombre de PLATFORMS
+  const exact=PLATFORMS.find(p=>p.name!=='Otros'&&tmdbImpNorm(p.name)===key);
+  if(exact) return exact.name;
+  // 3) alias explícito y evidente
+  if(TMDB_PROVIDER_ALIASES[key]) return TMDB_PROVIDER_ALIASES[key];
+  // 4) desconocida: se conserva el nombre
+  return s;
+}
+function tmdbGetPlatformStandardUrl(name){
+  const p=PLATFORMS.find(x=>x.name===name&&x.name!=='Otros');
+  return p&&p.url?p.url:'';
+}
+function tmdbNormalizeProviders(list){
+  const seen=new Set(), out=[];
+  (list||[]).forEach(r=>{ const n=tmdbNormalizeProviderName(r), k=tmdbImpNorm(n); if(n&&!seen.has(k)){ seen.add(k); out.push(n); } });
+  return out;
+}
+/* ═══ FIN 1C.2 helpers ═══ */
+/* ═══ 1C.3.2 — Estructura regional de streaming (aislado y aditivo) ═══
+   Campo opcional de la ficha: streaming = { ES:[{name,url,type}], MX:[...], ... }  (claves = códigos de TMDB_REGIONS).
+   `type` ∈ flatrate | free | ads | rent | buy. `url` puede ser '' (proveedor sin URL estándar; nunca se inventa).
+   NO sustituye a watchLinks / network / networkUrl. Aquí solo hay helpers puros y sin DOM. */
+const STREAMING_TYPES=['flatrate','free','ads','rent','buy'];
+function streamingIsValidRegion(code){ return TMDB_REGIONS.some(r=>r[0]===code); }
+// Entrada válida {name,url,type} o null. url se conserva como '' si no hay.
+function streamingNormalizeEntry(e){
+  if(!e||typeof e!=='object') return null;
+  const name=String(e.name==null?'':e.name).trim(), type=String(e.type==null?'':e.type).trim();
+  if(!name||STREAMING_TYPES.indexOf(type)<0) return null;
+  return {name,url:String(e.url==null?'':e.url).trim(),type};
+}
+// Copia profunda sin alterar contenido (no filtra ni borra regiones ni entradas existentes). Si no es un objeto → {}.
+function streamingClone(s){
+  if(!s||typeof s!=='object'||Array.isArray(s)) return {};
+  try{ return JSON.parse(JSON.stringify(s)); }catch(e){ return {}; }
+}
+// Devuelve una COPIA de `streaming` donde solo cambia `region`; el resto de regiones se conservan intactas.
+// No está conectada a ningún botón en 1C.3.2 (la reimportación regional pertenece a fases posteriores).
+function streamingSetRegion(streaming,region,providers){
+  const out=streamingClone(streaming);
+  if(!streamingIsValidRegion(region)) return out;
+  out[region]=(providers||[]).map(streamingNormalizeEntry).filter(Boolean);
+  return out;
+}
+// Proveedores de UNA región (objeto results[region] de watch/providers) como [{name,url,type}], conservando el type.
+// Reutiliza los helpers 1C.2 sin modificarlos. Una misma plataforma puede aparecer con varios types (p. ej. flatrate y rent).
+function tmdbBuildRegionProviders(rwp){
+  const out=[], seen=new Set();
+  STREAMING_TYPES.forEach(type=>{
+    ((rwp&&rwp[type])||[]).forEach(p=>{
+      const name=tmdbNormalizeProviderName(p&&p.provider_name);
+      if(!name) return;
+      const k=tmdbImpNorm(name)+'|'+type;
+      if(seen.has(k)) return; seen.add(k);
+      out.push({name,url:tmdbGetPlatformStandardUrl(name),type});
+    });
+  });
+  return out;
+}
+/* ═══ FIN 1C.3.2 helpers ═══ */
+/* ═══ 1C.3.5 — Reimportación regional (aditivo) ═══
+   Aplicar NO toca series/movies: deja la región pendiente en un <input hidden> del propio formulario (f_/mf_streamingPending,
+   JSON {REGION:[{name,url,type}]}). Guardar la aplica con streamingSetRegion → solo se sustituye esa región. */
+function streamingApplyPending(streaming,inputId){
+  const el=document.getElementById(inputId); if(!el||!el.value) return streaming;
+  let pend; try{ pend=JSON.parse(el.value); }catch(e){ return streaming; }
+  if(!pend||typeof pend!=='object'||Array.isArray(pend)) return streaming;
+  let out=streaming;
+  Object.keys(pend).forEach(r=>{ if(Array.isArray(pend[r])) out=streamingSetRegion(out,r,pend[r]); });
+  return out;
+}
+// Copia del streaming guardado de la ficha que se está editando (se deduce del botón Guardar del formulario abierto); {} si es nueva.
+function tmdbImpCurrentStreaming(){
+  const m=_activeModal(), b=m&&m.querySelector('.modal-footer-btns .btn.primary');
+  const mt=b&&/save(Series|Movie)\((-?\d+)/.exec(b.getAttribute('onclick')||'');
+  if(!mt) return {};
+  const rec=(mt[1]==='Movie'?movies:series)[parseInt(mt[2],10)];
+  return streamingClone(rec&&rec.streaming);
+}
+// Casilla + nota del preview. No llama a streamingSetRegion (el preview sigue sin escribir nada).
+function tmdbImpStreamingSaveHtml(dr,p){
+  const provs=dr.regionProviders||[]; if(!provs.length) return '';
+  const code=escapeHtml(dr.region), valid=streamingIsValidRegion(dr.region), J=JSON.stringify;
+  const cur=streamingApplyPending(tmdbImpCurrentStreaming(),p+'streamingPending');
+  const curReg=Array.isArray(cur[dr.region])?cur[dr.region]:[];
+  const norm=a=>(a||[]).map(streamingNormalizeEntry).filter(Boolean);
+  const igual=valid&&J(norm(curReg))===J(norm(provs)), dis=!valid||igual, on=!dis&&curReg.length===0;
+  const note=!valid?'Región no reconocida en TMDB_REGIONS: no se puede guardar.'
+    :igual?'La ficha ya tiene exactamente este streaming para '+code+'.'
+    :curReg.length?'La ficha ya tiene '+curReg.length+' entrada(s) para '+code+'. Si marcas la casilla se sustituyen por completo.'
+    :'Se guardará la región '+code+'.';
+  return '<br><label class="tmdbimp-chk"><input type="checkbox" data-k="streamingRegion" '+(on?'checked':'')+' '+(dis?'disabled':'')+'> <b>Guardar este streaming en la ficha</b> ('+code+')'
+    +(igual?' <span class="tmdbimp-eq">igual</span>':'')+'</label>'
+    +'<div class="tmdbimp-note">'+note+' Solo cambia esa región; el resto de regiones, watchLinks, network y networkUrl no se tocan.</div>';
+}
+// Aplicar: deja la región pendiente en el formulario (nada en series/movies hasta Guardar). Devuelve 1 si la dejó.
+function tmdbImpStashStreaming(dr,p){
+  if(!dr||!streamingIsValidRegion(dr.region)||!(dr.regionProviders||[]).length) return 0;
+  const anchor=_findInModal(p+'tmdbId'); if(!anchor||!anchor.parentNode) return 0;
+  let h=_findInModal(p+'streamingPending');
+  if(!h){ h=document.createElement('input'); h.type='hidden'; h.id=p+'streamingPending'; anchor.parentNode.appendChild(h); }
+  let pend={}; try{ pend=JSON.parse(h.value||'{}')||{}; }catch(e){ pend={}; }
+  pend[dr.region]=dr.regionProviders.map(x=>({name:x.name,url:x.url,type:x.type}));
+  h.value=JSON.stringify(pend); return 1;
+}
+/* ═══ FIN 1C.3.5 helpers ═══ */
+async function tmdbImpBuildDraft(id,kind,type,key){
+  const region=tmdbGetRegion();
+  const r=await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=es-ES&append_to_response=watch/providers,videos`);
+  if(r.status===401) throw new Error('401');
+  if(!r.ok) throw new Error('http');
+  const d=await r.json();
+  let synopsis=d.overview||'', vids=(d.videos||{}).results||[];
+  if(!synopsis||!vids.length){
+    try{
+      const d2=await (await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=en-US&append_to_response=videos`)).json();
+      if(!synopsis) synopsis=d2.overview||'';
+      if(!vids.length) vids=(d2.videos||{}).results||[];
+    }catch(e){}
+  }
+  const name=d.name||d.title||'', orig=d.original_name||d.original_title||'', lang=d.original_language||'';
+  const nameEn=(orig&&lang!=='en'&&lang!=='es'&&orig.toLowerCase()!==name.toLowerCase())?orig:'';
+  const dateStr=d.first_air_date||d.release_date||'';
+  const rwp=((d['watch/providers']||{}).results||{})[region]||{};
+  const pn=a=>(a||[]).map(p=>p.provider_name);
+  let prov=pn(rwp.flatrate); if(!prov.length) prov=pn(rwp.free); if(!prov.length) prov=pn(rwp.ads); if(!prov.length) prov=pn(rwp.rent); if(!prov.length) prov=pn(rwp.buy);
+  prov=tmdbNormalizeProviders(prov);
+  const regionProviders=tmdbBuildRegionProviders(rwp);   // 1C.3.2: región + type (dr.providers queda igual)
+  const tr=vids.find(v=>v.site==='YouTube'&&v.type==='Trailer')||vids.find(v=>v.site==='YouTube');
+  const codes=d.origin_country||(d.production_countries||[]).map(c=>c.iso_3166_1)||[];
+  const genres=[]; (d.genres||[]).forEach(g=>(TMDB_GENRE_MAP[g.name]||[]).forEach(n=>{ if(!genres.includes(n)) genres.push(n); }));
+  let cast=[];
+  try{
+    const cj=await (await fetch(`${TMDB_API_BASE}/${kind==='tv'?'tv/'+id+'/aggregate_credits':'movie/'+id+'/credits'}?api_key=${encodeURIComponent(key)}&language=es-ES`)).json();
+    cast=(cj.cast||[]).filter(c=>c.gender===1).sort((a,b)=>(a.order??99)-(b.order??99)).slice(0,8)
+      .map(c=>({name:c.name,character:kind==='tv'?((c.roles&&c.roles[0]&&c.roles[0].character)||''):(c.character||'')}));
+  }catch(e){}
+  return {id:String(id),kind,type,name,nameEn,synopsis,year:dateStr?parseInt(dateStr.slice(0,4)):'',
+    poster:d.poster_path?'https://image.tmdb.org/t/p/w500'+d.poster_path:'',
+    country:codes.map(c=>TMDB_COUNTRY_MAP[c]).filter(Boolean).join(' / '),genres,
+    mins:kind==='movie'?(d.runtime||null):((d.episode_run_time||[])[0]||null),date:dateStr,
+    trailerUrl:tr?'https://www.youtube.com/watch?v='+tr.key:'',providers:prov,region,regionProviders,
+    rating:d.vote_average?Math.round(d.vote_average*10)/10:'',votes:d.vote_count||0,
+    seasons:d.number_of_seasons||0,episodes:d.number_of_episodes||0,cast,
+    seasonList:(d.seasons||[]).map(s=>({n:s.season_number,count:s.episode_count||0}))};
+}
+async function tmdbImpOpen(id,kind,type){
+  const status=_findInModal('tmdbStatus');
+  let key=tmdbGetKey(); if(!key){ key=tmdbConfigureKey(); if(!key) return; }
+  if(status){ status.className='tmdb-bar-status'; status.textContent='Cargando detalles...'; }
+  let dr;
+  try{ dr=await tmdbImpBuildDraft(id,kind,type,key); }
+  catch(e){ if(status){ status.className='tmdb-bar-status err'; status.textContent=e.message==='401'?'⚠ API key inválida. Configúrala de nuevo (⚙).':'✕ Error al obtener los detalles de TMDB.'; } return; }
+  if(kind==='tv'&&type!=='movie'){   // 1E.1: detalle de temporadas (solo lectura, sin DOM)
+    if(status){ status.className='tmdb-bar-status'; status.textContent='Cargando temporadas...'; }
+    try{ dr.sdata=await tmdbImpFetchSeasons(dr,key); }catch(e){ dr.sdata=null; }
+  }
+  if(status){ status.className='tmdb-bar-status'; status.textContent=''; }
+  _tmdbImpDraft=dr;
+  const mv=type==='movie', p=mv?'mf_':'f_';
+  const val=i=>(_findInModal(i)?.value||'').trim();
+  const cur={name:val(p+'name'),nameEn:val(p+'nameEn'),synopsis:val(p+'synopsis'),year:val(p+'year'),poster:val(p+'poster'),
+    country:getCountries(mv?'movieCountriesList':'countriesList')||'',
+    genres:getSelectedGenres(p+'genres')||[],dur:val(mv?'mf_duration':'f_epDuration'),date:val('mf_date'),trailer:val(p+'trailer'),
+    rating:val(p+'tmdbRating'),votes:val(p+'tmdbVoteCount'),tid:val(p+'tmdbId'),tkind:val(p+'tmdbKind')};
+  const plList=mv?document.getElementById('moviePlatformsList'):_findInModal('platformsList');
+  const curProv=[...(plList?plList.querySelectorAll('.platform-row-sel'):[])].map(r=>(r.querySelectorAll('input')[0]?.value||'').trim()).filter(Boolean);
+  const curProvKeys=curProv.map(c=>tmdbImpNorm(tmdbNormalizeProviderName(c)));
+  const missingProv=dr.providers.filter(x=>!curProvKeys.includes(tmdbImpNorm(x)));
+  const nSeasons=mv?0:((_findInModal('seasonsList')||{children:[]}).children.length);
+  dr.sdiff=null; if(!mv&&dr.sdata){ try{ dr.sdiff=tmdbImpDiffSeasons(tmdbImpReadSeasonsFromForm(),dr.sdata); }catch(e){ dr.sdiff=null; } }   // 1E.1
+  dr.missingProv=missingProv;
+  const durTxt=dr.mins?formatDurationDisplay(dr.mins):'';
+  const ex=tmdbImpFindExisting(dr.id,dr.kind);
+  const T=s=>String(s??'').trim();
+  // [clave, etiqueta, valor TMDB, valor actual, vacío?, igual?, defaultMarcado]
+  const rows=[];
+  const txt=(k,l,tm,cu,sticky)=>{ const eq=T(tm).toLowerCase()===T(cu).toLowerCase()&&T(tm)!==''; rows.push({k,l,tm:T(tm),cu:T(cu),dis:!T(tm)||eq,eq,on:!!T(tm)&&!T(cu)}); };
+  txt('name','Nombre',dr.name,cur.name); txt('nameEn','Título original',dr.nameEn,cur.nameEn);
+  txt('synopsis','Sinopsis',dr.synopsis,cur.synopsis); txt('year','Año',dr.year,cur.year);
+  rows.push({k:'poster',l:'Poster',tm:dr.poster,cu:cur.poster,img:true,dis:!dr.poster||dr.poster===cur.poster,eq:dr.poster===cur.poster&&!!dr.poster,on:!!dr.poster&&!cur.poster});
+  txt('country','País',dr.country,cur.country);
+  const gAll=dr.genres.length&&dr.genres.every(g=>cur.genres.includes(g));
+  rows.push({k:'genres',l:'Géneros (se añaden a los marcados)',tm:dr.genres.join(', '),cu:cur.genres.join(', '),dis:!dr.genres.length||gAll,eq:gAll,on:!!dr.genres.length&&!cur.genres.length});
+  txt('dur',mv?'Duración':'Duración por episodio',durTxt,cur.dur);
+  if(mv) txt('date','Fecha de estreno',dr.date,cur.date);
+  txt('trailer','Tráiler',dr.trailerUrl,cur.trailer);
+  rows.push({k:'prov',l:'Plataformas (solo se añaden las que falten; nunca se borra nada)',tm:dr.providers.join(', ')||'',cu:curProv.join(', '),dis:!missingProv.length,eq:!!dr.providers.length&&!missingProv.length,on:false,note:missingProv.length?'Se añadirían: '+missingProv.map(n=>n+(tmdbGetPlatformStandardUrl(n)?' → '+tmdbGetPlatformStandardUrl(n):' (sin URL estándar)')).join(' · '):''});
+  const rNum=(k,l,tm,cu)=>{ const has=T(tm)!==''&&T(tm)!=='0'; const eq=has&&T(tm)===T(cu); rows.push({k,l,tm:T(tm),cu:T(cu),dis:!has||eq,eq,on:has&&!eq}); };
+  rNum('rating','Rating TMDB',dr.rating,cur.rating); rNum('votes','Votos TMDB',dr.votes,cur.votes);
+  const sameLink=cur.tid===dr.id&&(cur.tkind||dr.kind)===dr.kind, diffLink=!!cur.tid&&!sameLink;
+  rows.push({k:'link',l:'Vínculo TMDB (ID y tipo)',tm:dr.id+' · '+dr.kind,cu:cur.tid?cur.tid+' · '+(cur.tkind||'?'):'',dis:sameLink,eq:sameLink,on:!cur.tid,note:diffLink?'⚠ Esta ficha ya está vinculada a OTRO ID de TMDB. Marca solo si quieres re-vincularla.':''});
+  const rowHtml=r=>`<div class="tmdbimp-row${r.dis?' dis':''}"><label class="tmdbimp-chk"><input type="checkbox" data-k="${r.k}" ${r.on&&!r.dis?'checked':''} ${r.dis?'disabled':''}> <b>${escapeHtml(r.l)}</b>${r.eq?' <span class="tmdbimp-eq">igual</span>':''}</label>`
+    +`<div class="tmdbimp-cols"><div><div class="tmdbimp-h">TINTA (formulario)</div>${r.img?(r.cu?`<img src="${escapeHtml(r.cu)}" alt="">`:'<i>vacío</i>'):(r.cu?escapeHtml(r.cu):'<i>vacío</i>')}</div>`
+    +`<div><div class="tmdbimp-h">TMDB</div>${r.img?(r.tm?`<img src="${escapeHtml(r.tm)}" alt="">`:'<i>—</i>'):(r.tm?escapeHtml(r.tm):'<i>—</i>')}</div></div>${r.note?`<div class="tmdbimp-note">${escapeHtml(r.note)}</div>`:''}</div>`;
+  const seasonsInfo=mv?'':`<div class="tmdbimp-info"><b>Temporadas</b> — TINTA: ${nSeasons} · TMDB: ${dr.seasons} (${dr.episodes} episodios). <i>${dr.sdiff?'Detalle y cambios seleccionables en «Temporadas y emisión».':'No se pudo obtener el detalle de temporadas; no se modifican temporadas ni episodios.'}</i></div>`+(dr.sdiff?tmdbImpSeasonsHtml(dr.sdiff):'');
+  const rgKnown=TMDB_REGIONS.find(x=>x[0]===dr.region);   // 1C.3.2 / 1C.3.4: fuente única = TMDB_REGIONS
+  const rgTitle=rgKnown?'Streaming de '+escapeHtml(rgKnown[1])+' ('+escapeHtml(dr.region)+')':'Streaming ('+escapeHtml(dr.region)+')';   // 1C.3.4: región desconocida → Streaming (XX)
+  const streamingInfo=`<div class="tmdbimp-info"><b>${rgTitle}</b> — lo que devuelve TMDB para esta región (solo informativo hasta que marques la casilla): `
+    +((dr.regionProviders||[]).length?'<br>'+dr.regionProviders.map(x=>escapeHtml(x.name)+' · <code>'+escapeHtml(x.type)+'</code>'+((x.type==='rent'||x.type==='buy')?' (pago por título)':'')+' · '+(x.url?escapeHtml(x.url):'<i>sin URL estándar</i>')).join('<br>'):'<br><i>No hay plataformas de streaming disponibles para esta región.</i>')+tmdbImpStreamingSaveHtml(dr,p)+`</div>`;   // 1C.3.4 · 1C.3.5
+  const castInfo=`<div class="tmdbimp-info"><b>Reparto TMDB</b> (solo informativo, no se importa): ${dr.cast.length?dr.cast.map(c=>escapeHtml(c.name)+(c.character?' ('+escapeHtml(c.character)+')':'')).join(', '):'—'}</div>`;
+  const warn=ex?`<div class="tmdbimp-warn">YA ESTÁ EN TINTA como «${escapeHtml(ex.name)}». ${_findInModal(p+'tmdbId')?.value.trim()===dr.id?'Es la ficha que estás editando.':'Si estás creando una ficha nueva, sería un duplicado.'}</div>`:'';
+  let m=document.getElementById('tmdbImpModal');
+  if(!m){ m=document.createElement('div'); m.className='modal-bg'; m.id='tmdbImpModal'; document.body.appendChild(m); }
+  m.innerHTML=`<div class="modal"><div class="modal-title">Importar desde TMDB</div><div style="padding:0 1.75rem 1rem">`
+    +`<div class="tmdbimp-head">${dr.poster?`<img src="${escapeHtml(dr.poster)}" alt="">`:''}<div><div style="font-weight:800;font-size:15px">${escapeHtml(dr.name)}</div>`
+    +(dr.nameEn?`<div style="color:var(--muted);font-size:12px">${escapeHtml(dr.nameEn)}</div>`:'')
+    +`<div style="font-size:12px;margin-top:4px">${kind==='tv'?'Serie':'Película'}${dr.year?' · '+dr.year:''}${dr.rating?` · ★ ${dr.rating}/10 (${dr.votes} votos)`:''}</div>`
+    +`<span class="tmdbimp-badge ${ex?'ex':'new'}">${ex?'YA ESTÁ EN TINTA':'NUEVO'}</span></div></div>${warn}`
+    +`<div class="form-hint" style="margin:8px 0">Por defecto solo se marcan los campos vacíos en el formulario. Nada se guarda hasta que pulses Guardar en la ficha.</div>`
+    +rows.map(rowHtml).join('')+streamingInfo+seasonsInfo+castInfo+`</div>`
+    +`<div class="modal-footer-btns"><button type="button" class="btn" onclick="tmdbImpClose()">Cancelar</button><button type="button" class="btn primary" onclick="tmdbImpApply()">Aplicar lo marcado al formulario</button></div></div>`;
+  m.classList.add('open');
+}
+function tmdbImpClose(){ const m=document.getElementById('tmdbImpModal'); if(m){ m.classList.remove('open'); m.innerHTML=''; } }
+function tmdbImpApply(){
+  const dr=_tmdbImpDraft, m=document.getElementById('tmdbImpModal');
+  if(!dr||!m){ tmdbImpClose(); return; }
+  const allKeys=[...m.querySelectorAll('input[data-k]:checked')].map(i=>i.dataset.k);
+  const keys=allKeys.filter(k=>k.indexOf('s:')!==0&&k!=='streamingRegion'), sKeys=allKeys.filter(k=>k.indexOf('s:')===0);   // 1E.1: 's:' = temporadas/episodios
+  tmdbImpClose();   // cerrar primero: _findInModal vuelve a apuntar al modal de la ficha
+  const mv=dr.type==='movie', p=mv?'mf_':'f_';
+  const set=(i,v)=>{ const el=_findInModal(i); if(el) el.value=v; };
+  keys.forEach(k=>{
+    if(k==='name') set(p+'name',dr.name);
+    else if(k==='nameEn') set(p+'nameEn',dr.nameEn);
+    else if(k==='synopsis') set(p+'synopsis',dr.synopsis);
+    else if(k==='year') set(p+'year',dr.year);
+    else if(k==='poster'){ set(p+'poster',dr.poster); posterSetImage(dr.poster); }
+    else if(k==='country') initCountries(mv?'movieCountriesList':'countriesList',dr.country);
+    else if(k==='genres'){ const c=_findInModal(p+'genres'); if(c) c.querySelectorAll('.genre-chip').forEach(ch=>{ if(dr.genres.includes(ch.textContent)) ch.classList.add('selected'); }); }
+    else if(k==='dur') set(mv?'mf_duration':'f_epDuration',formatDurationDisplay(dr.mins));
+    else if(k==='date') set('mf_date',dr.date);
+    else if(k==='trailer') set(p+'trailer',dr.trailerUrl);
+    else if(k==='rating'||k==='votes'){
+      if(k==='rating') set(p+'tmdbRating',dr.rating); else set(p+'tmdbVoteCount',dr.votes);
+      const rv=(_findInModal(p+'tmdbRating')?.value||''), vv=(_findInModal(p+'tmdbVoteCount')?.value||'0');
+      const disp=_findInModal(p+'tmdbRatingDisplay'); if(disp&&rv) disp.textContent=`★ ${rv}/10 (${vv} votos)`;
+    }
+    else if(k==='link'){ set(p+'tmdbId',dr.id); set(p+'tmdbKind',dr.kind); }
+    else if(k==='prov'&&dr.missingProv&&dr.missingProv.length){
+      const list=mv?document.getElementById('moviePlatformsList'):_findInModal('platformsList');
+      if(list){
+        list.querySelectorAll('.platform-row-sel').forEach(r=>{ const ins=r.querySelectorAll('input'); if(!(ins[0]?.value||'').trim()&&!(ins[1]?.value||'').trim()) r.remove(); }); // solo filas vacías
+        dr.missingProv.forEach(n=>{ const nm=n.replace(/"/g,'&quot;'), u=tmdbGetPlatformStandardUrl(n); mv?addMoviePlatformRow(nm,u):addPlatformRow(nm,u); });
+      }
+      const net=_findInModal(mv?'mf_net':'f_net');
+      if(net){ const have=net.value.split(',').map(s=>s.trim()).filter(Boolean); dr.missingProv.forEach(n=>{ if(!have.some(h=>tmdbImpNorm(tmdbNormalizeProviderName(h))===tmdbImpNorm(n))) have.push(n); }); net.value=have.join(', '); }
+    }
+  });
+  const nS=tmdbImpApplySeasons(sKeys,dr);   // 1E.1
+  const nSt=allKeys.indexOf('streamingRegion')>=0?tmdbImpStashStreaming(dr,p):0;   // 1C.3.5: solo la región del draft, pendiente hasta Guardar
+  const st=_findInModal('tmdbStatus');
+  if(st){ st.className='tmdb-bar-status ok'; st.textContent=(keys.length+nS+nSt)?`✓ ${keys.length+nS+nSt} campo(s) aplicados al formulario. Revisa y pulsa Guardar.`:'No se ha aplicado ningún campo.'; }
+  _tmdbImpDraft=null;
+}
+
+/* ═══ 1E.1 — TEMPORADAS, Nº DE EPISODIOS Y EMISIÓN (dentro del Preview TMDB) ═══
+   - tmdbImpFetchSeasons / tmdbImpReadSeasonsFromForm / tmdbImpDiffSeasons: SOLO LECTURA (no tocan el DOM ni los datos).
+   - tmdbImpApplySeasons: escribe únicamente en los bloques de temporada del formulario y solo lo marcado.
+   - Temporada 0 (especiales) se IGNORA en esta fase. No se importa título, sinopsis ni still de episodio.
+   - Temporada de TINTA = posición en el formulario (bloque N ↔ season_number N); el label no se usa ni se cambia.
+   - Fecha manual = override de episodio SIN source:'tmdb'; nunca se sobrescribe sin que el usuario la marque. */
+function tmdbImpFmtDate(d){ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||''); return m?`${m[3]}/${m[2]}/${m[1]}`:(d||''); }
+function tmdbImpCurrentSeriesIndex(){
+  const b=(_activeModal()||document).querySelector('.modal-footer-btns .btn.primary');
+  const m=/saveSeries\((-?\d+)/.exec((b&&b.getAttribute('onclick'))||'');
+  return m?parseInt(m[1]):-1;
+}
+async function tmdbImpFetchSeasons(dr,key){
+  let list=(dr.seasonList||[]).filter(s=>s.n>=1);   // season 0 ignorada
+  if(!list.length&&dr.seasons) list=Array.from({length:dr.seasons},(_,i)=>({n:i+1,count:1}));
+  const ignored0=(dr.seasonList||[]).some(s=>s.n===0);
+  const todo=list.filter(s=>s.count>0);              // sin episodios anunciados: no se consulta
+  const res=await Promise.all(todo.map(async s=>{
+    const sd=await tmdbFetchSeason(dr.id,s.n,key);
+    if(!sd||!Array.isArray(sd.episodes)) return {n:s.n,ok:false,eps:[]};
+    const eps=sd.episodes.filter(e=>e&&e.episode_number>0).map(e=>({num:e.episode_number,date:_validDate(e.air_date)?e.air_date:'',runtime:e.runtime||0}))
+      .sort((a,b)=>a.num-b.num);
+    return {n:s.n,ok:true,eps};
+  }));
+  return {seasons:res.sort((a,b)=>a.n-b.n),ignored0};
+}
+// Número real de temporada de un bloque de TINTA: "Temporada 2", "Season 2", "T2"… ; sin número en el label → su posición.
+function tmdbImpSeasonNum(label,idx){
+  const m=/\b(?:temporada|temp|season|saison|staffel|t|s)\.?\s*(\d+)/i.exec(label||'')||/^\s*(\d+)\s*$/.exec(label||'');
+  return m?parseInt(m[1]):idx+1;
+}
+function tmdbImpReadSeasonsFromForm(){
+  const list=_findInModal('seasonsList'); if(!list) return [];
+  const si=tmdbImpCurrentSeriesIndex();
+  const prev=(si>=0&&series[si])?getSeasons(series[si]):[];
+  return [...list.children].map((block,i)=>{
+    let episodes=[]; try{ episodes=block.dataset.episodes?JSON.parse(block.dataset.episodes):[]; }catch(e){}
+    const premiereSchedule=[];
+    if(block.querySelector('.s-special-toggle')?.checked&&!block.querySelector('.s-allday')?.checked){
+      block.querySelectorAll('.s-premiere-rows .premiere-ep-row').forEach(row=>{
+        const fromEp=parseInt(row.querySelector('.pr-from')?.value)||1, toEp=parseInt(row.querySelector('.pr-to')?.value)||fromEp, date=row.querySelector('.pr-date')?.value;
+        if(date&&fromEp>=1&&toEp>=fromEp) premiereSchedule.push({fromEp,toEp,date});
+      });
+      premiereSchedule.sort((a,b)=>a.fromEp-b.fromEp);
+    }
+    const lbl=block.querySelector('.season-block-title input')?.value||'';
+    return {label:lbl,num:tmdbImpSeasonNum(lbl,i),blockIdx:i,
+      startDate:block.querySelector('.s-start')?.value||'',
+      totalEpisodes:parseInt(block.querySelector('.s-eps')?.value)||0,
+      allInOneDay:!!block.querySelector('.s-allday')?.checked,
+      emissionDays:[...block.querySelectorAll('.s-dow .dow-chip.selected')].map(c=>parseInt(c.dataset.dow)).sort((a,b)=>a-b),
+      skipDates:(prev[i]&&prev[i].skipDates)||[], episodes, premiereSchedule};
+  });
+}
+// Días de emisión solo si se pueden deducir con seguridad: ≥3 fechas, ≤3 días distintos y cada día repetido ≥2 veces.
+function tmdbImpDeriveDays(dates){
+  const ds=dates.filter(Boolean); if(ds.length<3||new Set(ds).size<2) return null;
+  const cnt={}; ds.forEach(d=>{ const w=getDow(d); cnt[w]=(cnt[w]||0)+1; });
+  const days=Object.keys(cnt).map(Number).sort((a,b)=>a-b);
+  if(days.length>3||days.some(w=>cnt[w]<2)) return null;
+  return days;
+}
+// Nueva temporada: misma lógica que "Añadir siguiente temporada desde TMDB", sin still.
+function tmdbImpNewSeasonData(n,eps){
+  const dated=eps.filter(e=>e.date);
+  if(!dated.length) return {label:`Temporada ${n}`,startDate:'',totalEpisodes:eps.length,emissionDays:[],skipDates:[],episodes:[],premiereSchedule:[]};
+  const allInOneDay=dated.length>=2&&dated[0].date===dated[1].date;
+  let emissionDays=[getDow(dated[0].date)];
+  if(!allInOneDay&&dated.length>=2){ const w=new Set(); dated.slice(0,Math.min(dated.length,6)).forEach(e=>w.add(getDow(e.date))); emissionDays=[...w].sort((a,b)=>a-b); }
+  return {label:`Temporada ${n}`,startDate:dated[0].date,totalEpisodes:eps.length,emissionDays,allInOneDay,skipDates:[],
+    episodes:dated.map(e=>({num:e.num,date:e.date,skipped:false,source:'tmdb',...(e.runtime?{duration:e.runtime}:{})})),premiereSchedule:[]};
+}
+function tmdbImpDiffSeasons(tinta,sdata){
+  const out={ignored0:!!sdata.ignored0,seasons:[]};
+  const byNum=new Map(); tinta.forEach(t=>{ if(!byNum.has(t.num)) byNum.set(t.num,t); });   // si un número se repite, manda el primer bloque
+  const base=tinta.reduce((a,t)=>Math.max(a,t.num),0);   // las temporadas nuevas se añaden al final: solo si son posteriores a la última de TINTA
+  const newNums=new Set(sdata.seasons.filter(s=>s.ok&&s.eps.length&&!byNum.has(s.n)&&s.n>base).map(s=>s.n));
+  sdata.seasons.forEach(ts=>{
+    const n=ts.n;
+    if(!ts.ok){ out.seasons.push({n,state:'error'}); return; }
+    if(!ts.eps.length) return;
+    const tmCount=Math.max(ts.eps.length,ts.eps[ts.eps.length-1].num);
+    const dated=ts.eps.filter(e=>e.date);
+    const tmStart=dated.length?dated[0].date:'';
+    const t=byNum.get(n);
+    if(!t){
+      let contiguous=n>base; for(let k=base+1;k<n;k++) if(!newNums.has(k)) contiguous=false;
+      out.seasons.push({n,state:'new',count:tmCount,start:tmStart,eps:ts.eps,contiguous}); return;
+    }
+    const total=t.totalEpisodes||0;
+    const gen=genEpisodes({seasons:[t]});
+    const d={n,state:'ok',blockIdx:t.blockIdx,tintaTotal:total,tmCount,rows:{}};
+    // cantidad
+    // Solo se puede bajar el nº de episodios si la temporada de TINTA aún está vacía (sin inicio, sin episodios ni grupos): no se elimina nada.
+    const empty=!t.startDate&&!(t.episodes||[]).length&&!(t.premiereSchedule||[]).length;
+    const reduce=tmCount<total&&empty;
+    d.count={tm:tmCount,cu:total,eq:tmCount===total,canUpdate:tmCount>total||reduce,reduce,on:tmCount>total||reduce};
+    // inicio de temporada
+    d.start={tm:tmStart,cu:t.startDate||'',eq:!tmStart||tmStart===t.startDate,on:!!tmStart&&!t.startDate};
+    // Existe en TINTA = tiene registro (override) o lo genera el calendario; si la temporada no tiene ningún registro, existen 1..totalEpisodes.
+    const hasRecords=(t.episodes||[]).length>0;
+    const exists=num=>!!(t.episodes||[]).find(x=>x.num===num)||!!gen.find(x=>x.seasonNum===num)||(!hasRecords&&num<=total);
+    // episodios nuevos = números de TMDB que no existen en TINTA (también huecos intermedios)
+    d.newEps=ts.eps.filter(e=>!exists(e.num));
+    d.newEpsWithDate=d.newEps.filter(e=>e.date);
+    // cambios de fecha en episodios existentes
+    d.changes=[]; d.equalEps=0;
+    ts.eps.filter(e=>e.date&&exists(e.num)).forEach(e=>{
+      const g=gen.find(x=>x.seasonNum===e.num), ov=(t.episodes||[]).find(x=>x.num===e.num);
+      const cu=(g&&g.date)||(ov&&ov.date)||'';
+      if(cu===e.date){ d.equalEps++; return; }
+      const manual=!!ov&&ov.source!=='tmdb'&&!!cu;      // fecha manual protegida
+      d.changes.push({num:e.num,cu,tm:e.date,kind:!cu?'nodate':(manual?'manual':'diff'),on:!manual});
+    });
+    // días de emisión (solo propuesta; nunca automático si ya hay fecha de inicio configurada)
+    const days=tmdbImpDeriveDays(dated.map(e=>e.date));
+    const same=days&&days.length===t.emissionDays.length&&days.every((x,i)=>x===t.emissionDays[i]);
+    d.days=(days&&!t.allInOneDay&&!same)?{tm:days,cu:t.emissionDays,on:!t.startDate}:null;
+    out.seasons.push(d);
+  });
+  return out;
+}
+function tmdbImpSeasonsHtml(df){
+  const chk=(k,on,dis)=>`<input type="checkbox" data-k="${k}" ${on&&!dis?'checked':''} ${dis?'disabled':''}>`;
+  const dn=a=>a.map(i=>DAYS_ES[i]).join(', ')||'—';
+  const row=(k,label,cu,tm,o={})=>`<div class="tmdbimp-row${o.dis?' dis':''}"><label class="tmdbimp-chk">${chk(k,o.on,o.dis)} <b>${escapeHtml(label)}</b>${o.eq?' <span class="tmdbimp-eq">igual</span>':''}</label>`
+    +`<div class="tmdbimp-cols"><div><div class="tmdbimp-h">TINTA</div>${cu?escapeHtml(cu):'<i>sin fecha</i>'}</div><div><div class="tmdbimp-h">TMDB</div>${tm?escapeHtml(tm):'<i>—</i>'}</div></div>${o.note?`<div class="tmdbimp-note">${escapeHtml(o.note)}</div>`:''}</div>`;
+  let h=`<div class="tmdbimp-info" style="margin-top:14px;border-top:1.5px solid var(--border2);padding-top:10px"><b>TEMPORADAS Y EMISIÓN</b> <span style="color:var(--muted)">(nada se borra; las fechas manuales vienen desmarcadas)</span></div>`;
+  if(df.ignored0) h+=`<div class="tmdbimp-info" style="color:var(--muted)">Los especiales (temporada 0) se ignoran en esta fase.</div>`;
+  if(!df.seasons.length) h+=`<div class="tmdbimp-info">TMDB no tiene temporadas con episodios para esta serie.</div>`;
+  df.seasons.forEach(d=>{
+    if(d.state==='error'){ h+=`<div class="tmdbimp-row dis"><b>Temporada ${d.n}</b><div class="tmdbimp-warn">No se ha podido obtener la información de esta temporada desde TMDB.</div></div>`; return; }
+    if(d.state==='new'){
+      h+=`<div class="tmdbimp-row${d.contiguous?'':' dis'}"><label class="tmdbimp-chk">${chk('s:'+d.n+':season',true,!d.contiguous)} <b>NUEVA TEMPORADA — Temporada ${d.n} — ${d.count} episodios</b></label>`
+        +`<div class="tmdbimp-cols"><div><div class="tmdbimp-h">TINTA</div><i>No existe</i></div><div><div class="tmdbimp-h">TMDB</div>${d.count} episodios${d.start?' · inicio '+tmdbImpFmtDate(d.start):' · sin fechas todavía'}</div></div>`
+        +(d.start?'':`<div class="tmdbimp-warn">⚠ TMDB no proporciona fechas de emisión para esta temporada.</div>`)
+        +(d.contiguous?'':`<div class="tmdbimp-note">Faltan temporadas anteriores en TINTA o quedaría fuera de orden; añade primero las anteriores.</div>`)+`</div>`;
+      return;
+    }
+    const any=!d.count.eq||!d.start.eq||d.newEps.length||d.changes.length||d.days;
+    h+=`<div class="tmdbimp-info" style="margin-bottom:4px"><b>Temporada ${d.n}</b> — TINTA: ${d.tintaTotal} episodios · TMDB: ${d.tmCount} episodios${any?'':' <span class="tmdbimp-eq">sin cambios</span>'}</div>`;
+    if(!d.count.eq) h+=row('s:'+d.n+':count','Cantidad de episodios',String(d.count.cu),String(d.count.tm),{on:d.count.on,dis:!d.count.canUpdate,note:d.count.reduce?'La temporada de TINTA aún está vacía (sin fecha ni episodios): se ajusta al número real de TMDB.':(d.count.canUpdate?'':'TINTA tiene más episodios que TMDB: no se reduce ni se elimina nada.')});
+    if(d.newEps.length) h+=row('s:'+d.n+':new',d.newEps.length===1?'NUEVO EPISODIO':'NUEVOS EPISODIOS','no existen en TINTA',d.newEps.map(e=>'Ep.'+e.num+(e.date?' '+tmdbImpFmtDate(e.date):' (sin fecha)')).join(' · '),{on:true,note:(d.count.canUpdate&&!d.count.reduce&&d.newEps.some(e=>e.num>d.tintaTotal))?'Para que se vean, deja marcada también «Cantidad de episodios».':''});
+    if(!d.start.eq) h+=row('s:'+d.n+':start','Fecha de inicio de la temporada',tmdbImpFmtDate(d.start.cu),tmdbImpFmtDate(d.start.tm),{on:d.start.on,note:d.start.cu?'⚠ TINTA ya tiene una fecha de inicio: decide si la sustituyes.':''});
+    if(d.days) h+=row('s:'+d.n+':days','Días de emisión',d.days.cu.length?dn(d.days.cu):'',dn(d.days.tm),{on:d.days.on,note:d.days.cu.length?'⚠ TINTA ya tiene días configurados: decide si los sustituyes.':''});
+    d.changes.forEach(c=>{
+      const lbl='Ep. '+c.num+(c.kind==='nodate'?' — nueva fecha disponible':' — fecha diferente');
+      h+=row('s:'+d.n+':ep:'+c.num,lbl,tmdbImpFmtDate(c.cu),tmdbImpFmtDate(c.tm),{on:c.on,note:c.kind==='manual'?'⚠ Fecha manual de TINTA: TMDB propone otra. Márcala solo si quieres sustituirla.':''});
+    });
+  });
+  return h;
+}
+function tmdbImpApplySeasons(sKeys,dr){
+  const df=dr&&dr.sdiff; if(!df||!sKeys.length||dr.type==='movie') return 0;
+  const list=_findInModal('seasonsList'); if(!list) return 0;
+  const sel=new Set(sKeys); let applied=0;
+  df.seasons.forEach(d=>{
+    if(d.state==='new'){
+      const curMax=[...list.children].reduce((a,b,i)=>Math.max(a,tmdbImpSeasonNum(b.querySelector('.season-block-title input')?.value,i)),0);
+      if(sel.has('s:'+d.n+':season')&&d.contiguous&&d.n===curMax+1){ addSeasonBlock(tmdbImpNewSeasonData(d.n,d.eps)); applied++; }
+      return;
+    }
+    if(d.state!=='ok') return;
+    const block=list.children[d.blockIdx]; if(!block) return;
+    let ov=[]; try{ ov=block.dataset.episodes?JSON.parse(block.dataset.episodes):[]; }catch(e){}
+    let touchedOv=false;
+    const put=(num,fields,extra)=>{ let o=ov.find(x=>x.num===num); if(o) Object.assign(o,fields); else ov.push({num,skipped:false,...fields,...(extra||{})}); touchedOv=true; };
+    if(sel.has('s:'+d.n+':count')&&d.count.canUpdate){ const el=block.querySelector('.s-eps'); if(el){ el.value=d.count.tm; applied++; } }
+    if(sel.has('s:'+d.n+':start')){ const el=block.querySelector('.s-start'); if(el){ el.value=d.start.tm; applied++; } }
+    if(sel.has('s:'+d.n+':days')&&d.days){ block.querySelectorAll('.s-dow .dow-chip').forEach(c=>c.classList.toggle('selected',d.days.tm.includes(parseInt(c.dataset.dow)))); applied++; }
+    if(sel.has('s:'+d.n+':new')){ d.newEpsWithDate.forEach(e=>{ put(e.num,{date:e.date,source:'tmdb'},e.runtime?{duration:e.runtime}:null); });
+      const el=block.querySelector('.s-eps');
+      const mx=d.newEps.reduce((a,e)=>Math.max(a,e.num),0);
+      if(el&&(parseInt(el.value)||0)<mx) el.value=mx;   // 1E.1.1: un episodio nuevo nunca queda por encima de totalEpisodes (invisible); jamás se reduce
+      applied++; }
+    d.changes.forEach(c=>{ if(sel.has('s:'+d.n+':ep:'+c.num)){ put(c.num,{date:c.tm,source:'tmdb'}); applied++; } });
+    if(touchedOv){ ov.sort((a,b)=>a.num-b.num); block.dataset.episodes=JSON.stringify(ov); }
+  });
+  return applied;
+}
+/* ═══ FIN 1E.1 ═══ */
+/* ═══ FIN TMDB IMPORT SEGURO ═══ */
+
 async function tmdbBulkLinkAll(btn){
   let key = tmdbGetKey();
   if(!key){ key = tmdbConfigureKey(); if(!key) return; }
@@ -4794,12 +5368,12 @@ async function tmdbBulkLinkAll(btn){
   }
   const ok = await showConfirm({
     title:`¿Buscar en TMDB ${targets.length} ficha${targets.length===1?'':'s'} sin vincular?`,
-    desc:'Se busca cada una por nombre (y año, si lo tiene puesto) y solo se guarda su ID, tipo y valoración de TMDB — no se toca sinopsis, póster ni reparto. Las que no encuentren un resultado fiable se dejan sin vincular para revisarlas a mano. Al terminar, recuerda exportar data.json.',
+    desc:'Se busca cada una por nombre (y año, si lo tiene puesto) y se guarda su ID, tipo y valoración de TMDB, además de las miniaturas de los episodios en las series que ya tengan temporadas guardadas — no se toca sinopsis, póster general ni reparto. Las que no encuentren un resultado fiable se dejan sin vincular para revisarlas a mano. Al terminar, recuerda exportar data.json.',
     okLabel:'Vincular todas'
   });
   if(!ok) return;
   const prevLabel = btn?btn.textContent:'';
-  let done=0, linked=0, skipped=0, errors=0;
+  let done=0, linked=0, skipped=0, errors=0, stillsUpdated=0;
   for(const {item,kind} of targets){
     if(btn){ btn.disabled=true; btn.textContent=`Vinculando ${done+1}/${targets.length}...`; }
     try{
@@ -4830,6 +5404,14 @@ async function tmdbBulkLinkAll(btn){
           item.tmdbRating = match.vote_average ? Math.round(match.vote_average*10)/10 : '';
           item.tmdbVoteCount = match.vote_count || 0;
           linked++;
+          // Portadas de episodios: solo para series (kind 'tv') que ya tengan temporadas guardadas.
+          // No toca sinopsis, póster general ni reparto — únicamente el "still" de cada episodio.
+          if(kind==='tv' && item.seasons && item.seasons.length){
+            try{
+              const changed = await tmdbFillEpisodeStills(match.id, item, key);
+              if(changed) stillsUpdated++;
+            }catch(e){}
+          }
         } else {
           skipped++;
         }
@@ -4846,7 +5428,49 @@ async function tmdbBulkLinkAll(btn){
   try{ renderMovies(); }catch(e){}
   try{ renderAnimeGrid(); }catch(e){}
   try{ renderRealitiesGrid(); }catch(e){}
-  alert(`✓ Listo: ${linked} vinculada${linked===1?'':'s'}, ${skipped} sin match fiable (revísalas a mano)${errors?`, ${errors} con error de conexión`:''}.\n\nRecuerda exportar data.json para publicar los cambios.`);
+  alert(`✓ Listo: ${linked} vinculada${linked===1?'':'s'}${stillsUpdated?`, ${stillsUpdated} con portadas de episodios actualizadas`:''}, ${skipped} sin match fiable (revísalas a mano)${errors?`, ${errors} con error de conexión`:''}.\n\nRecuerda exportar data.json para publicar los cambios.`);
+}
+
+// Rellena/actualiza únicamente la miniatura ("still") de cada episodio de una serie recién vinculada a
+// TMDB, sin tocar fecha, duración ni ningún otro dato de la temporada. Si el episodio no tenía override
+// guardado todavía, se crea uno nuevo con su fecha real de TMDB (genEpisodes sustituye el episodio entero
+// por el override cuando existe, así que necesita fecha siempre para no perder la fecha calculada).
+// Devuelve true si se ha añadido o cambiado alguna miniatura.
+// onlyMissing=false (por defecto, usado al vincular por primera vez): sobrescribe siempre con la de TMDB.
+// onlyMissing=true (usado al refrescar valoraciones en fichas ya vinculadas): NO toca las miniaturas que
+// ya existan, solo rellena los episodios que aún no tienen portada.
+async function tmdbFillEpisodeStills(tmdbId, item, key, onlyMissing=false){
+  let any=false;
+  for(let sIdx=0; sIdx<item.seasons.length; sIdx++){
+    const season=item.seasons[sIdx];
+    const m=/(\d+)/.exec(season.label||'');
+    const seasonNumber = m ? parseInt(m[1]) : sIdx+1;
+    const sd = await tmdbFetchSeason(tmdbId, seasonNumber, key);
+    const eps = (sd && sd.episodes) || [];
+    if(!eps.length) continue;
+    if(!season.episodes) season.episodes=[];
+    eps.forEach(e=>{
+      if(!e.still_path) return;
+      const stillUrl = TMDB_STILL_BASE+e.still_path;
+      const ov = season.episodes.find(x=>x.num===e.episode_number);
+      if(ov){
+        if(onlyMissing){
+          if(!ov.still){ ov.still=stillUrl; any=true; }
+        } else if(ov.still!==stillUrl){ ov.still=stillUrl; any=true; }
+      } else if(e.air_date){
+        // Solo creamos override nuevo si TMDB tiene fecha real; si no, se deja sin miniatura
+        // para no forzar una fecha inventada en un episodio aún sin anunciar.
+        season.episodes.push({
+          num:e.episode_number, date:e.air_date, skipped:false, source:'tmdb',
+          ...(e.runtime?{duration:e.runtime}:{}),
+          still:stillUrl,
+        });
+        any=true;
+      }
+    });
+    await new Promise(res=>setTimeout(res, 150));
+  }
+  return any;
 }
 
 async function tmdbBulkRefreshRatings(btn){
@@ -4861,12 +5485,12 @@ async function tmdbBulkRefreshRatings(btn){
   }
   const ok = await showConfirm({
     title:`¿Actualizar la valoración de ${targets.length} ficha${targets.length===1?'':'s'}?`,
-    desc:'Se consulta TMDB una a una, así que puede tardar un poco si tienes muchas fichas vinculadas. Al terminar, recuerda exportar data.json para publicar los cambios.',
+    desc:'Se consulta TMDB una a una, así que puede tardar un poco si tienes muchas fichas vinculadas. De paso, en las series con temporadas guardadas se rellenan las portadas de los episodios que todavía no tengan una (las que ya tienen portada no se tocan). Al terminar, recuerda exportar data.json para publicar los cambios.',
     okLabel:'Actualizar todas'
   });
   if(!ok) return;
   const prevLabel = btn?btn.textContent:'';
-  let done=0, changed=0, errors=0;
+  let done=0, changed=0, errors=0, stillsUpdated=0;
   for(const {item,kind} of targets){
     if(btn){ btn.disabled=true; btn.textContent=`Actualizando ${done+1}/${targets.length}...`; }
     try{
@@ -4881,6 +5505,14 @@ async function tmdbBulkRefreshRatings(btn){
       } else {
         errors++;
       }
+      // Además de la valoración, rellenamos (sin sobrescribir) las portadas de episodios que falten
+      // en las series ya vinculadas que tengan temporadas guardadas.
+      if(kind==='tv' && item.seasons && item.seasons.length){
+        try{
+          const gotStills = await tmdbFillEpisodeStills(item.tmdbId, item, key, true);
+          if(gotStills) stillsUpdated++;
+        }catch(e){}
+      }
     }catch(e){ errors++; }
     done++;
     // Pequeña pausa entre peticiones para no saturar la API de TMDB
@@ -4892,7 +5524,7 @@ async function tmdbBulkRefreshRatings(btn){
   try{ renderMovies(); }catch(e){}
   try{ renderAnimeGrid(); }catch(e){}
   try{ renderRealitiesGrid(); }catch(e){}
-  alert(`✓ Listo: ${done} ficha${done===1?'':'s'} consultada${done===1?'':'s'}, ${changed} con la nota actualizada${errors?`, ${errors} con error de conexión`:''}.\n\nRecuerda exportar data.json para publicar los cambios.`);
+  alert(`✓ Listo: ${done} ficha${done===1?'':'s'} consultada${done===1?'':'s'}, ${changed} con la nota actualizada${stillsUpdated?`, ${stillsUpdated} serie${stillsUpdated===1?'':'s'} con portadas de episodios completadas`:''}${errors?`, ${errors} con error de conexión`:''}.\n\nRecuerda exportar data.json para publicar los cambios.`);
 }
 
 async function tmdbRefreshRating(type, btn){
@@ -5232,7 +5864,7 @@ function runPasteAutofill(type){
     status.className='paste-bar-status ok';
     status.textContent='\u2713 Rellenados: '+det.join(', ')+'. Revisa y completa lo que falte.';
     ta.value='';
-    if(info.name){ var tq=document.getElementById('tmdbQuery'); if(tq) tq.value=info.name; }
+    if(info.name){ var tq=_findInModal('tmdbQuery'); if(tq) tq.value=info.name; }
   } else {
     status.className='paste-bar-status err';
     status.textContent='\u2715 No se detectaron datos. Comprueba el formato de la ficha.';

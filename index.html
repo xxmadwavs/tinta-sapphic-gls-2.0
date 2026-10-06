@@ -322,6 +322,25 @@ html[data-theme="dark"] .dark-toggle{background:var(--surface2);color:var(--gold
 }
 .navbar-x-btn:hover{background:#000;color:#fff;border-color:#000;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
 
+/* Selector de región de streaming (1C.3.7): <select> nativo, discreto */
+.region-pick{
+  position:relative;display:flex;align-items:center;flex-shrink:0;
+  background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;
+  padding:0 4px 0 10px;gap:5px;color:var(--muted);
+  transition:border-color .15s,box-shadow .15s;
+}
+.region-pick:hover{border-color:var(--accent2)}
+.region-pick:focus-within{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(201,79,124,0.1)}
+.region-pick-icon{flex-shrink:0;pointer-events:none}
+.region-pick-sel{
+  font:inherit;font-size:12.5px;font-weight:600;color:var(--text);
+  background:transparent;border:none;outline:none;cursor:pointer;
+  height:31px;padding:0 4px 0 0;max-width:120px;
+}
+.region-pick-sel:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.region-pick-sel option{color:#222;background:#fff}
+html[data-theme="dark"] .region-pick-sel option{color:#eee;background:#1b1020}
+
 /* HIDE old topbar & tabs */
 .topbar{display:none!important}
 .tabs{display:none!important}
@@ -404,6 +423,8 @@ footer{
   .navbar-right{gap:5px}
   .dark-toggle{width:30px;height:30px;font-size:13px}
   .navbar-x-btn{width:30px;height:30px}
+  .region-pick{padding:0 2px 0 8px;gap:3px}
+  .region-pick-sel{font-size:12px;height:28px;max-width:96px}
 }
 
 /* ═══ HERO ═══ */
@@ -545,6 +566,14 @@ footer{
 .month-cal-wrap.open{display:block}
 /* ═══ CONTAINER ═══ */
 .container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem;position:relative;z-index:1}
+/* FIX: body es flex (línea ~332) y sus hijos tienen flex-shrink:0, así que .container
+   nunca se encogía por debajo del ancho intrínseco de sus contenidos (p.ej. las 7
+   columnas fijas de .week-days-strip = 1084px). Eso empujaba TODA la página más
+   ancha que la ventana, y como html,body tienen overflow-x:hidden, el sobrante se
+   recortaba en silencio sin scrollbar ni aviso. Con esto, .container se ajusta al
+   ancho real disponible y las tiras internas (que ya tienen overflow-x:auto) hacen
+   scroll horizontal correctamente dentro de su propio espacio. */
+.container{min-width:0;flex-shrink:1;width:100%}
 @media(max-width:600px){
   .container{padding:1.25rem 1rem 2rem;width:100%;}
   .hero-stats{flex-wrap:wrap}
@@ -918,6 +947,19 @@ html[data-theme="dark"] .day-cell.has-eps{background:var(--surface3)}
 .similar-nav-btn:hover{background:var(--lavender-soft);border-color:var(--lavender);color:var(--lavender)}
 .similar-nav-btn:disabled{opacity:.3;cursor:default;pointer-events:none}
 .similar-scroll-wrap{position:relative;overflow:hidden}
+
+/* ═══ Flechas genéricas para tiras horizontales (mismo patrón que .similar-nav-btn) ═══ */
+.strip-nav{display:flex;gap:4px}
+.strip-nav-btn{
+  width:28px;height:28px;border-radius:50%;
+  border:1.5px solid var(--border2);background:var(--surface);
+  color:var(--muted);cursor:pointer;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;flex-shrink:0;font-family:var(--font-body);
+}
+.strip-nav-btn:hover{background:var(--lavender-soft);border-color:var(--lavender);color:var(--lavender)}
+.strip-nav-btn:disabled{opacity:.3;cursor:default;pointer-events:none}
+.week-strip-head{display:flex;justify-content:flex-end;margin-bottom:6px}
 .similar-strip{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;scroll-behavior:smooth}
 .similar-strip::-webkit-scrollbar{display:none}
 .similar-card{
@@ -1577,7 +1619,7 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 .ra-category-block{margin-bottom:1.5rem}
 .ra-category-block:last-child{margin-bottom:0}
 .ra-header{
-  display:flex;align-items:center;
+  display:flex;align-items:center;justify-content:space-between;
   margin-bottom:10px;
 }
 .ra-header-left{display:flex;align-items:center;gap:10px}
@@ -2097,6 +2139,7 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
   box-shadow:var(--shadow-sm);
 }
 .btn:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent);transform:translateY(-1px)}
+.actress-show-more-btn{display:block;margin:.85rem auto 0}
 
 /* ═══ MODAL HIERARCHY — 3 BLOQUE STRUCTURE ═══ */
 
@@ -3391,6 +3434,15 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
         <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
       </div>
+      <!-- 1C.3.7 — Selector de región de streaming del visitante (ES/MX/AR) -->
+      <div class="region-pick" id="streamingRegionPick">
+        <svg class="region-pick-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg>
+        <select class="region-pick-sel" id="streamingRegionSel" aria-label="Región de streaming" title="Región de streaming">
+          <option value="ES">🇪🇸 España</option>
+          <option value="MX">🇲🇽 México</option>
+          <option value="AR">🇦🇷 Argentina</option>
+        </select>
+      </div>
       <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()" title="Cambiar modo oscuro/claro" aria-label="Modo oscuro"></button>
       <a class="navbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X" aria-label="X / Twitter">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -3454,7 +3506,13 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
           <button class="nav-btn" id="nextWeekBtn">Semana siguiente →</button>
         </div>
       </div>
-      <div class="week-days-strip" id="weekDaysStrip"></div>
+      <div class="week-strip-head">
+        <div class="strip-nav" id="weekDaysStrip_nav">
+          <button class="strip-nav-btn" id="weekDaysStrip_prev" onclick="scrollStripBy('weekDaysStrip',-1)" title="Días anteriores" aria-label="Días anteriores">&#8592;</button>
+          <button class="strip-nav-btn" id="weekDaysStrip_next" onclick="scrollStripBy('weekDaysStrip',1)" title="Días siguientes" aria-label="Días siguientes">&#8594;</button>
+        </div>
+      </div>
+      <div class="week-days-strip" id="weekDaysStrip" onscroll="updateStripArrows('weekDaysStrip')"></div>
     </div>
     <!-- Month calendar toggle -->
     <div class="month-toggle-wrap">
@@ -3488,8 +3546,12 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
               <div class="ra-subtitle">Series GL nuevas en la base de datos</div>
             </div>
           </div>
+          <div class="strip-nav" id="recentlyAddedStrip_series_nav">
+            <button class="strip-nav-btn" id="recentlyAddedStrip_series_prev" onclick="scrollStripBy('recentlyAddedStrip_series',-1)" title="Anterior" aria-label="Anterior">&#8592;</button>
+            <button class="strip-nav-btn" id="recentlyAddedStrip_series_next" onclick="scrollStripBy('recentlyAddedStrip_series',1)" title="Siguiente" aria-label="Siguiente">&#8594;</button>
+          </div>
         </div>
-        <div class="ra-strip" id="recentlyAddedStrip_series"></div>
+        <div class="ra-strip" id="recentlyAddedStrip_series" onscroll="updateStripArrows('recentlyAddedStrip_series')"></div>
       </div>
 
       <!-- Películas & Documentales -->
@@ -3502,8 +3564,12 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
               <div class="ra-subtitle">Películas y documentales nuevos en la base de datos</div>
             </div>
           </div>
+          <div class="strip-nav" id="recentlyAddedStrip_movies_nav">
+            <button class="strip-nav-btn" id="recentlyAddedStrip_movies_prev" onclick="scrollStripBy('recentlyAddedStrip_movies',-1)" title="Anterior" aria-label="Anterior">&#8592;</button>
+            <button class="strip-nav-btn" id="recentlyAddedStrip_movies_next" onclick="scrollStripBy('recentlyAddedStrip_movies',1)" title="Siguiente" aria-label="Siguiente">&#8594;</button>
+          </div>
         </div>
-        <div class="ra-strip" id="recentlyAddedStrip_movies"></div>
+        <div class="ra-strip" id="recentlyAddedStrip_movies" onscroll="updateStripArrows('recentlyAddedStrip_movies')"></div>
       </div>
 
       <!-- Anime -->
@@ -3516,8 +3582,12 @@ html[data-theme="dark"] .chk-cta-banner{background:linear-gradient(90deg,var(--a
               <div class="ra-subtitle">Anime GL nuevo en la base de datos</div>
             </div>
           </div>
+          <div class="strip-nav" id="recentlyAddedStrip_anime_nav">
+            <button class="strip-nav-btn" id="recentlyAddedStrip_anime_prev" onclick="scrollStripBy('recentlyAddedStrip_anime',-1)" title="Anterior" aria-label="Anterior">&#8592;</button>
+            <button class="strip-nav-btn" id="recentlyAddedStrip_anime_next" onclick="scrollStripBy('recentlyAddedStrip_anime',1)" title="Siguiente" aria-label="Siguiente">&#8594;</button>
+          </div>
         </div>
-        <div class="ra-strip" id="recentlyAddedStrip_anime"></div>
+        <div class="ra-strip" id="recentlyAddedStrip_anime" onscroll="updateStripArrows('recentlyAddedStrip_anime')"></div>
       </div>
 
     </div>
@@ -3618,7 +3688,10 @@ const DINAMICAS=[
 const WLW_FOCUS=[
   {value:'pareja-principal',label:'Pareja principal'},
   {value:'pareja-secundaria',label:'Pareja secundaria'},
+  {value:'romance-secundario-protagonista',label:'Romance secundario de protagonista'},
+  {value:'subplot',label:'Subplot (pareja secundaria sin especificar)'},
   {value:'personaje',label:'Personaje'},
+  {value:'presencia-sin-desarrollo',label:'Presencia sin desarrollo'},
   {value:'subtexto',label:'Subtexto'},
   {value:'sin-etiquetar',label:'Sin etiquetar'},
 ];
@@ -3759,6 +3832,192 @@ function filtrarTropos(tropos,dinamica){
 
 let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[],checklist:{thai:{titulo:'',subtitulo:'',items:[]},china:{titulo:'',subtitulo:'',items:[]},japan:{titulo:'',subtitulo:'',items:[]},korea:{titulo:'',subtitulo:'',items:[]}}};
 
+// ── 1C.3.6 — REGIÓN DE STREAMING DEL VISITANTE ────────────────────────────────
+// Solo DETECTA la región (ES/MX/AR) con datos locales del navegador y la deja en
+// state.streamingRegion. No hay geolocalización precisa, ni llamadas externas, ni
+// efecto todavía sobre watchLinks/network/cards (eso pertenece a fases posteriores).
+// La clave 'streamingRegion' es la selección manual del VISITANTE; NO es tmdbRegion (Admin).
+const STREAMING_REGION_KEY='streamingRegion';
+const STREAMING_REGIONS=['ES','MX','AR'];
+const STREAMING_REGION_FALLBACK='ES';
+// Timezones IANA inequívocos (cada uno pertenece a un único país).
+const STREAMING_TZ_REGION=(function(){
+  const m={};
+  ['Europe/Madrid','Atlantic/Canary','Africa/Ceuta'].forEach(z=>m[z]='ES');
+  ['America/Mexico_City','America/Cancun','America/Merida','America/Monterrey','America/Matamoros',
+   'America/Chihuahua','America/Ciudad_Juarez','America/Ojinaga','America/Mazatlan','America/Hermosillo',
+   'America/Tijuana','America/Bahia_Banderas'].forEach(z=>m[z]='MX');
+  // Argentina: America/Argentina/* (Buenos_Aires, Cordoba, Salta, Jujuy, ...) + alias antiguos.
+  ['America/Buenos_Aires','America/Cordoba','America/Rosario','America/Mendoza','America/Jujuy','America/Catamarca']
+    .forEach(z=>m[z]='AR');
+  return m;
+})();
+function _streamingRegionFromTimezone(tz){
+  if(typeof tz!=='string'||!tz) return null;
+  if(tz.indexOf('America/Argentina/')===0) return 'AR';
+  return STREAMING_TZ_REGION[tz]||null;
+}
+// Idioma: señal secundaria. Solo es-ES / es-MX / es-AR; "es" a secas no decide nada.
+function _streamingRegionFromLanguages(langs){
+  for(let i=0;i<langs.length;i++){
+    const parts=String(langs[i]||'').replace(/_/g,'-').split('-');
+    if(parts[0].toLowerCase()!=='es'||parts.length<2) continue;
+    const reg=parts[parts.length-1].toUpperCase();
+    if(STREAMING_REGIONS.indexOf(reg)!==-1) return reg;
+  }
+  return null;
+}
+// Devuelve exclusivamente 'ES' | 'MX' | 'AR'. Orden: 1) selección manual válida,
+// 2) timezone inequívoco, 3) idioma es-XX, 4) fallback 'ES'. No escribe en localStorage.
+function getVisitorStreamingRegion(){
+  try{
+    const saved=String(localStorage.getItem(STREAMING_REGION_KEY)||'').trim().toUpperCase();
+    if(STREAMING_REGIONS.indexOf(saved)!==-1) return saved;
+  }catch(e){}
+  try{
+    const r=_streamingRegionFromTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+    if(r) return r;
+  }catch(e){}
+  try{
+    const langs=(navigator.languages&&navigator.languages.length)?Array.from(navigator.languages):[navigator.language];
+    const r=_streamingRegionFromLanguages(langs);
+    if(r) return r;
+  }catch(e){}
+  return STREAMING_REGION_FALLBACK;
+}
+// Se resuelve UNA vez al arrancar la página y se reutiliza durante toda la sesión.
+state.streamingRegion=getVisitorStreamingRegion();
+
+// ── 1C.3.7 — SELECTOR MANUAL DE REGIÓN ────────────────────────────────────────
+// Única vía para cambiar la región del visitante. Fuente de verdad: state.streamingRegion
+// + localStorage.streamingRegion. NO toca watchLinks/network/networkUrl (1C.3.8/1C.3.9):
+// las fases siguientes pueden escuchar el evento 'streamingregionchange' o leer el state.
+function _syncStreamingRegionSelector(){
+  const sel=document.getElementById('streamingRegionSel');
+  if(sel&&sel.value!==state.streamingRegion) sel.value=state.streamingRegion;
+}
+// Devuelve true si se aceptó la región; false si es inválida (no modifica nada).
+function setVisitorStreamingRegion(region){
+  if(typeof region!=='string') return false;
+  const r=region.trim().toUpperCase();
+  if(STREAMING_REGIONS.indexOf(r)===-1) return false;
+  const prev=state.streamingRegion;
+  state.streamingRegion=r;
+  try{ localStorage.setItem(STREAMING_REGION_KEY,r); }catch(e){}
+  _syncStreamingRegionSelector();
+  if(prev!==r){
+    try{ document.dispatchEvent(new CustomEvent('streamingregionchange',{detail:{region:r,previous:prev}})); }catch(e){}
+  }
+  return true;
+}
+(function(){
+  const sel=document.getElementById('streamingRegionSel');
+  if(!sel) return;
+  _syncStreamingRegionSelector(); // reflejo inicial; NO escribe en localStorage
+  sel.addEventListener('change',function(){
+    if(!setVisitorStreamingRegion(sel.value)) _syncStreamingRegionSelector();
+  });
+})();
+
+// ── 1C.3.8 — resolveWatchLinks(item) ──────────────────────────────────────────
+// Función central de LECTURA (síncrona, local, sin red, sin mutar) que decide qué enlaces
+// de streaming usa la interfaz pública para una ficha. Aún NO la usa ningún renderizador
+// (la sustitución de las llamadas existentes pertenece a 1C.3.9).
+// Orden del resultado: 1) item.streaming[state.streamingRegion]  2) item.watchLinks
+// (editoriales)  3) fallback legacy networkUrl (solo si no hay ningún enlace con URL).
+// Región: SOLO state.streamingRegion, sin fallback a otra región. No inventa URLs.
+// Devuelve [{name,url,type?}]: las entradas regionales llevan siempre 'type'
+// (flatrate|free|ads|rent|buy; '' si es inválido); las manuales/legacy conservan sus campos
+// (name,url) y NO reciben 'type'.
+const WATCH_LINK_TYPES=['flatrate','free','ads','rent','buy'];
+function _wlNameKey(name){
+  return String(name).replace(/\s*\([^)]*\)/g,'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/\s+/g,' ').trim().toLowerCase();
+}
+// Devuelve {key, host, generic}. generic = URL "raíz" (sin ruta ni query), p. ej. https://www.netflix.com
+function _wlUrlInfo(url){
+  const raw=String(url==null?'':url).trim();
+  if(!raw) return {key:'',host:'',generic:false,empty:true};
+  try{
+    const u=new URL(raw);
+    const host=u.hostname.toLowerCase().replace(/^www\./,'');
+    const path=u.pathname.replace(/\/+$/,'');
+    const generic=(path===''&&!u.search);
+    return {key:host+path+u.search,host:host,generic:generic,empty:false};
+  }catch(e){
+    return {key:raw.toLowerCase().replace(/\/+$/,''),host:'',generic:false,empty:false};
+  }
+}
+function _wlIsObj(x){ return x!==null&&typeof x==='object'&&!Array.isArray(x); }
+function resolveWatchLinks(item){
+  const out=[]; // entradas internas: {link, src:'r'|'m', nk, ui}
+  if(!_wlIsObj(item)) return [];
+  const region=(typeof state!=='undefined'&&state&&typeof state.streamingRegion==='string')?state.streamingRegion:'';
+  function copyLink(l,name,url){
+    const c={};
+    Object.keys(l).forEach(k=>{ const v=l[k]; if(v===null||typeof v!=='object'&&typeof v!=='function') c[k]=v; });
+    c.name=name; c.url=url;
+    return c;
+  }
+  // 1) Streaming regional (solo la región elegida; nunca otra)
+  const st=item.streaming;
+  if(_wlIsObj(st)&&region&&Object.prototype.hasOwnProperty.call(st,region)&&Array.isArray(st[region])){
+    st[region].forEach(e=>{
+      if(!_wlIsObj(e)||typeof e.name!=='string'||!e.name.trim()) return;
+      const url=typeof e.url==='string'?e.url:'';
+      const t=typeof e.type==='string'?e.type.trim().toLowerCase():'';
+      const type=WATCH_LINK_TYPES.indexOf(t)!==-1?t:'';
+      const nk=_wlNameKey(e.name), ui=_wlUrlInfo(url);
+      // Duplicado exacto regional: mismo nombre + misma URL + mismo tipo (tipos distintos se conservan)
+      if(out.some(o=>o.src==='r'&&o.nk===nk&&o.ui.key===ui.key&&o.link.type===type)) return;
+      out.push({link:{name:e.name,url:url,type:type},src:'r',nk:nk,ui:ui});
+    });
+  }
+  // Alta de un enlace manual/legacy aplicando la deduplicación segura.
+  function addManual(l){
+    if(!_wlIsObj(l)||typeof l.name!=='string'||!l.name.trim()) return;
+    const url=typeof l.url==='string'?l.url:'';
+    const nk=_wlNameKey(l.name), ui=_wlUrlInfo(url);
+    // a) mismo nombre + misma URL normalizada (incluye ambas vacías) => duplicado
+    if(out.some(o=>o.nk===nk&&o.ui.key===ui.key)) return;
+    // a2) enlace manual sin URL de una plataforma ya presente: no aporta información, no se añade
+    if(ui.empty&&out.some(o=>o.nk===nk)) return;
+    // b) la regional del mismo nombre solo trae URL vacía o raíz del mismo sitio:
+    //    el enlace manual (más específico) la completa, sin duplicar plataforma y conservando su type
+    if(!ui.empty){
+      let upgraded=false;
+      out.forEach(o=>{
+        if(o.src!=='r'||o.nk!==nk) return;
+        if(o.ui.empty||(o.ui.generic&&o.ui.host&&o.ui.host===ui.host)){
+          o.link.url=url; o.ui=ui; upgraded=true;
+        }
+      });
+      if(upgraded) return;
+    }
+    out.push({link:copyLink(l,l.name,url),src:'m',nk:nk,ui:ui});
+  }
+  // 2) watchLinks editoriales/manuales
+  if(Array.isArray(item.watchLinks)) item.watchLinks.forEach(addManual);
+  // 3) Fallback legacy: solo si no hay ningún enlace útil (con URL)
+  if(!out.some(o=>!o.ui.empty)&&typeof item.networkUrl==='string'&&item.networkUrl.trim()){
+    const nm=(typeof item.network==='string'&&item.network.trim())?item.network:'Ver';
+    addManual({name:nm,url:item.networkUrl});
+  }
+  return out.map(o=>o.link);
+}
+
+// ── 1C.3.9.A — helper de presentación para openSeries()/openMovie() ──────────────
+// Recibe el resultado de resolveWatchLinks(item) y devuelve SOLO enlaces navegables (URL no vacía),
+// de modo que nunca se genere <a href="">. Conserva name/url/type (rent/buy/free/ads con URL no se
+// eliminan). Mantiene la etiqueta visual anterior del fallback legacy sin network ('Ver serie' /
+// 'Ver película' en lugar de 'Ver'). No muta nada, no inventa URLs.
+function _wlDisplayLinks(links,item,fallbackLabel){
+  if(!Array.isArray(links)) return [];
+  const nu=(item&&typeof item.networkUrl==='string')?item.networkUrl:null;
+  return links.filter(l=>l&&typeof l.url==='string'&&l.url.trim())
+    .map(l=>(l.name==='Ver'&&nu!==null&&l.url===nu)?Object.assign({},l,{name:fallbackLabel}):l);
+}
+
 // ── LOGOS DE PLATAFORMAS ──────────────────────────────────────────
 // Logos predefinidos (favicons oficiales vía Google S2)
 // Mapa canónico: una sola entrada por plataforma (nombre normalizado → logo)
@@ -3852,6 +4111,7 @@ function buildWatchLinksHtml(links, accentColor, accentBorder, accentSoft){
     <div class="watch-links">${btns}</div>
   </div>`;
 }
+
 
 // ═══ SESSION PERSISTENCE ═══
 const SS_KEY='tintaSapphicState';
@@ -4339,6 +4599,7 @@ function renderWeekView(){
   });
 
   document.getElementById('weekDaysStrip').innerHTML=html;
+  setTimeout(()=>updateStripArrows('weekDaysStrip'), 30);
 }
 
 function toggleMonthCal(){
@@ -4546,7 +4807,10 @@ function seriesCardHtml(s, si){
 
   // ── Estado y próximo episodio
   let statusPill='';
-  if(todayEps.length){
+  const cancelLabels={cancelled:'Cancelada',limbo:'En limbo',closed:'Prod. cerrada'};
+  if(s.cancelStatus){
+    statusPill=`<div class="sc-status-pill cancelled" style="background:#c94040;color:#fff">${cancelLabels[s.cancelStatus]||'Cancelada'}</div>`;
+  } else if(todayEps.length){
     statusPill=`<div class="sc-status-pill today">Hoy · ${epLabel(todayEps[0],seasons)}</div>`;
   } else if(next){
     const du=daysUntil(next.date);
@@ -4620,6 +4884,41 @@ const COUNTRY_REGIONS={
   oceania:['Australia','Nueva Zelanda'],
 };
 const REGION_LABELS={'asia':'Asia','europa':'Europa','america':'América','oceania':'Oceanía','otros':'Otros'};
+
+/** Alias de nombres de cadena/streaming crudos (como vienen de TMDB/JustWatch) a un nombre canónico único,
+ * para no tratar "Amazon Prime Video, Amazon Prime Video with Ads" como un bloque distinto de "Prime Video". */
+const NETWORK_ALIASES={
+  'Amazon Prime Video':'Prime Video','Amazon Prime Video with Ads':'Prime Video','Amazon Video':'Prime Video',
+  'Apple TV Store':'Apple TV','Apple TV Amazon Channel':'Apple TV',
+  'AMC Plus Apple TV channel':'AMC+','AMC+ Amazon Channel':'AMC+',
+  'Acontra Plus Amazon Channel':'Acontra Plus',
+  'BritBox Amazon Channel':'BritBox','Britbox Apple TV channel':'BritBox',
+  'Discovery+ Amazon Channel':'Discovery+',
+  'Disney Plus':'Disney+',
+  'HBO Max Amazon Channel':'HBO Max',
+  'Howdy Amazon Channel':'Howdy',
+  'MUBI Amazon Channel':'MUBI',
+  'Movistar Plus+ Ficción Total':'Movistar Plus+',
+  'Netflix Standard with Ads':'Netflix',
+  'PBS Masterpiece Amazon Channel':'PBS',
+  'Paramount Plus':'Paramount+','Paramount+ Amazon Channel':'Paramount+','Paramount Plus Apple TV channel':'Paramount+','Paramount Plus Premium':'Paramount+','Paramount+ Roku Premium Channel':'Paramount+',
+  'Rakuten Viki':'Viki',
+  'vigloo':'Vigloo',
+  'Yotube':'YouTube','Youtube':'YouTube','youtube':'YouTube','Youtube (Pago)':'YouTube','YoutubeFull Version':'YouTube',
+  'iQiyi':'iQIYI',
+  'jTBC':'JTBC',
+};
+/** Dado un string de cadena/streaming (posiblemente varias separadas por comas), devuelve la lista
+ * de plataformas individuales ya normalizadas (sin bloques conjuntos). */
+function parseNetworkParts(network){
+  if(!network) return [];
+  const seen=[];
+  network.split(',').map(s=>s.trim()).filter(Boolean).forEach(raw=>{
+    const canon=NETWORK_ALIASES[raw]||raw;
+    if(!seen.includes(canon)) seen.push(canon);
+  });
+  return seen;
+}
 
 /** Dado un string de país (puede ser 'A / B'), devuelve los fragmentos atómicos. */
 function parseCountryParts(country){
@@ -4867,7 +5166,7 @@ function buildSeriesSidebarHtml(active){
   active.forEach(s=>{ parseCountryParts(s.country||'').forEach(p=>{ if(p) countryMap[p]=(countryMap[p]||0)+1; }); });
   const countryOpts=Object.keys(countryMap).map(c=>({value:c,label:`${countryFlag(c)} ${c}`,count:countryMap[c]})).sort(az);
 
-  const networkMap=_countByGetter(active,s=>s.network||'');
+  const networkMap=_countByGetter(active,s=>parseNetworkParts(s.network));
   const networkOpts=Object.keys(networkMap).map(n=>({value:n,label:n,count:networkMap[n]})).sort(az);
 
   const yearMap={};
@@ -4917,6 +5216,12 @@ function toggleNsExpanded(ns,key,val){
   FILTER_NS_REGISTRY[ns].expanded[key]=val;
   FILTER_NS_REGISTRY[ns].render();
 }
+function toggleNsBooleanFilter(ns,key){
+  const cfg=FILTER_NS_REGISTRY[ns];
+  cfg.filters[key]=!cfg.filters[key];
+  cfg.resetPage();
+  cfg.render();
+}
 function buildNsCheckGroup(ns,filterKey,title,options){
   if(!options.length) return '';
   const cfg=FILTER_NS_REGISTRY[ns];
@@ -4934,7 +5239,7 @@ function buildNsCheckGroup(ns,filterKey,title,options){
 const NS_DEFAULTS={
   movies:{q:'',countries:[],sort:'date',book:'all',wlwFocus:[],genres:[],years:[],networks:[],tropos:[],dinamicas:[],moods:[]},
   anime:{q:'',countries:[],sort:'az',book:'all',wlwFocus:[],genres:[],years:[],networks:[],tropos:[],dinamicas:[],moods:[]},
-  realities:{q:'',countries:[],sort:'az',wlwFocus:[],genres:[],years:[],networks:[],tropos:[],dinamicas:[],moods:[]},
+  realities:{q:'',countries:[],sort:'az',wlwFocus:[],genres:[],years:[],networks:[],tropos:[],dinamicas:[],moods:[],biFormat:false},
   documentales:{q:'',countries:[],sort:'az',wlwFocus:[],genres:[],years:[],networks:[],tropos:[],dinamicas:[],moods:[]}
 };
 function clearNsFilters(ns){
@@ -4961,7 +5266,7 @@ function buildNsSidebarHtml(ns,active){
   const countryMap={};
   active.forEach(s=>{ parseCountryParts(s.country||'').forEach(p=>{ if(p) countryMap[p]=(countryMap[p]||0)+1; }); });
   const countryOpts=Object.keys(countryMap).map(c=>({value:c,label:`${countryFlag(c)} ${c}`,count:countryMap[c]})).sort(az);
-  const networkMap=_countByGetter(active,s=>s.network||'');
+  const networkMap=_countByGetter(active,s=>parseNetworkParts(s.network));
   const networkOpts=Object.keys(networkMap).map(n=>({value:n,label:n,count:networkMap[n]})).sort(az);
   const yearMap={};
   active.forEach(s=>{
@@ -4969,6 +5274,12 @@ function buildNsSidebarHtml(ns,active){
     if(y) yearMap[y]=(yearMap[y]||0)+1;
   });
   const yearOpts=Object.keys(yearMap).sort((a,b)=>b.localeCompare(a)).map(y=>({value:y,label:y,count:yearMap[y]}));
+  const biFormatGroup=(ns==='realities')?`<div class="fside-group"><div class="fside-title">Formato</div>
+    <label class="fside-row">
+      <input type="checkbox" ${FILTER_NS_REGISTRY[ns].filters.biFormat?'checked':''} onchange="toggleNsBooleanFilter('${ns}','biFormat')">
+      <span class="fside-label">Formato bi (posible)</span>
+    </label>
+  </div>`:'';
   return `<button class="fside-clear-all" onclick="clearNsFilters('${ns}')">Limpiar filtros</button>
     ${buildNsCheckGroup(ns,'wlwFocus','Foco sáfico',wlwOpts)}
     ${buildNsCheckGroup(ns,'genres','Género',genreOpts)}
@@ -4977,7 +5288,8 @@ function buildNsSidebarHtml(ns,active){
     ${buildNsCheckGroup(ns,'networks','Cadena',networkOpts)}
     ${buildNsCheckGroup(ns,'tropos','Tropo',tropoOpts)}
     ${buildNsCheckGroup(ns,'dinamicas','Dinámica',dinamicaOpts)}
-    ${buildNsCheckGroup(ns,'moods','Mood',moodOpts)}`;
+    ${buildNsCheckGroup(ns,'moods','Mood',moodOpts)}
+    ${biFormatGroup}`;
 }
 
 function renderListResults(){
@@ -4999,6 +5311,7 @@ function renderListResults(){
 
   // "En emisión": ya ha emitido al menos 1 ep Y tiene episodios futuros pendientes
   const airing=filtered.filter(s=>{
+    if(s.cancelStatus) return false;
     const eps=genEps(s);
     const hasAired=eps.some(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped);
     const hasFuture=eps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
@@ -5011,7 +5324,10 @@ function renderListResults(){
   });
 
   // "Próximamente" (dentro de Series): todos los episodios son futuros, ninguno emitido aún
+  // Las series marcadas manualmente como canceladas / en limbo / productora cerrada
+  // no cuentan aquí: su estado vive solo en la pestaña "Canceladas".
   const notStarted=filtered.filter(s=>{
+    if(s.cancelStatus) return false;
     const eps=genEps(s);
     const hasAired=eps.some(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped);
     const hasFuture=eps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
@@ -5020,6 +5336,7 @@ function renderListResults(){
 
   // "Emitidas": sin episodios futuros
   const finished=filtered.filter(s=>{
+    if(s.cancelStatus) return false;
     const eps=genEps(s);
     return !eps.some(e=>new Date(e.date+'T12:00:00')>now&&!e.skipped);
   });
@@ -5158,7 +5475,7 @@ function applySeriesFilters(arr){
   if(seriesFilters.dinamicas&&seriesFilters.dinamicas.length) r=r.filter(s=>s.dinamica&&s.dinamica.some(d=>seriesFilters.dinamicas.includes(d)));
   if(seriesFilters.moods&&seriesFilters.moods.length) r=r.filter(s=>s.moods&&s.moods.some(m=>seriesFilters.moods.includes(m)));
   if(seriesFilters.wlwFocus&&seriesFilters.wlwFocus.length) r=r.filter(s=>seriesFilters.wlwFocus.includes(seriesWlwFocus(s)));
-  if(seriesFilters.networks&&seriesFilters.networks.length) r=r.filter(s=>s.network&&seriesFilters.networks.includes(s.network));
+  if(seriesFilters.networks&&seriesFilters.networks.length) r=r.filter(s=>parseNetworkParts(s.network).some(n=>seriesFilters.networks.includes(n)));
   if(seriesFilters.types&&seriesFilters.types.length) r=r.filter(s=>seriesFilters.types.includes(s.seriesType||'serie'));
   if(seriesFilters.region){
     const regionCountries=COUNTRY_REGIONS[seriesFilters.region]||[];
@@ -5202,7 +5519,7 @@ function renderList(){
         <div class="filter-group">
           <span class="filter-label">Libro</span>
           <select id="seriesBookSel" class="filter-select" title="Libro" onchange="seriesFilters.book=this.value;resetSeriesPages();renderListResults()">
-            <option value="all">Libro</option>
+            <option value="all">Todos</option>
             <option value="yes">Con libro</option>
             <option value="no">Sin libro</option>
           </select>
@@ -5212,7 +5529,7 @@ function renderList(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="seriesFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('seriesFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('seriesFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
         <div id="seriesStatusPillbar"></div>
         <div id="listResults"></div>
       </div>
@@ -5295,7 +5612,7 @@ function renderUpcoming(){
         <div class="filter-group">
           <span class="filter-label">Libro</span>
           <select id="upcomingBookSel" class="filter-select" onchange="upcomingFilters.book=this.value;resetUpcomingPage();renderUpcomingResults()">
-            <option value="all">Libro</option>
+            <option value="all">Todos</option>
             <option value="yes">Con libro</option>
             <option value="no">Sin libro</option>
           </select>
@@ -5426,7 +5743,7 @@ function renderUpcomingResults(){
     const posterEl=s.poster
       ?`<div class="upcoming-poster-wrap"><img class="upcoming-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=upcoming-poster-ph></div>'"></div>`
       :`<div class="upcoming-poster-wrap"><div class="upcoming-poster-ph"></div></div>`;
-    const links=s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver',url:s.networkUrl}]:[]);
+    const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver');
     const watchRow=links.length?`<div class="upcoming-watch-row">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
     html+=`<div class="upcoming-card" onclick="openUpcoming(${si})">
       ${posterEl}
@@ -5691,7 +6008,8 @@ function openSeries(si){
     metaGrid+=`<div class="meta-item"><div class="meta-key">Por episodio</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}</div></div>`.replace('</div></div>',`${fmtDuration(durInfo.epDuration)}</div></div>`);
     if(durInfo.totalMins) metaGrid+=`<div class="meta-item"><div class="meta-key">Total serie</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.totalMins)}</div></div>`;
   }
-  const watchLinksHtml=buildWatchLinksHtml(s.watchLinks&&s.watchLinks.length?s.watchLinks:(s.networkUrl?[{name:s.network||'Ver serie',url:s.networkUrl}]:[]),'','','');
+  const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver serie');
+  const watchLinksHtml=buildWatchLinksHtml(links,'','','');
   const progressBlock=`<div class="modal-progress-block">
     <div class="modal-progress-header">
       <span class="modal-progress-label">${aired} / ${totalEps} emitidos · ${activeDays}</span>
@@ -5968,7 +6286,8 @@ function openMovie(mi){
       ${editions.length?`<div class="book-editions-row">${edPills}</div>`:''}
     </div></div>`;
   })();
-  const watchLinksHtml=buildWatchLinksHtml(mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver película',url:mv.networkUrl}]:[]),'var(--movie-accent)','rgba(124,92,191,0.28)','var(--movie-bar)');
+  const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver película');
+  const watchLinksHtml=buildWatchLinksHtml(links,'var(--movie-accent)','rgba(124,92,191,0.28)','var(--movie-bar)');
   const castHtml=buildCastHtml(mv.cast||[], mv.couples||[]);
   const castCount=mv.cast&&mv.cast.length?mv.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
@@ -6033,7 +6352,7 @@ function applyMoviesFilters(arr){
   if(moviesFilters.years&&moviesFilters.years.length) r=r.filter(mv=>mv.date&&moviesFilters.years.includes(mv.date.substring(0,4)));
   if(moviesFilters.genres&&moviesFilters.genres.length) r=r.filter(mv=>mv.genres&&mv.genres.some(g=>moviesFilters.genres.includes(g)));
   if(moviesFilters.wlwFocus&&moviesFilters.wlwFocus.length) r=r.filter(mv=>moviesFilters.wlwFocus.includes(seriesWlwFocus(mv)));
-  if(moviesFilters.networks&&moviesFilters.networks.length) r=r.filter(mv=>mv.network&&moviesFilters.networks.includes(mv.network));
+  if(moviesFilters.networks&&moviesFilters.networks.length) r=r.filter(mv=>parseNetworkParts(mv.network).some(n=>moviesFilters.networks.includes(n)));
   if(moviesFilters.tropos&&moviesFilters.tropos.length) r=r.filter(mv=>mv.tropos&&mv.tropos.some(t=>moviesFilters.tropos.includes(t)));
   if(moviesFilters.dinamicas&&moviesFilters.dinamicas.length) r=r.filter(mv=>mv.dinamica&&mv.dinamica.some(d=>moviesFilters.dinamicas.includes(d)));
   if(moviesFilters.moods&&moviesFilters.moods.length) r=r.filter(mv=>mv.moods&&mv.moods.some(m=>moviesFilters.moods.includes(m)));
@@ -6052,7 +6371,7 @@ function movieCardHtml(mv){
   const posterEl=mv.poster
     ?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'"></div>`
     :`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph"></div></div>`;
-  const links=mv.watchLinks&&mv.watchLinks.length?mv.watchLinks:(mv.networkUrl?[{name:mv.network||'Ver',url:mv.networkUrl}]:[]);
+  const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver');
   const watchRow=links.length?`<div class="movie-card-watch">${links.map(l=>`<a class="card-watch-pill" style="background:var(--movie-bar);color:var(--movie-accent);border-color:var(--movie-border)" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
   const dateEl=mv.date
     ?(isPast?`<div class="movie-card-date" style="color:var(--teal)">✓ ${fmtDate(mv.date)}</div>`
@@ -6108,7 +6427,7 @@ function renderMovies(){
         <div class="filter-group">
           <span class="filter-label">Libro</span>
           <select id="moviesBookSel" class="filter-select" onchange="moviesFilters.book=this.value;resetMoviesPage();renderMoviesResults()">
-            <option value="all">Libro</option>
+            <option value="all">Todos</option>
             <option value="yes">Con libro</option>
             <option value="no">Sin libro</option>
           </select>
@@ -6119,7 +6438,7 @@ function renderMovies(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="moviesFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('moviesFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('moviesFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
         <div id="moviesResults"></div>
       </div>
     </div>`;
@@ -6611,7 +6930,7 @@ function applyAnimeFilters(arr){
   if(animeFilters.years&&animeFilters.years.length) r=r.filter(s=>{ const y=(s.startDate||s.date||(s.year?String(s.year):'')).substring(0,4); return animeFilters.years.includes(y); });
   if(animeFilters.genres&&animeFilters.genres.length) r=r.filter(s=>s.genres&&s.genres.some(g=>animeFilters.genres.includes(g)));
   if(animeFilters.wlwFocus&&animeFilters.wlwFocus.length) r=r.filter(s=>animeFilters.wlwFocus.includes(seriesWlwFocus(s)));
-  if(animeFilters.networks&&animeFilters.networks.length) r=r.filter(s=>s.network&&animeFilters.networks.includes(s.network));
+  if(animeFilters.networks&&animeFilters.networks.length) r=r.filter(s=>parseNetworkParts(s.network).some(n=>animeFilters.networks.includes(n)));
   if(animeFilters.tropos&&animeFilters.tropos.length) r=r.filter(s=>s.tropos&&s.tropos.some(t=>animeFilters.tropos.includes(t)));
   if(animeFilters.dinamicas&&animeFilters.dinamicas.length) r=r.filter(s=>s.dinamica&&s.dinamica.some(d=>animeFilters.dinamicas.includes(d)));
   if(animeFilters.moods&&animeFilters.moods.length) r=r.filter(s=>s.moods&&s.moods.some(m=>animeFilters.moods.includes(m)));
@@ -6671,7 +6990,7 @@ function renderAnime(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="animeFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('animeFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('animeFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
         <div id="animeResults"></div>
         <div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,rgba(139,114,190,0.07),rgba(201,79,124,0.05));border:1.5px dashed rgba(139,114,190,0.25);border-radius:var(--radius-lg);text-align:center">
           <div style="font-size:13px;font-weight:700;color:var(--lavender);margin-bottom:4px">¿Falta algún anime?</div>
@@ -6777,6 +7096,7 @@ function openRichDetail(item, opts){
   let badgeHtml='';
   if(item.seasons&&item.seasons.length>1) badgeHtml+=`<span class="badge" style="background:${accentSoft};color:${accentColor}">${item.seasons.length} temporadas</span>`;
   badgeHtml+=`<span class="badge" style="background:${accentSoft};color:${accentColor}">${typeIcon} ${typeLabel}</span>`;
+  if(item.biFormat) badgeHtml+=`<span class="badge" style="background:#fce8f1;color:#c94f7c">Formato bi</span>`;
 
   // Próximo episodio / progreso (solo series con episodios)
   let nextBadgeHtml='', progressBlock='';
@@ -6952,10 +7272,11 @@ function applyRealitiesFilters(arr){
   if(realitiesFilters.years&&realitiesFilters.years.length) r=r.filter(s=>{ const y=(s.startDate||s.date||(s.year?String(s.year):'')).substring(0,4); return realitiesFilters.years.includes(y); });
   if(realitiesFilters.genres&&realitiesFilters.genres.length) r=r.filter(s=>s.genres&&s.genres.some(g=>realitiesFilters.genres.includes(g)));
   if(realitiesFilters.wlwFocus&&realitiesFilters.wlwFocus.length) r=r.filter(s=>realitiesFilters.wlwFocus.includes(seriesWlwFocus(s)));
-  if(realitiesFilters.networks&&realitiesFilters.networks.length) r=r.filter(s=>s.network&&realitiesFilters.networks.includes(s.network));
+  if(realitiesFilters.networks&&realitiesFilters.networks.length) r=r.filter(s=>parseNetworkParts(s.network).some(n=>realitiesFilters.networks.includes(n)));
   if(realitiesFilters.tropos&&realitiesFilters.tropos.length) r=r.filter(s=>s.tropos&&s.tropos.some(t=>realitiesFilters.tropos.includes(t)));
   if(realitiesFilters.dinamicas&&realitiesFilters.dinamicas.length) r=r.filter(s=>s.dinamica&&s.dinamica.some(d=>realitiesFilters.dinamicas.includes(d)));
   if(realitiesFilters.moods&&realitiesFilters.moods.length) r=r.filter(s=>s.moods&&s.moods.some(m=>realitiesFilters.moods.includes(m)));
+  if(realitiesFilters.biFormat) r=r.filter(s=>s.biFormat);
   if(realitiesFilters.sort==='az') r.sort((a,b)=>a.name.localeCompare(b.name,'es'));
   else if(realitiesFilters.sort==='za') r.sort((a,b)=>b.name.localeCompare(a.name,'es'));
   else if(realitiesFilters.sort==='date') r.sort((a,b)=>((b.startDate||b.date||'')).localeCompare((a.startDate||a.date||'')));
@@ -7002,7 +7323,7 @@ function renderRealities(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="realitiesFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('realitiesFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('realitiesFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
         <div id="realitiesResults"></div>
         <div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,rgba(74,173,160,0.07),rgba(201,79,124,0.05));border:1.5px dashed rgba(74,173,160,0.25);border-radius:var(--radius-lg);text-align:center">
           <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">¿Conoces más realities con representación GL?</div>
@@ -7025,7 +7346,7 @@ function renderRealitiesResults(){
   });
 
   const clearBtn=document.getElementById('realitiesClearBtn');
-  const hasActiveFilter=['wlwFocus','genres','years','countries','networks','tropos','dinamicas','moods'].some(k=>realitiesFilters[k]&&realitiesFilters[k].length);
+  const hasActiveFilter=['wlwFocus','genres','years','countries','networks','tropos','dinamicas','moods'].some(k=>realitiesFilters[k]&&realitiesFilters[k].length)||!!realitiesFilters.biFormat;
   if(clearBtn) clearBtn.style.display=hasActiveFilter?'':'none';
 
   const activeBase=realitiesSubtab==='movies'?getRealitiesMoviesData():getRealitiesSeriesData();
@@ -7051,7 +7372,7 @@ function renderRealitiesResults(){
       html+=`<div class="series-card" onclick="openRealityDetail('series','${s.id||s.name}')">
         ${posterEl}
         <div class="series-card-body">
-          <div class="card-badges">${seasonsCount}${s.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(s.country)} ${s.country}</span>`:''}</div>
+          <div class="card-badges">${seasonsCount}${s.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(s.country)} ${s.country}</span>`:''}${s.biFormat?'<span class="badge" style="background:#fce8f1;color:#c94f7c">Formato bi</span>':''}</div>
           <div class="series-card-name">${s.name}</div>
           <div class="series-card-meta">${[s.network,year?''+year:null,s.totalEpisodes?''+s.totalEpisodes+' ep.':null].filter(Boolean).join(' · ')}</div>
           ${genrePills}
@@ -7079,7 +7400,7 @@ function renderRealitiesResults(){
       html+=`<div class="movie-card" onclick="openRealityDetail('movie','${mv.id||mv.name}')">
         ${posterEl}
         <div class="movie-card-body">
-          <div class="card-badges">${mv.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
+          <div class="card-badges">${mv.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(mv.country)} ${mv.country}</span>`:''}${mv.biFormat?'<span class="badge" style="background:#fce8f1;color:#c94f7c">Formato bi</span>':''}</div>
           <div class="movie-card-name">${mv.name}</div>
           <div class="movie-card-meta">Documental · ${dateStr}${mv.totalEpisodes?' · '+mv.totalEpisodes+' ep.':''}</div>
           ${genrePills}
@@ -7126,7 +7447,7 @@ function applyDocumentalesFilters(arr){
   if(documentalesFilters.years&&documentalesFilters.years.length) r=r.filter(s=>{ const y=(s.startDate||s.date||(s.year?String(s.year):'')).substring(0,4); return documentalesFilters.years.includes(y); });
   if(documentalesFilters.genres&&documentalesFilters.genres.length) r=r.filter(s=>s.genres&&s.genres.some(g=>documentalesFilters.genres.includes(g)));
   if(documentalesFilters.wlwFocus&&documentalesFilters.wlwFocus.length) r=r.filter(s=>documentalesFilters.wlwFocus.includes(seriesWlwFocus(s)));
-  if(documentalesFilters.networks&&documentalesFilters.networks.length) r=r.filter(s=>s.network&&documentalesFilters.networks.includes(s.network));
+  if(documentalesFilters.networks&&documentalesFilters.networks.length) r=r.filter(s=>parseNetworkParts(s.network).some(n=>documentalesFilters.networks.includes(n)));
   if(documentalesFilters.tropos&&documentalesFilters.tropos.length) r=r.filter(s=>s.tropos&&s.tropos.some(t=>documentalesFilters.tropos.includes(t)));
   if(documentalesFilters.dinamicas&&documentalesFilters.dinamicas.length) r=r.filter(s=>s.dinamica&&s.dinamica.some(d=>documentalesFilters.dinamicas.includes(d)));
   if(documentalesFilters.moods&&documentalesFilters.moods.length) r=r.filter(s=>s.moods&&s.moods.some(m=>documentalesFilters.moods.includes(m)));
@@ -7171,7 +7492,7 @@ function renderDocumentales(){
     <div class="filters-layout">
       <aside class="filters-sidebar" id="documentalesFiltersSidebar"></aside>
       <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('documentalesFiltersSidebar').classList.toggle('mob-open')">Filtros</button>
+        <button class="fside-mobile-toggle" onclick="document.getElementById('documentalesFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
         <div id="documentalesResults"></div>
         <div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,rgba(74,173,160,0.07),rgba(201,79,124,0.05));border:1.5px dashed rgba(74,173,160,0.25);border-radius:var(--radius-lg);text-align:center">
           <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">¿Conoces más documentales GL?</div>
@@ -7215,7 +7536,7 @@ function renderDocumentalesResults(){
     html+=`<div class="movie-card" onclick="openRealityDetail('movie','${mv.id||mv.name}')">
       ${posterEl}
       <div class="movie-card-body">
-        <div class="card-badges">${mv.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
+        <div class="card-badges">${mv.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(mv.country)} ${mv.country}</span>`:''}${mv.biFormat?'<span class="badge" style="background:#fce8f1;color:#c94f7c">Formato bi</span>':''}</div>
         <div class="movie-card-name">${mv.name}</div>
         <div class="movie-card-meta">Documental · ${dateStr}${mv.totalEpisodes?' · '+mv.totalEpisodes+' ep.':''}</div>
         ${genrePills}
@@ -7229,6 +7550,8 @@ function renderDocumentalesResults(){
 
 /* ═══ ACTRESSES TAB ═══ */
 let actressesTabState={q:'', nationality:''};
+let actressCountryExpanded={};
+const ACTRESS_COUNTRY_BATCH=24;
 
 function renderActressesTab(){
   const view=document.getElementById('viewActresses');
@@ -7299,6 +7622,9 @@ function renderActressesTabResults(){
     sortedCountries.forEach(country=>{
       const list=groups[country].sort((a,b)=>seriesCount(b)-seriesCount(a));
       const flag=countryFlag(country);
+      const expanded=!!actressCountryExpanded[country];
+      const visibleList=expanded?list:list.slice(0,ACTRESS_COUNTRY_BATCH);
+      const remaining=list.length-visibleList.length;
       html+=`<div class="actress-nationality-section">
         <div class="actress-nationality-header">
           <span class="actress-nationality-flag">${flag}</span>
@@ -7306,13 +7632,19 @@ function renderActressesTabResults(){
           <span class="actress-nationality-count">${list.length} actrices</span>
         </div>
         <div class="actress-tab-grid">
-          ${list.map(a=>actressTabCardHtml(a,seriesCount(a))).join('')}
+          ${visibleList.map(a=>actressTabCardHtml(a,seriesCount(a))).join('')}
         </div>
+        ${remaining>0?`<button type="button" class="btn actress-show-more-btn" onclick="expandActressCountry('${country.replace(/'/g,"\\'")}')">Ver ${remaining} más</button>`:''}
       </div>`;
     });
   }
 
   resultsEl.innerHTML=html;
+}
+
+function expandActressCountry(country){
+  actressCountryExpanded[country]=true;
+  renderActressesTabResults();
 }
 
 function actressTabCardHtml(a, count){
@@ -8223,6 +8555,8 @@ function renderRecentlyAdded(){
     secAnime.style.display='';
     document.getElementById('recentlyAddedStrip_anime').innerHTML=_buildRaCards(anime);
   } else { secAnime.style.display='none'; }
+
+  setTimeout(updateAllStripArrows, 30);
 }
 
 // Init both on load
@@ -8962,7 +9296,12 @@ function _updateFilterToggleCount(toolbarEl){
   const selects = filtersRow.querySelectorAll('select');
   const inputs  = filtersRow.querySelectorAll('input');
   let active = 0;
-  selects.forEach(s => { if(s.value && s.value !== 'all') active++; });
+  selects.forEach(s => {
+    // El <select> de "Orden" no es un filtro (siempre tiene un valor != 'all'), así que no cuenta
+    const label = s.closest('.filter-group')?.querySelector('.filter-label')?.textContent?.trim();
+    if(label === 'Orden') return;
+    if(s.value && s.value !== 'all') active++;
+  });
   inputs.forEach(i  => { if(i.value && i.value.trim()) active++; });
   countEl.textContent = active;
   countEl.classList.toggle('visible', active > 0);
@@ -9338,6 +9677,38 @@ function _showRuletaResult(item){
       </div>
     </div>`;
 }
+
+// ── Flechas genéricas para tiras horizontales (week-days-strip, ra-strip) ──
+// Mismo patrón que scrollSimilar/updateSimilarArrows, pero reutilizable por id
+// y ocultando el bloque de flechas entero cuando la tira no necesita scroll
+// (p.ej. en escritorio ancho, o si hay pocos elementos).
+function scrollStripBy(stripId, dir){
+  const strip = document.getElementById(stripId);
+  if(!strip) return;
+  strip.scrollBy({left: dir * Math.round(strip.clientWidth*0.85), behavior:'smooth'});
+}
+function updateStripArrows(stripId){
+  const strip = document.getElementById(stripId);
+  const prev  = document.getElementById(stripId+'_prev');
+  const next  = document.getElementById(stripId+'_next');
+  const nav   = document.getElementById(stripId+'_nav');
+  if(!strip||!prev||!next) return;
+  const scrollable = strip.scrollWidth > strip.clientWidth + 4;
+  if(nav) nav.style.display = scrollable ? '' : 'none';
+  prev.disabled = strip.scrollLeft <= 4;
+  next.disabled = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 4;
+}
+function updateAllStripArrows(){
+  ['weekDaysStrip','recentlyAddedStrip_series','recentlyAddedStrip_movies','recentlyAddedStrip_anime']
+    .forEach(id=>updateStripArrows(id));
+}
+(function(){
+  let t=null;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(t);
+    t=setTimeout(updateAllStripArrows, 120);
+  });
+})();
 
 function scrollSimilar(stripId, dir){
   const strip = document.getElementById(stripId);
