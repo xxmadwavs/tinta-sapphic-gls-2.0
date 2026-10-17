@@ -3533,7 +3533,17 @@ a{color:inherit}
         </div>
       </div>
 
-      <button class="nav-link" id="tabShips" onclick="switchTab('ships');closeMobileMenu()">Ships Thais</button>
+      <!-- Ships Thais: desplegable de apartados (Ships / Rupturas / Mascotas) -->
+      <div class="nav-picks-wrap" id="navShipsWrap">
+        <button class="nav-link" id="tabShips" type="button" onclick="toggleShipsDrop(event)" aria-haspopup="true" aria-expanded="false">
+          Ships Thais <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
+        </button>
+        <div class="nav-picks-drop" id="navShipsDrop" role="menu">
+          <button class="nav-picks-item" id="navShipsItem-ships" role="menuitem" onclick="shipsNavGo('ships')">Ships</button>
+          <button class="nav-picks-item" id="navShipsItem-rupturas" role="menuitem" onclick="shipsNavGo('rupturas')">Rupturas</button>
+          <button class="nav-picks-item" id="navShipsItem-mascotas" role="menuitem" onclick="shipsNavGo('mascotas')">Mascotas</button>
+        </div>
+      </div>
 
       <!-- Mis Picks: subtabs de picks + herramientas personales -->
       <div class="nav-picks-wrap" id="navPicksWrap">
@@ -8123,6 +8133,8 @@ function switchTab(tab, fromPopstate=false){
     }
   });
 
+  updateShipsNavActive();
+
   // "Explorar" button highlight
   const exploreBtn=document.getElementById('tabExplore');
   if(exploreBtn) exploreBtn.className='nav-link'+(exploreTabs.includes(tab)?' active':'');
@@ -8171,7 +8183,7 @@ function shipsNormView(v){ return Object.prototype.hasOwnProperty.call(SHIPS_VIE
 function shipsSetView(v){
   shipsState.view=shipsNormView(v);
   saveSession();
-  const sel=document.getElementById('shipsViewSel'); if(sel&&sel.value!==shipsState.view) sel.value=shipsState.view;
+  updateShipsNavActive();
   const d=document.getElementById('shipsDesc'); if(d) d.textContent=SHIPS_VIEWS[shipsState.view].desc;
   const w=document.getElementById('shipsSearchWrap'); if(w) w.style.display=(shipsState.view==='mascotas')?'none':'';
   renderShipsResults();
@@ -8226,18 +8238,9 @@ function renderShips(){
   }
 
   const curView=shipsNormView(shipsState.view);
-  const nRet=ships.filter(x=>x.sh&&x.sh.retired).length, nAct=ships.length-nRet;
-  const viewOpts=Object.keys(SHIPS_VIEWS).map(k=>{
-    const cnt=k==='ships'?` (${nAct})`:k==='rupturas'?` (${nRet})`:'';
-    return `<option value="${k}"${k===curView?' selected':''}>${SHIPS_VIEWS[k].label}${cnt}</option>`;
-  }).join('');
   view.innerHTML=`<div class="ships-shell">
     <div class="section-heading" style="margin-bottom:.25rem">Ships Oficiales Thais</div>
     <p class="section-desc" id="shipsDesc" style="margin-bottom:.85rem">${SHIPS_VIEWS[curView].desc}</p>
-    <div class="ships-view-row">
-      <label class="ships-view-label" for="shipsViewSel">Apartado</label>
-      <select id="shipsViewSel" class="filter-select ships-view-sel" onchange="shipsSetView(this.value)">${viewOpts}</select>
-    </div>
     <div id="shipsSearchWrap" style="position:relative;margin-bottom:.85rem${curView==='mascotas'?';display:none':''}">
       <span class="search-icon"></span>
       <input class="search-input" id="shipsSearchInput" placeholder="Buscar ship o actriz…"
@@ -9058,6 +9061,7 @@ function toggleExploreDrop(e){
   if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
   // close picks
   document.getElementById('navPicksDrop')?.classList.remove('open');
+  closeShipsDrop();
 }
 function closeExploreDrop(){
   document.getElementById('navExploreDrop')?.classList.remove('open');
@@ -9072,10 +9076,40 @@ function togglePicksDrop(e){
   if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
   // close explorar
   document.getElementById('navExploreDrop')?.classList.remove('open');
+  closeShipsDrop();
 }
 function closePicksDrop(){
   document.getElementById('navPicksDrop')?.classList.remove('open');
   document.getElementById('tabPicksGroup')?.setAttribute('aria-expanded','false');
+}
+function toggleShipsDrop(e){
+  e.stopPropagation();
+  const drop=document.getElementById('navShipsDrop');
+  const btn=document.getElementById('tabShips');
+  const isOpen=drop.classList.contains('open');
+  drop.classList.toggle('open',!isOpen);
+  if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
+  document.getElementById('navExploreDrop')?.classList.remove('open');
+  document.getElementById('navPicksDrop')?.classList.remove('open');
+}
+function closeShipsDrop(){
+  document.getElementById('navShipsDrop')?.classList.remove('open');
+  document.getElementById('tabShips')?.setAttribute('aria-expanded','false');
+}
+// Marca en el desplegable el apartado visible (solo mientras se está en Ships Thais)
+function updateShipsNavActive(){
+  const cur=shipsNormView(shipsState.view), onShips=(state.tab==='ships');
+  Object.keys(SHIPS_VIEWS).forEach(k=>{
+    const it=document.getElementById('navShipsItem-'+k);
+    if(it) it.className='nav-picks-item'+(onShips&&k===cur?' active':'');
+  });
+}
+// Elige apartado desde la barra superior. Cada apartado conserva su propio listado.
+function shipsNavGo(v){
+  closeShipsDrop();
+  shipsState.view=shipsNormView(v);
+  if(state.tab!=='ships') switchTab('ships'); else shipsSetView(shipsState.view);
+  closeMobileMenu();
 }
 function closeMobileMenu(){
   const links=document.getElementById('navbarLinks');
@@ -9099,6 +9133,7 @@ function toggleNavMobile(){
 document.addEventListener('click',e=>{
   if(!document.getElementById('navExploreWrap')?.contains(e.target)) closeExploreDrop();
   if(!document.getElementById('navPicksWrap')?.contains(e.target)) closePicksDrop();
+  if(!document.getElementById('navShipsWrap')?.contains(e.target)) closeShipsDrop();
   if(!document.getElementById('mainNavbar')?.contains(e.target)) document.getElementById('navbarLinks')?.classList.remove('open');
 });
 
