@@ -435358,6 +435358,107 @@
       ]
     }
   ],
+  "shipPets": [
+    {
+      "id": "1792273026131",
+      "shipId": "1779105685948",
+      "name": "LoLo",
+      "species": "Mitad tigre y mitad gati",
+      "photo": "https://scontent-mad1-1.cdninstagram.com/v/t51.82787-15/745235764_17909476758444874_5424708922599900779_n.jpg?stp=cp6_dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzk0MDg2MTgyMjU4MDMwMzU0Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTI4NC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=dc3NGrDfbGUQ7kNvwF5ehZM&_nc_oc=AdoOvrIkqi7yZDhWIFy5in7yydkgcTlsuneyYf-oJFBVWCifFgSd9XmvHsUtBZMs136plU4Dc11IhdMF5XR19XRp&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_gid=I2b0wjV-vv4c9Y5pa3AUmw&_nc_ss=7a22e&oh=00_AQOEYGsjEecxec-9GhqjEorZYwDPQK8y3s2Loxeh7i3nhQ&oe=6AD9CDB1",
+      "photoPosition": "50% 38%",
+      "photoZoom": 1,
+      "birthdate": "2026-04-25",
+      "desc": ""
+    },
+    {
+      "id": "1792273086343",
+      "shipId": "1779105716784",
+      "name": "MuvMuv",
+      "species": "Perro samoyedo con capucha de gato naranja",
+      "photo": "https://preview.redd.it/milklove-and-muvmuv-being-the-cutest-family-unit-ft-stitch-v0-nu8emacl4a3f1.jpg?width=640&crop=smart&auto=webp&s=6b995459e12ef4f40f2f14b6be87b63d01738961",
+      "photoPosition": "50% 39%",
+      "photoZoom": 1.23,
+      "birthdate": "2024-05-24",
+      "desc": "Esta adorable mascota (un perro samoyedo con capucha de gato naranja) fue creada por la compañía tailandesa GMMTV para representar a MilkLove (la popular pareja artística compuesta por las actrices Pansa Vosbein \"Milk\" y Pattranite Limpatiyakorn \"Love\"). El personaje adoptó su nombre directamente del fandom oficial del dúo, quienes ya se hacían llamar \"MuvMuv\" desde antes del lanzamiento del proyecto."
+    },
+    {
+      "id": "1792273342211",
+      "shipId": "1779105755683",
+      "name": "Lunar",
+      "species": "Mezcla de Pato y Oso Panda",
+      "photo": "https://scontent-mad1-1.cdninstagram.com/v/t51.75761-15/514429934_18027453875701320_1846374478796670752_n.webp?_nc_cat=103&ig_cache_key=MzY2NDU5NjQ5MzIyMzIyMzY3OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=fQbA77JMPW4Q7kNvwEWbMfI&_nc_oc=AdqU_j_0HYGK1-mD91t_u5xYxrFJITDA8a4qHOtiEPby6bNsJEkiWBcSz-GXOP8lsyQ1mVbIn6DQOudvpKgbQS2x&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_gid=n5ZBmixCdk0bz4uIZ9NfRQ&_nc_ss=7a22e&oh=00_AQOxO5fJRDDvJ6U-8yHqaLISQAckkbNOTIChpcWC2hHs5A&oe=6AD9BDD1",
+      "photoPosition": "50% 20%",
+      "photoZoom": 1,
+      "birthdate": "2024-12-07",
+      "desc": "El personaje fue presentado oficialmente ese día durante el programa de GMMTV \"My Ideal Fan\". El diseño físico de Lunar (una mezcla entre un patito recién nacido y un panda gordo con una flor nomeolvides) representa de manera conjunta a las actrices Namtan Tipnaree (asociada a un pato) y Film Rachanun (asociada a un panda). Se eligió el nombre de \"Lunar\" debido a que ambas actrices nacieron en el mes de julio (haciendo un juego de palabras en inglés con su mes de nacimiento)."
+    },
+    {
+      "id": "1792273474809",
+      "shipId": "1779105738832",
+      "name": "Any",
+      "species": "Niña con alas de mariposa",
+      "photo": "https://scontent-mad2-1.cdninstagram.com/v/t51.82787-15/504608556_17850945468482231_8983556873019712206_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzY2NDE2MDY5NTY3NzEwNTg2NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=_SX4BTkC66wQ7kNvwFaHP-N&_nc_oc=AdoPhfg-lU6xG7Z-PLLyMTqMUw1kw8Ikt1MVJEx4Hj9oSxPjdqh9r6_hcE6IZyYRXVs-FF9NgznptfLzRJLvrYOa&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mad2-1.cdninstagram.com&_nc_gid=RmsEFVd6qYoSdmDOMlpD6g&_nc_ss=7a22e&oh=00_AQMjkGweb99WcDRqglJ38gd5jaA_SJ9a7l-y8c7wUAMnFw&oe=6AD9B232",
+      "photoPosition": "50% 20%",
+      "photoZoom": 1,
+      "birthdate": "2025-03-13",
+      "desc": ""
+    },
+    {
+      "id": "1792273566217",
+      "shipId": "1779105845082",
+      "name": "Jewel",
+      "species": "Zorra blanca",
+      "photo": "https://preview.redd.it/jewel-and-vimmy-debut-v0-6nb5e2qwnm6h1.jpeg?width=900&format=pjpg&auto=webp&s=2bdd6a8c31764a5e4f633dff402b479d968f4ec9",
+      "photoPosition": "50% 20%",
+      "photoZoom": 1,
+      "birthdate": "2026-05-24",
+      "desc": ""
+    },
+    {
+      "id": "1792273792928",
+      "shipId": "1779105799282",
+      "name": "Vimmy",
+      "species": "Perro cocker spaniel con una abeja",
+      "photo": "https://scontent-mad1-1.cdninstagram.com/v/t51.82787-15/720486973_17988579731990585_9101490277812216170_n.webp?_nc_cat=100&ig_cache_key=MzkxODI2OTkzNDk3NDMxNDIyMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=pIIv4owLDSAQ7kNvwEPCTaA&_nc_oc=Adr8j49mNOAO5-v6fHZLXZ5ZvqIP_a6jFxH27tPp-Q0q2xLbK_sh4AxhYo1T_b7NWyq4YINjrgOACmCYyarl0ztY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_gid=KvgmT5wpYHmc_DMKLl9ixQ&_nc_ss=7a22e&oh=00_AQOjIzQ02ZLlin5-5urZn4tXhWwU9aQxl6Xgxjo4SiAvhg&oe=6AD9B2FF",
+      "photoPosition": "50% 20%",
+      "photoZoom": 1,
+      "birthdate": "2026-05-18",
+      "desc": ""
+    },
+    {
+      "id": "1792273945492",
+      "shipId": "1779105772062",
+      "name": "Gumberbear",
+      "species": "Oso con alas de mariposa",
+      "photo": "https://scontent-mad1-1.cdninstagram.com/v/t51.82787-15/603936935_18059121887652902_4507916784276792581_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=Mzc5MDY5NjIxNjQwMjE5MTQwNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=VXQpyt4Q8rUQ7kNvwE1zIq4&_nc_oc=Adp1VPCIh5wUGRH6zMVLN9r6sjk1aEZhMCAcdRfUZo2fZDf1NSVUf0GHEbPjmEnzqjuvZ3Ft2Ua6uHfgwxw2Cod2&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_gid=o-3_dkdih69kGxQ5mZ-RvQ&_nc_ss=7a22e&oh=00_AQPyV_OSTa1mtIivw9uJNKLTV026z-Sp2dixtwM3vjAB8w&oe=6AD9B92E",
+      "photoPosition": "50% 20%",
+      "photoZoom": 1,
+      "birthdate": "2025-12-01",
+      "desc": ""
+    },
+    {
+      "id": "1792274195543",
+      "shipId": "1779106005760",
+      "name": "Blossom",
+      "species": "",
+      "photo": "https://scontent-mad1-1.cdninstagram.com/v/t51.82787-15/698536559_18014893385848973_2122472679406828950_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=Mzg5NzM3NzcyNzc0NDE4MDU0Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=kY7Fb9bprlgQ7kNvwHOHZJy&_nc_oc=Adq0SPMMLOHvZb6Isbte3McLMgr9DshRGevg36DH2vxN6U1QcJgGbVQM1wlljYncjp358NJwoLv1mYB5x9iCAjMt&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_gid=o78QunkfKl8rAvKh--B_Dg&_nc_ss=7a22e&oh=00_AQNu2qvEHbkphJ1IlkSQLFRNusLNvMp9lRXZe6tpCbvX6Q&oe=6AD9DD17",
+      "photoPosition": "50% 20%",
+      "photoZoom": 1,
+      "birthdate": "2026-05-14",
+      "desc": ""
+    },
+    {
+      "id": "1792274284643",
+      "shipId": "1779223887426",
+      "name": "Boonboem",
+      "species": "Gato vestido de erizo",
+      "photo": "https://pbs.twimg.com/media/HUxlIuqWMAEoEaO?format=jpg&name=medium",
+      "photoPosition": "50% 20%",
+      "photoZoom": 1,
+      "birthdate": "2026-10-16",
+      "desc": ""
+    }
+  ],
   "productoras": [
     {
       "id": "1779135450707",
@@ -436883,5 +436984,5 @@
       ]
     }
   },
-  "exportedAt": "2026-10-17T20:57:20.213Z"
+  "exportedAt": "2026-10-17T21:58:07.590Z"
 }
