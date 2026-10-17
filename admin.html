@@ -753,6 +753,7 @@ h3.salud-title{margin:0;font-size:15px;font-weight:700}
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
     <button type="button" class="btn small" onclick="tmdbBulkLinkAll(this)" title="Busca en TMDB cada serie/película sin vincular y guarda solo su ID, tipo y valoración — no toca sinopsis, póster ni reparto">🔗 Vincular todas a TMDB</button>
     <button type="button" class="btn small" onclick="tmdbBulkRefreshRatings(this)" title="Vuelve a consultar TMDB para todas las series y películas ya vinculadas, actualiza su valoración y rellena las portadas de episodios que aún falten (sin tocar las que ya tienen)">🔄 Actualizar valoraciones TMDB</button>
+    <button type="button" class="btn small" onclick="tmdbBulkUpdateStreaming(this)" title="Consulta TMDB para las series y películas vinculadas y trae todas las regiones de streaming. Primero hace un simulacro con resumen: no guarda nada hasta que pulses Aplicar. No toca watchLinks, network ni networkUrl">🌍 Actualizar streaming regional</button>
     <button type="button" class="btn small" onclick="window.open('index.html','_blank')">Ver público</button>
     <div class="export-btn-wrap">
       <button type="button" class="btn export small" id="exportTopBtn" onclick="exportData()">Exportar data.json</button>
@@ -2817,6 +2818,12 @@ function formHtml(s, forcedCategory=null){
         <div class="form-hint">Se guarda al pulsar "Guardar" y aparece en la ficha pública. Actualízala de vez en cuando con el botón para que refleje la nota actual de TMDB.</div>
       </div>
 
+      <div class="form-row">
+        <label class="form-label">Streaming regional (TMDB)</label>
+        <div id="f_streamingSummary" style="font-size:13px;color:var(--muted)">${streamingAdminSummaryHtml(s&&s.streaming,s&&s.streamingMeta,null)}</div>
+        <div class="form-hint">Solo lectura. Se importa con 🔎 Buscar en TMDB → «Guardar streaming global en la ficha». Esta importación no modifica «Dónde ver» (watchLinks), Cadena (network) ni networkUrl.</div>
+      </div>
+
       <div class="form-section-hd" style="margin-top:14px">Info adicional</div>
 
       <div class="form-row">
@@ -4083,6 +4090,11 @@ function movieFormHtml(mv){
     <input type="hidden" id="mf_tmdbRating" value="${mv&&mv.tmdbRating?mv.tmdbRating:''}">
     <input type="hidden" id="mf_tmdbVoteCount" value="${mv&&mv.tmdbVoteCount?mv.tmdbVoteCount:''}">
     <div class="form-hint">Se guarda al pulsar "Guardar" y aparece en la ficha pública. Actualízala de vez en cuando con el botón para que refleje la nota actual de TMDB.</div>
+  </div>
+  <div class="form-row">
+    <label class="form-label">Streaming regional (TMDB)</label>
+    <div id="mf_streamingSummary" style="font-size:13px;color:var(--muted)">${streamingAdminSummaryHtml(mv&&mv.streaming,mv&&mv.streamingMeta,null)}</div>
+    <div class="form-hint">Solo lectura. Se importa con 🔎 Buscar en TMDB → «Guardar streaming global en la ficha». Esta importación no modifica «Dónde ver» (watchLinks), Cadena (network) ni networkUrl.</div>
   </div>
   <div class="form-row"><label class="form-label">URL del trailer (YouTube)</label><input id="mf_trailer" placeholder="https://www.youtube.com/watch?v=..." value="${mv&&mv.trailerUrl?mv.trailerUrl:''}"/>
     <div class="form-hint">Pega la URL normal de YouTube. Si no tiene trailer, déjalo vacío.</div>
@@ -5471,6 +5483,64 @@ function streamingSavePayload(rec,inputId){
 function streamingRegionLabel(code){
   return regionName(code,'es');   // 6.9: nombre del catálogo único (Intl solo para códigos fuera del catálogo; si no, el propio código)
 }
+/* ═══ S5 — Resumen de SOLO LECTURA del streaming regional en el formulario ═══
+   Muestra lo guardado en la ficha (streaming/streamingMeta) y, tras «Aplicar», lo que quedará al pulsar Guardar.
+   No escribe en ningún dato ni en watchLinks/network/networkUrl; solo pinta HTML en #f_/mf_streamingSummary. */
+function streamingSummaryStats(streaming,meta){
+  const st=_streamingIsObj(streaming)?streaming:{}, mt=_streamingIsObj(meta)?meta:{};
+  const regions=[]; let entries=0, review=0, empty=0, fetched='';
+  Object.keys(st).forEach(c=>{
+    if(!streamingIsValidRegion(c)||!Array.isArray(st[c])) return;
+    const n=st[c].map(streamingNormalizeEntry).filter(Boolean).length;
+    if(!n){ empty++; return; }
+    regions.push(c); entries+=n;
+    const m=_streamingIsObj(mt[c])?mt[c]:null;
+    if(m){ if(m.status==='review') review++; if(typeof m.fetchedAt==='string'&&m.fetchedAt>fetched) fetched=m.fetchedAt; }
+  });
+  return {regions,entries,review,empty,fetched};
+}
+function streamingStatsText(a){
+  return '<b>'+a.regions.length+'</b> región(es) con proveedores · '+a.entries+' entrada(s)'
+    +(a.review?' · '+a.review+' en revisión':'')+(a.empty?' · '+a.empty+' sin proveedores':'')
+    +(a.fetched?' · actualizado '+escapeHtml(a.fetched):'');
+}
+// saved/savedMeta = lo guardado en la ficha; pend = {streaming,meta,report} resultado de la fusión pendiente de Guardar (o null).
+function streamingAdminSummaryHtml(saved,savedMeta,pend){
+  const a=streamingSummaryStats(saved,savedMeta);
+  const view=pend?{s:pend.streaming,m:pend.meta}:{s:saved,m:savedMeta};
+  const b=pend?streamingSummaryStats(pend.streaming,pend.meta):a;
+  let h='<div>'+(a.regions.length||a.empty?'Guardado: '+streamingStatsText(a):'Sin streaming regional guardado en esta ficha.')+'</div>';
+  if(pend){
+    const c=pend.report&&pend.report.counts;
+    h+='<div style="margin-top:3px;color:var(--text)"><b>Pendiente de guardar</b> (se aplica al pulsar Guardar): quedarán '+streamingStatsText(b)
+      +(c?' <span style="color:var(--muted)">(+'+c.added+' nueva(s) · '+c.changed+' modificada(s) · '+c.unchanged+' sin cambios · '+c.review+' para revisión'+(c.skipped?' · '+c.skipped+' omitida(s)':'')+')</span>':'')+'</div>';
+  }
+  if(b.regions.length){
+    const mt=_streamingIsObj(view.m)?view.m:{};
+    const sorted=b.regions.slice().sort((x,y)=>{ const ix=TMDB_REGIONS_PRIORITY.indexOf(x), iy=TMDB_REGIONS_PRIORITY.indexOf(y); return (ix<0?999:ix)-(iy<0?999:iy)||x.localeCompare(y); });
+    const rows=sorted.map(code=>{
+      const list=view.s[code].map(streamingNormalizeEntry).filter(Boolean).map(e=>escapeHtml(e.name)+' ('+escapeHtml(e.type)+')').join(', ');
+      const rv=_streamingIsObj(mt[code])&&mt[code].status==='review';
+      return '<div data-region="'+escapeHtml(code)+'" style="margin:3px 0"><b>'+escapeHtml(code)+'</b> '+escapeHtml(streamingRegionLabel(code))+(rv?' <i>(en revisión)</i>':'')+' — '+list+'</div>';
+    }).join('');
+    h+='<details style="margin-top:5px"><summary style="cursor:pointer">Ver regiones ('+b.regions.length+')</summary><div style="max-height:240px;overflow:auto;margin-top:4px;font-size:12px">'+rows+'</div></details>';
+  }
+  return h;
+}
+// Repinta el resumen del formulario abierto (p = 'f_' | 'mf_') con lo guardado + lo pendiente. Solo lectura.
+function streamingAdminRefresh(p){
+  const el=_findInModal(p+'streamingSummary'); if(!el) return;
+  const saved=tmdbImpCurrentStreaming(), savedMeta=tmdbImpCurrentStreamingMeta();
+  const h=_findInModal(p+'streamingPending'), pend=(h&&h.value)?streamingResolvePending(saved,savedMeta,p+'streamingPending'):null;
+  el.innerHTML=streamingAdminSummaryHtml(saved,savedMeta,pend);
+}
+// Texto para el mensaje de «Aplicar»: cuántas regiones quedan pendientes de guardar.
+function streamingApplyInfo(p){
+  const saved=tmdbImpCurrentStreaming(), savedMeta=tmdbImpCurrentStreamingMeta();
+  const r=streamingResolvePending(saved,savedMeta,p+'streamingPending'), b=streamingSummaryStats(r.streaming,r.meta), c=r.report&&r.report.counts;
+  return ' Streaming global: quedarán '+b.regions.length+' región(es) con proveedores al guardar'+(c?' (+'+c.added+' nueva(s), '+c.changed+' modificada(s), '+c.unchanged+' sin cambios, '+c.review+' para revisión)':'')+'.';
+}
+/* ═══ FIN S5 ═══ */
 function tmdbToday(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 /* ═══ FIN 6.7 helpers ═══ */
 /* ═══ 1C.3.5 — Reimportación regional (aditivo) ═══
@@ -6025,13 +6095,14 @@ function tmdbImpApply(){
   });
   const nS=tmdbImpApplySeasons(sKeys,dr);   // 1E.1
   const nSt=allKeys.indexOf('streamingRegion')>=0?tmdbImpStashStreaming(dr,p):0;   // 6.7: streaming global del draft, pendiente hasta Guardar
+  let stInfo=''; if(nSt){ try{ stInfo=streamingApplyInfo(p); streamingAdminRefresh(p); }catch(e){} }   // S5: solo lectura (resumen del formulario + mensaje)
   const cr=tmdbImpApplyCast(dr,castPicked,inclOpt,castTargets);   // N.3-F4.2: asociación manual y creación solo al aplicar
   const crTxt=castPicked.length||cr.omitted?` Reparto: ${cr.added} asociada(s) al formulario, ${cr.created} ficha(s) nueva(s), ${cr.inForm} ya estaba(n) en el reparto, ${cr.dup} duplicada(s) entre filas, ${cr.rejected} rechazada(s), ${cr.omitted} integrante(s) no incorporada(s) ahora${cr.review?`, ${cr.review} coincidencia(s) pendiente(s) de revisar`:''}${cr.blocked?', formulario de origen no disponible':''}.`:'';
   const crDetails=cr.items&&cr.items.length?` ${(()=>{ const groups=[['Ya estaba en el reparto',cr.items.filter(x=>x.why==='la ficha ya estaba en el reparto')],['Duplicada entre filas',cr.items.filter(x=>x.why==='otra fila seleccionada ya vinculó esta ficha')],['No aplicada',cr.items.filter(x=>!['la ficha ya estaba en el reparto','otra fila seleccionada ya vinculó esta ficha','ficha nueva creada y asociada al formulario','ficha existente asociada al formulario'].includes(x.why))]]; const parts=[]; groups.forEach(([title,items])=>{ if(!items.length)return; const shown=items.slice(0,5).map(x=>`${x.label} — ${x.why}`); if(items.length>5) shown.push(`y ${items.length-5} más`); parts.push(`${title}: ${shown.join('; ')}.`); }); return parts.join(' '); })()}`:'';
   const st=_findInModal('tmdbStatus');
   const hasRejects=cr.rejected>0||cr.blocked;
   const anyApplied=keys.length+nS+nSt>0||cr.added>0;
-  if(st){ st.className='tmdb-bar-status '+(hasRejects?'err':(anyApplied?'ok':'')); st.textContent=(anyApplied?`${hasRejects?'⚠':'✓'} ${keys.length+nS+nSt} campo(s) aplicados al formulario. Revisa y pulsa Guardar.`+(cr.added&&!keys.length&&!nS&&!nSt?' Reparto aplicado al formulario. Revisa y pulsa Guardar.':''):(hasRejects?'No se ha incorporado ninguna actriz ni aplicado ningún campo.':'No se ha aplicado ningún campo.'))+crTxt+crDetails+(cr.added||cr.created?' Recuerda guardar la ficha y después exportar data.json; todavía no se ha publicado ningún cambio.':''); }
+  if(st){ st.className='tmdb-bar-status '+(hasRejects?'err':(anyApplied?'ok':'')); st.textContent=(anyApplied?`${hasRejects?'⚠':'✓'} ${keys.length+nS+nSt} campo(s) aplicados al formulario. Revisa y pulsa Guardar.`+(cr.added&&!keys.length&&!nS&&!nSt?' Reparto aplicado al formulario. Revisa y pulsa Guardar.':''):(hasRejects?'No se ha incorporado ninguna actriz ni aplicado ningún campo.':'No se ha aplicado ningún campo.'))+stInfo+crTxt+crDetails+(cr.added||cr.created?' Recuerda guardar la ficha y después exportar data.json; todavía no se ha publicado ningún cambio.':''); }
   _tmdbImpDraft=null;
 }
 
@@ -6388,6 +6459,227 @@ async function tmdbBulkRefreshRatings(btn){
   try{ renderRealitiesGrid(); }catch(e){}
   alert(`✓ Listo: ${done} ficha${done===1?'':'s'} consultada${done===1?'':'s'}, ${changed} con la nota actualizada${stillsUpdated?`, ${stillsUpdated} serie${stillsUpdated===1?'':'s'} con portadas de episodios completadas`:''}${errors?`, ${errors} con error de conexión`:''}.\n\nRecuerda exportar data.json para publicar los cambios.`);
 }
+
+/* ═══ S7 — Actualización por lotes del streaming regional ═══
+   Botón «🌍 Actualizar streaming regional». Fases: 1) SIMULACRO (consulta TMDB, no escribe nada en las fichas),
+   2) vista previa con resumen y errores, 3) «Aplicar» (solo si el usuario confirma) y save() único.
+   Solo asigna item.streaming / item.streamingMeta (a través de streamingMergeImport, que nunca ve watchLinks/network/networkUrl).
+   No actualiza valoraciones, miniaturas ni updatedAt. No exporta ni publica nada: sigue el flujo manual de «Exportar data.json». */
+let STREAM_BATCH_PAUSE_MS=250, STREAM_BATCH_MAX_RETRIES=3, STREAM_BATCH_WAIT_SCALE=1;
+const STREAM_BATCH_TRUNC_MIN=10, STREAM_BATCH_TRUNC_RATIO=0.5;   // guarda: ficha con ≥10 regiones guardadas y TMDB devuelve <50% → sospechosa, no se toca
+let _streamBatch=null;
+const streamBatchSleep=ms=>new Promise(res=>setTimeout(res,ms));
+function streamBatchStable(v){   // JSON con claves ordenadas, para comparar sin falsos cambios por el orden de claves
+  if(Array.isArray(v)) return '['+v.map(streamBatchStable).join(',')+']';
+  if(v&&typeof v==='object') return '{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+streamBatchStable(v[k])).join(',')+'}';
+  return JSON.stringify(v===undefined?null:v);
+}
+function streamBatchMetaNoDate(m){   // fetchedAt solo no cuenta como cambio (evita reescribir 700 fichas por la fecha)
+  const o={}; if(!_streamingIsObj(m)) return o;
+  Object.keys(m).forEach(c=>{ if(_streamingIsObj(m[c])){ const x={}; Object.keys(m[c]).forEach(k=>{ if(k!=='fetchedAt') x[k]=m[c][k]; }); o[c]=x; } else o[c]=m[c]; });
+  return o;
+}
+function streamBatchValidId(raw){
+  if(typeof raw==='number') return (Number.isSafeInteger(raw)&&raw>0)?String(raw):'';
+  if(typeof raw==='string'&&/^\s*[1-9]\d{0,11}\s*$/.test(raw)) return raw.trim();
+  return '';
+}
+function streamBatchTargets(){
+  const list=[]; let noId=0;
+  [['series',series,'tv'],['movies',movies,'movie']].forEach(([coll,arr,def])=>{
+    arr.forEach(item=>{
+      const id=streamBatchValidId(item&&item.tmdbId);
+      if(!id){ noId++; return; }
+      const k=String(item.tmdbKind||'').trim().toLowerCase(), kind=(k==='tv'||k==='movie')?k:def;
+      list.push({item,coll,kind,id});
+    });
+  });
+  return {list,noId};
+}
+// ¿El título de TMDB se parece al de la ficha? (detecta vínculos dudosos). Sin nombres comparables (p. ej. solo escritura no latina) → no se marca.
+function streamBatchNameCheck(item,d){
+  const mine=[item&&item.name,item&&item.nameEn].map(tmdbImpNorm).filter(x=>x.length>=2);
+  const theirs=[d.name,d.title,d.original_name,d.original_title].map(tmdbImpNorm).filter(x=>x.length>=2);
+  if(!mine.length||!theirs.length) return true;
+  return mine.some(a=>theirs.some(b=>a===b||(Math.min(a.length,b.length)>=4&&(a.includes(b)||b.includes(a)))));
+}
+// PURA: evalúa la respuesta de TMDB para una ficha sin escribir nada. outcome: update | unchanged | nodata | truncated | dubious
+function streamBatchEvaluate(item,d,today){
+  const imp=tmdbBuildAllRegionProviders(d&&d['watch/providers']);
+  const withProviders=Object.keys(imp.streaming).filter(c=>imp.streaming[c].length).length;
+  const rec={imported:imp,returned:imp.returned.length,received:imp.received,withProviders,skipped:imp.skipped.length,outcome:'nodata',reason:'',report:null,modified:0,review:0};
+  if(imp.status!=='ok'){ rec.reason={missing:'TMDB no devolvió datos de proveedores',empty:'TMDB devolvió «results» vacío',bad_structure:'estructura de respuesta no válida'}[imp.status]||imp.status; return rec; }
+  if(imp.received===0){ rec.reason='ninguna región con datos legibles'+(imp.skipped.length?' ('+imp.skipped.length+' omitida(s))':''); return rec; }
+  const savedN=streamingSummaryStats(item.streaming,item.streamingMeta).regions.length;
+  if(savedN>=STREAM_BATCH_TRUNC_MIN&&withProviders<savedN*STREAM_BATCH_TRUNC_RATIO){
+    rec.outcome='truncated'; rec.reason='respuesta posiblemente incompleta: '+withProviders+' región(es) con proveedores frente a '+savedN+' guardadas'; return rec;
+  }
+  const m=streamingMergeImport(item.streaming,item.streamingMeta,imp,today);
+  rec.report=m.report; rec.modified=m.report.counts.added+m.report.counts.changed; rec.review=m.report.counts.review;
+  const changed=streamBatchStable(m.streaming)!==streamBatchStable(streamingClone(item.streaming))
+    ||streamBatchStable(streamBatchMetaNoDate(m.meta))!==streamBatchStable(streamBatchMetaNoDate(streamingClone(item.streamingMeta)));
+  if(!changed){ rec.outcome='unchanged'; return rec; }
+  if(!streamBatchNameCheck(item,d)){
+    rec.outcome='dubious'; rec.include=false;
+    rec.reason='el título de TMDB («'+(d.name||d.title||d.original_name||d.original_title||'?')+'») no se parece al de la ficha: posible vínculo erróneo';
+    return rec;
+  }
+  rec.outcome='update'; return rec;
+}
+async function streamBatchFetch(kind,id,key){
+  for(let attempt=0;;attempt++){
+    let r;
+    try{ r=await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=es-ES&append_to_response=watch/providers`); }
+    catch(e){ return {error:'error de red'}; }
+    if(r.status===401){ const e=new Error('401'); e.fatal=true; throw e; }
+    if(r.status===429){
+      if(attempt>=STREAM_BATCH_MAX_RETRIES) return {error:'límite de peticiones de TMDB (429) tras '+STREAM_BATCH_MAX_RETRIES+' reintentos'};
+      const ra=parseFloat(r.headers.get('Retry-After'));
+      await streamBatchSleep(Math.min(Math.max(isFinite(ra)?ra:2*(attempt+1),1),30)*1000*STREAM_BATCH_WAIT_SCALE);
+      continue;
+    }
+    if(r.status===404) return {error:'no encontrada en TMDB (404): id o tipo incorrectos'};
+    if(!r.ok) return {error:'error HTTP '+r.status};
+    try{ return {d:await r.json()}; }catch(e){ return {error:'respuesta ilegible'}; }
+  }
+}
+// Aplica todo o nada: recalcula la fusión con el estado ACTUAL de cada ficha y, si algo falla, restaura las fichas ya tocadas.
+function streamBatchApply(results,today){
+  const plan=[], skipped=[];
+  results.forEach(r=>{
+    if(!(r.outcome==='update'||(r.outcome==='dubious'&&r.include))) return;
+    const arr=r.t.coll==='series'?series:movies;
+    if(arr.indexOf(r.t.item)<0||streamBatchValidId(r.t.item.tmdbId)!==r.t.id){ skipped.push({r,why:'la ficha cambió durante el simulacro'}); return; }
+    const m=streamingMergeImport(r.t.item.streaming,r.t.item.streamingMeta,r.imported,today);
+    const changed=streamBatchStable(m.streaming)!==streamBatchStable(streamingClone(r.t.item.streaming))
+      ||streamBatchStable(streamBatchMetaNoDate(m.meta))!==streamBatchStable(streamBatchMetaNoDate(streamingClone(r.t.item.streamingMeta)));
+    if(!changed){ skipped.push({r,why:'ya estaba al día'}); return; }
+    plan.push({item:r.t.item,streaming:m.streaming,meta:m.meta});
+  });
+  const snap=plan.map(p=>({item:p.item,hadS:Object.prototype.hasOwnProperty.call(p.item,'streaming'),s:p.item.streaming,hadM:Object.prototype.hasOwnProperty.call(p.item,'streamingMeta'),m:p.item.streamingMeta}));
+  try{
+    plan.forEach(p=>{ p.item.streaming=p.streaming; if(Object.keys(p.meta).length) p.item.streamingMeta=p.meta; });
+    plan.forEach(p=>{ if(streamBatchStable(p.item.streaming)!==streamBatchStable(p.streaming)) throw new Error('verificación fallida'); });
+  }catch(e){
+    snap.forEach(x=>{ if(x.hadS) x.item.streaming=x.s; else delete x.item.streaming; if(x.hadM) x.item.streamingMeta=x.m; else delete x.item.streamingMeta; });
+    throw e;
+  }
+  return {applied:plan.length,skipped};
+}
+/* ── Interfaz ── */
+function streamBatchEnsureModal(){
+  let bg=document.getElementById('streamBatchBg');
+  if(!bg){
+    bg=document.createElement('div'); bg.id='streamBatchBg'; bg.className='modal-bg';
+    bg.innerHTML='<div class="modal" style="max-width:760px"><div class="modal-header"><div style="font-size:18px;font-weight:800" id="streamBatchTitle"></div></div><div id="streamBatchBody" style="padding:1rem 1.75rem;font-size:13px;line-height:1.5"></div><div id="streamBatchBtns" class="btn-row" style="padding:0 1.75rem 1.25rem;margin-top:0"></div></div>';
+    document.body.appendChild(bg);
+  }
+  return bg;
+}
+function streamBatchCounts(S){
+  const c={update:0,unchanged:0,nodata:0,truncated:0,dubious:0,error:0}, rg={returned:0,received:0,withProviders:0,modified:0,review:0};
+  S.results.forEach(r=>{ c[r.outcome]++; if(r.outcome!=='error'){ rg.returned+=r.returned; rg.received+=r.received; rg.withProviders+=r.withProviders; if(r.outcome==='update'){ rg.modified+=r.modified; rg.review+=r.review; } } });
+  return {c,rg};
+}
+function streamBatchRender(){
+  const S=_streamBatch; if(!S) return;
+  const bg=streamBatchEnsureModal(), title=document.getElementById('streamBatchTitle'), body=document.getElementById('streamBatchBody'), btns=document.getElementById('streamBatchBtns');
+  const E=escapeHtml; bg.classList.add('open'); if(S.phase!=='running') delete btns.dataset.k;
+  const btn=(label,fn,cls,dis)=>'<button type="button" class="btn '+(cls||'')+'"'+(dis?' disabled':'')+' onclick="'+fn+'">'+label+'</button>';
+  if(S.phase==='intro'){
+    title.textContent='🌍 Actualizar streaming regional';
+    body.innerHTML='<p>Se consultará TMDB (una petición por ficha, con pausa) para traer <b>todas las regiones</b> que devuelva. <b>No se guarda nada todavía</b>: primero verás un resumen y decides si aplicarlo.</p>'
+      +'<p>Fichas vinculadas a TMDB con id válido: <b>'+S.targets.length+'</b>'+(S.noId?' · sin id válido (se ignoran): '+S.noId:'')+'.</p>'
+      +'<p>Solo se tocan <code>streaming</code> y <code>streamingMeta</code>. <code>watchLinks</code>, <code>network</code>, <code>networkUrl</code>, valoraciones y miniaturas no se modifican. Nada se exporta ni se publica.</p>'
+      +'<label style="display:block;margin-top:8px">Procesar solo las primeras <input type="number" id="streamBatchLimit" min="1" max="'+S.targets.length+'" placeholder="todas" style="width:90px;padding:4px 8px;border-radius:8px;border:1.5px solid var(--border2)"> fichas (vacío = todas; útil como prueba piloto)</label>';
+    btns.innerHTML=btn('Cancelar','streamBatchClose()')+btn('Iniciar simulacro','streamBatchStart()','primary',!S.targets.length);
+  } else if(S.phase==='running'){
+    title.textContent='Simulacro en curso…';
+    const n=S.run.length, d=S.results.length;
+    body.innerHTML='<p>Consultando ficha <b>'+Math.min(d+1,n)+'</b> de <b>'+n+'</b>. Todavía no se ha modificado ninguna ficha.</p><div style="height:8px;border-radius:6px;background:var(--surface2);overflow:hidden"><div style="height:100%;width:'+(n?Math.round(d/n*100):0)+'%;background:var(--accent)"></div></div>';
+    const bk='running'+(S.stop?'1':'0'); if(btns.dataset.k!==bk){ btns.dataset.k=bk; btns.innerHTML=btn(S.stop?'Deteniendo…':'Detener','streamBatchStop()','',S.stop); }   // el botón no se reconstruye en cada ficha (así el clic nunca se pierde)
+  } else if(S.phase==='preview'||S.phase==='done'){
+    const {c,rg}=streamBatchCounts(S), done=S.phase==='done', total=S.results.length;
+    title.textContent=done?'✓ Streaming regional aplicado':'Vista previa — sin guardar';
+    let h='';
+    if(S.fatal) h+='<p style="color:var(--danger);font-weight:700">⛔ '+E(S.fatal)+'</p>';
+    if(S.stopped) h+='<p style="color:var(--danger)">Simulacro detenido: solo se muestran las '+total+' fichas ya consultadas.</p>';
+    h+='<p><b>Fichas consultadas: '+total+'</b> = '+c.update+' con cambios · '+c.unchanged+' sin cambios · '+c.nodata+' sin datos de TMDB · '+c.truncated+' sospechosas (respuesta incompleta) · '+c.dubious+' con vínculo dudoso · '+c.error+' con error.</p>';
+    h+='<p><b>Regiones</b> (fichas consultadas sin error): '+rg.returned+' recibidas · '+rg.received+' con datos legibles · '+rg.withProviders+' con proveedores · <b>'+rg.modified+' nuevas o modificadas</b> y '+rg.review+' pasan a revisión (se conservan sus entradas) en las fichas que cambiarán.</p>';
+    if(done){
+      h+='<p style="padding:8px 12px;border-radius:10px;background:var(--surface2)"><b>Aplicado a '+S.applied.applied+' ficha(s)</b>'+(S.applied.skipped.length?' · '+S.applied.skipped.length+' omitida(s) ('+E(S.applied.skipped.map(x=>x.r.t.item.name+': '+x.why).join('; '))+')':'')+'. Los cambios están solo en memoria: <b>exporta data.json</b> para conservarlos. No se ha publicado nada.</p>';
+    }
+    const ups=S.results.map((r,i)=>[r,i]).filter(([r])=>r.outcome==='update');
+    if(ups.length) h+='<details style="margin:6px 0"><summary style="cursor:pointer"><b>Fichas que cambiarán ('+ups.length+')</b></summary><div style="max-height:200px;overflow:auto;margin-top:4px;font-size:12px">'+ups.map(([r])=>'<div>'+E(r.t.item.name||'(sin nombre)')+' — +'+r.report.counts.added+' nueva(s), '+r.report.counts.changed+' modificada(s)'+(r.review?', '+r.review+' a revisión':'')+'</div>').join('')+'</div></details>';
+    const probs=S.results.map((r,i)=>[r,i]).filter(([r])=>r.outcome!=='update'&&r.outcome!=='unchanged');
+    if(probs.length){
+      const lab={nodata:'sin datos',truncated:'sospechosa',dubious:'vínculo dudoso',error:'error'};
+      h+='<details open style="margin:6px 0"><summary style="cursor:pointer"><b>Fichas no aplicadas / con incidencias ('+probs.length+')</b></summary><div style="max-height:220px;overflow:auto;margin-top:4px;font-size:12px">'
+        +probs.map(([r,i])=>'<div style="margin:3px 0"><b>'+E(r.t.item.name||'(sin nombre)')+'</b> ['+E(r.t.coll==='series'?'serie':'película')+' · '+E(r.t.kind)+'/'+E(r.t.id)+'] — <i>'+lab[r.outcome]+'</i>: '+E(r.reason||r.msg||'')
+          +(r.outcome==='dubious'&&!done?' <label style="white-space:nowrap"><input type="checkbox" '+(r.include?'checked ':'')+'onchange="streamBatchToggle('+i+',this.checked)"> aplicar igualmente</label>':'')+'</div>').join('')+'</div></details>';
+    }
+    if(!done) h+='<p style="color:var(--muted)">«Aplicar» solo escribe las fichas «con cambios» (y las dudosas que marques); si algo falla, no se escribe ninguna.</p>';
+    body.innerHTML=h;
+    const nApply=c.update+S.results.filter(r=>r.outcome==='dubious'&&r.include).length;
+    btns.innerHTML=done?btn('Cerrar','streamBatchClose()','primary'):btn('Cerrar sin aplicar','streamBatchClose()')+btn('Aplicar a '+nApply+' ficha(s)','streamBatchApplyClick()','primary',!nApply);
+  }
+}
+function streamBatchClose(){
+  const S=_streamBatch; if(S&&S.phase==='running'){ S.stop=true; S.discard=true; }
+  const bg=document.getElementById('streamBatchBg'); if(bg) bg.classList.remove('open');
+  if(S&&S.phase!=='running') _streamBatch=null;
+}
+function streamBatchStop(){ if(_streamBatch&&_streamBatch.phase==='running'){ _streamBatch.stop=true; streamBatchRender(); } }
+function streamBatchToggle(i,on){ const r=_streamBatch&&_streamBatch.results[i]; if(r&&r.outcome==='dubious'){ r.include=!!on; streamBatchRender(); } }
+async function tmdbBulkUpdateStreaming(btn){
+  if(_streamBatch&&_streamBatch.phase==='running'){ if(_streamBatch.discard){ alert('El simulacro anterior se está deteniendo; espera unos segundos y vuelve a pulsar.'); return; } streamBatchRender(); return; }
+  let key=tmdbGetKey();
+  if(!key){ key=tmdbConfigureKey(); if(!key) return; }
+  const T=streamBatchTargets();
+  if(!T.list.length){ alert('Todavía no hay ninguna ficha vinculada a TMDB con un id válido.'); return; }
+  _streamBatch={phase:'intro',targets:T.list,noId:T.noId,run:[],results:[],stop:false,key};
+  streamBatchRender();
+}
+async function streamBatchStart(){
+  const S=_streamBatch; if(!S||S.phase!=='intro') return;
+  const lim=parseInt((document.getElementById('streamBatchLimit')||{}).value,10);
+  S.run=(lim>0)?S.targets.slice(0,lim):S.targets.slice(); S.phase='running'; S.results=[]; S.stop=false;
+  const today=tmdbToday(), cache=new Map();
+  streamBatchRender();
+  for(let i=0;i<S.run.length;i++){
+    if(S.stop) break;
+    const t=S.run[i]; let res;
+    try{
+      const ck=t.kind+'/'+t.id; let f=cache.get(ck);
+      if(!f){ f=await streamBatchFetch(t.kind,t.id,S.key); if(f.d) cache.set(ck,f); await streamBatchSleep(STREAM_BATCH_PAUSE_MS*STREAM_BATCH_WAIT_SCALE); }
+      if(f.error) res={outcome:'error',msg:f.error};
+      else if(!_streamingIsObj(f.d)) res={outcome:'error',msg:'respuesta ilegible'};
+      else if(f.d.id!==undefined&&String(f.d.id)!==t.id) res={outcome:'error',msg:'TMDB devolvió otro id ('+f.d.id+')'};
+      else res=streamBatchEvaluate(t.item,f.d,today);
+    }catch(e){
+      if(e&&e.fatal){ S.fatal='Clave de TMDB no válida (401): el simulacro se detuvo en la primera petición fallida. Revisa la clave y vuelve a intentarlo.'; break; }
+      res={outcome:'error',msg:'error inesperado: '+(e&&e.message||e)};
+    }
+    res.t=t; S.results.push(res);
+    if(!S.discard) streamBatchRender();
+  }
+  if(S.discard){ _streamBatch=null; return; }
+  S.stopped=S.stop&&S.results.length<S.run.length; S.phase='preview'; streamBatchRender();
+}
+function streamBatchApplyClick(){
+  const S=_streamBatch; if(!S||S.phase!=='preview') return;
+  let out;
+  try{ out=streamBatchApply(S.results,tmdbToday()); }
+  catch(e){ S.fatal='No se pudo aplicar ('+(e&&e.message||e)+'). No se ha modificado ninguna ficha.'; streamBatchRender(); return; }
+  if(out.applied) save();
+  S.applied=out; S.phase='done';
+  try{ render(); }catch(e){}
+  try{ renderMovies(); }catch(e){}
+  try{ renderAnimeGrid(); }catch(e){}
+  try{ renderRealitiesGrid(); }catch(e){}
+  streamBatchRender();
+}
+/* ═══ FIN S7 ═══ */
 
 async function tmdbRefreshRating(type, btn){
   const isMovie = type==='movie';
