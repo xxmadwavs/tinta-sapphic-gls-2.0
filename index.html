@@ -364,6 +364,8 @@ html[data-theme="dark"] .dark-toggle{background:var(--surface2);color:var(--gold
 .avail-chips{display:flex;flex-wrap:wrap;gap:7px}
 .avail-chip{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:5px 11px;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;background:var(--surface);border:1.5px solid var(--border2);border-radius:9px;transition:border-color .15s,transform .15s}
 a.avail-chip:hover{border-color:var(--accent2);transform:translateY(-1px)}
+.avail-chip--tmdb{color:var(--muted);border-style:dashed}
+a.avail-chip--tmdb:hover{color:var(--text);border-style:solid}
 .avail-chip--nolink{color:var(--muted);border-style:dashed;cursor:default}
 .avail-chip-logo{width:20px;height:20px;object-fit:contain;border-radius:4px}
 .avail-chip-ext{font-size:11px;color:var(--muted)}
@@ -4154,23 +4156,36 @@ function availCatalogFor(item){
 }
 function availMatches(searchStr,q){ const toks=availNorm(q).split(/\s+/).filter(Boolean); return toks.every(t=>searchStr.indexOf(t)!==-1); }
 function availFilter(list,q){ return list.filter(c=>availMatches(c.search,q)); }
-function availChipHtml(e){
+// Enlace a TMDB/JustWatch del país: el guardado en streamingMeta[PAÍS].link o, si falta, uno construido con tmdbId/tmdbKind + ?locale=PAÍS.
+function availTmdbLinkFor(item,code){
+  const meta=(_wlIsObj(item&&item.streamingMeta)&&_wlIsObj(item.streamingMeta[code]))?item.streamingMeta[code]:null;
+  const saved=meta?availSafeTmdbLink(meta.link):'';
+  if(saved) return saved;
+  if(item&&item.tmdbId&&/^[A-Z]{2}$/.test(code)){
+    const kind=item.tmdbKind==='movie'?'movie':'tv';
+    return availSafeTmdbLink(`https://www.themoviedb.org/${kind}/${encodeURIComponent(String(item.tmdbId))}/watch?locale=${code}`);
+  }
+  return '';
+}
+// Si la URL de la plataforma es solo su portada (genérica) o no existe, NO se abre la portada: se envía a la página de TMDB/JustWatch de ese país.
+function availChipHtml(e,tmdbUrl){
   const canon=canonicalizePlatform(e.name), logo=getPlatformLogo(canon);
   const img=logo?`<img class="avail-chip-logo" src="${availEsc(logo)}" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
-  const ui=_wlUrlInfo(e.url), tip=!e.url?'Sin enlace directo registrado':(ui.generic?'Página de la plataforma (no enlaza a esta producción)':'Abrir en '+e.name);
-  return e.url?`<a class="avail-chip" href="${availEsc(e.url)}" target="_blank" rel="noopener" title="${availEsc(tip)}">${img}<span>${availEsc(e.name)}</span><span class="avail-chip-ext" aria-hidden="true">↗</span></a>`
-    :`<span class="avail-chip avail-chip--nolink" title="${availEsc(tip)}">${img}<span>${availEsc(e.name)}</span></span>`;
+  const ui=_wlUrlInfo(e.url), deep=!!e.url&&!ui.generic;
+  if(deep) return `<a class="avail-chip" href="${availEsc(e.url)}" target="_blank" rel="noopener" title="${availEsc('Abrir en '+e.name)}">${img}<span>${availEsc(e.name)}</span><span class="avail-chip-ext" aria-hidden="true">↗</span></a>`;
+  if(tmdbUrl) return `<a class="avail-chip avail-chip--tmdb" href="${availEsc(tmdbUrl)}" target="_blank" rel="noopener" title="${availEsc('No hay enlace directo a esta producción en '+e.name+'. Abre su ficha en TMDB/JustWatch para este país.')}">${img}<span>${availEsc(e.name)}</span><span class="avail-chip-ext" aria-hidden="true">↗</span></a>`;
+  return `<span class="avail-chip avail-chip--nolink" title="Sin enlace directo registrado">${img}<span>${availEsc(e.name)}</span></span>`;
 }
 function availBodyHtml(item,code){
   const entries=availEntries(item,code), meta=(_wlIsObj(item&&item.streamingMeta)&&_wlIsObj(item.streamingMeta[code]))?item.streamingMeta[code]:null;
-  const tmdb=meta?availSafeTmdbLink(meta.link):'', who=availWho(code);
+  const tmdb=availTmdbLinkFor(item,code), who=availWho(code);
   const tmdbHtml=tmdb?`<a class="avail-tmdb" href="${availEsc(tmdb)}" target="_blank" rel="noopener">Ver disponibilidad en TMDB / JustWatch ↗</a>`:'';
   if(!entries.length){
     const others=availRegionsWithData(item).filter(c=>c!==code);
     const hint=others.length?`<div class="avail-empty-more">Sí consta en: ${others.slice(0,12).map(c=>`<button type="button" class="avail-pick" data-avail-pick="${availEsc(c)}">${availWho(c)}</button>`).join(' ')}${others.length>12?` y ${others.length-12} más (usa el buscador)`:''}</div>`:'';
     return `<div class="avail-empty" role="status"><div class="avail-empty-title">Sin disponibilidad registrada en ${who}</div><div class="avail-empty-txt">Todavía no hay plataformas guardadas para esta producción en este país. Eso no significa que no esté disponible: solo que no consta en TINTA.</div>${hint}${tmdbHtml}</div>`;
   }
-  const groups=AVAIL_TYPES.map(([t,label])=>{ const g=entries.filter(e=>e.type===t); return g.length?`<div class="avail-group"><div class="avail-group-title">${label}</div><div class="avail-chips">${g.map(availChipHtml).join('')}</div></div>`:''; }).join('');
+  const groups=AVAIL_TYPES.map(([t,label])=>{ const g=entries.filter(e=>e.type===t); return g.length?`<div class="avail-group"><div class="avail-group-title">${label}</div><div class="avail-chips">${g.map(x=>availChipHtml(x,tmdb)).join('')}</div></div>`:''; }).join('');
   const stale=(meta&&meta.status==='review')?'<div class="avail-note">⚠ Dato pendiente de revisión: puede estar desactualizado.</div>':'';
   return `<div class="avail-country-head">Disponible en ${who}</div>${groups}${stale}${tmdbHtml}`;
 }
