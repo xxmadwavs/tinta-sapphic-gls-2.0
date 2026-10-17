@@ -984,7 +984,7 @@
         4
       ],
       "totalEpisodes": 8,
-      "network": "iQIYI",
+      "network": "iQIYI, Netflix",
       "skipDates": [],
       "episodes": [],
       "synopsis": "Si, una heredera de la alta sociedad, sueña con convertirse en presidenta de la empresa familiar. Sin embargo, sus padres le conceden el puesto a su hermana menor, ya que consideran que Si es demasiado mimada e irresponsable, y que se gasta millones sin pensárselo dos veces. Cuando el negocio familiar se enfrenta a una crisis relacionada con la renovación de un contrato de arrendamiento de terrenos crucial, las negociaciones fracasan, hasta que Klaokavee, la propietaria del terreno, hace una propuesta inusual: renovará el contrato solo si Si acepta casarse con ella. A pesar de sus estilos de vida completamente opuestos, este extraño acuerdo lleva a ambas a una relación inesperada y complicada.",
@@ -1000,6 +1000,10 @@
         {
           "name": "iQIYI",
           "url": "https://www.iq.com/album/hometown-romance-2026-1pg1klzlrtl"
+        },
+        {
+          "name": "Netflix",
+          "url": "https://www.netflix.com"
         }
       ],
       "trailerUrl": "https://www.youtube.com/watch?v=bS_vRrzvxy0",
@@ -1111,7 +1115,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-12T08:50:31.564Z",
+      "updatedAt": "2026-10-17T18:21:15.891Z",
       "nameEn": "คุณแฟนบ้านนอก",
       "episodeDuration": 51,
       "myPick": false,
@@ -1139,10 +1143,1072 @@
           "1778669706067"
         ]
       ],
-      "tmdbId": 312583,
+      "tmdbId": "312583",
       "tmdbKind": "tv",
       "tmdbRating": 8.2,
-      "tmdbVoteCount": 10
+      "tmdbVoteCount": 10,
+      "biFormat": false,
+      "streaming": {
+        "AG": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "AL": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "AR": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "AU": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "AZ": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "BA": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "BB": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "BG": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "BM": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "BO": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "BR": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "BS": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "BY": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "BZ": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          },
+          {
+            "name": "iQIYI",
+            "url": "https://www.iqiyi.com",
+            "type": "flatrate",
+            "providerId": 581,
+            "source": "tmdb"
+          }
+        ],
+        "CL": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "CO": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "CR": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "CU": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "CY": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "DO": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "EC": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "EE": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "FJ": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "GG": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "GH": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "GI": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "GQ": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "GT": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "HK": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "HN": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "ID": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "IE": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "IN": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "IS": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "JM": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "JP": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "KE": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "KR": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "LC": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "LT": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "LV": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "ME": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "MK": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "MT": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "MU": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "MX": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "MY": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "NG": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "NI": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "NL": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "NZ": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "PA": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "PE": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "PH": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "PK": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "PY": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "RS": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "SG": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "SI": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "SK": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "SV": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "TC": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "TH": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "TT": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "TW": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "TZ": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "UG": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "UY": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "VE": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "ZA": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "ZM": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ],
+        "ZW": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AG": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=AG",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "AL": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=AL",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "AR": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=AR",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "AU": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=AU",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "AZ": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=AZ",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BA": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=BA",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BB": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=BB",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BG": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=BG",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BM": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=BM",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BO": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=BO",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BR": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=BR",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BS": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=BS",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BY": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=BY",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BZ": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=BZ",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=CA",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "CL": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=CL",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "CO": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=CO",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "CR": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=CR",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "CU": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=CU",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "CY": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=CY",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "DO": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=DO",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "EC": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=EC",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "EE": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=EE",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "FJ": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=FJ",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=GB",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "GG": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=GG",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "GH": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=GH",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "GI": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=GI",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "GQ": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=GQ",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "GT": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=GT",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "HK": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=HK",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "HN": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=HN",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "ID": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=ID",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "IE": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=IE",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "IN": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=IN",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "IS": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=IS",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "JM": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=JM",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "JP": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=JP",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "KE": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=KE",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "KR": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=KR",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "LC": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=LC",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "LT": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=LT",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "LV": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=LV",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "ME": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=ME",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "MK": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=MK",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "MT": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=MT",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "MU": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=MU",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "MX": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=MX",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "MY": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=MY",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "NG": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=NG",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "NI": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=NI",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "NL": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=NL",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "NZ": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=NZ",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "PA": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=PA",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "PE": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=PE",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "PH": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=PH",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "PK": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=PK",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "PY": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=PY",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "RS": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=RS",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "SG": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=SG",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "SI": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=SI",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "SK": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=SK",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "SV": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=SV",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "TC": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=TC",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "TH": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=TH",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "TT": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=TT",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "TW": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=TW",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "TZ": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=TZ",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "UG": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=UG",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=US",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "UY": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=UY",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "VE": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=VE",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "ZA": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=ZA",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "ZM": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=ZM",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "ZW": {
+          "link": "https://www.themoviedb.org/tv/312583/watch?locale=ZW",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        }
+      }
     },
     {
       "id": "1776889365998",
@@ -94355,5 +95421,5 @@
       ]
     }
   },
-  "exportedAt": "2026-10-17T18:19:35.332Z"
+  "exportedAt": "2026-10-17T18:21:27.667Z"
 }
