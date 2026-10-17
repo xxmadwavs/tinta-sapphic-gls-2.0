@@ -1246,6 +1246,8 @@ html[data-theme="dark"] .ship-retired-note{color:#a08090}
 .ship-row-avatar img{width:100%;height:100%;object-fit:cover;display:block;transform-origin:center center}
 .ship-row-text{display:flex;flex-direction:column;gap:2px;min-width:0}
 .ship-row-name{font-weight:700;font-size:14px;color:var(--text);overflow-wrap:anywhere}
+.ship-row-char{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.ship-row-char strong{color:var(--accent);font-weight:700}
 .ship-row-meta{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 @media(max-width:600px){
   .ship-detail .ship-hero{flex-direction:column;text-align:center;padding:18px 14px}
@@ -6247,13 +6249,14 @@ function openActressProfile(actressId){
   };
 
   const _e=escapeHtmlChk;
+  const _char=(item)=>{ const m=(item.cast||[]).find(c=>c&&c.actressId===actressId); const c=m&&typeof m.character==='string'?m.character.trim():''; return c?`<span class="ship-row-char">Personaje: <strong>${_e(c)}</strong></span>`:''; };
   const _av=(url,alt)=>`<span class="ship-row-avatar">${url?`<img src="${_e(url)}" alt="${_e(alt||'')}" loading="lazy" style="object-position:50% 20%" onerror="this.style.opacity=0">`:''}</span>`;
   const seriesRows=inSeries.map(s=>{
     const si=state.series.indexOf(s);
     const st=_seriesStatus(s);
     return `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();openSeries(${si})">
       ${_av(s.poster,s.name)}
-      <span class="ship-row-text"><span class="ship-row-name">${_e(s.name)}</span>
+      <span class="ship-row-text"><span class="ship-row-name">${_e(s.name)}</span>${_char(s)}
         <span class="ship-row-meta">${s.year?_e(s.year)+' · ':''}<span class="ship-status-badge ${st.cls}">${st.label}</span></span></span>
     </div>`;
   }).join('');
@@ -6263,7 +6266,7 @@ function openActressProfile(actressId){
     const g=mv.genres&&mv.genres.length?mv.genres[0]:null;
     return `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();openMovie(${mi})">
       ${_av(mv.poster,mv.name)}
-      <span class="ship-row-text"><span class="ship-row-name">${_e(mv.name)}</span>
+      <span class="ship-row-text"><span class="ship-row-name">${_e(mv.name)}</span>${_char(mv)}
         <span class="ship-row-meta">${mv.year?_e(mv.year):''}${g&&mv.year?' · ':''}${g?_e(g):''}</span></span>
     </div>`;
   }).join('');
