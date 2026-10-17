@@ -4663,10 +4663,59 @@ function chkPickerAddSelected(){
 const TMDB_API_BASE = 'https://api.themoviedb.org/3';
 const TMDB_IMG_BASE  = 'https://image.tmdb.org/t/p/w200';
 const TMDB_STILL_BASE = 'https://image.tmdb.org/t/p/w300';
-const TMDB_REGIONS = [
-  ['ES','España'],['MX','México'],['AR','Argentina'],['CO','Colombia'],['CL','Chile'],
-  ['PE','Perú'],['US','Estados Unidos'],['VE','Venezuela'],['EC','Ecuador'],['UY','Uruguay']
-];
+/* ═══ REGIONES_TMDB:BEGIN v1 ═══════════════════════════════════════════════════════════════════════════
+   6.9 — CATÁLOGO DE REGIONES DE TMDB. ÚNICA FUENTE DE VERDAD: este bloque es IDÉNTICO en index.html y admin.html.
+   NO se edita a mano en un solo archivo: se modifica regiones_tmdb_bloque.js y se ejecuta sync_regiones.mjs (o se pega el bloque
+   completo en ambos). La prueba test_6_9.mjs comprueba que los dos archivos contienen exactamente el mismo bloque.
+   QUÉ ES: la relación país/territorio ↔ código regional (iso_3166_1 de TMDB /watch/providers: ISO 3166-1 alfa-2 + «XK» Kosovo,
+   que TMDB usa y no es ISO). Cada fila: CÓDIGO|nombre en español|nombre en inglés|alias de búsqueda.
+   QUÉ NO ES: NO indica disponibilidad. Que un país figure aquí NO significa que TMDB tenga datos de él ni que un proveedor esté ahí:
+   la disponibilidad solo sale de streaming[CÓDIGO] de cada ficha. Aquí no hay proveedores, enlaces ni URLs.
+   Los nombres son estáticos (no dependen del navegador). Las banderas se calculan desde el código y solo se muestran si el sistema
+   las dibuja de verdad (Windows no dibuja banderas emoji): regionFlag() devuelve '' si no hay representación fiable. ═══ */
+const REGION_CATALOG_SRC='AD|Andorra|Andorra|;AE|Emiratos Árabes Unidos|United Arab Emirates|uae emiratos;AF|Afganistán|Afghanistan|;AG|Antigua y Barbuda|Antigua and Barbuda|;AI|Anguila|Anguilla|;AL|Albania|Albania|;AM|Armenia|Armenia|;AO|Angola|Angola|;AQ|Antártida|Antarctica|;AR|Argentina|Argentina|;AS|Samoa Americana|American Samoa|;AT|Austria|Austria|;AU|Australia|Australia|;AW|Aruba|Aruba|;AX|Islas Åland|Åland Islands|;AZ|Azerbaiyán|Azerbaijan|;BA|Bosnia y Herzegovina|Bosnia and Herzegovina|;BB|Barbados|Barbados|;BD|Bangladés|Bangladesh|;BE|Bélgica|Belgium|;BF|Burkina Faso|Burkina Faso|;BG|Bulgaria|Bulgaria|;BH|Baréin|Bahrain|;BI|Burundi|Burundi|;BJ|Benín|Benin|;BL|San Bartolomé|Saint Barthélemy|;BM|Bermudas|Bermuda|;BN|Brunéi|Brunei|;BO|Bolivia|Bolivia|;BQ|Caribe neerlandés|Caribbean Netherlands|;BR|Brasil|Brazil|;BS|Bahamas|Bahamas|;BT|Bután|Bhutan|;BV|Isla Bouvet|Bouvet Island|;BW|Botsuana|Botswana|;BY|Bielorrusia|Belarus|;BZ|Belice|Belize|;CA|Canadá|Canada|;CC|Islas Cocos|Cocos (Keeling) Islands|;CD|República Democrática del Congo|Congo - Kinshasa|drc congo kinshasa;CF|República Centroafricana|Central African Republic|;CG|República del Congo|Congo - Brazzaville|congo brazzaville;CH|Suiza|Switzerland|;CI|Costa de Marfil|Ivory Coast|cote d ivoire costa de marfil;CK|Islas Cook|Cook Islands|;CL|Chile|Chile|;CM|Camerún|Cameroon|;CN|China|China|;CO|Colombia|Colombia|;CR|Costa Rica|Costa Rica|;CU|Cuba|Cuba|;CV|Cabo Verde|Cape Verde|;CW|Curazao|Curaçao|;CX|Isla de Navidad|Christmas Island|;CY|Chipre|Cyprus|;CZ|Chequia|Czechia|czech republic republica checa;DE|Alemania|Germany|;DJ|Yibuti|Djibouti|;DK|Dinamarca|Denmark|;DM|Dominica|Dominica|;DO|República Dominicana|Dominican Republic|;DZ|Argelia|Algeria|;EC|Ecuador|Ecuador|;EE|Estonia|Estonia|;EG|Egipto|Egypt|;EH|Sáhara Occidental|Western Sahara|;ER|Eritrea|Eritrea|;ES|España|Spain|;ET|Etiopía|Ethiopia|;FI|Finlandia|Finland|;FJ|Fiyi|Fiji|;FK|Islas Malvinas|Falkland Islands|;FM|Micronesia|Micronesia|;FO|Islas Feroe|Faroe Islands|;FR|Francia|France|;GA|Gabón|Gabon|;GB|Reino Unido|United Kingdom|uk gran bretana inglaterra england britain escocia;GD|Granada|Grenada|;GE|Georgia|Georgia|;GF|Guayana Francesa|French Guiana|;GG|Guernesey|Guernsey|;GH|Ghana|Ghana|;GI|Gibraltar|Gibraltar|;GL|Groenlandia|Greenland|;GM|Gambia|Gambia|;GN|Guinea|Guinea|;GP|Guadalupe|Guadeloupe|;GQ|Guinea Ecuatorial|Equatorial Guinea|;GR|Grecia|Greece|;GS|Islas Georgia del Sur y Sandwich del Sur|South Georgia and South Sandwich Islands|;GT|Guatemala|Guatemala|;GU|Guam|Guam|;GW|Guinea-Bisáu|Guinea-Bissau|;GY|Guyana|Guyana|;HK|Hong Kong|Hong Kong|;HM|Islas Heard y McDonald|Heard and McDonald Islands|;HN|Honduras|Honduras|;HR|Croacia|Croatia|;HT|Haití|Haiti|;HU|Hungría|Hungary|;ID|Indonesia|Indonesia|;IE|Irlanda|Ireland|;IL|Israel|Israel|;IM|Isla de Man|Isle of Man|;IN|India|India|;IO|Territorio Británico del Océano Índico|British Indian Ocean Territory|;IQ|Irak|Iraq|;IR|Irán|Iran|;IS|Islandia|Iceland|;IT|Italia|Italy|;JE|Jersey|Jersey|;JM|Jamaica|Jamaica|;JO|Jordania|Jordan|;JP|Japón|Japan|;KE|Kenia|Kenya|;KG|Kirguistán|Kyrgyzstan|;KH|Camboya|Cambodia|;KI|Kiribati|Kiribati|;KM|Comoras|Comoros|;KN|San Cristóbal y Nieves|Saint Kitts and Nevis|;KP|Corea del Norte|North Korea|north korea;KR|Corea del Sur|South Korea|south korea;KW|Kuwait|Kuwait|;KY|Islas Caimán|Cayman Islands|;KZ|Kazajistán|Kazakhstan|;LA|Laos|Laos|;LB|Líbano|Lebanon|;LC|Santa Lucía|Saint Lucia|;LI|Liechtenstein|Liechtenstein|;LK|Sri Lanka|Sri Lanka|;LR|Liberia|Liberia|;LS|Lesoto|Lesotho|;LT|Lituania|Lithuania|;LU|Luxemburgo|Luxembourg|;LV|Letonia|Latvia|;LY|Libia|Libya|;MA|Marruecos|Morocco|;MC|Mónaco|Monaco|;MD|Moldavia|Moldova|;ME|Montenegro|Montenegro|;MF|San Martín|Saint Martin|;MG|Madagascar|Madagascar|;MH|Islas Marshall|Marshall Islands|;MK|Macedonia del Norte|North Macedonia|macedonia;ML|Mali|Mali|;MM|Myanmar|Myanmar|burma birmania;MN|Mongolia|Mongolia|;MO|Macao|Macao|;MP|Islas Marianas del Norte|Northern Mariana Islands|;MQ|Martinica|Martinique|;MR|Mauritania|Mauritania|;MS|Montserrat|Montserrat|;MT|Malta|Malta|;MU|Mauricio|Mauritius|;MV|Maldivas|Maldives|;MW|Malaui|Malawi|;MX|México|Mexico|;MY|Malasia|Malaysia|;MZ|Mozambique|Mozambique|;NA|Namibia|Namibia|;NC|Nueva Caledonia|New Caledonia|;NE|Níger|Niger|;NF|Isla Norfolk|Norfolk Island|;NG|Nigeria|Nigeria|;NI|Nicaragua|Nicaragua|;NL|Países Bajos|Netherlands|holland holanda;NO|Noruega|Norway|;NP|Nepal|Nepal|;NR|Nauru|Nauru|;NU|Niue|Niue|;NZ|Nueva Zelanda|New Zealand|;OM|Omán|Oman|;PA|Panamá|Panama|;PE|Perú|Peru|;PF|Polinesia Francesa|French Polynesia|;PG|Papúa Nueva Guinea|Papua New Guinea|;PH|Filipinas|Philippines|;PK|Pakistán|Pakistan|;PL|Polonia|Poland|;PM|San Pedro y Miquelón|Saint Pierre and Miquelon|;PN|Islas Pitcairn|Pitcairn Islands|;PR|Puerto Rico|Puerto Rico|;PS|Palestina|Palestinian Territories|palestine territorios palestinos;PT|Portugal|Portugal|;PW|Palaos|Palau|;PY|Paraguay|Paraguay|;QA|Catar|Qatar|;RE|Reunión|Réunion|;RO|Rumanía|Romania|;RS|Serbia|Serbia|;RU|Rusia|Russia|;RW|Ruanda|Rwanda|;SA|Arabia Saudí|Saudi Arabia|arabia saudita;SB|Islas Salomón|Solomon Islands|;SC|Seychelles|Seychelles|;SD|Sudán|Sudan|;SE|Suecia|Sweden|;SG|Singapur|Singapore|;SH|Santa Elena|Saint Helena|;SI|Eslovenia|Slovenia|;SJ|Svalbard y Jan Mayen|Svalbard and Jan Mayen|;SK|Eslovaquia|Slovakia|;SL|Sierra Leona|Sierra Leone|;SM|San Marino|San Marino|;SN|Senegal|Senegal|;SO|Somalia|Somalia|;SR|Surinam|Suriname|;SS|Sudán del Sur|South Sudan|;ST|Santo Tomé y Príncipe|São Tomé and Príncipe|;SV|El Salvador|El Salvador|;SX|Sint Maarten|Sint Maarten|;SY|Siria|Syria|;SZ|Esuatini|Eswatini|swaziland suazilandia;TC|Islas Turcas y Caicos|Turks and Caicos Islands|;TD|Chad|Chad|;TF|Territorios Australes Franceses|French Southern Territories|;TG|Togo|Togo|;TH|Tailandia|Thailand|;TJ|Tayikistán|Tajikistan|;TK|Tokelau|Tokelau|;TL|Timor-Leste|Timor-Leste|east timor timor oriental;TM|Turkmenistán|Turkmenistan|;TN|Túnez|Tunisia|;TO|Tonga|Tonga|;TR|Turquía|Türkiye|turkey;TT|Trinidad y Tobago|Trinidad and Tobago|;TV|Tuvalu|Tuvalu|;TW|Taiwán|Taiwan|;TZ|Tanzania|Tanzania|;UA|Ucrania|Ukraine|;UG|Uganda|Uganda|;UM|Islas menores de EE. UU.|US Outlying Islands|;US|Estados Unidos|United States|usa eeuu ee uu united states of america america;UY|Uruguay|Uruguay|;UZ|Uzbekistán|Uzbekistan|;VA|Ciudad del Vaticano|Vatican City|vaticano holy see;VC|San Vicente y las Granadinas|Saint Vincent and Grenadines|;VE|Venezuela|Venezuela|;VG|Islas Vírgenes Británicas|British Virgin Islands|;VI|Islas Vírgenes de EE. UU.|US Virgin Islands|;VN|Vietnam|Vietnam|;VU|Vanuatu|Vanuatu|;WF|Wallis y Futuna|Wallis and Futuna|;WS|Samoa|Samoa|;XK|Kosovo|Kosovo|;YE|Yemen|Yemen|;YT|Mayotte|Mayotte|;ZA|Sudáfrica|South Africa|;ZM|Zambia|Zambia|;ZW|Zimbabue|Zimbabwe|';
+const REGION_CATALOG=Object.freeze(REGION_CATALOG_SRC.split(';').map(function(l){ const p=l.split('|'); return Object.freeze({code:p[0],es:p[1],en:p[2],alias:p[3]||''}); }));
+const _REGION_BY_CODE=(function(){ const m=Object.create(null); REGION_CATALOG.forEach(function(r){ m[r.code]=r; }); return m; })();
+function regionIsCode(c){ return typeof c==='string'&&/^[A-Z]{2}$/.test(c); }
+function regionByCode(c){ return regionIsCode(c)?(_REGION_BY_CODE[c]||null):null; }
+// Nombre legible: el del catálogo; si el código no está (p. ej. llegó dentro del streaming de una ficha) se intenta Intl y, si no, el código.
+function regionName(code,lang){
+  lang=lang==='en'?'en':'es'; const r=regionByCode(code); if(r) return r[lang];
+  try{ const n=new Intl.DisplayNames([lang],{type:'region'}).of(code); if(n&&n!==code) return n; }catch(e){}
+  return lang==='es'?String(code==null?'':code):'';
+}
+// Normaliza para buscar: sin tildes/mayúsculas/puntuación, «&»→and, «st»→saint.
+function regionNorm(s){ return String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').replace(/\bst\b/g,'saint').replace(/\s+/g,' ').trim(); }
+function regionSearchKey(code){ const r=regionByCode(code); return regionNorm(r?(r.es+' '+r.en+' '+r.code+' '+r.alias):(regionName(code,'es')+' '+regionName(code,'en')+' '+code)); }
+function regionMatches(code,q){ const k=regionSearchKey(code), t=regionNorm(q).split(' ').filter(Boolean); return t.every(function(x){ return k.indexOf(x)!==-1; }); }
+function regionSearch(q){ return REGION_CATALOG.filter(function(r){ return regionMatches(r.code,q); }); }
+// ¿Dibuja este sistema banderas emoji en color? (Windows muestra letras en su lugar.) Se mide una vez dibujando 🇪🇸 en un canvas.
+let _regionFlagsOK=null;
+function regionFlagsSupported(){
+  if(_regionFlagsOK!==null) return _regionFlagsOK;
+  let ok=null;
+  try{
+    const cv=document.createElement('canvas'); cv.width=40; cv.height=32; const x=cv.getContext('2d',{willReadFrequently:true});
+    if(x){ x.textBaseline='top'; x.font='24px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif'; x.fillText('\uD83C\uDDEA\uD83C\uDDF8',0,0);
+      const d=x.getImageData(0,0,40,32).data; ok=false;
+      for(let i=0;i<d.length;i+=4){ if(d[i+3]>128&&Math.max(d[i],d[i+1],d[i+2])-Math.min(d[i],d[i+1],d[i+2])>60){ ok=true; break; } } }
+  }catch(e){ ok=null; }
+  if(ok===null) ok=!/Windows/i.test((typeof navigator!=='undefined'&&navigator.userAgent)||'');
+  return _regionFlagsOK=ok;
+}
+// Bandera emoji del código, o '' si no hay una representación fiable (código fuera del catálogo o sistema que no dibuja banderas).
+function regionFlag(code){ return (regionByCode(code)&&regionFlagsSupported())?String.fromCodePoint(0x1F1E6+code.charCodeAt(0)-65,0x1F1E6+code.charCodeAt(1)-65):''; }
+/* ═══ REGIONES_TMDB:END ═══ */
+
+// 6.9 — Antes: lista fija de 10 mercados hispanohablantes. Ahora TMDB_REGIONS se DERIVA del catálogo único REGION_CATALOG (bloque REGIONES_TMDB,
+// idéntico en index.html): [código, nombre] de todos los países/territorios. TMDB_REGIONS_PRIORITY solo decide qué se muestra primero
+// en el desplegable y en qué orden salen las regiones importadas; no limita nada.
+const TMDB_REGIONS_PRIORITY = ['ES','MX','AR','CO','CL','PE','US','VE','EC','UY'];
+const TMDB_REGIONS = (function(){
+  const pr = TMDB_REGIONS_PRIORITY.map(c=>regionByCode(c));
+  const rest = REGION_CATALOG.filter(r=>TMDB_REGIONS_PRIORITY.indexOf(r.code)<0).slice().sort((a,b)=>a.es.localeCompare(b.es,'es'));
+  return pr.concat(rest).map(r=>[r.code, r.es]);
+})();
 
 function tmdbGetKey(){ return localStorage.getItem('tmdbApiKey') || ''; }
 function tmdbConfigureKey(){
@@ -4675,11 +4724,13 @@ function tmdbConfigureKey(){
   if(key !== null){ localStorage.setItem('tmdbApiKey', key.trim()); }
   return tmdbGetKey();
 }
-function tmdbGetRegion(){ return localStorage.getItem('tmdbRegion') || 'ES'; }
+function tmdbGetRegion(){ const v = localStorage.getItem('tmdbRegion'); return (v && regionByCode(v)) ? v : 'ES'; }   // 6.9: solo códigos del catálogo
 function tmdbSetRegion(sel){ localStorage.setItem('tmdbRegion', sel.value); }
 function tmdbRegionOptionsHtml(){
-  const current = tmdbGetRegion();
-  return TMDB_REGIONS.map(([code,label])=>`<option value="${code}" ${code===current?'selected':''}>${label}</option>`).join('');
+  const current = tmdbGetRegion(), n = TMDB_REGIONS_PRIORITY.length;
+  const opt = ([code,label])=>`<option value="${code}" ${code===current?'selected':''}>${label} (${code})</option>`;
+  return '<optgroup label="Habituales">'+TMDB_REGIONS.slice(0,n).map(opt).join('')+'</optgroup>'
+    +'<optgroup label="Resto de países y territorios (A–Z)">'+TMDB_REGIONS.slice(n).map(opt).join('')+'</optgroup>';
 }
 
 function tmdbGetCastImportPref(){ return localStorage.getItem('tmdbImportCast')!=='false'; }
@@ -5230,7 +5281,7 @@ function tmdbNormalizeProviders(list){
 }
 /* ═══ FIN 1C.2 helpers ═══ */
 /* ═══ 1C.3.2 — Estructura regional de streaming (aislado y aditivo) ═══
-   Campo opcional de la ficha: streaming = { ES:[{name,url,type}], MX:[...], ... }  (claves = códigos de TMDB_REGIONS).
+   Campo opcional de la ficha: streaming = { ES:[{name,url,type}], MX:[...], ... }  (claves = códigos regionales de TMDB; catálogo en REGION_CATALOG).
    `type` ∈ flatrate | free | ads | rent | buy. `url` puede ser '' (proveedor sin URL estándar; nunca se inventa).
    NO sustituye a watchLinks / network / networkUrl. Aquí solo hay helpers puros y sin DOM. */
 const STREAMING_TYPES=['flatrate','free','ads','rent','buy'];
@@ -5418,9 +5469,7 @@ function streamingSavePayload(rec,inputId){
   const out={streaming:r.streaming}; if(Object.keys(r.meta).length) out.streamingMeta=r.meta; return out;
 }
 function streamingRegionLabel(code){
-  const k=TMDB_REGIONS.find(x=>x[0]===code); if(k) return k[1];
-  try{ const n=new Intl.DisplayNames(['es'],{type:'region'}).of(code); if(n&&n!==code) return n; }catch(e){}
-  return code;
+  return regionName(code,'es');   // 6.9: nombre del catálogo único (Intl solo para códigos fuera del catálogo; si no, el propio código)
 }
 function tmdbToday(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 /* ═══ FIN 6.7 helpers ═══ */
@@ -5452,7 +5501,7 @@ function tmdbImpStreamingSaveHtml(dr,p){
   const curReg=Array.isArray(cur[dr.region])?cur[dr.region]:[];
   const norm=a=>(a||[]).map(streamingNormalizeEntry).filter(Boolean);
   const igual=valid&&J(norm(curReg))===J(norm(provs)), dis=!valid||igual, on=!dis&&curReg.length===0;
-  const note=!valid?'Región no reconocida en TMDB_REGIONS: no se puede guardar.'
+  const note=!valid?'Código de región no válido (se esperan 2 letras mayúsculas): no se puede guardar.'
     :igual?'La ficha ya tiene exactamente este streaming para '+code+'.'
     :curReg.length?'La ficha ya tiene '+curReg.length+' entrada(s) para '+code+'. Si marcas la casilla se sustituyen por completo.'
     :'Se guardará la región '+code+'.';
@@ -5486,7 +5535,7 @@ function tmdbImpGlobalStreamingHtml(dr,p){
   const clearing=Object.keys(rep.regions).filter(k=>rep.regions[k].result!=='review'&&pend.meta[k]&&pend.meta[k].status==='review').length;   // regiones en revisión que TMDB vuelve a devolver: la marca se limpia
   const nothing=(c.added+c.changed+reviewNew+clearing)===0, on=!nothing&&!hasExisting&&c.added>0&&c.changed===0;
   const sum='+'+c.added+' región(es) nueva(s) · '+c.changed+' modificada(s) · '+c.unchanged+' sin cambios · '+c.review+' para revisión'+(c.skipped?' · '+c.skipped+' omitida(s) por datos incompletos':'');
-  const sorted=Object.keys(rep.regions).sort((a,b)=>{ const ia=TMDB_REGIONS.findIndex(x=>x[0]===a), ib=TMDB_REGIONS.findIndex(x=>x[0]===b); return (ia<0?999:ia)-(ib<0?999:ib)||a.localeCompare(b); });
+  const sorted=Object.keys(rep.regions).sort((a,b)=>{ const ia=TMDB_REGIONS_PRIORITY.indexOf(a), ib=TMDB_REGIONS_PRIORITY.indexOf(b); return (ia<0?999:ia)-(ib<0?999:ib)||a.localeCompare(b); });
   const lbl={added:'nueva',changed:'modificada',unchanged:'sin cambios',review:'revisar'};
   const det=sorted.map(code=>{
     const r=rep.regions[code], inc=(ar.streaming[code]||[]);

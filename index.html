@@ -352,6 +352,8 @@ html[data-theme="dark"] .dark-toggle{background:var(--surface2);color:var(--gold
 .avail-opt:hover,.avail-opt:focus{background:var(--surface3)}
 .avail-opt.is-active{background:var(--accent-soft);font-weight:700}
 .avail-opt-name{flex:1;min-width:0}
+.avail-opt-code{font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--muted);font-variant-numeric:tabular-nums}
+.avail-flag:empty{display:none}
 .avail-opt-has{font-size:10.5px;font-weight:700;color:var(--teal);background:var(--teal-soft);border-radius:20px;padding:1px 7px;white-space:nowrap}
 .avail-check{visibility:hidden;color:var(--accent);font-weight:800}
 .avail-opt.is-active .avail-check{visibility:visible}
@@ -3877,6 +3879,50 @@ function filtrarTropos(tropos,dinamica){
 
 let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',series:[],movies:[],actresses:[],ships:[],productoras:[],listas:[],checklist:{thai:{titulo:'',subtitulo:'',items:[]},china:{titulo:'',subtitulo:'',items:[]},japan:{titulo:'',subtitulo:'',items:[]},korea:{titulo:'',subtitulo:'',items:[]}}};
 
+/* ═══ REGIONES_TMDB:BEGIN v1 ═══════════════════════════════════════════════════════════════════════════
+   6.9 — CATÁLOGO DE REGIONES DE TMDB. ÚNICA FUENTE DE VERDAD: este bloque es IDÉNTICO en index.html y admin.html.
+   NO se edita a mano en un solo archivo: se modifica regiones_tmdb_bloque.js y se ejecuta sync_regiones.mjs (o se pega el bloque
+   completo en ambos). La prueba test_6_9.mjs comprueba que los dos archivos contienen exactamente el mismo bloque.
+   QUÉ ES: la relación país/territorio ↔ código regional (iso_3166_1 de TMDB /watch/providers: ISO 3166-1 alfa-2 + «XK» Kosovo,
+   que TMDB usa y no es ISO). Cada fila: CÓDIGO|nombre en español|nombre en inglés|alias de búsqueda.
+   QUÉ NO ES: NO indica disponibilidad. Que un país figure aquí NO significa que TMDB tenga datos de él ni que un proveedor esté ahí:
+   la disponibilidad solo sale de streaming[CÓDIGO] de cada ficha. Aquí no hay proveedores, enlaces ni URLs.
+   Los nombres son estáticos (no dependen del navegador). Las banderas se calculan desde el código y solo se muestran si el sistema
+   las dibuja de verdad (Windows no dibuja banderas emoji): regionFlag() devuelve '' si no hay representación fiable. ═══ */
+const REGION_CATALOG_SRC='AD|Andorra|Andorra|;AE|Emiratos Árabes Unidos|United Arab Emirates|uae emiratos;AF|Afganistán|Afghanistan|;AG|Antigua y Barbuda|Antigua and Barbuda|;AI|Anguila|Anguilla|;AL|Albania|Albania|;AM|Armenia|Armenia|;AO|Angola|Angola|;AQ|Antártida|Antarctica|;AR|Argentina|Argentina|;AS|Samoa Americana|American Samoa|;AT|Austria|Austria|;AU|Australia|Australia|;AW|Aruba|Aruba|;AX|Islas Åland|Åland Islands|;AZ|Azerbaiyán|Azerbaijan|;BA|Bosnia y Herzegovina|Bosnia and Herzegovina|;BB|Barbados|Barbados|;BD|Bangladés|Bangladesh|;BE|Bélgica|Belgium|;BF|Burkina Faso|Burkina Faso|;BG|Bulgaria|Bulgaria|;BH|Baréin|Bahrain|;BI|Burundi|Burundi|;BJ|Benín|Benin|;BL|San Bartolomé|Saint Barthélemy|;BM|Bermudas|Bermuda|;BN|Brunéi|Brunei|;BO|Bolivia|Bolivia|;BQ|Caribe neerlandés|Caribbean Netherlands|;BR|Brasil|Brazil|;BS|Bahamas|Bahamas|;BT|Bután|Bhutan|;BV|Isla Bouvet|Bouvet Island|;BW|Botsuana|Botswana|;BY|Bielorrusia|Belarus|;BZ|Belice|Belize|;CA|Canadá|Canada|;CC|Islas Cocos|Cocos (Keeling) Islands|;CD|República Democrática del Congo|Congo - Kinshasa|drc congo kinshasa;CF|República Centroafricana|Central African Republic|;CG|República del Congo|Congo - Brazzaville|congo brazzaville;CH|Suiza|Switzerland|;CI|Costa de Marfil|Ivory Coast|cote d ivoire costa de marfil;CK|Islas Cook|Cook Islands|;CL|Chile|Chile|;CM|Camerún|Cameroon|;CN|China|China|;CO|Colombia|Colombia|;CR|Costa Rica|Costa Rica|;CU|Cuba|Cuba|;CV|Cabo Verde|Cape Verde|;CW|Curazao|Curaçao|;CX|Isla de Navidad|Christmas Island|;CY|Chipre|Cyprus|;CZ|Chequia|Czechia|czech republic republica checa;DE|Alemania|Germany|;DJ|Yibuti|Djibouti|;DK|Dinamarca|Denmark|;DM|Dominica|Dominica|;DO|República Dominicana|Dominican Republic|;DZ|Argelia|Algeria|;EC|Ecuador|Ecuador|;EE|Estonia|Estonia|;EG|Egipto|Egypt|;EH|Sáhara Occidental|Western Sahara|;ER|Eritrea|Eritrea|;ES|España|Spain|;ET|Etiopía|Ethiopia|;FI|Finlandia|Finland|;FJ|Fiyi|Fiji|;FK|Islas Malvinas|Falkland Islands|;FM|Micronesia|Micronesia|;FO|Islas Feroe|Faroe Islands|;FR|Francia|France|;GA|Gabón|Gabon|;GB|Reino Unido|United Kingdom|uk gran bretana inglaterra england britain escocia;GD|Granada|Grenada|;GE|Georgia|Georgia|;GF|Guayana Francesa|French Guiana|;GG|Guernesey|Guernsey|;GH|Ghana|Ghana|;GI|Gibraltar|Gibraltar|;GL|Groenlandia|Greenland|;GM|Gambia|Gambia|;GN|Guinea|Guinea|;GP|Guadalupe|Guadeloupe|;GQ|Guinea Ecuatorial|Equatorial Guinea|;GR|Grecia|Greece|;GS|Islas Georgia del Sur y Sandwich del Sur|South Georgia and South Sandwich Islands|;GT|Guatemala|Guatemala|;GU|Guam|Guam|;GW|Guinea-Bisáu|Guinea-Bissau|;GY|Guyana|Guyana|;HK|Hong Kong|Hong Kong|;HM|Islas Heard y McDonald|Heard and McDonald Islands|;HN|Honduras|Honduras|;HR|Croacia|Croatia|;HT|Haití|Haiti|;HU|Hungría|Hungary|;ID|Indonesia|Indonesia|;IE|Irlanda|Ireland|;IL|Israel|Israel|;IM|Isla de Man|Isle of Man|;IN|India|India|;IO|Territorio Británico del Océano Índico|British Indian Ocean Territory|;IQ|Irak|Iraq|;IR|Irán|Iran|;IS|Islandia|Iceland|;IT|Italia|Italy|;JE|Jersey|Jersey|;JM|Jamaica|Jamaica|;JO|Jordania|Jordan|;JP|Japón|Japan|;KE|Kenia|Kenya|;KG|Kirguistán|Kyrgyzstan|;KH|Camboya|Cambodia|;KI|Kiribati|Kiribati|;KM|Comoras|Comoros|;KN|San Cristóbal y Nieves|Saint Kitts and Nevis|;KP|Corea del Norte|North Korea|north korea;KR|Corea del Sur|South Korea|south korea;KW|Kuwait|Kuwait|;KY|Islas Caimán|Cayman Islands|;KZ|Kazajistán|Kazakhstan|;LA|Laos|Laos|;LB|Líbano|Lebanon|;LC|Santa Lucía|Saint Lucia|;LI|Liechtenstein|Liechtenstein|;LK|Sri Lanka|Sri Lanka|;LR|Liberia|Liberia|;LS|Lesoto|Lesotho|;LT|Lituania|Lithuania|;LU|Luxemburgo|Luxembourg|;LV|Letonia|Latvia|;LY|Libia|Libya|;MA|Marruecos|Morocco|;MC|Mónaco|Monaco|;MD|Moldavia|Moldova|;ME|Montenegro|Montenegro|;MF|San Martín|Saint Martin|;MG|Madagascar|Madagascar|;MH|Islas Marshall|Marshall Islands|;MK|Macedonia del Norte|North Macedonia|macedonia;ML|Mali|Mali|;MM|Myanmar|Myanmar|burma birmania;MN|Mongolia|Mongolia|;MO|Macao|Macao|;MP|Islas Marianas del Norte|Northern Mariana Islands|;MQ|Martinica|Martinique|;MR|Mauritania|Mauritania|;MS|Montserrat|Montserrat|;MT|Malta|Malta|;MU|Mauricio|Mauritius|;MV|Maldivas|Maldives|;MW|Malaui|Malawi|;MX|México|Mexico|;MY|Malasia|Malaysia|;MZ|Mozambique|Mozambique|;NA|Namibia|Namibia|;NC|Nueva Caledonia|New Caledonia|;NE|Níger|Niger|;NF|Isla Norfolk|Norfolk Island|;NG|Nigeria|Nigeria|;NI|Nicaragua|Nicaragua|;NL|Países Bajos|Netherlands|holland holanda;NO|Noruega|Norway|;NP|Nepal|Nepal|;NR|Nauru|Nauru|;NU|Niue|Niue|;NZ|Nueva Zelanda|New Zealand|;OM|Omán|Oman|;PA|Panamá|Panama|;PE|Perú|Peru|;PF|Polinesia Francesa|French Polynesia|;PG|Papúa Nueva Guinea|Papua New Guinea|;PH|Filipinas|Philippines|;PK|Pakistán|Pakistan|;PL|Polonia|Poland|;PM|San Pedro y Miquelón|Saint Pierre and Miquelon|;PN|Islas Pitcairn|Pitcairn Islands|;PR|Puerto Rico|Puerto Rico|;PS|Palestina|Palestinian Territories|palestine territorios palestinos;PT|Portugal|Portugal|;PW|Palaos|Palau|;PY|Paraguay|Paraguay|;QA|Catar|Qatar|;RE|Reunión|Réunion|;RO|Rumanía|Romania|;RS|Serbia|Serbia|;RU|Rusia|Russia|;RW|Ruanda|Rwanda|;SA|Arabia Saudí|Saudi Arabia|arabia saudita;SB|Islas Salomón|Solomon Islands|;SC|Seychelles|Seychelles|;SD|Sudán|Sudan|;SE|Suecia|Sweden|;SG|Singapur|Singapore|;SH|Santa Elena|Saint Helena|;SI|Eslovenia|Slovenia|;SJ|Svalbard y Jan Mayen|Svalbard and Jan Mayen|;SK|Eslovaquia|Slovakia|;SL|Sierra Leona|Sierra Leone|;SM|San Marino|San Marino|;SN|Senegal|Senegal|;SO|Somalia|Somalia|;SR|Surinam|Suriname|;SS|Sudán del Sur|South Sudan|;ST|Santo Tomé y Príncipe|São Tomé and Príncipe|;SV|El Salvador|El Salvador|;SX|Sint Maarten|Sint Maarten|;SY|Siria|Syria|;SZ|Esuatini|Eswatini|swaziland suazilandia;TC|Islas Turcas y Caicos|Turks and Caicos Islands|;TD|Chad|Chad|;TF|Territorios Australes Franceses|French Southern Territories|;TG|Togo|Togo|;TH|Tailandia|Thailand|;TJ|Tayikistán|Tajikistan|;TK|Tokelau|Tokelau|;TL|Timor-Leste|Timor-Leste|east timor timor oriental;TM|Turkmenistán|Turkmenistan|;TN|Túnez|Tunisia|;TO|Tonga|Tonga|;TR|Turquía|Türkiye|turkey;TT|Trinidad y Tobago|Trinidad and Tobago|;TV|Tuvalu|Tuvalu|;TW|Taiwán|Taiwan|;TZ|Tanzania|Tanzania|;UA|Ucrania|Ukraine|;UG|Uganda|Uganda|;UM|Islas menores de EE. UU.|US Outlying Islands|;US|Estados Unidos|United States|usa eeuu ee uu united states of america america;UY|Uruguay|Uruguay|;UZ|Uzbekistán|Uzbekistan|;VA|Ciudad del Vaticano|Vatican City|vaticano holy see;VC|San Vicente y las Granadinas|Saint Vincent and Grenadines|;VE|Venezuela|Venezuela|;VG|Islas Vírgenes Británicas|British Virgin Islands|;VI|Islas Vírgenes de EE. UU.|US Virgin Islands|;VN|Vietnam|Vietnam|;VU|Vanuatu|Vanuatu|;WF|Wallis y Futuna|Wallis and Futuna|;WS|Samoa|Samoa|;XK|Kosovo|Kosovo|;YE|Yemen|Yemen|;YT|Mayotte|Mayotte|;ZA|Sudáfrica|South Africa|;ZM|Zambia|Zambia|;ZW|Zimbabue|Zimbabwe|';
+const REGION_CATALOG=Object.freeze(REGION_CATALOG_SRC.split(';').map(function(l){ const p=l.split('|'); return Object.freeze({code:p[0],es:p[1],en:p[2],alias:p[3]||''}); }));
+const _REGION_BY_CODE=(function(){ const m=Object.create(null); REGION_CATALOG.forEach(function(r){ m[r.code]=r; }); return m; })();
+function regionIsCode(c){ return typeof c==='string'&&/^[A-Z]{2}$/.test(c); }
+function regionByCode(c){ return regionIsCode(c)?(_REGION_BY_CODE[c]||null):null; }
+// Nombre legible: el del catálogo; si el código no está (p. ej. llegó dentro del streaming de una ficha) se intenta Intl y, si no, el código.
+function regionName(code,lang){
+  lang=lang==='en'?'en':'es'; const r=regionByCode(code); if(r) return r[lang];
+  try{ const n=new Intl.DisplayNames([lang],{type:'region'}).of(code); if(n&&n!==code) return n; }catch(e){}
+  return lang==='es'?String(code==null?'':code):'';
+}
+// Normaliza para buscar: sin tildes/mayúsculas/puntuación, «&»→and, «st»→saint.
+function regionNorm(s){ return String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').replace(/\bst\b/g,'saint').replace(/\s+/g,' ').trim(); }
+function regionSearchKey(code){ const r=regionByCode(code); return regionNorm(r?(r.es+' '+r.en+' '+r.code+' '+r.alias):(regionName(code,'es')+' '+regionName(code,'en')+' '+code)); }
+function regionMatches(code,q){ const k=regionSearchKey(code), t=regionNorm(q).split(' ').filter(Boolean); return t.every(function(x){ return k.indexOf(x)!==-1; }); }
+function regionSearch(q){ return REGION_CATALOG.filter(function(r){ return regionMatches(r.code,q); }); }
+// ¿Dibuja este sistema banderas emoji en color? (Windows muestra letras en su lugar.) Se mide una vez dibujando 🇪🇸 en un canvas.
+let _regionFlagsOK=null;
+function regionFlagsSupported(){
+  if(_regionFlagsOK!==null) return _regionFlagsOK;
+  let ok=null;
+  try{
+    const cv=document.createElement('canvas'); cv.width=40; cv.height=32; const x=cv.getContext('2d',{willReadFrequently:true});
+    if(x){ x.textBaseline='top'; x.font='24px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif'; x.fillText('\uD83C\uDDEA\uD83C\uDDF8',0,0);
+      const d=x.getImageData(0,0,40,32).data; ok=false;
+      for(let i=0;i<d.length;i+=4){ if(d[i+3]>128&&Math.max(d[i],d[i+1],d[i+2])-Math.min(d[i],d[i+1],d[i+2])>60){ ok=true; break; } } }
+  }catch(e){ ok=null; }
+  if(ok===null) ok=!/Windows/i.test((typeof navigator!=='undefined'&&navigator.userAgent)||'');
+  return _regionFlagsOK=ok;
+}
+// Bandera emoji del código, o '' si no hay una representación fiable (código fuera del catálogo o sistema que no dibuja banderas).
+function regionFlag(code){ return (regionByCode(code)&&regionFlagsSupported())?String.fromCodePoint(0x1F1E6+code.charCodeAt(0)-65,0x1F1E6+code.charCodeAt(1)-65):''; }
+/* ═══ REGIONES_TMDB:END ═══ */
+
 // ── 1C.3.6 — REGIÓN DE STREAMING DEL VISITANTE ────────────────────────────────
 // Solo DETECTA la región (ES/MX/AR) con datos locales del navegador y la deja en
 // state.streamingRegion. No hay geolocalización precisa, ni llamadas externas, ni
@@ -3884,9 +3930,9 @@ let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',s
 // La clave 'streamingRegion' es la selección manual del VISITANTE; NO es tmdbRegion (Admin).
 const STREAMING_REGION_KEY='streamingRegion';
 const STREAMING_REGIONS=['ES','MX','AR'];   // 6.8: SOLO para la detección automática (zona horaria/idioma); el catálogo elegible por el visitante es STREAMING_CATALOG
-// 6.8 — Catálogo global de países (lista estática de los países de /watch/providers/regions de TMDB; sin llamadas de red).
+// 6.8/6.9 — Catálogo global de países: lo define el bloque REGIONES_TMDB (idéntico en admin.html), sin llamadas de red. Es solo país ↔ código; NO es disponibilidad.
 // Los países que aparezcan en el `streaming` de una ficha y no estén aquí se añaden dinámicamente (nunca se oculta un dato).
-const STREAMING_CATALOG=('AE AL AR AT AU AZ BA BB BE BG BH BO BR BS BY CA CH CI CL CO CR CV CY CZ DE DK DO DZ EC EE EG ES FI FJ FR GB GH GI GR GT GY HK HN HR HU ID IE IL IN IQ IS IT JM JO JP KE KR KW LB LC LI LT LU LV LY MA MD MK ML MT MU MX MY MZ NE NG NI NL NO NZ OM PA PE PF PH PK PL PS PT PY QA RO RS RU SA SE SG SI SK SM SN SV TH TN TR TT TW TZ UA UG US UY VE XK YE ZA ZM').split(' ');
+const STREAMING_CATALOG=REGION_CATALOG.map(function(r){ return r.code; });   // 6.9: derivado del bloque REGIONES_TMDB (única fuente; ver arriba)
 const _streamingExtraRegions=new Set();
 function streamingIsKnownRegion(c){ return typeof c==='string'&&/^[A-Z]{2}$/.test(c)&&(STREAMING_CATALOG.indexOf(c)!==-1||_streamingExtraRegions.has(c)); }
 const STREAMING_REGION_FALLBACK='ES';
@@ -4076,14 +4122,10 @@ function _wlDisplayLinks(links,item,fallbackLabel){
 const AVAIL_TYPES=[['flatrate','Streaming'],['free','Gratis'],['ads','Con anuncios'],['rent','Alquiler'],['buy','Compra'],['','Otros']];
 let _availSeq=0; const _availReg={};
 function availEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-function availNorm(s){ return String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim(); }
-function availFlag(code){ return /^[A-Z]{2}$/.test(code)?String.fromCodePoint(0x1F1E6+code.charCodeAt(0)-65,0x1F1E6+code.charCodeAt(1)-65):'🏳️'; }
-const _availDN={};
-function availCountryName(code,lang){
-  lang=lang||'es'; const k=lang+code; if(k in _availDN) return _availDN[k];
-  let n=''; try{ n=new Intl.DisplayNames([lang],{type:'region'}).of(code)||''; }catch(e){}
-  if(n===code) n=''; return _availDN[k]=(n||(lang==='es'?code:''));
-}
+function availNorm(s){ return regionNorm(s); }   // 6.9: misma normalización que el catálogo
+function availFlag(code){ return regionFlag(code); }   // 6.9: '' si el sistema no dibuja banderas o el código no es válido (nunca una bandera «de relleno»)
+function availWho(code){ const f=availFlag(code); return (f?f+' ':'')+availEsc(availCountryName(code,'es')); }
+function availCountryName(code,lang){ return regionName(code,lang||'es'); }   // 6.9: nombres estáticos del catálogo (Intl solo como último recurso para códigos fuera del catálogo)
 function availSafeUrl(u){ try{ const t=String(u==null?'':u).trim(); if(!t) return ''; const x=new URL(t); return (x.protocol==='https:'||x.protocol==='http:')?t:''; }catch(e){ return ''; } }
 function availSafeTmdbLink(u){ try{ const x=new URL(String(u==null?'':u).trim()); const h=x.hostname.toLowerCase(); return (x.protocol==='https:'&&!x.username&&!x.password&&(h==='themoviedb.org'||h==='www.themoviedb.org'))?x.href:''; }catch(e){ return ''; } }
 // Entradas válidas de UN país: [{name,url,type}] sin duplicados (mismo nombre+tipo; si una trae URL y otra no, se queda la que la trae).
@@ -4106,7 +4148,7 @@ function availRegionsWithData(item){
 function availCatalogFor(item){
   const has=new Set(availRegionsWithData(item)), codes=new Set(STREAMING_CATALOG);
   has.forEach(c=>{ codes.add(c); _streamingExtraRegions.add(c); });
-  const list=Array.from(codes).map(c=>{ const name=availCountryName(c,'es'), en=availCountryName(c,'en'); return {code:c,name,flag:availFlag(c),has:has.has(c),search:availNorm(name+' '+en+' '+c)}; });
+  const list=Array.from(codes).map(c=>{ const name=availCountryName(c,'es'); return {code:c,name,flag:availFlag(c),has:has.has(c),search:regionSearchKey(c)}; });
   list.sort((a,b)=>(a.has===b.has?0:(a.has?-1:1))||a.name.localeCompare(b.name,'es'));
   return list;
 }
@@ -4121,11 +4163,11 @@ function availChipHtml(e){
 }
 function availBodyHtml(item,code){
   const entries=availEntries(item,code), meta=(_wlIsObj(item&&item.streamingMeta)&&_wlIsObj(item.streamingMeta[code]))?item.streamingMeta[code]:null;
-  const tmdb=meta?availSafeTmdbLink(meta.link):'', who=availFlag(code)+' '+availEsc(availCountryName(code,'es'));
+  const tmdb=meta?availSafeTmdbLink(meta.link):'', who=availWho(code);
   const tmdbHtml=tmdb?`<a class="avail-tmdb" href="${availEsc(tmdb)}" target="_blank" rel="noopener">Ver disponibilidad en TMDB / JustWatch ↗</a>`:'';
   if(!entries.length){
     const others=availRegionsWithData(item).filter(c=>c!==code);
-    const hint=others.length?`<div class="avail-empty-more">Sí consta en: ${others.slice(0,12).map(c=>`<button type="button" class="avail-pick" data-avail-pick="${availEsc(c)}">${availFlag(c)} ${availEsc(availCountryName(c,'es'))}</button>`).join(' ')}${others.length>12?` y ${others.length-12} más (usa el buscador)`:''}</div>`:'';
+    const hint=others.length?`<div class="avail-empty-more">Sí consta en: ${others.slice(0,12).map(c=>`<button type="button" class="avail-pick" data-avail-pick="${availEsc(c)}">${availWho(c)}</button>`).join(' ')}${others.length>12?` y ${others.length-12} más (usa el buscador)`:''}</div>`:'';
     return `<div class="avail-empty" role="status"><div class="avail-empty-title">Sin disponibilidad registrada en ${who}</div><div class="avail-empty-txt">Todavía no hay plataformas guardadas para esta producción en este país. Eso no significa que no esté disponible: solo que no consta en TINTA.</div>${hint}${tmdbHtml}</div>`;
   }
   const groups=AVAIL_TYPES.map(([t,label])=>{ const g=entries.filter(e=>e.type===t); return g.length?`<div class="avail-group"><div class="avail-group-title">${label}</div><div class="avail-chips">${g.map(availChipHtml).join('')}</div></div>`:''; }).join('');
@@ -4133,7 +4175,7 @@ function availBodyHtml(item,code){
   return `<div class="avail-country-head">Disponible en ${who}</div>${groups}${stale}${tmdbHtml}`;
 }
 function availOptionHtml(c,active){
-  return `<li class="avail-opt${active?' is-active':''}${c.has?' has-data':''}" role="option" tabindex="-1" aria-selected="${active?'true':'false'}" data-avail-code="${c.code}" data-s="${availEsc(c.search)}"><span class="avail-flag" aria-hidden="true">${c.flag}</span><span class="avail-opt-name">${availEsc(c.name)}</span>${c.has?'<span class="avail-opt-has">con datos</span>':''}<span class="avail-check" aria-hidden="true">✓</span></li>`;
+  return `<li class="avail-opt${active?' is-active':''}${c.has?' has-data':''}" role="option" tabindex="-1" aria-selected="${active?'true':'false'}" data-avail-code="${c.code}" data-s="${availEsc(c.search)}"><span class="avail-flag" aria-hidden="true">${c.flag}</span><span class="avail-opt-name">${availEsc(c.name)}</span><span class="avail-opt-code" title="Código regional de TMDB">${c.code}</span>${c.has?'<span class="avail-opt-has">con datos</span>':''}<span class="avail-check" aria-hidden="true">✓</span></li>`;
 }
 // Devuelve '' si la ficha no tiene datos regionales PERO sí enlaces antiguos (watchLinks/network/networkUrl): conserva su «Dónde ver» de siempre.
 // Si la ficha no tiene NINGÚN dato de disponibilidad, pinta la sección con el selector y el estado vacío (nunca se queda en blanco).
