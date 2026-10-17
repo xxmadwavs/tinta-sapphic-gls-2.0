@@ -1207,6 +1207,55 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
   font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;
 }
 .ships-count{font-size:12px;color:var(--muted);margin-bottom:.75rem;letter-spacing:.01em}
+/* Desplegable de apartado (Ships / Rupturas / Mascotas): reutiliza .filter-select */
+.ships-view-row{display:flex;align-items:center;gap:10px;margin-bottom:.85rem;min-width:0}
+.ships-view-label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;flex-shrink:0}
+.ships-view-sel{min-width:200px;max-width:100%;text-overflow:ellipsis}
+.ships-section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.ships-pets-empty{padding:2rem 1rem;border:1.5px dashed var(--border2);border-radius:14px;background:var(--surface)}
+/* Mascotas: reutiliza .ship-card / .ship-couple-banner / .ship-card-title; solo cambia la rejilla y la foto única */
+.pets-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:1rem}
+.pet-card{min-width:0;font:inherit;color:inherit;text-align:left;padding:0;width:100%}
+.pet-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pet-card .ship-card-inner{min-width:0}
+.pet-card .ship-card-title,.pet-card-ship{min-width:0}
+.pet-photo-box{position:absolute;inset:0;overflow:hidden}
+.pet-photo-box img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s cubic-bezier(.25,0,.1,1);transform:scale(var(--photo-zoom,1));transform-origin:center center}
+.pet-card:hover .pet-photo-box img{transform:scale(calc(var(--photo-zoom,1) * 1.05))}
+.pet-card-ship{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pet-card.is-retired .pet-photo-box img{filter:saturate(0.55) brightness(.95)}
+.ship-detail .ship-hero{gap:24px;align-items:center;padding:22px;border:1px solid var(--border);border-radius:16px;background:var(--surface2);margin-bottom:8px}
+.ship-detail .ship-hero .detail-photo,.ship-detail .ship-hero .detail-photo-ph{width:130px;flex:0 0 130px;height:170px;border-radius:14px;border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);box-shadow:0 8px 24px color-mix(in srgb,var(--accent) 22%,transparent)}
+.ship-hero-title{font-size:30px;letter-spacing:-.02em;margin-bottom:6px;overflow-wrap:anywhere}
+.ship-hero-sub{font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--muted);overflow-wrap:anywhere}
+.ship-sub-x{opacity:.7;margin:0 2px}
+.ship-hero-chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-bottom:8px}
+.ship-retired-note{margin-top:10px;font-size:12px;color:#7a6070;font-weight:600}
+html[data-theme="dark"] .ship-retired-note{color:#a08090}
+.ship-sections{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;align-items:start}
+.ship-sec{min-width:0}
+.ship-sec-title{display:flex;align-items:center;gap:8px;margin:18px 0 10px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.ship-sec-count{font-size:10px;padding:1px 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent);letter-spacing:0}
+.ship-sec-list{display:flex;flex-direction:column;gap:8px}
+.ship-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--border);border-radius:14px;background:var(--surface2);min-width:0;cursor:pointer;transition:border-color .18s,background .18s}
+.ship-row:hover{border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+.ship-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ship-row-static{cursor:default}
+.ship-row-static:hover{border-color:var(--border)}
+.ship-row-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;flex:0 0 44px;background:var(--accent-soft);border:1px solid var(--border2);display:block}
+.ship-row-avatar img{width:100%;height:100%;object-fit:cover;display:block;transform-origin:center center}
+.ship-row-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ship-row-name{font-weight:700;font-size:14px;color:var(--text);overflow-wrap:anywhere}
+.ship-row-meta{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+@media(max-width:600px){
+  .ship-detail .ship-hero{flex-direction:column;text-align:center;padding:18px 14px}
+  .ship-sections{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:500px){.pets-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
+@media(max-width:600px){
+  .ships-view-row{gap:8px}
+  .ships-view-sel{flex:1 1 auto;min-width:0;width:100%;padding:9px 32px 9px 12px;font-size:14px}
+}
 .ships-subtabs{display:flex;gap:4px;margin-bottom:1rem;flex-wrap:wrap}
 .ships-subtab{
   padding:5px 13px;border-radius:5px;border:1px solid var(--border2);
@@ -4416,6 +4465,7 @@ function saveSession(){
       moviesSubtab,
       animeSubtab,
       realitiesSubtab,
+      shipsView:shipsState.view,
       paginationState:JSON.parse(JSON.stringify(paginationState)),
       paginationAnime:JSON.parse(JSON.stringify(paginationAnime)),
       paginationRealities:JSON.parse(JSON.stringify(paginationRealities)),
@@ -4435,6 +4485,7 @@ function loadSession(){
     if(s.moviesSubtab) moviesSubtab=s.moviesSubtab;
     if(s.animeSubtab) animeSubtab=s.animeSubtab;
     if(s.realitiesSubtab) realitiesSubtab=s.realitiesSubtab;
+    if(s.shipsView) shipsState.view=shipsNormView(s.shipsView);
     if(s.paginationState) Object.assign(paginationState,s.paginationState);
     if(s.paginationAnime) Object.assign(paginationAnime,s.paginationAnime);
     if(s.paginationRealities) Object.assign(paginationRealities,s.paginationRealities);
@@ -4716,6 +4767,7 @@ async function loadData(){
     state.movies=d.movies||[];
     state.actresses=d.actresses||[];
     state.ships=d.ships||[];
+    state.shipPets=Array.isArray(d.shipPets)?d.shipPets:[];   // mascotas de ships (las gestiona Admin; aquí solo lectura)
     state.productoras=d.productoras||[];
     state.listas=d.listas||[];
     state.platformLogos=d.platformLogos||{};
@@ -8107,7 +8159,23 @@ function switchTab(tab, fromPopstate=false){
 // ══════════════════════════════════════════════════════════════════════════════
 // SHIPS THAIS
 // ══════════════════════════════════════════════════════════════════════════════
-const shipsState = {filter:'all', q:''};
+const shipsState = {filter:'all', q:'', view:'ships'};
+// Apartados de Ships Thais (desplegable). 'mascotas' es una sección independiente (lista de state.shipPets).
+const SHIPS_VIEWS = {
+  ships:    {label:'Ships',    desc:'Parejas oficiales de series tailandesas: protagonistas y secundarias.'},
+  rupturas: {label:'Rupturas', desc:'Parejas que ya no están activas como dúo oficial.'},
+  mascotas: {label:'Mascotas', desc:'Las mascotas de los ships.'}
+};
+function shipsNormView(v){ return Object.prototype.hasOwnProperty.call(SHIPS_VIEWS,v)?v:'ships'; }
+// Cambia de apartado sin reconstruir toda la página: solo descripción, buscador y resultados.
+function shipsSetView(v){
+  shipsState.view=shipsNormView(v);
+  saveSession();
+  const sel=document.getElementById('shipsViewSel'); if(sel&&sel.value!==shipsState.view) sel.value=shipsState.view;
+  const d=document.getElementById('shipsDesc'); if(d) d.textContent=SHIPS_VIEWS[shipsState.view].desc;
+  const w=document.getElementById('shipsSearchWrap'); if(w) w.style.display=(shipsState.view==='mascotas')?'none':'';
+  renderShipsResults();
+}
 
 function renderShips(){
   const view=document.getElementById('viewShips');
@@ -8157,10 +8225,20 @@ function renderShips(){
     });
   }
 
+  const curView=shipsNormView(shipsState.view);
+  const nRet=ships.filter(x=>x.sh&&x.sh.retired).length, nAct=ships.length-nRet;
+  const viewOpts=Object.keys(SHIPS_VIEWS).map(k=>{
+    const cnt=k==='ships'?` (${nAct})`:k==='rupturas'?` (${nRet})`:'';
+    return `<option value="${k}"${k===curView?' selected':''}>${SHIPS_VIEWS[k].label}${cnt}</option>`;
+  }).join('');
   view.innerHTML=`<div class="ships-shell">
     <div class="section-heading" style="margin-bottom:.25rem">Ships Oficiales Thais</div>
-    <p class="section-desc" style="margin-bottom:.85rem">Parejas oficiales de series tailandesas: protagonistas y secundarias.</p>
-    <div style="position:relative;margin-bottom:.85rem">
+    <p class="section-desc" id="shipsDesc" style="margin-bottom:.85rem">${SHIPS_VIEWS[curView].desc}</p>
+    <div class="ships-view-row">
+      <label class="ships-view-label" for="shipsViewSel">Apartado</label>
+      <select id="shipsViewSel" class="filter-select ships-view-sel" onchange="shipsSetView(this.value)">${viewOpts}</select>
+    </div>
+    <div id="shipsSearchWrap" style="position:relative;margin-bottom:.85rem${curView==='mascotas'?';display:none':''}">
       <span class="search-icon"></span>
       <input class="search-input" id="shipsSearchInput" placeholder="Buscar ship o actriz…"
         value="${shipsState.q}" oninput="shipsState.q=this.value;debounceRender('ships',renderShipsResults)" autocomplete="off">
@@ -8178,6 +8256,18 @@ function renderShipsResults(){
   const view=document.getElementById('viewShips');
   const resultsEl=document.getElementById('shipsResults');
   if(!resultsEl||!view) return;
+  const viewKey=shipsNormView(shipsState.view);
+  if(viewKey==='mascotas'){
+    // Mascotas: lectura de state.shipPets (gestionadas en Admin). Independiente de Ships/Rupturas.
+    const pets=getValidShipPets(view._ships||[]);
+    view._filtered=[];
+    if(!pets.length){
+      resultsEl.innerHTML=`<div class="ships-section-label"><span>Mascotas</span></div><div class="search-empty ships-pets-empty" role="status">Todavía no hay mascotas registradas.</div>`;
+      return;
+    }
+    resultsEl.innerHTML=`<div class="ships-section-label"><span>Mascotas — ${pets.length}</span></div><div class="pets-grid">`+pets.map(buildPetCard).join('')+`</div>`;
+    return;
+  }
   const ships=view._ships||[];
   const actMap=view._actMap||{};
   const seriesStatus=view._seriesStatus||function(){return 'finished';};
@@ -8279,44 +8369,91 @@ function renderShipsResults(){
     }
   }
 
-  // Build result HTML: two sections
+  // Build result HTML: UN solo apartado a la vez (Ships activos o Rupturas), nunca mezclados
+  const isRupt=(viewKey==='rupturas');
+  const shown=isRupt?retiredShips:activeShips;
+  const title=isRupt?'Rupturas':'Ships';
   let html='';
-
-  if(!activeShips.length&&!retiredShips.length){
-    html='<div class="search-empty">No se encontraron ships con esa búsqueda.</div>';
+  if(!shown.length){
+    html=`<div class="ships-section-label"><span>${title} — 0</span></div><div class="search-empty">${q?'No se encontraron ships con esa búsqueda.':(isRupt?'No hay rupturas registradas.':'No hay ships registrados.')}</div>`;
+    view._filtered=[];
     resultsEl.innerHTML=html;
     return;
   }
+  html+=`<div class="ships-section-label"><span>${title} — ${shown.length}</span></div>`;
+  html+=`<div class="ships-grid">`;
+  shown.forEach((sh,i)=>{
+    const clickHandler=isManual?`openShipDetail(${i})`:`openSeries(${sh.si})`;   // i = posición en view._filtered (solo el apartado visible)
+    html+=buildShipCard(sh,i,isRupt,clickHandler);
+  });
+  html+=`</div>`;
 
-  // Active ships section
-  if(activeShips.length){
-    html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px">Ships — ${activeShips.length}</div>`;
-    html+=`<div class="ships-grid">`;
-    activeShips.forEach((sh,i)=>{
-      const filteredIdx=i; // position in _filtered
-      const clickHandler=isManual?`openShipDetail(${filteredIdx})`:`openSeries(${sh.si})`;
-      html+=buildShipCard(sh,filteredIdx,false,clickHandler);
-    });
-    html+=`</div>`;
-  }
-
-  // Rupturas section
-  if(retiredShips.length){
-    html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:22px 0 10px;display:flex;align-items:center;gap:8px">
-      <span>Rupturas — ${retiredShips.length}</span>
-    </div>`;
-    html+=`<div class="ships-grid">`;
-    retiredShips.forEach((sh,i)=>{
-      const filteredIdx=activeShips.length+i; // position in _filtered after active
-      const clickHandler=isManual?`openShipDetail(${filteredIdx})`:`openSeries(${sh.si})`;
-      html+=buildShipCard(sh,filteredIdx,true,clickHandler);
-    });
-    html+=`</div>`;
-  }
-
-  // Store filtered (active+retired combined) for detail modal
-  view._filtered=[...activeShips,...retiredShips];
+  // El modal de detalle usa la lista del apartado visible
+  view._filtered=shown;
   resultsEl.innerHTML=html;
+}
+
+
+// ── Mascotas: validación, tarjeta y acceso a la ficha del ship ──────────────────
+// Solo se muestran mascotas con id, nombre y shipId que apunte a un ship que existe y que
+// Ships/Rupturas también muestra. Se descartan duplicados por id o por (ship + nombre).
+function getValidShipPets(shipEntries){
+  const byShip={};
+  (shipEntries||[]).forEach(e=>{ if(e&&e.sh&&e.sh.id!=null) byShip[String(e.sh.id)]=e; });
+  const seenId=new Set(), seenKey=new Set(), out=[];
+  (state.shipPets||[]).forEach(p=>{
+    if(!p||typeof p!=='object') return;
+    const id=p.id!=null?String(p.id):'';
+    const name=typeof p.name==='string'?p.name.trim():'';
+    const shipId=p.shipId!=null?String(p.shipId):'';
+    if(!id||!name||!shipId||!byShip[shipId]) return;
+    const key=shipId+'|'+name.toLowerCase();
+    if(seenId.has(id)||seenKey.has(key)) return;
+    seenId.add(id); seenKey.add(key);
+    out.push({pet:p,name,shipId,entry:byShip[shipId]});
+  });
+  out.sort((a,b)=>{
+    const sa=(a.entry.sh.name||'').localeCompare(b.entry.sh.name||'','es');
+    return sa||a.name.localeCompare(b.name,'es');
+  });
+  return out;
+}
+function buildPetCard(o){
+  const p=o.pet, sh=o.entry.sh;
+  const e=escapeHtmlChk;
+  const shipName=(sh.name||'').trim()||'Ship';
+  const photoOk=typeof p.photo==='string'&&/^https?:\/\/\S+$/i.test(p.photo.trim());
+  const pos=/^[\d.]+% [\d.]+%$/.test(p.photoPosition||'')?p.photoPosition:'50% 20%';
+  const zoom=(parseFloat(p.photoZoom)>0&&parseFloat(p.photoZoom)<=5)?parseFloat(p.photoZoom):1;
+  const photo=photoOk
+    ?`<div class="pet-photo-box"><img src="${e(p.photo.trim())}" alt="${e(o.name)}" loading="lazy" style="object-position:${pos};--photo-zoom:${zoom}" onerror="this.style.opacity=0"></div>`
+    :'';
+  return `<button type="button" class="ship-card pet-card${sh.retired?' is-retired':''}" onclick="openPetShip('${e(o.shipId)}')" aria-label="${e(o.name)} — ship ${e(shipName)}">
+    <div class="ship-couple-banner">${photo}</div>
+    <div class="ship-card-inner">
+      <div class="ship-card-title" title="${e(o.name)}">${e(o.name)}</div>
+      <div class="pet-card-ship" title="${e(shipName)}">${e(shipName)}</div>
+    </div>
+  </button>`;
+}
+// Mascota en la ficha del ship: fila con miniatura redonda + nombre (+ especie si está registrada).
+function buildPetChip(o){
+  const p=o.pet, e=escapeHtmlChk;
+  const photoOk=typeof p.photo==='string'&&/^https?:\/\/\S+$/i.test(p.photo.trim());
+  const pos=/^[\d.]+% [\d.]+%$/.test(p.photoPosition||'')?p.photoPosition:'50% 20%';
+  const zoom=(parseFloat(p.photoZoom)>0&&parseFloat(p.photoZoom)<=5)?parseFloat(p.photoZoom):1;
+  const species=typeof p.species==='string'?p.species.trim():'';
+  const img=photoOk?`<img src="${e(p.photo.trim())}" alt="${e(o.name)}" loading="lazy" style="object-position:${pos};transform:scale(${zoom})" onerror="this.style.opacity=0">`:'';
+  return `<div class="ship-row ship-row-static pet-chip"><span class="ship-row-avatar">${img}</span><span class="ship-row-text"><span class="ship-row-name pet-chip-name">${e(o.name)}</span>${species?`<span class="ship-row-meta">${e(species)}</span>`:''}</span></div>`;
+}
+// Abre la ficha del ship sin tocar el apartado actual: usa una lista temporal solo con ese ship.
+function openPetShip(shipId){
+  const view=document.getElementById('viewShips');
+  const entry=((view&&view._ships)||[]).find(x=>x&&x.sh&&String(x.sh.id)===String(shipId));
+  if(!view||!entry) return;
+  const prev=view._filtered;
+  view._filtered=[entry];
+  try{ openShipDetail(0); } finally { view._filtered=prev; }
 }
 
 // Modal de detalle de ship manual
@@ -8345,40 +8482,55 @@ function openShipDetail(idx){
     photoHtml=`<div class="detail-photo" style="overflow:hidden;padding:0;display:flex">${half(a1)}${half(a2)}</div>`;
   }
 
-  const actressRowHtml=members.map(a=>`
-    <span onclick="closeShipDetail();setTimeout(()=>openActressProfile('${a.id}'),80)" style="cursor:pointer;font-weight:700;color:var(--accent);text-decoration:underline dotted;text-underline-offset:2px">${a.name}</span>`).join(' <span style="color:var(--muted)">×</span> ');
+  const e=escapeHtmlChk;
+  const shipName=(sh.sh?.name||'').trim()||'Ship';
+  const subtitle=members.map(a=>e((a.name||'').toUpperCase())).join(' <span class="ship-sub-x">×</span> ');
 
   const isRetiredModal=!!(sh.sh?.retired);
   const retiredBannerHtml=isRetiredModal
-    ?`<div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:rgba(100,80,90,.08);border-radius:10px;border:1px solid rgba(100,80,90,.18);margin-top:10px">
-        <span style="font-size:15px"></span>
-        <span style="font-size:12px;color:#7a6070;font-weight:600">Este ship ya no está activo como dúo oficial</span>
-       </div>`
+    ?`<div class="ship-retired-note">Este ship ya no está activo como dúo oficial</div>`
     :'';
-  const seriesRows=shared.length
-    ?shared.map(s=>{
-        const si=(state.series||[]).indexOf(s);
-        const sst=seriesStatus(s);
-        return `<div class="filmo-row" onclick="closeShipDetail();openSeries(${si})">
-          <span class="filmo-year">${s.year||''}</span>
-          <span class="filmo-title">${s.name}</span>
-          <span class="ship-status-badge ${statusClass[sst]}">${statusLabel[sst]}</span>
-        </div>`;
-      }).join('')
+  const avatar=(url,pos,zoom,alt)=>url
+    ?`<span class="ship-row-avatar"><img src="${e(url)}" alt="${e(alt||'')}" loading="lazy" style="object-position:${e(pos||'50% 20%')};transform:scale(${parseFloat(zoom)||1})" onerror="this.style.opacity=0"></span>`
+    :`<span class="ship-row-avatar"></span>`;
+
+  // Actrices del ship (misma acción que antes: abrir su perfil)
+  const starsRows=members.map(a=>`<div class="ship-row" role="button" tabindex="0" onclick="closeShipDetail();setTimeout(()=>openActressProfile('${e(a.id)}'),80)">
+      ${avatar(a.photo,a.photoPosition||'center 15%',a.photoZoom,a.name)}
+      <span class="ship-row-text"><span class="ship-row-name">${e(a.name)}</span></span>
+    </div>`).join('');
+  const starsHtml=members.length?`<section class="ship-sec"><h3 class="ship-sec-title">Actrices <span class="ship-sec-count">${members.length}</span></h3><div class="ship-sec-list">${starsRows}</div></section>`:'';
+
+  // Series en común
+  const seriesRows=shared.map(s=>{
+    const si=(state.series||[]).indexOf(s);
+    const sst=seriesStatus(s);
+    return `<div class="ship-row" role="button" tabindex="0" onclick="closeShipDetail();openSeries(${si})">
+      ${avatar(s.poster,'50% 20%',1,s.name)}
+      <span class="ship-row-text"><span class="ship-row-name">${e(s.name)}</span>
+        <span class="ship-row-meta">${s.year?e(s.year)+' · ':''}<span class="ship-status-badge ${statusClass[sst]}">${statusLabel[sst]}</span></span></span>
+    </div>`;
+  }).join('');
+  const seriesHtml=shared.length?`<section class="ship-sec"><h3 class="ship-sec-title">Series <span class="ship-sec-count">${shared.length}</span></h3><div class="ship-sec-list">${seriesRows}</div></section>`:'';
+
+  // Mascotas del ship (misma validación y orden que el listado de Mascotas). Sin mascotas: no se muestra la sección.
+  const petsOfShip=getValidShipPets([sh]);
+  const petsHtml=petsOfShip.length
+    ?`<section class="ship-sec"><h3 class="ship-sec-title">${petsOfShip.length>1?'Mascotas':'Mascota'} <span class="ship-sec-count">${petsOfShip.length}</span></h3><div class="ship-sec-list">${petsOfShip.map(buildPetChip).join('')}</div></section>`
     :'';
 
-  const html=`<div class="modal-body">
-  <div class="detail-hero">
+  const html=`<div class="modal-body ship-detail">
+  <div class="detail-hero ship-hero">
     ${photoHtml}
     <div class="detail-info">
-      <div class="modal-title">${sh.sh?.name||'Ship'}</div>
-      <div style="font-size:13px;margin-top:4px">${actressRowHtml}</div>
+      ${isRetiredModal?`<span class="ship-hero-chip">Ruptura</span>`:''}
+      <div class="modal-title ship-hero-title">${e(shipName)}</div>
+      <div class="ship-hero-sub">${subtitle}</div>
       ${sh.sh?.desc?`<div class="synopsis" style="margin-top:10px">${sh.sh.desc}</div>`:''}
       ${retiredBannerHtml}
     </div>
   </div>
-  <div class="section-bar">Series en común · ${shared.length}</div>
-  <div class="details-box">${seriesRows||'<div style="padding:14px 4px;color:var(--muted);font-size:13px;text-align:center">Sin series en común registradas.</div>'}</div>
+  <div class="ship-sections">${starsHtml}${petsHtml}${seriesHtml}</div>
   <div style="display:flex;justify-content:flex-end;margin-top:1.25rem"><button class="btn" onclick="closeShipDetail()">Cerrar</button></div>
   </div>`;
 
@@ -9016,8 +9168,10 @@ function closeSearch(){
 // Abre el detalle de un ship desde el buscador global: cambia a la pestaña Ships,
 // limpia el filtro local para que no quede oculto, y localiza su índice en la lista filtrada.
 function openShipFromSearch(shipId){
-  switchTab('ships');
+  const _sh=(state.ships||[]).find(x=>x&&x.id===shipId);
+  shipsState.view=(_sh&&_sh.retired)?'rupturas':'ships';   // el ship se abre en su apartado (Ships o Rupturas)
   shipsState.q='';
+  switchTab('ships');
   setTimeout(()=>{
     renderShipsResults();
     const view=document.getElementById('viewShips');

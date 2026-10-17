@@ -784,6 +784,7 @@ h3.salud-title{margin:0;font-size:15px;font-weight:700}
     <span class="qnav-group-label" id="qg-personas">Personas</span>
     <a class="qnav-btn" href="#actresses" data-panel="actresses">Actrices</a>
     <a class="qnav-btn" href="#ships" data-panel="ships">Ships</a>
+    <a class="qnav-btn" href="#mascotas" data-panel="mascotas">Mascotas</a>
     <a class="qnav-btn" href="#productoras" data-panel="productoras">Productoras</a>
   </div>
   <div class="qnav-group" role="group" aria-labelledby="qg-curacion">
@@ -828,7 +829,7 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
 (function(){
   var root=document.documentElement;
   root.classList.add('panels-on');
-  var TOK={series:'section-series',movies:'section-movies',anime:'section-anime',realities:'section-realities',books:'section-books',actresses:'section-actresses',ships:'section-ships',listas:'section-listas',productoras:'section-productoras','platform-logos':'section-platform-logos',checklist:'section-checklist',salud:'section-salud',publicar:'section-publicar'};
+  var TOK={series:'section-series',movies:'section-movies',anime:'section-anime',realities:'section-realities',books:'section-books',actresses:'section-actresses',ships:'section-ships',mascotas:'section-mascotas',listas:'section-listas',productoras:'section-productoras','platform-logos':'section-platform-logos',checklist:'section-checklist',salud:'section-salud',publicar:'section-publicar'};
   var DEF='series', active=null, ready=false;
   var $=function(id){return document.getElementById(id);};
   var reduce=function(){return window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;};
@@ -1166,6 +1167,22 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
     <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:var(--accent)" onclick="openAddShip()">+ Crear ship</button>
     <div class="series-count-label" id="shipsCountLabel"></div>
     <div id="shipsAdminGrid" style="display:grid;gap:10px;margin-top:8px"></div>
+  </div>
+
+  <div class="card" id="section-mascotas">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+      <div class="card-title" style="margin-bottom:0">Mascotas de ships</div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Cada ship puede tener una mascota. Elige el ship en un selector: aquí no se crean ni se modifican ships. Si un ship pasa a retirado, su mascota se conserva.</p>
+    <div class="admin-toolbar">
+      <div class="admin-search-wrap">
+        <span class="admin-search-icon"></span>
+        <input class="admin-search-input" id="adminPetsQ" placeholder="Buscar mascota, tipo o ship…" oninput="renderShipPetsAdmin()">
+      </div>
+    </div>
+    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:var(--accent)" onclick="openAddShipPet()">+ Crear mascota</button>
+    <div class="series-count-label" id="petsCountLabel"></div>
+    <div id="petsAdminGrid" style="display:grid;gap:10px;margin-top:8px"></div>
   </div>
 
   <div class="card" id="section-productoras">
@@ -1735,6 +1752,7 @@ let series = [];
 let movies = [];
 let actresses = [];
 let ships = [];   // Ships manuales
+let shipPets = [];  // Mascotas de ships (una por ship, referencia por shipId)
 let productoras = [];  // Productoras
 let listas = [];  // Listas temáticas curadas
 let platformLogos = {};  // Logos personalizados de plataformas
@@ -1860,12 +1878,13 @@ async function initData(){
         if(d.movies) movies = d.movies;
         if(d.actresses) actresses = d.actresses;
         if(d.ships) ships = d.ships;
+        if(Array.isArray(d.shipPets)) shipPets = d.shipPets;
         if(d.productoras) productoras = d.productoras;
         if(d.listas) listas = d.listas;
         if(d.platformLogos) platformLogos = d.platformLogos;
         checklist = normalizeChecklist(d.checklist);
         migrateAllCastCouples();
-        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
+        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderShipPetsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
         return;
       }
     } catch(e){ /* sin data.json accesible */ }
@@ -4430,7 +4449,7 @@ function renderBooks(){
 function exportData(){
   try {
     // Validate before exporting
-    const testJson = JSON.stringify({series, movies, actresses, ships, productoras, listas, platformLogos, checklist, exportedAt: new Date().toISOString()});
+    const testJson = JSON.stringify({series, movies, actresses, ships, shipPets, productoras, listas, platformLogos, checklist, exportedAt: new Date().toISOString()});
     JSON.parse(testJson); // verify roundtrip
   } catch(e) {
     alert('Error al validar los datos antes de exportar: ' + e.message);
@@ -4440,7 +4459,7 @@ function exportData(){
   _unsavedCount=0;
   const dot=document.getElementById('exportDot');
   if(dot) dot.classList.remove('visible');
-  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,productoras,listas,platformLogos,checklist,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,shipPets,productoras,listas,platformLogos,checklist,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
 }
 
@@ -4454,13 +4473,14 @@ function importData(e){
       if(d.movies) movies=d.movies;
       if(d.actresses) actresses=d.actresses;
       if(d.ships) ships=d.ships;
+      shipPets=Array.isArray(d.shipPets)?d.shipPets:[];   // el archivo importado manda: evita mascotas que apunten a ships de otro archivo
       if(d.productoras) productoras=d.productoras;
       if(d.listas) listas=d.listas;
       if(d.platformLogos) platformLogos=d.platformLogos;
       checklist=normalizeChecklist(d.checklist);
       migrateAllCastCouples();
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
-      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
+      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderShipPetsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
       alert('✓ Datos importados correctamente');
     }catch(err){ alert('Error al leer el archivo: '+err.message); }
   };
@@ -7890,10 +7910,250 @@ function sfResetPos(){
 }
 
 async function delShip(si){
+  const _pet=petOfShip(ships[si]?.id);
+  if(_pet){
+    alert('No se puede eliminar el ship "'+(ships[si]?.name||'')+'" porque tiene la mascota "'+(_pet.name||'sin nombre')+'". Elimina la mascota o asígnala a otro ship antes de borrar el ship.');
+    return;
+  }
   const ok=await showConfirm({title:`¿Eliminar el ship "${ships[si]?.name}"?`,desc:'Esta acción no se puede deshacer.'});
   if(!ok) return;
   ships.splice(si,1);
   save(); renderShipsAdmin();
+}
+
+/* ══════════════════════════════════════
+   MASCOTAS DE SHIPS (S4)
+   Colección shipPets: { id, shipId, name, species, photo, photoPosition, photoZoom, birthdate, desc }
+   Una mascota por ship como máximo. shipId referencia ships[].id (nunca nombre ni índice).
+   Esta sección no escribe en ships ni en ninguna otra colección.
+══════════════════════════════════════ */
+function petOfShip(shipId, exceptPetId){
+  if(!shipId) return null;
+  return (shipPets||[]).find(p=>p&&p.shipId===shipId&&p.id!==exceptPetId)||null;
+}
+function shipById(id){ return (ships||[]).find(s=>s&&s.id===id)||null; }
+function _petShipNames(sh){
+  const actMap={}; (actresses||[]).forEach(a=>actMap[a.id]=a);
+  return (sh.actressIds||[]).map(id=>actMap[id]?.name).filter(Boolean).join(' & ');
+}
+function _petThumb(p,size){
+  const sz=size||44;
+  const base='width:'+sz+'px;height:'+sz+'px;border-radius:50%;flex-shrink:0;border:2px solid var(--border2)';
+  if(!p.photo) return `<div style="${base};background:var(--accent-soft)"></div>`;
+  return `<div style="${base};overflow:hidden"><img src="${escapeHtml(p.photo)}" alt="" style="width:100%;height:100%;object-fit:cover;object-position:${escapeHtml(p.photoPosition||'50% 20%')};transform:scale(${parseFloat(p.photoZoom)||1});transform-origin:center center;display:block" onerror="this.style.opacity=0"></div>`;
+}
+
+function renderShipPetsAdmin(){
+  const grid=document.getElementById('petsAdminGrid');
+  const lbl=document.getElementById('petsCountLabel');
+  if(!grid) return;
+  const q=(document.getElementById('adminPetsQ')?.value||'').toLowerCase().trim();
+  const all=shipPets||[];
+  const list=all.filter(p=>{
+    if(!q) return true;
+    const sh=shipById(p.shipId);
+    return (p.name||'').toLowerCase().includes(q)||(p.species||'').toLowerCase().includes(q)||(sh?.name||'').toLowerCase().includes(q);
+  });
+  if(lbl) lbl.textContent=list.length+' mascota'+(list.length!==1?'s':'')+(q&&all.length!==list.length?' (de '+all.length+')':'');
+  if(!all.length){
+    grid.innerHTML='<div style="color:var(--muted);font-size:13px;padding:12px 0">No hay mascotas. Pulsa "+ Crear mascota" para empezar.</div>';
+    return;
+  }
+  if(!list.length){
+    grid.innerHTML='<div style="color:var(--muted);font-size:13px;padding:12px 0">Ninguna mascota coincide con la búsqueda.</div>';
+    return;
+  }
+  grid.innerHTML=list.map(p=>{
+    const sh=shipById(p.shipId);
+    const retired=sh&&sh.retired?` <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;background:rgba(100,80,90,.1);color:#7a6070;border:1px solid rgba(100,80,90,.2);letter-spacing:.03em;text-transform:uppercase">Retirada</span>`:'';
+    const shipLine=sh
+      ?`<div class="series-meta"><strong>Ship:</strong> ${escapeHtml(sh.name||'Ship sin nombre')}${retired}</div><div class="series-meta" style="font-size:11px">${escapeHtml(_petShipNames(sh))}</div>`
+      :`<div class="series-meta" style="color:var(--danger,#b3261e);font-weight:700">Ship inexistente (id ${escapeHtml(p.shipId||'vacío')}). Asigna otro ship o elimina la mascota.</div>`;
+    const extra=[p.species?escapeHtml(p.species):'',p.birthdate&&_validDate(p.birthdate)?'Nac. '+escapeHtml(fmtDate(p.birthdate)):''].filter(Boolean).join(' · ');
+    return `<div class="series-item" data-pet-id="${escapeHtml(p.id)}">
+      ${_petThumb(p,44)}
+      <div class="series-info">
+        <div class="series-name">${escapeHtml(p.name||'Mascota sin nombre')}</div>
+        ${extra?`<div class="series-meta">${extra}</div>`:''}
+        ${shipLine}
+      </div>
+      <div class="series-actions">
+        <button type="button" class="btn small" onclick="openEditShipPet('${escapeHtml(p.id)}')">Editar</button>
+        <button type="button" class="btn small danger" onclick="delShipPet('${escapeHtml(p.id)}')">Eliminar</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function shipPetFormHtml(p){
+  const sorted=[...(ships||[])].sort((a,b)=>(a.name||'').localeCompare(b.name||'','es'));
+  const curShip=p?.shipId||'';
+  let opts=`<option value="">— Elige un ship —</option>`;
+  sorted.forEach(sh=>{
+    const other=petOfShip(sh.id,p?.id);
+    const label=(sh.name||'Ship sin nombre')+(sh.retired?' · retirada':'')+(other?` · ya tiene a "${other.name||'sin nombre'}"`:'');
+    opts+=`<option value="${escapeHtml(sh.id)}"${sh.id===curShip?' selected':''}${other?' disabled':''}>${escapeHtml(label)}</option>`;
+  });
+  // ship actual inexistente: se avisa, no se inventa
+  const orphan=curShip&&!shipById(curShip)
+    ?`<div style="font-size:12px;color:var(--danger,#b3261e);margin-top:6px">El ship guardado (${escapeHtml(curShip)}) ya no existe. Elige uno existente para poder guardar.</div>`:'';
+  const species=[...new Set((shipPets||[]).map(x=>(x.species||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es'));
+  const dl=species.map(sp=>`<option value="${escapeHtml(sp)}"></option>`).join('');
+  const zoom=Math.round((parseFloat(p?.photoZoom)||1)*100);
+  const lab='font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between';
+  const rng='width:100%;accent-color:var(--accent);cursor:pointer;margin-top:3px';
+  return `
+    <div id="pf_error" role="alert" style="display:none;margin-bottom:12px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--danger,#b3261e);background:rgba(179,38,30,.08);color:var(--danger,#b3261e);font-size:13px;font-weight:600"></div>
+    <div class="form-row">
+      <label class="form-label" for="pf_name">Nombre de la mascota *</label>
+      <input id="pf_name" maxlength="80" value="${escapeHtml(p?.name||'')}" autocomplete="off"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="pf_ship">Ship al que pertenece *</label>
+      <select id="pf_ship" class="filter-select" style="width:100%">${opts}</select>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:6px">Solo se pueden elegir ships ya creados. Cada ship admite una mascota.</div>
+      ${orphan}
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="pf_species">Tipo de animal <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional — texto libre)</span></label>
+      <input id="pf_species" list="pf_species_list" maxlength="60" value="${escapeHtml(p?.species||'')}" autocomplete="off"/>
+      <datalist id="pf_species_list">${dl}</datalist>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="pf_photo">Foto * <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(URL https://…)</span></label>
+      <input id="pf_photo" placeholder="https://…" value="${escapeHtml(p?.photo||'')}" oninput="pfUpdatePhotoPreview()"/>
+      <div id="pf_photo_editor" style="margin-top:10px;${p?.photo?'':'display:none'}">
+        <div style="border-radius:12px;overflow:hidden;height:160px;border:1.5px solid var(--border2);position:relative;background:#eee;margin-bottom:6px">
+          <img id="pf_photo_preview" alt="Vista previa" src="${escapeHtml(p?.photo||'')}" onload="pfPhotoState(true)" onerror="pfPhotoState(false)"
+            style="width:100%;height:100%;object-fit:cover;object-position:${escapeHtml(p?.photoPosition||'50% 20%')};transform:scale(${parseFloat(p?.photoZoom)||1});transform-origin:center center;display:block">
+        </div>
+        <div id="pf_photo_warn" style="display:none;font-size:12px;color:var(--danger,#b3261e);margin-bottom:8px">No se pudo cargar la imagen desde esa URL. Puedes guardarla igualmente, pero revísala.</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div><label style="${lab}" for="pf_posX"><span>Desplazar horizontal</span><span id="pf_posX_val" style="color:var(--accent)">${sfExtractPosX(p?.photoPosition)}%</span></label>
+            <input type="range" id="pf_posX" min="0" max="100" step="1" value="${sfExtractPosX(p?.photoPosition)}" oninput="pfUpdatePos()" style="${rng}"></div>
+          <div><label style="${lab}" for="pf_posY"><span>Desplazar vertical</span><span id="pf_posY_val" style="color:var(--accent)">${sfExtractPosY(p?.photoPosition)}%</span></label>
+            <input type="range" id="pf_posY" min="0" max="100" step="1" value="${sfExtractPosY(p?.photoPosition)}" oninput="pfUpdatePos()" style="${rng}"></div>
+          <div><label style="${lab}" for="pf_zoom"><span>Zoom</span><span id="pf_zoom_val" style="color:var(--accent)">${zoom}%</span></label>
+            <input type="range" id="pf_zoom" min="100" max="200" step="1" value="${zoom}" oninput="pfUpdatePos()" style="${rng}"></div>
+          <button type="button" class="btn small" onclick="pfResetPos()" style="align-self:flex-start">↺ Resetear posición</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="pf_birth">Fecha de nacimiento <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
+      <input type="date" id="pf_birth" value="${escapeHtml(p?.birthdate&&_validDate(p.birthdate)?p.birthdate:'')}"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="pf_desc">Descripción / notas <span style="color:var(--muted);font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
+      <textarea id="pf_desc" style="min-height:60px">${escapeHtml(p?.desc||'')}</textarea>
+    </div>`;
+}
+
+function pfUpdatePhotoPreview(){
+  const url=document.getElementById('pf_photo')?.value.trim();
+  const editor=document.getElementById('pf_photo_editor');
+  const img=document.getElementById('pf_photo_preview');
+  if(!editor||!img) return;
+  if(url){ img.src=url; editor.style.display=''; }
+  else { editor.style.display='none'; pfPhotoState(true); }
+}
+function pfPhotoState(ok){ const w=document.getElementById('pf_photo_warn'); if(w) w.style.display=ok?'none':'block'; }
+function pfUpdatePos(){
+  const img=document.getElementById('pf_photo_preview'); if(!img) return;
+  const x=document.getElementById('pf_posX')?.value||'50', y=document.getElementById('pf_posY')?.value||'20', z=document.getElementById('pf_zoom')?.value||'100';
+  img.style.objectPosition=`${x}% ${y}%`; img.style.transform=`scale(${parseFloat(z)/100})`;
+  const a=document.getElementById('pf_posX_val'); if(a) a.textContent=x+'%';
+  const b=document.getElementById('pf_posY_val'); if(b) b.textContent=y+'%';
+  const c=document.getElementById('pf_zoom_val'); if(c) c.textContent=z+'%';
+}
+function pfResetPos(){
+  const x=document.getElementById('pf_posX'); if(x) x.value=50;
+  const y=document.getElementById('pf_posY'); if(y) y.value=20;
+  const z=document.getElementById('pf_zoom'); if(z) z.value=100;
+  pfUpdatePos();
+}
+function pfShowError(msg){
+  const e=document.getElementById('pf_error'); if(!e) { alert(msg); return; }
+  e.textContent=msg; e.style.display='block';
+  e.scrollIntoView({block:'nearest'});
+}
+function closePetModal(){ document.getElementById('petModal').classList.remove('open'); }
+
+function openAddShipPet(){
+  document.getElementById('petModalTitle').textContent='Nueva mascota';
+  document.getElementById('petModalBody').innerHTML=shipPetFormHtml(null);
+  document.getElementById('petModalFooter').innerHTML=
+    `<button type="button" class="btn" onclick="closePetModal()">Cancelar</button>
+     <button type="button" class="btn primary" onclick="saveShipPet('')">Guardar mascota</button>`;
+  document.getElementById('petModal').classList.add('open');
+}
+function openEditShipPet(id){
+  const p=(shipPets||[]).find(x=>x&&x.id===id);
+  if(!p){ alert('No se encontró la mascota (id '+id+').'); return; }
+  document.getElementById('petModalTitle').textContent='Editar mascota';
+  document.getElementById('petModalBody').innerHTML=shipPetFormHtml(p);
+  document.getElementById('petModalFooter').innerHTML=
+    `<button type="button" class="btn" onclick="closePetModal()">Cancelar</button>
+     <button type="button" class="btn primary" onclick="saveShipPet('${escapeHtml(id)}')">Guardar cambios</button>`;
+  document.getElementById('petModal').classList.add('open');
+}
+
+function saveShipPet(id){
+  try{
+    const isNew=!id;
+    const existing=isNew?null:(shipPets||[]).find(x=>x&&x.id===id);
+    if(!isNew&&!existing){ pfShowError('No se encontró la mascota que intentas editar. Cierra el formulario y vuelve a abrirla.'); return; }
+    const name=document.getElementById('pf_name')?.value.trim()||'';
+    const shipId=document.getElementById('pf_ship')?.value||'';
+    const species=document.getElementById('pf_species')?.value.trim()||'';
+    const photo=document.getElementById('pf_photo')?.value.trim()||'';
+    const birthdate=document.getElementById('pf_birth')?.value||'';
+    const desc=document.getElementById('pf_desc')?.value.trim()||'';
+    const errs=[];
+    if(!name) errs.push('El nombre de la mascota es obligatorio.');
+    if(!shipId) errs.push('Elige el ship al que pertenece la mascota.');
+    else if(!shipById(shipId)) errs.push('El ship elegido no existe. Elige uno de la lista.');
+    else { const dup=petOfShip(shipId,id||undefined); if(dup) errs.push('El ship "'+shipById(shipId).name+'" ya tiene una mascota ("'+(dup.name||'sin nombre')+'"). Cada ship admite una sola.'); }
+    if(!photo) errs.push('La foto es obligatoria (URL de la imagen).');
+    else if(!/^https?:\/\/\S+$/i.test(photo)) errs.push('La foto debe ser una URL que empiece por http:// o https://.');
+    if(birthdate&&!_validDate(birthdate)) errs.push('La fecha de nacimiento no es válida.');
+    if(errs.length){ pfShowError(errs.join(' ')); return; }
+    const posX=document.getElementById('pf_posX')?.value||'50';
+    const posY=document.getElementById('pf_posY')?.value||'20';
+    const zoomVal=document.getElementById('pf_zoom')?.value||'100';
+    const payload={
+      shipId,name,species,photo,
+      photoPosition:`${posX}% ${posY}%`,
+      photoZoom:parseFloat(zoomVal)/100,
+      birthdate,desc
+    };
+    if(isNew){
+      let nid=Date.now(); while((shipPets||[]).some(x=>x.id===String(nid))) nid++;
+      shipPets.push({id:String(nid),...payload});
+    } else {
+      const i=shipPets.indexOf(existing);
+      shipPets[i]={...existing,...payload,id:existing.id};   // conserva campos desconocidos del registro
+    }
+    save();
+    closePetModal();
+    renderShipPetsAdmin();
+  }catch(err){
+    pfShowError('Error al guardar la mascota: '+(err&&err.message?err.message:err));
+  }
+}
+
+async function delShipPet(id){
+  const p=(shipPets||[]).find(x=>x&&x.id===id);
+  if(!p) { alert('No se encontró la mascota (id '+id+').'); return; }
+  const sh=shipById(p.shipId);
+  const ok=await showConfirm({
+    title:`¿Eliminar la mascota "${p.name||'sin nombre'}"?`,
+    desc:sh?`Se eliminará solo esta mascota. El ship "${sh.name}" no se modifica. Esta acción no se puede deshacer.`:'Se eliminará solo esta mascota. Esta acción no se puede deshacer.'
+  });
+  if(!ok) return;
+  const i=shipPets.findIndex(x=>x&&x.id===id);
+  if(i>-1) shipPets.splice(i,1);
+  save(); renderShipPetsAdmin();
 }
 </script>
 
@@ -7916,6 +8176,17 @@ async function delShip(si){
     </div>
     <div id="shipModalBody" style="overflow-y:auto;flex:1;padding:1.25rem 1.75rem"></div>
     <div class="modal-footer-btns" id="shipModalFooter"></div>
+  </div>
+</div>
+<!-- Modal Mascotas -->
+<div class="modal-bg" id="petModal" style="z-index:290">
+  <div class="modal" style="display:flex;flex-direction:column;max-height:92vh">
+    <div class="modal-header" style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+      <div class="modal-title" id="petModalTitle">Nueva mascota</div>
+      <button type="button" class="modal-close" aria-label="Cerrar" onclick="closePetModal()">✕</button>
+    </div>
+    <div id="petModalBody" style="overflow-y:auto;flex:1;padding:1.25rem 1.75rem"></div>
+    <div class="modal-footer-btns" id="petModalFooter"></div>
   </div>
 </div>
 <div class="modal-bg" id="productoraModal" style="z-index:290">
