@@ -380,6 +380,24 @@ a.avail-chip--tmdb:hover{color:var(--text);border-style:solid}
 .avail-general .avail-note{margin-bottom:6px}
 .avail-attrib{margin-top:10px;font-size:11.5px;color:var(--muted)}
 .avail-attrib a{color:var(--link)}
+/* Estilo compacto (como el bloque clásico): logos en teselas + desplegables */
+.avail-block{margin-top:0;padding:9px 10px}
+.avail-picker{gap:6px 8px;margin-bottom:8px}
+.avail-trigger{flex:1 1 auto;justify-content:space-between;min-height:34px;font-size:13px;padding:4px 10px}
+.avail-count{flex:1 0 100%;font-size:11px}
+.avail-group{margin-bottom:6px}
+details.avail-group>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;margin-bottom:6px;user-select:none}
+details.avail-group>summary::-webkit-details-marker{display:none}
+details.avail-group>summary::before{content:'▸';font-size:10px;color:var(--muted);transition:transform .15s}
+details.avail-group[open]>summary::before{transform:rotate(90deg)}
+.avail-group-n{font-size:10.5px;font-weight:700;color:var(--muted);background:var(--surface3);border-radius:20px;padding:0 6px}
+.watch-link--txt{width:auto;min-width:38px;padding:0 7px}
+.watch-link--txt .watch-link-text{white-space:nowrap;padding:0}
+.watch-link--tmdb{border-style:dashed}
+.watch-link--tmdb .watch-link-text{color:var(--muted)}
+.watch-link--nolink{opacity:.55;cursor:default;border-style:dashed}
+.watch-link--nolink:hover{transform:none;box-shadow:0 2px 6px rgba(0,0,0,.06);border-color:var(--border2)}
+.avail-block .avail-list{max-height:200px}
 @media (max-width:600px){.avail-block{padding:10px}.avail-list{max-height:200px}.avail-trigger{flex:1 1 auto;justify-content:space-between}}
 
 /* HIDE old topbar & tabs */
@@ -4170,11 +4188,14 @@ function availTmdbLinkFor(item,code){
 // Si la URL de la plataforma es solo su portada (genérica) o no existe, NO se abre la portada: se envía a la página de TMDB/JustWatch de ese país.
 function availChipHtml(e,tmdbUrl){
   const canon=canonicalizePlatform(e.name), logo=getPlatformLogo(canon);
-  const img=logo?`<img class="avail-chip-logo" src="${availEsc(logo)}" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
+  const inner=logo
+    ?`<img class="watch-link-logo" src="${availEsc(logo)}" alt="${availEsc(canon)}" onerror="this.outerHTML='<span class=watch-link-text>${availEsc(canon)}</span>'">`
+    :`<span class="watch-link-text">${availEsc(e.name)}</span>`;
+  const cls='watch-link'+(logo?'':' watch-link--txt');
   const ui=_wlUrlInfo(e.url), deep=!!e.url&&!ui.generic;
-  if(deep) return `<a class="avail-chip" href="${availEsc(e.url)}" target="_blank" rel="noopener" title="${availEsc('Abrir en '+e.name)}">${img}<span>${availEsc(e.name)}</span><span class="avail-chip-ext" aria-hidden="true">↗</span></a>`;
-  if(tmdbUrl) return `<a class="avail-chip avail-chip--tmdb" href="${availEsc(tmdbUrl)}" target="_blank" rel="noopener" title="${availEsc('No hay enlace directo a esta producción en '+e.name+'. Abre su ficha en TMDB/JustWatch para este país.')}">${img}<span>${availEsc(e.name)}</span><span class="avail-chip-ext" aria-hidden="true">↗</span></a>`;
-  return `<span class="avail-chip avail-chip--nolink" title="Sin enlace directo registrado">${img}<span>${availEsc(e.name)}</span></span>`;
+  if(deep) return `<a class="${cls}" href="${availEsc(e.url)}" target="_blank" rel="noopener" title="${availEsc('Abrir en '+e.name)}">${inner}</a>`;
+  if(tmdbUrl) return `<a class="${cls} watch-link--tmdb" href="${availEsc(tmdbUrl)}" target="_blank" rel="noopener" title="${availEsc(e.name+' · sin enlace directo: abre TMDB/JustWatch')}">${inner}</a>`;
+  return `<span class="${cls} watch-link--nolink" title="${availEsc(e.name+' · sin enlace')}">${inner}</span>`;
 }
 function availBodyHtml(item,code){
   const entries=availEntries(item,code), meta=(_wlIsObj(item&&item.streamingMeta)&&_wlIsObj(item.streamingMeta[code]))?item.streamingMeta[code]:null;
@@ -4185,9 +4206,11 @@ function availBodyHtml(item,code){
     const hint=others.length?`<div class="avail-empty-more">Sí consta en: ${others.slice(0,12).map(c=>`<button type="button" class="avail-pick" data-avail-pick="${availEsc(c)}">${availWho(c)}</button>`).join(' ')}${others.length>12?` y ${others.length-12} más (usa el buscador)`:''}</div>`:'';
     return `<div class="avail-empty" role="status"><div class="avail-empty-title">Sin disponibilidad registrada en ${who}</div><div class="avail-empty-txt">Todavía no hay plataformas guardadas para esta producción en este país. Eso no significa que no esté disponible: solo que no consta en TINTA.</div>${hint}${tmdbHtml}</div>`;
   }
-  const groups=AVAIL_TYPES.map(([t,label])=>{ const g=entries.filter(e=>e.type===t); return g.length?`<div class="avail-group"><div class="avail-group-title">${label}</div><div class="avail-chips">${g.map(x=>availChipHtml(x,tmdb)).join('')}</div></div>`:''; }).join('');
+  let first=true;
+  const groups=AVAIL_TYPES.map(([t,label])=>{ const g=entries.filter(e=>e.type===t); if(!g.length) return ''; const op=first?' open':''; first=false;
+    return `<details class="avail-group"${op}><summary class="avail-group-title">${label} <span class="avail-group-n">${g.length}</span></summary><div class="watch-links">${g.map(x=>availChipHtml(x,tmdb)).join('')}</div></details>`; }).join('');
   const stale=(meta&&meta.status==='review')?'<div class="avail-note">⚠ Dato pendiente de revisión: puede estar desactualizado.</div>':'';
-  return `<div class="avail-country-head">Disponible en ${who}</div>${groups}${stale}${tmdbHtml}`;
+  return `${groups}${stale}${tmdbHtml}`;
 }
 function availOptionHtml(c,active){
   return `<li class="avail-opt${active?' is-active':''}${c.has?' has-data':''}" role="option" tabindex="-1" aria-selected="${active?'true':'false'}" data-avail-code="${c.code}" data-s="${availEsc(c.search)}"><span class="avail-flag" aria-hidden="true">${c.flag}</span><span class="avail-opt-name">${availEsc(c.name)}</span><span class="avail-opt-code" title="Código regional de TMDB">${c.code}</span>${c.has?'<span class="avail-opt-has">con datos</span>':''}<span class="avail-check" aria-hidden="true">✓</span></li>`;
@@ -4205,7 +4228,7 @@ function buildAvailabilitySection(item,label,accentColor,accentBorder){
   const cat=availCatalogFor(item), code=state.streamingRegion, cur=cat.find(c=>c.code===code)||{code,name:availCountryName(code,'es'),flag:availFlag(code),has:false};
   const withData=cat.filter(c=>c.has), rest=cat.filter(c=>!c.has);
   const gl=_wlDisplayLinks(resolveWatchLinks(Object.assign({},item,{streaming:undefined})),item,label||'Ver');
-  const general=gl.length?`<div class="avail-general"><div class="avail-group-title">Enlaces generales</div><div class="avail-note">Sin país asignado: no se sabe en qué países funcionan.</div>${buildWatchLinksHtml(gl,accentColor,accentBorder,'',true)}</div>`:'';
+  const general=gl.length?`<details class="avail-general avail-group"><summary class="avail-group-title">Enlaces generales <span class="avail-group-n">${gl.length}</span></summary><div class="avail-note">Sin país asignado: no se sabe en qué países funcionan.</div>${buildWatchLinksHtml(gl,accentColor,accentBorder,'',true)}</details>`:'';
   const bs=accentBorder?` style="border-color:${accentBorder}"`:'', ls=accentColor?` style="color:${accentColor}"`:'';
   return `<section class="modal-watch-block avail-block" id="${id}" aria-label="Disponibilidad por país"${bs}>
     <div class="modal-watch-label"${ls}>Dónde ver</div>
@@ -6372,7 +6395,7 @@ function openSeries(si){
     <div class="detail-poster-col">
       ${posterEl.replace('modal-poster-full','detail-poster').replace('modal-poster-full-ph','detail-poster-ph')}
       ${(nextBadgeHtml||progressBlock)?`<div style="margin-top:10px">${nextBadgeHtml}${progressBlock}</div>`:''}
-      ${watchLinksHtml?`<div style="margin-top:8px">${watchLinksHtml}</div>`:''}
+      ${(watchLinksHtml||availHtml)?`<div style="margin-top:8px">${watchLinksHtml||availHtml}</div>`:''}
     </div>
     <div class="detail-info">
       <div class="modal-badges">${seasons.length>1?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${seasons.length} temporadas</span>`:''}${s.renewedNextSeason?'<span class="badge" style="background:var(--teal-soft);color:var(--teal);border:1px solid color-mix(in srgb,var(--teal) 30%,transparent)">Renovada</span>':''}${s.seriesType==='webserie'?'<span class="badge" style="background:#e8f4fd;color:#2a7dbf;border:1px solid rgba(42,125,191,.3)">Web serie</span>':''}</div>
@@ -6383,7 +6406,6 @@ function openSeries(si){
       <div class="details-box">${detailsLines}</div>
     </div>
   </div>
-  ${availHtml}
   ${s.synopsis?`<div class="synopsis" style="margin-top:16px">${s.synopsis}</div>`:''}
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${buildAwardsHtml(s)}
@@ -6483,7 +6505,7 @@ function openUpcoming(si){
   <div class="detail-hero">
     <div class="detail-poster-col">
       ${posterEl}
-      ${watchLinksHtml?`<div style="margin-top:8px">${watchLinksHtml}</div>`:''}
+      ${(watchLinksHtml||availHtml)?`<div style="margin-top:8px">${watchLinksHtml||availHtml}</div>`:''}
     </div>
     <div class="detail-info">
       <div class="modal-badges"><span class="badge badge-upcoming">Próximamente</span></div>
@@ -6497,7 +6519,6 @@ function openUpcoming(si){
       <div class="details-box">${detailsLines}</div>
     </div>
   </div>
-  ${availHtml}
   ${s.synopsis?`<div class="synopsis" style="margin-top:16px">${s.synopsis}</div>`:`<div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:13px;font-style:italic;margin-top:16px">Sinopsis no disponible aún</div>`}
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${upBookHtml}
@@ -6587,7 +6608,7 @@ function openMovie(mi){
     <div class="detail-poster-col">
       ${posterEl}
       <div style="margin-top:10px">${releaseBadgeHtml}</div>
-      ${watchLinksHtml?`<div style="margin-top:8px">${watchLinksHtml}</div>`:''}
+      ${(watchLinksHtml||availHtml)?`<div style="margin-top:8px">${watchLinksHtml||availHtml}</div>`:''}
     </div>
     <div class="detail-info">
       <div class="modal-badges">${mvModalTypeBadge}${isPast?'<span class="badge" style="background:var(--teal-soft);color:var(--teal)">✓ Estrenada</span>':'<span class="badge" style="background:var(--accent-soft);color:var(--accent)">Próximamente</span>'}</div>
@@ -6598,7 +6619,6 @@ function openMovie(mi){
       <div class="details-box">${detailsLines}</div>
     </div>
   </div>
-  ${availHtml}
   ${mv.synopsis?`<div class="synopsis" style="margin-top:16px">${mv.synopsis}</div>`:''}
   ${mv.trailerUrl?trailerHtml(mv.trailerUrl):''}
   ${buildAwardsHtml(mv)}
@@ -7493,7 +7513,7 @@ function openRichDetail(item, opts){
       <div class="detail-poster-col">
         ${posterEl}
         ${(nextBadgeHtml||progressBlock)?`<div style="margin-top:10px">${nextBadgeHtml}${progressBlock}</div>`:''}
-        ${watchLinksHtml?`<div style="margin-top:8px">${watchLinksHtml}</div>`:''}
+        ${(watchLinksHtml||availHtml)?`<div style="margin-top:8px">${watchLinksHtml||availHtml}</div>`:''}
       </div>
       <div class="detail-info">
         <div class="modal-badges">${badgeHtml}</div>
@@ -7503,7 +7523,6 @@ function openRichDetail(item, opts){
         <div class="details-box">${detailsLines}</div>
       </div>
     </div>
-    ${availHtml}
     ${synopsis}
     ${trailerSection}
     ${bookBlock}
