@@ -6246,25 +6246,47 @@ function openActressProfile(actressId){
     return (totalEps>0&&aired>=totalEps)?{label:'Fin.',cls:'ship-finished'}:{label:'Emisión',cls:'ship-ongoing'};
   };
 
+  const _e=escapeHtmlChk;
+  const _av=(url,alt)=>`<span class="ship-row-avatar">${url?`<img src="${_e(url)}" alt="${_e(alt||'')}" loading="lazy" style="object-position:50% 20%" onerror="this.style.opacity=0">`:''}</span>`;
   const seriesRows=inSeries.map(s=>{
     const si=state.series.indexOf(s);
     const st=_seriesStatus(s);
-    return `<div class="filmo-row" onclick="closeActressModal();openSeries(${si})">
-      <span class="filmo-year">${s.year||''}</span>
-      <span class="filmo-title">${s.name}</span>
-      <span class="ship-status-badge ${st.cls}">${st.label}</span>
+    return `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();openSeries(${si})">
+      ${_av(s.poster,s.name)}
+      <span class="ship-row-text"><span class="ship-row-name">${_e(s.name)}</span>
+        <span class="ship-row-meta">${s.year?_e(s.year)+' · ':''}<span class="ship-status-badge ${st.cls}">${st.label}</span></span></span>
     </div>`;
   }).join('');
 
   const movieRows=inMovies.map(mv=>{
     const mi=state.movies.indexOf(mv);
     const g=mv.genres&&mv.genres.length?mv.genres[0]:null;
-    return `<div class="filmo-row" onclick="closeActressModal();openMovie(${mi})">
-      <span class="filmo-year">${mv.year||''}</span>
-      <span class="filmo-title">${mv.name}</span>
-      ${g?`<span class="ship-status-badge ship-finished">${g}</span>`:''}
+    return `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();openMovie(${mi})">
+      ${_av(mv.poster,mv.name)}
+      <span class="ship-row-text"><span class="ship-row-name">${_e(mv.name)}</span>
+        <span class="ship-row-meta">${mv.year?_e(mv.year):''}${g&&mv.year?' · ':''}${g?_e(g):''}</span></span>
     </div>`;
   }).join('');
+
+  // Productoras: relación explícita guardada en la productora (productora.actressIds), la misma que usa su ficha
+  const prodRows=(state.productoras||[]).filter(pr=>pr&&Array.isArray(pr.actressIds)&&pr.actressIds.includes(actressId)).map(pr=>
+    `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();openProductoraFromSearch('${_e(pr.id)}')">
+      ${_av(pr.logo,pr.name)}
+      <span class="ship-row-text"><span class="ship-row-name">${_e(pr.name||'Productora')}</span></span>
+    </div>`).join('');
+  const prodCount=(state.productoras||[]).filter(pr=>pr&&Array.isArray(pr.actressIds)&&pr.actressIds.includes(actressId)).length;
+
+  // Ships: los que contienen a la actriz y se muestran en Ships/Rupturas (incluye rupturas)
+  const _shipEntries=getShipEntries().filter(en=>en.sh&&(en.sh.actressIds||[]).includes(actressId));
+  const shipRows=_shipEntries.map(en=>{
+    const sh=en.sh, ph=sh.couplePhoto||(en.members[0]&&en.members[0].photo)||'';
+    const pos=sh.couplePhoto?(sh.couplePhotoPosition||'50% 20%'):'50% 20%';
+    return `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();setTimeout(()=>openShipById('${_e(sh.id)}'),80)">
+      <span class="ship-row-avatar">${ph?`<img src="${_e(ph)}" alt="${_e(sh.name)}" loading="lazy" style="object-position:${_e(pos)};transform:scale(${sh.couplePhoto?(parseFloat(sh.couplePhotoZoom)||1):1})" onerror="this.style.opacity=0">`:''}</span>
+      <span class="ship-row-text"><span class="ship-row-name">${_e((sh.name||'').trim()||'Ship')}</span>${sh.retired?'<span class="ship-row-meta">Ruptura</span>':''}</span>
+    </div>`;
+  }).join('');
+  const _sec=(title,count,rows)=>rows?`<section class="ship-sec"><h3 class="ship-sec-title">${title} <span class="ship-sec-count">${count}</span></h3><div class="ship-sec-list">${rows}</div></section>`:'';
 
   // Calculate age from birthdate
   let ageStr='', birthYearStr='', zodiacStr='', chineseZodiacStr='';
@@ -6292,17 +6314,21 @@ function openActressProfile(actressId){
   if(chineseZodiacStr) detailsLines+=`<div class="details-line"><span class="details-line-key">Zodiaco chino</span><span class="details-line-val">${chineseZodiacStr}</span></div>`;
   if(a.height) detailsLines+=`<div class="details-line"><span class="details-line-key">Altura</span><span class="details-line-val">${a.height} cm</span></div>`;
 
-  const html=`<div class="modal-body">
-  <div class="detail-hero">
+  const html=`<div class="modal-body ship-detail">
+  <div class="detail-hero ship-hero">
     ${photo}
     <div class="detail-info">
-      <div class="modal-title">${a.name}</div>
+      <div class="modal-title ship-hero-title">${a.name}</div>
       ${a.notes?`<div style="display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px">${a.notes.split(',').map(r=>r.trim()).filter(Boolean).map(r=>`<span style="font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;background:var(--accent-soft);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 20%,transparent)">${r}</span>`).join('')}</div>`:''}
       ${detailsLines?`<div class="details-box" style="margin-top:10px">${detailsLines}</div>`:''}
     </div>
   </div>
-  ${inSeries.length?`<div class="section-bar">Series</div><div class="details-box">${seriesRows}</div>`:''}
-  ${inMovies.length?`<div class="section-bar">Películas</div><div class="details-box">${movieRows}</div>`:''}
+  <div class="ship-sections">
+    ${_sec(prodCount>1?'Productoras':'Productora',prodCount,prodRows)}
+    ${_sec(_shipEntries.length>1?'Ships':'Ship',_shipEntries.length,shipRows)}
+    ${_sec('Series',inSeries.length,seriesRows)}
+    ${_sec('Películas',inMovies.length,movieRows)}
+  </div>
   ${(!inSeries.length&&!inMovies.length)?`<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px 0">Sin series ni películas registradas.</div>`:''}
   <div style="display:flex;justify-content:flex-end;margin-top:1.25rem"><button class="btn" onclick="closeActressModal()">Cerrar</button></div>
   </div>`;
@@ -8449,15 +8475,23 @@ function buildPetChip(o){
   const img=photoOk?`<img src="${e(p.photo.trim())}" alt="${e(o.name)}" loading="lazy" style="object-position:${pos};transform:scale(${zoom})" onerror="this.style.opacity=0">`:'';
   return `<div class="ship-row ship-row-static pet-chip"><span class="ship-row-avatar">${img}</span><span class="ship-row-text"><span class="ship-row-name pet-chip-name">${e(o.name)}</span>${species?`<span class="ship-row-meta">${e(species)}</span>`:''}</span></div>`;
 }
-// Abre la ficha del ship sin tocar el apartado actual: usa una lista temporal solo con ese ship.
-function openPetShip(shipId){
+// Ships tal y como los muestran Ships/Rupturas (los construye renderShips si aún no se ha visitado la pestaña)
+function getShipEntries(){
   const view=document.getElementById('viewShips');
-  const entry=((view&&view._ships)||[]).find(x=>x&&x.sh&&String(x.sh.id)===String(shipId));
+  if(!view) return [];
+  if(!view._ships) renderShips();
+  return view._ships||[];
+}
+// Abre la ficha de un ship por id sin tocar el apartado actual: usa una lista temporal solo con ese ship.
+function openShipById(shipId){
+  const view=document.getElementById('viewShips');
+  const entry=getShipEntries().find(x=>x&&x.sh&&String(x.sh.id)===String(shipId));
   if(!view||!entry) return;
   const prev=view._filtered;
   view._filtered=[entry];
   try{ openShipDetail(0); } finally { view._filtered=prev; }
 }
+function openPetShip(shipId){ openShipById(shipId); }
 
 // Modal de detalle de ship manual
 function openShipDetail(idx){
