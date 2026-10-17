@@ -3628,8 +3628,8 @@ async function saveSeries(si, forcedCategory=null){
   const tmdbRatingRaw=document.getElementById('f_tmdbRating')?.value.trim()||'';
   const tmdbRating=tmdbRatingRaw?parseFloat(tmdbRatingRaw):'';
   const tmdbVoteCount=parseInt(document.getElementById('f_tmdbVoteCount')?.value||'0')||0;
-  const streaming=streamingApplyPending(streamingClone(si>=0&&series[si]?series[si].streaming:null),'f_streamingPending');   // 1C.3.2: se conserva tal cual · 1C.3.5: + región importada pendiente
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,couples,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,biFormat,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount,streaming};
+  const stp=streamingSavePayload(si>=0&&series[si]?series[si]:null,'f_streamingPending');   // 1C.3.2: se conserva tal cual · 6.7: + streaming global pendiente (fusión) y streamingMeta
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,couples,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,biFormat,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount,...stp};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -3678,6 +3678,7 @@ async function convertSeriesToMovie(si){
     wlwFocus:s.wlwFocus||[], awards:s.awards||[], cast:s.cast||[],
     category:'movie', productoraId:s.productoraId||'',
     streaming:streamingClone(s.streaming),   // 1C.3.2
+    ...(s.streamingMeta?{streamingMeta:streamingClone(s.streamingMeta)}:{}),   // 6.7
     updatedAt:new Date().toISOString(),
   };
   movies.push(moviePayload);
@@ -3704,6 +3705,7 @@ async function convertMovieToSeries(mi){
     wlwFocus:mv.wlwFocus||[], awards:mv.awards||[], cast:mv.cast||[],
     category:'series', seriesType:'serie', productoraId:mv.productoraId||'',
     streaming:streamingClone(mv.streaming),   // 1C.3.2
+    ...(mv.streamingMeta?{streamingMeta:streamingClone(mv.streamingMeta)}:{}),   // 6.7
     episodeDuration:mv.duration||'',
     seasons:[{label:'Temporada 1', startDate:mv.date||'', totalEpisodes:1, emissionDays:mv.date?[getDow(mv.date)]:[1], allInOneDay:false, skipDates:[], episodes:[], premiereSchedule:[]}],
     updatedAt:new Date().toISOString(),
@@ -4353,7 +4355,7 @@ async function saveMovie(mi){
     tmdbKind:document.getElementById('mf_tmdbKind')?.value.trim()||'',
     tmdbRating:document.getElementById('mf_tmdbRating')?.value.trim()?parseFloat(document.getElementById('mf_tmdbRating').value.trim()):'',
     tmdbVoteCount:parseInt(document.getElementById('mf_tmdbVoteCount')?.value||'0')||0,
-    streaming:streamingApplyPending(streamingClone(mi>=0&&movies[mi]?movies[mi].streaming:null),'mf_streamingPending'),   // 1C.3.2: se conserva tal cual · 1C.3.5: + región importada pendiente
+    ...streamingSavePayload(mi>=0&&movies[mi]?movies[mi]:null,'mf_streamingPending'),   // 1C.3.2: se conserva tal cual · 6.7: + streaming global pendiente (fusión) y streamingMeta
   };
   const movieUpdatedAt=new Date().toISOString();
   if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
@@ -4688,7 +4690,7 @@ function tmdbBarHtml(type){
   return '<div class="tmdb-bar">'
     +'<div class="tmdb-bar-label"><span>🔎 Buscar en TMDB <span style="font-weight:400;opacity:.8">(streaming vía JustWatch)</span></span>'
     +'<span class="tmdb-bar-tools">'
-    +'<select onchange="tmdbSetRegion(this)" title="Región para las plataformas de streaming">'+tmdbRegionOptionsHtml()+'</select>'
+    +'<select onchange="tmdbSetRegion(this)" title="Región para network y plataformas heredadas de la ficha. El streaming de TMDB se guarda con todas las regiones.">'+tmdbRegionOptionsHtml()+'</select>'
     +'<button type="button" onclick="tmdbConfigureKey()" title="Configurar API key de TMDB">⚙ API key</button>'
     +'</span></div>'
     +'<div class="tmdb-bar-row">'
@@ -5232,13 +5234,16 @@ function tmdbNormalizeProviders(list){
    `type` ∈ flatrate | free | ads | rent | buy. `url` puede ser '' (proveedor sin URL estándar; nunca se inventa).
    NO sustituye a watchLinks / network / networkUrl. Aquí solo hay helpers puros y sin DOM. */
 const STREAMING_TYPES=['flatrate','free','ads','rent','buy'];
-function streamingIsValidRegion(code){ return TMDB_REGIONS.some(r=>r[0]===code); }
+function streamingIsValidRegion(code){ return typeof code==='string'&&/^[A-Z]{2}$/.test(code); }   // 6.7: cualquier código de país de 2 letras mayúsculas (antes: solo los 10 de TMDB_REGIONS)
 // Entrada válida {name,url,type} o null. url se conserva como '' si no hay.
 function streamingNormalizeEntry(e){
   if(!e||typeof e!=='object') return null;
   const name=String(e.name==null?'':e.name).trim(), type=String(e.type==null?'':e.type).trim();
   if(!name||STREAMING_TYPES.indexOf(type)<0) return null;
-  return {name,url:String(e.url==null?'':e.url).trim(),type};
+  const out={name,url:String(e.url==null?'':e.url).trim(),type};
+  if((typeof e.providerId==='number'&&Number.isInteger(e.providerId)&&e.providerId>0)) out.providerId=e.providerId;   // 6.7: opcional
+  if(e.source==='tmdb'||e.source==='manual') out.source=e.source;                                                       // 6.7: opcional
+  return out;
 }
 // Copia profunda sin alterar contenido (no filtra ni borra regiones ni entradas existentes). Si no es un objeto → {}.
 function streamingClone(s){
@@ -5269,17 +5274,160 @@ function tmdbBuildRegionProviders(rwp){
   return out;
 }
 /* ═══ FIN 1C.3.2 helpers ═══ */
+/* ═══ 6.7 — Importación regional GLOBAL (aditivo; helpers puros salvo los marcados) ═══
+   Una sola llamada de TMDB (la que ya se hace) trae watch/providers.results con UNA clave por país. Aquí se recorren todas.
+   Datos: streaming[REGIÓN]=[{name,url,type,providerId?,source?}] y streamingMeta[REGIÓN]={link?,fetchedAt,status:'ok'|'review',reviewSince?}.
+   - url nunca se inventa: sale de PLATFORMS (tmdbGetPlatformStandardUrl) o queda ''. link solo si es https://(www.)themoviedb.org.
+   - Se sustituyen solo las entradas importadas de TMDB de las regiones que TMDB devuelve; las manuales y las ilegibles se conservan.
+   - Una región que TMDB no devuelve, o devuelve vacía, NO se borra ni se vacía: se marca status:'review'.
+   - Respuesta incompleta (sin watch/providers, estructura rara, región ilegible) → se informa y no se toca esa parte. */
+function tmdbSafeRegionLink(link){
+  if(typeof link!=='string') return '';
+  const t=link.trim(); if(!t) return '';
+  let u; try{ u=new URL(t); }catch(e){ return ''; }
+  if(u.protocol!=='https:'||u.username||u.password) return '';
+  const h=u.hostname.toLowerCase();
+  return (h==='themoviedb.org'||h==='www.themoviedb.org')?t:'';
+}
+function _streamingIsObj(o){ return !!o&&typeof o==='object'&&!Array.isArray(o); }
+// Entradas de UNA región (objeto results[REGIÓN]) con providerId y source:'tmdb'. {entries, dropped, bad}: dropped = proveedores sin nombre legible; bad = listas que no son array.
+function tmdbBuildRegionEntries(rwp){
+  const entries=[], seen=new Set(), bad=[]; let dropped=0;
+  STREAMING_TYPES.forEach(type=>{
+    const list=rwp[type]; if(list===undefined||list===null) return;
+    if(!Array.isArray(list)){ bad.push(type); return; }
+    list.forEach(p=>{
+      const name=tmdbNormalizeProviderName(_streamingIsObj(p)&&typeof p.provider_name==='string'?p.provider_name:'');
+      if(!name){ dropped++; return; }
+      const k=tmdbImpNorm(name)+'|'+type; if(seen.has(k)) return; seen.add(k);   // sin duplicados dentro de la región
+      const e={name,url:tmdbGetPlatformStandardUrl(name),type};
+      if(Number.isInteger(p.provider_id)&&p.provider_id>0) e.providerId=p.provider_id;
+      e.source='tmdb'; entries.push(e);
+    });
+  });
+  return {entries,dropped,bad};
+}
+// wp = d['watch/providers'] completo. status: ok | empty (results {} = TMDB sin datos) | missing (sin bloque/results) | bad_structure.
+// Devuelve {status, streaming:{R:[..]}, meta:{R:{link?}}, skipped:[{region,reason}], returned:[todos los códigos que trajo TMDB], received:nº de regiones válidas, invalidLinks:[R]}
+function tmdbBuildAllRegionProviders(wp){
+  const out={status:'ok',streaming:{},meta:{},skipped:[],returned:[],received:0,invalidLinks:[]};
+  if(wp===undefined||wp===null){ out.status='missing'; return out; }
+  if(!_streamingIsObj(wp)){ out.status='bad_structure'; return out; }
+  if(wp.results===undefined||wp.results===null){ out.status='missing'; return out; }
+  if(!_streamingIsObj(wp.results)){ out.status='bad_structure'; return out; }
+  const codes=Object.keys(wp.results).sort(); out.returned=codes.slice();
+  if(!codes.length){ out.status='empty'; return out; }
+  codes.forEach(code=>{
+    if(!streamingIsValidRegion(code)){ out.skipped.push({region:code,reason:'código de región no válido'}); return; }
+    const rwp=wp.results[code];
+    if(!_streamingIsObj(rwp)){ out.skipped.push({region:code,reason:'datos de la región ilegibles'}); return; }
+    const b=tmdbBuildRegionEntries(rwp);
+    if(b.bad.length){ out.skipped.push({region:code,reason:'listas ilegibles ('+b.bad.join(', ')+')'}); return; }
+    if(b.dropped){ out.skipped.push({region:code,reason:b.dropped+' proveedor(es) sin nombre legible: respuesta incompleta, la región no se toca'}); return; }
+    out.streaming[code]=b.entries; out.received++;
+    const link=tmdbSafeRegionLink(rwp.link); out.meta[code]={}; if(link) out.meta[code].link=link;
+    else if(rwp.link!==undefined&&rwp.link!==null&&rwp.link!=='') out.invalidLinks.push(code);
+  });
+  return out;
+}
+function _streamingKeyOf(e){ const n=String(e&&e.name==null?'':(e&&e.name)||'').trim(); return tmdbImpNorm(tmdbNormalizeProviderName(n)||n)+'|'+String(e&&e.type||'').trim(); }
+// ¿Entrada manual? source:'manual' siempre; sin source, solo si trae una URL distinta de la estándar de PLATFORMS (no se pisa algo escrito a mano).
+function streamingEntryIsManual(e){
+  if(!_streamingIsObj(e)) return false;
+  if(e.source==='manual') return true;
+  if(e.source==='tmdb') return false;
+  const url=String(e.url==null?'':e.url).trim();
+  return !!url&&url!==tmdbGetPlatformStandardUrl(String(e.name==null?'':e.name).trim());
+}
+function _streamingSig(list){ return (list||[]).map(e=>_streamingKeyOf(e)+'|'+String(e.url||'').trim()).sort().join('\n'); }
+// Fusión PURA (siempre sobre copias; no muta ninguna entrada). Devuelve {streaming, meta, report}.
+// report: {status, counts:{added,changed,unchanged,review,skipped,manualKept,unknownKept}, regions:{R:{result,added,removed,manualKept,unknownKept,overlap,reason}}, skipped:[...]}
+function streamingMergeImport(streaming,meta,imported,today){
+  const outS=streamingClone(streaming), outM=streamingClone(meta);
+  const rep={status:(imported&&imported.status)||'missing',counts:{added:0,changed:0,unchanged:0,review:0,skipped:0,manualKept:0,unknownKept:0},regions:{},skipped:[]};
+  if(!imported||imported.status!=='ok') return {streaming:outS,meta:outM,report:rep};
+  const day=/^\d{4}-\d{2}-\d{2}$/.test(String(today||''))?String(today):'';
+  const markReview=(code,reason)=>{
+    const pm=_streamingIsObj(outM[code])?outM[code]:{}, nm={};
+    Object.keys(pm).forEach(k=>{ if(k!=='status'&&k!=='reviewSince') nm[k]=pm[k]; });
+    nm.status='review'; const rs=pm.reviewSince||day; if(rs) nm.reviewSince=rs; outM[code]=nm;
+    rep.counts.review++; rep.regions[code]={result:'review',reason};
+  };
+  (imported.skipped||[]).forEach(x=>{ rep.skipped.push({region:x.region,reason:x.reason}); rep.counts.skipped++; });
+  Object.keys(imported.streaming||{}).sort().forEach(code=>{
+    if(!streamingIsValidRegion(code)||!Array.isArray(imported.streaming[code])) return;
+    const incoming=imported.streaming[code].map(streamingNormalizeEntry).filter(Boolean);
+    const prevRaw=outS[code];
+    if(prevRaw!==undefined&&!Array.isArray(prevRaw)){ rep.skipped.push({region:code,reason:'la región guardada no es una lista: no se toca'}); rep.counts.skipped++; return; }
+    const prev=prevRaw||[], manual=[], unknown=[], tmdbPrev=[];
+    prev.forEach(e=>{ const n=streamingNormalizeEntry(e); if(!n) unknown.push(e); else if(streamingEntryIsManual(e)) manual.push(e); else tmdbPrev.push(n); });
+    if(!incoming.length&&tmdbPrev.length){ markReview(code,'TMDB devolvió esta región sin proveedores: se conserva lo guardado'); return; }
+    if(!incoming.length&&!prev.length){ rep.counts.unchanged++; rep.regions[code]={result:'unchanged',added:[],removed:[],manualKept:0,unknownKept:0,overlap:0}; return; }
+    const mk=new Set(manual.map(_streamingKeyOf));
+    const fresh=incoming.filter(e=>!mk.has(_streamingKeyOf(e))).map(e=>({...e,source:'tmdb'}));
+    const overlap=incoming.length-fresh.length;
+    const before=_streamingSig(tmdbPrev), after=_streamingSig(fresh);
+    const result=(!tmdbPrev.length&&fresh.length)?'added':(before!==after?'changed':'unchanged');
+    const afterKeys=new Set(fresh.map(_streamingKeyOf)), beforeKeys=new Set(tmdbPrev.map(_streamingKeyOf));
+    outS[code]=[...fresh,...manual,...unknown];
+    const pm=_streamingIsObj(outM[code])?outM[code]:{}, nm={};
+    const link=(imported.meta&&_streamingIsObj(imported.meta[code])&&tmdbSafeRegionLink(imported.meta[code].link))||tmdbSafeRegionLink(pm.link);
+    if(link) nm.link=link; if(day) nm.fetchedAt=day; else if(pm.fetchedAt) nm.fetchedAt=pm.fetchedAt; nm.status='ok';
+    Object.keys(pm).forEach(k=>{ if(['link','fetchedAt','status','reviewSince'].indexOf(k)<0) nm[k]=pm[k]; });
+    outM[code]=nm;
+    rep.counts[result]++; rep.counts.manualKept+=manual.length; rep.counts.unknownKept+=unknown.length;
+    rep.regions[code]={result,added:fresh.filter(e=>!beforeKeys.has(_streamingKeyOf(e))).map(e=>e.name+' ('+e.type+')'),
+      removed:tmdbPrev.filter(e=>!afterKeys.has(_streamingKeyOf(e))).map(e=>e.name+' ('+e.type+')'),manualKept:manual.length,unknownKept:unknown.length,overlap};
+  });
+  const returned=new Set(imported.returned||[]);
+  Object.keys(outS).sort().forEach(code=>{
+    if(returned.has(code)||!Array.isArray(outS[code])||!outS[code].length) return;
+    markReview(code,'TMDB ya no devuelve esta región: se conserva lo guardado');
+  });
+  return {streaming:outS,meta:outM,report:rep};
+}
+function streamingBuildPending(imported,today){
+  return {v:2,fetchedAt:/^\d{4}-\d{2}-\d{2}$/.test(String(today||''))?String(today):'',
+    imported:{status:imported.status,streaming:imported.streaming,meta:imported.meta,skipped:imported.skipped,returned:imported.returned}};
+}
+// Interpreta el valor del campo pendiente. Formato nuevo {v:2,...} → fusión; formato antiguo {REGIÓN:[…]} → streamingSetRegion (compatibilidad con borradores en curso).
+function streamingResolvePendingValue(streaming,meta,raw){
+  const base={streaming,meta,report:null};
+  if(!raw) return base;
+  let pend; try{ pend=JSON.parse(raw); }catch(e){ return base; }
+  if(!_streamingIsObj(pend)) return base;
+  if(pend.v===2&&_streamingIsObj(pend.imported)){
+    const im=pend.imported, clean={status:'ok',streaming:{},meta:{},skipped:Array.isArray(im.skipped)?im.skipped:[],returned:Array.isArray(im.returned)?im.returned.filter(streamingIsValidRegion):[]};
+    if(im.status!=='ok'||!_streamingIsObj(im.streaming)) return base;
+    Object.keys(im.streaming).forEach(c=>{
+      if(!streamingIsValidRegion(c)||!Array.isArray(im.streaming[c])) return;
+      clean.streaming[c]=im.streaming[c].map(streamingNormalizeEntry).filter(Boolean).map(e=>({...e,source:'tmdb'}));
+      const l=_streamingIsObj(im.meta)&&_streamingIsObj(im.meta[c])?tmdbSafeRegionLink(im.meta[c].link):''; clean.meta[c]=l?{link:l}:{};
+    });
+    return streamingMergeImport(streaming,meta,clean,pend.fetchedAt);
+  }
+  let out=streaming; Object.keys(pend).forEach(r=>{ if(Array.isArray(pend[r])) out=streamingSetRegion(out,r,pend[r]); });
+  return {streaming:out,meta,report:null};
+}
+function streamingResolvePending(streaming,meta,inputId){   // lee el <input hidden> del formulario
+  const el=document.getElementById(inputId); return streamingResolvePendingValue(streaming,meta,el&&el.value);
+}
+// Para los puntos de guardado: {streaming[,streamingMeta]} a partir del registro actual (o null si es nuevo) + lo pendiente. streamingMeta solo si no está vacío (no ensucia fichas sin datos).
+function streamingSavePayload(rec,inputId){
+  const r=streamingResolvePending(streamingClone(rec&&rec.streaming),streamingClone(rec&&rec.streamingMeta),inputId);
+  const out={streaming:r.streaming}; if(Object.keys(r.meta).length) out.streamingMeta=r.meta; return out;
+}
+function streamingRegionLabel(code){
+  const k=TMDB_REGIONS.find(x=>x[0]===code); if(k) return k[1];
+  try{ const n=new Intl.DisplayNames(['es'],{type:'region'}).of(code); if(n&&n!==code) return n; }catch(e){}
+  return code;
+}
+function tmdbToday(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+/* ═══ FIN 6.7 helpers ═══ */
 /* ═══ 1C.3.5 — Reimportación regional (aditivo) ═══
    Aplicar NO toca series/movies: deja la región pendiente en un <input hidden> del propio formulario (f_/mf_streamingPending,
    JSON {REGION:[{name,url,type}]}). Guardar la aplica con streamingSetRegion → solo se sustituye esa región. */
-function streamingApplyPending(streaming,inputId){
-  const el=document.getElementById(inputId); if(!el||!el.value) return streaming;
-  let pend; try{ pend=JSON.parse(el.value); }catch(e){ return streaming; }
-  if(!pend||typeof pend!=='object'||Array.isArray(pend)) return streaming;
-  let out=streaming;
-  Object.keys(pend).forEach(r=>{ if(Array.isArray(pend[r])) out=streamingSetRegion(out,r,pend[r]); });
-  return out;
-}
+function streamingApplyPending(streaming,inputId){ return streamingResolvePending(streaming,{},inputId).streaming; }   // 6.7: delega; acepta formato antiguo y nuevo
 // Copia del streaming guardado de la ficha que se está editando (se deduce del botón Guardar del formulario abierto); {} si es nueva.
 function tmdbImpCurrentStreaming(){
   const m=_activeModal(), b=m&&m.querySelector('.modal-footer-btns .btn.primary');
@@ -5288,6 +5436,14 @@ function tmdbImpCurrentStreaming(){
   const rec=(mt[1]==='Movie'?movies:series)[parseInt(mt[2],10)];
   return streamingClone(rec&&rec.streaming);
 }
+function tmdbImpCurrentStreamingMeta(){   // 6.7: igual que tmdbImpCurrentStreaming pero para streamingMeta
+  const m=_activeModal(), b=m&&m.querySelector('.modal-footer-btns .btn.primary');
+  const mt=b&&/save(Series|Movie)\((-?\d+)/.exec(b.getAttribute('onclick')||'');
+  if(!mt) return {};
+  const rec=(mt[1]==='Movie'?movies:series)[parseInt(mt[2],10)];
+  return streamingClone(rec&&rec.streamingMeta);
+}
+// (Heredada de 1C.3.5, ya no se usa desde 6.7: la vista previa usa tmdbImpGlobalStreamingHtml.)
 // Casilla + nota del preview. No llama a streamingSetRegion (el preview sigue sin escribir nada).
 function tmdbImpStreamingSaveHtml(dr,p){
   const provs=dr.regionProviders||[]; if(!provs.length) return '';
@@ -5304,15 +5460,56 @@ function tmdbImpStreamingSaveHtml(dr,p){
     +(igual?' <span class="tmdbimp-eq">igual</span>':'')+'</label>'
     +'<div class="tmdbimp-note">'+note+' Solo cambia esa región; el resto de regiones, watchLinks, network y networkUrl no se tocan.</div>';
 }
-// Aplicar: deja la región pendiente en el formulario (nada en series/movies hasta Guardar). Devuelve 1 si la dejó.
+// Aplicar: deja el streaming GLOBAL pendiente en el formulario (nada en series/movies hasta Guardar). Devuelve 1 si lo dejó. 6.7: todas las regiones del borrador.
 function tmdbImpStashStreaming(dr,p){
-  if(!dr||!streamingIsValidRegion(dr.region)||!(dr.regionProviders||[]).length) return 0;
+  const ar=dr&&dr.allRegions; if(!ar||ar.status!=='ok'||!ar.received) return 0;
   const anchor=_findInModal(p+'tmdbId'); if(!anchor||!anchor.parentNode) return 0;
   let h=_findInModal(p+'streamingPending');
   if(!h){ h=document.createElement('input'); h.type='hidden'; h.id=p+'streamingPending'; anchor.parentNode.appendChild(h); }
-  let pend={}; try{ pend=JSON.parse(h.value||'{}')||{}; }catch(e){ pend={}; }
-  pend[dr.region]=dr.regionProviders.map(x=>({name:x.name,url:x.url,type:x.type}));
-  h.value=JSON.stringify(pend); return 1;
+  h.value=JSON.stringify(streamingBuildPending(ar,dr.fetchedAt)); return 1;
+}
+// Vista previa global (solo lectura): simula la fusión sobre lo guardado + lo pendiente y la resume. No escribe nada.
+function tmdbImpGlobalStreamingHtml(dr,p){
+  const ar=dr.allRegions||{status:'missing'};
+  const head='<b>Streaming global</b> — todas las regiones que devuelve TMDB (solo informativo hasta que marques la casilla y pulses Aplicar): ';
+  if(ar.status!=='ok'){
+    const msg={missing:'TMDB no devolvió el bloque watch/providers: respuesta incompleta. Esto NO significa que no haya streaming. No se cambia nada.',
+      bad_structure:'TMDB devolvió watch/providers con una estructura inesperada y no se ha podido leer. No se cambia nada.',
+      empty:null}[ar.status];
+    if(msg) return '<div class="tmdbimp-info">'+head+'<div class="tmdbimp-warn">⚠ '+escapeHtml(msg)+'</div></div>';
+    return '<div class="tmdbimp-info">'+head+'<br><i>TMDB no tiene datos de disponibilidad para esta obra en ningún país. No se cambia nada (lo guardado se conserva).</i></div>';
+  }
+  const pend=streamingResolvePending(tmdbImpCurrentStreaming(),tmdbImpCurrentStreamingMeta(),p+'streamingPending');
+  const sim=streamingMergeImport(pend.streaming,pend.meta,ar,dr.fetchedAt), rep=sim.report, c=rep.counts;
+  const hasExisting=Object.keys(pend.streaming).some(k=>Array.isArray(pend.streaming[k])&&pend.streaming[k].length);
+  const reviewNew=Object.keys(rep.regions).filter(k=>rep.regions[k].result==='review'&&!(pend.meta[k]&&pend.meta[k].status==='review')).length;
+  const clearing=Object.keys(rep.regions).filter(k=>rep.regions[k].result!=='review'&&pend.meta[k]&&pend.meta[k].status==='review').length;   // regiones en revisión que TMDB vuelve a devolver: la marca se limpia
+  const nothing=(c.added+c.changed+reviewNew+clearing)===0, on=!nothing&&!hasExisting&&c.added>0&&c.changed===0;
+  const sum='+'+c.added+' región(es) nueva(s) · '+c.changed+' modificada(s) · '+c.unchanged+' sin cambios · '+c.review+' para revisión'+(c.skipped?' · '+c.skipped+' omitida(s) por datos incompletos':'');
+  const sorted=Object.keys(rep.regions).sort((a,b)=>{ const ia=TMDB_REGIONS.findIndex(x=>x[0]===a), ib=TMDB_REGIONS.findIndex(x=>x[0]===b); return (ia<0?999:ia)-(ib<0?999:ib)||a.localeCompare(b); });
+  const lbl={added:'nueva',changed:'modificada',unchanged:'sin cambios',review:'revisar'};
+  const det=sorted.map(code=>{
+    const r=rep.regions[code], inc=(ar.streaming[code]||[]);
+    let h='<div style="margin:4px 0"><b>'+escapeHtml(code)+'</b> '+escapeHtml(streamingRegionLabel(code))+' — <span class="tmdbimp-eq">'+escapeHtml(lbl[r.result]||r.result)+'</span>';
+    if(r.result==='review') return h+' <i>'+escapeHtml(r.reason||'')+'</i></div>';
+    h+='<br>'+(inc.length?inc.map(x=>escapeHtml(x.name)+' · <code>'+escapeHtml(x.type)+'</code> · '+(x.url?escapeHtml(x.url):'<i>sin URL estándar</i>')).join('<br>'):'<i>sin proveedores</i>');
+    if(r.removed&&r.removed.length) h+='<br><i>Dejan de figurar en TMDB y se sustituyen: '+escapeHtml(r.removed.join(', '))+'</i>';
+    if(r.manualKept) h+='<br><i>'+r.manualKept+' entrada(s) manual(es) se conservan.</i>';
+    if(r.unknownKept) h+='<br><i>'+r.unknownKept+' entrada(s) no reconocida(s) se conservan sin tocar.</i>';
+    if(r.overlap) h+='<br><i>'+r.overlap+' proveedor(es) coincide(n) con una entrada manual: manda la manual.</i>';
+    const lk=ar.meta[code]&&ar.meta[code].link; if(lk) h+='<br>Enlace TMDB/JustWatch (no es un enlace a la plataforma): '+escapeHtml(lk);
+    return h+'</div>';
+  }).join('');
+  const skipHtml=rep.skipped.length?'<div class="tmdbimp-warn">⚠ Omitidas por respuesta incompleta (no se tocan): '+rep.skipped.map(x=>escapeHtml(x.region)+' — '+escapeHtml(x.reason)).join('; ')+'</div>':'';
+  const linkHtml=(ar.invalidLinks||[]).length?'<div class="tmdbimp-note">Enlace regional descartado por no ser https://themoviedb.org en: '+ar.invalidLinks.map(escapeHtml).join(', ')+'.</div>':'';
+  const note=nothing?'La ficha ya tiene este streaming (o TMDB no aporta cambios).'
+    :(clearing&&!c.added&&!c.changed&&!reviewNew)?'TMDB vuelve a devolver '+clearing+' región(es) marcada(s) para revisión: al guardar se quita la marca. Los datos no cambian.'
+    :hasExisting?'La ficha ya tiene streaming: al marcar se fusiona. Solo se sustituyen las entradas importadas de TMDB de las regiones devueltas; manuales y regiones no devueltas se conservan.'
+    :'Se guardarán las regiones nuevas.';
+  return '<div class="tmdbimp-info">'+head+'<br><b>'+escapeHtml(sum)+'</b>'+skipHtml+linkHtml
+    +'<br><label class="tmdbimp-chk"><input type="checkbox" data-k="streamingRegion" '+(on?'checked':'')+' '+(nothing?'disabled':'')+'> <b>Guardar streaming global en la ficha</b>'+(nothing?' <span class="tmdbimp-eq">igual</span>':'')+'</label>'
+    +'<div class="tmdbimp-note">'+escapeHtml(note)+' watchLinks, network y networkUrl no se tocan.</div>'
+    +'<details><summary>Detalle por región ('+sorted.length+')</summary>'+det+'</details></div>';
 }
 /* ═══ FIN 1C.3.5 helpers ═══ */
 /* ═══ 1D.2-N.2 — CRÉDITOS COMPLETOS EN EL BORRADOR (solo lectura) ═══
@@ -5398,6 +5595,7 @@ async function tmdbImpBuildDraft(id,kind,type,key){
   let prov=pn(rwp.flatrate); if(!prov.length) prov=pn(rwp.free); if(!prov.length) prov=pn(rwp.ads); if(!prov.length) prov=pn(rwp.rent); if(!prov.length) prov=pn(rwp.buy);
   prov=tmdbNormalizeProviders(prov);
   const regionProviders=tmdbBuildRegionProviders(rwp);   // 1C.3.2: región + type (dr.providers queda igual)
+  const allRegions=tmdbBuildAllRegionProviders(d['watch/providers']);   // 6.7: TODAS las regiones de la misma respuesta (sin peticiones extra)
   const tr=vids.find(v=>v.site==='YouTube'&&v.type==='Trailer')||vids.find(v=>v.site==='YouTube');
   const codes=d.origin_country||(d.production_countries||[]).map(c=>c.iso_3166_1)||[];
   const genres=[]; (d.genres||[]).forEach(g=>(TMDB_GENRE_MAP[g.name]||[]).forEach(n=>{ if(!genres.includes(n)) genres.push(n); }));
@@ -5408,7 +5606,7 @@ async function tmdbImpBuildDraft(id,kind,type,key){
     poster:d.poster_path?'https://image.tmdb.org/t/p/w500'+d.poster_path:'',
     country:codes.map(c=>TMDB_COUNTRY_MAP[c]).filter(Boolean).join(' / '),genres,
     mins:kind==='movie'?(d.runtime||null):((d.episode_run_time||[])[0]||null),date:dateStr,
-    trailerUrl:tr?'https://www.youtube.com/watch?v='+tr.key:'',providers:prov,region,regionProviders,
+    trailerUrl:tr?'https://www.youtube.com/watch?v='+tr.key:'',providers:prov,region,regionProviders,allRegions,fetchedAt:tmdbToday(),
     rating:d.vote_average?Math.round(d.vote_average*10)/10:'',votes:d.vote_count||0,
     seasons:d.number_of_seasons||0,episodes:d.number_of_episodes||0,cast,
     seasonList:(d.seasons||[]).map(s=>({n:s.season_number,count:s.episode_count||0}))};
@@ -5720,10 +5918,7 @@ async function tmdbImpOpen(id,kind,type){
     +`<div class="tmdbimp-cols"><div><div class="tmdbimp-h">TINTA (formulario)</div>${r.img?(r.cu?`<img src="${escapeHtml(r.cu)}" alt="">`:'<i>vacío</i>'):(r.cu?escapeHtml(r.cu):'<i>vacío</i>')}</div>`
     +`<div><div class="tmdbimp-h">TMDB</div>${r.img?(r.tm?`<img src="${escapeHtml(r.tm)}" alt="">`:'<i>—</i>'):(r.tm?escapeHtml(r.tm):'<i>—</i>')}</div></div>${r.note?`<div class="tmdbimp-note">${escapeHtml(r.note)}</div>`:''}</div>`;
   const seasonsInfo=mv?'':`<div class="tmdbimp-info"><b>Temporadas</b> — TINTA: ${nSeasons} · TMDB: ${dr.seasons} (${dr.episodes} episodios). <i>${dr.sdiff?'Detalle y cambios seleccionables en «Temporadas y emisión».':'No se pudo obtener el detalle de temporadas; no se modifican temporadas ni episodios.'}</i></div>`+(dr.sdiff?tmdbImpSeasonsHtml(dr.sdiff):'');
-  const rgKnown=TMDB_REGIONS.find(x=>x[0]===dr.region);   // 1C.3.2 / 1C.3.4: fuente única = TMDB_REGIONS
-  const rgTitle=rgKnown?'Streaming de '+escapeHtml(rgKnown[1])+' ('+escapeHtml(dr.region)+')':'Streaming ('+escapeHtml(dr.region)+')';   // 1C.3.4: región desconocida → Streaming (XX)
-  const streamingInfo=`<div class="tmdbimp-info"><b>${rgTitle}</b> — lo que devuelve TMDB para esta región (solo informativo hasta que marques la casilla): `
-    +((dr.regionProviders||[]).length?'<br>'+dr.regionProviders.map(x=>escapeHtml(x.name)+' · <code>'+escapeHtml(x.type)+'</code>'+((x.type==='rent'||x.type==='buy')?' (pago por título)':'')+' · '+(x.url?escapeHtml(x.url):'<i>sin URL estándar</i>')).join('<br>'):'<br><i>No hay plataformas de streaming disponibles para esta región.</i>')+tmdbImpStreamingSaveHtml(dr,p)+`</div>`;   // 1C.3.4 · 1C.3.5
+  const streamingInfo=tmdbImpGlobalStreamingHtml(dr,p);   // 6.7: resumen global + una sola casilla (sustituye al bloque de una región de 1C.3.4/1C.3.5)
   const castInfo=tmdbImpCastInfoHtml(dr);   // 1D.2-N.2: distingue error de reparto vacío
   const nEx=tmdbImpCountExisting(dr.id,dr.kind);
   const warn=ex?`<div class="tmdbimp-warn">YA ESTÁ EN TINTA como «${escapeHtml(ex.name)}»${nEx>1?` (hay ${nEx} obras con este mismo ID de TMDB: revisa duplicados)`:''}. ${_findInModal(p+'tmdbId')?.value.trim()===dr.id?'Es la ficha que estás editando.':'Si estás creando una ficha nueva, sería un duplicado.'}</div>`:'';
@@ -5780,7 +5975,7 @@ function tmdbImpApply(){
     }
   });
   const nS=tmdbImpApplySeasons(sKeys,dr);   // 1E.1
-  const nSt=allKeys.indexOf('streamingRegion')>=0?tmdbImpStashStreaming(dr,p):0;   // 1C.3.5: solo la región del draft, pendiente hasta Guardar
+  const nSt=allKeys.indexOf('streamingRegion')>=0?tmdbImpStashStreaming(dr,p):0;   // 6.7: streaming global del draft, pendiente hasta Guardar
   const cr=tmdbImpApplyCast(dr,castPicked,inclOpt,castTargets);   // N.3-F4.2: asociación manual y creación solo al aplicar
   const crTxt=castPicked.length||cr.omitted?` Reparto: ${cr.added} asociada(s) al formulario, ${cr.created} ficha(s) nueva(s), ${cr.inForm} ya estaba(n) en el reparto, ${cr.dup} duplicada(s) entre filas, ${cr.rejected} rechazada(s), ${cr.omitted} integrante(s) no incorporada(s) ahora${cr.review?`, ${cr.review} coincidencia(s) pendiente(s) de revisar`:''}${cr.blocked?', formulario de origen no disponible':''}.`:'';
   const crDetails=cr.items&&cr.items.length?` ${(()=>{ const groups=[['Ya estaba en el reparto',cr.items.filter(x=>x.why==='la ficha ya estaba en el reparto')],['Duplicada entre filas',cr.items.filter(x=>x.why==='otra fila seleccionada ya vinculó esta ficha')],['No aplicada',cr.items.filter(x=>!['la ficha ya estaba en el reparto','otra fila seleccionada ya vinculó esta ficha','ficha nueva creada y asociada al formulario','ficha existente asociada al formulario'].includes(x.why))]]; const parts=[]; groups.forEach(([title,items])=>{ if(!items.length)return; const shown=items.slice(0,5).map(x=>`${x.label} — ${x.why}`); if(items.length>5) shown.push(`y ${items.length-5} más`); parts.push(`${title}: ${shown.join('; ')}.`); }); return parts.join(' '); })()}`:'';

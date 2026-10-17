@@ -330,6 +330,54 @@ html[data-theme="dark"] .dark-toggle{background:var(--surface2);color:var(--gold
 .region-pick-sel option{color:#222;background:#fff}
 .region-pick-sel option{color:var(--text);background:var(--surface)}
 
+
+/* 6.8 — Disponibilidad por país en la ficha (selector con buscador) */
+.avail-block{margin-top:16px;padding:12px 14px}
+.avail-block [hidden]{display:none!important}
+.avail-picker{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:10px}
+.avail-picker-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.avail-trigger{display:inline-flex;align-items:center;gap:8px;min-height:38px;max-width:100%;padding:6px 12px;font:inherit;font-size:14px;font-weight:600;color:var(--text);background:var(--surface);border:1.5px solid var(--border-control);border-radius:10px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.avail-trigger:hover{border-color:var(--accent2)}
+.avail-trigger:focus-visible,.avail-search:focus-visible,.avail-opt:focus-visible,.avail-pick:focus-visible,.avail-chip:focus-visible,.avail-tmdb:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.avail-trigger[aria-expanded="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.avail-trigger-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.avail-flag{font-size:18px;line-height:1;flex-shrink:0}
+.avail-chev{font-size:11px;color:var(--muted)}
+.avail-count{font-size:12px;color:var(--muted)}
+.avail-panel{flex:1 0 100%;background:var(--surface);border:1.5px solid var(--border2);border-radius:12px;padding:8px;box-shadow:var(--shadow-sm)}
+.avail-search{width:100%;box-sizing:border-box;font:inherit;font-size:14px;color:var(--text);background:var(--surface2);border:1.5px solid var(--border-control);border-radius:8px;padding:8px 10px;margin-bottom:6px}
+.avail-list{list-style:none;margin:0;padding:0;max-height:240px;overflow-y:auto;overscroll-behavior:contain}
+.avail-grp{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);padding:8px 8px 4px}
+.avail-opt{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--text)}
+.avail-opt:hover,.avail-opt:focus{background:var(--surface3)}
+.avail-opt.is-active{background:var(--accent-soft);font-weight:700}
+.avail-opt-name{flex:1;min-width:0}
+.avail-opt-has{font-size:10.5px;font-weight:700;color:var(--teal);background:var(--teal-soft);border-radius:20px;padding:1px 7px;white-space:nowrap}
+.avail-check{visibility:hidden;color:var(--accent);font-weight:800}
+.avail-opt.is-active .avail-check{visibility:visible}
+.avail-nores{padding:10px 8px;font-size:13px;color:var(--muted)}
+.avail-country-head{font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px}
+.avail-group{margin-bottom:10px}
+.avail-group-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px}
+.avail-chips{display:flex;flex-wrap:wrap;gap:7px}
+.avail-chip{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:5px 11px;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;background:var(--surface);border:1.5px solid var(--border2);border-radius:9px;transition:border-color .15s,transform .15s}
+a.avail-chip:hover{border-color:var(--accent2);transform:translateY(-1px)}
+.avail-chip--nolink{color:var(--muted);border-style:dashed;cursor:default}
+.avail-chip-logo{width:20px;height:20px;object-fit:contain;border-radius:4px}
+.avail-chip-ext{font-size:11px;color:var(--muted)}
+.avail-tmdb{display:inline-block;margin-top:2px;font-size:12.5px;font-weight:600;color:var(--link)}
+.avail-empty{padding:4px 0}
+.avail-empty-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
+.avail-empty-txt,.avail-note{font-size:12.5px;line-height:1.45;color:var(--muted)}
+.avail-empty-more{margin-top:8px;font-size:12.5px;color:var(--muted);line-height:2}
+.avail-pick{font:inherit;font-size:12.5px;font-weight:600;color:var(--text);background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;padding:2px 10px;cursor:pointer}
+.avail-pick:hover{border-color:var(--accent2)}
+.avail-general{margin-top:12px;padding-top:10px;border-top:1px dashed var(--border2)}
+.avail-general .avail-note{margin-bottom:6px}
+.avail-attrib{margin-top:10px;font-size:11.5px;color:var(--muted)}
+.avail-attrib a{color:var(--link)}
+@media (max-width:600px){.avail-block{padding:10px}.avail-list{max-height:200px}.avail-trigger{flex:1 1 auto;justify-content:space-between}}
+
 /* HIDE old topbar & tabs */
 .topbar{display:none!important}
 .tabs{display:none!important}
@@ -3439,15 +3487,7 @@ a{color:inherit}
         <input class="navbar-search-inp" id="navSearchInp" placeholder="Buscar series, películas…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
       </div>
-      <!-- 1C.3.7 — Selector de región de streaming del visitante (ES/MX/AR) -->
-      <div class="region-pick" id="streamingRegionPick">
-        <svg class="region-pick-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg>
-        <select class="region-pick-sel" id="streamingRegionSel" aria-label="Región de streaming" title="Región de streaming">
-          <option value="ES">🇪🇸 España</option>
-          <option value="MX">🇲🇽 México</option>
-          <option value="AR">🇦🇷 Argentina</option>
-        </select>
-      </div>
+      <!-- 6.8 — El selector de país de streaming ya no está en la navegación: vive en la sección «Dónde ver» de cada ficha -->
       <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()" title="Cambiar modo oscuro/claro" aria-label="Modo oscuro"></button>
       <a class="navbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X" aria-label="X / Twitter">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -3843,7 +3883,12 @@ let state={month:new Date().getMonth(),year:new Date().getFullYear(),tab:'cal',s
 // efecto todavía sobre watchLinks/network/cards (eso pertenece a fases posteriores).
 // La clave 'streamingRegion' es la selección manual del VISITANTE; NO es tmdbRegion (Admin).
 const STREAMING_REGION_KEY='streamingRegion';
-const STREAMING_REGIONS=['ES','MX','AR'];
+const STREAMING_REGIONS=['ES','MX','AR'];   // 6.8: SOLO para la detección automática (zona horaria/idioma); el catálogo elegible por el visitante es STREAMING_CATALOG
+// 6.8 — Catálogo global de países (lista estática de los países de /watch/providers/regions de TMDB; sin llamadas de red).
+// Los países que aparezcan en el `streaming` de una ficha y no estén aquí se añaden dinámicamente (nunca se oculta un dato).
+const STREAMING_CATALOG=('AE AL AR AT AU AZ BA BB BE BG BH BO BR BS BY CA CH CI CL CO CR CV CY CZ DE DK DO DZ EC EE EG ES FI FJ FR GB GH GI GR GT GY HK HN HR HU ID IE IL IN IQ IS IT JM JO JP KE KR KW LB LC LI LT LU LV LY MA MD MK ML MT MU MX MY MZ NE NG NI NL NO NZ OM PA PE PF PH PK PL PS PT PY QA RO RS RU SA SE SG SI SK SM SN SV TH TN TR TT TW TZ UA UG US UY VE XK YE ZA ZM').split(' ');
+const _streamingExtraRegions=new Set();
+function streamingIsKnownRegion(c){ return typeof c==='string'&&/^[A-Z]{2}$/.test(c)&&(STREAMING_CATALOG.indexOf(c)!==-1||_streamingExtraRegions.has(c)); }
 const STREAMING_REGION_FALLBACK='ES';
 // Timezones IANA inequívocos (cada uno pertenece a un único país).
 const STREAMING_TZ_REGION=(function(){
@@ -3877,7 +3922,7 @@ function _streamingRegionFromLanguages(langs){
 function getVisitorStreamingRegion(){
   try{
     const saved=String(localStorage.getItem(STREAMING_REGION_KEY)||'').trim().toUpperCase();
-    if(STREAMING_REGIONS.indexOf(saved)!==-1) return saved;
+    if(streamingIsKnownRegion(saved)) return saved;   // 6.8: cualquier país del catálogo global
   }catch(e){}
   try{
     const r=_streamingRegionFromTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone);
@@ -3905,7 +3950,7 @@ function _syncStreamingRegionSelector(){
 function setVisitorStreamingRegion(region){
   if(typeof region!=='string') return false;
   const r=region.trim().toUpperCase();
-  if(STREAMING_REGIONS.indexOf(r)===-1) return false;
+  if(!streamingIsKnownRegion(r)) return false;   // 6.8: catálogo global
   const prev=state.streamingRegion;
   state.streamingRegion=r;
   try{ localStorage.setItem(STREAMING_REGION_KEY,r); }catch(e){}
@@ -4023,6 +4068,166 @@ function _wlDisplayLinks(links,item,fallbackLabel){
     .map(l=>(l.name==='Ver'&&nu!==null&&l.url===nu)?Object.assign({},l,{name:fallbackLabel}):l);
 }
 
+
+// ── 6.8 — DISPONIBILIDAD POR PAÍS EN LAS FICHAS ───────────────────────────────
+// Sección «Dónde ver» con selector de país (bandera + nombre + buscador) dentro de la ficha. Solo LEE item.streaming[PAÍS]
+// (+ streamingMeta[PAÍS].link). Sin fallback entre países. watchLinks/network/networkUrl se muestran aparte como «Enlaces
+// generales» (sin país asignado). Si la ficha NO tiene datos regionales, no se pinta nada de esto: la ficha antigua sigue igual.
+const AVAIL_TYPES=[['flatrate','Streaming'],['free','Gratis'],['ads','Con anuncios'],['rent','Alquiler'],['buy','Compra'],['','Otros']];
+let _availSeq=0; const _availReg={};
+function availEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function availNorm(s){ return String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim(); }
+function availFlag(code){ return /^[A-Z]{2}$/.test(code)?String.fromCodePoint(0x1F1E6+code.charCodeAt(0)-65,0x1F1E6+code.charCodeAt(1)-65):'🏳️'; }
+const _availDN={};
+function availCountryName(code,lang){
+  lang=lang||'es'; const k=lang+code; if(k in _availDN) return _availDN[k];
+  let n=''; try{ n=new Intl.DisplayNames([lang],{type:'region'}).of(code)||''; }catch(e){}
+  if(n===code) n=''; return _availDN[k]=(n||(lang==='es'?code:''));
+}
+function availSafeUrl(u){ try{ const t=String(u==null?'':u).trim(); if(!t) return ''; const x=new URL(t); return (x.protocol==='https:'||x.protocol==='http:')?t:''; }catch(e){ return ''; } }
+function availSafeTmdbLink(u){ try{ const x=new URL(String(u==null?'':u).trim()); const h=x.hostname.toLowerCase(); return (x.protocol==='https:'&&!x.username&&!x.password&&(h==='themoviedb.org'||h==='www.themoviedb.org'))?x.href:''; }catch(e){ return ''; } }
+// Entradas válidas de UN país: [{name,url,type}] sin duplicados (mismo nombre+tipo; si una trae URL y otra no, se queda la que la trae).
+function availEntries(item,code){
+  const st=item&&item.streaming;
+  if(!_wlIsObj(st)||!Object.prototype.hasOwnProperty.call(st,code)||!Array.isArray(st[code])) return [];
+  const map=new Map();
+  st[code].forEach(e=>{
+    if(!_wlIsObj(e)||typeof e.name!=='string'||!e.name.trim()) return;
+    const t=typeof e.type==='string'?e.type.trim().toLowerCase():'', type=WATCH_LINK_TYPES.indexOf(t)!==-1?t:'', url=availSafeUrl(e.url), k=_wlNameKey(e.name)+'|'+type;
+    if(!map.has(k)) map.set(k,{name:e.name.trim(),url,type}); else if(!map.get(k).url&&url) map.get(k).url=url;
+  });
+  return Array.from(map.values());
+}
+function availRegionsWithData(item){
+  const st=item&&item.streaming; if(!_wlIsObj(st)) return [];
+  return Object.keys(st).filter(c=>/^[A-Z]{2}$/.test(c)&&availEntries(item,c).length>0).sort();
+}
+// Catálogo para el selector: catálogo global ∪ países con datos en la ficha. Primero los que tienen datos, luego el resto (A–Z en español).
+function availCatalogFor(item){
+  const has=new Set(availRegionsWithData(item)), codes=new Set(STREAMING_CATALOG);
+  has.forEach(c=>{ codes.add(c); _streamingExtraRegions.add(c); });
+  const list=Array.from(codes).map(c=>{ const name=availCountryName(c,'es'), en=availCountryName(c,'en'); return {code:c,name,flag:availFlag(c),has:has.has(c),search:availNorm(name+' '+en+' '+c)}; });
+  list.sort((a,b)=>(a.has===b.has?0:(a.has?-1:1))||a.name.localeCompare(b.name,'es'));
+  return list;
+}
+function availMatches(searchStr,q){ const toks=availNorm(q).split(/\s+/).filter(Boolean); return toks.every(t=>searchStr.indexOf(t)!==-1); }
+function availFilter(list,q){ return list.filter(c=>availMatches(c.search,q)); }
+function availChipHtml(e){
+  const canon=canonicalizePlatform(e.name), logo=getPlatformLogo(canon);
+  const img=logo?`<img class="avail-chip-logo" src="${availEsc(logo)}" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
+  const ui=_wlUrlInfo(e.url), tip=!e.url?'Sin enlace directo registrado':(ui.generic?'Página de la plataforma (no enlaza a esta producción)':'Abrir en '+e.name);
+  return e.url?`<a class="avail-chip" href="${availEsc(e.url)}" target="_blank" rel="noopener" title="${availEsc(tip)}">${img}<span>${availEsc(e.name)}</span><span class="avail-chip-ext" aria-hidden="true">↗</span></a>`
+    :`<span class="avail-chip avail-chip--nolink" title="${availEsc(tip)}">${img}<span>${availEsc(e.name)}</span></span>`;
+}
+function availBodyHtml(item,code){
+  const entries=availEntries(item,code), meta=(_wlIsObj(item&&item.streamingMeta)&&_wlIsObj(item.streamingMeta[code]))?item.streamingMeta[code]:null;
+  const tmdb=meta?availSafeTmdbLink(meta.link):'', who=availFlag(code)+' '+availEsc(availCountryName(code,'es'));
+  const tmdbHtml=tmdb?`<a class="avail-tmdb" href="${availEsc(tmdb)}" target="_blank" rel="noopener">Ver disponibilidad en TMDB / JustWatch ↗</a>`:'';
+  if(!entries.length){
+    const others=availRegionsWithData(item).filter(c=>c!==code);
+    const hint=others.length?`<div class="avail-empty-more">Sí consta en: ${others.slice(0,12).map(c=>`<button type="button" class="avail-pick" data-avail-pick="${availEsc(c)}">${availFlag(c)} ${availEsc(availCountryName(c,'es'))}</button>`).join(' ')}${others.length>12?` y ${others.length-12} más (usa el buscador)`:''}</div>`:'';
+    return `<div class="avail-empty" role="status"><div class="avail-empty-title">Sin disponibilidad registrada en ${who}</div><div class="avail-empty-txt">Todavía no hay plataformas guardadas para esta producción en este país. Eso no significa que no esté disponible: solo que no consta en TINTA.</div>${hint}${tmdbHtml}</div>`;
+  }
+  const groups=AVAIL_TYPES.map(([t,label])=>{ const g=entries.filter(e=>e.type===t); return g.length?`<div class="avail-group"><div class="avail-group-title">${label}</div><div class="avail-chips">${g.map(availChipHtml).join('')}</div></div>`:''; }).join('');
+  const stale=(meta&&meta.status==='review')?'<div class="avail-note">⚠ Dato pendiente de revisión: puede estar desactualizado.</div>':'';
+  return `<div class="avail-country-head">Disponible en ${who}</div>${groups}${stale}${tmdbHtml}`;
+}
+function availOptionHtml(c,active){
+  return `<li class="avail-opt${active?' is-active':''}${c.has?' has-data':''}" role="option" tabindex="-1" aria-selected="${active?'true':'false'}" data-avail-code="${c.code}" data-s="${availEsc(c.search)}"><span class="avail-flag" aria-hidden="true">${c.flag}</span><span class="avail-opt-name">${availEsc(c.name)}</span>${c.has?'<span class="avail-opt-has">con datos</span>':''}<span class="avail-check" aria-hidden="true">✓</span></li>`;
+}
+// Devuelve '' si la ficha no tiene datos regionales PERO sí enlaces antiguos (watchLinks/network/networkUrl): conserva su «Dónde ver» de siempre.
+// Si la ficha no tiene NINGÚN dato de disponibilidad, pinta la sección con el selector y el estado vacío (nunca se queda en blanco).
+function buildAvailabilitySection(item,label,accentColor,accentBorder){
+  if(!_wlIsObj(item)) return '';
+  if(!availRegionsWithData(item).length){
+    // Ficha antigua: tiene enlaces generales pero ningún dato regional → se queda con su bloque clásico (sin país inventado).
+    if(_wlDisplayLinks(resolveWatchLinks(item),item,label||'Ver').length) return '';
+  }
+  const id='avail'+(++_availSeq); _availReg[id]={item:item};
+  const ids=Object.keys(_availReg); if(ids.length>30) delete _availReg[ids[0]];
+  const cat=availCatalogFor(item), code=state.streamingRegion, cur=cat.find(c=>c.code===code)||{code,name:availCountryName(code,'es'),flag:availFlag(code),has:false};
+  const withData=cat.filter(c=>c.has), rest=cat.filter(c=>!c.has);
+  const gl=_wlDisplayLinks(resolveWatchLinks(Object.assign({},item,{streaming:undefined})),item,label||'Ver');
+  const general=gl.length?`<div class="avail-general"><div class="avail-group-title">Enlaces generales</div><div class="avail-note">Sin país asignado: no se sabe en qué países funcionan.</div>${buildWatchLinksHtml(gl,accentColor,accentBorder,'',true)}</div>`:'';
+  const bs=accentBorder?` style="border-color:${accentBorder}"`:'', ls=accentColor?` style="color:${accentColor}"`:'';
+  return `<section class="modal-watch-block avail-block" id="${id}" aria-label="Disponibilidad por país"${bs}>
+    <div class="modal-watch-label"${ls}>Dónde ver</div>
+    <div class="avail-picker">
+      <span class="avail-picker-lbl" id="${id}-lbl">País</span>
+      <button type="button" class="avail-trigger" id="${id}-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="${id}-panel" aria-labelledby="${id}-lbl ${id}-btn" data-avail-toggle="${id}"><span class="avail-flag" aria-hidden="true">${cur.flag}</span><span class="avail-trigger-name">${availEsc(cur.name)}</span><span class="avail-chev" aria-hidden="true">▾</span></button>
+      <span class="avail-count">${withData.length} ${withData.length===1?'país con datos':'países con datos'}</span>
+      <div class="avail-panel" id="${id}-panel" hidden>
+        <input type="search" class="avail-search" id="${id}-q" placeholder="Buscar país…" aria-label="Buscar país" autocomplete="off" spellcheck="false">
+        <ul class="avail-list" role="listbox" aria-label="Países">
+          <li class="avail-grp" role="presentation" data-avail-grp="has"${withData.length?'':' hidden'}>Con disponibilidad registrada</li>${withData.map(c=>availOptionHtml(c,c.code===code)).join('')}
+          <li class="avail-grp" role="presentation" data-avail-grp="rest">Resto de países</li>${rest.map(c=>availOptionHtml(c,c.code===code)).join('')}
+        </ul>
+        <div class="avail-nores" hidden>Ningún país coincide con tu búsqueda.</div>
+      </div>
+    </div>
+    <div class="avail-body" id="${id}-body" aria-live="polite">${availBodyHtml(item,code)}</div>
+    ${general}
+    <div class="avail-attrib">Datos de streaming: <a href="https://www.justwatch.com/" target="_blank" rel="noopener">JustWatch</a> vía TMDB.</div>
+  </section>`;
+}
+function availApplyFilter(id,q){
+  const root=document.getElementById(id); if(!root) return 0;
+  let shown=0; const grp={has:0,rest:0};
+  root.querySelectorAll('.avail-opt').forEach(li=>{ const ok=availMatches(li.getAttribute('data-s')||'',q); li.hidden=!ok; if(ok){ shown++; grp[li.classList.contains('has-data')?'has':'rest']++; } });
+  root.querySelectorAll('.avail-grp').forEach(h=>{ h.hidden=!grp[h.getAttribute('data-avail-grp')]; });
+  const nr=root.querySelector('.avail-nores'); if(nr) nr.hidden=shown>0;
+  return shown;
+}
+function availSetOpen(id,open){
+  const root=document.getElementById(id); if(!root) return;
+  const panel=root.querySelector('.avail-panel'), btn=root.querySelector('.avail-trigger'), q=root.querySelector('.avail-search');
+  panel.hidden=!open; btn.setAttribute('aria-expanded',open?'true':'false');
+  if(open){ q.value=''; availApplyFilter(id,''); q.focus(); const a=root.querySelector('.avail-opt.is-active'); if(a&&a.scrollIntoView) a.scrollIntoView({block:'nearest'}); }
+}
+function availRefresh(id){
+  const r=_availReg[id], root=document.getElementById(id); if(!r||!root) return;
+  const code=state.streamingRegion;
+  root.querySelector('.avail-trigger .avail-flag').textContent=availFlag(code);
+  root.querySelector('.avail-trigger-name').textContent=availCountryName(code,'es');
+  root.querySelectorAll('.avail-opt').forEach(li=>{ const on=li.getAttribute('data-avail-code')===code; li.classList.toggle('is-active',on); li.setAttribute('aria-selected',on?'true':'false'); });
+  root.querySelector('.avail-body').innerHTML=availBodyHtml(r.item,code);
+}
+// Cambia el país activo (global del visitante: se guarda en localStorage y lo usan el resto de fichas/tarjetas al repintarse).
+function availSelect(id,code){
+  if(!_availReg[id]||!streamingIsKnownRegion(code)) return false;
+  setVisitorStreamingRegion(code); availRefresh(id); availSetOpen(id,false);
+  const b=document.getElementById(id+'-btn'); if(b) b.focus();
+  return true;
+}
+(function(){
+  document.addEventListener('click',function(e){
+    const t=e.target&&e.target.closest?e.target:null; if(!t) return;
+    const tg=t.closest('[data-avail-toggle]');
+    if(tg){ const id=tg.getAttribute('data-avail-toggle'), p=document.getElementById(id+'-panel'); availSetOpen(id,!!(p&&p.hidden)); return; }
+    const opt=t.closest('.avail-opt'), pick=t.closest('[data-avail-pick]'), root=t.closest('.avail-block');
+    if(opt&&root){ availSelect(root.id,opt.getAttribute('data-avail-code')); return; }
+    if(pick&&root){ availSelect(root.id,pick.getAttribute('data-avail-pick')); }
+  });
+  document.addEventListener('input',function(e){
+    const t=e.target; if(!t||!t.classList||!t.classList.contains('avail-search')) return;
+    const root=t.closest('.avail-block'); if(root) availApplyFilter(root.id,t.value);
+  });
+  // Teclado: ↓/↑ mueven, Enter/Espacio eligen, Esc cierra SOLO el desplegable (no la ficha). Fase de captura para ir antes que el cierre de la ficha.
+  document.addEventListener('keydown',function(e){
+    const t=e.target, root=t&&t.closest?t.closest('.avail-block'):null; if(!root) return;
+    const id=root.id, panel=root.querySelector('.avail-panel'), open=!panel.hidden;
+    if(e.key==='Escape'&&open){ e.stopPropagation(); e.preventDefault(); availSetOpen(id,false); root.querySelector('.avail-trigger').focus(); return; }
+    if(!open){ if(e.key==='ArrowDown'&&t.classList.contains('avail-trigger')){ e.preventDefault(); availSetOpen(id,true); } return; }
+    const opts=Array.from(root.querySelectorAll('.avail-opt')).filter(li=>!li.hidden), i=opts.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'){ e.preventDefault(); if(opts.length) opts[Math.min(opts.length-1,i+1)].focus(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); if(i<=0){ root.querySelector('.avail-search').focus(); } else opts[i-1].focus(); }
+    else if(e.key==='Enter'||(e.key===' '&&t.classList.contains('avail-opt'))){
+      const li=t.classList.contains('avail-opt')?t:(t.classList.contains('avail-search')?opts[0]:null);
+      if(li){ e.preventDefault(); availSelect(id,li.getAttribute('data-avail-code')); }
+    }
+  },true);
+})();
+
 // ── LOGOS DE PLATAFORMAS ──────────────────────────────────────────
 // Logos predefinidos (favicons oficiales vía Google S2)
 // Mapa canónico: una sola entrada por plataforma (nombre normalizado → logo)
@@ -4092,7 +4297,7 @@ function splitPlatformNames(raw){
     .map(p=>normalizePlatformName(p))
     .filter(p=>p && p!=='Ver serie' && p!=='Ver película' && p.length>1);
 }
-function buildWatchLinksHtml(links, accentColor, accentBorder, accentSoft){
+function buildWatchLinksHtml(links, accentColor, accentBorder, accentSoft, bare){
   if(!links||!links.length) return '';
   // Expand each link: split comma/slash names into individual platform buttons
   const expanded=[];
@@ -4110,6 +4315,7 @@ function buildWatchLinksHtml(links, accentColor, accentBorder, accentSoft){
     const style=accentBorder?`style="border-color:${accentBorder}"`:'';
     return `<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" title="${l.name}" ${style}>${inner}</a>`;
   }).join('');
+  if(bare) return `<div class="watch-links">${btns}</div>`;   // 6.8: solo botones (sin bloque ni etiqueta)
   const labelStyle=accentColor?`style="color:${accentColor}"`:'';
   return `<div class="modal-watch-block"${accentBorder?` style="border-color:${accentBorder}"`:''}>
     <div class="modal-watch-label" ${labelStyle}>Dónde ver</div>
@@ -6014,7 +6220,8 @@ function openSeries(si){
     if(durInfo.totalMins) metaGrid+=`<div class="meta-item"><div class="meta-key">Total serie</div><div class="meta-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.totalMins)}</div></div>`;
   }
   const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver serie');
-  const watchLinksHtml=buildWatchLinksHtml(links,'','','');
+  const availHtml=buildAvailabilitySection(s,'Ver serie','','');   // 6.8
+  const watchLinksHtml=availHtml?'':buildWatchLinksHtml(links,'','','');   // sin datos regionales: «Dónde ver» antiguo, igual que antes
   const progressBlock=`<div class="modal-progress-block">
     <div class="modal-progress-header">
       <span class="modal-progress-label">${aired} / ${totalEps} emitidos · ${activeDays}</span>
@@ -6119,6 +6326,7 @@ function openSeries(si){
       <div class="details-box">${detailsLines}</div>
     </div>
   </div>
+  ${availHtml}
   ${s.synopsis?`<div class="synopsis" style="margin-top:16px">${s.synopsis}</div>`:''}
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${buildAwardsHtml(s)}
@@ -6176,7 +6384,8 @@ function openUpcoming(si){
 
   const posterEl=s.poster?`<img class="detail-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=detail-poster-ph></div>'">`:`<div class="detail-poster-ph"></div>`;
   const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver serie');
-  const watchLinksHtml=buildWatchLinksHtml(links,'','','');
+  const availHtml=buildAvailabilitySection(s,'Ver serie','','');   // 6.8
+  const watchLinksHtml=availHtml?'':buildWatchLinksHtml(links,'','','');
 
   const castHtml=buildCastHtml(s.cast||[], s.couples||[]);
   const castCount=s.cast&&s.cast.length?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
@@ -6231,6 +6440,7 @@ function openUpcoming(si){
       <div class="details-box">${detailsLines}</div>
     </div>
   </div>
+  ${availHtml}
   ${s.synopsis?`<div class="synopsis" style="margin-top:16px">${s.synopsis}</div>`:`<div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:13px;font-style:italic;margin-top:16px">Sinopsis no disponible aún</div>`}
   ${s.trailerUrl?trailerHtml(s.trailerUrl):''}
   ${upBookHtml}
@@ -6293,7 +6503,8 @@ function openMovie(mi){
     </div></div>`;
   })();
   const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver película');
-  const watchLinksHtml=buildWatchLinksHtml(links,'var(--movie-accent)','rgba(124,92,191,0.28)','var(--movie-bar)');
+  const availHtml=buildAvailabilitySection(mv,'Ver película','var(--movie-accent)','rgba(124,92,191,0.28)');   // 6.8
+  const watchLinksHtml=availHtml?'':buildWatchLinksHtml(links,'var(--movie-accent)','rgba(124,92,191,0.28)','var(--movie-bar)');
   const castHtml=buildCastHtml(mv.cast||[], mv.couples||[]);
   const castCount=mv.cast&&mv.cast.length?mv.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
@@ -6330,6 +6541,7 @@ function openMovie(mi){
       <div class="details-box">${detailsLines}</div>
     </div>
   </div>
+  ${availHtml}
   ${mv.synopsis?`<div class="synopsis" style="margin-top:16px">${mv.synopsis}</div>`:''}
   ${mv.trailerUrl?trailerHtml(mv.trailerUrl):''}
   ${buildAwardsHtml(mv)}
@@ -7135,7 +7347,8 @@ function openRichDetail(item, opts){
 
   // Dónde ver
   const links=_wlDisplayLinks(resolveWatchLinks(item),item,'Ver');
-  const watchLinksHtml=buildWatchLinksHtml(links,accentColor,accentBorder,accentSoft);
+  const availHtml=buildAvailabilitySection(item,'Ver',accentColor,accentBorder);   // 6.8
+  const watchLinksHtml=availHtml?'':buildWatchLinksHtml(links,accentColor,accentBorder,accentSoft);
 
   const trailerSection=item.trailerUrl?trailerHtml(item.trailerUrl):'';
   const synopsis=item.synopsis?`<div class="synopsis" style="margin-top:16px">${item.synopsis}</div>`:'';
@@ -7233,6 +7446,7 @@ function openRichDetail(item, opts){
         <div class="details-box">${detailsLines}</div>
       </div>
     </div>
+    ${availHtml}
     ${synopsis}
     ${trailerSection}
     ${bookBlock}
