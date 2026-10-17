@@ -21,7 +21,10 @@ body::before{content:'';position:fixed;inset:0;background:
   radial-gradient(circle at 10% 20%,rgba(212,96,138,0.05) 0%,transparent 50%),
   radial-gradient(circle at 90% 80%,rgba(155,130,201,0.07) 0%,transparent 50%);
   pointer-events:none;z-index:0}
-.topbar{background:var(--surface);border-bottom:1px solid var(--border2);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(212,96,138,0.06)}
+/* Pila sticky: topbar + aviso + quicknav se apilan en flujo normal dentro de un único contenedor sticky,
+   así la altura del aviso (1 o varias líneas) empuja al quicknav en vez de solaparse */
+.sticky-stack{position:sticky;top:0;z-index:50}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border2);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px;position:relative;z-index:3;box-shadow:0 2px 12px rgba(212,96,138,0.06)}
 .logo{font-family:'Playfair Display',serif;font-size:20px;color:var(--accent);display:flex;align-items:center;gap:8px}
 .logo-badge{background:var(--accent-soft);color:var(--accent);font-family:'Nunito',sans-serif;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;letter-spacing:.05em}
 .topbar-actions{display:flex;gap:8px}
@@ -205,7 +208,7 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .season-del-btn{width:26px;height:26px;border-radius:7px;border:1.5px solid rgba(212,92,92,.3);background:transparent;color:var(--danger);cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-family:'Nunito',sans-serif}
 .season-del-btn:hover{background:rgba(212,92,92,.08);border-color:var(--danger)}
 .form-hint{font-size:11px;color:var(--muted);margin-top:4px}
-.unsaved-bar{position:sticky;top:58px;z-index:49;background:#fff8e1;border-bottom:2px solid #f0c030;padding:8px 2rem;display:none;align-items:center;justify-content:space-between;font-size:13px;color:#7a5a00;font-weight:600}
+.unsaved-bar{position:relative;z-index:2;background:#fff8e1;border-bottom:2px solid #f0c030;padding:8px 2rem;display:none;align-items:center;justify-content:space-between;font-size:13px;color:#7a5a00;font-weight:600}
 .unsaved-bar.visible{display:flex}
 .unsaved-bar span{display:flex;align-items:center;gap:6px}
 /* ── Toast de confirmación ── */
@@ -375,13 +378,25 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 
 /* ═══ QUICK NAV BAR ═══ */
 .quicknav{
-  position:sticky;top:58px;z-index:48;
+  position:relative;z-index:1;
   background:var(--surface);
   border-bottom:1px solid var(--border2);
   padding:0 2rem;
   display:flex;align-items:center;gap:8px;
   height:46px;
   box-shadow:0 2px 8px rgba(212,96,138,0.06);
+  /* Scroll horizontal interno: los enlaces y botones nunca ensanchan la página.
+     Los hijos son <a>/<button> enfocables, así que con Tab el navegador los desplaza a la vista. */
+  overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;
+  scrollbar-width:thin;scrollbar-color:var(--border2) transparent;
+  scroll-padding-inline:2rem;
+  /* Indicador de "hay más": degradado blanco (local) + sombra rosa (fija) en cada borde con contenido oculto */
+  background:
+    linear-gradient(to right,var(--surface) 30%,rgba(255,255,255,0)) left center/28px 100% no-repeat local,
+    linear-gradient(to left,var(--surface) 30%,rgba(255,255,255,0)) right center/28px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%,rgba(212,96,138,.28),rgba(212,96,138,0)) left center/12px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%,rgba(212,96,138,.28),rgba(212,96,138,0)) right center/12px 100% no-repeat scroll,
+    var(--surface);
 }
 .quicknav-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-right:4px;white-space:nowrap}
 .quicknav-sep{width:1px;height:24px;background:var(--border2);margin:0 4px;flex-shrink:0}
@@ -406,7 +421,9 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   .quicknav-sep{display:none}
 }
 
-#section-series,#section-movies,#section-books,#section-actresses{scroll-margin-top:116px}
+/* Las 11 secciones del quicknav (#section-*) dejan espacio para toda la pila sticky (topbar + aviso + quicknav).
+   --sticky-stack-h la mantiene al día un ResizeObserver (script tras #stickyStack); 104px = topbar 58 + quicknav 46 si no hay JS. */
+[id^="section-"]{scroll-margin-top:calc(var(--sticky-stack-h,104px) + 12px)}
 
 /* Book editions widget */
 .book-editions-list{display:flex;flex-direction:column;gap:8px;margin-top:6px}
@@ -454,10 +471,14 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 /* ═══ SECTION ANIME + REALITIES ═══ */
 .section-anime .card-title{color:#7c5cbf}
 .section-reality .card-title{color:#3a9e94}
-.qnav-btn.add-anime{background:#ede7f8;color:#7c5cbf;border-color:rgba(124,92,191,0.4)}
-.qnav-btn.add-anime:hover{background:#7c5cbf;color:#fff;border-color:#7c5cbf}
-.qnav-btn.add-reality{background:#d4f0ed;color:#3a9e94;border-color:rgba(58,158,148,0.4)}
-.qnav-btn.add-reality:hover{background:#3a9e94;color:#fff;border-color:#3a9e94}
+/* Botones de añadir del quicknav: mismo patrón que .add / .add-movie (relleno sólido + texto blanco + borde del mismo color).
+   Contraste del texto blanco: anime 5.07 (reposo) / 7.25 (hover); reality 4.71 (reposo) / 5.96 (hover). El hover oscurece para no perder contraste. */
+.qnav-btn.add-anime{background:#7c5cbf;color:#fff;border-color:#7c5cbf}
+.qnav-btn.add-anime:hover{background:#6244a6;border-color:#6244a6}
+.qnav-btn.add-anime:focus-visible{outline:2px solid #6244a6;outline-offset:2px}
+.qnav-btn.add-reality{background:#2b8077;color:#fff;border-color:#2b8077}
+.qnav-btn.add-reality:hover{background:#1f6f66;border-color:#1f6f66}
+.qnav-btn.add-reality:focus-visible{outline:2px solid #1f6f66;outline-offset:2px}
 
 /* ═══ COMPACT FORM (faster fill) ═══ */
 .form-row-triple{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
@@ -623,10 +644,109 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
 .tmdbimp-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;font-size:12px;word-break:break-word}.tmdbimp-cols img{max-width:80px;border-radius:6px}
 .tmdbimp-h{font-size:9.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:2px}
 .tmdbimp-note,.tmdbimp-warn{font-size:11.5px;margin-top:6px;color:#b06a00;font-weight:600}.tmdbimp-info{font-size:12px;margin:8px 0;color:var(--text)}
+
+/* ═══ FASE 3 · NAVEGACIÓN POR PANELES (sidebar en escritorio, cajón en móvil) ═══
+   Todo cuelga de html.panels-on, que añade JS al cargar. Sin JS (o si el controlador falla y retira la clase)
+   la página se comporta como antes: todas las secciones visibles. Los paneles se ocultan con display:none,
+   nunca se eliminan del DOM, así que los render*() siguen escribiendo en ellos. */
+.nav-head,.nav-toggle,.nav-scrim{display:none}
+.qnav-group-label{display:none}
+.qnav-group{display:contents}
+html.panels-on [id^="section-"]:not(.is-active){display:none}
+html.panels-on [id^="section-"]{scroll-margin-top:0}
+html.panels-on{scroll-padding-top:calc(var(--sticky-stack-h,58px) + 12px)}
+.card-title:focus{outline:none}
+.card-title:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+html.panels-on .quicknav{height:auto;background:var(--surface);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scroll-padding-inline:0}
+html.panels-on .quicknav.nav-ready{}
+html.panels-on .qnav-group{display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
+html.panels-on .qnav-group-label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:700;padding:0 12px;margin:2px 0 4px}
+html.panels-on .qnav-btn{width:100%;min-height:36px;border-radius:10px;border:1.5px solid transparent;border-left:4px solid transparent;padding:6px 12px;white-space:normal;text-align:left}
+html.panels-on .qnav-btn[aria-current="page"]{background:var(--accent-soft);color:var(--text);font-weight:800;border-left-color:var(--accent)}
+html.panels-on .qnav-btn.add,html.panels-on .qnav-btn.add-movie,html.panels-on .qnav-btn.add-anime,html.panels-on .qnav-btn.add-reality{border-left-width:1.5px}
+@media(min-width:900px){
+  html.panels-on .quicknav{position:fixed;top:var(--sticky-stack-h,58px);left:0;bottom:0;width:220px;z-index:40;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:14px 10px 24px;border-bottom:0;border-right:1px solid var(--border2);box-shadow:none}
+  html.panels-on .container{margin-left:max(220px,calc((100% + 220px - 980px)/2));margin-right:auto}
+}
+@media(max-width:899px){
+  /* barra superior: puede envolver en vez de ensanchar la página (antes: 598 px de contenido y scroll horizontal a 390 px) */
+  .topbar{height:auto;min-height:58px;flex-wrap:wrap;justify-content:flex-start;gap:8px 12px;padding:8px 1rem}
+  .topbar-actions{flex-wrap:wrap;margin-left:auto}
+  .unsaved-bar{padding:8px 1rem}
+  /* tarjetas de lista: pueden envolver en vez de ensanchar la página (solo CSS; sin tocar su marcado) */
+  .series-item{flex-wrap:wrap}
+  .series-info{flex:1 1 180px}
+  .series-actions{flex-wrap:wrap}
+  .card select,.card input{max-width:100%;min-width:0}
+  .chk-form-grid{grid-template-columns:1fr}
+  .series-grid{grid-template-columns:minmax(0,1fr)}
+  #section-checklist div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:minmax(0,1fr) !important}
+  html.panels-on .nav-toggle{display:inline-flex;align-items:center;min-height:36px}
+  html.panels-on .quicknav{position:fixed;top:0;bottom:0;left:0;width:min(86vw,320px);z-index:150;display:none;flex-direction:column;align-items:stretch;gap:0;padding:0 12px calc(16px + env(safe-area-inset-bottom,0px));border-bottom:0;border-right:1px solid var(--border2);box-shadow:4px 0 24px rgba(58,37,53,.25)}
+  html.panels-on .quicknav.open{display:flex}
+  html.panels-on .nav-head{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--surface);padding:12px 0 8px;margin-bottom:6px;border-bottom:1px solid var(--border);z-index:1}
+  html.panels-on .nav-head-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--accent)}
+  html.panels-on .nav-close{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:20px;border:1.5px solid var(--border2);background:transparent;color:var(--text);font:600 13px 'Nunito',sans-serif;cursor:pointer}
+  html.panels-on .qnav-btn{min-height:44px}
+  html.panels-on .nav-scrim.open{display:block;position:fixed;inset:0;z-index:140;background:rgba(58,37,53,.5)}
+}
+
+/* ═══ FASE 4.4 · SALUD DE DATOS (solo lectura). Todo con prefijo .salud-; reutiliza tokens y badges existentes ═══ */
+.salud-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;font-size:12px;color:var(--muted);margin-bottom:1rem}
+.salud-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:1rem}
+.salud-tile{border:1.5px solid var(--border2);border-left-width:5px;border-radius:12px;padding:10px 12px;background:var(--surface2);min-width:0}
+.salud-tile b{display:block;font-family:'Playfair Display',serif;font-size:26px;line-height:1.1}
+.salud-tile span{display:block;font-size:12px;font-weight:700}
+.salud-tile small{display:block;font-size:11.5px;color:var(--muted)}
+.salud-tile.e{border-left-color:#c94040}.salud-tile.w{border-left-color:var(--yellow)}.salud-tile.i{border-left-color:var(--lavender)}
+.salud-lv{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:20px;font-weight:700;white-space:nowrap;border:1px solid}
+.salud-lv.e{background:#fde8e8;color:#c94040;border-color:rgba(201,64,64,.3)}
+.salud-lv.w{background:#fdf3d8;color:#b08a00;border-color:rgba(176,138,0,.25)}
+.salud-lv.i{background:var(--lavender-soft);color:var(--lavender);border-color:rgba(155,130,201,.3)}
+.salud-h{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:600;margin:1.2rem 0 .5rem}
+.salud-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px;margin-bottom:1rem}
+.salud-cat{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;border:1px solid var(--border);border-radius:10px;padding:6px 10px;background:var(--surface2);font-size:12.5px;font-weight:600}
+.salud-cat .salud-chips{display:flex;gap:4px;flex-wrap:wrap}
+.salud-chip{font-size:11px;font-weight:700;padding:1px 7px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
+.salud-chip.e{background:#fde8e8;color:#c94040}.salud-chip.w{background:#fdf3d8;color:#b08a00}.salud-chip.i{background:var(--lavender-soft);color:var(--lavender)}
+.salud-alert{border:1px solid var(--border2);border-left-width:5px;border-radius:12px;background:var(--surface);padding:10px 12px;margin-bottom:10px}
+.salud-alert.e{border-left-color:#c94040}.salud-alert.w{border-left-color:var(--yellow)}.salud-alert.i{border-left-color:var(--lavender)}
+.salud-head{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap}
+.salud-title{font-size:14.5px;flex:1 1 220px;min-width:0;overflow-wrap:anywhere}
+.salud-catname{font-size:11.5px;color:var(--muted)}
+.salud-count{font-size:12px;font-weight:700;color:var(--text);white-space:nowrap}
+.salud-why,.salud-extra{font-size:12.5px;color:var(--muted);margin:6px 0 0;overflow-wrap:anywhere}
+.salud-why strong{color:var(--text)}
+.salud-rows{margin-top:10px;display:grid;gap:8px}
+.salud-rows[hidden]{display:none}
+.salud-rows .series-meta{overflow-wrap:anywhere}
+.salud-ok{font-size:12.5px;color:var(--muted)}
+.salud-ok summary{cursor:pointer;font-weight:700;color:var(--text);padding:6px 0}
+.salud-ok ul{margin:4px 0 8px 1.2rem}
+.salud-empty{text-align:center;color:var(--muted);padding:1.5rem;font-size:13px}
+.salud-nav-badge{float:right;min-width:20px;padding:0 7px;border-radius:20px;font-size:11px;font-weight:800;line-height:20px;text-align:center;color:#fff;background:#c94040}
+.salud-nav-badge.w{background:var(--yellow);color:#3a2535}
+.salud-nav-badge[hidden]{display:none}
+.salud-back{margin-bottom:10px}
+.salud-id{font-weight:700;color:var(--text)}
+h3.salud-title{margin:0;font-size:15px;font-weight:700}
+.salud-title:focus{outline:none}
+.salud-title:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+@media(max-width:899px){
+  .salud-back{min-height:44px}
+  .salud-tile b{font-size:22px}
+  .salud-tile{padding:8px 9px}
+  .salud-toggle{min-height:44px}
+  .salud-head .salud-count{margin-left:auto}
+  .salud-rows .series-actions .btn{min-height:44px;width:100%}
+  .salud-cats{grid-template-columns:minmax(0,1fr)}
+}
 </style>
 </head>
 <body>
+<div class="sticky-stack" id="stickyStack">
 <div class="topbar">
+  <button type="button" class="btn small nav-toggle" id="navToggle" aria-expanded="false" aria-controls="quicknav"><span aria-hidden="true">☰&nbsp;</span>Secciones</button>
   <span class="logo">GL Series Calendar <span class="logo-badge">ADMIN</span></span>
   <div class="topbar-actions">
     <button type="button" class="btn small" onclick="document.getElementById('importFile').click()">Importar data.json</button>
@@ -644,26 +764,164 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
   <span>Tienes cambios sin exportar. Recuerda exportar <code>data.json</code> y subirlo a GitHub.</span>
   <button type="button" class="btn small export" onclick="exportData()">Exportar ahora</button>
 </div>
-<!-- Quick navigation bar -->
-<nav class="quicknav" id="quicknav">
-  <span class="quicknav-label">Ir a →</span>
-  <a class="qnav-btn" href="#section-series" onclick="document.getElementById('section-series').scrollIntoView({behavior:'smooth'});return false;">Series</a>
-  <a class="qnav-btn" href="#section-movies" onclick="document.getElementById('section-movies').scrollIntoView({behavior:'smooth'});return false;">Películas</a>
-  <a class="qnav-btn" href="#section-anime" onclick="document.getElementById('section-anime').scrollIntoView({behavior:'smooth'});return false;">Anime</a>
-  <a class="qnav-btn" href="#section-realities" onclick="document.getElementById('section-realities').scrollIntoView({behavior:'smooth'});return false;">Realities</a>
-  <a class="qnav-btn" href="#section-books" onclick="document.getElementById('section-books').scrollIntoView({behavior:'smooth'});return false;">Libros</a>
-  <a class="qnav-btn" href="#section-actresses" onclick="document.getElementById('section-actresses').scrollIntoView({behavior:'smooth'});return false;">Actrices</a>
-  <a class="qnav-btn" href="#section-ships" onclick="document.getElementById('section-ships').scrollIntoView({behavior:'smooth'});return false;">Ships</a>
-  <a class="qnav-btn" href="#section-listas" onclick="document.getElementById('section-listas').scrollIntoView({behavior:'smooth'});return false;">Listas</a>
-  <a class="qnav-btn" href="#section-productoras" onclick="document.getElementById('section-productoras').scrollIntoView({behavior:'smooth'});return false;">Productoras</a>
-  <a class="qnav-btn" href="#section-platform-logos" onclick="document.getElementById('section-platform-logos').scrollIntoView({behavior:'smooth'});return false;">Logos</a>
-  <a class="qnav-btn" href="#section-checklist" onclick="document.getElementById('section-checklist').scrollIntoView({behavior:'smooth'});return false;">Checklist</a>
-  <div class="quicknav-sep"></div>
-  <button type="button" class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
-  <button type="button" class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
-  <button type="button" class="qnav-btn add-anime" onclick="openAddAnime()">+ Anime</button>
-  <button type="button" class="qnav-btn add-reality" onclick="openAddReality()">+ Reality</button>
+</div><!-- /.sticky-stack -->
+<!-- Navegación por paneles (antes franja #quicknav dentro de la pila sticky). Mismo id, mismos enlaces y botones de alta. -->
+<nav class="quicknav" id="quicknav" aria-label="Secciones del panel">
+  <div class="nav-head"><span class="nav-head-title">Secciones</span><button type="button" class="nav-close" id="navClose">Cerrar</button></div>
+  <div class="qnav-group" role="group" aria-labelledby="qg-catalogo">
+    <span class="qnav-group-label" id="qg-catalogo">Catálogo</span>
+    <a class="qnav-btn" href="#series" data-panel="series">Series</a>
+    <a class="qnav-btn" href="#movies" data-panel="movies">Películas</a>
+    <a class="qnav-btn" href="#anime" data-panel="anime">Anime</a>
+    <a class="qnav-btn" href="#realities" data-panel="realities">Realities</a>
+  </div>
+  <div class="qnav-group" role="group" aria-labelledby="qg-biblioteca">
+    <span class="qnav-group-label" id="qg-biblioteca">Biblioteca</span>
+    <a class="qnav-btn" href="#books" data-panel="books">Libros</a>
+  </div>
+  <div class="qnav-group" role="group" aria-labelledby="qg-personas">
+    <span class="qnav-group-label" id="qg-personas">Personas</span>
+    <a class="qnav-btn" href="#actresses" data-panel="actresses">Actrices</a>
+    <a class="qnav-btn" href="#ships" data-panel="ships">Ships</a>
+    <a class="qnav-btn" href="#productoras" data-panel="productoras">Productoras</a>
+  </div>
+  <div class="qnav-group" role="group" aria-labelledby="qg-curacion">
+    <span class="qnav-group-label" id="qg-curacion">Curación</span>
+    <a class="qnav-btn" href="#listas" data-panel="listas">Listas</a>
+    <a class="qnav-btn" href="#checklist" data-panel="checklist">Checklist</a>
+  </div>
+  <div class="qnav-group" role="group" aria-labelledby="qg-sistema">
+    <span class="qnav-group-label" id="qg-sistema">Sistema</span>
+    <a class="qnav-btn" href="#platform-logos" data-panel="platform-logos">Logos</a>
+    <a class="qnav-btn" href="#salud" data-panel="salud">Salud de datos<span class="salud-nav-badge" id="saludNavBadge" hidden></span></a>
+    <a class="qnav-btn" href="#publicar" data-panel="publicar">Publicar</a>
+  </div>
+  <div class="qnav-group" role="group" aria-labelledby="qg-crear">
+    <span class="qnav-group-label" id="qg-crear">Crear</span>
+    <button type="button" class="qnav-btn add" onclick="openAddSeries()">+ Serie GL</button>
+    <button type="button" class="qnav-btn add-movie" onclick="openAddMovie()">+ Película</button>
+    <button type="button" class="qnav-btn add-anime" onclick="openAddAnime()">+ Anime</button>
+    <button type="button" class="qnav-btn add-reality" onclick="openAddReality()">+ Reality</button>
+  </div>
 </nav>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+<script>
+/* Publica la altura real de la pila sticky en --sticky-stack-h (la usa scroll-margin-top de las secciones). */
+(function(){
+  var st=document.getElementById('stickyStack'),root=document.documentElement;
+  if(!st) return;
+  function sync(){ root.style.setProperty('--sticky-stack-h',st.getBoundingClientRect().height+'px'); }
+  sync();
+  if(window.ResizeObserver) new ResizeObserver(sync).observe(st); else window.addEventListener('resize',sync);
+})();
+/* Quicknav con scroll interno: al enfocar con teclado un enlace/botón parcialmente recortado, se desplaza entero a la vista
+   (Chromium da por bueno un elemento solo parcialmente visible). Solo mueve el scroll interno del quicknav. */
+document.getElementById('quicknav').addEventListener('focusin',function(e){
+  if(e.target&&e.target.scrollIntoView) e.target.scrollIntoView({block:'nearest',inline:'nearest'});
+});
+</script>
+
+<script>
+/* FASE 3 · Controlador de paneles: hash (#series, #movies…) como única fuente de verdad + cajón móvil.
+   No toca ninguna función existente. Si algo falla al iniciar, retira html.panels-on y la página vuelve a mostrar todo. */
+(function(){
+  var root=document.documentElement;
+  root.classList.add('panels-on');
+  var TOK={series:'section-series',movies:'section-movies',anime:'section-anime',realities:'section-realities',books:'section-books',actresses:'section-actresses',ships:'section-ships',listas:'section-listas',productoras:'section-productoras','platform-logos':'section-platform-logos',checklist:'section-checklist',salud:'section-salud',publicar:'section-publicar'};
+  var DEF='series', active=null, ready=false;
+  var $=function(id){return document.getElementById(id);};
+  var reduce=function(){return window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;};
+  function has(k){return Object.prototype.hasOwnProperty.call(TOK,k);}
+  function canon(h){
+    var s=(h||'').replace(/^#/,'');
+    try{ s=decodeURIComponent(s); }catch(e){ return null; }
+    s=s.toLowerCase();
+    if(!has(s)&&s.indexOf('section-')===0) s=s.slice(8);
+    return has(s)?s:null;
+  }
+  function show(tok){
+    Object.keys(TOK).forEach(function(k){var el=$(TOK[k]); if(el) el.classList.toggle('is-active',k===tok);});
+    var links=document.querySelectorAll('#quicknav a[data-panel]');
+    for(var i=0;i<links.length;i++){
+      if(links[i].getAttribute('data-panel')===tok) links[i].setAttribute('aria-current','page'); else links[i].removeAttribute('aria-current');
+    }
+  }
+  function toPanelStart(tok,focus){
+    var el=$(TOK[tok]); if(!el) return;
+    el.scrollIntoView({behavior:reduce()?'auto':'smooth',block:'start'});
+    if(focus){ var t=el.querySelector('.card-title'); if(t){ t.setAttribute('tabindex','-1'); try{t.focus({preventScroll:true});}catch(e){t.focus();} } }
+  }
+  function apply(){
+    var c=canon(location.hash);
+    if(c===null){
+      var t=active||DEF;
+      if(!active){ show(t); active=t; }
+      if(location.hash!=='#'+t) location.replace('#'+t);
+      return;
+    }
+    var changed=(c!==active);
+    show(c); active=c;
+    if(location.hash!=='#'+c) location.replace('#'+c);
+    if(changed&&ready) toPanelStart(c,true);
+  }
+  /* ---- cajón móvil ---- */
+  var nav,tog,scrim,closeBtn,mq,prevOverflow='';
+  function inertTargets(){return [$('stickyStack'),document.querySelector('.container')];}
+  function isOpen(){return nav.classList.contains('open');}
+  function openNav(){
+    if(!mq.matches||isOpen()) return;
+    if(document.querySelector('.modal-bg.open')) return;
+    nav.classList.add('open'); scrim.classList.add('open'); tog.setAttribute('aria-expanded','true');
+    inertTargets().forEach(function(e){ if(e){e.setAttribute('inert','');e.setAttribute('aria-hidden','true');} });
+    prevOverflow=document.body.style.overflow; document.body.style.overflow='hidden';
+    var f=nav.querySelector('a[href]'); if(f) f.focus();
+  }
+  function closeNav(restoreFocus){
+    if(!isOpen()) return;
+    nav.classList.remove('open'); scrim.classList.remove('open'); tog.setAttribute('aria-expanded','false');
+    inertTargets().forEach(function(e){ if(e){e.removeAttribute('inert');e.removeAttribute('aria-hidden');} });
+    document.body.style.overflow=prevOverflow;
+    if(restoreFocus) tog.focus();
+  }
+  function init(){
+    try{
+      try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+      nav=$('quicknav'); tog=$('navToggle'); scrim=$('navScrim'); closeBtn=$('navClose');
+      mq=window.matchMedia('(max-width:899px)');
+      window.addEventListener('hashchange',apply);
+      apply(); ready=true;
+      tog.addEventListener('click',function(){ isOpen()?closeNav(true):openNav(); });
+      closeBtn.addEventListener('click',function(){closeNav(true);});
+      scrim.addEventListener('click',function(){closeNav(true);});
+      /* captura: el cajón se cierra ANTES de que corra el onclick inline de los botones de alta */
+      nav.addEventListener('click',function(e){
+        var a=e.target.closest&&e.target.closest('a[data-panel],button.qnav-btn'); if(!a) return;
+        closeNav(false);
+        if(a.tagName==='A'&&e.button===0&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&a.getAttribute('data-panel')===active){
+          e.preventDefault(); toPanelStart(active,true);   /* panel ya activo: sin cambio de URL ni entrada de historial */
+        }
+      },true);
+      document.addEventListener('keydown',function(e){
+        if(!isOpen()) return;
+        if(e.key==='Escape'){ e.preventDefault(); closeNav(true); return; }
+        if(e.key==='Tab'){
+          var f=[].slice.call(nav.querySelectorAll('button.nav-close,a[href],button.qnav-btn'));
+          if(!f.length) return;
+          var first=f[0],last=f[f.length-1];
+          if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+          else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+        }
+      });
+      var onMq=function(){ if(!mq.matches) closeNav(false); };
+      if(mq.addEventListener) mq.addEventListener('change',onMq); else mq.addListener(onMq);
+    }catch(err){
+      root.classList.remove('panels-on');
+      if(window.console) console.error('Navegación por paneles desactivada:',err);
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
 
 <div class="container">
   <h1 class="page-title">Panel de administración</h1>
@@ -982,7 +1240,37 @@ code{background:var(--lavender-soft);color:var(--lavender);padding:1px 7px;borde
     <div class="chk-empty" id="chkEmptyMsg" style="display:none">Todavía no has añadido ningún título a la checklist.</div>
   </div>
 
-  <div class="card">
+  <div class="card" id="section-salud">
+    <div class="card-title">Salud de datos</div>
+    <p class="page-sub" style="margin-bottom:1rem">Revisión de solo lectura de los datos cargados en este panel. No corrige ni borra nada: cada alerta explica su causa y permite abrir la ficha afectada.</p>
+    <div class="salud-bar">
+      <span id="saludStamp" aria-live="polite">Sin analizar</span>
+      <span style="display:flex;flex-wrap:wrap;gap:6px">
+        <button type="button" class="btn small" id="saludRescan">Volver a analizar</button>
+        <button type="button" class="btn small export" id="saludExpMd" title="Vuelve a analizar y descarga el informe legible (Markdown). No modifica ningún dato.">Exportar informe (.md)</button>
+        <button type="button" class="btn small export" id="saludExpJson" title="Vuelve a analizar y descarga el informe estructurado (JSON). No modifica ningún dato.">Exportar informe (.json)</button>
+      </span>
+    </div>
+    <p class="salud-extra" style="margin:-6px 0 12px">Los recuentos se actualizan solos medio segundo después de cada alta, edición, eliminación o importación; «Volver a analizar» fuerza un nuevo análisis.</p>
+    <div id="saludOver">
+    <div class="salud-tiles" id="saludTiles" aria-live="polite"></div>
+    <div class="admin-filter-pills" id="saludPills" role="group" aria-label="Filtrar por gravedad">
+      <button type="button" class="admin-pill active" data-f="all">Todo</button>
+      <button type="button" class="admin-pill" data-f="error">Errores</button>
+      <button type="button" class="admin-pill" data-f="warn">Avisos</button>
+      <button type="button" class="admin-pill" data-f="info">Info</button>
+    </div>
+    <div class="salud-h">Recuento por categoría (registros)</div>
+    <div class="salud-cats" id="saludCats"></div>
+    <div class="salud-h">Alertas</div>
+    <div id="saludList"></div>
+    <div class="salud-h">Comprobaciones sin hallazgos y reglas sin evaluar</div>
+    <div id="saludOk" class="salud-ok"></div>
+    </div>
+    <div id="saludDetail" hidden></div>
+  </div>
+
+  <div class="card" id="section-publicar">
     <div class="card-title">Cómo publicar cambios</div>
     <div class="export-box"><div class="export-instructions">Cada vez que hagas cambios, sigue estos pasos:
       <ol>
@@ -4901,13 +5189,18 @@ async function tmdbApplyResult(id, kind, type){
 /* ═══ TMDB IMPORT SEGURO (Fase 1B + 1C) — bloque nuevo y aislado ═══
    Flujo: tmdbSearch → tmdbImpOpen → tmdbImpBuildDraft (sin DOM) → vista previa → tmdbImpApply (solo lo marcado).
    No toca seasons, episodios, cast/actrices, couples ni campos editoriales. No llama a save(). */
-let _tmdbImpDraft=null;
+let _tmdbImpDraft=null, _tmdbImpSeq=0;   // N.3: _tmdbImpSeq invalida borradores y peticiones superados
 function tmdbImpFindExisting(id,kind){
   const sid=String(id);
   const f=(arr,def)=>(arr||[]).find(x=>x&&x.tmdbId!==undefined&&x.tmdbId!==null&&x.tmdbId!==''&&String(x.tmdbId)===sid&&(x.tmdbKind||def)===kind);
   return f(series,'tv')||f(movies,'movie')||null;
 }
 function tmdbImpNorm(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''); }
+function tmdbImpCountExisting(id,kind){   // N.3: cuántas obras comparten ese tmdbId+tmdbKind (series y películas por separado)
+  const sid=String(id);
+  const f=(arr,def)=>(arr||[]).filter(x=>x&&x.tmdbId!==undefined&&x.tmdbId!==null&&x.tmdbId!==''&&String(x.tmdbId)===sid&&(x.tmdbKind||def)===kind).length;
+  return f(series,'tv')+f(movies,'movie');
+}
 /* ═══ 1C.2 — Normalización de plataformas y URL estándar (aislado) ═══
    Fuente de verdad de URLs: PLATFORMS. Sin includes() indiscriminado: coincidencia exacta de nombre normalizado + alias explícitos. */
 const TMDB_PROVIDER_ALIASES={amazonprimevideo:'Prime Video',primevideo:'Prime Video',amazonvideo:'Prime Video',disneyplus:'Disney+',appletvplus:'Apple TV+',rakutenviki:'Viki'};
@@ -5022,6 +5315,67 @@ function tmdbImpStashStreaming(dr,p){
   h.value=JSON.stringify(pend); return 1;
 }
 /* ═══ FIN 1C.3.5 helpers ═══ */
+/* ═══ 1D.2-N.2 — CRÉDITOS COMPLETOS EN EL BORRADOR (solo lectura) ═══
+   Tres capas separadas: (1) respuesta original de TMDB (dr.creditsRaw, sin modificar),
+   (2) borrador normalizado (dr.credits), (3) fichas de actrices de TINTA (no se leen ni se tocan aquí).
+   Estas funciones NO referencian `actresses`, `series` ni `movies`; no emparejan ni crean nada.
+   Un valor ausente en TMDB se conserva como null; nunca se sustituye por un valor supuesto.
+   Estados: ok · empty (TMDB respondió y no hay créditos) · network_error · http_error · bad_structure. */
+function tmdbImpNum(v){ return (typeof v==='number'&&isFinite(v))?v:null; }
+function tmdbImpStr(v){ return (typeof v==='string')?v:null; }
+function tmdbImpNormalizeCredit(c,kind,position){
+  if(!c||typeof c!=='object'||Array.isArray(c)) return null;
+  const roles=Array.isArray(c.roles)?c.roles.filter(r=>r&&typeof r==='object').map(r=>({character:tmdbImpStr(r.character),episodes:tmdbImpNum(r.episode_count),creditId:tmdbImpStr(r.credit_id)})):null;
+  return {
+    personId:(Number.isInteger(c.id)&&c.id>0)?c.id:null,
+    name:tmdbImpStr(c.name),
+    originalName:tmdbImpStr(c.original_name),
+    character:kind==='tv'?((roles&&roles[0])?roles[0].character:null):tmdbImpStr(c.character),
+    profilePath:tmdbImpStr(c.profile_path),
+    order:tmdbImpNum(c.order),
+    gender:tmdbImpNum(c.gender),
+    episodes:kind==='tv'?tmdbImpNum(c.total_episode_count):null,
+    roles:kind==='tv'?roles:null,
+    knownForDepartment:tmdbImpStr(c.known_for_department),
+    creditId:tmdbImpStr(c.credit_id),
+    position:position
+  };
+}
+async function tmdbImpFetchCredits(id,kind,key){
+  const path=kind==='tv'?'tv/'+id+'/aggregate_credits':'movie/'+id+'/credits';
+  const res={status:'',httpStatus:null,raw:null,credits:[],skipped:0};
+  let r;
+  try{ r=await fetch(`${TMDB_API_BASE}/${path}?api_key=${encodeURIComponent(key)}&language=es-ES`); }
+  catch(e){ res.status='network_error'; return res; }
+  res.httpStatus=r.status;
+  if(!r.ok){ res.status='http_error'; return res; }
+  let j;
+  try{ j=await r.json(); }catch(e){ res.status='bad_structure'; return res; }
+  if(!j||typeof j!=='object'||!Array.isArray(j.cast)){ res.status='bad_structure'; return res; }
+  res.raw=j.cast;
+  j.cast.forEach((c,i)=>{ const n=tmdbImpNormalizeCredit(c,kind,i); if(n) res.credits.push(n); else res.skipped++; });
+  res.status=!j.cast.length?'empty':(res.credits.length?'ok':'bad_structure');
+  return res;
+}
+/* Lista informativa completa. La selección real se realiza individualmente en tmdbImpCastPanelHtml. */
+function tmdbImpLegacyCast(credits){
+  return (credits||[]).slice().sort((a,b)=>(a.order??a.position??999999)-(b.order??b.position??999999))
+    .map(c=>({name:c.name,character:c.character||'',personId:c.personId,profilePath:c.profilePath,episodes:c.episodes,gender:c.gender}));
+}
+function tmdbImpCastInfoHtml(dr){
+  const head='<b>Reparto TMDB</b> (detalle completo debajo; la importación es manual): ';
+  const err={
+    network_error:'No se pudo consultar el reparto (error de red). Esto NO significa que TMDB no tenga reparto.',
+    http_error:'TMDB rechazó la consulta del reparto (HTTP '+(dr.creditsHttpStatus==null?'?':Number(dr.creditsHttpStatus))+'). Esto NO significa que TMDB no tenga reparto.',
+    bad_structure:'TMDB devolvió el reparto con una estructura inesperada y no se ha podido leer. Esto NO significa que no tenga reparto.'
+  };
+  const st=dr.creditsStatus;
+  if(st==='network_error'||st==='http_error'||st==='bad_structure') return `<div class="tmdbimp-info">${head}<div class="tmdbimp-warn">⚠ ${escapeHtml(err[st])}</div></div>`;
+  if(st==='empty') return `<div class="tmdbimp-info">${head}— TMDB no devuelve reparto para esta obra.</div>`;
+  const list=dr.cast.length?`${dr.cast.length} integrante(s) legible(s); consulta la lista completa y seleccionable debajo.`:'— ('+Number((dr.credits||[]).length)+' crédito(s) recibidos, pero ninguno se pudo mostrar en el resumen)';
+  const sk=dr.creditsSkipped?` <i>(${Number(dr.creditsSkipped)} crédito(s) ilegibles omitidos)</i>`:'';
+  return `<div class="tmdbimp-info">${head}${list}${sk}</div>`;
+}
 async function tmdbImpBuildDraft(id,kind,type,key){
   const region=tmdbGetRegion();
   const r=await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=es-ES&append_to_response=watch/providers,videos`);
@@ -5047,13 +5401,10 @@ async function tmdbImpBuildDraft(id,kind,type,key){
   const tr=vids.find(v=>v.site==='YouTube'&&v.type==='Trailer')||vids.find(v=>v.site==='YouTube');
   const codes=d.origin_country||(d.production_countries||[]).map(c=>c.iso_3166_1)||[];
   const genres=[]; (d.genres||[]).forEach(g=>(TMDB_GENRE_MAP[g.name]||[]).forEach(n=>{ if(!genres.includes(n)) genres.push(n); }));
-  let cast=[];
-  try{
-    const cj=await (await fetch(`${TMDB_API_BASE}/${kind==='tv'?'tv/'+id+'/aggregate_credits':'movie/'+id+'/credits'}?api_key=${encodeURIComponent(key)}&language=es-ES`)).json();
-    cast=(cj.cast||[]).filter(c=>c.gender===1).sort((a,b)=>(a.order??99)-(b.order??99)).slice(0,8)
-      .map(c=>({name:c.name,character:kind==='tv'?((c.roles&&c.roles[0]&&c.roles[0].character)||''):(c.character||'')}));
-  }catch(e){}
+  const cr=await tmdbImpFetchCredits(id,kind,key);   // 1D.2-N.2: créditos completos + estado explícito (solo lectura)
+  const cast=tmdbImpLegacyCast(cr.credits);          // mismo filtro/orden/corte que antes (solo para la línea informativa)
   return {id:String(id),kind,type,name,nameEn,synopsis,year:dateStr?parseInt(dateStr.slice(0,4)):'',
+    credits:cr.credits,creditsStatus:cr.status,creditsHttpStatus:cr.httpStatus,creditsSkipped:cr.skipped,creditsRaw:cr.raw,
     poster:d.poster_path?'https://image.tmdb.org/t/p/w500'+d.poster_path:'',
     country:codes.map(c=>TMDB_COUNTRY_MAP[c]).filter(Boolean).join(' / '),genres,
     mins:kind==='movie'?(d.runtime||null):((d.episode_run_time||[])[0]||null),date:dateStr,
@@ -5062,18 +5413,275 @@ async function tmdbImpBuildDraft(id,kind,type,key){
     seasons:d.number_of_seasons||0,episodes:d.number_of_episodes||0,cast,
     seasonList:(d.seasons||[]).map(s=>({n:s.season_number,count:s.episode_count||0}))};
 }
+/* ═══ 1D.2-N.3 — VINCULAR CRÉDITOS DE TMDB CON FICHAS DE ACTRICES YA EXISTENTES (Opción A) ═══
+   - tmdbImpClassifyCredit: función PURA (sin DOM, sin mutaciones). Solo compara; nunca crea ni modifica fichas.
+   - Sin campo persistente aprobado (tmdbPersonId no existe y N.3 NO lo crea ni lo escribe), una coincidencia de nombre
+     solo es «candidata» y exige confirmación explícita. Sin subcadenas, sin primera coincidencia.
+   - Los IDs históricos tmdb_<n>_<sufijo> NUNCA prueban identidad: solo pueden CONTRADECIR una coincidencia o añadir una pista. */
+function tmdbImpNameKey(s){
+  if(typeof s!=='string') return '';
+  try{ return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{N}]/gu,''); }catch(e){ return ''; }
+}
+function tmdbImpHistId(id){ const m=/^tmdb_(\d+)_[A-Za-z0-9]+$/.exec(String(id==null?'':id)); return m?Number(m[1]):null; }
+function tmdbImpClassifyCredit(credit,list){
+  const out={status:'invalid',candidates:[],reason:'',idHint:false,histNote:false};
+  if(!credit||typeof credit!=='object'){ out.reason='crédito ilegible'; return out; }
+  const pid=credit.personId;
+  if(!Number.isInteger(pid)||pid<=0){ out.reason='el crédito no trae un ID de persona válido'; return out; }
+  const nk=tmdbImpNameKey(credit.name);
+  if(!nk){ out.reason='el crédito no trae un nombre comparable'; return out; }
+  if(!Array.isArray(list)){ out.reason='lista de fichas no disponible'; return out; }
+  const fichas=list.filter(a=>a&&typeof a==='object'&&a.id!==undefined&&a.id!==null&&a.id!=='');
+  const hasPid=a=>a.tmdbPersonId!==undefined&&a.tmdbPersonId!==null&&a.tmdbPersonId!=='';
+  const byPid=fichas.filter(a=>hasPid(a)&&Number(a.tmdbPersonId)===pid);
+  if(byPid.length===1){   // R1: el ID explícito se LEE (nunca se escribe); si hay indicios contradictorios se bloquea y se marca para revisión
+    const f=byPid[0], fh=tmdbImpHistId(f.id); out.candidates=[String(f.id)];
+    if(fh!==null&&fh!==pid){ out.status='conflict'; out.reason='la ficha declara el ID de TMDB '+pid+' pero su ID histórico (tmdb_'+fh+'_…) apunta a otra persona'; return out; }
+    const o2=fichas.find(a=>a!==f&&tmdbImpHistId(a.id)===pid);
+    if(o2){ out.status='conflict'; out.candidates=[String(f.id),String(o2.id)]; out.reason='ese ID de persona de TMDB figura además como ID histórico de otra ficha distinta'; return out; }
+    out.status='safe_id'; return out;
+  }
+  if(byPid.length>1){ out.status='ambiguous'; out.candidates=byPid.map(a=>String(a.id)); out.reason='varias fichas declaran ese mismo ID de TMDB'; return out; }
+  const byName=fichas.filter(a=>tmdbImpNameKey(a.name)===nk);
+  if(!byName.length){
+    const h=fichas.find(a=>tmdbImpHistId(a.id)===pid);
+    out.status='no_ficha'; out.histNote=!!h; out.reason=h?'existe una ficha con ID histórico tmdb_'+pid+'_… pero su nombre no coincide: no se vincula':'sin ficha existente con ese nombre'; return out;
+  }
+  if(byName.length>1){ out.status='ambiguous'; out.candidates=byName.map(a=>String(a.id)); out.reason='varias fichas con el mismo nombre'; return out; }
+  const c=byName[0], hid=tmdbImpHistId(c.id);
+  out.candidates=[String(c.id)];
+  if(hasPid(c)&&Number(c.tmdbPersonId)!==pid){ out.status='conflict'; out.reason='la ficha declara otro ID de persona de TMDB ('+String(c.tmdbPersonId)+')'; return out; }
+  if(hid!==null&&hid!==pid){ out.status='conflict'; out.reason='el ID histórico de la ficha (tmdb_'+hid+'_…) apunta a otra persona de TMDB'; return out; }
+  const other=fichas.find(a=>a!==c&&((hasPid(a)&&Number(a.tmdbPersonId)===pid)||tmdbImpHistId(a.id)===pid));
+  if(other){ out.status='conflict'; out.candidates=[String(c.id),String(other.id)]; out.reason='ese ID de persona de TMDB ya figura en otra ficha distinta'; return out; }
+  out.status='name_exact'; out.idHint=(hid===pid); return out;
+}
+function tmdbImpGenderClass(c){ const g=(c&&typeof c==='object')?c.gender:null; return g===1?'f':((g===0||g===3)?'opt':(g===2?'m':'none')); }   // R1: nunca se infiere el género; 2 = excluido; ausente = 'none' (excluido)
+function tmdbImpGenderOk(gc,incl){ return gc==='f'||(!!incl&&gc==='opt'); }
+function tmdbImpBuildCastPlan(credits,list){
+  return (credits||[]).map((c,ci)=>{ const k=tmdbImpClassifyCredit(c,list), gc=tmdbImpGenderClass(c);
+    return {ci,status:k.status,candidates:k.candidates,reason:k.reason,idHint:k.idHint,histNote:k.histNote,gcls:gc,selectable:(k.status==='safe_id'||k.status==='name_exact')&&k.candidates.length===1&&(gc==='f'||gc==='opt')}; });
+}
+function tmdbImpCastGender(el){
+  const m=document.getElementById('tmdbImpModal'); if(!m) return;
+  const on=!!el.checked;
+  m.querySelectorAll('[data-gcls="opt"]').forEach(row=>{
+    const cb=row.querySelector('input[data-castsel]');
+    if(cb){
+      const sel=row.querySelector('select[data-casttarget]');
+      const needsTarget=['ambiguous','conflict'].includes(row.dataset.caststatus);
+      const targetOk=!needsTarget||(sel&&!!sel.value);
+      cb.disabled=!on||row.dataset.castanchored!=='1'||row.dataset.castincast==='1'||!targetOk;
+      if(!on) cb.checked=false;
+    }
+  });
+  tmdbImpCastSummary();
+}
+function tmdbImpCastTargetChanged(sel){
+  const row=sel&&sel.closest('[data-castrow]'); if(!row) return;
+  const cb=row.querySelector('input[data-castsel]');
+  if(!cb) return;
+  const opt= row.dataset.gcls==='opt';
+  const genderOk=row.dataset.gcls==='f'||(opt&&!!document.querySelector('#tmdbImpModal input[data-castgender-opt]:checked'));
+  const id=String(sel.value||'');
+  const already=id&&tmdbImpCastInForm(id);
+  row.dataset.castincast=already?'1':'0';
+  const needsTarget=['ambiguous','conflict'].includes(row.dataset.caststatus);
+  cb.disabled=row.dataset.castanchored!=='1'||!genderOk||(needsTarget&&!id)||!!already;
+  const note=row.querySelector('[data-castrow-note]');
+  if(note&&needsTarget) note.textContent=already?'Esta ficha ya está en el reparto de destino; no se añadirá otra vez.':(id?'Has elegido manualmente esta ficha. Se asociará solo al aplicar y no se sobrescribirá su identificador TMDB.':'Elige una ficha existente para habilitar esta fila.');
+  if(already) cb.checked=false;
+  tmdbImpCastSummary();
+}
+function tmdbImpCastInForm(id){
+  const dr=_tmdbImpDraft, a=dr&&dr.anchor;
+  return !!(a&&a.list&&[...a.list.querySelectorAll('.cast-actress-sel')].some(i=>String(i.value)===String(id)));
+}
+function tmdbImpCastGroup(el){
+  const m=document.getElementById('tmdbImpModal'); if(!m||!el||!el.checked) return;
+  const row=el.closest('[data-castrow]');
+  const sel=row&&row.querySelector('select[data-casttarget]');
+  const target=sel?String(sel.value||''):String(el.getAttribute('data-castgrp')||'');
+  if(!target) return;
+  m.querySelectorAll('input[data-castsel]:checked').forEach(other=>{
+    if(other===el) return;
+    const r=other.closest('[data-castrow]'), s=r&&r.querySelector('select[data-casttarget]');
+    const otherTarget=s?String(s.value||''):String(other.getAttribute('data-castgrp')||'');
+    if(otherTarget===target) other.checked=false;
+  });
+  tmdbImpCastSummary();
+}
+function tmdbImpCastSelectAll(on){
+  const m=document.getElementById('tmdbImpModal'); if(!m) return;
+  m.querySelectorAll('input[data-castsel]').forEach(cb=>{ if(!cb.disabled) cb.checked=!!on; });
+  if(on){
+    // No se permite seleccionar dos créditos que vayan a la misma ficha local.
+    const seen=new Set();
+    m.querySelectorAll('input[data-castsel]:checked').forEach(cb=>{
+      const row=cb.closest('[data-castrow]'), sel=row&&row.querySelector('select[data-casttarget]');
+      const target=sel?String(sel.value||''):String(cb.getAttribute('data-castgrp')||'');
+      if(target&&seen.has(target)) cb.checked=false; else if(target) seen.add(target);
+    });
+  }
+  tmdbImpCastSummary();
+}
+function tmdbImpCastSummary(){
+  const m=document.getElementById('tmdbImpModal'); if(!m) return;
+  const rows=[...m.querySelectorAll('[data-castrow]')], selected=rows.filter(r=>r.querySelector('input[data-castsel]:checked')).length;
+  const total=(_tmdbImpDraft&&_tmdbImpDraft.credits||[]).length;
+  const creates=rows.filter(r=>r.dataset.caststatus==='no_ficha'&&r.querySelector('input[data-castsel]:checked')).length;
+  const el=m.querySelector('#tmdbCastSummary');
+  if(el) el.textContent=`Seleccionadas: ${selected} · Se crearían ${creates} ficha(s) nueva(s) · No seleccionadas: ${Math.max(0,total-selected)}`;
+}
+function tmdbImpAnchor(type){
+  const listId=type==='movie'?'movieCastList':'castList';
+  const list=_findInModal(listId);
+  if(!list||!list.isConnected) return null;
+  const modal=list.closest('.modal-bg');
+  if(!modal||!modal.classList.contains('open')) return null;
+  return {list,listId,modal,type,status:_findInModal('tmdbStatus')};
+}
+function tmdbImpAnchorLive(a){
+  if(!a||!a.list.isConnected||!a.modal.classList.contains('open')) return false;
+  return (a.listId==='movieCastList'?document.getElementById('movieCastList'):_findInModal('castList'))===a.list;
+}
+function tmdbImpCastPanelHtml(dr,anchored){
+  const head='<div class="tmdbimp-info" id="tmdbCastImportPanel"><b>Seleccionar manualmente el reparto de TMDB</b>';
+  const note='<div class="form-hint" style="margin:4px 0">Se muestran todos los créditos legibles que devuelve TMDB, sin corte de ocho personas. Ninguna casilla está marcada por defecto. Una ficha nueva solo se crea al pulsar «Aplicar lo marcado» con esa fila seleccionada; una asociación existente requiere confirmación manual. La vista previa no guarda la serie/película: después debes guardar la ficha y exportar data.json.</div>';
+  if(dr.creditsStatus!=='ok') return head+note+'<i>No hay créditos legibles para seleccionar (consulta el estado del reparto arriba).</i></div>';
+  const plan=dr.castPlan||[], credits=dr.credits||[];
+  const actorById=id=>actresses.find(a=>String(a.id)===String(id));
+  const statusLabel=x=>({safe_id:'ID TMDB coincidente',name_exact:'Posible coincidencia por nombre',ambiguous:'Coincidencia ambigua',conflict:'Discrepancia de identificadores',no_ficha:'Ficha nueva',invalid:'Datos insuficientes'})[x.status]||x.status;
+  let h=head+note;
+  h+='<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:8px 0">'
+    +'<button type="button" class="btn small" onclick="tmdbImpCastSelectAll(true)">Seleccionar disponibles</button>'
+    +'<button type="button" class="btn small" onclick="tmdbImpCastSelectAll(false)">Deseleccionar todo</button>'
+    +'<label class="tmdbimp-chk" style="margin-left:4px"><input type="checkbox" data-castgender-opt="1" onchange="tmdbImpCastGender(this)"> Permitir género TMDB 0/3 (no especificado/no binario)</label></div>'
+    +`<div id="tmdbCastSummary" aria-live="polite" style="font-weight:700;margin:6px 0">Seleccionadas: 0 · Se crearían 0 ficha(s) nueva(s) · No seleccionadas: ${credits.length}</div>`;
+  h+='<div style="display:flex;flex-direction:column;gap:8px">';
+  plan.forEach(x=>{
+    const cr=credits[x.ci]||{}, gc=x.gcls||'none';
+    const selectableStatus=['safe_id','name_exact','ambiguous','conflict','no_ficha'].includes(x.status);
+    const candidateIds=(x.candidates||[]).map(String).filter((id,i,a)=>a.indexOf(id)===i&&!!actorById(id));
+    const onlyId=['safe_id','name_exact'].includes(x.status)&&candidateIds.length===1?candidateIds[0]:'';
+    const needsTarget=['ambiguous','conflict'].includes(x.status);
+    const existing=onlyId?actorById(onlyId):null;
+    const inCast=!!(existing&&anchored&&dr.anchor&&[...dr.anchor.list.querySelectorAll('.cast-actress-sel')].some(i=>String(i.value)===String(onlyId)));
+    const genderDefault=gc==='f', genderOpt=gc==='opt';
+    const enabled=!!anchored&&selectableStatus&&(genderDefault||genderOpt)&&!inCast&&(!needsTarget?true:false);
+    const image=(typeof cr.profilePath==='string'&&/^\/[A-Za-z0-9_.\-]+$/.test(cr.profilePath))?TMDB_IMG_BASE+cr.profilePath:'';
+    const name=escapeHtml(cr.name||'Nombre no disponible'), character=cr.character?escapeHtml(cr.character):'No indicado';
+    const pid=Number.isInteger(cr.personId)&&cr.personId>0?String(cr.personId):'No indicado';
+    const eps=dr.kind==='tv'?(Number.isFinite(cr.episodes)?String(cr.episodes):'No indicado'):'No corresponde';
+    const targetOptions=needsTarget?'<select data-casttarget="'+x.ci+'" onchange="tmdbImpCastTargetChanged(this)" style="width:100%;max-width:360px;margin-top:5px;padding:6px;border-radius:6px;border:1px solid var(--border2);background:var(--bg);color:var(--text)"><option value="">— Elegir ficha existente manualmente —</option>'+candidateIds.map(id=>{const a=actorById(id);return '<option value="'+escapeHtml(id)+'">'+escapeHtml(a.name||'Sin nombre')+' · ID '+escapeHtml(id)+(a.tmdbPersonId?' · TMDB '+escapeHtml(String(a.tmdbPersonId)):' · sin ID TMDB')+'</option>';}).join('')+'</select>':'';
+    const group=onlyId?' data-castgrp="'+escapeHtml(onlyId)+'"':'';
+    const noGender=!genderDefault&&!genderOpt;
+    let reason='';
+    if(!anchored) reason='No hay un formulario de serie/película activo: no se puede aplicar.';
+    else if(inCast) reason='YA ESTÁ EN EL REPARTO; no se añadirá otra vez.';
+    else if(!selectableStatus) reason=escapeHtml(x.reason||'No hay una vinculación segura disponible.');
+    else if(gc==='m') reason='TMDB declara género masculino; se muestra pero no se ofrece como actriz.';
+    else if(gc==='none') reason='TMDB no aporta un género utilizable; no se infiere.';
+    else if(genderOpt) reason='El crédito solo se puede seleccionar si activas la opción de género 0/3.';
+    else if(needsTarget) reason='Elige una ficha candidata explícitamente; no se vinculará por defecto.';
+    else if(x.status==='no_ficha') reason='Si marcas esta fila, al aplicar se creará una ficha nueva con el nombre y la foto de TMDB disponibles.';
+    else if(x.status==='name_exact') reason='Coincidencia exacta de nombre normalizado, sin ID de persona persistido: confirma manualmente que es la misma persona.';
+    else if(x.status==='safe_id') reason='El ID de persona coincide con una ficha existente; aun así, debes marcar la casilla.';
+    const initiallyDisabled=!anchored||!selectableStatus||noGender||inCast||needsTarget||genderOpt;
+    h+='<div data-castrow="'+x.ci+'" data-caststatus="'+x.status+'" data-gcls="'+gc+'" data-castanchored="'+(anchored?'1':'0')+'" data-castincast="'+(inCast?'1':'0')+'" style="display:grid;grid-template-columns:58px minmax(0,1fr);gap:10px;align-items:start;border:1px solid var(--border2);border-radius:8px;padding:9px;min-width:0">'
+      +'<div style="width:58px;height:78px;border-radius:5px;overflow:hidden;background:var(--surface2);display:flex;align-items:center;justify-content:center">'+(image?'<img data-cast-photo="1" src="'+escapeHtml(image)+'" alt="Foto de '+name+'" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover"><span data-cast-photo-fallback="1" hidden style="font-size:10px;color:var(--muted);text-align:center">No se pudo cargar</span>':'<span style="font-size:10px;color:var(--muted);text-align:center">Sin foto</span>')+'</div>'
+      +'<div style="min-width:0;overflow-wrap:anywhere">'
+      +'<label class="tmdbimp-chk" style="display:flex;align-items:flex-start;gap:7px"><input type="checkbox" data-castsel="'+x.ci+'"'+group+' '+(initiallyDisabled?'disabled':'')+' onchange="tmdbImpCastGroup(this);tmdbImpCastSummary()"> <span><b>'+name+'</b><br><span style="font-size:11px;color:var(--muted)">Personaje: '+character+'</span></span></label>'
+      +'<div style="font-size:11px;margin-top:4px">ID de persona TMDB: <code>'+escapeHtml(pid)+'</code> · '+(dr.kind==='tv'?'Episodios: '+escapeHtml(eps):'Crédito de película')+'</div>'
+      +'<div style="font-size:11px;margin-top:4px"><b>'+escapeHtml(statusLabel(x))+'</b></div>'+targetOptions
+      +'<div data-castrow-note="1" class="tmdbimp-note" style="margin-top:4px">'+reason+'</div></div></div>';
+  });
+  h+='</div></div>';
+  return h;
+}
+function tmdbImpApplyCast(dr,picked,inclOpt,manualTargets){
+  const r={added:0,created:0,dup:0,inForm:0,rejected:0,blocked:false,items:[],omitted:0,review:0};
+  const credits=dr&&dr.credits||[], plan=dr&&dr.castPlan||[]; manualTargets=manualTargets||{};
+  if(!picked.length){ r.omitted=credits.length; r.review=plan.filter(x=>['ambiguous','conflict'].includes(x.status)).length; return r; }
+  if(!tmdbImpAnchorLive(dr.anchor)){ r.blocked=true; r.rejected=picked.length; r.omitted=Math.max(0,credits.length-picked.length); return r; }
+  const mv=dr.type==='movie';
+  const cur=new Set([...dr.anchor.list.querySelectorAll('.cast-actress-sel')].map(i=>String(i.value)).filter(Boolean));
+  const cur0=new Set(cur), createdIds=[], touchedActors=[];
+  const labelFor=(ci,cr)=>{ const nm=String(cr&&cr.name||'Crédito sin nombre'); const ch=String(cr&&cr.character||'').trim(); return ch?`${nm} (${ch})`:nm; };
+  const reject=(ci,cr,why)=>{ r.rejected++; r.items.push({label:labelFor(ci,cr),why}); };
+  picked.forEach(ci=>{
+    const pl=plan[ci], cr=credits[ci];
+    if(!pl||!cr||!Number.isInteger(cr.personId)||cr.personId<=0||!String(cr.name||'').trim()) { reject(ci,cr,'crédito sin nombre o ID de persona válido'); return; }
+    if(!tmdbImpGenderOk(pl.gcls,inclOpt)){ reject(ci,cr,'el filtro de género no permite esta fila'); return; }
+    const k=tmdbImpClassifyCredit(cr,actresses);
+    let targetId='';
+    if(['safe_id','name_exact'].includes(pl.status)){
+      if((k.status===pl.status||k.status==='safe_id'&&pl.status==='name_exact')&&k.candidates.length===1&&String(k.candidates[0])===String(pl.candidates[0])) targetId=String(k.candidates[0]);
+      else { reject(ci,cr,'la identidad cambió desde la vista previa; vuelve a consultar el reparto'); return; }
+    } else if(['ambiguous','conflict'].includes(pl.status)){
+      targetId=String(manualTargets[ci]||'');
+      if(!targetId||!(pl.candidates||[]).map(String).includes(targetId)||!(k.candidates||[]).map(String).includes(targetId)||!actresses.some(a=>String(a.id)===targetId)){
+        reject(ci,cr,'coincidencia ambigua/contradictoria sin una ficha candidata elegida y revalidada'); return;
+      }
+    } else if(pl.status==='no_ficha'){
+      if(k.status!=='no_ficha'){ reject(ci,cr,'ahora existe una posible ficha para esta persona; no se crea otra automáticamente'); return; }
+      targetId='';
+    } else { reject(ci,cr,pl.reason||'fila no vinculable'); return; }
+
+    if(targetId&&cur.has(targetId)){
+      if(cur0.has(targetId)){ r.inForm++; r.items.push({label:labelFor(ci,cr),why:'la ficha ya estaba en el reparto'}); }
+      else { r.dup++; r.items.push({label:labelFor(ci,cr),why:'otra fila seleccionada ya vinculó esta ficha'}); }
+      return;
+    }
+    let actor=null, isNew=false, pendingPersonId=false;
+    if(targetId){
+      actor=actresses.find(a=>String(a.id)===targetId);
+      if(!actor){ reject(ci,cr,'la ficha elegida ya no existe'); return; }
+      // Completa un ID vacío solo tras la selección explícita y tras confirmar que se añadió la fila. Nunca reemplaza uno discrepante.
+      const hasId=actor.tmdbPersonId!==undefined&&actor.tmdbPersonId!==null&&actor.tmdbPersonId!=='';
+      const idUsedElsewhere=actresses.some(a=>a!==actor&&a.tmdbPersonId!==undefined&&a.tmdbPersonId!==null&&a.tmdbPersonId!==''&&Number(a.tmdbPersonId)===cr.personId);
+      pendingPersonId=!hasId&&!idUsedElsewhere;
+    } else {
+      const id='tmdb_new_'+cr.personId+'_'+Date.now().toString(36)+'_'+String(ci);
+      const profile=(typeof cr.profilePath==='string'&&/^\/[A-Za-z0-9_.\-]+$/.test(cr.profilePath))?TMDB_IMG_BASE+cr.profilePath:'';
+      actor={id,name:String(cr.name).trim(),tmdbPersonId:cr.personId,photo:profile,photoPosition:'50% 15%',photoZoom:1,country:'',birthdate:'',notes:''};
+      actresses.push(actor); createdIds.push(String(id)); isNew=true; r.created++;
+      targetId=String(id);
+    }
+    const before=dr.anchor.list.querySelectorAll('.cast-actress-sel').length;
+    try { if(mv) addMovieCastMember({actressId:targetId,character:cr.character||''}); else addCastMember({actressId:targetId,character:cr.character||''}); }
+    catch(e){ /* la comprobación del DOM de abajo determina si se añadió */ }
+    const after=dr.anchor.list.querySelectorAll('.cast-actress-sel').length;
+    if(after!==before+1){
+      if(isNew){ actresses=actresses.filter(a=>String(a.id)!==targetId); createdIds.splice(createdIds.indexOf(targetId),1); r.created--; }
+      reject(ci,cr,'no se pudo añadir la fila de reparto al formulario'); return;
+    }
+    if(pendingPersonId&&actor){ actor.tmdbPersonId=cr.personId; touchedActors.push(actor); }
+    cur.add(targetId); r.added++; r.items.push({label:labelFor(ci,cr),why:isNew?'ficha nueva creada y asociada al formulario':'ficha existente asociada al formulario'});
+  });
+  r.omitted=Math.max(0,credits.length-r.added);
+  r.review=plan.filter(x=>['ambiguous','conflict'].includes(x.status)&&!picked.includes(x.ci)).length;
+  if(r.created||touchedActors.length){ save(); if(typeof renderActressesGrid==='function'){ try{renderActressesGrid();}catch(e){} } }
+  return r;
+}
 async function tmdbImpOpen(id,kind,type){
-  const status=_findInModal('tmdbStatus');
+  tmdbImpClose();   // N.3: invalida borrador/peticiones anteriores y cierra una vista previa que siguiera abierta
+  const mySeq=++_tmdbImpSeq, anchor=tmdbImpAnchor(type);
+  const status=anchor?anchor.status:_findInModal('tmdbStatus');
+  const live=()=>mySeq===_tmdbImpSeq&&(!anchor||(anchor.list.isConnected&&anchor.modal.classList.contains('open')));   // ¿sigue siendo la petición vigente y el formulario de origen?
   let key=tmdbGetKey(); if(!key){ key=tmdbConfigureKey(); if(!key) return; }
   if(status){ status.className='tmdb-bar-status'; status.textContent='Cargando detalles...'; }
   let dr;
   try{ dr=await tmdbImpBuildDraft(id,kind,type,key); }
-  catch(e){ if(status){ status.className='tmdb-bar-status err'; status.textContent=e.message==='401'?'⚠ API key inválida. Configúrala de nuevo (⚙).':'✕ Error al obtener los detalles de TMDB.'; } return; }
+  catch(e){ if(!live()) return; if(status){ status.className='tmdb-bar-status err'; status.textContent=e.message==='401'?'⚠ API key inválida. Configúrala de nuevo (⚙).':'✕ Error al obtener los detalles de TMDB.'; } return; }
+  if(!live()) return;   // N.3: respuesta tardía / formulario cerrado o sustituido
   if(kind==='tv'&&type!=='movie'){   // 1E.1: detalle de temporadas (solo lectura, sin DOM)
     if(status){ status.className='tmdb-bar-status'; status.textContent='Cargando temporadas...'; }
     try{ dr.sdata=await tmdbImpFetchSeasons(dr,key); }catch(e){ dr.sdata=null; }
+    if(!live()) return;
   }
   if(status){ status.className='tmdb-bar-status'; status.textContent=''; }
+  dr.seq=mySeq; dr.anchor=anchor; dr.castPlan=tmdbImpBuildCastPlan(dr.credits,actresses);
   _tmdbImpDraft=dr;
   const mv=type==='movie', p=mv?'mf_':'f_';
   const val=i=>(_findInModal(i)?.value||'').trim();
@@ -5116,8 +5724,9 @@ async function tmdbImpOpen(id,kind,type){
   const rgTitle=rgKnown?'Streaming de '+escapeHtml(rgKnown[1])+' ('+escapeHtml(dr.region)+')':'Streaming ('+escapeHtml(dr.region)+')';   // 1C.3.4: región desconocida → Streaming (XX)
   const streamingInfo=`<div class="tmdbimp-info"><b>${rgTitle}</b> — lo que devuelve TMDB para esta región (solo informativo hasta que marques la casilla): `
     +((dr.regionProviders||[]).length?'<br>'+dr.regionProviders.map(x=>escapeHtml(x.name)+' · <code>'+escapeHtml(x.type)+'</code>'+((x.type==='rent'||x.type==='buy')?' (pago por título)':'')+' · '+(x.url?escapeHtml(x.url):'<i>sin URL estándar</i>')).join('<br>'):'<br><i>No hay plataformas de streaming disponibles para esta región.</i>')+tmdbImpStreamingSaveHtml(dr,p)+`</div>`;   // 1C.3.4 · 1C.3.5
-  const castInfo=`<div class="tmdbimp-info"><b>Reparto TMDB</b> (solo informativo, no se importa): ${dr.cast.length?dr.cast.map(c=>escapeHtml(c.name)+(c.character?' ('+escapeHtml(c.character)+')':'')).join(', '):'—'}</div>`;
-  const warn=ex?`<div class="tmdbimp-warn">YA ESTÁ EN TINTA como «${escapeHtml(ex.name)}». ${_findInModal(p+'tmdbId')?.value.trim()===dr.id?'Es la ficha que estás editando.':'Si estás creando una ficha nueva, sería un duplicado.'}</div>`:'';
+  const castInfo=tmdbImpCastInfoHtml(dr);   // 1D.2-N.2: distingue error de reparto vacío
+  const nEx=tmdbImpCountExisting(dr.id,dr.kind);
+  const warn=ex?`<div class="tmdbimp-warn">YA ESTÁ EN TINTA como «${escapeHtml(ex.name)}»${nEx>1?` (hay ${nEx} obras con este mismo ID de TMDB: revisa duplicados)`:''}. ${_findInModal(p+'tmdbId')?.value.trim()===dr.id?'Es la ficha que estás editando.':'Si estás creando una ficha nueva, sería un duplicado.'}</div>`:'';
   let m=document.getElementById('tmdbImpModal');
   if(!m){ m=document.createElement('div'); m.className='modal-bg'; m.id='tmdbImpModal'; document.body.appendChild(m); }
   m.innerHTML=`<div class="modal"><div class="modal-title">Importar desde TMDB</div><div style="padding:0 1.75rem 1rem">`
@@ -5126,15 +5735,19 @@ async function tmdbImpOpen(id,kind,type){
     +`<div style="font-size:12px;margin-top:4px">${kind==='tv'?'Serie':'Película'}${dr.year?' · '+dr.year:''}${dr.rating?` · ★ ${dr.rating}/10 (${dr.votes} votos)`:''}</div>`
     +`<span class="tmdbimp-badge ${ex?'ex':'new'}">${ex?'YA ESTÁ EN TINTA':'NUEVO'}</span></div></div>${warn}`
     +`<div class="form-hint" style="margin:8px 0">Por defecto solo se marcan los campos vacíos en el formulario. Nada se guarda hasta que pulses Guardar en la ficha.</div>`
-    +rows.map(rowHtml).join('')+streamingInfo+seasonsInfo+castInfo+`</div>`
+    +rows.map(rowHtml).join('')+streamingInfo+seasonsInfo+castInfo+tmdbImpCastPanelHtml(dr,!!dr.anchor)+`</div>`
     +`<div class="modal-footer-btns"><button type="button" class="btn" onclick="tmdbImpClose()">Cancelar</button><button type="button" class="btn primary" onclick="tmdbImpApply()">Aplicar lo marcado al formulario</button></div></div>`;
+  m.querySelectorAll('img[data-cast-photo]').forEach(img=>img.addEventListener('error',()=>{ img.style.display='none'; const fb=img.parentElement&&img.parentElement.querySelector('[data-cast-photo-fallback]'); if(fb) fb.hidden=false; },{once:true}));
   m.classList.add('open');
 }
-function tmdbImpClose(){ const m=document.getElementById('tmdbImpModal'); if(m){ m.classList.remove('open'); m.innerHTML=''; } }
+function tmdbImpClose(){ _tmdbImpSeq++; _tmdbImpDraft=null; const m=document.getElementById('tmdbImpModal'); if(m){ m.classList.remove('open'); m.innerHTML=''; } }
 function tmdbImpApply(){
   const dr=_tmdbImpDraft, m=document.getElementById('tmdbImpModal');
-  if(!dr||!m){ tmdbImpClose(); return; }
+  if(!dr||!m||dr.seq!==_tmdbImpSeq||!m.classList.contains('open')||(dr.anchor&&!tmdbImpAnchorLive(dr.anchor))){ tmdbImpClose(); return; }   // N.3: borrador vigente y formulario de origen, o no se aplica nada
   const allKeys=[...m.querySelectorAll('input[data-k]:checked')].map(i=>i.dataset.k);
+  const inclOpt=!!m.querySelector('input[data-castgender-opt]:checked');   // R1
+  const castPicked=[...m.querySelectorAll('input[data-castsel]:checked')].map(i=>Number(i.dataset.castsel)).filter(n=>Number.isInteger(n));
+  const castTargets={}; m.querySelectorAll('select[data-casttarget]').forEach(sel=>{ castTargets[sel.dataset.casttarget]=String(sel.value||''); });
   const keys=allKeys.filter(k=>k.indexOf('s:')!==0&&k!=='streamingRegion'), sKeys=allKeys.filter(k=>k.indexOf('s:')===0);   // 1E.1: 's:' = temporadas/episodios
   tmdbImpClose();   // cerrar primero: _findInModal vuelve a apuntar al modal de la ficha
   const mv=dr.type==='movie', p=mv?'mf_':'f_';
@@ -5168,8 +5781,13 @@ function tmdbImpApply(){
   });
   const nS=tmdbImpApplySeasons(sKeys,dr);   // 1E.1
   const nSt=allKeys.indexOf('streamingRegion')>=0?tmdbImpStashStreaming(dr,p):0;   // 1C.3.5: solo la región del draft, pendiente hasta Guardar
+  const cr=tmdbImpApplyCast(dr,castPicked,inclOpt,castTargets);   // N.3-F4.2: asociación manual y creación solo al aplicar
+  const crTxt=castPicked.length||cr.omitted?` Reparto: ${cr.added} asociada(s) al formulario, ${cr.created} ficha(s) nueva(s), ${cr.inForm} ya estaba(n) en el reparto, ${cr.dup} duplicada(s) entre filas, ${cr.rejected} rechazada(s), ${cr.omitted} integrante(s) no incorporada(s) ahora${cr.review?`, ${cr.review} coincidencia(s) pendiente(s) de revisar`:''}${cr.blocked?', formulario de origen no disponible':''}.`:'';
+  const crDetails=cr.items&&cr.items.length?` ${(()=>{ const groups=[['Ya estaba en el reparto',cr.items.filter(x=>x.why==='la ficha ya estaba en el reparto')],['Duplicada entre filas',cr.items.filter(x=>x.why==='otra fila seleccionada ya vinculó esta ficha')],['No aplicada',cr.items.filter(x=>!['la ficha ya estaba en el reparto','otra fila seleccionada ya vinculó esta ficha','ficha nueva creada y asociada al formulario','ficha existente asociada al formulario'].includes(x.why))]]; const parts=[]; groups.forEach(([title,items])=>{ if(!items.length)return; const shown=items.slice(0,5).map(x=>`${x.label} — ${x.why}`); if(items.length>5) shown.push(`y ${items.length-5} más`); parts.push(`${title}: ${shown.join('; ')}.`); }); return parts.join(' '); })()}`:'';
   const st=_findInModal('tmdbStatus');
-  if(st){ st.className='tmdb-bar-status ok'; st.textContent=(keys.length+nS+nSt)?`✓ ${keys.length+nS+nSt} campo(s) aplicados al formulario. Revisa y pulsa Guardar.`:'No se ha aplicado ningún campo.'; }
+  const hasRejects=cr.rejected>0||cr.blocked;
+  const anyApplied=keys.length+nS+nSt>0||cr.added>0;
+  if(st){ st.className='tmdb-bar-status '+(hasRejects?'err':(anyApplied?'ok':'')); st.textContent=(anyApplied?`${hasRejects?'⚠':'✓'} ${keys.length+nS+nSt} campo(s) aplicados al formulario. Revisa y pulsa Guardar.`+(cr.added&&!keys.length&&!nS&&!nSt?' Reparto aplicado al formulario. Revisa y pulsa Guardar.':''):(hasRejects?'No se ha incorporado ninguna actriz ni aplicado ningún campo.':'No se ha aplicado ningún campo.'))+crTxt+crDetails+(cr.added||cr.created?' Recuerda guardar la ficha y después exportar data.json; todavía no se ha publicado ningún cambio.':''); }
   _tmdbImpDraft=null;
 }
 
@@ -6046,6 +6664,7 @@ function saveActress(ai){
   const payload={
     id:isNew?Date.now().toString():(actresses[ai].id||Date.now().toString()),
     name,
+    tmdbPersonId:!isNew?(actresses[ai].tmdbPersonId??undefined):undefined,
     photo:document.getElementById('af_photo').value.trim(),
     photoPosition:`${document.getElementById('af_posX')?.value||50}% ${document.getElementById('af_posY')?.value||15}%`,
     photoZoom:document.getElementById('af_zoom')?Number(document.getElementById('af_zoom').value)/100||1:1,
@@ -6912,6 +7531,305 @@ async function delProductora(pi){
   productoras.splice(pi,1);
   save(); renderProductorasAdmin();
 }
+</script>
+<script>
+/* FASE 4.4 · SALUD DE DATOS — solo lectura. No modifica datos ni funciones existentes: lee series, movies, actresses, ships,
+   productoras, platformLogos y checklist, y abre las fichas con los editores existentes (openEditByCat, openEditMovie, openEditShip,
+   openEditProductora, editPlatformLogo). Reglas: Fases 4.1/4.2. */
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  var esc=function(s){return typeof escapeHtml==='function'?escapeHtml(s):String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+  var T=function(v){return String(v==null?'':v).trim();};
+  /* Regla 2 (dominio frágil): la lista la decide la autora (4.2). Vacía = regla sin evaluar. Alcance implementado: solo `poster`. */
+  var SALUD_DOMINIOS_FRAGILES=[];
+  var LV={error:{l:'Error',i:'✕',c:'e',o:0},warn:{l:'Aviso',i:'!',c:'w',o:1},info:{l:'Info',i:'i',c:'i',o:2}};
+  var CATS=['Sin póster','Dominio frágil','Sin enlace','Sin plataforma','Sin sinopsis','Sin géneros','Esquema antiguo','Ships huérfanos','Couples inconsistentes','Plataforma sin logo','Duplicados potenciales'];
+  /* [id, categoría, nivel, título, causa] */
+  var CK=[
+    ['c1w',1,'warn','Sin póster','El campo poster está vacío (tras quitar espacios). El admin y la web pintan un marcador de posición, así que nada se rompe, pero la ficha se ve sin imagen.'],
+    ['c1i',1,'info','Sin póster · series próximas','Igual que la anterior, pero la serie está marcada como próxima (upcoming): es el caso habitual de un estreno aún sin cartel.'],
+    ['c2',2,'info','Dominio frágil','El póster usa un dominio de la lista de dominios frágiles. La lista la define la autora y todavía está vacía, así que esta regla no evalúa nada.'],
+    ['c3e',3,'error','URL de enlace inválida','Una URL de watchLinks o networkUrl no es una dirección http(s) con host (falta https:// o el campo contiene texto que no es una URL). hasWatchLink() del admin la cuenta como enlace y por eso «Sin enlace» no la detecta.'],
+    ['c3i',3,'info','Sin enlace','Ningún watchLinks tiene URL y networkUrl está vacío (criterio de hasWatchLink() del admin). La web puede mostrar enlaces por región desde streaming, que esta regla no mira.'],
+    ['c3r',3,'info','Solo enlace raíz','Todos sus enlaces son la raíz de un sitio, sin ruta ni parámetros (p. ej. https://www.netflix.com). La web los trata como enlaces genéricos.'],
+    ['c4w',4,'warn','Plataforma vacía pero con enlaces','network está vacío aunque la obra tiene watchLinks: los dos campos son incoherentes.'],
+    ['c4i',4,'info','Sin plataforma','network está vacío y la obra no tiene watchLinks. En series próximas es lo habitual.'],
+    ['c5',5,'warn','Sin sinopsis','El campo synopsis está vacío. Incluye series próximas: no están exentas.'],
+    ['c6',6,'warn','Sin géneros','genres es una lista vacía. Incluye series próximas: no están exentas.'],
+    ['c7a',7,'info','Esquema antiguo · reparto con coupleType/coupleNum','El reparto usa el sistema viejo de parejas que migrateCastCouples sabe convertir, pero esta ficha sigue sin migrar.'],
+    ['c7b',7,'info','Esquema antiguo · premiereSchedule con {date,count}','La temporada usa el formato antiguo de estrenos (sin fromEp/toEp), que el código aún sabe leer.'],
+    ['c7c',7,'info','Esquema antiguo · bookUrl sin bookLinks','Tiene la URL de libro antigua y no la lista bookLinks de ediciones.'],
+    ['c7d',7,'info','Esquema antiguo · checklist sin las 4 listas de países','Falta alguna de las listas thai, china, japan o korea. Nota: el admin normaliza la checklist al cargar, así que en memoria solo se detecta si falta una lista.'],
+    ['c7e',7,'info','Esquema antiguo · startDate/totalEpisodes en la raíz sin seasons','Serie de una sola temporada escrita solo en la raíz, sin la lista seasons (formato que getSeasons convierte).'],
+    ['c8a',8,'error','Ship con actriz inexistente','actressIds contiene un id que no está en actresses (delActress no limpia los ships). La web descarta en silencio los ships con menos de 2 actrices existentes, así que este ship no se muestra.'],
+    ['c8p',8,'error','Productora con actriz inexistente','actressIds de la productora contiene un id que no está en actresses (delActress tampoco limpia las productoras).'],
+    ['c8w',8,'warn','Ship sin series en común','Ninguna serie tiene a todas las actrices del ship en su reparto (mismo cálculo que la lista de Ships; solo mira series). No incluye los ships ya marcados por actriz inexistente.'],
+    ['c8i',8,'info','Ship retirado sin series en común','Igual que la anterior, pero el ship está marcado como retirado: caso esperado.'],
+    ['c9',9,'error','Pareja inconsistente','Un par de couples contiene una actriz que no existe en actresses o que no figura en el reparto de esa obra.'],
+    ['c10',10,'info','Plataforma sin logo (criterio de la web pública)','Nombre de plataforma de watchLinks (tras dividir por coma o barra y aplicar los alias de la web) sin logo personalizado ni predefinido. La web muestra el nombre como texto; no se rompe. Las ocultas a propósito (__hidden__) no cuentan.'],
+    ['c11t',11,'warn','Mismo TMDB en varias fichas','Dos o más fichas comparten tmdbId y tmdbKind (comparados como texto): posible obra duplicada. Confirmarlo es decisión de la autora.'],
+    ['c11s',11,'warn','Ships con el mismo par de actrices','Dos ships tienen exactamente las mismas actrices.']
+  ];
+  var ALIAS={'youtube':'YouTube','Youtube':'YouTube','Yotube':'YouTube','hbo max':'Max','HBO Max':'Max','hbomax':'Max','iqiyi':'iQIYI','iQiyi':'iQIYI','IQIYI':'iQIYI','oned':'OneD','oneD':'OneD','One 31':'OneD','one31':'OneD','apple tv+':'Apple TV+','Apple Tv':'Apple TV+','AppleTv':'Apple TV+','apple tv':'Apple TV+'};
+  var DEFLOGO=['YouTube','Netflix','Prime Video','Max','GagaOOLala','WeTV','iQIYI','Viki','VIU','CH3+','OneD','Disney+','Apple TV+','Crunchyroll','Wavve','TVING','Funimation','Bilibili','Hulu','Paramount+','Plex','RTVE','RTL+','Filmin','Monomax','TikTok','jTBC','tvN','iWant','GMM 25','TV Tokyo'];
+  var st={f:'all',open:{},lim:{},res:null,at:null};
+
+  function okUrl(u){try{var x=new URL(T(u));return (x.protocol==='http:'||x.protocol==='https:')&&!!x.hostname;}catch(e){return false;}}
+  function isRoot(u){try{var x=new URL(T(u));return x.pathname.replace(/\/+$/,'')===''&&!x.search;}catch(e){return false;}}
+  function host(u){try{return new URL(T(u)).hostname.toLowerCase();}catch(e){return '';}}
+  function kind(it,mv){var c=it.category;return mv?(c==='anime'?'Anime (película)':c==='reality'?'Documental':'Película'):(c==='anime'?'Anime':c==='reality'?'Reality':'Serie GL');}
+  function canon(n){return ALIAS[n]||ALIAS[String(n).toLowerCase()]||n;}
+
+  function analyze(){
+    var S=series||[],M=movies||[],A=actresses||[],SH=ships||[],P=productoras||[],PL=platformLogos||{};
+    var R={},X={},pend={};
+    CK.forEach(function(c){R[c[0]]=[];});
+    function add(id,t,rid,name,k,d){R[id].push({t:t,id:String(rid),n:T(name)||'(sin nombre)',k:k,d:d||''});}
+    var aid={},aname={};
+    A.forEach(function(a){aid[String(a.id)]=1;aname[String(a.id)]=a.name;});
+    var all=S.map(function(x){return [x,'serie'];}).concat(M.map(function(x){return [x,'pelicula'];}));
+    var tm={},plat={};
+    all.forEach(function(p){
+      var it=p[0],ty=p[1],mv=ty==='pelicula',up=!mv&&it.upcoming===true,kd=kind(it,mv),nm=it.name,wl=(it.watchLinks||[]).filter(function(l){return l&&T(l.url);});
+      /* 1 */
+      if(!T(it.poster)){ if(up) add('c1i',ty,it.id,nm,kd,'Serie próxima (upcoming) con poster vacío.'); else add('c1w',ty,it.id,nm,kd,'poster vacío.'); }
+      /* 2 */
+      if(SALUD_DOMINIOS_FRAGILES.length){ var h=host(it.poster); if(h&&SALUD_DOMINIOS_FRAGILES.indexOf(h)>-1) add('c2',ty,it.id,nm,kd,'Póster en el dominio '+h+'.'); }
+      /* 3 */
+      var bad=[]; (it.watchLinks||[]).forEach(function(l){ if(l&&T(l.url)&&!okUrl(l.url)) bad.push('watchLinks'+(l.name?' ('+T(l.name)+')':'')+': «'+T(l.url).slice(0,90)+'»'); });
+      if(T(it.networkUrl)&&!okUrl(it.networkUrl)) bad.push('networkUrl: «'+T(it.networkUrl).slice(0,90)+'»');
+      if(bad.length) add('c3e',ty,it.id,nm,kd,bad.join(' · '));
+      if(!hasWatchLink(it)){
+        var s=it.streaming,rg=s&&typeof s==='object'&&!Array.isArray(s)&&Object.keys(s).some(function(k){return Array.isArray(s[k])&&s[k].some(function(e){return e&&T(e.url);});});
+        add('c3i',ty,it.id,nm,kd,(up?'Serie próxima. ':'')+'Sin URL en watchLinks ni networkUrl.'+(rg?' Pero tiene enlaces regionales en streaming: la web puede mostrarlos según la región.':''));
+      } else {
+        var us=wl.map(function(l){return T(l.url);}); if(!us.length) us=[T(it.networkUrl)];
+        if(us.every(isRoot)) add('c3r',ty,it.id,nm,kd,'Solo enlaces raíz: '+us.slice(0,3).join(', '));
+      }
+      /* 4 */
+      if(!T(it.network)){
+        if((it.watchLinks||[]).length) add('c4w',ty,it.id,nm,kd,'network vacío con '+it.watchLinks.length+' watchLinks.');
+        else add('c4i',ty,it.id,nm,kd,(up?'Serie próxima. ':'')+'network vacío y sin watchLinks.');
+      }
+      /* 5, 6 */
+      if(!T(it.synopsis)) add('c5',ty,it.id,nm,kd,(up?'Serie próxima. ':'')+'synopsis vacío.');
+      if(Array.isArray(it.genres)&&it.genres.length===0) add('c6',ty,it.id,nm,kd,(up?'Serie próxima. ':'')+'genres es una lista vacía.');
+      /* 7 */
+      if((it.cast||[]).some(function(m){return m&&(m.coupleType!==undefined||m.coupleNum!==undefined);})) add('c7a',ty,it.id,nm,kd,'Reparto con coupleType/coupleNum.');
+      [it].concat(it.seasons||[]).forEach(function(se){ var ps=se&&se.premiereSchedule; if(ps&&ps.length&&ps[0]&&ps[0].fromEp===undefined) add('c7b',ty,it.id,nm,kd,'premiereSchedule sin fromEp/toEp'+(se.label?' en «'+se.label+'»':'')+'.'); });
+      if(T(it.bookUrl)&&!(it.bookLinks&&it.bookLinks.length)) add('c7c',ty,it.id,nm,kd,'bookUrl: '+T(it.bookUrl).slice(0,90));
+      if(!mv&&!(it.seasons&&it.seasons.length)&&it.startDate&&it.totalEpisodes) add('c7e',ty,it.id,nm,kd,'startDate '+it.startDate+', totalEpisodes '+it.totalEpisodes+' solo en la raíz.');
+      /* 9 */
+      var cids=(it.cast||[]).map(function(m){return m&&String(m.actressId);}),cd=[];
+      (it.couples||[]).forEach(function(pr,i){ (pr||[]).forEach(function(x){ x=String(x);
+        if(!aid[x]) cd.push('par '+(i+1)+': actriz inexistente (id '+x+')'); else if(cids.indexOf(x)<0) cd.push('par '+(i+1)+': «'+T(aname[x])+'» no está en el reparto de la obra'); }); });
+      if(cd.length) add('c9',ty,it.id,nm,kd,cd.join(' · '));
+      /* 10: nombres de watchLinks como en la web pública */
+      (it.watchLinks||[]).forEach(function(l){ if(!l||!T(l.name)) return;
+        var parts=splitPlatformNames(l.name).filter(function(x){return x&&x!=='Ver serie'&&x!=='Ver película'&&x.length>1;}); if(!parts.length) return;
+        parts.forEach(function(n){ var o=plat[n]||(plat[n]={n:0,ex:[]}); o.n++; if(o.ex.length<3&&o.ex.indexOf(nm)<0) o.ex.push(nm); }); });
+      /* 11 */
+      if(T(it.tmdbId)){ var key=T(it.tmdbKind)+':'+T(it.tmdbId); (tm[key]=tm[key]||[]).push({it:it,ty:ty,kd:kd}); }
+    });
+    var hid=0;
+    Object.keys(plat).sort(function(a,b){return a.toLowerCase().localeCompare(b.toLowerCase());}).forEach(function(n){
+      var c=canon(n);
+      if(PL[c]==='__hidden__'||PL[n]==='__hidden__'){hid++;return;}
+      if((PL[c]&&PL[c]!=='__hidden__')||(PL[n]&&PL[n]!=='__hidden__')||DEFLOGO.indexOf(c)>-1||DEFLOGO.indexOf(n)>-1) return;
+      add('c10','plataforma',n,n,'Plataforma','En '+plat[n].n+' enlace'+(plat[n].n!==1?'s':'')+': '+plat[n].ex.join(', ')+(plat[n].n>plat[n].ex.length?'…':'')+(c!==n?' · alias → '+c:''));
+    });
+    var adm=null; try{ adm=0; getAllPlatformNamesFromData().forEach(function(n){ if(!getLogoForPlatform(n)&&(PL[n]!=='__hidden__')) adm++; }); }catch(e){adm=null;}
+    X.c10='Plataformas ocultas a propósito (no cuentan): '+hid+'.'+(adm===null?'':' Con el resolutor del admin (network + watchLinks, sin alias) saldrían '+adm+' nombres; es una cifra informativa.');
+    Object.keys(tm).forEach(function(k){ var g=tm[k]; if(g.length<2) return;
+      g.forEach(function(e){ var o=g.filter(function(z){return z!==e;}).map(function(z){return '«'+T(z.it.name)+'»';}).join(', ');
+        add('c11t',e.ty,e.it.id,e.it.name,e.kd,'tmdbId '+T(e.it.tmdbId)+(T(e.it.tmdbKind)?' ('+T(e.it.tmdbKind)+')':'')+' repetido con '+o+'.'); }); });
+    /* 8 */
+    var shp={};
+    SH.forEach(function(sh){
+      var ids=(sh.actressIds||[]).map(String),miss=ids.filter(function(x){return !aid[x];});
+      if(miss.length) add('c8a','ship',sh.id,sh.name,'Ship','Actriz inexistente (id '+miss.join(', ')+').');
+      else {
+        var sh1=S.filter(function(s){return s.cast&&s.cast.length&&ids.length>=2&&ids.every(function(x){return s.cast.map(function(m){return String(m.actressId);}).indexOf(x)>-1;});}).length;
+        if(!sh1) add(sh.retired?'c8i':'c8w','ship',sh.id,sh.name,'Ship',ids.length<2?'Tiene menos de 2 actrices.':'Ninguna serie con todas sus actrices en el reparto.'+(sh.retired?' Marcado como retirado.':''));
+      }
+      var k=ids.slice().sort().join('|'); if(ids.length) (shp[k]=shp[k]||[]).push(sh);
+    });
+    Object.keys(shp).forEach(function(k){ var g=shp[k]; if(g.length<2) return;
+      g.forEach(function(sh){ add('c11s','ship',sh.id,sh.name,'Ship','Mismo par de actrices que '+g.filter(function(z){return z!==sh;}).map(function(z){return '«'+T(z.name)+'»';}).join(', ')+'.'); }); });
+    P.forEach(function(p){ var miss=(p.actressIds||[]).map(String).filter(function(x){return !aid[x];});
+      if(miss.length) add('c8p','productora',p.id,p.name,'Productora','Actriz inexistente (id '+miss.join(', ')+').'); });
+    /* 7d */
+    var chk=checklist; ['thai','china','japan','korea'].forEach(function(k){ if(!chk||!chk[k]) add('c7d','checklist',k,'Checklist '+k,'Checklist','Falta la lista «'+k+'».'); });
+    var n=0; return {R:R,X:X,pend:{c2:!SALUD_DOMINIOS_FRAGILES.length},tot:{obras:S.length+M.length,actrices:A.length,ships:SH.length,productoras:P.length}};
+  }
+
+  function opLabel(t){return t==='plataforma'?'Abrir logo':t==='checklist'?'Ir a Checklist':'Abrir ficha';}
+  function rowHtml(r){
+    var l=r.t==='plataforma'?'Plataforma':r.t==='checklist'?'Lista':'ID';
+    return '<div class="series-item"><div class="series-info"><div class="series-name">'+esc(r.n)+' <span class="badge badge-upcoming">'+esc(r.k)+'</span></div>'+
+      '<div class="series-meta"><span class="salud-id">'+l+' '+esc(r.id)+'</span> · '+esc(r.d)+'</div></div>'+
+      '<div class="series-actions"><button type="button" class="btn small" data-act="op" data-t="'+esc(r.t)+'" data-id="'+esc(r.id)+'">'+opLabel(r.t)+'</button></div></div>';
+  }
+  /* Vista de resultados completos de UNA alerta (listado filtrado dentro de Salud). Solo lectura. */
+  function renderDetail(res){
+    var box=$('saludDetail'),c=CK.filter(function(x){return x[0]===st.view;})[0],rows=c?res.R[c[0]]:[],back='<button type="button" class="btn small salud-back" data-act="back">← Volver a las alertas</button>';
+    if(!c||!rows.length||res.pend[c[0]]){ box.innerHTML=back+'<div class="salud-empty">Esta alerta ya no tiene registros. Vuelve a las alertas.</div>'; return; }
+    var m=LV[c[2]];
+    box.innerHTML=back+'<div class="salud-alert '+m.c+'"><div class="salud-head"><span class="salud-lv '+m.c+'"><span aria-hidden="true">'+m.i+'</span> '+m.l+'</span>'+
+      '<h3 class="salud-title" id="saludDetailTitle" tabindex="-1">'+esc(c[3])+'</h3><span class="salud-catname">Cat. '+c[1]+' · '+esc(CATS[c[1]-1])+'</span>'+
+      '<span class="salud-count">'+rows.length+' registro'+(rows.length!==1?'s':'')+' (todos)</span></div>'+
+      '<p class="salud-why"><strong>Causa:</strong> '+esc(c[4])+'</p>'+(res.X[c[0]]?'<p class="salud-extra">'+esc(res.X[c[0]])+'</p>':'')+
+      '<p class="salud-extra">Solo lectura: abrir una ficha no cambia nada hasta que guardes tú los cambios en el editor.</p>'+
+      '<div class="salud-rows">'+rows.map(rowHtml).join('')+'</div></div>';
+  }
+  function showView(){ var d=!!st.view; $('saludOver').hidden=d; $('saludDetail').hidden=!d; }
+  function openView(ck){
+    st.back={y:window.pageYOffset||0,ck:ck}; st.view=ck;
+    try{ history.pushState({salud:ck},'',location.href); }catch(e){}
+    render(st.res);
+    try{ $('section-salud').scrollIntoView({block:'start'}); var h=$('saludDetailTitle')||$('saludDetail').querySelector('[data-act=back]'); if(h) h.focus({preventScroll:true}); }catch(e){}
+  }
+  function closeView(){
+    var b=st.back; st.view=null; render(st.res);
+    try{ if(b){ window.scrollTo(0,b.y); var x=document.querySelector('#saludList [data-act="all"][data-ck="'+b.ck+'"]'); if(x) x.focus({preventScroll:true}); } }catch(e){}
+  }
+  function render(res){
+    var alerts=[],ok=[],cat={};
+    CK.forEach(function(c){ var rows=res.R[c[0]],lv=c[2];
+      if(res.pend[c[0]]) return;
+      if(rows.length){ alerts.push({c:c,rows:rows}); var o=cat[c[1]]||(cat[c[1]]={error:{},warn:{},info:{}}); rows.forEach(function(r){o[lv][r.t+':'+r.id]=1;}); }
+      else ok.push(c); });
+    var tot={error:{a:0,r:{}},warn:{a:0,r:{}},info:{a:0,r:{}}};
+    alerts.forEach(function(a){ var t=tot[a.c[2]]; t.a++; a.rows.forEach(function(r){t.r[r.t+':'+r.id]=1;}); });
+    var cnt=function(o){return Object.keys(o).length;};
+    $('saludTiles').innerHTML=['error','warn','info'].map(function(k){ var m=LV[k],t=tot[k],nm=k==='error'?'Errores':k==='warn'?'Avisos':'Información';
+      return '<div class="salud-tile '+m.c+'"><b>'+t.a+'</b><span><span aria-hidden="true">'+m.i+'</span> '+nm+'</span><small>'+cnt(t.r)+' registro'+(cnt(t.r)!==1?'s':'')+'</small></div>'; }).join('');
+    $('saludCats').innerHTML=CATS.map(function(nm,i){ var n=i+1,o=cat[n];
+      var chips=res.pend[n===2?'c2':'-']?'<span class="salud-chip">sin evaluar</span>':['error','warn','info'].map(function(k){ var v=o?cnt(o[k]):0; return '<span class="salud-chip'+(v?' '+LV[k].c:'')+'" title="'+LV[k].l+'">'+LV[k].i+' '+v+'</span>'; }).join('');
+      return '<div class="salud-cat"><span>'+n+'. '+esc(nm)+'</span><span class="salud-chips">'+chips+'</span></div>'; }).join('');
+    var vis=alerts.filter(function(a){return st.f==='all'||st.f===a.c[2];}).sort(function(a,b){return LV[a.c[2]].o-LV[b.c[2]].o||b.rows.length-a.rows.length;});
+    $('saludList').innerHTML=vis.length?vis.map(function(a){
+      var c=a.c,id=c[0],m=LV[c[2]],op=st.open[id]===undefined?c[2]==='error':st.open[id],lim=st.lim[id]||25;
+      var rows=a.rows.slice(0,lim).map(rowHtml).join('');
+      var more=a.rows.length>lim?'<button type="button" class="btn small" data-act="all" data-ck="'+id+'">Ver los '+a.rows.length+' resultados ('+(a.rows.length-lim)+' sin mostrar aquí)</button>':'';
+      var r0=a.rows[0],acts=a.rows.length===1?'<button type="button" class="btn small primary salud-toggle" data-act="op" data-t="'+esc(r0.t)+'" data-id="'+esc(r0.id)+'">'+opLabel(r0.t)+'</button>':'<button type="button" class="btn small salud-toggle" data-act="all" data-ck="'+id+'">Ver todos ('+a.rows.length+')</button>';
+      return '<div class="salud-alert '+m.c+'"><div class="salud-head"><span class="salud-lv '+m.c+'"><span aria-hidden="true">'+m.i+'</span> '+m.l+'</span><strong class="salud-title">'+esc(c[3])+'</strong>'+
+        '<span class="salud-catname">Cat. '+c[1]+' · '+esc(CATS[c[1]-1])+'</span><span class="salud-count">'+a.rows.length+' registro'+(a.rows.length!==1?'s':'')+'</span>'+
+        acts+'<button type="button" class="btn small salud-toggle" data-act="tg" data-ck="'+id+'" aria-expanded="'+op+'" aria-controls="saludR-'+id+'">'+(op?'Ocultar registros':'Ver registros')+'</button></div>'+
+        '<p class="salud-why"><strong>Causa:</strong> '+esc(c[4])+'</p>'+(res.X[id]?'<p class="salud-extra">'+esc(res.X[id])+'</p>':'')+
+        '<div class="salud-rows" id="saludR-'+id+'"'+(op?'':' hidden')+'>'+rows+more+'</div></div>'; }).join(''):'<div class="salud-empty">'+(st.f==='all'?'Sin alertas: no se ha encontrado nada que revisar.':'No hay alertas de este nivel.')+'</div>';
+    $('saludOk').innerHTML=(ok.length?'<details><summary>Comprobaciones sin hallazgos ('+ok.length+')</summary><ul>'+ok.map(function(c){return '<li>Cat. '+c[1]+' · '+esc(c[3])+': 0 registros</li>';}).join('')+'</ul></details>':'')+
+      (res.pend.c2?'<p><strong>Sin evaluar:</strong> Cat. 2 · Dominio frágil. La lista de dominios la tiene que definir la autora (constante SALUD_DOMINIOS_FRAGILES, hoy vacía).</p>':'');
+    var e=tot.error.a,w=tot.warn.a,b=$('saludNavBadge'),a=document.querySelector('#quicknav a[data-panel="salud"]');
+    if(b){ if(e+w){ b.hidden=false; b.textContent=e+w; b.className='salud-nav-badge'+(e?'':' w'); } else b.hidden=true; }
+    if(a){ if(e+w) a.setAttribute('aria-label','Salud de datos: '+e+' error'+(e!==1?'es':'')+', '+w+' aviso'+(w!==1?'s':'')); else a.removeAttribute('aria-label'); }
+    if(st.view) renderDetail(res);
+    showView();
+  }
+
+  function run(){
+    dirty=false; clearTimeout(tm); var res=analyze(); st.res=res; st.at=new Date();
+    var t=res.tot,d=st.at,p=function(n){return (n<10?'0':'')+n;};
+    $('saludStamp').textContent='Analizado a las '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+' · '+t.obras+' obras, '+t.actrices+' actrices, '+t.ships+' ships, '+t.productoras+' productoras';
+    render(res);
+  }
+  /* FASE 4.6 · EXPORTAR INFORME. Solo lectura: construye el informe desde el resultado de analyze() y lo descarga como archivo.
+     No llama a save(), no escribe en series/movies/actresses/ships/productoras/platformLogos/checklist ni cambia el contador de cambios sin exportar. */
+  function pad2(n){return (n<10?'0':'')+n;}
+  function localIso(d){ var o=-d.getTimezoneOffset(),a=Math.abs(o);
+    return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate())+'T'+pad2(d.getHours())+':'+pad2(d.getMinutes())+':'+pad2(d.getSeconds())+(o>=0?'+':'-')+pad2(Math.floor(a/60))+':'+pad2(a%60); }
+  function buildReport(res,at){
+    var lvName={error:'error',warn:'aviso',info:'info'},alertas=[],sinHallazgos=[],sinEvaluar=[],tot={error:{a:0,r:{}},warn:{a:0,r:{}},info:{a:0,r:{}}};
+    CK.forEach(function(c){ var rows=res.R[c[0]];
+      if(res.pend[c[0]]){ sinEvaluar.push({id:c[0],categoria:{numero:c[1],nombre:CATS[c[1]-1]},titulo:c[3],motivo:'La lista de dominios frágiles (SALUD_DOMINIOS_FRAGILES) está vacía: la regla no evalúa nada.'}); return; }
+      if(!rows.length){ sinHallazgos.push({id:c[0],categoria:{numero:c[1],nombre:CATS[c[1]-1]},titulo:c[3]}); return; }
+      var t=tot[c[2]]; t.a++; rows.forEach(function(r){t.r[r.t+':'+r.id]=1;});
+      alertas.push({id:c[0],categoria:{numero:c[1],nombre:CATS[c[1]-1]},gravedad:lvName[c[2]],titulo:c[3],causa:c[4],nota:res.X[c[0]]||'',totalRegistros:rows.length,
+        registros:rows.map(function(r){return {tipoRegistro:r.t,id:r.id,nombre:r.n,clase:r.k,campos:r.d};})}); });
+    alertas.sort(function(a,b){var o={error:0,aviso:1,info:2};return o[a.gravedad]-o[b.gravedad]||a.categoria.numero-b.categoria.numero;});
+    var n=function(o){return Object.keys(o).length;};
+    return {informe:'Salud de datos · Tinta Sapphic · GL Series Calendar (admin)',version:1,generadoEn:localIso(at),generadoEnUTC:at.toISOString(),
+      nota:'Informe de solo lectura generado desde los datos cargados en el panel en el momento de exportar (se re-analiza justo antes). No modifica data.json ni index.html.',
+      resumen:{obras:res.tot.obras,actrices:res.tot.actrices,ships:res.tot.ships,productoras:res.tot.productoras,
+        errores:{alertas:tot.error.a,registros:n(tot.error.r)},avisos:{alertas:tot.warn.a,registros:n(tot.warn.r)},info:{alertas:tot.info.a,registros:n(tot.info.r)}},
+      alertas:alertas,sinHallazgos:sinHallazgos,sinEvaluar:sinEvaluar};
+  }
+  function reportMd(r){
+    var q=function(x){return String(x==null?'':x).replace(/\s+/g,' ').trim();},L=[],m=r.resumen;
+    L.push('# Informe de Salud de datos','', '- **Generado:** '+r.generadoEn,'- **Datos analizados:** '+m.obras+' obras, '+m.actrices+' actrices, '+m.ships+' ships, '+m.productoras+' productoras',
+      '- **Errores:** '+m.errores.alertas+' alertas ('+m.errores.registros+' registros)','- **Avisos:** '+m.avisos.alertas+' alertas ('+m.avisos.registros+' registros)','- **Info:** '+m.info.alertas+' alertas ('+m.info.registros+' registros)','','> '+r.nota,'');
+    var cur='';
+    r.alertas.forEach(function(a){
+      if(a.gravedad!==cur){ cur=a.gravedad; L.push('## '+(cur==='error'?'Errores':cur==='aviso'?'Avisos':'Información'),''); }
+      L.push('### '+a.titulo+' ('+a.totalRegistros+' registro'+(a.totalRegistros!==1?'s':'')+')','',
+        '- **Gravedad:** '+a.gravedad,'- **Categoría:** '+a.categoria.numero+' · '+a.categoria.nombre,'- **Causa:** '+q(a.causa));
+      if(a.nota) L.push('- **Nota:** '+q(a.nota));
+      L.push('','Registros afectados:','');
+      a.registros.forEach(function(x){ L.push('- ['+x.tipoRegistro+' `'+q(x.id)+'`] **'+q(x.nombre)+'** ('+q(x.clase)+') — '+q(x.campos)); });
+      L.push('');
+    });
+    if(!r.alertas.length) L.push('Sin alertas: no se ha encontrado nada que revisar.','');
+    if(r.sinEvaluar.length){ L.push('## Reglas sin evaluar',''); r.sinEvaluar.forEach(function(x){L.push('- Cat. '+x.categoria.numero+' · '+x.titulo+': '+x.motivo);}); L.push(''); }
+    if(r.sinHallazgos.length){ L.push('## Comprobaciones sin hallazgos',''); r.sinHallazgos.forEach(function(x){L.push('- Cat. '+x.categoria.numero+' · '+x.titulo);}); L.push(''); }
+    return L.join('\n');
+  }
+  function exportar(fmt){
+    run();   /* re-analiza justo antes: el informe siempre coincide con el diagnóstico actual en pantalla */
+    var rep=buildReport(st.res,st.at),d=st.at,name='salud-datos-'+d.getFullYear()+pad2(d.getMonth()+1)+pad2(d.getDate())+'-'+pad2(d.getHours())+pad2(d.getMinutes())+pad2(d.getSeconds());
+    var json=fmt==='json',txt=json?JSON.stringify(rep,null,2):reportMd(rep);
+    var blob=new Blob([txt],{type:json?'application/json':'text/markdown'}),a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download=name+(json?'.json':'.md'); document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){URL.revokeObjectURL(a.href);},1500);
+    $('saludStamp').textContent+=' · informe exportado ('+a.download+')';
+    return {name:a.download,text:txt,report:rep};
+  }
+  function openRec(t,id){
+    var f=function(a){return (a||[]).findIndex(function(x){return x&&String(x.id)===id;});},i=0;
+    if(t==='serie'){i=f(series);if(i>-1)openEditByCat(i);}
+    else if(t==='pelicula'){i=f(movies);if(i>-1)openEditMovie(i);}
+    else if(t==='ship'){i=f(ships);if(i>-1)openEditShip(i);}
+    else if(t==='productora'){i=f(productoras);if(i>-1)openEditProductora(i);}
+    else if(t==='plataforma'){
+      /* el formulario de logo vive en el panel «Logos de plataformas»: con Salud activo ese panel está oculto, así que se navega primero */
+      if(location.hash==='#platform-logos') editPlatformLogo(id);
+      else { location.hash='#platform-logos'; setTimeout(function(){ editPlatformLogo(id); var f=document.querySelector('.pl-edit-form'); if(f) try{ f.scrollIntoView({block:'center'}); }catch(e){} },150); }
+    }
+    else if(t==='checklist'){location.hash='#checklist';}
+    if(i===-1) $('saludStamp').textContent='Ese registro ya no existe: pulsa «Volver a analizar».';
+  }
+  var dirty=false,tm=0;
+  function marcar(){ dirty=true; clearTimeout(tm); tm=setTimeout(function(){ if(dirty) run(); },500); }
+  function init(){
+    var root=$('section-salud'); if(!root) return;
+    $('saludRescan').addEventListener('click',run);
+    $('saludExpMd').addEventListener('click',function(){exportar('md');});
+    $('saludExpJson').addEventListener('click',function(){exportar('json');});
+    $('saludPills').addEventListener('click',function(e){ var b=e.target.closest('[data-f]'); if(!b) return; st.f=b.getAttribute('data-f');
+      [].forEach.call(root.querySelectorAll('#saludPills .admin-pill'),function(x){x.classList.toggle('active',x===b);}); if(st.res) render(st.res); });
+    root.addEventListener('click',function(e){ var b=e.target.closest('[data-act]'); if(!b||!st.res) return; var act=b.getAttribute('data-act'),ck=b.getAttribute('data-ck');
+      if(act==='op'){ openRec(b.getAttribute('data-t'),b.getAttribute('data-id')); return; }
+      if(act==='all'){ openView(ck); return; }
+      if(act==='back'){ if(history.state&&history.state.salud===st.view) history.back(); else closeView(); return; }
+      if(act==='tg'){ var c=CK.filter(function(x){return x[0]===ck;})[0]; st.open[ck]=!(st.open[ck]===undefined?c[2]==='error':st.open[ck]); }
+      render(st.res); var nb=root.querySelector('[data-act="'+act+'"][data-ck="'+ck+'"]')||root.querySelector('[data-act="tg"][data-ck="'+ck+'"]'); if(nb) nb.focus(); });
+    /* 4.7 · refresco automático: save() (única vía de toda alta/edición/borrado/importación) marca el diagnóstico como obsoleto;
+       un solo recálculo diferido agrupa ráfagas de cambios y no se lanza si no hubo cambios desde el último análisis */
+    var _sv=window.save;
+    if(typeof _sv==='function') window.save=function(){ var r=_sv.apply(this,arguments); marcar(); return r; };
+    var lastHash=location.hash;
+    window.addEventListener('hashchange',function(){ lastHash=location.hash; if(location.hash==='#salud') run(); });
+    /* popstate también salta al navegar entre paneles con el menú (estado nulo): solo se cierra el detalle al retroceder DENTRO de Salud */
+    window.addEventListener('popstate',function(e){ var from=lastHash; lastHash=location.hash; if(location.hash!=='#salud'||!st.res) return; var v=e.state&&e.state.salud;
+      if(v){ st.view=v; render(st.res); } else if(st.view&&from==='#salud') closeView(); });
+    /* primer análisis en cuanto initData() haya cargado data.json: sondeo cada 500 ms (máx. 2 min) hasta que haya datos; antes eran 4 avisos fijos hasta los 6 s y una carga más lenta dejaba el panel en «0 obras» */
+    var esperas=0,iv=setInterval(function(){ if((series||[]).length+(movies||[]).length){ clearInterval(iv); run(); } else if(++esperas>240) clearInterval(iv); },500);
+    if(location.hash==='#salud') run();
+  }
+  window.saludAnalizar=analyze;
+  window.saludExportar=exportar;
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
 </script>
 </body>
 </html>
