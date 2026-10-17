@@ -189,7 +189,7 @@
       "seriesType": "serie",
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-10-05T20:43:57.371Z",
+      "updatedAt": "2026-10-17T18:19:33.512Z",
       "cast": [
         {
           "actressId": "1778667608624",
@@ -284,7 +284,410 @@
           "1778668089762"
         ]
       ],
-      "biFormat": false
+      "biFormat": false,
+      "streaming": {
+        "BB": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "BM": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "BS": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "DE": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "DO": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "GF": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "GI": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "IS": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "JM": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "LI": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "MC": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "MD": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "PA": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "SK": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "SM": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "SV": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ],
+        "UY": [
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "flatrate",
+            "providerId": 344,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viki",
+            "url": "https://www.viki.com",
+            "type": "ads",
+            "providerId": 344,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "BB": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=BB",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BM": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=BM",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "BS": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=BS",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=CA",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "DE": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=DE",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "DO": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=DO",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "GF": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=GF",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "GI": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=GI",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "IS": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=IS",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "JM": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=JM",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "LI": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=LI",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "MC": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=MC",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "MD": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=MD",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "PA": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=PA",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "SK": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=SK",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "SM": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=SM",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "SV": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=SV",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=US",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        },
+        "UY": {
+          "link": "https://www.themoviedb.org/tv/278174/watch?locale=UY",
+          "fetchedAt": "2026-10-17",
+          "status": "ok"
+        }
+      }
     },
     {
       "id": "1776889141176",
@@ -93952,5 +94355,5 @@
       ]
     }
   },
-  "exportedAt": "2026-10-17T10:14:58.518Z"
+  "exportedAt": "2026-10-17T18:19:35.332Z"
 }
