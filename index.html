@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
 // Ejecutar ANTES del CSS para evitar el flash del menú abierto en móvil
-if(window.innerWidth<=860){
+if(window.innerWidth<=899){
   document.documentElement.classList.add('is-mobile');
 }
 // Dark mode: aplicar ANTES de render para evitar flash
@@ -433,7 +433,7 @@ footer{
 
 /* 860px → ocultar buscador de escritorio, activar hamburger
    El menú sigue visible en línea hasta aquí pero más compacto */
-@media(max-width:860px){
+@media(max-width:899px){
   #navSearchWrap{display:none!important}
   .navbar-hamburger{display:flex}
   .navbar-inner{flex-wrap:nowrap;position:relative;gap:0}
@@ -3469,6 +3469,496 @@ a{color:inherit}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   F8.1 · TOKENS VISUALES DEL CALENDARIO (maqueta 7.6)
+   Solo CSS. Las variables --cal-* reutilizan las variables del sitio, así
+   que el tema oscuro se hereda (html[data-theme="dark"] cambia las base).
+   Todos los selectores van acotados a #viewCal / #recentlyAddedSection / #calInner:
+   no afectan a Series, Películas, Ships, modales ni a la cabecera.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  /* Color: alias de variables existentes (maqueta C3) */
+  --cal-surface:var(--surface);
+  --cal-surface-muted:var(--surface2);
+  --cal-surface-accent:var(--accent-soft);
+  --cal-text:var(--text);
+  --cal-text-soft:var(--muted);
+  --cal-accent:var(--accent);
+  --cal-on-accent:var(--on-accent);
+  --cal-premiere:var(--accent);              /* «Estreno · Ep. 1» (se usará en 8.4) */
+  --cal-border:var(--border);
+  --cal-border-strong:var(--border2);
+  --cal-border-hover:var(--accent2);
+  --cal-focus:var(--focus-ring);
+  --cal-error:var(--danger);                 /* sustituye al #b3261e propuesto */
+  --cal-error-bg:var(--danger-soft);
+  --cal-disabled-opacity:.45;
+  /* Tipografía: Playfair para fechas y títulos, DM Sans para el resto */
+  --cal-font-display:var(--font-display);
+  --cal-font-body:var(--font-body);
+  --cal-fs-month:30px;      /* título del mes */
+  --cal-fs-section:21px;    /* «Últimas añadidas» */
+  --cal-fs-module:17px;     /* título de módulo (se usará en 8.5) */
+  --cal-fs-date:16px;       /* fecha de celda */
+  --cal-fs-label:12.5px;
+  --cal-fs-entry:11.5px;    /* título dentro de la celda */
+  --cal-fs-meta:11px;       /* episodio, cabeceras de día: mínimo permitido */
+  --cal-fw-title:700;
+  --cal-fw-entry:600;
+  /* Espaciado: escala de 4 */
+  --cal-sp-1:4px; --cal-sp-2:8px; --cal-sp-3:12px; --cal-sp-4:16px;
+  --cal-sp-5:20px; --cal-sp-6:24px; --cal-sp-8:32px; --cal-sp-10:40px;
+  --cal-gap-cell:4px;       /* hueco entre celdas del mes, todos los viewports */
+  --cal-gap-toolbar:14px;   /* barra de herramientas -> cuadrícula */
+  --cal-gap-section:40px;   /* cuadrícula -> Últimas añadidas */
+  /* Bordes, radios y sombras */
+  --cal-border-w:1.5px;
+  --cal-border-w-today:2px;
+  --cal-radius-cell:10px;
+  --cal-radius-panel:14px;  /* paneles (se usará en 8.3/8.5) */
+  --cal-shadow-hover:0 6px 20px color-mix(in srgb,var(--accent) 14%,transparent);
+}
+
+/* ── Tipografía (≥601 px; por debajo se conserva la escala móvil actual hasta 8.4) ── */
+@media(min-width:601px){
+  #viewCal .month-display{font-size:var(--cal-fs-month)}
+  #viewCal .day-num{
+    font-family:var(--cal-font-display);font-size:var(--cal-fs-date);
+    font-weight:var(--cal-fw-title);color:var(--cal-text);
+  }
+  #viewCal .day-cell.other-month .day-num{color:var(--cal-text-soft)}
+  #viewCal .ep-pill-text{font-size:var(--cal-fs-meta)}
+  #viewCal .ep-pill-name{font-size:var(--cal-fs-entry);font-weight:var(--cal-fw-entry)}
+  #viewCal .ep-pill-ep{font-size:var(--cal-fs-meta)}
+  #recentlyAddedSection .ra-title{font-size:var(--cal-fs-section)}
+}
+
+/* ── Espaciado y separadores ── */
+#viewCal .cal-grid{gap:var(--cal-gap-cell)}
+#viewCal .cal-nav{margin-bottom:var(--cal-gap-toolbar)}
+#recentlyAddedSection{
+  margin-top:var(--cal-gap-section);
+  padding-top:var(--cal-sp-5);
+  border-top:1px solid var(--cal-border);
+}
+
+/* ── Hoy: borde de 2 px y fecha en círculo relleno ── */
+#viewCal .day-cell.today{border-width:var(--cal-border-w-today)}
+#viewCal .day-cell.today .day-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:1.7em;height:1.7em;padding:0 .25em;line-height:1;
+  border-radius:999px;background:var(--cal-accent);color:var(--cal-on-accent);
+}
+
+/* ── Pasado: se aplana por fondo y color, no por opacidad ── */
+#viewCal .day-cell.is-past .day-num{opacity:1;color:var(--cal-text-soft)}
+#viewCal .day-cell.is-past .ep-pill{opacity:1;filter:saturate(.6)}
+#viewCal .week-day-col.is-past,
+#viewCal .week-day-col.is-empty{opacity:1;background:var(--cal-surface-muted)}
+#viewCal .week-day-col.is-past .week-day-items{filter:saturate(.6)}
+#viewCal .week-day-col.is-today{background:var(--cal-surface)}
+#viewCal .week-day-col.is-empty .week-empty-day{color:var(--cal-text-soft)}
+
+/* ── Hover ── */
+#viewCal .day-cell.has-eps:hover{box-shadow:var(--cal-shadow-hover)}
+
+/* ── Activo, deshabilitado y foco de los controles del calendario ── */
+#viewCal .nav-btn:active,
+#viewCal .month-toggle-btn:active{
+  background:var(--cal-surface-accent);border-color:var(--cal-accent);
+  color:var(--cal-accent);transform:none;
+}
+#viewCal .nav-btn:disabled,
+#viewCal .month-toggle-btn:disabled{
+  opacity:var(--cal-disabled-opacity);cursor:not-allowed;pointer-events:none;transform:none;
+}
+#viewCal .strip-nav-btn:disabled{opacity:var(--cal-disabled-opacity)}
+#viewCal .nav-btn:focus-visible,
+#viewCal .month-toggle-btn:focus-visible,
+#viewCal .strip-nav-btn:focus-visible{
+  outline:2px solid var(--cal-focus);outline-offset:2px;
+}
+
+/* ── Error de carga del calendario (mismos valores, ahora por token) ── */
+#calInner .error-box{
+  background:var(--cal-error-bg);color:var(--cal-error);
+  border-color:color-mix(in srgb,var(--cal-error) 30%,transparent);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   F8.2 · CABECERA Y NAVEGACIÓN (maqueta 7.6)
+   Cortes: ≤639 móvil · 640–899 tablet · ≥900 escritorio (barra completa);
+   subtítulo y búsqueda de 248/280 px desde 1280. Todo acotado a #mainNavbar
+   y #searchOverlay. No cambia ids, eventos, destinos ni parámetros URL.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --nav-h:52px;
+  --nav-pad-x:24px;
+  --nav-max:1440px;                        /* 1392 de contenido + 2 × 24 */
+  --nav-search-w:190px;
+  --nav-btn:36px;
+  --nav-active-bg:var(--accent-soft);
+  --nav-active-text:var(--accent-hover);   /* granate */
+  --nav-panel-radius:14px;
+}
+html[data-theme="dark"]{ --nav-active-text:var(--accent); }
+@media(max-width:743px){ :root{ --nav-pad-x:16px } }
+@media(max-width:639px){ :root{ --nav-h:44px } }
+@media(min-width:1280px){ :root{ --nav-search-w:248px } }
+@media(min-width:1440px){ :root{ --nav-search-w:280px } }
+
+/* Barra: altura, márgenes laterales y ancho máximo */
+#mainNavbar .navbar-inner{height:var(--nav-h);padding:0 var(--nav-pad-x);max-width:var(--nav-max)}
+#mainNavbar .logo{white-space:nowrap}
+
+/* Botón de búsqueda (⌕) y resto de botones redondos de la cabecera */
+.navbar-search-btn{
+  display:none;width:var(--nav-btn);height:var(--nav-btn);border-radius:50%;
+  align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;
+  color:var(--muted);border:1.5px solid var(--border2);background:var(--surface);
+  transition:all .18s;
+}
+.navbar-search-btn:hover{background:var(--surface2);color:var(--accent);border-color:var(--accent2)}
+.navbar-search-btn:active{background:var(--nav-active-bg);color:var(--nav-active-text);border-color:var(--accent)}
+#mainNavbar .navbar-search-btn:focus-visible,
+#mainNavbar .dark-toggle:focus-visible,
+#mainNavbar .navbar-x-btn:focus-visible,
+#mainNavbar .navbar-hamburger:focus-visible,
+#mainNavbar .nav-link:focus-visible,
+#mainNavbar .tab:focus-visible,
+#mainNavbar .explore-item:focus-visible,
+#mainNavbar .nav-picks-item:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+
+/* Enlaces: mismo aspecto en la primera carga (el JS les pone .tab) y tras cambiar de vista */
+#mainNavbar .nav-link,
+#mainNavbar .navbar-links>.tab,
+#mainNavbar .nav-picks-wrap>.tab{
+  padding:6px 12px;border-radius:8px;border:none;cursor:pointer;
+  font-size:13px;font-weight:500;color:var(--muted);background:transparent;box-shadow:none;
+  font-family:var(--font-body);white-space:nowrap;display:flex;align-items:center;gap:3px;line-height:1;
+  transition:background .15s,color .15s;flex-shrink:0;
+}
+#mainNavbar .nav-link:hover,
+#mainNavbar .navbar-links>.tab:hover:not(.active),
+#mainNavbar .nav-picks-wrap>.tab:hover:not(.active){color:var(--text);background:var(--surface2)}
+#mainNavbar .nav-link.active,
+#mainNavbar .navbar-links>.tab.active,
+#mainNavbar .nav-picks-wrap>.tab.active{
+  color:var(--nav-active-text);font-weight:700;background:var(--nav-active-bg);box-shadow:none;
+}
+#mainNavbar .explore-col>.tab,
+#mainNavbar .nav-picks-drop>.tab{
+  display:flex;align-items:center;gap:8px;width:100%;text-align:left;
+  padding:9px 12px;font-size:13px;font-weight:600;color:var(--text);
+  background:transparent;border:none;border-radius:8px;box-shadow:none;
+  font-family:var(--font-body);cursor:pointer;white-space:nowrap;
+}
+#mainNavbar .explore-col>.tab:hover,
+#mainNavbar .nav-picks-drop>.tab:hover{background:var(--surface2);color:var(--accent)}
+#mainNavbar .explore-col>.tab.active,
+#mainNavbar .nav-picks-drop>.tab.active{background:var(--nav-active-bg);color:var(--nav-active-text)}
+#mainNavbar .explore-item.active,
+#mainNavbar .nav-picks-item.active{background:var(--nav-active-bg);color:var(--nav-active-text)}
+
+/* Búsqueda: foco coherente con el tema (antes #fff fijo) */
+#mainNavbar .navbar-search-wrap:focus-within{background:var(--surface)}
+
+/* ── Escritorio ≥900: barra completa, sin subtítulo hasta 1279 ── */
+@media(min-width:900px){
+  #mainNavbar .logo{margin-right:24px}
+  #mainNavbar .navbar-links{margin-left:0}
+  #mainNavbar #navSearchWrap{width:var(--nav-search-w);flex:0 0 var(--nav-search-w)}
+  #mainNavbar #navSearchWrap .navbar-search-inp{width:100%;min-width:0;flex:1}
+  #mainNavbar #navSearchResults{left:auto;right:0;min-width:320px}
+  #mainNavbar .navbar-right{gap:10px}
+  #mainNavbar .nav-explore-drop{min-width:580px;border-radius:var(--nav-panel-radius)}
+  #mainNavbar .nav-picks-drop{min-width:210px;border-radius:var(--nav-panel-radius)}
+  /* el JS pone html.is-mobile solo al cargar: si se gira o redimensiona, la barra no debe quedar oculta */
+  html.is-mobile #navbarLinks{display:flex!important}
+}
+@media(max-width:1279px){ #mainNavbar .logo-divider,#mainNavbar .logo-sub{display:none} }
+@media(min-width:1280px){ #mainNavbar .logo-sub{margin-right:24px} }
+
+/* ── Tablet y móvil ≤899: logo, ⌕, tema, X y ☰ ── */
+@media(max-width:899px){
+  .navbar-search-btn{display:flex}
+  #mainNavbar .navbar-right{gap:6px}
+  #mainNavbar .dark-toggle,#mainNavbar .navbar-x-btn{width:var(--nav-btn);height:var(--nav-btn)}
+  #mainNavbar .navbar-hamburger{margin-left:2px;width:40px;height:40px;align-items:center;justify-content:center;padding:0}
+  #mainNavbar .navbar-links{top:100%;max-height:calc(100vh - var(--nav-h))}
+  #mainNavbar #navSearchWrapMobile{display:none!important}   /* el buscador vive en ⌕ */
+  #mainNavbar .nav-link,#mainNavbar .navbar-links>.tab,#mainNavbar .nav-picks-wrap>.tab{padding:10px 12px;font-size:14px;border-radius:10px;justify-content:flex-start}
+  #mainNavbar .explore-col>.tab,#mainNavbar .nav-picks-drop>.tab{padding:8px 12px}
+}
+/* Tablet 640–899: panel lateral de 380 px */
+@media(min-width:640px) and (max-width:899px){
+  #mainNavbar .navbar-links{left:auto;right:0;width:380px;max-width:100%;border-left:1.5px solid var(--border2)}
+}
+
+/* ── Búsqueda ⌕: campo sobre la cabecera con «Cancelar» y resultados debajo ── */
+@media(max-width:899px){
+  #searchOverlay{padding:0;align-items:flex-start}
+  #searchOverlay .search-overlay-box{
+    display:flex;flex-wrap:wrap;align-items:center;gap:0 10px;
+    max-width:none;margin-top:0;border-radius:0 0 var(--nav-panel-radius) var(--nav-panel-radius);
+    padding:calc((var(--nav-h) - 40px)/2) var(--nav-pad-x) 14px;
+  }
+  #searchOverlay .search-overlay-box>div:first-child{flex:1 1 0;min-width:0}
+  #searchOverlay .search-overlay-input{padding-top:9px;padding-bottom:9px}
+  #searchOverlay .search-overlay-box>div:last-child{order:2;margin-top:0!important}
+  #searchOverlay .search-overlay-results{order:3;flex:0 0 100%;margin-top:12px}
+}
+/* ═══════════════════════════════════════════════════════════════
+   F8.3 · DISEÑO DE FILTROS (maqueta 7.6, familia A · Catálogo)
+   Solo CSS. Acotado a las vistas con filtros (Series, Películas, Próximamente,
+   Libros, Anime, Realities, Documentales). No cambia ids, clases, valores,
+   eventos ni el orden del marcado; los colores salen de variables del tema,
+   así que el modo oscuro se hereda. La barra lateral sigue siendo la que ya
+   existe (tarjeta fija en escritorio; en ≤900 px, el panel plegable existente).
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --flt-side-w:250px;
+  --flt-gap:16px;
+  --flt-card-radius:14px;
+  --flt-card-pad:16px;
+  --flt-ctl-h:34px;
+  --flt-ctl-radius:18px;
+  --flt-ctl-border:var(--border-control);
+  --flt-selected:var(--accent-hover);      /* granate (maqueta #8f2c56) */
+  --flt-row-h:30px;
+  --flt-disabled-opacity:.45;
+}
+html[data-theme="dark"]{ --flt-selected:var(--accent); }
+
+/* ── Barra lateral: tarjeta de 250 px, hueco de 16 px ── */
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .filters-layout{gap:var(--flt-gap)}
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .filters-sidebar{
+  width:var(--flt-side-w);top:12px;max-height:calc(100vh - 24px);
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--flt-card-radius);padding:var(--flt-card-pad);
+}
+
+/* «Limpiar filtros»: acción de texto en acento, como «Reiniciar» de la maqueta */
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-clear-all{
+  width:auto;min-height:var(--flt-row-h);margin:0 0 4px;padding:6px 0;
+  border:0;border-radius:0;background:none;text-align:left;
+  font-size:13px;font-weight:700;color:var(--accent);
+}
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-clear-all:hover{
+  background:none;color:var(--accent-hover);text-decoration:underline;border:0;
+}
+
+/* Grupos: separador de 1 px, título en versalitas */
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-group{
+  margin:0;padding:12px 0 6px;border-top:1px solid var(--border);
+}
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-title{
+  font-size:11px;font-weight:700;letter-spacing:.12em;margin-bottom:6px;color:var(--muted);
+}
+
+/* Filas: casilla de 16 px, etiqueta y contador */
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-row{
+  gap:8px;min-height:var(--flt-row-h);padding:0;font-size:13px;font-weight:500;
+}
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-row input[type=checkbox]{width:16px;height:16px}
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-row .fside-count{font-size:11.5px;color:var(--muted)}
+/* Seleccionado: etiqueta en negrita y granate */
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-row:has(input:checked) .fside-label{
+  font-weight:700;color:var(--flt-selected);
+}
+/* Foco de teclado (la casilla es lo enfocable) y deshabilitado */
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-row input[type=checkbox]:focus-visible{
+  outline:2px solid var(--focus-ring);outline-offset:2px;
+}
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-row:has(input:disabled){
+  opacity:var(--flt-disabled-opacity);cursor:not-allowed;
+}
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-row:has(input:disabled) *{cursor:not-allowed}
+
+/* «Ver todas (N)» / «Mostrar menos» */
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .fside-more{
+  display:block;margin-top:2px;padding:6px 0;font-size:13px;font-weight:700;color:var(--accent);
+}
+:is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) :is(.fside-more,.fside-clear-all):focus-visible{
+  outline:2px solid var(--focus-ring);outline-offset:2px;border-radius:6px;
+}
+
+/* ── Selectores, etiquetas y botones de la barra de herramientas ── */
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) .filter-select{
+  height:var(--flt-ctl-h);padding:0 32px 0 14px;border-radius:var(--flt-ctl-radius);
+  border:1.5px solid var(--flt-ctl-border);color:var(--muted);font-weight:500;
+}
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) .filter-select:hover{
+  border-color:var(--accent2);
+}
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) .filter-select:focus-visible{
+  outline:2px solid var(--focus-ring);outline-offset:2px;border-color:var(--accent);box-shadow:none;
+}
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) .filter-select:disabled{
+  opacity:var(--flt-disabled-opacity);cursor:not-allowed;
+}
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) .filter-label{
+  font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted);
+}
+/* «Limpiar» de la barra: mismo aspecto que un chip activo de la maqueta */
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) .filter-clear-btn{
+  height:var(--flt-ctl-h);padding:0 14px;border-radius:var(--flt-ctl-radius);
+  border:1.5px solid var(--border2);background:var(--accent-soft);color:var(--flt-selected);font-weight:700;
+}
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) .filter-clear-btn:hover{
+  background:var(--accent);border-color:var(--accent);color:var(--on-accent);
+}
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) .filter-clear-btn:focus-visible{
+  outline:2px solid var(--focus-ring);outline-offset:2px;
+}
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) .filter-clear-btn:disabled{
+  opacity:var(--flt-disabled-opacity);cursor:not-allowed;
+}
+
+/* ── Botones que abren el panel en tablet y móvil (ya existen: «Filtros» / «Más filtros») ── */
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) :is(.filter-toggle-btn,.fside-mobile-toggle){
+  min-height:var(--flt-ctl-h);border:1.5px solid var(--flt-ctl-border);border-radius:var(--flt-ctl-radius);
+  background:var(--surface);color:var(--muted);font-weight:600;
+}
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) :is(.filter-toggle-btn,.fside-mobile-toggle):is(.active,[aria-expanded="true"]){
+  background:var(--accent-soft);border-color:var(--border2);color:var(--flt-selected);
+}
+:is(#viewList,#viewMovies,#viewUpcoming,#viewBooks,#viewAnime,#viewRealities,#viewDocumentales) :is(.filter-toggle-btn,.fside-mobile-toggle):focus-visible{
+  outline:2px solid var(--focus-ring);outline-offset:2px;
+}
+
+/* ── ≤900 px: el panel plegable existente pasa a ser una tarjeta (sin cambiar cuándo se abre) ── */
+@media(max-width:900px){
+  :is(#viewList,#viewMovies,#viewAnime,#viewRealities,#viewDocumentales) .filters-sidebar{
+    width:100%;top:auto;max-height:none;margin-top:8px;
+    border:1px solid var(--border);padding:var(--flt-card-pad);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   F8.4 · DISEÑO DEL CALENDARIO (maqueta 7.6)
+   Solo presentación de lo que ya existe: vista Semana, calendario mensual
+   y detalle del día. Cortes: ≥900 escritorio · 768–899 tablet · ≤767 puntos.
+   (El corte 640–767 está pendiente en 7.6/P1: se controla con --cal-dots-max.)
+   Todo acotado a #viewCal o #modalBox .day-ep-row.
+   ═══════════════════════════════════════════════════════════════ */
+:root{--cal-cell-h:120px;--cal-cell-h-tablet:112px;--cal-cell-h-dots:48px;--cal-poster-w:36px;--cal-poster-h:54px}
+
+/* ── Controles: mes, flechas, Hoy y navegación de Semana ── */
+#viewCal .cal-nav,#viewCal .week-nav{gap:var(--cal-sp-2)}
+#viewCal .nav-btn{
+  border-width:var(--cal-border-w);border-radius:8px;padding:6px 12px;
+  box-shadow:none;white-space:nowrap;
+}
+#viewCal .nav-btn:hover{transform:none}
+#viewCal .week-nav-title{font-size:var(--cal-fs-month);line-height:1.1}
+#viewCal .week-nav{margin-bottom:var(--cal-gap-toolbar)}
+#viewCal .month-toggle-btn{border-width:var(--cal-border-w);border-radius:8px}
+
+@media(max-width:600px){#viewCal .nav-btn{white-space:normal;line-height:1.2;padding:6px 8px}}
+
+/* ── Cabeceras de día ── */
+#viewCal .day-header{font-size:var(--cal-fs-meta);padding:2px 4px;letter-spacing:.02em;text-transform:none;text-align:left}
+#viewCal .day-header .dh-s{display:none}
+
+/* ── Celdas: alto fijo, sin crecer con el contenido ── */
+#viewCal .cal-grid{grid-template-columns:repeat(7,minmax(0,1fr));min-width:0}
+#viewCal .day-cell{
+  height:var(--cal-cell-h);min-height:0;overflow:hidden;
+  padding:var(--cal-sp-1);border-radius:6px;border-width:var(--cal-border-w);
+  display:flex;flex-direction:column;align-items:stretch;min-width:0;
+}
+#viewCal .day-cell.has-eps:hover{transform:none}
+#viewCal .day-cell.today{border-width:var(--cal-border-w-today)}
+#viewCal .day-cell.other-month{opacity:1;background:none;border-color:transparent}
+#viewCal .day-cell.other-month .ep-pill,#viewCal .day-cell.other-month .cal-more{display:none}
+#viewCal .day-num{margin-bottom:0;flex:0 0 auto;align-self:flex-start;line-height:1.25}
+
+/* ── Entradas: barra de color de 3 px, sin póster, título en una línea ── */
+#viewCal .ep-pill{
+  display:block;flex:0 0 auto;min-width:0;margin:3px 0 0;padding:0 0 0 var(--cal-sp-1);
+  background:none;border-left:3px solid var(--pill-col,var(--cal-accent));border-radius:0;
+  overflow:hidden;line-height:1.15;
+}
+#viewCal .ep-pill:hover{opacity:1}
+#viewCal .ep-pill-text{color:var(--cal-text);min-width:0}
+#viewCal .ep-pill-name{font-weight:var(--cal-fw-entry);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#viewCal .ep-pill-ep{color:var(--cal-text-soft);opacity:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#viewCal .ep-pill.is-premiere .ep-pill-ep{color:var(--cal-premiere);font-weight:700}
+#viewCal .ep-pill.skipped{opacity:.6}
+#viewCal .ep-pill.is-third{display:none}
+#viewCal .cal-more{line-height:1.2;font-size:var(--cal-fs-meta);color:var(--cal-accent);margin-top:2px;font-weight:600;white-space:nowrap}
+#viewCal .cal-more-m{display:none}
+#viewCal .day-cell.is-past .ep-pill{filter:saturate(.6)}
+
+/* ── Tablet 768–899: celda más baja ── */
+@media(min-width:768px) and (max-width:899px){
+  #viewCal .day-cell{height:var(--cal-cell-h-tablet)}
+}
+
+/* ── ≤767 px: rejilla de puntos (hasta 3 y «+»); anillo = estreno. El texto sigue en el DOM para lectores de pantalla ── */
+@media(max-width:767px){
+  #viewCal .cal-wrap{overflow:visible}
+  #viewCal .cal-grid{min-width:0;gap:var(--cal-gap-cell)}
+  #viewCal .day-header .dh-s{display:inline}
+  #viewCal .day-header .dh-l{display:none}
+  #viewCal .day-header{text-align:center;padding:2px 0}
+  #viewCal .day-cell{
+    height:var(--cal-cell-h-dots);padding:3px;flex-direction:row;flex-wrap:wrap;
+    align-content:flex-start;align-items:center;gap:3px;position:relative;
+  }
+  #viewCal .day-num{flex:0 0 100%;font-size:var(--cal-fs-meta);align-self:auto;text-align:center}
+  #viewCal .day-cell.today .day-num{flex:0 0 auto;margin:0 auto;font-size:var(--cal-fs-meta)}
+  #viewCal .ep-pill,#viewCal .ep-pill.is-third{
+    display:block;width:8px;height:8px;margin:0;padding:0;border:0;border-radius:50%;
+    background:var(--pill-col);position:relative;overflow:visible;
+  }
+  #viewCal .ep-pill.is-premiere{outline:2px solid var(--cal-premiere);outline-offset:1px}
+  #viewCal .ep-pill .ep-pill-text{
+    position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;
+  }
+  #viewCal .cal-more-d{display:none}
+  #viewCal .cal-more-m{display:inline;margin:0 auto 0 0;line-height:8px}
+  #viewCal .nav-btn{min-height:44px}
+}
+
+/* ── Vista Semana ── */
+#viewCal .week-day-col{border-width:var(--cal-border-w);border-radius:var(--cal-radius-cell);min-width:0}
+#viewCal .week-day-col.is-today{border-width:var(--cal-border-w-today)}
+#viewCal .week-item{border-radius:8px;flex-direction:row;align-items:stretch;min-width:0;transform:none}
+#viewCal .week-item:hover{transform:none}
+#viewCal .week-item-poster-wrap{
+  flex:0 0 var(--cal-poster-w);width:var(--cal-poster-w);aspect-ratio:2/3;
+  align-self:flex-start;border-radius:6px 0 0 6px;
+}
+#viewCal .week-item-poster{object-fit:cover;object-position:center}
+#viewCal .week-item-today-dot{top:auto;bottom:2px;right:auto;left:50%;transform:translateX(-50%);padding:1px 4px;font-size:var(--cal-fs-meta)}
+#viewCal .week-item-body{min-width:0;flex:1;padding:var(--cal-sp-1) var(--cal-sp-2);align-self:center}
+#viewCal .week-item-name{font-size:var(--cal-fs-entry);line-height:1.25;overflow-wrap:anywhere}
+#viewCal .week-item-ep{font-size:var(--cal-fs-meta);font-weight:600;color:var(--cal-text-soft)!important}
+#viewCal .week-item.is-premiere .week-item-ep{color:var(--cal-premiere)!important;font-weight:700}
+#viewCal .week-day-items{padding:var(--cal-sp-2) var(--cal-sp-1)}
+
+/* ≥900 px: Semana como 7 filas por fecha (7.1). Mismos datos y mismo orden. */
+@media(min-width:900px){
+  #viewCal .week-days-strip{flex-direction:column;overflow:visible;gap:var(--cal-sp-2);scroll-snap-type:none}
+  #viewCal .week-day-col{flex:0 0 auto;flex-direction:row;align-items:stretch}
+  #viewCal .week-day-header{
+    flex:0 0 96px;border-bottom:0;border-right:1px solid var(--cal-border);
+    justify-content:center;padding:var(--cal-sp-2);
+  }
+  #viewCal .week-day-num{font-size:var(--cal-fs-month);font-size:24px}
+  #viewCal .week-day-items{flex-direction:row;flex-wrap:wrap;align-content:flex-start;gap:var(--cal-sp-2);padding:var(--cal-sp-2)}
+  #viewCal .week-item{flex:1 1 220px;max-width:320px}
+  #viewCal .week-empty-day{justify-content:flex-start;padding:var(--cal-sp-3) var(--cal-sp-2)}
+}
+
+/* ── Detalle del día: póster 2:3 y títulos largos sin desbordar ── */
+#modalBox .day-ep-row{min-width:0}
+#modalBox .day-ep-thumb,#modalBox .day-ep-thumb-ph{width:var(--cal-poster-w);height:var(--cal-poster-h);aspect-ratio:2/3}
+#modalBox .day-ep-name{overflow-wrap:anywhere}
+#modalBox .day-modal-date{font-family:var(--cal-font-display)}
 </style>
 </head>
 <body>
@@ -3483,7 +3973,7 @@ a{color:inherit}
     </div>
     <div class="search-overlay-results" id="searchOverlayResults"></div>
     <div style="text-align:right;margin-top:.75rem">
-      <button class="btn" onclick="closeSearch()" style="font-size:12px;padding:6px 14px">Cerrar</button>
+      <button class="btn" onclick="closeSearch()" style="font-size:12px;padding:6px 14px">Cancelar</button>
     </div>
   </div>
 </div>
@@ -3571,6 +4061,7 @@ a{color:inherit}
         <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
       </div>
       <!-- 6.8 — El selector de país de streaming ya no está en la navegación: vive en la sección «Dónde ver» de cada ficha -->
+      <button class="navbar-search-btn" id="navSearchBtn" type="button" onclick="openSearch()" title="Buscar" aria-label="Buscar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
       <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()" title="Cambiar modo oscuro/claro" aria-label="Modo oscuro"></button>
       <a class="navbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X" aria-label="X / Twitter">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -4919,7 +5410,8 @@ function renderWeekView(){
         const bg=type==='movie'?'var(--lavender-soft)':PALETTE_SOFT[si%PALETTE_SOFT.length];
         const icon=type==='movie'?'':'';
         const seasons=type==='series'?getSeasons(s):[];
-        const lbl=type==='series'?epLabel(ep,seasons):'Película';
+        const prem=type==='series'&&ep.seasonNum===1;
+        const lbl=type==='series'?(prem?'Estreno · ':'')+epLabel(ep,seasons):'Película';
         const clickFn=type==='movie'?`openMovie(${si})`:`openSeries(${si})`;
 
         const todayDot=isToday?`<div class="week-item-today-dot">HOY</div>`:'';
@@ -4929,7 +5421,7 @@ function renderWeekView(){
           ?`<img class="week-item-poster" src="${s.poster}" alt="${s.name}" onerror="this.parentElement.style.background='${bg}';this.style.display='none'">`
           :`<div class="week-item-poster-ph" style="background:${bg}">${icon}</div>`;
 
-        itemsHtml+=`<div class="week-item" onclick="${clickFn}" style="border-color:${isToday?'color-mix(in srgb,var(--accent) 30%,transparent)':''}" title="${s.name}">
+        itemsHtml+=`<div class="week-item${prem?' is-premiere':''}" onclick="${clickFn}" style="border-color:${isToday?'color-mix(in srgb,var(--accent) 30%,transparent)':''}" title="${s.name}">
           <div class="week-item-poster-wrap" style="background:${bg}">
             ${posterHtml}
             ${todayDot}
@@ -5056,39 +5548,36 @@ function renderCal(){
   const dim=new Date(y,m+1,0).getDate(), prevDim=new Date(y,m,0).getDate();
   const tStr=toStr(new Date().getFullYear(),new Date().getMonth(),new Date().getDate());
   let html='<div class="cal-wrap"><div class="cal-grid">';
-  DAYS.forEach(d=>{html+=`<div class="day-header">${d}</div>`;});
+  DAYS.forEach((d,i)=>{html+=`<div class="day-header"><span class="dh-s">${d}</span><span class="dh-l">${DAYS_SHORT[i]}</span></div>`;});
   for(let i=startDow-1;i>=0;i--)
     html+=`<div class="day-cell other-month"><div class="day-num">${prevDim-i}</div></div>`;
   for(let d=1;d<=dim;d++){
     const ds=toStr(y,m,d), eps=epMap[ds]||[], isToday=ds===tStr;
     const isPast=ds<tStr, isFuture=ds>tStr;
     html+=`<div class="day-cell${isToday?' today':''}${isPast?' is-past':''}${isFuture?' is-future':''}${eps.length?' has-eps':''}" ${eps.length?`onclick="openDay('${ds}')"`:''}><div class="day-num">${d}</div>`;
-    eps.slice(0,3).forEach(({s,ep,si,type})=>{
+    // F8.4: 3 en el DOM (el 3.º solo se ve como punto en ≤767 px); ≥768 px: 2 + «+N más». Todas siguen en openDay().
+    eps.slice(0,3).forEach(({s,ep,si,type},ix)=>{
+      const nth=ix===2?' is-third':'';
       if(type==='movie'){
-        const bg='rgba(155,130,201,0.15)';
-        const thumb=s.poster?`<img class="ep-thumb" src="${s.poster}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:'' ;
-        const ph=`<div class="ep-thumb-ph" style="${s.poster?'display:none':''}background:${bg}"></div>`;
-        html+=`<div class="ep-pill movie-pill" style="background:${bg}">
-          ${thumb}${ph}
-          <div class="ep-pill-text" style="color:var(--lavender)">
+        html+=`<div class="ep-pill movie-pill${nth}" style="--pill-col:var(--lavender)" title="${s.name}">
+          <div class="ep-pill-text">
             <div class="ep-pill-name">${s.name}</div>
             <div class="ep-pill-ep">Película</div>
           </div></div>`;
       } else {
-        const col=PALETTE[si%PALETTE.length], bg=PALETTE_SOFT[si%PALETTE_SOFT.length];
-        const thumb=s.poster?`<img class="ep-thumb" src="${s.poster}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:'' ;
-        const ph=`<div class="ep-thumb-ph" style="${s.poster?'display:none':''}background:${bg}"></div>`;
+        const col=PALETTE[si%PALETTE.length];
         const calSeasons=getSeasons(s);
         const calLbl=epLabel(ep,calSeasons);
-        html+=`<div class="ep-pill${ep.skipped?' skipped':''}" style="background:${bg}">
-          ${thumb}${ph}
-          <div class="ep-pill-text" style="color:${col}">
+        const prem=ep.seasonNum===1;
+        html+=`<div class="ep-pill${ep.skipped?' skipped':''}${prem?' is-premiere':''}${nth}" style="--pill-col:${col}" title="${s.name}">
+          <div class="ep-pill-text">
             <div class="ep-pill-name">${s.name}</div>
-            <div class="ep-pill-ep">${calLbl}${ep.skipped?' · ✗':''}</div>
+            <div class="ep-pill-ep">${prem?'Estreno · ':''}${calLbl}${ep.skipped?' · ✗':''}</div>
           </div></div>`;
       }
     });
-    if(eps.length>3) html+=`<div style="font-size:10px;color:var(--muted);padding:2px 4px">+${eps.length-3} más</div>`;
+    if(eps.length>2) html+=`<div class="cal-more cal-more-d">+${eps.length-2} más</div>`;
+    if(eps.length>3) html+=`<div class="cal-more cal-more-m" aria-hidden="true">+</div>`;
     html+='</div>';
   }
   const rem=(7-(startDow+dim)%7)%7;
