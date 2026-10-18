@@ -8333,7 +8333,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-10-05T20:49:41.263Z",
+      "updatedAt": "2026-10-18T07:31:50.377Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -8380,7 +8380,8 @@
           ],
           "premiereSchedule": []
         }
-      ]
+      ],
+      "streaming": {}
     },
     {
       "id": "1776976452500",
@@ -147760,6 +147761,10 @@
         {
           "actressId": "1778788649653",
           "character": "Liu"
+        },
+        {
+          "actressId": "tmdb_new_6337715_mvdifqq0_1",
+          "character": "Pai"
         }
       ],
       "animeSeason": "",
@@ -147773,13 +147778,15 @@
       "snLastUpdate": "",
       "snNote": "",
       "productoraId": "1779176820442",
-      "updatedAt": "2026-09-12T08:55:06.397Z",
+      "updatedAt": "2026-10-18T07:35:45.534Z",
       "wlwFocus": "pareja-principal",
       "couples": [],
-      "tmdbId": 327349,
+      "tmdbId": "327349",
       "tmdbKind": "tv",
       "tmdbRating": "",
-      "tmdbVoteCount": 0
+      "tmdbVoteCount": 0,
+      "biFormat": false,
+      "streaming": {}
     },
     {
       "id": "1786302108786",
@@ -303634,33 +303641,47 @@
     {
       "id": "1700000000142",
       "name": "Vita & Virginia",
-      "synopsis": "La socialité Vita Sackville-West y el icono literario Virginia Woolf se mueven en círculos diferentes en el Londres de los años 20. A pesar de las dificultades, las dos forjan una relación poco convencional, en el contexto de sus propios matrimonios sorprendentemente contemporáneos.\n\n(Fuente: TMDB)",
-      "year": 2018,
+      "synopsis": "Vita y Virginia son dos de las mujeres más fascinantes y progresistas de su tiempo. Ambas se ven envueltas en una agónica aventura amorosa que determina para siempre sus vidas y su trabajo.",
+      "year": 2019,
       "country": "Reino Unido",
-      "date": "2018-09-11",
-      "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
-      "trailerUrl": "https://youtu.be/wVN2L8g88_4",
-      "genres": [
-        "Romance",
-        "Drama"
+      "date": "2019-05-02",
+      "network": "Apple TV Store, Prime Video",
+      "networkUrl": "https://www.primevideo.com",
+      "watchLinks": [
+        {
+          "name": "Prime Video",
+          "url": "https://www.primevideo.com"
+        }
       ],
-      "poster": "https://m.media-amazon.com/images/M/MV5BZjU5NTg1YTItM2E0NC00MGIxLTgwZDItYTBlNmVmNmFjNjM2XkEyXkFqcGc@._V1_.jpg",
+      "trailerUrl": "https://www.youtube.com/watch?v=wVN2L8g88_4",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "poster": "https://image.tmdb.org/t/p/w500/9IoYdeNNoO5G8YFNKAdyskE9syg.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T20:32:07.541Z",
+      "updatedAt": "2026-10-18T07:43:53.130Z",
       "movieType": "film",
       "duration": 110,
-      "cast": [],
-      "tmdbId": 447034,
+      "cast": [
+        {
+          "actressId": "tmdb_new_1133349_mvdir8pm_0",
+          "character": "Virginia Woolf"
+        },
+        {
+          "actressId": "tmdb_new_59620_mvdir8pm_1",
+          "character": "Vita Sackville-West"
+        }
+      ],
+      "tmdbId": "447034",
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 225,
+      "tmdbVoteCount": 226,
       "streaming": {
         "AE": [
           {
@@ -306065,7 +306086,22 @@
           "fetchedAt": "2026-10-17",
           "status": "ok"
         }
-      }
+      },
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "biFormat": false,
+      "couples": [
+        [
+          "tmdb_new_1133349_mvdir8pm_0",
+          "tmdb_new_59620_mvdir8pm_1"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000143",
@@ -356676,31 +356712,42 @@
     },
     {
       "id": "1700000000209",
-      "name": "I Care a Lot",
-      "synopsis": "Una tutora legal designada por el tribunal defrauda a sus clientes mayores y los pone bajo su cuidado. Pero su última víctima trae consigo un bagaje inesperado.\n\n(Fuente: TMDB)",
-      "year": 2020,
+      "name": "Descuida, yo te cuido",
+      "synopsis": "Marla Grayson (Rosamund Pike) no tiene escrúpulos a la hora de beneficiarse de los demás. Después de haberse aprovechado de docenas de jubilados como tutora legal, ella y su compañera Fran (Eiza González) ven a Jennifer Peterson (Dianne Wiest) como la nueva víctima: una gallina de los huevos de oro a la que pueden desplumar fácilmente. Pero mientras intentan llevar a cabo su plan, Marla y Fran descubren que la señora Peterson no es lo que creían, y que sus actos han entorpecido la labor de un importante criminal (Peter Dinklage).",
+      "year": 2021,
       "country": "Estados Unidos",
-      "date": "2020-09-12",
-      "network": "",
+      "date": "2021-02-19",
+      "network": "Movistar Plus+, Movistar Plus+ Ficción Total",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://youtu.be/4lkCCo63nhM",
+      "trailerUrl": "https://www.youtube.com/watch?v=ktfaNRBhdyI",
       "genres": [
+        "Comedia",
+        "Crimen",
         "Drama",
         "Thriller"
       ],
-      "poster": "https://es.web.img3.acsta.net/pictures/21/04/05/18/21/1434252.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/rsXWIyHEmnMmpYMMZVtXhsqdDsl.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T08:42:02.696Z",
+      "updatedAt": "2026-10-18T07:43:22.276Z",
       "movieType": "film",
-      "duration": 118,
-      "cast": [],
-      "tmdbId": 601666,
+      "duration": 119,
+      "cast": [
+        {
+          "actressId": "tmdb_new_10882_mvdiqk84_0",
+          "character": "Marla Grayson"
+        },
+        {
+          "actressId": "tmdb_new_1222992_mvdiqk85_2",
+          "character": "Fran"
+        }
+      ],
+      "tmdbId": "601666",
       "tmdbKind": "movie",
       "tmdbRating": 6.6,
       "tmdbVoteCount": 3098,
@@ -358765,7 +358812,22 @@
           "fetchedAt": "2026-10-17",
           "status": "ok"
         }
-      }
+      },
+      "nameEn": "I Care a Lot",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "biFormat": false,
+      "couples": [
+        [
+          "tmdb_new_10882_mvdiqk84_0",
+          "tmdb_new_1222992_mvdiqk85_2"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000210",
@@ -380861,11 +380923,24 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-09-13T08:38:41.249Z",
+      "updatedAt": "2026-10-18T07:44:22.749Z",
       "movieType": "film",
       "duration": 119,
-      "cast": [],
-      "tmdbId": 762968,
+      "cast": [
+        {
+          "actressId": "tmdb_new_1721740_mvdirvdt_0",
+          "character": "Drea Torres"
+        },
+        {
+          "actressId": "tmdb_new_1903874_mvdirvdu_1",
+          "character": "Eleanor Levetan"
+        },
+        {
+          "actressId": "tmdb_new_2475409_mvdirvdv_5",
+          "character": "Gabbi Broussard"
+        }
+      ],
+      "tmdbId": "762968",
       "tmdbKind": "movie",
       "tmdbRating": 6.4,
       "tmdbVoteCount": 1050,
@@ -382707,7 +382782,21 @@
           "fetchedAt": "2026-10-17",
           "status": "ok"
         }
-      }
+      },
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "awards": [],
+      "biFormat": false,
+      "couples": [
+        [
+          "tmdb_new_1903874_mvdirvdu_1",
+          "tmdb_new_2475409_mvdirvdv_5"
+        ]
+      ],
+      "productoraId": ""
     },
     {
       "id": "1700000000266",
@@ -399761,6 +399850,7 @@
       ],
       "trailerUrl": "https://youtu.be/E_3Dw4oxaqM",
       "genres": [
+        "Ciencia Ficción",
         "Drama",
         "Romance"
       ],
@@ -399771,9 +399861,9 @@
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-14T21:16:06.141Z",
+      "updatedAt": "2026-10-18T07:45:34.256Z",
       "movieType": "film",
-      "duration": 130,
+      "duration": 148,
       "cast": [
         {
           "actressId": "1778668868889",
@@ -399781,7 +399871,7 @@
         },
         {
           "actressId": "1778668798059",
-          "character": ""
+          "character": "Kath"
         },
         {
           "actressId": "1778705135312",
@@ -399789,16 +399879,11 @@
         }
       ],
       "nameEn": "ยูเรนัส",
-      "couples": [
-        [
-          "1778668868889",
-          "1778668798059"
-        ]
-      ],
-      "tmdbId": 1167366,
+      "couples": [],
+      "tmdbId": "1167366",
       "tmdbKind": "movie",
       "tmdbRating": 8.1,
-      "tmdbVoteCount": 154,
+      "tmdbVoteCount": 155,
       "streaming": {
         "AR": [
           {
@@ -400334,7 +400419,15 @@
           "fetchedAt": "2026-10-17",
           "status": "ok"
         }
-      }
+      },
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "biFormat": false,
+      "productoraId": ""
     },
     {
       "id": "1700000000295",
@@ -430930,6 +431023,4549 @@
           "status": "ok"
         }
       }
+    },
+    {
+      "id": "1792309177562",
+      "name": "Ice Cream Fever",
+      "nameEn": "アイスクリームフィーバー",
+      "poster": "https://image.tmdb.org/t/p/w500/sGbOARkr612TjOJXw6fCWL8IZ9p.jpg",
+      "synopsis": "Cuatro mujeres de diferentes edades trabajan o acuden habitualmente a una heladería; cada una de ellas se enfrenta a sus sueños, a su timidez, a su inexperiencia en el amor y a su dolor personal, y sus vidas se entrecruzan en la heladería.",
+      "year": 2023,
+      "country": "Japón",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=IQ3jQEBdAv0",
+      "date": "2023-07-14",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "category": "movie",
+      "biFormat": false,
+      "movieType": "film",
+      "duration": 104,
+      "cast": [
+        {
+          "actressId": "tmdb_new_1576235_mvdikek6_0",
+          "character": "Natsumi Tsuneta"
+        },
+        {
+          "actressId": "tmdb_new_2024067_mvdikek6_1",
+          "character": "Saho Hashimoto"
+        },
+        {
+          "actressId": "tmdb_new_112862_mvdikek7_2",
+          "character": "Yu Takashima"
+        },
+        {
+          "actressId": "tmdb_new_3850076_mvdikek7_3",
+          "character": "Takako Kuwashima"
+        }
+      ],
+      "couples": [],
+      "productoraId": "",
+      "tmdbId": "1067298",
+      "tmdbKind": "movie",
+      "tmdbRating": 7.5,
+      "tmdbVoteCount": 5,
+      "streaming": {
+        "AU": [
+          {
+            "name": "Tubi TV",
+            "url": "",
+            "type": "ads",
+            "providerId": 73,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Tubi TV",
+            "url": "",
+            "type": "ads",
+            "providerId": 73,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "Tubi TV",
+            "url": "",
+            "type": "ads",
+            "providerId": 73,
+            "source": "tmdb"
+          }
+        ],
+        "JP": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "FOD",
+            "url": "",
+            "type": "rent",
+            "providerId": 2683,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "MX": [
+          {
+            "name": "Tubi TV",
+            "url": "",
+            "type": "ads",
+            "providerId": 73,
+            "source": "tmdb"
+          }
+        ],
+        "TW": [
+          {
+            "name": "Catchplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 159,
+            "source": "tmdb"
+          },
+          {
+            "name": "Catchplay",
+            "url": "",
+            "type": "rent",
+            "providerId": 159,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "flatrate",
+            "providerId": 9,
+            "source": "tmdb"
+          },
+          {
+            "name": "Amazon Prime Video Free",
+            "url": "",
+            "type": "ads",
+            "providerId": 613,
+            "source": "tmdb"
+          },
+          {
+            "name": "Tubi TV",
+            "url": "",
+            "type": "ads",
+            "providerId": 73,
+            "source": "tmdb"
+          },
+          {
+            "name": "Amazon MX Player",
+            "url": "",
+            "type": "ads",
+            "providerId": 1898,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AU": {
+          "link": "https://www.themoviedb.org/movie/1067298/watch?locale=AU",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/movie/1067298/watch?locale=CA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/movie/1067298/watch?locale=GB",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "JP": {
+          "link": "https://www.themoviedb.org/movie/1067298/watch?locale=JP",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MX": {
+          "link": "https://www.themoviedb.org/movie/1067298/watch?locale=MX",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "TW": {
+          "link": "https://www.themoviedb.org/movie/1067298/watch?locale=TW",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/movie/1067298/watch?locale=US",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        }
+      },
+      "updatedAt": "2026-10-18T07:39:37.562Z"
+    },
+    {
+      "id": "1792309209744",
+      "name": "Gia",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/zQcvrbRBlqKxFtKtVmHcX1P7TxM.jpg",
+      "synopsis": "Película basada en la vida de Gia Marie Carangi, una supermodelo de los años 70. Originaria de Philadelphia, Gia llega a la ciudad de Nueva York para convertirse en modelo y pronto impresiona a la agente Wilhelmina Cooper. Su extrema belleza y su carencia de prejuicios para posar desnuda la convierten en una estrella. Gia inicia una aventura amorosa con su fotógrafa, Linda, pero ella tiene novio y se encuentra insegura acerca de su bisexualidad.",
+      "year": 1998,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "",
+      "date": "1998-09-22",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "category": "movie",
+      "biFormat": false,
+      "movieType": "film",
+      "duration": 120,
+      "cast": [
+        {
+          "actressId": "tmdb_new_11701_mvdin0sq_0",
+          "character": "Gia"
+        }
+      ],
+      "couples": [],
+      "productoraId": "",
+      "tmdbId": "14533",
+      "tmdbKind": "movie",
+      "tmdbRating": 7.1,
+      "tmdbVoteCount": 856,
+      "streaming": {
+        "AD": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "AE": [
+          {
+            "name": "OSN+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 629,
+            "source": "tmdb"
+          }
+        ],
+        "AG": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "AL": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "AR": [
+          {
+            "name": "MovistarTV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 339,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "AT": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "AU": [
+          {
+            "name": "Foxtel Now",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 134,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fetch TV",
+            "url": "",
+            "type": "rent",
+            "providerId": 436,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "buy",
+            "providerId": 192,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fetch TV",
+            "url": "",
+            "type": "buy",
+            "providerId": 436,
+            "source": "tmdb"
+          }
+        ],
+        "BA": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BB": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "BG": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BH": [
+          {
+            "name": "OSN+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 629,
+            "source": "tmdb"
+          }
+        ],
+        "BO": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "BS": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BZ": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Crave",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 230,
+            "source": "tmdb"
+          },
+          {
+            "name": "Crave Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2604,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "rent",
+            "providerId": 192,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "buy",
+            "providerId": 192,
+            "source": "tmdb"
+          }
+        ],
+        "CH": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "Sky Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 130,
+            "source": "tmdb"
+          }
+        ],
+        "CL": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "MovistarTV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 339,
+            "source": "tmdb"
+          }
+        ],
+        "CO": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "MovistarTV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 339,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "CR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "CY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "CZ": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "DE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "DK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "DO": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "EC": [
+          {
+            "name": "MovistarTV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 339,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "EG": [
+          {
+            "name": "OSN+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 629,
+            "source": "tmdb"
+          }
+        ],
+        "ES": [
+          {
+            "name": "Movistar Plus+ Ficción Total",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 149,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "FI": [
+          {
+            "name": "Elisa Viihde",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 540,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "FJ": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "FR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "rent",
+            "providerId": 192,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Sky Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 130,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "buy",
+            "providerId": 192,
+            "source": "tmdb"
+          }
+        ],
+        "GG": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "GT": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "GY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "HK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "HN": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "HR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "HU": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "ID": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "IE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "Sky Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 130,
+            "source": "tmdb"
+          }
+        ],
+        "IL": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "IN": [
+          {
+            "name": "JioHotstar",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2336,
+            "source": "tmdb"
+          }
+        ],
+        "IS": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "IT": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "JM": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "JO": [
+          {
+            "name": "OSN+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 629,
+            "source": "tmdb"
+          }
+        ],
+        "KR": [
+          {
+            "name": "Wavve",
+            "url": "https://www.wavve.com",
+            "type": "rent",
+            "providerId": 356,
+            "source": "tmdb"
+          }
+        ],
+        "LB": [
+          {
+            "name": "OSN+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 629,
+            "source": "tmdb"
+          }
+        ],
+        "LC": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "LI": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "LU": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MC": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MD": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "ME": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MT": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MX": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "MY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "NI": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "NL": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "NO": [
+          {
+            "name": "Strim",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 578,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "NZ": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "OM": [
+          {
+            "name": "OSN+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 629,
+            "source": "tmdb"
+          }
+        ],
+        "PA": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PG": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PH": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PL": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PT": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "QA": [
+          {
+            "name": "OSN+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 629,
+            "source": "tmdb"
+          }
+        ],
+        "RO": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "RS": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "RU": [
+          {
+            "name": "Amediateka",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 116,
+            "source": "tmdb"
+          }
+        ],
+        "SA": [
+          {
+            "name": "OSN+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 629,
+            "source": "tmdb"
+          }
+        ],
+        "SE": [
+          {
+            "name": "Tele2 Play",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 497,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "SG": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "SI": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "SK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "SV": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TC": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TH": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TR": [
+          {
+            "name": "TV+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1904,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TT": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TW": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Google Play Movies",
+            "url": "",
+            "type": "rent",
+            "providerId": 3,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "rent",
+            "providerId": 192,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "rent",
+            "providerId": 7,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Google Play Movies",
+            "url": "",
+            "type": "buy",
+            "providerId": 3,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "buy",
+            "providerId": 192,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "buy",
+            "providerId": 7,
+            "source": "tmdb"
+          }
+        ],
+        "UY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "VE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AD": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=AD",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "AE": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=AE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "AG": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=AG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "AL": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=AL",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "AR": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=AR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "AT": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=AT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "AU": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=AU",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BA": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=BA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BB": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=BB",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BE": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=BE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BG": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=BG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BH": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=BH",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BO": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=BO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BR": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=BR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BS": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=BS",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BZ": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=BZ",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=CA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CH": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=CH",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CL": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=CL",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CO": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=CO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CR": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=CR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CY": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=CY",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CZ": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=CZ",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "DE": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=DE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "DK": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=DK",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "DO": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=DO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "EC": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=EC",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "EG": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=EG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "ES": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=ES",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "FI": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=FI",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "FJ": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=FJ",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "FR": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=FR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=GB",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GG": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=GG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GR": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=GR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GT": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=GT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GY": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=GY",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "HK": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=HK",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "HN": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=HN",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "HR": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=HR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "HU": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=HU",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "ID": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=ID",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IE": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=IE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IL": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=IL",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IN": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=IN",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IS": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=IS",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IT": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=IT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "JM": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=JM",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "JO": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=JO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "KR": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=KR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "LB": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=LB",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "LC": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=LC",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "LI": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=LI",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "LU": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=LU",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MC": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=MC",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MD": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=MD",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "ME": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=ME",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MK": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=MK",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MT": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=MT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MX": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=MX",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MY": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=MY",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "NI": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=NI",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "NL": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=NL",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "NO": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=NO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "NZ": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=NZ",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "OM": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=OM",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PA": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=PA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PE": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=PE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PG": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=PG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PH": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=PH",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PK": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=PK",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PL": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=PL",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PT": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=PT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PY": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=PY",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "QA": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=QA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "RO": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=RO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "RS": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=RS",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "RU": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=RU",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SA": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=SA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SE": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=SE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SG": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=SG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SI": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=SI",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SK": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=SK",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SV": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=SV",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "TC": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=TC",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "TH": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=TH",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "TR": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=TR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "TT": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=TT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "TW": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=TW",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=US",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "UY": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=UY",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "VE": {
+          "link": "https://www.themoviedb.org/movie/14533-gia/watch?locale=VE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        }
+      },
+      "updatedAt": "2026-10-18T07:40:31.228Z"
+    },
+    {
+      "id": "1792309249419",
+      "name": "Paradise is Burning",
+      "nameEn": "Paradiset brinner",
+      "poster": "https://image.tmdb.org/t/p/w500/xpq2i63UGVZdUUSFjraswyjfh3T.jpg",
+      "synopsis": "Tres hermanas de entre 7 y 15 años viven solas después de que su madre desapareciera durante largos periodos de tiempo. Cuando los servicios sociales exigen una reunión familiar, la hermana mayor, Laura, planea encontrar un sustituto para su madre.",
+      "year": 2023,
+      "country": "Suecia",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=i0f2tvCYmyI",
+      "date": "2023-10-27",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "category": "movie",
+      "biFormat": false,
+      "movieType": "film",
+      "duration": 108,
+      "cast": [],
+      "couples": [],
+      "productoraId": "",
+      "tmdbId": "872508",
+      "tmdbKind": "movie",
+      "tmdbRating": 5.6,
+      "tmdbVoteCount": 35,
+      "streaming": {
+        "BR": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "CH": [
+          {
+            "name": "blue TV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 150,
+            "source": "tmdb"
+          }
+        ],
+        "DK": [
+          {
+            "name": "Filmstriben",
+            "url": "",
+            "type": "free",
+            "providerId": 443,
+            "source": "tmdb"
+          },
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "rent",
+            "providerId": 426,
+            "source": "tmdb"
+          },
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "buy",
+            "providerId": 426,
+            "source": "tmdb"
+          }
+        ],
+        "ES": [
+          {
+            "name": "Filmin",
+            "url": "https://www.filmin.es",
+            "type": "flatrate",
+            "providerId": 63,
+            "source": "tmdb"
+          }
+        ],
+        "FR": [
+          {
+            "name": "Molotov TV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1967,
+            "source": "tmdb"
+          },
+          {
+            "name": "Cine+ OCS Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 685,
+            "source": "tmdb"
+          },
+          {
+            "name": "SFR Play",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 193,
+            "source": "tmdb"
+          },
+          {
+            "name": "Orange VOD",
+            "url": "",
+            "type": "rent",
+            "providerId": 61,
+            "source": "tmdb"
+          },
+          {
+            "name": "Canal VOD",
+            "url": "",
+            "type": "rent",
+            "providerId": 58,
+            "source": "tmdb"
+          },
+          {
+            "name": "Sooner",
+            "url": "",
+            "type": "rent",
+            "providerId": 389,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "VIVA by videofutur",
+            "url": "",
+            "type": "rent",
+            "providerId": 2286,
+            "source": "tmdb"
+          },
+          {
+            "name": "Premiere Max",
+            "url": "",
+            "type": "rent",
+            "providerId": 2307,
+            "source": "tmdb"
+          },
+          {
+            "name": "ARTE VOD",
+            "url": "",
+            "type": "rent",
+            "providerId": 2671,
+            "source": "tmdb"
+          },
+          {
+            "name": "Orange VOD",
+            "url": "",
+            "type": "buy",
+            "providerId": 61,
+            "source": "tmdb"
+          },
+          {
+            "name": "Canal VOD",
+            "url": "",
+            "type": "buy",
+            "providerId": 58,
+            "source": "tmdb"
+          },
+          {
+            "name": "Sooner",
+            "url": "",
+            "type": "buy",
+            "providerId": 389,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "VIVA by videofutur",
+            "url": "",
+            "type": "buy",
+            "providerId": 2286,
+            "source": "tmdb"
+          },
+          {
+            "name": "Premiere Max",
+            "url": "",
+            "type": "buy",
+            "providerId": 2307,
+            "source": "tmdb"
+          },
+          {
+            "name": "ARTE VOD",
+            "url": "",
+            "type": "buy",
+            "providerId": 2671,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "BFI Player",
+            "url": "",
+            "type": "rent",
+            "providerId": 224,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GG": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "IE": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "IFI@Home",
+            "url": "",
+            "type": "rent",
+            "providerId": 2537,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "IT": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "KR": [
+          {
+            "name": "Watcha",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 97,
+            "source": "tmdb"
+          },
+          {
+            "name": "TVING",
+            "url": "https://www.tving.com",
+            "type": "flatrate",
+            "providerId": 1883,
+            "source": "tmdb"
+          },
+          {
+            "name": "Wavve",
+            "url": "https://www.wavve.com",
+            "type": "rent",
+            "providerId": 356,
+            "source": "tmdb"
+          },
+          {
+            "name": "Wavve",
+            "url": "https://www.wavve.com",
+            "type": "buy",
+            "providerId": 356,
+            "source": "tmdb"
+          }
+        ],
+        "SE": [
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "rent",
+            "providerId": 426,
+            "source": "tmdb"
+          },
+          {
+            "name": "TriArt Play",
+            "url": "",
+            "type": "rent",
+            "providerId": 517,
+            "source": "tmdb"
+          },
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "buy",
+            "providerId": 426,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "BR": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=BR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=CA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CH": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=CH",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "DK": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=DK",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "ES": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=ES",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "FR": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=FR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=GB",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GG": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=GG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IE": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=IE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IT": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=IT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "KR": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=KR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SE": {
+          "link": "https://www.themoviedb.org/movie/872508-paradiset-brinner/watch?locale=SE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        }
+      },
+      "updatedAt": "2026-10-18T07:40:49.419Z"
+    },
+    {
+      "id": "1792309310927",
+      "name": "Shiva Baby",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/4sdqVsT6SHqtbCYZS7bhVoEftlL.jpg",
+      "synopsis": "En un funeral judío con sus padres, una estudiante universitaria se encuentra con su amante.",
+      "year": 2021,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=OSeS3nknL5I",
+      "date": "2021-03-26",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Comedia",
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "awards": [],
+      "category": "movie",
+      "biFormat": false,
+      "movieType": "film",
+      "duration": 78,
+      "cast": [
+        {
+          "actressId": "tmdb_new_1976054_mvdiopw9_0",
+          "character": "Danielle"
+        },
+        {
+          "actressId": "tmdb_new_1782117_mvdiopwa_1",
+          "character": "Maya"
+        }
+      ],
+      "couples": [],
+      "productoraId": "",
+      "tmdbId": "664300",
+      "tmdbKind": "movie",
+      "tmdbRating": 7.1,
+      "tmdbVoteCount": 831,
+      "streaming": {
+        "AG": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "AR": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "AT": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "AU": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "JustWatch TV",
+            "url": "",
+            "type": "rent",
+            "providerId": 2285,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "rent",
+            "providerId": 192,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "buy",
+            "providerId": 192,
+            "source": "tmdb"
+          }
+        ],
+        "BB": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "BE": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "BM": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "BO": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "BR": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "BS": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "BY": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "BZ": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Hoopla",
+            "url": "",
+            "type": "free",
+            "providerId": 212,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "rent",
+            "providerId": 192,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com",
+            "type": "buy",
+            "providerId": 192,
+            "source": "tmdb"
+          }
+        ],
+        "CH": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "CL": [
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "CO": [
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "CR": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "CU": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "DE": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Rakuten TV",
+            "url": "",
+            "type": "rent",
+            "providerId": 35,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Rakuten TV",
+            "url": "",
+            "type": "buy",
+            "providerId": 35,
+            "source": "tmdb"
+          }
+        ],
+        "DK": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Filmstriben",
+            "url": "",
+            "type": "free",
+            "providerId": 443,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "rent",
+            "providerId": 76,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "rent",
+            "providerId": 426,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "buy",
+            "providerId": 426,
+            "source": "tmdb"
+          }
+        ],
+        "DO": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "EC": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "ES": [
+          {
+            "name": "Filmin",
+            "url": "https://www.filmin.es",
+            "type": "flatrate",
+            "providerId": 63,
+            "source": "tmdb"
+          },
+          {
+            "name": "Filmin",
+            "url": "https://www.filmin.es",
+            "type": "rent",
+            "providerId": 63,
+            "source": "tmdb"
+          }
+        ],
+        "FI": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Cineasterna",
+            "url": "",
+            "type": "free",
+            "providerId": 496,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Blockbuster",
+            "url": "",
+            "type": "rent",
+            "providerId": 423,
+            "source": "tmdb"
+          },
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "rent",
+            "providerId": 426,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "rent",
+            "providerId": 76,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Blockbuster",
+            "url": "",
+            "type": "buy",
+            "providerId": 423,
+            "source": "tmdb"
+          },
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "buy",
+            "providerId": 426,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "buy",
+            "providerId": 76,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "FJ": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "FR": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Channel 4 Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2311,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Rakuten TV",
+            "url": "",
+            "type": "rent",
+            "providerId": 35,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Rakuten TV",
+            "url": "",
+            "type": "buy",
+            "providerId": 35,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GF": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "GG": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GI": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "GT": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "GY": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "HN": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "IE": [
+          {
+            "name": "Channel 4 Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2311,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Rakuten TV",
+            "url": "",
+            "type": "rent",
+            "providerId": 35,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Rakuten TV",
+            "url": "",
+            "type": "buy",
+            "providerId": 35,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "IN": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "IT": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Rakuten TV",
+            "url": "",
+            "type": "rent",
+            "providerId": 35,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Rakuten TV",
+            "url": "",
+            "type": "buy",
+            "providerId": 35,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "JM": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "KR": [
+          {
+            "name": "Watcha",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 97,
+            "source": "tmdb"
+          }
+        ],
+        "LC": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "LI": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "LU": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "MC": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "MT": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "MX": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "NI": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "NL": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "NO": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          }
+        ],
+        "NZ": [
+          {
+            "name": "Neon TV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 273,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "JustWatch TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2784,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "PA": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "PE": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "PF": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "PG": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "PY": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "SE": [
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "Draken Film",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 435,
+            "source": "tmdb"
+          },
+          {
+            "name": "Cineasterna",
+            "url": "",
+            "type": "free",
+            "providerId": 496,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "rent",
+            "providerId": 76,
+            "source": "tmdb"
+          },
+          {
+            "name": "Blockbuster",
+            "url": "",
+            "type": "rent",
+            "providerId": 423,
+            "source": "tmdb"
+          },
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "rent",
+            "providerId": 426,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "buy",
+            "providerId": 76,
+            "source": "tmdb"
+          },
+          {
+            "name": "Blockbuster",
+            "url": "",
+            "type": "buy",
+            "providerId": 423,
+            "source": "tmdb"
+          },
+          {
+            "name": "SF Anytime",
+            "url": "",
+            "type": "buy",
+            "providerId": 426,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "SM": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "SV": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "TC": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "TR": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          }
+        ],
+        "TT": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "UA": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "flatrate",
+            "providerId": 9,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          },
+          {
+            "name": "MUBI Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 201,
+            "source": "tmdb"
+          },
+          {
+            "name": "Kanopy",
+            "url": "",
+            "type": "free",
+            "providerId": 191,
+            "source": "tmdb"
+          },
+          {
+            "name": "Hoopla",
+            "url": "",
+            "type": "free",
+            "providerId": 212,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "rent",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "rent",
+            "providerId": 7,
+            "source": "tmdb"
+          },
+          {
+            "name": "Pijama Films",
+            "url": "",
+            "type": "rent",
+            "providerId": 2765,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "buy",
+            "providerId": 7,
+            "source": "tmdb"
+          }
+        ],
+        "UY": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "VA": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "VE": [
+          {
+            "name": "MUBI",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 11,
+            "source": "tmdb"
+          }
+        ],
+        "XK": [
+          {
+            "name": "Pijama Films",
+            "url": "",
+            "type": "rent",
+            "providerId": 2765,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AG": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=AG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "AR": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=AR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "AT": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=AT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "AU": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=AU",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BB": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=BB",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BE": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=BE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BM": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=BM",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BO": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=BO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BR": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=BR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BS": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=BS",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BY": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=BY",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "BZ": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=BZ",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=CA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CH": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=CH",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CL": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=CL",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CO": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=CO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CR": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=CR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "CU": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=CU",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "DE": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=DE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "DK": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=DK",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "DO": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=DO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "EC": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=EC",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "ES": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=ES",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "FI": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=FI",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "FJ": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=FJ",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "FR": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=FR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=GB",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GF": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=GF",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GG": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=GG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GI": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=GI",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GT": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=GT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "GY": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=GY",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "HN": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=HN",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IE": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=IE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IN": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=IN",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "IT": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=IT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "JM": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=JM",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "KR": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=KR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "LC": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=LC",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "LI": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=LI",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "LU": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=LU",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MC": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=MC",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MT": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=MT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "MX": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=MX",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "NI": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=NI",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "NL": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=NL",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "NO": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=NO",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "NZ": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=NZ",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PA": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=PA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PE": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=PE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PF": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=PF",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PG": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=PG",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "PY": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=PY",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SE": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=SE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SM": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=SM",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "SV": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=SV",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "TC": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=TC",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "TR": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=TR",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "TT": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=TT",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "UA": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=UA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=US",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "UY": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=UY",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "VA": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=VA",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "VE": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=VE",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        },
+        "XK": {
+          "link": "https://www.themoviedb.org/movie/664300-shiva-baby/watch?locale=XK",
+          "fetchedAt": "2026-10-18",
+          "status": "ok"
+        }
+      },
+      "updatedAt": "2026-10-18T07:41:50.927Z"
     }
   ],
   "actresses": [
@@ -434547,6 +439183,171 @@
       "country": "Tailandia",
       "birthdate": "1999-09-24",
       "notes": "Actriz"
+    },
+    {
+      "id": "tmdb_new_6337715_mvdifqq0_1",
+      "name": "\"Whan\" Chananan Lertpanyapornchai",
+      "tmdbPersonId": 6337715,
+      "photo": "https://image.tmdb.org/t/p/w200/dBnwB5lD1ZARoEbQzYmoXBict3S.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "Tailandia",
+      "birthdate": "",
+      "notes": "Actriz"
+    },
+    {
+      "id": "tmdb_new_1576235_mvdikek6_0",
+      "name": "Riho Yoshioka",
+      "tmdbPersonId": 1576235,
+      "photo": "https://image.tmdb.org/t/p/w200/b8DoAyEouFQJt15EtAl9ASKiJP9.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_2024067_mvdikek6_1",
+      "name": "Serena Motola",
+      "tmdbPersonId": 2024067,
+      "photo": "https://image.tmdb.org/t/p/w200/u6aEENv8kDLHQVek0UmMI3hqYnV.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_112862_mvdikek7_2",
+      "name": "Marika Matsumoto",
+      "tmdbPersonId": 112862,
+      "photo": "https://image.tmdb.org/t/p/w200/hM0T3WSnqgkTy9hAA4DAY2sUPkA.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_3850076_mvdikek7_3",
+      "name": "Utaha",
+      "tmdbPersonId": 3850076,
+      "photo": "https://image.tmdb.org/t/p/w200/pvXIfCaB9LZbrtydPJ1XfbAnAW7.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_11701_mvdin0sq_0",
+      "name": "Angelina Jolie",
+      "tmdbPersonId": 11701,
+      "photo": "https://image.tmdb.org/t/p/w200/bXNxIKcJ5cNNW8QFrBPWcfTSu9x.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_1976054_mvdiopw9_0",
+      "name": "Rachel Sennott",
+      "tmdbPersonId": 1976054,
+      "photo": "https://image.tmdb.org/t/p/w200/zvx8lP4p3gvijQLg235e3xjxrFG.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_1782117_mvdiopwa_1",
+      "name": "Molly Gordon",
+      "tmdbPersonId": 1782117,
+      "photo": "https://image.tmdb.org/t/p/w200/5sMIadZ0CIL7IUCJHnqO4ZFsdEM.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_10882_mvdiqk84_0",
+      "name": "Rosamund Pike",
+      "tmdbPersonId": 10882,
+      "photo": "https://image.tmdb.org/t/p/w200/8ObNklHDi2hjdz0ayzJFB9jtqzm.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_1222992_mvdiqk85_2",
+      "name": "Eiza González",
+      "tmdbPersonId": 1222992,
+      "photo": "https://image.tmdb.org/t/p/w200/v8CnaoJqdPwkQhJeGwgJDnESOd6.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_1133349_mvdir8pm_0",
+      "name": "Elizabeth Debicki",
+      "tmdbPersonId": 1133349,
+      "photo": "https://image.tmdb.org/t/p/w200/nTTnQVTn13Ve4ifjRY9v8kVc99w.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_59620_mvdir8pm_1",
+      "name": "Gemma Arterton",
+      "tmdbPersonId": 59620,
+      "photo": "https://image.tmdb.org/t/p/w200/Alfm28oyHNiYweNCUaMmrVjVMAT.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_1721740_mvdirvdt_0",
+      "name": "Camila Mendes",
+      "tmdbPersonId": 1721740,
+      "photo": "https://image.tmdb.org/t/p/w200/pZAWRHdJtJlDcWuQHlgIwX12s02.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_1903874_mvdirvdu_1",
+      "name": "Maya Hawke",
+      "tmdbPersonId": 1903874,
+      "photo": "https://image.tmdb.org/t/p/w200/7oihORN6wlSC9qKULcpVq7Kqv1l.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_2475409_mvdirvdv_5",
+      "name": "Talia Ryder",
+      "tmdbPersonId": 2475409,
+      "photo": "https://image.tmdb.org/t/p/w200/dq7nhIjhIFynugVdw3SmKaSY46B.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
     }
   ],
   "ships": [
@@ -435572,7 +440373,6 @@
       "actressIds": [
         "1778761762611",
         "1778761562883",
-        "1778761514836",
         "1778761797385"
       ]
     },
@@ -435795,7 +440595,9 @@
       "logo": "https://media.licdn.com/dms/image/v2/C560BAQHnwomDKsaDMQ/company-logo_200_200/company-logo_200_200/0/1631304411435?e=2147483647&v=beta&t=CBagOLQqFWlmuAUKYCAFqqX-87fy5c8TqjyFxZjmKbs",
       "website": "https://www.zense.co.th/",
       "desc": "Fundada por Varavuth Jentanakul. Productora independiente líder en Tailandia con más de 150 empleados.",
-      "actressIds": []
+      "actressIds": [
+        "tmdb_new_6337715_mvdifqq0_1"
+      ]
     }
   ],
   "listas": [
@@ -436402,6 +441204,13 @@
           "type": "serie",
           "year": 2026,
           "poster": "https://image.tmdb.org/t/p/w500/jVHDDRuW3C5X7vZg2jQxFdnGB2X.jpg"
+        },
+        {
+          "id": "third-person-6u34",
+          "title": "Third Person",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://image.tmdb.org/t/p/w500/pPYcIPEGKf2tSdLPXqEPUK9Z8PZ.jpg"
         }
       ]
     },
@@ -436513,6 +441322,20 @@
           "type": "serie",
           "year": 2023,
           "poster": "https://www.themoviedb.org/t/p/w600_and_h900_face/2vseWp2YXrh6yzZXyXUPMwezuv3.jpg"
+        },
+        {
+          "id": "duet-of-shadows-1he7",
+          "title": "Duet of Shadows",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://image.tmdb.org/t/p/w500/79Uv5tW1gua2eFYlnuCNN49EMfJ.jpg"
+        },
+        {
+          "id": "the-unseen-lqt7",
+          "title": "The Unseen",
+          "type": "serie",
+          "year": 2026,
+          "poster": "https://image.tmdb.org/t/p/w500/fiI8VPRfsk5Xe43Eq7ldZiarXND.jpg"
         }
       ]
     },
@@ -436984,5 +441807,5 @@
       ]
     }
   },
-  "exportedAt": "2026-10-17T21:58:07.590Z"
+  "exportedAt": "2026-10-18T07:47:06.377Z"
 }
