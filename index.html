@@ -398,6 +398,49 @@ details.avail-group[open]>summary::before{transform:rotate(90deg)}
 .watch-link--nolink{opacity:.55;cursor:default;border-style:dashed}
 .watch-link--nolink:hover{transform:none;box-shadow:0 2px 6px rgba(0,0,0,.06);border-color:var(--border2)}
 .avail-block .avail-list{max-height:200px}
+
+/* 6.10 — «Dónde ver» compacto (estilo MyDramaList / Letterboxd): lista estrecha de filas logo + nombre + etiquetas */
+.avail-block{padding:8px 9px 7px;border-radius:10px;background:var(--surface2);border:1px solid var(--border2)}
+.avail-head{min-width:0;display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px}
+.avail-head .modal-watch-label{margin:0;font-size:10.5px;letter-spacing:.09em;white-space:nowrap}
+.avail-head .modal-watch-label::before{display:none}
+.avail-block .avail-trigger{flex:0 1 auto;min-width:0;min-height:24px;max-width:74px;padding:1px 7px;gap:4px;font-size:11.5px;border-radius:14px;border-width:1px}
+.avail-block .avail-trigger .avail-flag{font-size:13px}
+.avail-block .avail-chev{font-size:9px}
+.avail-block .avail-panel{margin:0 0 6px;padding:6px;border-width:1px}
+.avail-block .avail-search{font-size:12.5px;padding:6px 8px}
+.avail-block .avail-list{max-height:170px}
+.avail-block .avail-opt{padding:6px 7px;gap:6px;font-size:12.5px}
+.avail-block .avail-opt-code{display:none}
+.avail-block .avail-opt-has{font-size:0;width:6px;height:6px;padding:0;border-radius:50%;background:var(--teal);flex-shrink:0}
+.avail-panel-count{font-size:10.5px;color:var(--muted);padding:0 2px 5px}
+.avail-rows{display:flex;flex-direction:column}
+.avail-row{display:flex;align-items:center;gap:8px;padding:5px 2px;min-width:0;text-decoration:none;color:var(--text);border-top:1px solid var(--border);border-radius:6px;transition:background .15s}
+.avail-rows>.avail-row:first-child,.avail-rows>.avail-row-first{border-top:none}
+a.avail-row:hover{background:var(--surface3)}
+a.avail-row:focus-visible{outline:2px solid var(--focus-ring);outline-offset:1px}
+.avail-row--nolink{cursor:default}
+.avail-row--tmdb .avail-row-name{color:var(--text)}
+.avail-row-logo{position:relative;flex:0 0 26px;width:26px;height:26px;border-radius:6px;overflow:hidden;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--muted)}
+.avail-row-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--surface);display:block}
+.avail-row-logo img.is-broken{display:none}
+.avail-row-main{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 5px}
+.avail-row-name{font-size:12px;font-weight:700;line-height:1.2;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.avail-tags{display:inline-flex;flex-wrap:wrap;gap:3px}
+.avail-tag{font-size:8.5px;font-weight:800;letter-spacing:.05em;line-height:1;padding:3px 5px;border-radius:4px;background:var(--surface3);color:var(--muted);border:1px solid var(--border2);white-space:nowrap}
+.avail-tag--sub{background:var(--teal-soft);color:var(--teal);border-color:color-mix(in srgb,var(--teal) 30%,transparent)}
+.avail-tag--free,.avail-tag--ads{background:var(--accent-soft);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 28%,transparent)}
+details.avail-more>summary{list-style:none;cursor:pointer;user-select:none;font-size:11.5px;font-weight:700;color:var(--link);padding:6px 2px 2px;border-top:1px solid var(--border)}
+details.avail-more>summary::-webkit-details-marker{display:none}
+details.avail-more[open]>summary{margin-bottom:0}
+details.avail-more[open]>summary .avail-more-open,details.avail-more:not([open])>summary .avail-more-close{display:none}
+.avail-block .avail-tmdb{display:block;margin-top:5px;padding-top:6px;border-top:1px solid var(--border);font-size:11.5px}
+.avail-block .avail-general{margin-top:6px;padding-top:6px}
+.avail-block .avail-general>summary{font-size:10px;letter-spacing:.05em;white-space:nowrap}
+.avail-block .avail-general .avail-note{font-size:11px;margin-bottom:4px}
+.avail-block .avail-empty-title{font-size:12.5px}
+.avail-block .avail-empty-txt,.avail-block .avail-note{font-size:11.5px}
+.avail-block .avail-attrib{margin-top:6px;font-size:10.5px;line-height:1.35}
 @media (max-width:600px){.avail-block{padding:10px}.avail-list{max-height:200px}.avail-trigger{flex:1 1 auto;justify-content:space-between}}
 
 /* HIDE old topbar & tabs */
@@ -3543,6 +3586,55 @@ a{color:inherit}
   border-top:1px solid var(--cal-border);
 }
 
+/* ═══ 8.6 · Últimas añadidas: pestañas Series / Películas / Anime ═══
+   Una sola fila de 6 pósters 2:3. Escritorio/899: 6 columnas fluidas (≈134 px a 899);
+   768–899: ≈112 px; 640–767: 3×2 tarjetas horizontales con póster de 44 px;
+   <640: pestañas y tira con desplazamiento horizontal. */
+#recentlyAddedSection .ra-header{margin-bottom:var(--cal-sp-3)}
+#recentlyAddedSection .ra-tabs{
+  display:flex;gap:6px;margin-bottom:var(--cal-sp-3);
+  overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+#recentlyAddedSection .ra-tabs::-webkit-scrollbar{display:none}
+#recentlyAddedSection .ra-tab{
+  flex:0 0 auto;font-family:var(--cal-font-body);font-size:var(--cal-fs-label);font-weight:var(--cal-fw-entry);
+  color:var(--cal-text-soft);background:transparent;
+  border:var(--cal-border-w) solid var(--cal-border-strong);border-radius:999px;
+  padding:6px 14px;min-height:32px;cursor:pointer;white-space:nowrap;
+  transition:background .15s,color .15s,border-color .15s;
+}
+#recentlyAddedSection .ra-tab:hover{border-color:var(--cal-border-hover);color:var(--cal-text)}
+#recentlyAddedSection .ra-tab[aria-selected="true"]{
+  background:var(--cal-accent);border-color:var(--cal-accent);color:var(--cal-on-accent);
+}
+#recentlyAddedSection .ra-tab:focus-visible{outline:2px solid var(--cal-focus);outline-offset:2px}
+#recentlyAddedSection .ra-strip{grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--cal-sp-3)}
+#recentlyAddedSection .ra-card{min-width:0}
+#recentlyAddedSection .ra-name{overflow-wrap:anywhere}
+@media(min-width:640px) and (max-width:767px){
+  #recentlyAddedSection .ra-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--cal-sp-2)}
+  #recentlyAddedSection .ra-card{
+    display:flex;align-items:center;gap:var(--cal-sp-2);
+    background:var(--cal-surface);border:var(--cal-border-w) solid var(--cal-border);
+    border-radius:var(--cal-radius-cell);padding:var(--cal-sp-2);
+  }
+  #recentlyAddedSection .ra-poster-wrap{flex:0 0 44px;width:44px;border-radius:6px;border-width:1px}
+  #recentlyAddedSection .ra-info{padding:0;min-width:0;flex:1}
+  #recentlyAddedSection .ra-new-badge{top:2px;left:2px;padding:0 4px;font-size:11px;letter-spacing:0}
+  #recentlyAddedSection .ra-flag{display:none}
+}
+@media(max-width:639px){
+  #recentlyAddedSection .ra-strip{
+    display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;
+    gap:var(--cal-sp-2);padding-bottom:var(--cal-sp-2);scrollbar-width:none;
+  }
+  #recentlyAddedSection .ra-strip::-webkit-scrollbar{display:none}
+  #recentlyAddedSection .ra-card{flex:0 0 96px;scroll-snap-align:start}
+}
+@media(prefers-reduced-motion:reduce){
+  #recentlyAddedSection .ra-card{animation:none}
+}
+
 /* ── Hoy: borde de 2 px y fecha en círculo relleno ── */
 #viewCal .day-cell.today{border-width:var(--cal-border-w-today)}
 #viewCal .day-cell.today .day-num{
@@ -4154,61 +4246,21 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
     </div>
     <!-- ── Últimas añadidas (solo calendario) ── -->
     <div id="recentlyAddedSection" class="recently-added-section" style="display:none">
-
-      <!-- Series -->
-      <div id="raSection_series" style="display:none" class="ra-category-block">
-        <div class="ra-header">
-          <div class="ra-header-left">
-            <span class="ra-icon"></span>
-            <div>
-              <div class="ra-title">Últimas series añadidas</div>
-              <div class="ra-subtitle">Series GL nuevas en la base de datos</div>
-            </div>
-          </div>
-          <div class="strip-nav" id="recentlyAddedStrip_series_nav">
-            <button class="strip-nav-btn" id="recentlyAddedStrip_series_prev" onclick="scrollStripBy('recentlyAddedStrip_series',-1)" title="Anterior" aria-label="Anterior">&#8592;</button>
-            <button class="strip-nav-btn" id="recentlyAddedStrip_series_next" onclick="scrollStripBy('recentlyAddedStrip_series',1)" title="Siguiente" aria-label="Siguiente">&#8594;</button>
+      <div class="ra-header">
+        <div class="ra-header-left">
+          <span class="ra-icon"></span>
+          <div>
+            <div class="ra-title">Últimas añadidas</div>
+            <div class="ra-subtitle">Novedades en la base de datos</div>
           </div>
         </div>
-        <div class="ra-strip" id="recentlyAddedStrip_series" onscroll="updateStripArrows('recentlyAddedStrip_series')"></div>
       </div>
-
-      <!-- Películas & Documentales -->
-      <div id="raSection_movies" style="display:none" class="ra-category-block">
-        <div class="ra-header">
-          <div class="ra-header-left">
-            <span class="ra-icon"></span>
-            <div>
-              <div class="ra-title">Últimas películas añadidas</div>
-              <div class="ra-subtitle">Películas y documentales nuevos en la base de datos</div>
-            </div>
-          </div>
-          <div class="strip-nav" id="recentlyAddedStrip_movies_nav">
-            <button class="strip-nav-btn" id="recentlyAddedStrip_movies_prev" onclick="scrollStripBy('recentlyAddedStrip_movies',-1)" title="Anterior" aria-label="Anterior">&#8592;</button>
-            <button class="strip-nav-btn" id="recentlyAddedStrip_movies_next" onclick="scrollStripBy('recentlyAddedStrip_movies',1)" title="Siguiente" aria-label="Siguiente">&#8594;</button>
-          </div>
-        </div>
-        <div class="ra-strip" id="recentlyAddedStrip_movies" onscroll="updateStripArrows('recentlyAddedStrip_movies')"></div>
+      <div class="ra-tabs" id="raTabs" role="tablist" aria-label="Últimas añadidas por categoría">
+        <button type="button" class="ra-tab" id="raTab_series" role="tab" data-cat="series" aria-selected="true" aria-controls="recentlyAddedStrip" onclick="setRaTab('series')">Series</button>
+        <button type="button" class="ra-tab" id="raTab_movies" role="tab" data-cat="movies" aria-selected="false" aria-controls="recentlyAddedStrip" tabindex="-1" onclick="setRaTab('movies')">Películas</button>
+        <button type="button" class="ra-tab" id="raTab_anime" role="tab" data-cat="anime" aria-selected="false" aria-controls="recentlyAddedStrip" tabindex="-1" onclick="setRaTab('anime')">Anime</button>
       </div>
-
-      <!-- Anime -->
-      <div id="raSection_anime" style="display:none" class="ra-category-block">
-        <div class="ra-header">
-          <div class="ra-header-left">
-            <span class="ra-icon"></span>
-            <div>
-              <div class="ra-title">Últimos animes añadidos</div>
-              <div class="ra-subtitle">Anime GL nuevo en la base de datos</div>
-            </div>
-          </div>
-          <div class="strip-nav" id="recentlyAddedStrip_anime_nav">
-            <button class="strip-nav-btn" id="recentlyAddedStrip_anime_prev" onclick="scrollStripBy('recentlyAddedStrip_anime',-1)" title="Anterior" aria-label="Anterior">&#8592;</button>
-            <button class="strip-nav-btn" id="recentlyAddedStrip_anime_next" onclick="scrollStripBy('recentlyAddedStrip_anime',1)" title="Siguiente" aria-label="Siguiente">&#8594;</button>
-          </div>
-        </div>
-        <div class="ra-strip" id="recentlyAddedStrip_anime" onscroll="updateStripArrows('recentlyAddedStrip_anime')"></div>
-      </div>
-
+      <div class="ra-strip" id="recentlyAddedStrip" role="tabpanel"></div>
     </div>
   </div>
   <div id="viewList" style="display:none"></div>
@@ -4737,35 +4789,50 @@ function availTmdbLinkFor(item,code){
   }
   return '';
 }
-// Si la URL de la plataforma es solo su portada (genérica) o no existe, NO se abre la portada: se envía a la página de TMDB/JustWatch de ese país.
-function availChipHtml(e,tmdbUrl){
-  const canon=canonicalizePlatform(e.name), logo=getPlatformLogo(canon);
-  const inner=logo
-    ?`<img class="watch-link-logo" src="${availEsc(logo)}" alt="${availEsc(canon)}" onerror="this.outerHTML='<span class=watch-link-text>${availEsc(canon)}</span>'">`
-    :`<span class="watch-link-text">${availEsc(e.name)}</span>`;
-  const cls='watch-link'+(logo?'':' watch-link--txt');
-  const ui=_wlUrlInfo(e.url), deep=!!e.url&&!ui.generic;
-  if(deep) return `<a class="${cls}" href="${availEsc(e.url)}" target="_blank" rel="noopener" title="${availEsc('Abrir en '+e.name)}">${inner}</a>`;
-  if(tmdbUrl) return `<a class="${cls} watch-link--tmdb" href="${availEsc(tmdbUrl)}" target="_blank" rel="noopener" title="${availEsc(e.name+' · sin enlace directo: abre TMDB/JustWatch')}">${inner}</a>`;
-  return `<span class="${cls} watch-link--nolink" title="${availEsc(e.name+' · sin enlace')}">${inner}</span>`;
+// Fila compacta (logo + nombre + etiquetas de tipo). Si la URL de la plataforma es solo su portada (genérica) o no existe, NO se abre la portada: se envía a la página de TMDB/JustWatch de ese país.
+const AVAIL_TAGS={flatrate:['SUB','Suscripción'],free:['GRATIS','Gratis'],ads:['ADS','Con anuncios'],rent:['ALQ.','Alquiler'],buy:['COMPRA','Compra']};
+function availRowHtml(name,url,types,tmdbUrl,first,forceLink){
+  const canon=canonicalizePlatform(name)||name, logo=getPlatformLogo(canon), ini=availEsc(String(canon).trim().charAt(0).toUpperCase());
+  const logoHtml=`<span class="avail-row-logo" aria-hidden="true">${ini}${logo?`<img src="${availEsc(logo)}" alt="" loading="lazy" onerror="this.classList.add('is-broken')">`:''}</span>`;
+  const tags=(types||[]).filter(t=>AVAIL_TAGS[t]).map(t=>`<span class="avail-tag avail-tag--${t}" title="${availEsc(AVAIL_TAGS[t][1])}">${AVAIL_TAGS[t][0]}</span>`).join('');
+  const inner=`${logoHtml}<span class="avail-row-main"><span class="avail-row-name">${availEsc(canon)}</span>${tags?`<span class="avail-tags">${tags}</span>`:''}</span>`;
+  const f=first?' avail-row-first':'';
+  const ui=_wlUrlInfo(url), deep=!!url&&(forceLink||!ui.generic);
+  if(deep) return `<a class="avail-row${f}" href="${availEsc(url)}" target="_blank" rel="noopener" title="${availEsc('Abrir en '+canon)}">${inner}</a>`;
+  if(tmdbUrl) return `<a class="avail-row avail-row--tmdb${f}" href="${availEsc(tmdbUrl)}" target="_blank" rel="noopener" title="${availEsc(canon+' · sin enlace directo: abre TMDB/JustWatch')}">${inner}</a>`;
+  return `<span class="avail-row avail-row--nolink${f}" title="${availEsc(canon+' · sin enlace')}">${inner}</span>`;
+}
+// Una fila por plataforma (si está como suscripción Y alquiler, una sola fila con las dos etiquetas), ordenadas por tipo.
+function availRowsHtml(item,code,tmdb){
+  const rank={flatrate:0,free:1,ads:2,rent:3,buy:4,'':5}, map=new Map();
+  availEntries(item,code).forEach(e=>{
+    const k=_wlNameKey(canonicalizePlatform(e.name)||e.name);
+    if(!map.has(k)) map.set(k,{name:e.name,url:'',types:[],rank:9});
+    const r=map.get(k); if(e.type&&r.types.indexOf(e.type)===-1) r.types.push(e.type);
+    if(!r.url&&e.url&&!_wlUrlInfo(e.url).generic) r.url=e.url;
+    r.rank=Math.min(r.rank,rank[e.type]);
+  });
+  const rows=Array.from(map.values()).sort((a,b)=>a.rank-b.rank);
+  rows.forEach(r=>r.types.sort((a,b)=>rank[a]-rank[b]));
+  const LIM=5, vis=rows.slice(0,LIM), more=rows.slice(LIM);
+  let h=`<div class="avail-rows">${vis.map((r,i)=>availRowHtml(r.name,r.url,r.types,tmdb,i===0)).join('')}</div>`;
+  if(more.length) h+=`<details class="avail-more"><summary><span class="avail-more-open">Ver ${more.length} más</span><span class="avail-more-close">Ver menos</span></summary><div class="avail-rows">${more.map(r=>availRowHtml(r.name,r.url,r.types,tmdb,false)).join('')}</div></details>`;
+  return h;
 }
 function availBodyHtml(item,code){
   const entries=availEntries(item,code), meta=(_wlIsObj(item&&item.streamingMeta)&&_wlIsObj(item.streamingMeta[code]))?item.streamingMeta[code]:null;
   const tmdb=availTmdbLinkFor(item,code), who=availWho(code);
-  const tmdbHtml=tmdb?`<a class="avail-tmdb" href="${availEsc(tmdb)}" target="_blank" rel="noopener">Ver disponibilidad en TMDB / JustWatch ↗</a>`:'';
+  const tmdbHtml=tmdb?`<a class="avail-tmdb" href="${availEsc(tmdb)}" target="_blank" rel="noopener" title="Ver disponibilidad en TMDB / JustWatch">Todos los servicios ↗</a>`:'';
   if(!entries.length){
     const others=availRegionsWithData(item).filter(c=>c!==code);
     const hint=others.length?`<div class="avail-empty-more">Sí consta en: ${others.slice(0,12).map(c=>`<button type="button" class="avail-pick" data-avail-pick="${availEsc(c)}">${availWho(c)}</button>`).join(' ')}${others.length>12?` y ${others.length-12} más (usa el buscador)`:''}</div>`:'';
-    return `<div class="avail-empty" role="status"><div class="avail-empty-title">Sin disponibilidad registrada en ${who}</div><div class="avail-empty-txt">Todavía no hay plataformas guardadas para esta producción en este país. Eso no significa que no esté disponible: solo que no consta en TINTA.</div>${hint}${tmdbHtml}</div>`;
+    return `<div class="avail-empty" role="status"><div class="avail-empty-title">Sin disponibilidad en ${who}</div><div class="avail-empty-txt">Todavía no hay plataformas guardadas para este país. Eso no significa que no esté disponible: solo que no consta en TINTA.</div>${hint}${tmdbHtml}</div>`;
   }
-  let first=true;
-  const groups=AVAIL_TYPES.map(([t,label])=>{ const g=entries.filter(e=>e.type===t); if(!g.length) return ''; const op=first?' open':''; first=false;
-    return `<details class="avail-group"${op}><summary class="avail-group-title">${label} <span class="avail-group-n">${g.length}</span></summary><div class="watch-links">${g.map(x=>availChipHtml(x,tmdb)).join('')}</div></details>`; }).join('');
   const stale=(meta&&meta.status==='review')?'<div class="avail-note">⚠ Dato pendiente de revisión: puede estar desactualizado.</div>':'';
-  return `${groups}${stale}${tmdbHtml}`;
+  return `${availRowsHtml(item,code,tmdb)}${stale}${tmdbHtml}`;
 }
 function availOptionHtml(c,active){
-  return `<li class="avail-opt${active?' is-active':''}${c.has?' has-data':''}" role="option" tabindex="-1" aria-selected="${active?'true':'false'}" data-avail-code="${c.code}" data-s="${availEsc(c.search)}"><span class="avail-flag" aria-hidden="true">${c.flag}</span><span class="avail-opt-name">${availEsc(c.name)}</span><span class="avail-opt-code" title="Código regional de TMDB">${c.code}</span>${c.has?'<span class="avail-opt-has">con datos</span>':''}<span class="avail-check" aria-hidden="true">✓</span></li>`;
+  return `<li class="avail-opt${active?' is-active':''}${c.has?' has-data':''}" role="option" tabindex="-1" aria-selected="${active?'true':'false'}" data-avail-code="${c.code}" data-s="${availEsc(c.search)}"><span class="avail-flag" aria-hidden="true">${c.flag}</span><span class="avail-opt-name">${availEsc(c.name)}</span><span class="avail-opt-code" title="Código regional de TMDB">${c.code}</span>${c.has?'<span class="avail-opt-has" title="Con datos">con datos</span>':''}<span class="avail-check" aria-hidden="true">✓</span></li>`;
 }
 // Devuelve '' si la ficha no tiene datos regionales PERO sí enlaces antiguos (watchLinks/network/networkUrl): conserva su «Dónde ver» de siempre.
 // Si la ficha no tiene NINGÚN dato de disponibilidad, pinta la sección con el selector y el estado vacío (nunca se queda en blanco).
@@ -4783,23 +4850,22 @@ function buildAvailabilitySection(item,label,accentColor,accentBorder){
   const general=gl.length?`<details class="avail-general avail-group"><summary class="avail-group-title">Enlaces generales <span class="avail-group-n">${gl.length}</span></summary><div class="avail-note">Sin país asignado: no se sabe en qué países funcionan.</div>${buildWatchLinksHtml(gl,accentColor,accentBorder,'',true)}</details>`:'';
   const bs=accentBorder?` style="border-color:${accentBorder}"`:'', ls=accentColor?` style="color:${accentColor}"`:'';
   return `<section class="modal-watch-block avail-block" id="${id}" aria-label="Disponibilidad por país"${bs}>
-    <div class="modal-watch-label"${ls}>Dónde ver</div>
-    <div class="avail-picker">
-      <span class="avail-picker-lbl" id="${id}-lbl">País</span>
-      <button type="button" class="avail-trigger" id="${id}-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="${id}-panel" aria-labelledby="${id}-lbl ${id}-btn" data-avail-toggle="${id}"><span class="avail-flag" aria-hidden="true">${cur.flag}</span><span class="avail-trigger-name">${availEsc(cur.name)}</span><span class="avail-chev" aria-hidden="true">▾</span></button>
-      <span class="avail-count">${withData.length} ${withData.length===1?'país con datos':'países con datos'}</span>
-      <div class="avail-panel" id="${id}-panel" hidden>
-        <input type="search" class="avail-search" id="${id}-q" placeholder="Buscar país…" aria-label="Buscar país" autocomplete="off" spellcheck="false">
-        <ul class="avail-list" role="listbox" aria-label="Países">
-          <li class="avail-grp" role="presentation" data-avail-grp="has"${withData.length?'':' hidden'}>Con disponibilidad registrada</li>${withData.map(c=>availOptionHtml(c,c.code===code)).join('')}
-          <li class="avail-grp" role="presentation" data-avail-grp="rest">Resto de países</li>${rest.map(c=>availOptionHtml(c,c.code===code)).join('')}
-        </ul>
-        <div class="avail-nores" hidden>Ningún país coincide con tu búsqueda.</div>
-      </div>
+    <div class="avail-head">
+      <div class="modal-watch-label" id="${id}-lbl"${ls}>Dónde ver</div>
+      <button type="button" class="avail-trigger" id="${id}-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="${id}-panel" aria-labelledby="${id}-lbl ${id}-btn" title="Cambiar de país · ${withData.length} ${withData.length===1?'país con datos':'países con datos'}" data-avail-toggle="${id}"><span class="avail-flag" aria-hidden="true">${cur.flag}</span><span class="avail-trigger-name">${availEsc(cur.name)}</span><span class="avail-chev" aria-hidden="true">▾</span></button>
+    </div>
+    <div class="avail-panel" id="${id}-panel" hidden>
+      <div class="avail-panel-count">${withData.length} ${withData.length===1?'país con datos':'países con datos'}</div>
+      <input type="search" class="avail-search" id="${id}-q" placeholder="Buscar país…" aria-label="Buscar país" autocomplete="off" spellcheck="false">
+      <ul class="avail-list" role="listbox" aria-label="Países">
+        <li class="avail-grp" role="presentation" data-avail-grp="has"${withData.length?'':' hidden'}>Con disponibilidad registrada</li>${withData.map(c=>availOptionHtml(c,c.code===code)).join('')}
+        <li class="avail-grp" role="presentation" data-avail-grp="rest">Resto de países</li>${rest.map(c=>availOptionHtml(c,c.code===code)).join('')}
+      </ul>
+      <div class="avail-nores" hidden>Ningún país coincide con tu búsqueda.</div>
     </div>
     <div class="avail-body" id="${id}-body" aria-live="polite">${availBodyHtml(item,code)}</div>
     ${general}
-    <div class="avail-attrib">Datos de streaming: <a href="https://www.justwatch.com/" target="_blank" rel="noopener">JustWatch</a> vía TMDB.</div>
+    <div class="avail-attrib">Datos: <a href="https://www.justwatch.com/" target="_blank" rel="noopener">JustWatch</a> vía TMDB.</div>
   </section>`;
 }
 function availApplyFilter(id,q){
@@ -4929,29 +4995,34 @@ function splitPlatformNames(raw){
     .map(p=>normalizePlatformName(p))
     .filter(p=>p && p!=='Ver serie' && p!=='Ver película' && p.length>1);
 }
+// Productora / compañía de la ficha (lookup por productoraId). La plataforma NO es la productora: la plataforma de emisión ya está en «Dónde ver».
+function productoraOf(item){
+  const id=item&&item.productoraId; if(!id) return null;
+  return (state.productoras||[]).find(p=>p&&String(p.id)===String(id)&&p.name)||null;
+}
+function productoraDetailsLineHtml(item){
+  const pr=productoraOf(item); if(!pr) return '';
+  return `<div class="details-line"><span class="details-line-key">Productora</span><span class="details-line-val"><span onclick="closeModal();openProductoraFromSearch('${availEsc(pr.id)}')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Ver productora">${availEsc(pr.name)}</span></span></div>`;
+}
+
 function buildWatchLinksHtml(links, accentColor, accentBorder, accentSoft, bare){
   if(!links||!links.length) return '';
-  // Expand each link: split comma/slash names into individual platform buttons
+  // Expand each link: split comma/slash names into individual platform rows
   const expanded=[];
   links.forEach(l=>{
     const parts=splitPlatformNames(l.name);
     if(!parts.length){ expanded.push(l); return; }
     parts.forEach(name=>expanded.push({name, url:l.url}));
   });
-  const btns=expanded.map(l=>{
-    const canonName=canonicalizePlatform(l.name);
-    const logo=getPlatformLogo(canonName);
-    const inner=logo
-      ?`<img class="watch-link-logo" src="${logo}" alt="${canonName}" onerror="this.outerHTML='<span class=watch-link-text>${canonName}</span>'">`
-      :`<span class="watch-link-text">${canonName}</span>`;
-    const style=accentBorder?`style="border-color:${accentBorder}"`:'';
-    return `<a class="watch-link" href="${l.url}" target="_blank" rel="noopener" title="${l.name}" ${style}>${inner}</a>`;
+  const rows=expanded.map((l,i)=>{
+    const canon=canonicalizePlatform(l.name)||l.name, url=availSafeUrl(l.url);
+    return availRowHtml(canon,url,[],'',i===0,true);   // enlace directo aunque sea la portada de la plataforma (comportamiento clásico de este bloque)
   }).join('');
-  if(bare) return `<div class="watch-links">${btns}</div>`;   // 6.8: solo botones (sin bloque ni etiqueta)
+  if(bare) return `<div class="avail-rows">${rows}</div>`;   // 6.8: solo filas (sin bloque ni etiqueta)
   const labelStyle=accentColor?`style="color:${accentColor}"`:'';
-  return `<div class="modal-watch-block"${accentBorder?` style="border-color:${accentBorder}"`:''}>
-    <div class="modal-watch-label" ${labelStyle}>Dónde ver</div>
-    <div class="watch-links">${btns}</div>
+  return `<div class="modal-watch-block avail-block"${accentBorder?` style="border-color:${accentBorder}"`:''}>
+    <div class="avail-head"><div class="modal-watch-label" ${labelStyle}>Dónde ver</div></div>
+    <div class="avail-rows">${rows}</div>
   </div>`;
 }
 
@@ -6872,7 +6943,7 @@ function openSeries(si){
   let metaGrid='';
   if(s.year) metaGrid+=`<div class="meta-item"><div class="meta-key">Año</div><div class="meta-val">${s.year}</div></div>`;
   if(s.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(s.country)} ${s.country}</div></div>`;
-  if(s.network) metaGrid+=`<div class="meta-item"><div class="meta-key">Estreno / Cadena</div><div class="meta-val">${s.network}</div></div>`;
+  if(productoraOf(s)) metaGrid+=`<div class="meta-item"><div class="meta-key">Productora</div><div class="meta-val">${availEsc(productoraOf(s).name)}</div></div>`;
   metaGrid+=`<div class="meta-item"><div class="meta-key">Episodios</div><div class="meta-val">${totalEps}${seasons.length>1?` (${seasons.length}T)`:''}</div></div>`;
   const durInfo=getSeriesDurationInfo(s);
   if(durInfo.epDuration){
@@ -6953,7 +7024,7 @@ function openSeries(si){
   detailsLines+=`<div class="details-line"><span class="details-line-key">Título</span><span class="details-line-val">${s.name}</span></div>`;
   if(s.nameEn) detailsLines+=`<div class="details-line"><span class="details-line-key">Título original</span><span class="details-line-val">${s.nameEn}</span></div>`;
   if(s.country) detailsLines+=`<div class="details-line"><span class="details-line-key">País</span><span class="details-line-val">${countryFlag(s.country)} ${s.country}</span></div>`;
-  if(s.network) detailsLines+=`<div class="details-line"><span class="details-line-key">Estreno / Cadena</span><span class="details-line-val">${s.network}</span></div>`;
+  detailsLines+=productoraDetailsLineHtml(s);
   if(firstEpDate) detailsLines+=`<div class="details-line"><span class="details-line-key">Fecha de inicio</span><span class="details-line-val">${fmtDate(firstEpDate)}</span></div>`;
   if(isFinished&&lastEpDate) detailsLines+=`<div class="details-line"><span class="details-line-key">Fecha final</span><span class="details-line-val">${fmtDate(lastEpDate)}</span></div>`;
   detailsLines+=`<div class="details-line"><span class="details-line-key">Episodios</span><span class="details-line-val">${totalEps}${seasons.length>1?` (${seasons.length}T)`:''}</span></div>`;
@@ -7067,7 +7138,7 @@ function openUpcoming(si){
   detailsLines+=`<div class="details-line"><span class="details-line-key">Título</span><span class="details-line-val">${s.name}</span></div>`;
   if(s.nameEn) detailsLines+=`<div class="details-line"><span class="details-line-key">Título original</span><span class="details-line-val">${s.nameEn}</span></div>`;
   if(s.country) detailsLines+=`<div class="details-line"><span class="details-line-key">País</span><span class="details-line-val">${countryFlag(s.country)} ${s.country}</span></div>`;
-  if(s.network) detailsLines+=`<div class="details-line"><span class="details-line-key">Estreno / Cadena</span><span class="details-line-val">${s.network}</span></div>`;
+  detailsLines+=productoraDetailsLineHtml(s);
   if(s.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año aprox.</span><span class="details-line-val">${s.year}</span></div>`;
   if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
   detailsLines+=`<div class="details-line"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();seriesFilters.wlwFocus=['${seriesWlwFocus(s)}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(s))}</span></span></div>`;
@@ -7170,7 +7241,7 @@ function openMovie(mi){
   detailsLines+=`<div class="details-line"><span class="details-line-key">Título</span><span class="details-line-val">${mv.name}</span></div>`;
   if(mv.nameEn) detailsLines+=`<div class="details-line"><span class="details-line-key">Título original</span><span class="details-line-val">${mv.nameEn}</span></div>`;
   if(mv.country) detailsLines+=`<div class="details-line"><span class="details-line-key">País</span><span class="details-line-val">${countryFlag(mv.country)} ${mv.country}</span></div>`;
-  if(mv.network) detailsLines+=`<div class="details-line"><span class="details-line-key">Estreno / Cadena</span><span class="details-line-val">${mv.network}</span></div>`;
+  detailsLines+=productoraDetailsLineHtml(mv);
   if(mv.date) detailsLines+=`<div class="details-line"><span class="details-line-key">Estreno</span><span class="details-line-val">${fmtDate(mv.date)}</span></div>`;
   else if(mv.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año</span><span class="details-line-val">${mv.year}</span></div>`;
   if(mv.duration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${fmtDuration(mv.duration)}</span></div>`;
@@ -8031,7 +8102,7 @@ function openRichDetail(item, opts){
   detailsLines+=`<div class="details-line"><span class="details-line-key">Título</span><span class="details-line-val">${item.name}</span></div>`;
   if(item.nameEn) detailsLines+=`<div class="details-line"><span class="details-line-key">Título original</span><span class="details-line-val">${item.nameEn}</span></div>`;
   if(item.country) detailsLines+=`<div class="details-line"><span class="details-line-key">País</span><span class="details-line-val">${countryFlag(item.country)} ${item.country}</span></div>`;
-  if(item.network) detailsLines+=`<div class="details-line"><span class="details-line-key">Estreno / Cadena</span><span class="details-line-val">${item.network}</span></div>`;
+  detailsLines+=productoraDetailsLineHtml(item);
   const startDate=item.startDate||item.date||'';
   if(startDate) detailsLines+=`<div class="details-line"><span class="details-line-key">Fecha de inicio</span><span class="details-line-val">${fmtDate(startDate)}</span></div>`;
   else if(item.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año</span><span class="details-line-val">${item.year}</span></div>`;
@@ -9449,14 +9520,30 @@ function toggleChangelog(){
   }
 }
 
-// ── Recently Added strip ──────────────────────────────────────────────────────
-// Items whose numeric ID (timestamp ms) is within the last 45 days are "new".
-// Uses the same countryFlag() helper already defined above.
+// ── Recently Added (pestañas Series / Películas / Anime) ─────────────────────
+// Fuente de la fecha de alta: `id` interpretado como epoch en ms.
+// Se acepta solo si es numérico, >= 2026-01-01T00:00Z (excluye los id sintéticos
+// 17000000000xx de datos heredados) y <= la hora actual. Sin fecha válida el título
+// no entra en el módulo (no se usa updatedAt ni la fecha actual para rellenar).
+// «New»: id con <= 14 días.
+const RA_MIN_TS=Date.UTC(2026,0,1);
+const RA_NEW_DAYS=14;
+const RA_LIMIT=6;
+let raActiveTab='series';
+let raData={series:[],movies:[],anime:[]};
+
+function _raValidTs(id){
+  const str=String(id==null?'':id).trim();
+  if(!/^\d{13}$/.test(str)) return 0;
+  const ts=Number(str);
+  return (ts>=RA_MIN_TS && ts<=Date.now()) ? ts : 0;
+}
+
 function getRecentlyAdded(){
-  // Returns {series, movies, anime} each sorted by id desc, up to 6 each
+  // Devuelve {series, movies, anime}: orden id desc, desempate por nombre, 6 por categoría
   const seriesItems=[], moviesItems=[], animeItems=[];
   (state.series||[]).forEach((s,si)=>{
-    const ts=parseInt(s.id||0,10);
+    const ts=_raValidTs(s.id);
     if(!ts) return;
     const isAnime=s.category==='anime';
     const bucket=isAnime?animeItems:seriesItems;
@@ -9464,19 +9551,25 @@ function getRecentlyAdded(){
       type:s.upcoming?'upcoming':(isAnime?'anime':'serie'),si,isMovie:false,srcType:'series'});
   });
   (state.movies||[]).forEach((mv,mi)=>{
-    const ts=parseInt(mv.id||0,10);
+    const ts=_raValidTs(mv.id);
     if(!ts) return;
     const isAnime=mv.category==='anime';
     const bucket=isAnime?animeItems:moviesItems;
     bucket.push({ts,id:mv.id,name:mv.name,poster:mv.poster,country:mv.country,
       type:isAnime?'anime':'movie',si:mi,isMovie:!isAnime,srcType:'movie'});
   });
-  const sortSlice=arr=>[...arr].sort((a,b)=>b.ts-a.ts).slice(0,6);
+  const sortSlice=arr=>[...arr]
+    .sort((a,b)=>(b.ts-a.ts)||String(a.name||'').localeCompare(String(b.name||''),'es'))
+    .slice(0,RA_LIMIT);
   return {series:sortSlice(seriesItems), movies:sortSlice(moviesItems), anime:sortSlice(animeItems)};
 }
 
+function _raEsc(v){
+  return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 function _buildRaCards(items){
-  const newCutoff=Date.now()-(14*24*60*60*1000);
+  const newCutoff=Date.now()-(RA_NEW_DAYS*24*60*60*1000);
   return items.map((item,i)=>{
     const isNew=item.ts>=newCutoff;
     const typeLabel=item.type==='movie'?'Película':item.type==='anime'?'Anime':item.type==='upcoming'?'Próximamente':'Serie';
@@ -9490,7 +9583,7 @@ function _buildRaCards(items){
       :(item.type==='anime'?`openAnimeDetail('${item.srcType==='movie'?'movie':'series'}','${item.id}')`
       :`openSeries(${item.si})`));
     const posterEl=item.poster
-      ?`<img class="ra-poster" src="${item.poster}" alt="${item.name}" onerror="this.parentElement.style.background='var(--surface2)';this.style.display='none'" loading="lazy">`
+      ?`<img class="ra-poster" src="${item.poster}" alt="${_raEsc(item.name)}" onerror="this.parentElement.style.background='var(--surface2)';this.style.display='none'" loading="lazy">`
       :`<div class="ra-poster-ph"></div>`;
     return `<div class="ra-card" onclick="${clickFn}" style="animation-delay:${i*0.06}s">
       <div class="ra-poster-wrap">
@@ -9506,34 +9599,62 @@ function _buildRaCards(items){
   }).join('');
 }
 
+function setRaTab(cat,focus){
+  if(!raData[cat]||!raData[cat].length) return;
+  raActiveTab=cat;
+  document.querySelectorAll('#raTabs .ra-tab').forEach(btn=>{
+    const on=btn.dataset.cat===cat;
+    btn.setAttribute('aria-selected',on?'true':'false');
+    btn.tabIndex=on?0:-1;
+    btn.classList.toggle('active',on);
+    if(on){
+      if(focus) btn.focus();
+      // en móvil la barra de pestañas se desplaza: mantener visible la activa
+      try{ btn.scrollIntoView({block:'nearest',inline:'nearest'}); }catch(e){}
+    }
+  });
+  const strip=document.getElementById('recentlyAddedStrip');
+  if(strip){
+    strip.setAttribute('aria-labelledby','raTab_'+cat);
+    strip.scrollLeft=0;
+    strip.innerHTML=_buildRaCards(raData[cat]);
+  }
+}
+
+function _raTabKeys(e){
+  const keys=['ArrowLeft','ArrowRight','Home','End'];
+  if(!keys.includes(e.key)) return;
+  const avail=[...document.querySelectorAll('#raTabs .ra-tab')].filter(b=>b.style.display!=='none');
+  const cur=avail.findIndex(b=>b.dataset.cat===raActiveTab);
+  if(cur<0) return;
+  let nx=cur;
+  if(e.key==='ArrowLeft') nx=(cur-1+avail.length)%avail.length;
+  else if(e.key==='ArrowRight') nx=(cur+1)%avail.length;
+  else if(e.key==='Home') nx=0;
+  else nx=avail.length-1;
+  e.preventDefault();
+  setRaTab(avail[nx].dataset.cat,true);
+}
+
 function renderRecentlyAdded(){
   const section=document.getElementById('recentlyAddedSection');
   if(!section) return;
-  const {series,movies,anime}=getRecentlyAdded();
-  const any=series.length||movies.length||anime.length;
-  if(!any){ section.style.display='none'; return; }
+  raData=getRecentlyAdded();
+  const cats=['series','movies','anime'];
+  const withData=cats.filter(c=>raData[c].length);
+  if(!withData.length){ section.style.display='none'; return; }
   section.style.display='';
-
-  const secSeries=document.getElementById('raSection_series');
-  const secMovies=document.getElementById('raSection_movies');
-  const secAnime=document.getElementById('raSection_anime');
-
-  if(series.length){
-    secSeries.style.display='';
-    document.getElementById('recentlyAddedStrip_series').innerHTML=_buildRaCards(series);
-  } else { secSeries.style.display='none'; }
-
-  if(movies.length){
-    secMovies.style.display='';
-    document.getElementById('recentlyAddedStrip_movies').innerHTML=_buildRaCards(movies);
-  } else { secMovies.style.display='none'; }
-
-  if(anime.length){
-    secAnime.style.display='';
-    document.getElementById('recentlyAddedStrip_anime').innerHTML=_buildRaCards(anime);
-  } else { secAnime.style.display='none'; }
-
-  setTimeout(updateAllStripArrows, 30);
+  // pestañas: solo las categorías con datos reales
+  cats.forEach(c=>{
+    const t=document.getElementById('raTab_'+c);
+    if(t) t.style.display=raData[c].length?'':'none';
+  });
+  const tabs=document.getElementById('raTabs');
+  if(tabs){
+    tabs.style.display=withData.length>1?'':'none';
+    if(!tabs._raKeys){ tabs.addEventListener('keydown',_raTabKeys); tabs._raKeys=true; }
+  }
+  setRaTab(withData.includes(raActiveTab)?raActiveTab:withData[0]);
 }
 
 // Init both on load
@@ -10711,7 +10832,7 @@ function updateStripArrows(stripId){
   next.disabled = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 4;
 }
 function updateAllStripArrows(){
-  ['weekDaysStrip','recentlyAddedStrip_series','recentlyAddedStrip_movies','recentlyAddedStrip_anime']
+  ['weekDaysStrip']
     .forEach(id=>updateStripArrows(id));
 }
 (function(){
