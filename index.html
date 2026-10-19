@@ -696,6 +696,22 @@ footer{
 .month-toggle-btn.open{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
 .month-cal-wrap{margin-top:12px;display:none}
 .month-cal-wrap.open{display:block}
+/* Exportar a calendario (.ics): comparte fila con «Ver calendario mensual» */
+.cal-actions-row{display:flex;gap:8px;align-items:stretch}
+.cal-actions-row .month-toggle-btn{width:auto;flex:1 1 auto;min-width:0}
+.cal-actions-row .ics-export-btn{flex:0 0 auto;padding:10px 16px;white-space:nowrap}
+@media(max-width:480px){.cal-actions-row{flex-direction:column}}
+.ics-group-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:1.1rem 0 6px}
+.ics-summary{margin:1.25rem 0 .75rem;padding:10px 14px;border-radius:12px;background:var(--surface2);border:1.5px solid var(--border);font-size:13px;color:var(--text)}
+.ics-notes{margin:0 0 1.25rem;padding:0 0 0 1.1rem;font-size:12px;color:var(--muted);line-height:1.6}
+.ics-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:1rem}
+/* Google Calendar: enlace en las filas del modal del día */
+.gcal-link{display:inline-block;margin-top:2px;padding:4px 0;font-size:12px;font-weight:600;color:var(--accent);text-decoration:none}
+.gcal-link:hover{text-decoration:underline}
+.gcal-miss{display:block;margin-top:2px;font-size:12px;color:var(--muted);font-style:italic}
+.btn.ics-download-btn{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.ics-download-btn:hover{background:var(--accent-strong);color:var(--on-accent);border-color:var(--accent-strong)}
+.btn.ics-download-btn:disabled,.btn.ics-download-btn:disabled:hover{opacity:.45;cursor:not-allowed;transform:none;background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 /* ═══ CONTAINER ═══ */
 .container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem;position:relative;z-index:1}
 /* FIX: body es flex (línea ~332) y sus hijos tienen flex-shrink:0, así que .container
@@ -4395,9 +4411,12 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
     </div>
     <!-- Month calendar toggle -->
     <div class="month-toggle-wrap">
+      <div class="cal-actions-row">
       <button class="month-toggle-btn" id="monthToggleBtn" onclick="toggleMonthCal()">
         <span id="monthToggleIcon"></span> Ver calendario mensual
       </button>
+      <button type="button" class="month-toggle-btn ics-export-btn" id="icsExportBtn" onclick="openIcsExport()" title="Exportar estrenos a tu calendario (.ics)">Exportar .ics</button>
+      </div>
       <div class="month-cal-wrap" id="monthCalWrap">
         <div class="cal-nav" style="margin-top:1rem">
           <div class="month-display" id="monthDisplay" onclick="openMonthPicker()" title="Haz clic para saltar a otro mes" style="cursor:pointer;user-select:none"></div>
@@ -6856,7 +6875,7 @@ function openDay(dateStr){
       const thumb=s.poster?`<img class="day-ep-thumb" src="${s.poster}" alt="" onerror="this.outerHTML='<div class=day-ep-thumb-ph></div>'">`:`<div class="day-ep-thumb-ph"></div>`;
       html+=`<div class="day-ep-row" onclick="openMovie(${si})">${thumb}
         <div class="day-ep-info"><div class="day-ep-name" style="color:var(--lavender)">${s.name}</div>
-        <div class="day-ep-meta">Película${s.network?' · '+s.network:''}</div></div>
+        <div class="day-ep-meta">Película${s.network?' · '+s.network:''}</div>${gcalLinkHtml({s,ep,type})}</div>
         <span class="chip ${st}">${lb}</span></div>`;
     } else {
       const col=PALETTE[si%PALETTE.length], isPast=new Date(ep.date+'T12:00:00')<=now;
@@ -6866,14 +6885,194 @@ function openDay(dateStr){
       const dayLbl=epLabel(ep,daySeasons);
       html+=`<div class="day-ep-row" onclick="openSeries(${si})">${thumb}
         <div class="day-ep-info"><div class="day-ep-name" style="color:${col}">${s.name}</div>
-        <div class="day-ep-meta">${dayLbl}${s.network?' · '+s.network:''}</div></div>
+        <div class="day-ep-meta">${dayLbl}${s.network?' · '+s.network:''}</div>${gcalLinkHtml({s,ep,type})}</div>
         <span class="chip ${st}">${lb}</span></div>`;
     }
   });
+  html+=`<div class="day-modal-sub gcal-note" style="margin:.75rem 0 0">«Añadir a Google Calendar» solo abre Google Calendar en una pestaña nueva con el evento ya rellenado; no hay sincronización automática.</div>`;
   html+=`<div style="display:flex;justify-content:flex-end;margin-top:1rem"><button class="btn" onclick="closeModal()">Cerrar</button></div></div>`;
   document.getElementById('modalBox').innerHTML=html;
   document.getElementById('modalBg').classList.add('open');
   _pushModal('modal');
+}
+
+// ═══ EXPORTAR A CALENDARIO (.ics) ═══
+// Solo usa datos que ya existen (genEps(), películas con fecha). data.json no tiene hora ni zona horaria,
+// así que todo son eventos de DÍA COMPLETO (DTSTART/DTEND;VALUE=DATE): no llevan TZID ni «Z» y se muestran
+// en el mismo día natural en cualquier zona. Mismas reglas de inclusión que getEpMap() (sin skipped ni upcoming).
+let icsOpts={content:'all',range:'month'};
+let _icsData=null;
+
+// 'YYYY-MM-DD' estricto y existente (rechaza 2026-02-30, '2026-1-5', fechas con hora…) → {y,mo,d,dt(UTC)} | null
+function icsParseDate(str){
+  const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(typeof str==='string'?str:'');
+  if(!m) return null;
+  const y=+m[1], mo=+m[2], d=+m[3], dt=new Date(Date.UTC(y,mo-1,d));
+  return (dt.getUTCFullYear()===y&&dt.getUTCMonth()===mo-1&&dt.getUTCDate()===d)?{y,mo,d,dt}:null;
+}
+function icsYmd(dt){return String(dt.getUTCFullYear()).padStart(4,'0')+String(dt.getUTCMonth()+1).padStart(2,'0')+String(dt.getUTCDate()).padStart(2,'0')}
+
+// Valor TEXT de RFC 5545: \ ; , y saltos de línea escapados; sin caracteres de control
+function icsText(s){
+  return String(s).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,'')
+    .replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r\n|\r|\n/g,'\\n');
+}
+// Plegado RFC 5545 §3.1: ≤75 OCTETOS por línea (no caracteres) y sin partir secuencias UTF-8;
+// las líneas de continuación empiezan con un espacio, que también cuenta.
+function icsFold(line){
+  const enc=new TextEncoder();
+  if(enc.encode(line).length<=75) return line;
+  const out=[]; let cur='', bytes=0, limit=75;
+  for(const ch of line){
+    const b=enc.encode(ch).length;
+    if(bytes+b>limit){ out.push(cur); cur=''; bytes=0; limit=74; }
+    cur+=ch; bytes+=b;
+  }
+  out.push(cur);
+  return out.join('\r\n ');
+}
+// Varios episodios el mismo día (estreno doble, «todo de golpe») → un único evento «Ep. 1–2»
+function icsEpLabel(eps,seasons){
+  if(eps.length===1) return epLabel(eps[0],seasons);
+  if(!eps.every((e,i)=>!i||e.num===eps[i-1].num+1)) return eps.map(e=>epLabel(e,seasons)).join(', ');
+  const a=eps[0], b=eps[eps.length-1];
+  return a.season===b.season?epLabel(a,seasons)+'–'+b.seasonNum:epLabel(a,seasons)+' – '+epLabel(b,seasons);
+}
+
+// Todos los eventos exportables + recuento de lo que se omite por falta de datos
+function icsCollect(){
+  const events=[], omit={upcoming:0,series:0,movies:0,eps:0};
+  const base=/^https?:$/.test(location.protocol)?location.origin+location.pathname:'';
+  const hasId=id=>id!=null&&id!=='';
+  const key=(id,i)=>String(hasId(id)?id:'i'+i).replace(/[^\w.-]/g,'_');
+  const info=o=>[o.network?'Plataforma: '+o.network:'',o.country?'País: '+o.country:''].filter(Boolean).join('\n');
+  state.series.forEach((s,si)=>{
+    if(s.upcoming){ omit.upcoming++; return; }
+    const all=genEps(s), seasons=getSeasons(s), byDate={};
+    if(!all.length) omit.series++;
+    all.forEach(ep=>{
+      if(ep.skipped) return;
+      if(!icsParseDate(ep.date)){ omit.eps++; return; }
+      (byDate[ep.date]=byDate[ep.date]||[]).push(ep);
+    });
+    Object.keys(byDate).forEach(date=>{
+      const eps=byDate[date], prem=eps.some(e=>e.seasonNum===1);
+      events.push({date,premiere:prem,
+        summary:`${s.name} · ${prem?'Estreno · ':''}${icsEpLabel(eps,seasons)}`,
+        uid:`ts-serie-${key(s.id,si)}-e${eps[0].num}@tintasapphic`,
+        desc:info(s), url:base&&hasId(s.id)?base+'#serie-'+encodeURIComponent(s.id):''});
+    });
+  });
+  state.movies.forEach((mv,mi)=>{
+    if(!icsParseDate(mv.date)){ omit.movies++; return; }
+    events.push({date:mv.date,premiere:true,
+      summary:`${mv.name} · Estreno · Película`,
+      uid:`ts-pelicula-${key(mv.id,mi)}@tintasapphic`,
+      desc:info(mv), url:base&&hasId(mv.id)?base+'#pelicula-'+encodeURIComponent(mv.id):''});
+  });
+  events.sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:a.summary.localeCompare(b.summary,'es'));
+  return {events,omit};
+}
+
+// Texto .ics (CRLF). DTSTAMP es la única marca horaria: el instante real de la generación, en UTC.
+function icsBuild(events,now){
+  const stamp=now.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z');
+  const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//TINTA Sapphic//Calendario de estrenos//ES','CALSCALE:GREGORIAN','X-WR-CALNAME:TINTA Sapphic'];
+  events.forEach(e=>{
+    const p=icsParseDate(e.date), next=new Date(Date.UTC(p.y,p.mo-1,p.d+1));   // DTEND de día completo es exclusivo
+    L.push('BEGIN:VEVENT','UID:'+e.uid,'DTSTAMP:'+stamp,
+      'DTSTART;VALUE=DATE:'+icsYmd(p.dt),'DTEND;VALUE=DATE:'+icsYmd(next),'SUMMARY:'+icsText(e.summary));
+    if(e.desc) L.push('DESCRIPTION:'+icsText(e.desc));
+    if(e.url) L.push('URL:'+e.url);
+    L.push('TRANSP:TRANSPARENT','END:VEVENT');
+  });
+  L.push('END:VCALENDAR');
+  return L.map(icsFold).join('\r\n')+'\r\n';
+}
+
+function _icsToday(){const n=new Date();return toStr(n.getFullYear(),n.getMonth(),n.getDate())}
+function _icsMonthKey(){return toStr(state.year,state.month,1).slice(0,7)}
+function _icsSelect(){
+  const today=_icsToday(), ym=_icsMonthKey();
+  return _icsData.events.filter(e=>(icsOpts.content==='all'||e.premiere)&&(icsOpts.range==='month'?e.date.slice(0,7)===ym:e.date>=today));
+}
+function icsSetOpt(k,v){ icsOpts[k]=v; _icsRefresh(); }
+function _icsRefresh(){
+  document.querySelectorAll('#modalBox [data-ics]').forEach(b=>{
+    const [k,v]=b.dataset.ics.split(':'), on=icsOpts[k]===v;
+    b.classList.toggle('active',on); b.setAttribute('aria-pressed',on);
+  });
+  const n=_icsSelect().length;
+  document.getElementById('icsSummary').innerHTML=n?`<strong>${n}</strong> evento${n!==1?'s':''} de día completo`:'No hay eventos con fecha en este periodo.';
+  document.getElementById('icsDownloadBtn').disabled=!n;
+}
+function openIcsExport(){
+  _icsData=icsCollect();
+  const o=_icsData.omit, notes=[];
+  if(o.upcoming) notes.push(`Próximamente: ${o.upcoming} ${o.upcoming===1?'serie':'series'} sin fecha de emisión confirmada (no incluidas).`);
+  if(o.movies) notes.push(`${o.movies} ${o.movies===1?'película':'películas'} sin fecha válida (no incluidas).`);
+  if(o.series) notes.push(`${o.series} ${o.series===1?'serie':'series'} sin fechas de emisión (no incluidas).`);
+  if(o.eps) notes.push(`${o.eps} ${o.eps===1?'episodio':'episodios'} con fecha no válida (no incluidos).`);
+  notes.push('Eventos de día completo: los datos no incluyen hora ni zona horaria, así que no se añade ninguna.');
+  document.getElementById('modalBox').innerHTML=`<div class="modal-body">
+    <div class="day-modal-date">Exportar a tu calendario</div>
+    <div class="day-modal-sub">Archivo .ics para Google Calendar, Apple Calendario, Outlook y similares.</div>
+    <div class="ics-group-label">Contenido</div>
+    <div class="ships-subtabs" role="group" aria-label="Contenido a exportar">
+      <button type="button" class="ships-subtab" data-ics="content:all" onclick="icsSetOpt('content','all')">Estrenos y episodios</button>
+      <button type="button" class="ships-subtab" data-ics="content:premieres" onclick="icsSetOpt('content','premieres')">Solo estrenos</button>
+    </div>
+    <div class="ics-group-label">Periodo</div>
+    <div class="ships-subtabs" role="group" aria-label="Periodo a exportar">
+      <button type="button" class="ships-subtab" data-ics="range:month" onclick="icsSetOpt('range','month')">${MONTHS[state.month]} ${state.year}</button>
+      <button type="button" class="ships-subtab" data-ics="range:future" onclick="icsSetOpt('range','future')">Desde hoy (${fmtDate(_icsToday())})</button>
+    </div>
+    <div class="ics-summary" id="icsSummary" aria-live="polite"></div>
+    <ul class="ics-notes">${notes.map(t=>`<li>${t}</li>`).join('')}</ul>
+    <div class="ics-actions"><button class="btn" onclick="closeModal()">Cerrar</button><button class="btn ics-download-btn" id="icsDownloadBtn" onclick="icsDownload()">Descargar .ics</button></div>
+  </div>`;
+  document.getElementById('modalBg').classList.add('open');
+  _pushModal('modal');
+  _icsRefresh();
+}
+function icsDownload(){
+  const evs=_icsSelect();
+  if(!evs.length) return;
+  const part=icsOpts.range==='month'?_icsMonthKey():'desde-'+_icsToday();
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([icsBuild(evs,new Date())],{type:'text/calendar;charset=utf-8'}));
+  a.download=`tinta-sapphic-${icsOpts.content==='all'?'calendario':'estrenos'}-${part}.ics`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+// ═══ GOOGLE CALENDAR: enlace de creación de evento ═══
+// Solo construye una URL (action=TEMPLATE) que abre Google Calendar con el evento rellenado; no sincroniza nada.
+// Evento de día completo (sin hora ni zona: los datos no las tienen). Reutiliza las reglas de fecha/título del .ics.
+function gcalEnc(s){ return encodeURIComponent(s).replace(/[!'()*]/g,c=>'%'+c.charCodeAt(0).toString(16).toUpperCase()); }
+// it = {s, ep, type} (como en getEpMap) → {url} | {error} (sin URL si faltan datos necesarios)
+function gcalBuild(it){
+  const s=it&&it.s, ep=it&&it.ep, isMovie=it&&it.type==='movie';
+  if(!s||typeof s.name!=='string'||!s.name.trim()) return {error:'falta el título'};
+  const p=icsParseDate(ep&&ep.date);
+  if(!p) return {error:'falta una fecha válida'};
+  if(!isMovie&&!Number.isFinite(ep.seasonNum)) return {error:'falta el número de episodio'};
+  const clean=t=>String(t).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,'');
+  const title=clean(isMovie?`${s.name} · Estreno · Película`:`${s.name} · ${ep.seasonNum===1?'Estreno · ':''}${epLabel(ep,getSeasons(s))}`).replace(/\s*[\r\n]+\s*/g,' ');
+  const base=/^https?:$/.test(location.protocol)?location.origin+location.pathname:'';
+  const hasId=s.id!=null&&s.id!=='';
+  const details=[s.network?'Plataforma: '+s.network:'',s.country?'País: '+s.country:'',base&&hasId?base+(isMovie?'#pelicula-':'#serie-')+encodeURIComponent(s.id):''].filter(Boolean).join('\n');
+  const end=new Date(Date.UTC(p.y,p.mo-1,p.d+1));
+  try{
+    const q=['action=TEMPLATE','text='+gcalEnc(title),'dates='+icsYmd(p.dt)+'/'+icsYmd(end)];
+    if(details) q.push('details='+gcalEnc(clean(details)));
+    return {url:'https://calendar.google.com/calendar/render?'+q.join('&')};
+  }catch(e){ return {error:'el título contiene caracteres no válidos'}; }
+}
+function gcalLinkHtml(it){
+  const r=gcalBuild(it);
+  return r.url?`<a class="gcal-link" href="${r.url.replace(/&/g,'&amp;')}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Añadir a Google Calendar</a>`
+              :`<span class="gcal-miss">No se puede crear el evento: ${r.error}.</span>`;
 }
 
 function daysUntil(dateStr){
