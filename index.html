@@ -2352,6 +2352,103 @@ html[data-theme="dark"] .detail-hero:not(.ship-hero) .detail-poster,html[data-th
 .btn:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent);transform:translateY(-1px)}
 .actress-show-more-btn{display:block;margin:.85rem auto 0}
 
+/* ═══ Maqueta «Actrices y Productoras» (pestañas, fichas y tarjetas) ═══ */
+.ax-shell{padding:0}
+.ax-tabs{display:flex;gap:28px;border-bottom:1px solid var(--border);margin-bottom:26px}
+.ax-tabs button{font:inherit;font-size:15px;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:0 0 12px;cursor:pointer}
+.ax-tabs button:hover{color:var(--text)}
+.ax-tabs button.on{color:var(--accent);border-color:var(--accent);font-weight:600}
+.ax-hd{margin-bottom:22px}
+.ax-hd h1{font-family:var(--font-display);font-weight:600;font-size:clamp(30px,5vw,44px);line-height:1;margin:0;color:var(--text)}
+.ax-hd p{margin:8px 0 0;color:var(--muted);font-size:15px}
+.ax-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;align-items:start}
+.ax-side{position:sticky;top:74px;max-height:calc(100vh - 90px);overflow-y:auto;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;min-width:0}
+.ax-side-hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}
+.ax-side-hd h2{font-family:var(--font-display);font-size:22px;font-weight:600;margin:0;color:var(--text)}
+.ax-link{font:inherit;background:none;border:0;padding:0;color:var(--accent);font-size:13px;cursor:pointer;text-decoration:none}
+.ax-link:hover{text-decoration:underline}
+.ax-input{font:inherit;font-size:14px;color:var(--text);background:var(--surface2);border:1px solid var(--border2);border-radius:12px;padding:0 14px;min-height:44px}
+.ax-input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.ax-side .ax-input{width:100%;margin-bottom:22px}
+.ax-side-title{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ax-check{display:flex;align-items:center;gap:10px;min-height:36px;font-size:14px;cursor:pointer;color:var(--text)}
+.ax-check input{accent-color:var(--accent);width:18px;height:18px;margin:0;flex:none}
+.ax-cc2{width:24px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;flex:none}
+.ax-check-n{flex:1;min-width:0;overflow-wrap:anywhere}
+.ax-check-c{color:var(--muted);font-size:13px}
+.ax-more{display:inline-block;margin-top:10px;font-size:14px;font-weight:500}
+.ax-bar{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;margin-bottom:24px}
+.ax-count{color:var(--muted);font-size:14px}
+.ax-bar-r{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.ax-switch{display:flex;align-items:center;gap:10px;font-size:14px;min-height:44px;cursor:pointer;color:var(--text)}
+.ax-switch input{accent-color:var(--accent);width:18px;height:18px;margin:0}
+.ax-select{padding-right:10px}
+.ax-grid{display:grid;gap:22px 20px;grid-template-columns:repeat(auto-fill,minmax(168px,1fr))}
+.ax-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ax-card{display:block;text-decoration:none;color:inherit;min-width:0}
+.ax-ph{aspect-ratio:3/4;border-radius:14px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(165deg,hsl(var(--h) 36% 36%),hsl(calc(var(--h) + 35) 38% 15%));outline:1px solid var(--border);transition:transform .2s}
+.ax-ph>i{font:600 44px var(--font-display);font-style:normal;color:rgba(255,255,255,.3)}
+.ax-ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:center center}
+.ax-ph>em{position:absolute;top:10px;left:10px;z-index:1;font-style:normal;font-size:11px;font-weight:600;letter-spacing:.1em;background:rgba(26,18,32,.78);color:#f4ecf1;padding:4px 8px;border-radius:999px}
+.ax-card:hover .ax-ph,.ax-card:focus-visible .ax-ph{transform:translateY(-4px);outline-color:var(--accent)}
+.ax-card:focus-visible{outline:none}
+.ax-card b{display:block;margin-top:12px;font:600 18px var(--font-display);color:var(--text);overflow-wrap:anywhere}
+.ax-card span{display:block;margin-top:2px;font-size:13px;color:var(--muted)}
+.ax-group{margin-bottom:40px}
+.ax-group-hd{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.ax-group-hd h2{font-family:var(--font-display);font-size:30px;font-weight:600;margin:0;color:var(--text)}
+.ax-group-hd span{color:var(--muted);font-size:14px}
+.ax-group-hd i{flex:1;height:1px;background:var(--border2)}
+/* Productoras: tarjetas */
+.px-grid{display:grid;gap:20px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.px-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:18px;cursor:pointer;min-width:0;transition:border-color .2s,transform .2s}
+.px-card:hover,.px-card:focus-visible{border-color:var(--accent);transform:translateY(-3px);outline:none}
+.px-top{display:flex;gap:16px;align-items:center;min-width:0}
+.px-logo{position:relative;width:64px;height:64px;flex:none;border-radius:14px;overflow:hidden;background:hsl(var(--h) 30% 22%);display:flex;align-items:center;justify-content:center;font:600 22px var(--font-display);color:#ff9fc0}
+.px-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:6px}
+.px-logo-lg{width:96px;height:96px;font-size:32px;border-radius:18px}
+.px-top h3{font:600 21px/1.15 var(--font-display);margin:0;color:var(--text);overflow-wrap:anywhere}
+.px-sub{font-size:13px;color:var(--muted);margin-top:4px}
+.px-line{height:1px;background:var(--border)}
+.px-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:44px}
+.px-avs{display:flex;align-items:center;min-width:0}
+.px-av{position:relative;width:32px;height:32px;border-radius:50%;overflow:hidden;background:hsl(var(--h) 35% 32%);border:2px solid var(--surface);flex:none}
+.px-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.px-n{margin-left:12px;font-size:13px;color:var(--muted)}
+.px-web{color:var(--accent);font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap}
+.px-web:hover{text-decoration:underline}
+/* Ficha de actriz / productora */
+.fx-detail{max-width:680px;margin:0 auto}
+.fx-hero{display:flex;gap:24px;align-items:flex-end}
+.fx-eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.fx-title{font:600 clamp(32px,7vw,46px)/1.05 var(--font-display);margin:8px 0 4px;color:var(--text);overflow-wrap:anywhere}
+.fx-real{color:var(--muted);font-size:15px}
+.fx-desc{margin:20px 0 0;font-size:14px;line-height:1.65;color:var(--muted)}
+.fx-table{margin-top:24px}
+.fx-trow{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px}
+.fx-trow>span:first-child{color:var(--muted)}
+.fx-trow>span:last-child{font-weight:500;text-align:right}
+.fx-trow em{font-style:normal;color:var(--accent)}
+.fx-sections .ship-sec-title{margin-top:28px}
+.fx-list{display:flex;flex-direction:column}
+.fx-row{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.fx-row:hover .fx-name{color:var(--accent)}
+.fx-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+.fx-thumb{position:relative;width:48px;height:68px;border-radius:8px;overflow:hidden;background:linear-gradient(165deg,hsl(var(--h) 36% 36%),hsl(calc(var(--h) + 35) 38% 15%));border:1px solid var(--border);flex:none}
+.fx-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fx-thumb-logo img{object-fit:contain;background:#fff;padding:4px}
+.fx-text{display:flex;flex-direction:column;gap:3px;min-width:0}
+.fx-name{font:600 17px/1.25 var(--font-display);color:var(--text);overflow-wrap:anywhere}
+.fx-char{font-size:13px;color:var(--accent);overflow-wrap:anywhere}
+.fx-date{font-size:13px;color:var(--muted)}
+.fx-badge{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border2);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.fx-on{color:var(--teal);border-color:color-mix(in srgb,var(--teal) 35%,transparent)}
+.fx-up{color:var(--lavender);border-color:color-mix(in srgb,var(--lavender) 35%,transparent)}
+.fx-close{display:flex;justify-content:flex-end;margin-top:28px}
+@media(max-width:1000px){.px-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ax-grid-4{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:860px){.ax-layout{grid-template-columns:minmax(0,1fr);gap:20px}.ax-side{position:static;max-height:none}}
+@media(max-width:640px){.px-grid{grid-template-columns:minmax(0,1fr)}.ax-grid,.ax-grid-4{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}.ax-hd p{font-size:14px}.ax-card b{font-size:16px}.ax-group-hd h2{font-size:24px}.fx-hero{align-items:center}.fx-row{gap:12px}}
+
 /* ═══ MODAL HIERARCHY — 3 BLOQUE STRUCTURE ═══ */
 
 /* BLOQUE 1: Hero (poster + info principal) — ya existe, sin cambios de estructura */
@@ -6849,70 +6946,44 @@ function buildCastHtml(cast, couples){
 function openActressProfile(actressId){
   const a=(state.actresses||[]).find(x=>x.id===actressId);
   if(!a) return;
-  // Find all series and movies with this actress
-  const _sortItems=arr=>arr.slice().sort((a,b)=>{
-    const aUp=!!(a.upcoming), bUp=!!(b.upcoming);
-    if(aUp!==bUp) return aUp?-1:1;
-    return (b.year||0)-(a.year||0);
-  });
-  const inSeries=_sortItems(state.series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===actressId)));
-  const inMovies=_sortItems(state.movies.filter(mv=>mv.cast&&mv.cast.some(m=>m.actressId===actressId)));
+  const _e=escapeHtmlChk;
+  // Series y películas de la actriz, por emisión: primero «próximamente» sin fecha, luego de la más nueva a la más antigua
+  const inSeries=axSortByEmission(state.series.filter(s=>s.cast&&s.cast.some(m=>m.actressId===actressId)),()=>false);
+  const inMovies=axSortByEmission(state.movies.filter(mv=>mv.cast&&mv.cast.some(m=>m.actressId===actressId)),()=>true);
 
   const photo=a.photo?`<div class="detail-photo" style="overflow:hidden;padding:0"><img src="${a.photo}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;object-position:${a.photoPosition||'center 15%'};transform:scale(${a.photoZoom||1});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=detail-photo-ph></div>'"></div>`:`<div class="detail-photo-ph"></div>`;
 
-  const _seriesStatus=s=>{
-    if(s.upcoming) return {label:'Próx.',cls:'ship-upcoming'};
-    const allEps=genEps(s), now=new Date();
-    const seasons=getSeasons(s);
-    const totalEps=seasons.reduce((a,t)=>a+t.totalEpisodes,0);
-    const aired=allEps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
-    return (totalEps>0&&aired>=totalEps)?{label:'Fin.',cls:'ship-finished'}:{label:'Emisión',cls:'ship-ongoing'};
-  };
-
-  const _e=escapeHtmlChk;
-  const _char=(item)=>{ const m=(item.cast||[]).find(c=>c&&c.actressId===actressId); const c=m&&typeof m.character==='string'?m.character.trim():''; return c?`<span class="ship-row-char">Personaje: <strong>${_e(c)}</strong></span>`:''; };
-  const _av=(url,alt)=>`<span class="ship-row-avatar">${url?`<img src="${_e(url)}" alt="${_e(alt||'')}" loading="lazy" style="object-position:50% 20%" onerror="this.style.opacity=0">`:''}</span>`;
-  const seriesRows=inSeries.map(s=>{
-    const si=state.series.indexOf(s);
-    const st=_seriesStatus(s);
-    return `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();openSeries(${si})">
-      ${_av(s.poster,s.name)}
-      <span class="ship-row-text"><span class="ship-row-name">${_e(s.name)}</span>${_char(s)}
-        <span class="ship-row-meta">${s.year?_e(s.year)+' · ':''}<span class="ship-status-badge ${st.cls}">${st.label}</span></span></span>
-    </div>`;
-  }).join('');
-
-  const movieRows=inMovies.map(mv=>{
-    const mi=state.movies.indexOf(mv);
-    const g=mv.genres&&mv.genres.length?mv.genres[0]:null;
-    return `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();openMovie(${mi})">
-      ${_av(mv.poster,mv.name)}
-      <span class="ship-row-text"><span class="ship-row-name">${_e(mv.name)}</span>${_char(mv)}
-        <span class="ship-row-meta">${mv.year?_e(mv.year):''}${g&&mv.year?' · ':''}${g?_e(g):''}</span></span>
-    </div>`;
-  }).join('');
+  const _char=(item)=>{ const m=(item.cast||[]).find(c=>c&&c.actressId===actressId); const c=m&&typeof m.character==='string'?m.character.trim():''; return c?`<span class="fx-char">${_e(c)}</span>`:''; };
+  const seriesRows=inSeries.map(i=>axWorkRowHtml(i,_char(i.it))).join('');
+  const movieRows=inMovies.map(i=>axWorkRowHtml(i,_char(i.it))).join('');
 
   // Productoras: relación explícita guardada en la productora (productora.actressIds), la misma que usa su ficha
-  const prodRows=(state.productoras||[]).filter(pr=>pr&&Array.isArray(pr.actressIds)&&pr.actressIds.includes(actressId)).map(pr=>
-    `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();openProductoraFromSearch('${_e(pr.id)}')">
-      ${_av(pr.logo,pr.name)}
-      <span class="ship-row-text"><span class="ship-row-name">${_e(pr.name||'Productora')}</span></span>
-    </div>`).join('');
-  const prodCount=(state.productoras||[]).filter(pr=>pr&&Array.isArray(pr.actressIds)&&pr.actressIds.includes(actressId)).length;
+  const _prods=(state.productoras||[]).filter(pr=>pr&&Array.isArray(pr.actressIds)&&pr.actressIds.includes(actressId));
+  const prodCount=_prods.length;
+  const prodRows=_prods.map(pr=>{
+    const act=`openProductoraDetail('${_e(pr.id)}')`;
+    return `<div class="fx-row" role="button" tabindex="0" style="grid-template-columns:48px minmax(0,1fr)" onclick="${act}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${act}}">
+      <span class="fx-thumb fx-thumb-logo" style="--h:${axHue(pr.name)};height:48px">${pr.logo?`<img src="${_e(pr.logo)}" alt="" loading="lazy" onerror="this.remove()">`:''}</span>
+      <span class="fx-text"><span class="fx-name">${_e(pr.name||'Productora')}</span></span>
+    </div>`;
+  }).join('');
 
-  // Ships: los que contienen a la actriz y se muestran en Ships/Rupturas (incluye rupturas)
+  // Ships: los que contienen a la actriz y se muestran en Ships/Rupturas (incluye rupturas), con foto
   const _shipEntries=getShipEntries().filter(en=>en.sh&&(en.sh.actressIds||[]).includes(actressId));
   const shipRows=_shipEntries.map(en=>{
     const sh=en.sh, ph=sh.couplePhoto||(en.members[0]&&en.members[0].photo)||'';
     const pos=sh.couplePhoto?(sh.couplePhotoPosition||'50% 20%'):'50% 20%';
-    return `<div class="ship-row" role="button" tabindex="0" onclick="closeActressModal();setTimeout(()=>openShipById('${_e(sh.id)}'),80)">
-      <span class="ship-row-avatar">${ph?`<img src="${_e(ph)}" alt="${_e(sh.name)}" loading="lazy" style="object-position:${_e(pos)};transform:scale(${sh.couplePhoto?(parseFloat(sh.couplePhotoZoom)||1):1})" onerror="this.style.opacity=0">`:''}</span>
-      <span class="ship-row-text"><span class="ship-row-name">${_e((sh.name||'').trim()||'Ship')}</span>${sh.retired?'<span class="ship-row-meta">Ruptura</span>':''}</span>
+    const act=`closeActressModal();setTimeout(()=>openShipById('${_e(sh.id)}'),80)`;
+    const nm=(sh.name||'').trim()||'Ship';
+    return `<div class="fx-row" role="button" tabindex="0" style="${sh.retired?'':'grid-template-columns:48px minmax(0,1fr)'}" onclick="${act}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${act}}">
+      <span class="fx-thumb" style="--h:${axHue(nm)}">${ph?`<img src="${_e(ph)}" alt="${_e(nm)}" loading="lazy" style="object-position:${_e(pos)};transform:scale(${sh.couplePhoto?(parseFloat(sh.couplePhotoZoom)||1):1})" onerror="this.remove()">`:''}</span>
+      <span class="fx-text"><span class="fx-name">${_e(nm)}</span></span>
+      ${sh.retired?'<span class="fx-badge fx-end">Ruptura</span>':''}
     </div>`;
   }).join('');
-  const _sec=(title,count,rows)=>rows?`<section class="ship-sec"><h3 class="ship-sec-title">${title} <span class="ship-sec-count">${count}</span></h3><div class="ship-sec-list">${rows}</div></section>`:'';
+  const _sec=(title,count,rows)=>rows?`<section class="ship-sec"><h3 class="ship-sec-title">${title} <span class="ship-sec-count">${count}</span></h3><div class="fx-list">${rows}</div></section>`:'';
 
-  // Calculate age from birthdate
+  // Edad y signos a partir de la fecha de nacimiento
   let ageStr='', birthYearStr='', zodiacStr='', chineseZodiacStr='';
   if(a.birthdate){
     const bd=new Date(a.birthdate+'T00:00:00');
@@ -6925,41 +6996,45 @@ function openActressProfile(actressId){
     ageStr=`${age} años`;
     birthYearStr=`${day} de ${monthNames[bd.getMonth()]} de ${bd.getFullYear()}`;
     const zs=zodiacSign(bd.getMonth()+1, day);
-    if(zs) zodiacStr=`${zs.emoji} ${zs.name}`;
+    if(zs) zodiacStr=`<em>${zs.emoji}</em> ${zs.name}`;
     const cz=chineseZodiacSign(bd.getFullYear());
-    if(cz) chineseZodiacStr=`${cz.emoji} ${cz.name}`;
+    if(cz) chineseZodiacStr=`${cz.name}`;
   }
 
+  const _row=(k,v)=>`<div class="fx-trow"><span>${k}</span><span>${v}</span></div>`;
   let detailsLines='';
-  if(a.country) detailsLines+=`<div class="details-line"><span class="details-line-key">País</span><span class="details-line-val">${countryFlag(a.country)} ${a.country}</span></div>`;
-  if(birthYearStr) detailsLines+=`<div class="details-line"><span class="details-line-key">Nacimiento</span><span class="details-line-val">${birthYearStr}</span></div>`;
-  if(ageStr) detailsLines+=`<div class="details-line"><span class="details-line-key">Edad</span><span class="details-line-val">${ageStr}</span></div>`;
-  if(zodiacStr) detailsLines+=`<div class="details-line"><span class="details-line-key">Signo zodiacal</span><span class="details-line-val">${zodiacStr}</span></div>`;
-  if(chineseZodiacStr) detailsLines+=`<div class="details-line"><span class="details-line-key">Zodiaco chino</span><span class="details-line-val">${chineseZodiacStr}</span></div>`;
-  if(a.height) detailsLines+=`<div class="details-line"><span class="details-line-key">Altura</span><span class="details-line-val">${a.height} cm</span></div>`;
+  if(birthYearStr) detailsLines+=_row('Nacimiento',birthYearStr);
+  if(ageStr) detailsLines+=_row('Edad',ageStr);
+  if(zodiacStr) detailsLines+=_row('Signo zodiacal',zodiacStr);
+  if(chineseZodiacStr) detailsLines+=_row('Zodiaco chino',chineseZodiacStr);
+  if(a.height) detailsLines+=_row('Altura',`${a.height} cm`);
 
-  const html=`<div class="modal-body ship-detail">
-  <div class="detail-hero ship-hero">
+  const html=`<div class="modal-body ship-detail fx-detail">
+  <div class="fx-hero">
     ${photo}
-    <div class="detail-info">
-      <div class="modal-title ship-hero-title">${a.name}</div>
+    <div>
+      <div class="fx-eyebrow">Actriz${a.country?' · '+_e(a.country):''}</div>
+      <h2 class="fx-title">${a.name}</h2>
       ${a.notes?`<div style="display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px">${a.notes.split(',').map(r=>r.trim()).filter(Boolean).map(r=>`<span style="font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;background:var(--accent-soft);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 20%,transparent)">${r}</span>`).join('')}</div>`:''}
-      ${detailsLines?`<div class="details-box" style="margin-top:10px">${detailsLines}</div>`:''}
     </div>
   </div>
-  <div class="ship-sections">
-    ${_sec(prodCount>1?'Productoras':'Productora',prodCount,prodRows)}
+  ${detailsLines?`<div class="fx-table">${detailsLines}</div>`:''}
+  <div class="fx-sections">
     ${_sec(_shipEntries.length>1?'Ships':'Ship',_shipEntries.length,shipRows)}
     ${_sec('Series',inSeries.length,seriesRows)}
     ${_sec('Películas',inMovies.length,movieRows)}
+    ${_sec(prodCount>1?'Productoras':'Productora',prodCount,prodRows)}
   </div>
   ${(!inSeries.length&&!inMovies.length)?`<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px 0">Sin series ni películas registradas.</div>`:''}
-  <div style="display:flex;justify-content:flex-end;margin-top:1.25rem"><button class="btn" onclick="closeActressModal()">Cerrar</button></div>
+  <div class="fx-close"><button class="btn" onclick="closeActressModal()">Cerrar</button></div>
   </div>`;
 
+  const bg=document.getElementById('actressModalBg');
   document.getElementById('actressModalBox').innerHTML=html;
-  document.getElementById('actressModalBg').classList.add('open');
-  _pushModal('actressModal');
+  const wasOpen=bg.classList.contains('open');
+  bg.classList.add('open');
+  bg.scrollTop=0;
+  if(!wasOpen) _pushModal('actressModal');
 }
 
 function closeActressModal(){
@@ -8556,97 +8631,219 @@ function renderDocumentalesResults(){
   resultsEl.innerHTML=html;
 }
 
-/* ═══ ACTRESSES TAB ═══ */
-let actressesTabState={q:'', nationality:''};
+/* ═══ ACTRICES — maqueta «Actrices y Productoras» ═══ */
+function axEsc(s){ return escapeHtmlChk(s); }
+// Código de país de 2 letras, sacado de la bandera (sin mostrar emojis)
+function axCountryCode(country){
+  const first=String(country||'').split('/')[0].trim();
+  if(!first) return '';
+  const pts=Array.from(countryFlag(first)||'').map(ch=>ch.codePointAt(0)).filter(c=>c>=0x1F1E6&&c<=0x1F1FF).slice(0,2);
+  if(pts.length<2) return first.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ]/g,'').slice(0,2).toUpperCase();
+  return pts.map(c=>String.fromCharCode(65+c-0x1F1E6)).join('');
+}
+function axHue(str){ let h=0; const t=String(str||''); for(let i=0;i<t.length;i++) h=(h*31+t.charCodeAt(i))%360; return h; }
+function axInitials(name){
+  const w=String(name||'').replace(/["“”]/g,' ').trim().split(/\s+/).filter(Boolean);
+  if(!w.length) return '';
+  return (w[0][0]||'').toUpperCase()+(w.length>1?(w[w.length-1][0]||'').toUpperCase():'');
+}
+// Fecha completa: «8 de agosto de 2026»
+function axFullDate(iso){
+  const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso||'');
+  if(!m) return '';
+  const mi=parseInt(m[2],10)-1;
+  if(mi<0||mi>11) return '';
+  return `${parseInt(m[3],10)} de ${MONTHS[mi].toLowerCase()} de ${m[1]}`;
+}
+function axTabsHtml(active){
+  return `<nav class="ax-tabs" aria-label="Sección"><button type="button" class="${active==='actresses'?'on':''}" onclick="switchTab('actresses')">Actrices</button><button type="button" class="${active==='productoras'?'on':''}" onclick="switchTab('productoras')">Productoras</button></nav>`;
+}
+// Fecha de estreno/emisión (ISO completa) de una serie (primera temporada) o película
+function axItemDate(item,isMovie){
+  if(!item) return '';
+  const ok=d=>/^\d{4}-\d{2}-\d{2}/.test(d||'');
+  if(isMovie) return ok(item.date)?item.date:'';
+  let best='';
+  try{ getSeasons(item).forEach(t=>{ if(t&&ok(t.startDate)&&(!best||t.startDate<best)) best=t.startDate; }); }catch(e){}
+  return best||(ok(item.startDate)?item.startDate:'');
+}
+// Orden por emisión: primero lo «próximamente» sin fecha; después de lo más nuevo a lo más antiguo; sin fecha ni año al final
+function axSortByEmission(list,isMovieFn){
+  const info=list.map((it,i)=>{
+    const isMovie=!!isMovieFn(it);
+    const date=axItemDate(it,isMovie);
+    const year=it.year?String(it.year):'';
+    const soon=!date&&(!!it.upcoming||(isMovie&&!year));
+    return {it,i,isMovie,date,year,soon,key:date||(year?year+'-00-00':'')};
+  });
+  info.sort((a,b)=>{
+    if(a.soon!==b.soon) return a.soon?-1:1;
+    if(a.soon) return a.i-b.i;
+    if(a.key!==b.key){ if(!a.key) return 1; if(!b.key) return -1; return a.key<b.key?1:-1; }
+    return a.i-b.i;
+  });
+  return info;
+}
+function axSeriesStatus(s){
+  if(s.upcoming) return {label:'Próx.',cls:'fx-up'};
+  const allEps=genEps(s), now=new Date();
+  const seasons=getSeasons(s);
+  const totalEps=seasons.reduce((a,t)=>a+t.totalEpisodes,0);
+  const aired=allEps.filter(e=>new Date(e.date+'T12:00:00')<=now&&!e.skipped).length;
+  return (totalEps>0&&aired>=totalEps)?{label:'Fin.',cls:'fx-end'}:{label:'Emisión',cls:'fx-on'};
+}
+function axMovieStatus(info){
+  const now=new Date();
+  const today=toStr(now.getFullYear(),now.getMonth(),now.getDate());
+  if(info.soon||(info.date&&info.date>today)) return {label:'Próx.',cls:'fx-up'};
+  return {label:'Estrenada',cls:'fx-end'};
+}
+// Fila con foto (póster) de una serie o película, con fecha completa
+function axWorkRowHtml(info,charLine){
+  const it=info.it, list=info.isMovie?state.movies:state.series;
+  const idx=list.indexOf(it);
+  const st=info.isMovie?axMovieStatus(info):axSeriesStatus(it);
+  const dateTxt=info.date?axFullDate(info.date):(info.soon?'Fecha por confirmar':(info.year||'Sin fecha'));
+  const poster=it.poster?`<img src="${axEsc(it.poster)}" alt="" loading="lazy" onerror="this.remove()">`:'';
+  const act=`closeActressModal();${info.isMovie?'openMovie':'openSeries'}(${idx})`;
+  return `<div class="fx-row" role="button" tabindex="0" onclick="${act}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${act}}">
+    <span class="fx-thumb" style="--h:${axHue(it.name)}">${poster}</span>
+    <span class="fx-text"><span class="fx-name">${axEsc(it.name)}</span>${charLine||''}<span class="fx-date">${axEsc(dateTxt)}</span></span>
+    <span class="fx-badge ${st.cls}">${st.label}</span>
+  </div>`;
+}
+
+let actressesTabState={q:'', nationality:'', countries:[], group:true, sort:'az', allCountries:false};
 let actressCountryExpanded={};
 const ACTRESS_COUNTRY_BATCH=24;
 
 function renderActressesTab(){
   const view=document.getElementById('viewActresses');
   if(!view) return;
-
-  if(!view.querySelector('.actresses-tab-shell')){
-    view.innerHTML=`<div class="actresses-tab-shell">
-      <div class="actress-tab-search-wrap">
-        <span class="search-icon"></span>
-        <input class="search-input" id="actressTabSearch" placeholder="Buscar actriz…"
-          value="${actressesTabState.q}"
-          oninput="actressesTabState.q=this.value;debounceRender('actresses',renderActressesTabResults)" autocomplete="off">
+  if(!view.querySelector('.ax-shell')){
+    view.innerHTML=`<div class="actresses-tab-shell ax-shell">
+      ${axTabsHtml('actresses')}
+      <div class="ax-hd"><div><h1>Actrices</h1><p id="axActSub"></p></div></div>
+      <div class="ax-layout">
+        <aside class="ax-side" aria-label="Filtros">
+          <div class="ax-side-hd"><h2>Filtros</h2><button type="button" class="ax-link" onclick="clearActressFilters()">Limpiar todo</button></div>
+          <input class="ax-input" id="actressTabSearch" aria-label="Buscar actriz…" placeholder="Buscar actriz…"
+            value="${axEsc(actressesTabState.q)}"
+            oninput="actressesTabState.q=this.value;debounceRender('actresses',renderActressesTabResults)" autocomplete="off">
+          <div class="ax-side-title">País</div>
+          <div id="axActCountries"></div>
+        </aside>
+        <div class="ax-main">
+          <div class="ax-bar">
+            <span class="ax-count" id="axActCount"></span>
+            <div class="ax-bar-r">
+              <label class="ax-switch"><input type="checkbox" id="axActGroup" ${actressesTabState.group?'checked':''} onchange="actressesTabState.group=this.checked;renderActressesTabResults()">Agrupar por país</label>
+              <select class="ax-input ax-select" id="axActSort" aria-label="Orden" onchange="actressesTabState.sort=this.value;renderActressesTabResults()">
+                <option value="az">Orden: A–Z</option>
+                <option value="za">Orden: Z–A</option>
+                <option value="obras">Orden: más obras</option>
+              </select>
+            </div>
+          </div>
+          <div id="actressTabResults"></div>
+        </div>
       </div>
-      <div id="actressTabResults"></div>
     </div>`;
+    const sortEl=document.getElementById('axActSort');
+    if(sortEl) sortEl.value=actressesTabState.sort;
   }
   renderActressesTabResults();
+}
+
+function clearActressFilters(){
+  actressesTabState.q=''; actressesTabState.nationality=''; actressesTabState.countries=[];
+  const inp=document.getElementById('actressTabSearch'); if(inp) inp.value='';
+  renderActressesTabResults();
+}
+function toggleActressCountry(i){
+  const c=(window._axActCountries||[])[i];
+  if(c===undefined) return;
+  const set=new Set(actressesTabState.countries||[]);
+  if(set.has(c)) set.delete(c); else set.add(c);
+  actressesTabState.countries=[...set];
+  renderActressesTabResults();
+}
+function _axWorkCounts(){
+  const m={};
+  (state.series||[]).concat(state.movies||[]).forEach(it=>{
+    const seen=new Set();
+    (it.cast||[]).forEach(c=>{ if(c&&c.actressId&&!seen.has(c.actressId)){ seen.add(c.actressId); m[c.actressId]=(m[c.actressId]||0)+1; } });
+  });
+  return m;
 }
 
 function renderActressesTabResults(){
   const resultsEl=document.getElementById('actressTabResults');
   if(!resultsEl) return;
+  const st=actressesTabState;
+  const all=state.actresses||[];
+  const q=(st.q||'').toLowerCase().trim();
 
-  const actresses=state.actresses||[];
-  const q=(actressesTabState.q||'').toLowerCase().trim();
+  // Filtro País (barra lateral): recuentos sobre todas las fichas
+  const cc={};
+  all.forEach(a=>{ const c=a.country||'Otros'; cc[c]=(cc[c]||0)+1; });
+  const countryList=Object.keys(cc).sort((a,b)=>cc[b]-cc[a]||a.localeCompare(b,'es'));
+  window._axActCountries=countryList;
+  const sel=new Set(st.countries||[]);
+  const LIM=6;
+  const shown=st.allCountries?countryList:countryList.filter((c,i)=>i<LIM||sel.has(c));
+  const listEl=document.getElementById('axActCountries');
+  if(listEl){
+    listEl.innerHTML=shown.map(c=>{
+      const i=countryList.indexOf(c);
+      const code=c==='Otros'?'--':axCountryCode(c);
+      return `<label class="ax-check"><input type="checkbox" ${sel.has(c)?'checked':''} onchange="toggleActressCountry(${i})"><span class="ax-cc2">${axEsc(code)}</span><span class="ax-check-n">${axEsc(c)}</span><span class="ax-check-c">${cc[c]}</span></label>`;
+    }).join('')+(countryList.length>LIM?`<button type="button" class="ax-link ax-more" onclick="actressesTabState.allCountries=!actressesTabState.allCountries;renderActressesTabResults()">${st.allCountries?'Ver menos':`Ver todas (${countryList.length})`}</button>`:'');
+  }
 
-  // Filtrar
-  let filtered=actresses.filter(a=>{
+  const filtered=all.filter(a=>{
+    if(sel.size&&!sel.has(a.country||'Otros')) return false;
     if(!q) return true;
-    return (a.name||'').toLowerCase().includes(q)||
-           (a.country||'').toLowerCase().includes(q);
+    return (a.name||'').toLowerCase().includes(q)||(a.country||'').toLowerCase().includes(q);
   });
+
+  const works=st.sort==='obras'?_axWorkCounts():null;
+  const cmp=(a,b)=>{
+    if(works){ const d=(works[b.id]||0)-(works[a.id]||0); if(d) return d; }
+    const r=(a.name||'').localeCompare(b.name||'','es');
+    return st.sort==='za'?-r:r;
+  };
+
+  const groups={};
+  filtered.forEach(a=>{ const c=a.country||'Otros'; (groups[c]=groups[c]||[]).push(a); });
+  const sortedCountries=Object.keys(groups).sort((a,b)=>groups[b].length-groups[a].length||a.localeCompare(b,'es'));
+
+  const subEl=document.getElementById('axActSub');
+  if(subEl) subEl.textContent=st.group?`${all.length} fichas · agrupadas por país, de más a menos fichas`:`${all.length} fichas · todas juntas, de cualquier país`;
+  const countEl=document.getElementById('axActCount');
+  if(countEl) countEl.textContent=st.group&&sortedCountries.length>1?`${filtered.length} actrices en ${sortedCountries.length} países`:`${filtered.length} ${filtered.length===1?'actriz':'actrices'}`;
 
   if(!filtered.length){
     resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna actriz.</div>';
     return;
   }
 
-  // Agrupar por país
-  const groups={};
-  filtered.forEach(a=>{
-    const country=a.country||'Otros';
-    if(!groups[country]) groups[country]=[];
-    groups[country].push(a);
-  });
-
-  // Ordenar países: los más numerosos primero
-  const sortedCountries=Object.keys(groups).sort((a,b)=>groups[b].length-groups[a].length);
-
-  // Contar apariciones en series+películas por actriz
-  function seriesCount(a){
-    const inS=(state.series||[]).filter(s=>s.cast&&s.cast.some(m=>m.actressId===a.id)).length;
-    const inM=(state.movies||[]).filter(mv=>mv.cast&&mv.cast.some(m=>m.actressId===a.id)).length;
-    return inS+inM;
-  }
-
   let html='';
-
-  // Si hay búsqueda activa: mostrar todas sin agrupar
-  if(q){
-    html+=`<div class="actress-tab-grid">`;
-    filtered.sort((a,b)=>a.name.localeCompare(b.name,'es')).forEach(a=>{
-      html+=actressTabCardHtml(a, seriesCount(a));
-    });
-    html+=`</div>`;
+  if(!st.group){
+    html=`<div class="ax-grid">${filtered.slice().sort(cmp).map(actressTabCardHtml).join('')}</div>`;
   } else {
-    // Agrupar por nacionalidad
     sortedCountries.forEach(country=>{
-      const list=groups[country].sort((a,b)=>seriesCount(b)-seriesCount(a));
-      const flag=countryFlag(country);
+      const list=groups[country].slice().sort(cmp);
       const expanded=!!actressCountryExpanded[country];
-      const visibleList=expanded?list:list.slice(0,ACTRESS_COUNTRY_BATCH);
-      const remaining=list.length-visibleList.length;
-      html+=`<div class="actress-nationality-section">
-        <div class="actress-nationality-header">
-          <span class="actress-nationality-flag">${flag}</span>
-          <span class="actress-nationality-title">${country}</span>
-          <span class="actress-nationality-count">${list.length} actrices</span>
-        </div>
-        <div class="actress-tab-grid">
-          ${visibleList.map(a=>actressTabCardHtml(a,seriesCount(a))).join('')}
-        </div>
-        ${remaining>0?`<button type="button" class="btn actress-show-more-btn" onclick="expandActressCountry('${country.replace(/'/g,"\\'")}')">Ver ${remaining} más</button>`:''}
-      </div>`;
+      const visible=expanded?list:list.slice(0,ACTRESS_COUNTRY_BATCH);
+      const remaining=list.length-visible.length;
+      html+=`<section class="ax-group">
+        <div class="ax-group-hd"><h2>${axEsc(country)}</h2><span>${list.length} ${list.length===1?'actriz':'actrices'}</span><i></i></div>
+        <div class="ax-grid ax-grid-4">${visible.map(actressTabCardHtml).join('')}</div>
+        ${remaining>0?`<button type="button" class="btn actress-show-more-btn" onclick="expandActressCountry('${country.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;')}')">Ver ${remaining} más</button>`:''}
+      </section>`;
     });
   }
-
   resultsEl.innerHTML=html;
 }
 
@@ -8655,18 +8852,15 @@ function expandActressCountry(country){
   renderActressesTabResults();
 }
 
-function actressTabCardHtml(a, count){
-  const photo=a.photo
-    ?`<div class="actress-tab-photo" style="overflow:hidden;padding:0"><img src="${a.photo}" alt="${a.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:${a.photoPosition||'center 15%'};transform:scale(${a.photoZoom||1});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=actress-tab-photo-ph></div>'"></div>`
-    :`<div class="actress-tab-photo-ph"></div>`;
-  const countBadge=count?`<span class="actress-tab-count">${count} obra${count!==1?'s':''}</span>`:'';
-  const flag=a.country?`<span class="actress-tab-country">${countryFlag(a.country)} ${a.country}</span>`:'';
-  return `<div class="actress-tab-card" onclick="openActressProfile('${a.id}')">
-    ${photo}
-    <div class="actress-tab-name">${a.name}</div>
-    ${flag}
-    ${countBadge}
-  </div>`;
+function actressTabCardHtml(a){
+  const by=a.birthdate?String(a.birthdate).slice(0,4):'';
+  const sub=[a.country||'',by].filter(Boolean).join(' · ');
+  const code=a.country?axCountryCode(a.country):'';
+  const img=a.photo?`<img src="${axEsc(a.photo)}" alt="" loading="lazy" style="object-position:${axEsc(a.photoPosition||'center 15%')};transform:scale(${parseFloat(a.photoZoom)||1})" onerror="this.remove()">`:'';
+  return `<a class="ax-card" href="#" onclick="event.preventDefault();openActressProfile('${axEsc(a.id)}')">
+    <div class="ax-ph" style="--h:${axHue(a.name)}"><i aria-hidden="true">${axEsc(axInitials(a.name))}</i>${img}${code?`<em>${axEsc(code)}</em>`:''}</div>
+    <b>${axEsc(a.name)}</b><span>${axEsc(sub)}</span>
+  </a>`;
 }
 
 /* ═══ MIS PICKS / PICKS 2026 ═══ */
@@ -9371,174 +9565,186 @@ function renderSinNovedades(){
 // ══════════════════════════════════════════════════════════════════════════════
 // PRODUCTORAS
 // ══════════════════════════════════════════════════════════════════════════════
-const productorasState={expanded:null,q:''};
+const productorasState={expanded:null,q:'',countries:[],sort:'az',allCountries:false};
 
-function toggleProductora(id){
-  const wasExpanded = productorasState.expanded === id;
-  productorasState.expanded = wasExpanded ? null : id;
-  renderProductorasResults();
-  // After render, set exact scrollHeight so content never gets clipped
-  requestAnimationFrame(()=>{
-    document.querySelectorAll('.productora-card').forEach(card=>{
-      const body = card.querySelector('.productora-body');
-      if(!body) return;
-      if(card.classList.contains('expanded')){
-        body.style.maxHeight = body.scrollHeight + 'px';
-      } else {
-        body.style.maxHeight = '0';
-      }
-    });
+// Mantiene el nombre anterior: ahora abre la ficha de la productora
+function toggleProductora(id){ openProductoraDetail(id); }
+
+function _axProdEntries(){
+  const S=state.series||[], M=state.movies||[], A=state.actresses||[];
+  return (state.productoras||[]).map(p=>{
+    const series=S.filter(s=>s.productoraId===p.id), movies=M.filter(m=>m.productoraId===p.id);
+    const actresses=(p.actressIds||[]).map(id=>A.find(a=>a.id===id)).filter(Boolean);
+    return {p,series,movies,actresses,total:series.length+movies.length};
   });
 }
 
 function renderProductoras(){
   const view=document.getElementById('viewProductoras');
   if(!view) return;
-  const seriesList=state.series||[];
-  const moviesList=state.movies||[];
-  const productorasList=state.productoras||[];
-
-  if(!productorasList.length){
-    view.innerHTML=`<div class="productoras-shell">
-      <div class="section-heading" style="margin-bottom:.25rem">Productoras</div>
-      <p class="section-desc">Aún no se han añadido productoras. Puedes gestionarlas desde el panel de administración.</p>
+  if(!(state.productoras||[]).length){
+    view.innerHTML=`<div class="productoras-shell ax-shell">${axTabsHtml('productoras')}
+      <div class="ax-hd"><div><h1>Productoras</h1><p>Aún no se han añadido productoras. Puedes gestionarlas desde el panel de administración.</p></div></div>
     </div>`;
     return;
   }
-
-  const sortItems=arr=>arr.slice().sort((a,b)=>{
-    // Próximamente primero
-    const aUp=!!(a.upcoming), bUp=!!(b.upcoming);
-    if(aUp!==bUp) return aUp?-1:1;
-    // Luego año descendente (más reciente arriba)
-    return (b.year||0)-(a.year||0);
-  });
-
-  const sorted=productorasList.map(p=>{
-    const ps=sortItems(seriesList.filter(s=>s.productoraId===p.id));
-    const pm=sortItems(moviesList.filter(m=>m.productoraId===p.id));
-    return {p, series:ps, movies:pm, total:ps.length+pm.length};
-  }).sort((a,b)=>b.total-a.total || a.p.name.localeCompare(b.p.name,'es'));
-
-  view.innerHTML=`<div class="productoras-shell">
-    <div class="section-heading" style="margin-bottom:.25rem">Productoras</div>
-    <p class="section-desc" style="margin-bottom:.85rem">Series y películas agrupadas por productora. Haz clic para expandir.</p>
-    <div style="position:relative;margin-bottom:1rem">
-      <span class="search-icon"></span>
-      <input class="search-input" id="productorasSearch" placeholder="Buscar productora o serie…"
-        value="${productorasState.q}" oninput="productorasState.q=this.value;debounceRender('productoras',renderProductorasResults)" autocomplete="off">
-    </div>
-    <div id="productorasResults"></div>
-  </div>`;
-  view._sorted=sorted;
-  renderProductorasResults();
-}
-
-function renderProductorasResults(){
-  const view=document.getElementById('viewProductoras');
-  const el=document.getElementById('productorasResults');
-  if(!el||!view) return;
-  const sorted=view._sorted||[];
-  const q=(productorasState.q||'').toLowerCase().trim();
-
-  let list=sorted;
-  if(q){
-    list=sorted.filter(x=>
-      x.p.name.toLowerCase().includes(q)||
-      x.p.country?.toLowerCase().includes(q)||
-      x.series.some(s=>(s.name||'').toLowerCase().includes(q))||
-      x.movies.some(m=>(m.name||'').toLowerCase().includes(q))
-    );
-  }
-
-  if(!list.length){el.innerHTML='<div class="search-empty">Sin resultados.</div>';return;}
-
-  let html=`<div class="productoras-grid">`;
-  list.forEach(({p, series:ps, movies:pm})=>{
-    const isExpanded=productorasState.expanded===p.id;
-
-    const statsStr=[
-      ps.length?`${ps.length} serie${ps.length!==1?'s':''}`:null,
-      pm.length?`${pm.length} película${pm.length!==1?'s':''}`:null,
-      p.country||null,
-      p.founded?`Fundada en ${p.founded}`:null,
-    ].filter(Boolean).join(' · ');
-
-    const logoEl=p.logo
-      ?`<img class="productora-logo" src="${p.logo}" alt="${p.name}" onerror="this.outerHTML='<div class=productora-logo-ph></div>'">`
-      :`<div class="productora-logo-ph"></div>`;
-
-    const webBtn=p.website
-      ?`<a href="${p.website}" target="_blank" rel="noopener" class="productora-web-btn" onclick="event.stopPropagation()">Web</a>`
-      :'';
-
-    const allItems=[...ps,...pm].sort((a,b)=>{
-      const aUp=!!(a.upcoming), bUp=!!(b.upcoming);
-      if(aUp!==bUp) return aUp?-1:1;
-      return (b.year||0)-(a.year||0);
-    });
-    const postersHtml=allItems.map(item=>{
-      const si=(state.series||[]).indexOf(item);
-      const mi=(state.movies||[]).indexOf(item);
-      const onclick=si>=0?`openSeries(${si})`:mi>=0?`openMovie(${mi})`:'';
-      return `<div class="prod-item" onclick="${onclick}">
-        ${item.poster
-          ?`<img class="prod-item-poster" src="${item.poster}" alt="${item.name}" onerror="this.outerHTML='<div class=prod-item-ph></div>'">`
-          :`<div class="prod-item-ph"></div>`}
-        <div class="prod-item-name">${item.name}</div>
-      </div>`;
-    }).join('');
-
-    const descHtml=p.desc?`<div class="productora-desc">${p.desc}</div>`:'';
-    const emptyHtml=!allItems.length?`<div class="prod-empty">Sin contenidos asignados aún.</div>`:'';
-
-    // Actrices de la productora
-    const prodActressIds=p.actressIds||[];
-    const prodActresses=prodActressIds.map(id=>(state.actresses||[]).find(a=>a.id===id)).filter(Boolean);
-    const actressesHtml=prodActresses.length
-      ?`<div class="prod-actresses-section">
-        <div class="prod-actresses-title">Actrices</div>
-        <div class="prod-actresses-grid">${prodActresses.map(a=>`
-          <div class="prod-actress-chip" onclick="event.stopPropagation();openActressProfile('${a.id}')">
-            ${a.photo
-              ?`<div style="width:24px;height:24px;border-radius:50%;overflow:hidden;flex-shrink:0"><img src="${a.photo}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;object-position:${a.photoPosition||'center 15%'};transform:scale(${a.photoZoom||1});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=prod-actress-chip-ph></div>'"></div>`
-              :`<div class="prod-actress-chip-ph"></div>`}
-            <span class="prod-actress-chip-name">${a.name.split('"').filter(Boolean)[0]?.trim()||a.name}</span>
-          </div>`).join('')}
-        </div>
-      </div>`
-      :'';
-
-    html+=`<div class="productora-card${isExpanded?' expanded':''}" id="prod_${p.id}">
-      <div class="productora-header" onclick="toggleProductora('${p.id}')">
-        ${logoEl}
-        <div class="productora-info">
-          <div class="productora-name">${p.name}</div>
-          <div class="productora-stats">${statsStr||'Sin contenidos aún'}</div>
-        </div>
-        <div class="productora-header-right">
-          ${webBtn}
-          <div class="productora-toggle">▼</div>
-        </div>
-      </div>
-      <div class="productora-body">
-        <div class="productora-body-inner">
-          ${descHtml}
-          <div class="prod-grid">${postersHtml}${emptyHtml}</div>
-          ${actressesHtml}
+  if(!view.querySelector('#productorasSearch')){
+    view.innerHTML=`<div class="productoras-shell ax-shell">
+      ${axTabsHtml('productoras')}
+      <div class="ax-hd"><div><h1>Productoras</h1><p id="axProdSub"></p></div></div>
+      <div class="ax-layout">
+        <aside class="ax-side" aria-label="Filtros">
+          <div class="ax-side-hd"><h2>Filtros</h2><button type="button" class="ax-link" onclick="clearProductorasFilters()">Limpiar todo</button></div>
+          <input class="ax-input" id="productorasSearch" aria-label="Buscar productora…" placeholder="Buscar productora…"
+            value="${axEsc(productorasState.q)}"
+            oninput="productorasState.q=this.value;debounceRender('productoras',renderProductorasResults)" autocomplete="off">
+          <div class="ax-side-title">País</div>
+          <div id="axProdCountries"></div>
+        </aside>
+        <div class="ax-main">
+          <div class="ax-bar">
+            <span class="ax-count" id="axProdCount"></span>
+            <div class="ax-bar-r">
+              <select class="ax-input ax-select" id="axProdSort" aria-label="Orden" onchange="productorasState.sort=this.value;renderProductorasResults()">
+                <option value="az">Orden: A–Z</option>
+                <option value="za">Orden: Z–A</option>
+                <option value="obras">Orden: más contenidos</option>
+                <option value="actrices">Orden: más actrices</option>
+              </select>
+            </div>
+          </div>
+          <div id="productorasResults"></div>
         </div>
       </div>
     </div>`;
+    const sortEl=document.getElementById('axProdSort');
+    if(sortEl) sortEl.value=productorasState.sort;
+  }
+  renderProductorasResults();
+}
+
+function clearProductorasFilters(){
+  productorasState.q=''; productorasState.countries=[];
+  const inp=document.getElementById('productorasSearch'); if(inp) inp.value='';
+  renderProductorasResults();
+}
+function toggleProductoraCountry(i){
+  const c=(window._axProdCountries||[])[i];
+  if(c===undefined) return;
+  const set=new Set(productorasState.countries||[]);
+  if(set.has(c)) set.delete(c); else set.add(c);
+  productorasState.countries=[...set];
+  renderProductorasResults();
+}
+
+function _axProdCardHtml(e){
+  const p=e.p;
+  const sub=[p.country||'',p.founded?`desde ${p.founded}`:''].filter(Boolean).join(' · ');
+  const logo=p.logo?`<img src="${axEsc(p.logo)}" alt="" loading="lazy" onerror="this.remove()">`:'';
+  const avs=e.actresses.slice(0,4).map((a,i)=>`<span class="px-av" style="--h:${axHue(a.name)}${i?';margin-left:-10px':''}">${a.photo?`<img src="${axEsc(a.photo)}" alt="" loading="lazy" onerror="this.remove()">`:''}</span>`).join('');
+  const n=e.actresses.length;
+  const nTxt=n?`${n} ${n===1?'actriz':'actrices'}`:(e.total?`${e.total} título${e.total===1?'':'s'}`:'Sin contenidos');
+  const web=p.website?`<a class="px-web" href="${axEsc(p.website)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Sitio web →</a>`:'';
+  const open=`openProductoraDetail('${axEsc(p.id)}')`;
+  return `<article class="px-card" id="prod_${axEsc(p.id)}" role="button" tabindex="0" onclick="${open}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${open}}">
+    <div class="px-top"><div class="px-logo" style="--h:${axHue(p.name)}"><span aria-hidden="true">${axEsc(axInitials(p.name))}</span>${logo}</div>
+      <div><h3>${axEsc(p.name)}</h3>${sub?`<div class="px-sub">${axEsc(sub)}</div>`:''}</div></div>
+    <div class="px-line"></div>
+    <div class="px-foot"><div class="px-avs">${avs}<span class="px-n" ${avs?'':'style="margin-left:0"'}>${nTxt}</span></div>${web}</div>
+  </article>`;
+}
+
+function renderProductorasResults(){
+  const el=document.getElementById('productorasResults');
+  if(!el) return;
+  const st=productorasState;
+  const all=_axProdEntries();
+  const q=(st.q||'').toLowerCase().trim();
+
+  const cc={};
+  all.forEach(e=>{ const c=e.p.country||'Otros'; cc[c]=(cc[c]||0)+1; });
+  const countryList=Object.keys(cc).sort((a,b)=>cc[b]-cc[a]||a.localeCompare(b,'es'));
+  window._axProdCountries=countryList;
+  const sel=new Set(st.countries||[]);
+  const LIM=6;
+  const shown=st.allCountries?countryList:countryList.filter((c,i)=>i<LIM||sel.has(c));
+  const listEl=document.getElementById('axProdCountries');
+  if(listEl){
+    listEl.innerHTML=shown.map(c=>{
+      const i=countryList.indexOf(c);
+      const code=c==='Otros'?'--':axCountryCode(c);
+      return `<label class="ax-check"><input type="checkbox" ${sel.has(c)?'checked':''} onchange="toggleProductoraCountry(${i})"><span class="ax-cc2">${axEsc(code)}</span><span class="ax-check-n">${axEsc(c)}</span><span class="ax-check-c">${cc[c]}</span></label>`;
+    }).join('')+(countryList.length>LIM?`<button type="button" class="ax-link ax-more" onclick="productorasState.allCountries=!productorasState.allCountries;renderProductorasResults()">${st.allCountries?'Ver menos':`Ver todas (${countryList.length})`}</button>`:'');
+  }
+
+  let list=all.filter(e=>{
+    if(sel.size&&!sel.has(e.p.country||'Otros')) return false;
+    if(!q) return true;
+    return (e.p.name||'').toLowerCase().includes(q)||
+      (e.p.country||'').toLowerCase().includes(q)||
+      e.series.some(s=>(s.name||'').toLowerCase().includes(q))||
+      e.movies.some(m=>(m.name||'').toLowerCase().includes(q));
   });
-  html+='</div>';
-  el.innerHTML=html;
-  // Ajustar max-height de las productoras expandidas según su contenido real
-  requestAnimationFrame(()=>{
-    document.querySelectorAll('.productora-card.expanded').forEach(card=>{
-      const body = card.querySelector('.productora-body');
-      if(body) body.style.maxHeight = body.scrollHeight + 'px';
-    });
+  list.sort((a,b)=>{
+    if(st.sort==='obras'){ const d=b.total-a.total; if(d) return d; }
+    if(st.sort==='actrices'){ const d=b.actresses.length-a.actresses.length; if(d) return d; }
+    const r=(a.p.name||'').localeCompare(b.p.name||'','es');
+    return st.sort==='za'?-r:r;
   });
+
+  const subEl=document.getElementById('axProdSub');
+  if(subEl) subEl.textContent=`${all.length} productoras y estudios, con las actrices que han pasado por ellos`;
+  const countEl=document.getElementById('axProdCount');
+  if(countEl) countEl.textContent=`${list.length} productora${list.length===1?'':'s'}`;
+
+  if(!list.length){ el.innerHTML='<div class="search-empty">Sin resultados.</div>'; return; }
+  el.innerHTML=`<div class="px-grid">${list.map(_axProdCardHtml).join('')}</div>`;
+}
+
+// Ficha de productora (reutiliza la ventana de las fichas de actriz)
+function openProductoraDetail(id){
+  const e=_axProdEntries().find(x=>String(x.p.id)===String(id));
+  if(!e) return;
+  productorasState.expanded=id;
+  const p=e.p;
+  const seriesInfo=axSortByEmission(e.series,()=>false);
+  const movieInfo=axSortByEmission(e.movies,()=>true);
+  const _sec=(title,count,rows)=>rows?`<section class="ship-sec"><h3 class="ship-sec-title">${title} <span class="ship-sec-count">${count}</span></h3><div class="fx-list">${rows}</div></section>`:'';
+  const actRows=e.actresses.map(a=>{
+    const img=a.photo?`<img src="${axEsc(a.photo)}" alt="" loading="lazy" style="object-position:${axEsc(a.photoPosition||'center 15%')}" onerror="this.remove()">`:'';
+    const act=`openActressProfile('${axEsc(a.id)}')`;
+    return `<div class="fx-row" role="button" tabindex="0" style="grid-template-columns:48px minmax(0,1fr)" onclick="${act}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${act}}">
+      <span class="fx-thumb" style="--h:${axHue(a.name)}">${img}</span>
+      <span class="fx-text"><span class="fx-name">${axEsc(a.name)}</span>${a.country?`<span class="fx-date">${axEsc(a.country)}</span>`:''}</span>
+    </div>`;
+  }).join('');
+  const logo=p.logo?`<img src="${axEsc(p.logo)}" alt="" onerror="this.remove()">`:'';
+  const sub=[p.country||'',p.founded?`desde ${p.founded}`:''].filter(Boolean).join(' · ');
+  const html=`<div class="modal-body ship-detail fx-detail">
+    <div class="fx-hero">
+      <div class="px-logo px-logo-lg" style="--h:${axHue(p.name)}"><span aria-hidden="true">${axEsc(axInitials(p.name))}</span>${logo}</div>
+      <div>
+        <div class="fx-eyebrow">Productora</div>
+        <h2 class="fx-title">${axEsc(p.name)}</h2>
+        ${sub?`<div class="fx-real">${axEsc(sub)}</div>`:''}
+        ${p.website?`<div style="margin-top:8px"><a class="px-web" href="${axEsc(p.website)}" target="_blank" rel="noopener">Sitio web →</a></div>`:''}
+      </div>
+    </div>
+    ${p.desc?`<div class="fx-desc">${p.desc}</div>`:''}
+    <div class="fx-sections">
+      ${_sec('Series',seriesInfo.length,seriesInfo.map(i=>axWorkRowHtml(i)).join(''))}
+      ${_sec('Películas',movieInfo.length,movieInfo.map(i=>axWorkRowHtml(i)).join(''))}
+      ${_sec(e.actresses.length>1?'Actrices':'Actriz',e.actresses.length,actRows)}
+    </div>
+    ${(!seriesInfo.length&&!movieInfo.length)?`<div style="color:var(--muted);font-size:13px;text-align:center;padding:20px 0">Sin contenidos asignados aún.</div>`:''}
+    <div class="fx-close"><button class="btn" onclick="closeActressModal()">Cerrar</button></div>
+  </div>`;
+  const bg=document.getElementById('actressModalBg');
+  document.getElementById('actressModalBox').innerHTML=html;
+  const wasOpen=bg.classList.contains('open');
+  bg.classList.add('open');
+  bg.scrollTop=0;
+  if(!wasOpen) _pushModal('actressModal');
 }
 
 // ── Changelog / Novedades web ─────────────────────────────────────────────────
@@ -9955,14 +10161,13 @@ function openShipFromSearch(shipId){
   },80);
 }
 
-// Abre (expande) la tarjeta de una productora desde el buscador global.
+// Abre la ficha de una productora desde el buscador global.
 function openProductoraFromSearch(prodId){
   switchTab('productoras');
-  productorasState.q='';
+  productorasState.q=''; productorasState.countries=[];
   setTimeout(()=>{
     renderProductorasResults();
-    toggleProductora(prodId);
-    document.getElementById('prod_'+prodId)?.scrollIntoView({behavior:'smooth',block:'center'});
+    openProductoraDetail(prodId);
   },80);
 }
 
