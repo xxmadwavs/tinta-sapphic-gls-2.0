@@ -1288,7 +1288,7 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 .ships-pets-empty{padding:2rem 1rem;border:1.5px dashed var(--border2);border-radius:14px;background:var(--surface)}
 /* Mascotas: reutiliza .ship-card / .ship-couple-banner / .ship-card-title; solo cambia la rejilla y la foto única */
 .pets-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:1rem}
-.pet-card{min-width:0;font:inherit;color:inherit;text-align:left;padding:0;width:100%}
+.pet-card{min-width:0;font:inherit;color:inherit;text-align:left;padding:0;width:100%;text-decoration:none;display:block}
 .pet-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .pet-card .ship-card-inner{min-width:0}
 .pet-card .ship-card-title,.pet-card-ship{min-width:0}
@@ -2355,9 +2355,9 @@ html[data-theme="dark"] .detail-hero:not(.ship-hero) .detail-poster,html[data-th
 /* ═══ Maqueta «Actrices y Productoras» (pestañas, fichas y tarjetas) ═══ */
 .ax-shell{padding:0}
 .ax-tabs{display:flex;gap:28px;border-bottom:1px solid var(--border);margin-bottom:26px}
-.ax-tabs button{font:inherit;font-size:15px;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:0 0 12px;cursor:pointer}
-.ax-tabs button:hover{color:var(--text)}
-.ax-tabs button.on{color:var(--accent);border-color:var(--accent);font-weight:600}
+.ax-tabs button,.ax-tabs a{text-decoration:none;font:inherit;font-size:15px;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:0 0 12px;cursor:pointer}
+.ax-tabs button:hover,.ax-tabs a:hover{color:var(--text)}
+.ax-tabs button.on,.ax-tabs a.on{color:var(--accent);border-color:var(--accent);font-weight:600}
 .ax-hd{margin-bottom:22px}
 .ax-hd h1{font-family:var(--font-display);font-weight:600;font-size:clamp(30px,5vw,44px);line-height:1;margin:0;color:var(--text)}
 .ax-hd p{margin:8px 0 0;color:var(--muted);font-size:15px}
@@ -4208,6 +4208,16 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
 #modalBox .day-ep-thumb,#modalBox .day-ep-thumb-ph{width:var(--cal-poster-w);height:var(--cal-poster-h);aspect-ratio:2/3}
 #modalBox .day-ep-name{overflow-wrap:anywhere}
 #modalBox .day-modal-date{font-family:var(--cal-font-display)}
+
+/* (10.2) Enlaces reales en la barra de navegación (antes eran <button>) */
+.navbar-links a{text-decoration:none}
+/* (10.2) Tarjetas y fichas: enlace transparente superpuesto con la URL real de destino.
+   Clic normal: lo cancela el JS y sigue el onclick de siempre. Ctrl/Cmd/Mayús+clic, clic central y
+   menú contextual los resuelve el navegador sobre este <a>. */
+:where(.has-lnk){position:relative}
+.card-lnk{position:absolute;inset:0;z-index:1;border-radius:inherit;text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
+.card-lnk:focus-visible{outline:2px solid var(--focus-ring,var(--accent));outline-offset:-2px}
+:where(.has-lnk) :where(a:not(.card-lnk),button,select,input,textarea,[onclick]){position:relative;z-index:2}
 </style>
 </head>
 <body>
@@ -4245,7 +4255,7 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
         <input class="navbar-search-inp" id="navSearchInpMobile" aria-label="Buscar series y películas" placeholder="Buscar series, películas…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResultsMobile" style="display:none"></div>
       </div>
-      <button class="nav-link active" id="tabCal" onclick="switchTab('cal');closeMobileMenu()">Calendario</button>
+      <a class="nav-link active" id="tabCal"None href="?tab=cal" onclick="if(!_plainClick(event))return;event.preventDefault();switchTab('cal');closeMobileMenu()">Calendario</a>
 
       <!-- Explorar (mega-dropdown de catálogo) -->
       <div class="nav-explore-wrap" id="navExploreWrap">
@@ -4255,22 +4265,22 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
         <div class="nav-explore-drop" id="navExploreDrop" role="menu">
           <div class="explore-col">
             <span class="explore-col-title">Series & Pelis</span>
-            <button class="explore-item" id="tabList" role="menuitem" onclick="closeExploreDrop();switchTab('list');closeMobileMenu()">Series</button>
-            <button class="explore-item" id="tabMovies" role="menuitem" onclick="closeExploreDrop();switchTab('movies');closeMobileMenu()">Películas</button>
-            <button class="explore-item" id="tabUpcoming" role="menuitem" onclick="closeExploreDrop();switchTab('upcoming');closeMobileMenu()">Próximamente</button>
-            <button class="explore-item" id="tabCanceladas" role="menuitem" onclick="closeExploreDrop();switchTab('canceladas');closeMobileMenu()">Canceladas</button>
+            <a class="explore-item" id="tabList" role="menuitem" href="?tab=list" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('list');closeMobileMenu()">Series</a>
+            <a class="explore-item" id="tabMovies" role="menuitem" href="?tab=movies" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('movies');closeMobileMenu()">Películas</a>
+            <a class="explore-item" id="tabUpcoming" role="menuitem" href="?tab=upcoming" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('upcoming');closeMobileMenu()">Próximamente</a>
+            <a class="explore-item" id="tabCanceladas" role="menuitem" href="?tab=canceladas" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('canceladas');closeMobileMenu()">Canceladas</a>
           </div>
           <div class="explore-col">
             <span class="explore-col-title">Más contenido</span>
-            <button class="explore-item" id="tabAnime" role="menuitem" onclick="closeExploreDrop();switchTab('anime');closeMobileMenu()">Anime</button>
-            <button class="explore-item" id="tabRealities" role="menuitem" onclick="closeExploreDrop();switchTab('realities');closeMobileMenu()">Realities</button>
-            <button class="explore-item" id="tabDocumentales" role="menuitem" onclick="closeExploreDrop();switchTab('documentales');closeMobileMenu()">Documentales</button>
-            <button class="explore-item" id="tabBooks" role="menuitem" onclick="closeExploreDrop();switchTab('books');closeMobileMenu()">Libros</button>
+            <a class="explore-item" id="tabAnime" role="menuitem" href="?tab=anime" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('anime');closeMobileMenu()">Anime</a>
+            <a class="explore-item" id="tabRealities" role="menuitem" href="?tab=realities" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('realities');closeMobileMenu()">Realities</a>
+            <a class="explore-item" id="tabDocumentales" role="menuitem" href="?tab=documentales" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('documentales');closeMobileMenu()">Documentales</a>
+            <a class="explore-item" id="tabBooks" role="menuitem" href="?tab=books" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('books');closeMobileMenu()">Libros</a>
           </div>
           <div class="explore-col">
             <span class="explore-col-title">Personas</span>
-            <button class="explore-item" id="tabActresses" role="menuitem" onclick="closeExploreDrop();switchTab('actresses');closeMobileMenu()">Actrices</button>
-            <button class="explore-item" id="tabProductoras" role="menuitem" onclick="closeExploreDrop();switchTab('productoras');closeMobileMenu()">Productoras</button>
+            <a class="explore-item" id="tabActresses" role="menuitem" href="?tab=actresses" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('actresses');closeMobileMenu()">Actrices</a>
+            <a class="explore-item" id="tabProductoras" role="menuitem" href="?tab=productoras" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('productoras');closeMobileMenu()">Productoras</a>
           </div>
         </div>
       </div>
@@ -4281,9 +4291,9 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
           Ships Thais <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
         </button>
         <div class="nav-picks-drop" id="navShipsDrop" role="menu">
-          <button class="nav-picks-item" id="navShipsItem-ships" role="menuitem" onclick="shipsNavGo('ships')">Ships</button>
-          <button class="nav-picks-item" id="navShipsItem-rupturas" role="menuitem" onclick="shipsNavGo('rupturas')">Rupturas</button>
-          <button class="nav-picks-item" id="navShipsItem-mascotas" role="menuitem" onclick="shipsNavGo('mascotas')">Mascotas</button>
+          <a class="nav-picks-item" id="navShipsItem-ships" role="menuitem" href="?tab=ships&amp;ships=ships" onclick="if(!_plainClick(event))return;event.preventDefault();shipsNavGo('ships')">Ships</a>
+          <a class="nav-picks-item" id="navShipsItem-rupturas" role="menuitem" href="?tab=ships&amp;ships=rupturas" onclick="if(!_plainClick(event))return;event.preventDefault();shipsNavGo('rupturas')">Rupturas</a>
+          <a class="nav-picks-item" id="navShipsItem-mascotas" role="menuitem" href="?tab=ships&amp;ships=mascotas" onclick="if(!_plainClick(event))return;event.preventDefault();shipsNavGo('mascotas')">Mascotas</a>
         </div>
       </div>
 
@@ -4293,12 +4303,12 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
           Extra <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
         </button>
         <div class="nav-picks-drop" id="navPicksDrop" role="menu">
-          <button class="nav-picks-item" id="tabTop10" role="menuitem" onclick="closePicksDrop();switchTab('top10');closeMobileMenu()">Picks generales</button>
-          <button class="nav-picks-item" id="tabPicks2026" role="menuitem" onclick="closePicksDrop();switchTab('picks2026');closeMobileMenu()">Picks 2026</button>
+          <a class="nav-picks-item" id="tabTop10" role="menuitem" href="?tab=top10" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('top10');closeMobileMenu()">Picks generales</a>
+          <a class="nav-picks-item" id="tabPicks2026" role="menuitem" href="?tab=picks2026" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('picks2026');closeMobileMenu()">Picks 2026</a>
           <div class="nav-picks-sep"></div>
-          <button class="nav-picks-item" id="tabChecklist" role="menuitem" onclick="closePicksDrop();switchTab('checklist');closeMobileMenu()">Checklist</button>
-          <button class="nav-picks-item" id="tabListas" role="menuitem" onclick="closePicksDrop();switchTab('listas');closeMobileMenu()">Listas GL</button>
-          <button class="nav-picks-item" id="tabRuleta" role="menuitem" onclick="closePicksDrop();switchTab('ruleta');closeMobileMenu()">Ruleta GL</button>
+          <a class="nav-picks-item" id="tabChecklist" role="menuitem" href="?tab=checklist" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('checklist');closeMobileMenu()">Checklist</a>
+          <a class="nav-picks-item" id="tabListas" role="menuitem" href="?tab=listas" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('listas');closeMobileMenu()">Listas GL</a>
+          <a class="nav-picks-item" id="tabRuleta" role="menuitem" href="?tab=ruleta" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('ruleta');closeMobileMenu()">Ruleta GL</a>
         </div>
       </div>
     </div>
@@ -7611,7 +7621,7 @@ function switchMovieModalTab(tab){
 function closeModal(){
   document.getElementById('modalBg').classList.remove('open');
   // Limpiar hash de la URL sin recargar ni crear entrada en el historial
-  if(location.hash && (location.hash.startsWith('#serie-') || location.hash.startsWith('#pelicula-'))){
+  if(location.hash && (location.hash.startsWith('#serie-') || location.hash.startsWith('#pelicula-') || location.hash.startsWith('#dia-'))){
     history.replaceState(history.state, '', location.pathname + (location.search||''));
   }
 }
@@ -8656,7 +8666,7 @@ function axFullDate(iso){
   return `${parseInt(m[3],10)} de ${MONTHS[mi].toLowerCase()} de ${m[1]}`;
 }
 function axTabsHtml(active){
-  return `<nav class="ax-tabs" aria-label="Sección"><button type="button" class="${active==='actresses'?'on':''}" onclick="switchTab('actresses')">Actrices</button><button type="button" class="${active==='productoras'?'on':''}" onclick="switchTab('productoras')">Productoras</button></nav>`;
+  return `<nav class="ax-tabs" aria-label="Sección"><a class="${active==='actresses'?'on':''}" href="?tab=actresses" onclick="if(!_plainClick(event))return;event.preventDefault();switchTab('actresses')">Actrices</a><a class="${active==='productoras'?'on':''}" href="?tab=productoras" onclick="if(!_plainClick(event))return;event.preventDefault();switchTab('productoras')">Productoras</a></nav>`;
 }
 // Fecha de estreno/emisión (ISO completa) de una serie (primera temporada) o película
 function axItemDate(item,isMovie){
@@ -8857,7 +8867,7 @@ function actressTabCardHtml(a){
   const sub=[a.country||'',by].filter(Boolean).join(' · ');
   const code=a.country?axCountryCode(a.country):'';
   const img=a.photo?`<img src="${axEsc(a.photo)}" alt="" loading="lazy" style="object-position:${axEsc(a.photoPosition||'center 15%')};transform:scale(${parseFloat(a.photoZoom)||1})" onerror="this.remove()">`:'';
-  return `<a class="ax-card" href="#" onclick="event.preventDefault();openActressProfile('${axEsc(a.id)}')">
+  return `<a class="ax-card" href="${axEsc(fichaHref('actriz',a.id))}" onclick="if(!_plainClick(event))return;event.preventDefault();openActressProfile('${axEsc(a.id)}')">
     <div class="ax-ph" style="--h:${axHue(a.name)}"><i aria-hidden="true">${axEsc(axInitials(a.name))}</i>${img}${code?`<em>${axEsc(code)}</em>`:''}</div>
     <b>${axEsc(a.name)}</b><span>${axEsc(sub)}</span>
   </a>`;
@@ -8959,8 +8969,62 @@ function renderPicks2026(){
 function tabUrl(tab, hash){
   const p=new URLSearchParams(location.search);
   p.set('tab',tab);
+  p.delete('ships');
   return location.pathname+'?'+p.toString()+(hash||'');
 }
+
+// (10.2) Abrir fichas y tarjetas en otra pestaña con los gestos normales del navegador.
+// Una tarjeta es un <div onclick>; a cada una se le superpone un <a class="card-lnk" href="URL real">.
+//  · Clic normal  → se cancela la navegación del <a> y se ejecuta el onclick de siempre (sin cambios).
+//  · Ctrl/Cmd/Mayús/Alt + clic, clic central, menú contextual → los resuelve el navegador (no se interceptan).
+// El destino es la URL de la propia web: ?tab=… + #serie-ID, #pelicula-ID, #anime-serie-KEY, #actriz-ID… (ver resolveHashDeepLink).
+function _plainClick(e){ return e.button===0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey; }
+function lnkClick(e){ if(_plainClick(e)) e.preventDefault(); else e.stopPropagation(); }
+function fichaHref(kind,key,tab){ return tabUrl(tab||state.tab,'#'+kind+'-'+encodeURIComponent(key)); }
+function _fichaFromAction(act,el){
+  let m;
+  if((m=act.match(/\b(openSeries|openUpcoming)\((\d+)\)/))){
+    const x=state.series[+m[2]]; if(!x||x.id==null) return null;
+    // #serie-ID abre openUpcoming si la serie es «próximamente» y openSeries si no; si la tarjeta usa el otro, se fuerza aquí
+    const dflt=x.upcoming?'openUpcoming':'openSeries';
+    return fichaHref(m[1]===dflt?'serie':(m[1]==='openSeries'?'serie-ficha':'serie-proximamente'),x.id);
+  }
+  if((m=act.match(/\bopenMovie\((\d+)\)/))){ const x=state.movies[+m[1]]; return x&&x.id!=null?fichaHref('pelicula',x.id):null; }
+  if((m=act.match(/\bopenAnimeDetail\('(series|movie)','([^']*)'\)/))) return fichaHref('anime-'+(m[1]==='series'?'serie':'pelicula'),m[2],'anime');
+  if((m=act.match(/\bopenRealityDetail\('(series|movie)','([^']*)'\)/))){
+    const tab=m[1]==='series'?'realities':((state.tab==='documentales'||/documentales/.test(act))?'documentales':'realities');
+    return fichaHref('reality-'+(m[1]==='series'?'serie':'pelicula'),m[2],tab);
+  }
+  if((m=act.match(/\bopenActressProfile\('([^']*)'\)/))) return fichaHref('actriz',m[1]);
+  if((m=act.match(/\bopen(?:ShipById|PetShip|ShipFromSearch)\('([^']*)'\)/))) return fichaHref('ship',m[1]);
+  if((m=act.match(/\bopenShipDetail\((\d+)\)/))){ const v=document.getElementById('viewShips'); const e=v&&v._filtered&&v._filtered[+m[1]]; return e&&e.sh&&e.sh.id!=null?fichaHref('ship',e.sh.id):null; }
+  if((m=act.match(/\bopenLista\((\d+)\)/))){ const x=(state.listas||[])[+m[1]]; return x&&x.id!=null?fichaHref('lista',x.id,'listas'):null; }
+  if((m=act.match(/\bopenProductora(?:Detail|FromSearch)\('([^']*)'\)/))) return fichaHref('productora',m[1],'productoras');
+  if(el.tagName!=='BUTTON' && (m=act.match(/^(?:[\w$.]+\(\);)*switchTab\('(\w+)'\)\s*$/))) return tabUrl(m[1]);
+  return null;
+}
+const _LNK_SKIP=new Set(['BUTTON','A','INPUT','SELECT','TEXTAREA','LABEL']);
+function _enhanceLinks(root){
+  if(!root||root.nodeType!==1) return;
+  const els=root.hasAttribute('onclick')?[root]:[];
+  root.querySelectorAll('[onclick*="open"],[onclick*="switchTab"]').forEach(x=>els.push(x));
+  for(const el of els){
+    if(_LNK_SKIP.has(el.tagName)||el.dataset.lnk||el.classList.contains('day-cell')) continue;
+    const href=_fichaFromAction(el.getAttribute('onclick')||'',el);
+    if(!href) continue;
+    el.dataset.lnk='1';
+    el.classList.add('has-lnk');
+    const a=document.createElement('a');
+    a.className='card-lnk';
+    a.href=href;
+    a.tabIndex=-1;   // el teclado sigue igual que antes: el enlace es para ratón/táctil
+    a.setAttribute('aria-label',((el.getAttribute('aria-label')||el.getAttribute('title')||el.textContent||'').replace(/\s+/g,' ').trim().slice(0,100))||'Abrir');
+    a.setAttribute('onclick','lnkClick(event)');
+    el.insertBefore(a,el.firstChild);
+  }
+}
+new MutationObserver(ms=>{ for(const m of ms) m.addedNodes.forEach(_enhanceLinks); }).observe(document.body,{childList:true,subtree:true});
+_enhanceLinks(document.body);
 
 // (9.4) Elemento que realmente se desplaza: con html,body{height:100%;overflow-x:hidden} el scroll
 // vive en <body>, no en window (window.scrollTo / window.scrollY no tienen efecto en esta página).
@@ -9306,13 +9370,13 @@ function buildPetCard(o){
   const photo=photoOk
     ?`<div class="pet-photo-box"><img src="${e(p.photo.trim())}" alt="${e(o.name)}" loading="lazy" style="object-position:${pos};--photo-zoom:${zoom}" onerror="this.style.opacity=0"></div>`
     :'';
-  return `<button type="button" class="ship-card pet-card${sh.retired?' is-retired':''}" onclick="openPetShip('${e(o.shipId)}')" aria-label="${e(o.name)} — ship ${e(shipName)}">
+  return `<a class="ship-card pet-card${sh.retired?' is-retired':''}" href="${e(fichaHref('ship',o.shipId))}" onclick="if(!_plainClick(event))return;event.preventDefault();openPetShip('${e(o.shipId)}')" aria-label="${e(o.name)} — ship ${e(shipName)}">
     <div class="ship-couple-banner">${photo}</div>
     <div class="ship-card-inner">
       <div class="ship-card-title" title="${e(o.name)}">${e(o.name)}</div>
       <div class="pet-card-ship" title="${e(shipName)}">${e(shipName)}</div>
     </div>
-  </button>`;
+  </a>`;
 }
 // Mascota en la ficha del ship: fila con miniatura redonda + nombre (+ especie si está registrada).
 function buildPetChip(o){
@@ -10275,8 +10339,14 @@ document.addEventListener('keydown',e=>{
     // varias veces (cuando ya había quedado esa pestaña guardada en la sesión).
     const CHK_VALID_TABS=['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','canceladas','productoras','listas','ruleta','checklist'];
     const urlTab=new URLSearchParams(location.search).get('tab');
-    if(urlTab && CHK_VALID_TABS.includes(urlTab)) state.tab=urlTab;
-    const savedTab=state.tab||'cal';
+    // (10.1) Vista inicial: ?tab= válido → esa pestaña; sin ?tab= (o con uno no válido) → Calendario ('cal').
+    // La pestaña guardada en sessionStorage ya no decide la vista inicial (sus subpestañas, filtros y
+    // paginación siguen restaurándose). Atrás/Adelante y los enlaces con ?tab= no cambian.
+    state.tab=(urlTab && CHK_VALID_TABS.includes(urlTab)) ? urlTab : 'cal';
+    // (10.2) ?tab=ships&ships=ships|rupturas|mascotas: apartado de Ships Thais al abrir el enlace en otra pestaña
+    const urlShips=new URLSearchParams(location.search).get('ships');
+    if(urlShips && Object.prototype.hasOwnProperty.call(SHIPS_VIEWS,urlShips)) shipsState.view=urlShips;
+    const savedTab=state.tab;
     // Show the saved tab's view, hide others
     ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','canceladas','productoras','listas','ruleta','checklist'].forEach(t=>{
       const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
@@ -10309,12 +10379,15 @@ document.addEventListener('keydown',e=>{
 
     // ── Deep-link: abrir modal si la URL tiene #serie-ID o #pelicula-ID ──────
     (function resolveHashDeepLink(){
-      const hash = location.hash; // e.g. "#serie-1748871234567" or "#pelicula-..."
+      const hash = location.hash; // e.g. "#serie-1748871234567" o "#anime-serie-KEY"
       if(!hash) return;
-      const mSerie = hash.match(/^#serie-(.+)$/);
+      const dec = v => { try{ return decodeURIComponent(v); }catch(e){ return v; } };
+      const mSerie = hash.match(/^#serie-(?!ficha-|proximamente-)(.+)$/);
       const mPelicula = hash.match(/^#pelicula-(.+)$/);
+      // (10.2) Fichas que antes no tenían URL propia: se abren al cargar el enlace (p. ej. en una pestaña nueva)
+      const mOther = hash.match(/^#(serie-ficha|serie-proximamente|anime-serie|anime-pelicula|reality-serie|reality-pelicula|actriz|ship|productora|lista|dia)-(.+)$/);
       if(mSerie){
-        const id = mSerie[1];
+        const id = dec(mSerie[1]);
         const si = state.series.findIndex(s=>String(s.id)===id);
         if(si !== -1){
           const s = state.series[si];
@@ -10323,11 +10396,43 @@ document.addEventListener('keydown',e=>{
           setTimeout(()=>{ s.upcoming ? openUpcoming(si) : openSeries(si); }, 80);
         }
       } else if(mPelicula){
-        const id = mPelicula[1];
+        const id = dec(mPelicula[1]);
         const mi = state.movies.findIndex(mv=>String(mv.id)===id);
         if(mi !== -1){
           switchTab('movies', true);
           setTimeout(()=>openMovie(mi), 80);
+        }
+      } else if(mOther){
+        const kind = mOther[1], key = dec(mOther[2]);
+        const clean = () => history.replaceState(history.state, '', location.pathname + (location.search||''));
+        if(kind==='serie-ficha' || kind==='serie-proximamente'){
+          const si = state.series.findIndex(s=>String(s.id)===key);
+          if(si !== -1){
+            const up = kind==='serie-proximamente';
+            switchTab(up?'upcoming':'list', true);
+            setTimeout(()=>{ up ? openUpcoming(si) : openSeries(si); clean(); }, 80);
+          }
+        } else if(kind==='anime-serie' || kind==='anime-pelicula'){
+          switchTab('anime', true);
+          setTimeout(()=>{ if(kind==='anime-pelicula'){ animeSubtab='movies'; renderAnime(); } openAnimeDetail(kind==='anime-serie'?'series':'movie', key); clean(); }, 80);
+        } else if(kind==='reality-serie'){
+          switchTab('realities', true);
+          setTimeout(()=>{ openRealityDetail('series', key); clean(); }, 80);
+        } else if(kind==='reality-pelicula'){
+          const t = new URLSearchParams(location.search).get('tab')==='documentales' ? 'documentales' : 'realities';
+          switchTab(t, true);
+          setTimeout(()=>{ openRealityDetail('movie', key); clean(); }, 80);
+        } else if(kind==='actriz'){
+          setTimeout(()=>{ openActressProfile(key); clean(); }, 80);
+        } else if(kind==='ship'){
+          openShipFromSearch(key); clean();
+        } else if(kind==='productora'){
+          openProductoraFromSearch(key); clean();
+        } else if(kind==='lista'){
+          const li = (state.listas||[]).findIndex(l=>String(l.id)===key);
+          if(li !== -1){ switchTab('listas', true); setTimeout(()=>{ openLista(li); clean(); }, 80); }
+        } else if(kind==='dia'){
+          setTimeout(()=>openDay(key), 80);
         }
       }
     })();
