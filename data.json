@@ -268,7 +268,7 @@
       "wlwFocus": "pareja-principal",
       "tmdbId": "278174",
       "tmdbKind": "tv",
-      "tmdbRating": 8.5,
+      "tmdbRating": 8.6,
       "tmdbVoteCount": 10,
       "couples": [
         [
@@ -1145,7 +1145,7 @@
       ],
       "tmdbId": "312583",
       "tmdbKind": "tv",
-      "tmdbRating": 8.2,
+      "tmdbRating": 8.1,
       "tmdbVoteCount": 10,
       "biFormat": false,
       "streaming": {
@@ -3529,7 +3529,8 @@
               "num": 6,
               "date": "2026-10-16",
               "skipped": false,
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/mqBgeV2BZx5alzcOIPkHXVmNSzW.jpg"
             },
             {
               "num": 7,
@@ -4918,7 +4919,7 @@
       ],
       "tmdbId": "312588",
       "tmdbKind": "tv",
-      "tmdbRating": 7.7,
+      "tmdbRating": 7.8,
       "tmdbVoteCount": 10,
       "wlwFocus": "pareja-principal",
       "streaming": {
@@ -6190,7 +6191,8 @@
               "num": 7,
               "date": "2026-10-17",
               "skipped": false,
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/jNNXt1tHaMebF26XvEBGWG59nFZ.jpg"
             },
             {
               "num": 8,
@@ -6414,8 +6416,8 @@
       ],
       "tmdbId": "307433",
       "tmdbKind": "tv",
-      "tmdbRating": 8.5,
-      "tmdbVoteCount": 2,
+      "tmdbRating": 7.8,
+      "tmdbVoteCount": 4,
       "wlwFocus": "pareja-principal",
       "biFormat": false,
       "streaming": {}
@@ -8678,7 +8680,7 @@
       "tmdbId": "303724",
       "tmdbKind": "tv",
       "tmdbRating": 9,
-      "tmdbVoteCount": 25,
+      "tmdbVoteCount": 26,
       "wlwFocus": "pareja-principal",
       "couples": [
         [
@@ -9136,7 +9138,8 @@
               "num": 6,
               "date": "2026-10-17",
               "skipped": false,
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/A7EllCbvpWBzXDmlpS9zU6vuD1u.jpg"
             },
             {
               "num": 7,
@@ -9423,7 +9426,7 @@
       "tmdbId": "238754",
       "tmdbKind": "tv",
       "tmdbRating": 9.6,
-      "tmdbVoteCount": 108,
+      "tmdbVoteCount": 109,
       "wlwFocus": "pareja-principal"
     },
     {
@@ -12083,7 +12086,7 @@
       "tmdbId": "87689",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 1342,
+      "tmdbVoteCount": 1344,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -14055,7 +14058,7 @@
       "tmdbId": "225171",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 1153,
+      "tmdbVoteCount": 1158,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -15989,7 +15992,7 @@
       "tmdbId": "155513",
       "tmdbKind": "tv",
       "tmdbRating": 9,
-      "tmdbVoteCount": 134,
+      "tmdbVoteCount": 135,
       "tropos": [],
       "dinamica": [],
       "wlwFocus": "pareja-principal",
@@ -19227,7 +19230,7 @@
       "tmdbId": "257788",
       "tmdbKind": "tv",
       "tmdbRating": 8.2,
-      "tmdbVoteCount": 61,
+      "tmdbVoteCount": 62,
       "tropos": [],
       "dinamica": [],
       "wlwFocus": "pareja-principal",
@@ -39757,7 +39760,7 @@
       "tmdbId": "99610",
       "tmdbKind": "tv",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 256,
+      "tmdbVoteCount": 257,
       "wlwFocus": "pareja-principal",
       "sourceType": "",
       "moods": [],
@@ -42189,7 +42192,7 @@
       "tmdbId": "79732",
       "tmdbKind": "tv",
       "tmdbRating": 8.5,
-      "tmdbVoteCount": 842,
+      "tmdbVoteCount": 841,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -45590,7 +45593,7 @@
       "tmdbId": "1424",
       "tmdbKind": "tv",
       "tmdbRating": 7.6,
-      "tmdbVoteCount": 2922,
+      "tmdbVoteCount": 2923,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -53239,7 +53242,7 @@
       "tmdbId": "89901",
       "tmdbKind": "tv",
       "tmdbRating": 8.5,
-      "tmdbVoteCount": 1001,
+      "tmdbVoteCount": 1002,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -56950,7 +56953,7 @@
       "tmdbId": "33852",
       "tmdbKind": "tv",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 460,
+      "tmdbVoteCount": 461,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -59513,7 +59516,7 @@
       "tmdbId": "44856",
       "tmdbKind": "tv",
       "tmdbRating": 8,
-      "tmdbVoteCount": 299,
+      "tmdbVoteCount": 300,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -60742,7 +60745,7 @@
       "tmdbId": "48866",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 8824,
+      "tmdbVoteCount": 8830,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -66103,7 +66106,7 @@
       "tmdbId": "62643",
       "tmdbKind": "tv",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 2530,
+      "tmdbVoteCount": 2531,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -68519,7 +68522,7 @@
       "tmdbId": "85552",
       "tmdbKind": "tv",
       "tmdbRating": 8.3,
-      "tmdbVoteCount": 11126,
+      "tmdbVoteCount": 11130,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -70970,7 +70973,7 @@
       "tmdbId": "74440",
       "tmdbKind": "tv",
       "tmdbRating": 8.3,
-      "tmdbVoteCount": 1194,
+      "tmdbVoteCount": 1195,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -74686,7 +74689,7 @@
       "tmdbId": 81354,
       "tmdbKind": "tv",
       "tmdbRating": 7.6,
-      "tmdbVoteCount": 1289,
+      "tmdbVoteCount": 1290,
       "wlwFocus": "romance-secundario-protagonista",
       "streaming": {
         "AD": [
@@ -77110,7 +77113,7 @@
       "tmdbId": "117488",
       "tmdbKind": "tv",
       "tmdbRating": 7.4,
-      "tmdbVoteCount": 1053,
+      "tmdbVoteCount": 1054,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -81083,7 +81086,7 @@
       "tmdbId": "94605",
       "tmdbKind": "tv",
       "tmdbRating": 8.7,
-      "tmdbVoteCount": 6241,
+      "tmdbVoteCount": 6250,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -86223,7 +86226,7 @@
       "tmdbId": "100088",
       "tmdbKind": "tv",
       "tmdbRating": 8.4,
-      "tmdbVoteCount": 7425,
+      "tmdbVoteCount": 7431,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -88591,7 +88594,7 @@
       "tmdbId": "113962",
       "tmdbKind": "tv",
       "tmdbRating": 8.3,
-      "tmdbVoteCount": 1701,
+      "tmdbVoteCount": 1712,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -92335,7 +92338,7 @@
       "tmdbId": 92783,
       "tmdbKind": "tv",
       "tmdbRating": 6.1,
-      "tmdbVoteCount": 2616,
+      "tmdbVoteCount": 2620,
       "wlwFocus": "pareja-principal"
     },
     {
@@ -95772,7 +95775,7 @@
       "tmdbId": "138501",
       "tmdbKind": "tv",
       "tmdbRating": 7.4,
-      "tmdbVoteCount": 1060,
+      "tmdbVoteCount": 1063,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -102770,7 +102773,7 @@
       "tmdbId": 94997,
       "tmdbKind": "tv",
       "tmdbRating": 8.4,
-      "tmdbVoteCount": 7222,
+      "tmdbVoteCount": 7230,
       "wlwFocus": "pareja-principal"
     },
     {
@@ -103327,7 +103330,7 @@
       "tmdbId": "72750",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 1576,
+      "tmdbVoteCount": 1579,
       "wlwFocus": "romance-secundario-protagonista",
       "tropos": [],
       "dinamica": [],
@@ -105798,7 +105801,7 @@
       "tmdbId": 56296,
       "tmdbKind": "tv",
       "tmdbRating": 7.8,
-      "tmdbVoteCount": 1506,
+      "tmdbVoteCount": 1508,
       "wlwFocus": "pareja-secundaria",
       "streaming": {
         "AR": [
@@ -111004,7 +111007,7 @@
       "tmdbId": 65988,
       "tmdbKind": "tv",
       "tmdbRating": 7.8,
-      "tmdbVoteCount": 831,
+      "tmdbVoteCount": 833,
       "wlwFocus": "pareja-secundaria",
       "streaming": {
         "AT": [
@@ -111920,7 +111923,7 @@
       "tmdbId": 124101,
       "tmdbKind": "tv",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 403,
+      "tmdbVoteCount": 404,
       "wlwFocus": "romance-secundario-protagonista",
       "streaming": {
         "AD": [
@@ -114365,7 +114368,7 @@
       "tmdbId": 91977,
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 559,
+      "tmdbVoteCount": 560,
       "wlwFocus": "romance-secundario-protagonista",
       "streaming": {
         "AT": [
@@ -115066,7 +115069,7 @@
       "tmdbId": 89247,
       "tmdbKind": "tv",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 1615,
+      "tmdbVoteCount": 1616,
       "streaming": {
         "AR": [
           {
@@ -117569,7 +117572,7 @@
       "tmdbId": 71225,
       "tmdbKind": "tv",
       "tmdbRating": 7.8,
-      "tmdbVoteCount": 502,
+      "tmdbVoteCount": 501,
       "streaming": {
         "AD": [
           {
@@ -123106,7 +123109,7 @@
       "tmdbId": 31917,
       "tmdbKind": "tv",
       "tmdbRating": 8,
-      "tmdbVoteCount": 2855,
+      "tmdbVoteCount": 2856,
       "streaming": {
         "AD": [
           {
@@ -126445,7 +126448,7 @@
       "tmdbId": 81357,
       "tmdbKind": "tv",
       "tmdbRating": 7.3,
-      "tmdbVoteCount": 661,
+      "tmdbVoteCount": 662,
       "streaming": {
         "AD": [
           {
@@ -128541,7 +128544,7 @@
       "tmdbId": 113367,
       "tmdbKind": "tv",
       "tmdbRating": 7.6,
-      "tmdbVoteCount": 506,
+      "tmdbVoteCount": 507,
       "streaming": {
         "AD": [
           {
@@ -136780,8 +136783,8 @@
       "wlwFocus": "pareja-principal",
       "tmdbId": "94359",
       "tmdbKind": "tv",
-      "tmdbRating": 6.9,
-      "tmdbVoteCount": 51,
+      "tmdbRating": 6.8,
+      "tmdbVoteCount": 52,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -147715,6 +147718,14 @@
               "source": "tmdb",
               "duration": 64,
               "still": "https://image.tmdb.org/t/p/w300/oBbIfQwWvwlp5ulsIujBjX5nbi7.jpg"
+            },
+            {
+              "num": 7,
+              "date": "2026-10-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 53,
+              "still": "https://image.tmdb.org/t/p/w300/ApVBYnWk4kMGP9urpWjcC7z3sue.jpg"
             }
           ],
           "premiereSchedule": []
@@ -148281,7 +148292,7 @@
       "tmdbId": 283297,
       "tmdbKind": "tv",
       "tmdbRating": 8.2,
-      "tmdbVoteCount": 170,
+      "tmdbVoteCount": 173,
       "streaming": {
         "AD": [
           {
@@ -151669,13 +151680,15 @@
               "num": 7,
               "date": "2026-10-16",
               "skipped": false,
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/cmZst7iQAQiWum0rzPOPVng6XME.jpg"
             },
             {
               "num": 8,
               "date": "2026-10-16",
               "skipped": false,
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/bxP0MhEJIeRFhgWxr8Pmm58OgN.jpg"
             },
             {
               "num": 9,
@@ -151697,8 +151710,8 @@
       "wlwFocus": "romance-secundario-protagonista",
       "tmdbId": "310890",
       "tmdbKind": "tv",
-      "tmdbRating": 10,
-      "tmdbVoteCount": 4,
+      "tmdbRating": 9.4,
+      "tmdbVoteCount": 5,
       "couples": [],
       "biFormat": false,
       "streaming": {
@@ -154311,7 +154324,7 @@
       "tmdbId": 126167,
       "tmdbKind": "tv",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 286,
+      "tmdbVoteCount": 287,
       "streaming": {
         "AE": [
           {
@@ -155595,7 +155608,7 @@
       "tmdbId": 128883,
       "tmdbKind": "tv",
       "tmdbRating": 8.2,
-      "tmdbVoteCount": 666
+      "tmdbVoteCount": 667
     },
     {
       "id": "1789203927073",
@@ -159217,8 +159230,8 @@
       "productoraId": "",
       "tmdbId": "126035",
       "tmdbKind": "tv",
-      "tmdbRating": 7.4,
-      "tmdbVoteCount": 234,
+      "tmdbRating": 7.3,
+      "tmdbVoteCount": 235,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -159844,7 +159857,7 @@
       "tmdbId": "244447",
       "tmdbKind": "tv",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 108,
+      "tmdbVoteCount": 109,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -161933,7 +161946,7 @@
       "productoraId": "",
       "tmdbId": "283905",
       "tmdbKind": "tv",
-      "tmdbRating": 7.5,
+      "tmdbRating": 7.6,
       "tmdbVoteCount": 25,
       "seasons": [
         {
@@ -163474,7 +163487,7 @@
       "tmdbId": "248698",
       "tmdbKind": "tv",
       "tmdbRating": 6.5,
-      "tmdbVoteCount": 41,
+      "tmdbVoteCount": 42,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -178826,7 +178839,7 @@
       "tmdbId": "33880",
       "tmdbKind": "tv",
       "tmdbRating": 8.2,
-      "tmdbVoteCount": 2452,
+      "tmdbVoteCount": 2456,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -192491,7 +192504,7 @@
       "tmdbId": "67466",
       "tmdbKind": "tv",
       "tmdbRating": 7.3,
-      "tmdbVoteCount": 1006,
+      "tmdbVoteCount": 1007,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -193184,7 +193197,7 @@
       "tmdbId": "1417",
       "tmdbKind": "tv",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 987,
+      "tmdbVoteCount": 989,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -197688,7 +197701,7 @@
       "tmdbId": "299939",
       "tmdbKind": "tv",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 194,
+      "tmdbVoteCount": 205,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -202682,6 +202695,1426 @@
         }
       ],
       "updatedAt": "2026-10-15T07:29:27.401Z"
+    },
+    {
+      "id": "1792527358209",
+      "name": "Embrujadas",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/v2davcGs01dghe83td9KGv8Te8w.jpg",
+      "synopsis": "Ubicada en la ficticia ciudad universitaria de Hilltowne, Charmed sigue la vida de tres hermanas, Macy, Mel y Maggie Vera, quienes, después de la trágica muerte de su madre, descubren que son tres de las brujas más poderosas de todos los tiempos.",
+      "year": 2018,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=Int19SG98R0",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_new_53936_mvh4hsnf_0",
+          "character": "Mel Vera"
+        },
+        {
+          "actressId": "tmdb_new_1541266_mvh4hsng_5",
+          "character": "Abigael Jameson-Caine"
+        },
+        {
+          "actressId": "tmdb_new_2013576_mvh4hsng_8",
+          "character": "Niko Hamada"
+        }
+      ],
+      "couples": [
+        [
+          "tmdb_new_53936_mvh4hsnf_0",
+          "tmdb_new_2013576_mvh4hsng_8"
+        ]
+      ],
+      "sideCouples": [],
+      "fanCouples": [
+        [
+          "tmdb_new_53936_mvh4hsnf_0",
+          "tmdb_new_1541266_mvh4hsng_5"
+        ]
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 45,
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "79611",
+      "tmdbKind": "tv",
+      "tmdbRating": 7.2,
+      "tmdbVoteCount": 496,
+      "streaming": {
+        "AT": [
+          {
+            "name": "Joyn",
+            "url": "",
+            "type": "ads",
+            "providerId": 304,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "AU": [
+          {
+            "name": "Stan",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 21,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "DE": [
+          {
+            "name": "Joyn",
+            "url": "",
+            "type": "ads",
+            "providerId": 304,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GG": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Netflix",
+            "url": "https://www.netflix.com",
+            "type": "flatrate",
+            "providerId": 8,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Google Play Movies",
+            "url": "",
+            "type": "buy",
+            "providerId": 3,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "buy",
+            "providerId": 7,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AT": {
+          "link": "https://www.themoviedb.org/tv/79611-charmed/watch?locale=AT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AU": {
+          "link": "https://www.themoviedb.org/tv/79611-charmed/watch?locale=AU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/tv/79611-charmed/watch?locale=CA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DE": {
+          "link": "https://www.themoviedb.org/tv/79611-charmed/watch?locale=DE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/tv/79611-charmed/watch?locale=GB",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GG": {
+          "link": "https://www.themoviedb.org/tv/79611-charmed/watch?locale=GG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/79611-charmed/watch?locale=US",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        }
+      },
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2018-10-14",
+          "totalEpisodes": 22,
+          "emissionDays": [
+            6
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2018-10-14",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2018-10-21",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2018-10-28",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2018-11-04",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2018-11-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2018-11-18",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2018-11-25",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2018-12-02",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2018-12-09",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2019-01-20",
+              "source": "tmdb"
+            },
+            {
+              "num": 11,
+              "skipped": false,
+              "date": "2019-01-27",
+              "source": "tmdb"
+            },
+            {
+              "num": 12,
+              "skipped": false,
+              "date": "2019-02-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 13,
+              "skipped": false,
+              "date": "2019-03-03",
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 14,
+              "skipped": false,
+              "date": "2019-03-10",
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 15,
+              "skipped": false,
+              "date": "2019-03-17",
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 16,
+              "skipped": false,
+              "date": "2019-03-24",
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 17,
+              "skipped": false,
+              "date": "2019-03-31",
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 18,
+              "skipped": false,
+              "date": "2019-04-21",
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 19,
+              "skipped": false,
+              "date": "2019-04-28",
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 20,
+              "skipped": false,
+              "date": "2019-05-05",
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 21,
+              "skipped": false,
+              "date": "2019-05-12",
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 22,
+              "skipped": false,
+              "date": "2019-05-19",
+              "source": "tmdb",
+              "duration": 45
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2019-10-11",
+          "totalEpisodes": 19,
+          "emissionDays": [
+            4
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2019-10-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 2,
+              "date": "2019-10-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 3,
+              "date": "2019-10-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 4,
+              "date": "2019-11-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 5,
+              "date": "2019-11-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 6,
+              "date": "2019-11-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 7,
+              "date": "2019-11-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 8,
+              "date": "2019-12-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 9,
+              "date": "2020-01-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 10,
+              "date": "2020-01-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 11,
+              "date": "2020-01-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 12,
+              "date": "2020-02-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 13,
+              "date": "2020-02-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 14,
+              "date": "2020-02-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 15,
+              "date": "2020-03-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 16,
+              "date": "2020-04-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 17,
+              "date": "2020-04-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 18,
+              "date": "2020-04-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 19,
+              "date": "2020-05-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 3",
+          "startDate": "2021-01-24",
+          "totalEpisodes": 18,
+          "emissionDays": [
+            6
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2021-01-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 2,
+              "date": "2021-01-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 3,
+              "date": "2021-02-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 4,
+              "date": "2021-02-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 5,
+              "date": "2021-02-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 6,
+              "date": "2021-03-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 7,
+              "date": "2021-03-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 8,
+              "date": "2021-03-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 9,
+              "date": "2021-04-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 10,
+              "date": "2021-04-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 11,
+              "date": "2021-05-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 12,
+              "date": "2021-05-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 13,
+              "date": "2021-05-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 14,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 15,
+              "date": "2021-06-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 16,
+              "date": "2021-06-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 17,
+              "date": "2021-07-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 18,
+              "date": "2021-07-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 4",
+          "startDate": "2022-03-11",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            4
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2022-03-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 2,
+              "date": "2022-03-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 3,
+              "date": "2022-03-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 4,
+              "date": "2022-04-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41
+            },
+            {
+              "num": 5,
+              "date": "2022-04-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 6,
+              "date": "2022-04-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 7,
+              "date": "2022-04-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 8,
+              "date": "2022-05-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41
+            },
+            {
+              "num": 9,
+              "date": "2022-05-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 10,
+              "date": "2022-05-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41
+            },
+            {
+              "num": 11,
+              "date": "2022-05-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 12,
+              "date": "2022-06-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 40
+            },
+            {
+              "num": 13,
+              "date": "2022-06-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-10-20T20:15:58.209Z"
+    },
+    {
+      "id": "1792527564361",
+      "name": "La Isla de la Fantasía",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/3kVeYZARsnAjBY7FYzQ0fZeG3Fw.jpg",
+      "synopsis": "Esta versión contemporánea de la serie dramática clásica profundiza en las preguntas de \"qué pasaría si\" que nos mantienen despiertos por la noche. Cada episodio cuenta historias emocionantes y provocativas sobre personas que entran con un deseo, pero terminan renaciendo a sí mismas a través del realismo mágico de Fantasy Island.",
+      "year": 2021,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=ddFk1HLseh4",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "presencia-sin-desarrollo",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_new_145245_mvh4l37b_20",
+          "character": "Isabel Marshall"
+        },
+        {
+          "actressId": "tmdb_new_1754629_mvh4l37c_58",
+          "character": "Rachel Goldwater"
+        }
+      ],
+      "couples": [],
+      "sideCouples": [
+        [
+          "tmdb_new_145245_mvh4l37b_20",
+          "tmdb_new_1754629_mvh4l37c_58"
+        ]
+      ],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 43,
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "125116",
+      "tmdbKind": "tv",
+      "tmdbRating": 5.9,
+      "tmdbVoteCount": 88,
+      "streaming": {
+        "AR": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          }
+        ],
+        "AU": [
+          {
+            "name": "Sony Pictures Core Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2745,
+            "source": "tmdb"
+          }
+        ],
+        "BR": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Club Illico",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 469,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "CL": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          }
+        ],
+        "CO": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          }
+        ],
+        "CR": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          }
+        ],
+        "DK": [
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 76,
+            "source": "tmdb"
+          }
+        ],
+        "DO": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          }
+        ],
+        "ES": [
+          {
+            "name": "Movistar Plus+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2241,
+            "source": "tmdb"
+          },
+          {
+            "name": "Movistar Plus+ Ficción Total",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 149,
+            "source": "tmdb"
+          }
+        ],
+        "FI": [
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 76,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "Sky Go",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 29,
+            "source": "tmdb"
+          },
+          {
+            "name": "Now TV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 39,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GG": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GT": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          }
+        ],
+        "IE": [
+          {
+            "name": "Sky Go",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 29,
+            "source": "tmdb"
+          },
+          {
+            "name": "Now TV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 39,
+            "source": "tmdb"
+          }
+        ],
+        "IN": [
+          {
+            "name": "VI movies and tv",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 614,
+            "source": "tmdb"
+          }
+        ],
+        "MX": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          },
+          {
+            "name": "Tubi TV",
+            "url": "",
+            "type": "ads",
+            "providerId": 73,
+            "source": "tmdb"
+          }
+        ],
+        "NO": [
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 76,
+            "source": "tmdb"
+          },
+          {
+            "name": "Strim",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 578,
+            "source": "tmdb"
+          }
+        ],
+        "PE": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          }
+        ],
+        "PL": [
+          {
+            "name": "Viaplay Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2296,
+            "source": "tmdb"
+          }
+        ],
+        "PY": [
+          {
+            "name": "Sony One Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2161,
+            "source": "tmdb"
+          }
+        ],
+        "SE": [
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 76,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Google Play Movies",
+            "url": "",
+            "type": "buy",
+            "providerId": 3,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "buy",
+            "providerId": 7,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AR": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=AR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AU": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=AU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BR": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=BR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=CA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CL": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=CL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CO": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=CO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CR": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=CR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DK": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=DK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DO": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=DO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "ES": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=ES",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "FI": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=FI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=GB",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GG": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=GG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GT": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=GT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IE": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=IE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IN": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=IN",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MX": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=MX",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NO": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=NO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PE": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=PE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PL": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=PL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PY": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=PY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SE": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=SE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/125116-fantasy-island/watch?locale=US",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        }
+      },
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2021-08-10",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            1,
+            3,
+            6
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2021-08-10",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2021-08-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2021-08-24",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2021-08-31",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2021-09-07",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2021-09-12",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2021-09-14",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2021-09-19",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2021-12-23",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2021-12-23",
+              "source": "tmdb"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2023-01-02",
+          "totalEpisodes": 13,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2023-01-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 2,
+              "date": "2023-01-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 3,
+              "date": "2023-01-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            },
+            {
+              "num": 4,
+              "date": "2023-01-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41
+            },
+            {
+              "num": 5,
+              "date": "2023-02-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            },
+            {
+              "num": 6,
+              "date": "2023-02-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            },
+            {
+              "num": 7,
+              "date": "2023-02-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            },
+            {
+              "num": 8,
+              "date": "2023-03-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            },
+            {
+              "num": 9,
+              "date": "2023-04-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            },
+            {
+              "num": 10,
+              "date": "2023-04-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            },
+            {
+              "num": 11,
+              "date": "2023-04-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            },
+            {
+              "num": 12,
+              "date": "2023-05-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 13,
+              "date": "2023-05-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-10-20T20:19:24.361Z"
     }
   ],
   "movies": [
@@ -202737,7 +204170,7 @@
       "tmdbId": "1397485",
       "tmdbKind": "movie",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 80,
+      "tmdbVoteCount": 82,
       "couples": [
         [
           "tmdb_4658358_mtyay0b4",
@@ -204844,7 +206277,7 @@
       "tmdbId": "1240889",
       "tmdbKind": "movie",
       "tmdbRating": 6.2,
-      "tmdbVoteCount": 313,
+      "tmdbVoteCount": 324,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -210083,7 +211516,7 @@
       "tmdbId": "1633",
       "tmdbKind": "movie",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 1538,
+      "tmdbVoteCount": 1540,
       "nameEn": "Fried Green Tomatoes",
       "moods": [],
       "tropos": [],
@@ -214169,7 +215602,7 @@
       "tmdbId": "9303",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 1161,
+      "tmdbVoteCount": 1162,
       "nameEn": "Bound",
       "moods": [],
       "tropos": [],
@@ -215793,7 +217226,7 @@
       "tmdbId": "11634",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 616,
+      "tmdbVoteCount": 617,
       "nameEn": "Fucking Åmål",
       "moods": [],
       "tropos": [],
@@ -216982,7 +218415,7 @@
       "tmdbId": "20770",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 900,
+      "tmdbVoteCount": 901,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -219589,7 +221022,7 @@
       "tmdbId": "1018",
       "tmdbKind": "movie",
       "tmdbRating": 7.8,
-      "tmdbVoteCount": 7360,
+      "tmdbVoteCount": 7367,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -221956,7 +223389,7 @@
       "tmdbId": "590",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 1922,
+      "tmdbVoteCount": 1925,
       "nameEn": "The Hours",
       "moods": [],
       "tropos": [],
@@ -225585,7 +227018,7 @@
       "tmdbId": "504",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 2649,
+      "tmdbVoteCount": 2654,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -231931,7 +233364,7 @@
       "tmdbId": "1544",
       "tmdbKind": "movie",
       "tmdbRating": 7.6,
-      "tmdbVoteCount": 1145,
+      "tmdbVoteCount": 1146,
       "nameEn": "Imagine me and you",
       "moods": [],
       "tropos": [],
@@ -232385,7 +233818,7 @@
       "tmdbId": "17612",
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 543,
+      "tmdbVoteCount": 544,
       "streaming": {
         "CA": [
           {
@@ -234139,7 +235572,7 @@
       "tmdbId": "31031",
       "tmdbKind": "movie",
       "tmdbRating": 7,
-      "tmdbVoteCount": 105,
+      "tmdbVoteCount": 106,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -235291,7 +236724,7 @@
       "tmdbId": "31216",
       "tmdbKind": "movie",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 337,
+      "tmdbVoteCount": 338,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -236647,7 +238080,7 @@
       "tmdbId": 19994,
       "tmdbKind": "movie",
       "tmdbRating": 6,
-      "tmdbVoteCount": 4450,
+      "tmdbVoteCount": 4453,
       "streaming": {
         "AD": [
           {
@@ -241075,7 +242508,7 @@
       "tmdbId": 56743,
       "tmdbKind": "movie",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 185,
+      "tmdbVoteCount": 186,
       "streaming": {
         "AT": [
           {
@@ -241612,7 +243045,7 @@
       "tmdbId": 39781,
       "tmdbKind": "movie",
       "tmdbRating": 6.6,
-      "tmdbVoteCount": 1647,
+      "tmdbVoteCount": 1648,
       "streaming": {
         "AR": [
           {
@@ -243402,7 +244835,7 @@
       "tmdbId": 44991,
       "tmdbKind": "movie",
       "tmdbRating": 5.4,
-      "tmdbVoteCount": 61,
+      "tmdbVoteCount": 62,
       "streaming": {
         "AT": [
           {
@@ -247364,7 +248797,7 @@
       "tmdbId": 152584,
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 4970,
+      "tmdbVoteCount": 4972,
       "streaming": {
         "AT": [
           {
@@ -257862,7 +259295,7 @@
       "tmdbId": 306745,
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 681,
+      "tmdbVoteCount": 680,
       "streaming": {
         "AE": [
           {
@@ -260036,7 +261469,7 @@
       "tmdbId": 258480,
       "tmdbKind": "movie",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 4057,
+      "tmdbVoteCount": 4058,
       "streaming": {
         "AD": [
           {
@@ -272627,7 +274060,7 @@
       "tmdbId": 341013,
       "tmdbKind": "movie",
       "tmdbRating": 6.4,
-      "tmdbVoteCount": 6824,
+      "tmdbVoteCount": 6828,
       "streaming": {
         "AD": [
           {
@@ -276641,7 +278074,7 @@
       "tmdbId": 420622,
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 960
+      "tmdbVoteCount": 963
     },
     {
       "id": "1700000000103",
@@ -280932,7 +282365,7 @@
       "tmdbId": 369192,
       "tmdbKind": "movie",
       "tmdbRating": 6.7,
-      "tmdbVoteCount": 1995,
+      "tmdbVoteCount": 1998,
       "streaming": {
         "AE": [
           {
@@ -288126,7 +289559,7 @@
       "tmdbId": 529962,
       "tmdbKind": "movie",
       "tmdbRating": 6.4,
-      "tmdbVoteCount": 1517,
+      "tmdbVoteCount": 1516,
       "streaming": {
         "AD": [
           {
@@ -293547,7 +294980,7 @@
       "tmdbId": 375262,
       "tmdbKind": "movie",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 6090,
+      "tmdbVoteCount": 6096,
       "streaming": {
         "AE": [
           {
@@ -318578,7 +320011,7 @@
       "tmdbId": 505600,
       "tmdbKind": "movie",
       "tmdbRating": 7,
-      "tmdbVoteCount": 2947,
+      "tmdbVoteCount": 2948,
       "wlwFocus": "subplot",
       "streaming": {
         "AD": [
@@ -327678,7 +329111,7 @@
       "tmdbId": 587970,
       "tmdbKind": "movie",
       "tmdbRating": 5.3,
-      "tmdbVoteCount": 98,
+      "tmdbVoteCount": 97,
       "streaming": {
         "AD": [
           {
@@ -330258,7 +331691,7 @@
       "tmdbId": 419743,
       "tmdbKind": "movie",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 1311,
+      "tmdbVoteCount": 1312,
       "streaming": {
         "AR": [
           {
@@ -337039,7 +338472,7 @@
       "tmdbId": 597219,
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 1633,
+      "tmdbVoteCount": 1634,
       "streaming": {
         "AD": [
           {
@@ -339231,7 +340664,7 @@
       "cast": [],
       "tmdbId": 635918,
       "tmdbKind": "movie",
-      "tmdbRating": 7,
+      "tmdbRating": 7.1,
       "tmdbVoteCount": 191,
       "streaming": {
         "AE": [
@@ -348015,7 +349448,7 @@
       "tmdbId": 520172,
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 1353,
+      "tmdbVoteCount": 1354,
       "streaming": {
         "AD": [
           {
@@ -351527,7 +352960,7 @@
       "tmdbId": 611213,
       "tmdbKind": "movie",
       "tmdbRating": 6.1,
-      "tmdbVoteCount": 728,
+      "tmdbVoteCount": 727,
       "streaming": {
         "AD": [
           {
@@ -363511,7 +364944,7 @@
       "tmdbId": 591273,
       "tmdbKind": "movie",
       "tmdbRating": 6.7,
-      "tmdbVoteCount": 2782
+      "tmdbVoteCount": 2783
     },
     {
       "id": "1700000000218",
@@ -364802,7 +366235,7 @@
       "tmdbId": 501929,
       "tmdbKind": "movie",
       "tmdbRating": 7.8,
-      "tmdbVoteCount": 3531,
+      "tmdbVoteCount": 3539,
       "streaming": {
         "AD": [
           {
@@ -380709,7 +382142,7 @@
       "tmdbId": 714964,
       "tmdbKind": "movie",
       "tmdbRating": 5.5,
-      "tmdbVoteCount": 67
+      "tmdbVoteCount": 68
     },
     {
       "id": "1700000000261",
@@ -380772,7 +382205,7 @@
       "tmdbId": 913816,
       "tmdbKind": "movie",
       "tmdbRating": 7.3,
-      "tmdbVoteCount": 101,
+      "tmdbVoteCount": 102,
       "streaming": {
         "BR": [
           {
@@ -394457,7 +395890,7 @@
       "tmdbId": 814776,
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 942,
+      "tmdbVoteCount": 943,
       "streaming": {
         "AR": [
           {
@@ -395712,7 +397145,7 @@
       "tmdbId": 957304,
       "tmdbKind": "movie",
       "tmdbRating": 5.5,
-      "tmdbVoteCount": 631,
+      "tmdbVoteCount": 633,
       "streaming": {
         "AG": [
           {
@@ -401117,7 +402550,7 @@
       "tmdbId": 827931,
       "tmdbKind": "movie",
       "tmdbRating": 5.6,
-      "tmdbVoteCount": 638,
+      "tmdbVoteCount": 641,
       "streaming": {
         "AD": [
           {
@@ -403040,7 +404473,7 @@
       "tmdbId": 948549,
       "tmdbKind": "movie",
       "tmdbRating": 6.6,
-      "tmdbVoteCount": 1050,
+      "tmdbVoteCount": 1055,
       "streaming": {
         "AE": [
           {
@@ -405906,7 +407339,7 @@
       "tmdbId": 1092506,
       "tmdbKind": "movie",
       "tmdbRating": 6.2,
-      "tmdbVoteCount": 144,
+      "tmdbVoteCount": 145,
       "streaming": {
         "AD": [
           {
@@ -414545,7 +415978,7 @@
       "tmdbId": 14289,
       "tmdbKind": "movie",
       "tmdbRating": 5.7,
-      "tmdbVoteCount": 409,
+      "tmdbVoteCount": 410,
       "streaming": {
         "AR": [
           {
@@ -419581,7 +421014,7 @@
       "tmdbId": 515295,
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 53
+      "tmdbVoteCount": 54
     },
     {
       "id": "1779990666997",
@@ -419627,7 +421060,7 @@
       "tmdbId": 1024,
       "tmdbKind": "movie",
       "tmdbRating": 7,
-      "tmdbVoteCount": 1074,
+      "tmdbVoteCount": 1075,
       "streaming": {
         "AT": [
           {
@@ -419997,7 +421430,7 @@
       "tmdbId": 1575337,
       "tmdbKind": "movie",
       "tmdbRating": 8.1,
-      "tmdbVoteCount": 124,
+      "tmdbVoteCount": 125,
       "streaming": {
         "AD": [
           {
@@ -423168,8 +424601,8 @@
       "updatedAt": "2026-08-26T20:50:58.506Z",
       "tmdbId": 1444595,
       "tmdbKind": "movie",
-      "tmdbRating": 7.1,
-      "tmdbVoteCount": 10,
+      "tmdbRating": 7.2,
+      "tmdbVoteCount": 11,
       "streaming": {
         "ES": [
           {
@@ -423863,8 +425296,8 @@
       "productoraId": "",
       "tmdbId": "1377676",
       "tmdbKind": "movie",
-      "tmdbRating": 4.4,
-      "tmdbVoteCount": 5,
+      "tmdbRating": 4.3,
+      "tmdbVoteCount": 6,
       "updatedAt": "2026-09-15T08:44:28.988Z",
       "streaming": {
         "AU": [
@@ -425125,8 +426558,8 @@
       "productoraId": "",
       "tmdbId": "245025",
       "tmdbKind": "movie",
-      "tmdbRating": 5.7,
-      "tmdbVoteCount": 14,
+      "tmdbRating": 5.9,
+      "tmdbVoteCount": 15,
       "updatedAt": "2026-09-17T16:47:18.728Z",
       "streaming": {
         "CA": [
@@ -431297,7 +432730,7 @@
       "tmdbId": "14533",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 856,
+      "tmdbVoteCount": 857,
       "streaming": {
         "AD": [
           {
@@ -433488,7 +434921,7 @@
       "tmdbId": "664300",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 831,
+      "tmdbVoteCount": 835,
       "streaming": {
         "AG": [
           {
@@ -439348,6 +440781,61 @@
       "country": "",
       "birthdate": "",
       "notes": ""
+    },
+    {
+      "id": "tmdb_new_53936_mvh4hsnf_0",
+      "name": "Melonie Díaz",
+      "tmdbPersonId": 53936,
+      "photo": "https://image.tmdb.org/t/p/w200/bZw2waOzKDE74crNL02L9EsBiH4.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_1541266_mvh4hsng_5",
+      "name": "Poppy Drayton",
+      "tmdbPersonId": 1541266,
+      "photo": "https://image.tmdb.org/t/p/w200/mx81cyurTIGDtoWcNPcK4fDKxAu.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_2013576_mvh4hsng_8",
+      "name": "Ellen Tamaki",
+      "tmdbPersonId": 2013576,
+      "photo": "https://image.tmdb.org/t/p/w200/kQGqxMmGdpGTvBJEy3gWvMf1fKO.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_145245_mvh4l37b_20",
+      "name": "Caitlin Stasey",
+      "tmdbPersonId": 145245,
+      "photo": "https://image.tmdb.org/t/p/w200/uJW62qSjIyI0OP30s5U8KLlDw32.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_1754629_mvh4l37c_58",
+      "name": "Gillian Saker",
+      "tmdbPersonId": 1754629,
+      "photo": "https://image.tmdb.org/t/p/w200/mSGOFlo1deMRKCFcVnOpBJSa340.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
     }
   ],
   "ships": [
@@ -441807,5 +443295,5 @@
       ]
     }
   },
-  "exportedAt": "2026-10-18T07:47:06.377Z"
+  "exportedAt": "2026-10-20T20:28:36.080Z"
 }
