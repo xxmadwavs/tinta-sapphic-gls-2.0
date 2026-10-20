@@ -203499,7 +203499,7 @@
       "moods": [],
       "tropos": [],
       "dinamica": [],
-      "wlwFocus": "presencia-sin-desarrollo",
+      "wlwFocus": "pareja-1-episodio",
       "awards": [],
       "category": "series",
       "seriesType": "serie",
@@ -204114,7 +204114,5686 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-10-20T20:19:24.361Z"
+      "updatedAt": "2026-10-20T20:30:18.796Z",
+      "wlwFocusEpisode": "1x07"
+    },
+    {
+      "id": "1792528395369",
+      "name": "Con amor, Victor",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/etrxb0Jfut11ExIWMQBtmQZnY1V.jpg",
+      "synopsis": "Basada en la novela para jóvenes de Becky Albertalli 'Simon vs. the Homo Sapiens Agenda', que inspiró el largometraje 'Love, Simon'. 'Love, Victor' sigue a Victor, un nuevo estudiante de Creekwood High School en su autodescubrimiento, enfrentándose a problemas en casa, adaptándose a una nueva ciudad y descubriendo su orientación sexual. Cuando todo se le está haciendo difícil, se acerca a Simon para que le ayude a lidiar con los altibajos de su vida.",
+      "year": 2020,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=hHWKdgEApEc",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Comedia",
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-secundaria",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_new_1256118_mvh5404m_4",
+          "character": "Lake Meriwether"
+        },
+        {
+          "actressId": "tmdb_new_2050728_mvh5404n_11",
+          "character": "Lucy"
+        }
+      ],
+      "couples": [],
+      "sideCouples": [
+        [
+          "tmdb_new_1256118_mvh5404m_4",
+          "tmdb_new_2050728_mvh5404n_11"
+        ]
+      ],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "97186",
+      "tmdbKind": "tv",
+      "tmdbRating": 8.6,
+      "tmdbVoteCount": 1669,
+      "streaming": {
+        "AR": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "AT": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "AU": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "BE": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "BG": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "BO": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "BR": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "BZ": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "CH": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "CL": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "CO": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "CR": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "CZ": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "DE": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "DK": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "DO": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "EC": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "ES": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "FI": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "FR": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "GR": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "GT": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "HK": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "HN": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "HR": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "HU": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "IE": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "IT": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "JM": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "JP": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "KR": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "LC": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "LI": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "LU": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "MX": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "NI": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "NL": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "NO": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "NZ": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "PA": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "PE": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "PL": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "PT": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "PY": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "RO": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "SE": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "SG": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "SK": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "SM": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "SV": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "TH": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 122,
+            "source": "tmdb"
+          }
+        ],
+        "TR": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "TT": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "TW": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          },
+          {
+            "name": "Hulu",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 15,
+            "source": "tmdb"
+          }
+        ],
+        "UY": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "VE": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AR": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=AR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AT": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=AT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AU": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=AU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BE": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=BE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BG": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=BG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BO": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=BO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BR": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=BR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BZ": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=BZ",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=CA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CH": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=CH",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CL": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=CL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CO": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=CO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CR": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=CR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CZ": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=CZ",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DE": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=DE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DK": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=DK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DO": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=DO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "EC": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=EC",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "ES": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=ES",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "FI": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=FI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "FR": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=FR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=GB",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GR": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=GR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GT": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=GT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "HK": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=HK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "HN": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=HN",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "HR": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=HR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "HU": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=HU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IE": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=IE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IT": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=IT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "JM": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=JM",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "JP": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=JP",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "KR": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=KR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "LC": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=LC",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "LI": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=LI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "LU": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=LU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MX": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=MX",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NI": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=NI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NL": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=NL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NO": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=NO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NZ": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=NZ",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PA": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=PA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PE": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=PE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PL": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=PL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PT": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=PT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PY": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=PY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "RO": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=RO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SE": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=SE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SG": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=SG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SK": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=SK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SM": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=SM",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SV": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=SV",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TH": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=TH",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TR": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=TR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TT": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=TT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TW": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=TW",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=US",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "UY": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=UY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "VE": {
+          "link": "https://www.themoviedb.org/tv/97186-love-victor/watch?locale=VE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        }
+      },
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2020-06-17",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2020-06-17",
+              "source": "tmdb"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2021-06-11",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            4
+          ],
+          "allInOneDay": true,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 27
+            },
+            {
+              "num": 2,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 25
+            },
+            {
+              "num": 3,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 27
+            },
+            {
+              "num": 4,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 29
+            },
+            {
+              "num": 5,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 28
+            },
+            {
+              "num": 6,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 29
+            },
+            {
+              "num": 7,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 27
+            },
+            {
+              "num": 8,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 32
+            },
+            {
+              "num": 9,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 26
+            },
+            {
+              "num": 10,
+              "date": "2021-06-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 33
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 3",
+          "startDate": "2022-06-15",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": true,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2022-06-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 33
+            },
+            {
+              "num": 2,
+              "date": "2022-06-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 28
+            },
+            {
+              "num": 3,
+              "date": "2022-06-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 27
+            },
+            {
+              "num": 4,
+              "date": "2022-06-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 28
+            },
+            {
+              "num": 5,
+              "date": "2022-06-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 24
+            },
+            {
+              "num": 6,
+              "date": "2022-06-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 28
+            },
+            {
+              "num": 7,
+              "date": "2022-06-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 28
+            },
+            {
+              "num": 8,
+              "date": "2022-06-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 31
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-10-20T20:33:15.369Z"
+    },
+    {
+      "id": "1792528493536",
+      "name": "Pequeñas mentirosas: Pecado original",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/iT8WopXXwTTyIiBfk7nOCMQlWP0.jpg",
+      "synopsis": "Hace veinte años una serie de tragedias casi destruye la ciudad obrera de Millwood. Ahora, un grupo muy diverso de adolescentes, las nuevas pequeñas mentirosas, sufren el tormento de un agresor desconocido.",
+      "year": 2022,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=eTM_QBy6ops",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Drama",
+        "Misterio"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "subplot",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_new_2071463_mvh55xsh_2",
+          "character": "Noa Olivar"
+        },
+        {
+          "actressId": "tmdb_new_2050728_mvh5404n_11",
+          "character": "Jennifer Fox"
+        }
+      ],
+      "couples": [],
+      "sideCouples": [
+        [
+          "tmdb_new_2071463_mvh55xsh_2",
+          "tmdb_new_2050728_mvh5404n_11"
+        ]
+      ],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "110531",
+      "tmdbKind": "tv",
+      "tmdbRating": 7.8,
+      "tmdbVoteCount": 260,
+      "streaming": {
+        "AD": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "AG": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "AL": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "AR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "AT": [
+          {
+            "name": "RTL+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2750,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "RTL+ Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2578,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "maxdome Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 20,
+            "source": "tmdb"
+          }
+        ],
+        "AU": [
+          {
+            "name": "Foxtel Now",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 134,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "BA": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BB": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "BG": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BO": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "BS": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "BZ": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Crave",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 230,
+            "source": "tmdb"
+          },
+          {
+            "name": "Crave Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2604,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "CH": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "CL": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "CO": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "CR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "CY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "CZ": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "DE": [
+          {
+            "name": "RTL+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2750,
+            "source": "tmdb"
+          },
+          {
+            "name": "RTL+ Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2578,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "MagentaTV",
+            "url": "",
+            "type": "buy",
+            "providerId": 178,
+            "source": "tmdb"
+          },
+          {
+            "name": "maxdome Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 20,
+            "source": "tmdb"
+          },
+          {
+            "name": "Videoload",
+            "url": "",
+            "type": "buy",
+            "providerId": 1993,
+            "source": "tmdb"
+          },
+          {
+            "name": "Freenet meinVOD",
+            "url": "",
+            "type": "buy",
+            "providerId": 2209,
+            "source": "tmdb"
+          }
+        ],
+        "DK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "DO": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "EC": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "EE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "ES": [
+          {
+            "name": "Movistar Plus+ Ficción Total",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 149,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "FI": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "FJ": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "FR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Sky Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 130,
+            "source": "tmdb"
+          }
+        ],
+        "GG": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "GT": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "GY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "HK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "HN": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "HR": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "HU": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "ID": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "IE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "Sky Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 130,
+            "source": "tmdb"
+          }
+        ],
+        "IL": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "IQ": [
+          {
+            "name": "OSN+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 629,
+            "source": "tmdb"
+          }
+        ],
+        "IS": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "IT": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "JM": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "LC": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "LI": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "LT": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "LU": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "LV": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MC": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MD": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "ME": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MT": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "MX": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "MY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "NI": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "NL": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "NO": [
+          {
+            "name": "Strim",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 578,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "NZ": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PA": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PG": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PH": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PL": [
+          {
+            "name": "Player",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 505,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PT": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "PY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "RO": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "RS": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "RU": [
+          {
+            "name": "Okko",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 115,
+            "source": "tmdb"
+          },
+          {
+            "name": "Amediateka",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 116,
+            "source": "tmdb"
+          }
+        ],
+        "SE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          }
+        ],
+        "SG": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "SI": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "SK": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "SV": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TC": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TH": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TR": [
+          {
+            "name": "TV+",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1904,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TT": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "TW": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "UA": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1825,
+            "source": "tmdb"
+          },
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "buy",
+            "providerId": 7,
+            "source": "tmdb"
+          }
+        ],
+        "UY": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ],
+        "VE": [
+          {
+            "name": "HBO Max",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1899,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AD": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=AD",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AG": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=AG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AL": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=AL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AR": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=AR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AT": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=AT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AU": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=AU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BA": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=BA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BB": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=BB",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BE": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=BE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BG": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=BG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BO": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=BO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BR": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=BR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BS": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=BS",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BZ": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=BZ",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=CA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CH": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=CH",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CL": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=CL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CO": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=CO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CR": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=CR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CY": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=CY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CZ": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=CZ",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DE": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=DE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DK": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=DK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DO": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=DO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "EC": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=EC",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "EE": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=EE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "ES": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=ES",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "FI": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=FI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "FJ": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=FJ",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "FR": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=FR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=GB",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GG": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=GG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GR": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=GR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GT": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=GT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GY": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=GY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "HK": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=HK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "HN": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=HN",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "HR": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=HR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "HU": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=HU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "ID": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=ID",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IE": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=IE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IL": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=IL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IQ": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=IQ",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IS": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=IS",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IT": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=IT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "JM": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=JM",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "LC": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=LC",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "LI": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=LI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "LT": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=LT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "LU": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=LU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "LV": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=LV",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MC": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=MC",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MD": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=MD",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "ME": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=ME",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MK": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=MK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MT": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=MT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MX": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=MX",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MY": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=MY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NI": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=NI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NL": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=NL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NO": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=NO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NZ": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=NZ",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PA": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=PA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PE": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=PE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PG": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=PG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PH": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=PH",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PK": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=PK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PL": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=PL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PT": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=PT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PY": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=PY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "RO": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=RO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "RS": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=RS",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "RU": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=RU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SE": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=SE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SG": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=SG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SI": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=SI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SK": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=SK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SV": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=SV",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TC": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=TC",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TH": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=TH",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TR": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=TR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TT": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=TT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TW": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=TW",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "UA": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=UA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=US",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "UY": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=UY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "VE": {
+          "link": "https://www.themoviedb.org/tv/110531-pretty-little-liars-original-sin/watch?locale=VE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        }
+      },
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2022-07-28",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2022-07-28",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2022-07-28",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2022-07-28",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2022-08-04",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2022-08-04",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2022-08-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2022-08-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2022-08-18",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2022-08-18",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2022-08-18",
+              "source": "tmdb"
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2024-05-09",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            3
+          ],
+          "allInOneDay": true,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2024-05-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 49
+            },
+            {
+              "num": 2,
+              "date": "2024-05-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50
+            },
+            {
+              "num": 3,
+              "date": "2024-05-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 49
+            },
+            {
+              "num": 4,
+              "date": "2024-05-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51
+            },
+            {
+              "num": 5,
+              "date": "2024-05-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 51
+            },
+            {
+              "num": 6,
+              "date": "2024-06-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45
+            },
+            {
+              "num": 7,
+              "date": "2024-06-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 50
+            },
+            {
+              "num": 8,
+              "date": "2024-06-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 52
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-10-20T20:34:53.536Z"
+    },
+    {
+      "id": "1792528685698",
+      "name": "Coven Academy: El hechizo de las brujas",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/hcmeaEjGZE1mYfPp4KFd8mNgYbO.jpg",
+      "synopsis": "En el corazón embrujado de Nueva Orleans, \"Coven Academy: El hechizo de las brujas\" sigue a tres brujas adolescentes y a sus peligrosamente encantadores compañeros brujos en un selecto internado mágico donde el poder es moneda de cambio, los secretos son letales y la atracción es una desventaja. Atrapados entre antiguas guerras sobrenaturales e intereses amorosos prohibidos, el aquelarre debe decidir hasta dónde están dispuestos a llegar para proteger su ciudad y a sí mismos.",
+      "year": 2026,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=0eg2CdfLyR8",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Drama",
+        "Misterio"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "no-canon",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_new_4673280_mvh5a6bh_3",
+          "character": "Tegan Kimball"
+        },
+        {
+          "actressId": "tmdb_new_2390813_mvh5a6bh_7",
+          "character": "McKenna"
+        }
+      ],
+      "couples": [],
+      "sideCouples": [],
+      "fanCouples": [
+        [
+          "tmdb_new_4673280_mvh5a6bh_3",
+          "tmdb_new_2390813_mvh5a6bh_7"
+        ]
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "298505",
+      "tmdbKind": "tv",
+      "tmdbRating": 7.5,
+      "tmdbVoteCount": 41,
+      "streaming": {
+        "CA": [
+          {
+            "name": "StackTV Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 606,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "DE": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "NO": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Disney+",
+            "url": "https://www.disneyplus.com",
+            "type": "flatrate",
+            "providerId": 337,
+            "source": "tmdb"
+          },
+          {
+            "name": "Hulu",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 15,
+            "source": "tmdb"
+          },
+          {
+            "name": "fuboTV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 257,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "buy",
+            "providerId": 7,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "CA": {
+          "link": "https://www.themoviedb.org/tv/298505-coven-academy/watch?locale=CA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DE": {
+          "link": "https://www.themoviedb.org/tv/298505-coven-academy/watch?locale=DE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NO": {
+          "link": "https://www.themoviedb.org/tv/298505-coven-academy/watch?locale=NO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/298505-coven-academy/watch?locale=US",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        }
+      },
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-10-01",
+          "totalEpisodes": 10,
+          "emissionDays": [
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2026-10-01",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2026-10-01",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2026-10-01",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2026-10-01",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2026-10-08",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2026-10-08",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2026-10-08",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2026-10-15",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2026-10-15",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2026-10-15",
+              "source": "tmdb"
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-10-20T20:38:05.698Z"
+    },
+    {
+      "id": "1792528896476",
+      "name": "Love.exe",
+      "nameEn": "제4차 사랑혁명",
+      "poster": "https://image.tmdb.org/t/p/w500/rudBTw7Q2a0zRb3UTrJRNRnL4hf.jpg",
+      "synopsis": "Una fusión ridícula en una universidad une los departamentos de ingeniería informática y modelado. Kang Min Hak, del departamento de modelado, ha conseguido un millón de seguidores en redes sociales tras aparecer en un programa de citas. Tiene un encanto especial que atrae a quienes lo rodean. Joo Yeon San es la mejor estudiante del departamento de ingeniería informática. Es capaz de resolver problemas rápidamente, pero tiene un defecto fatal: incluso un solo error le impide avanzar. Trabaja en la computadora todo el día y no le interesan las citas. Al principio, Kang Min Hak y Joo Yeon San se involucran inesperadamente, pero su relación se desarrolla.",
+      "year": 2025,
+      "country": "Corea del Sur",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=VW5VLTuACkU",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Comedia",
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-secundaria",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_new_5812087_mvh5dwqm_5",
+          "character": "Im Yu-ri"
+        },
+        {
+          "actressId": "tmdb_new_1261197_mvh5dwqm_8",
+          "character": "Kang Dong-won"
+        }
+      ],
+      "couples": [],
+      "sideCouples": [],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "303748",
+      "tmdbKind": "tv",
+      "tmdbRating": 7.4,
+      "tmdbVoteCount": 8,
+      "streaming": {
+        "HK": [
+          {
+            "name": "VIU",
+            "url": "https://www.viu.com",
+            "type": "ads",
+            "providerId": 158,
+            "source": "tmdb"
+          }
+        ],
+        "ID": [
+          {
+            "name": "VIU",
+            "url": "https://www.viu.com",
+            "type": "ads",
+            "providerId": 158,
+            "source": "tmdb"
+          }
+        ],
+        "KR": [
+          {
+            "name": "Wavve",
+            "url": "https://www.wavve.com",
+            "type": "flatrate",
+            "providerId": 356,
+            "source": "tmdb"
+          },
+          {
+            "name": "TVING",
+            "url": "https://www.tving.com",
+            "type": "flatrate",
+            "providerId": 1883,
+            "source": "tmdb"
+          }
+        ],
+        "MY": [
+          {
+            "name": "VIU",
+            "url": "https://www.viu.com",
+            "type": "flatrate",
+            "providerId": 158,
+            "source": "tmdb"
+          },
+          {
+            "name": "VIU",
+            "url": "https://www.viu.com",
+            "type": "ads",
+            "providerId": 158,
+            "source": "tmdb"
+          }
+        ],
+        "PH": [
+          {
+            "name": "VIU",
+            "url": "https://www.viu.com",
+            "type": "ads",
+            "providerId": 158,
+            "source": "tmdb"
+          }
+        ],
+        "SG": [
+          {
+            "name": "VIU",
+            "url": "https://www.viu.com",
+            "type": "ads",
+            "providerId": 158,
+            "source": "tmdb"
+          }
+        ],
+        "TH": [
+          {
+            "name": "VIU",
+            "url": "https://www.viu.com",
+            "type": "flatrate",
+            "providerId": 158,
+            "source": "tmdb"
+          },
+          {
+            "name": "VIU",
+            "url": "https://www.viu.com",
+            "type": "ads",
+            "providerId": 158,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "The Roku Channel",
+            "url": "",
+            "type": "ads",
+            "providerId": 207,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "HK": {
+          "link": "https://www.themoviedb.org/tv/303748-4/watch?locale=HK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "ID": {
+          "link": "https://www.themoviedb.org/tv/303748-4/watch?locale=ID",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "KR": {
+          "link": "https://www.themoviedb.org/tv/303748-4/watch?locale=KR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MY": {
+          "link": "https://www.themoviedb.org/tv/303748-4/watch?locale=MY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PH": {
+          "link": "https://www.themoviedb.org/tv/303748-4/watch?locale=PH",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SG": {
+          "link": "https://www.themoviedb.org/tv/303748-4/watch?locale=SG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "TH": {
+          "link": "https://www.themoviedb.org/tv/303748-4/watch?locale=TH",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/303748-4/watch?locale=US",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        }
+      },
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2025-11-13",
+          "totalEpisodes": 16,
+          "emissionDays": [
+            2,
+            3
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2025-11-13",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2025-11-13",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2025-11-13",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2025-11-13",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2025-11-20",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2025-11-20",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2025-11-20",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2025-11-20",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2025-11-27",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2025-11-27",
+              "source": "tmdb"
+            },
+            {
+              "num": 11,
+              "skipped": false,
+              "date": "2025-11-27",
+              "source": "tmdb"
+            },
+            {
+              "num": 12,
+              "skipped": false,
+              "date": "2025-11-27",
+              "source": "tmdb"
+            },
+            {
+              "num": 13,
+              "skipped": false,
+              "date": "2025-12-03",
+              "source": "tmdb",
+              "duration": 41
+            },
+            {
+              "num": 14,
+              "skipped": false,
+              "date": "2025-12-03",
+              "source": "tmdb",
+              "duration": 35
+            },
+            {
+              "num": 15,
+              "skipped": false,
+              "date": "2025-12-03",
+              "source": "tmdb",
+              "duration": 29
+            },
+            {
+              "num": 16,
+              "skipped": false,
+              "date": "2025-12-03",
+              "source": "tmdb",
+              "duration": 48
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-10-20T20:41:36.476Z"
+    },
+    {
+      "id": "1792528976243",
+      "name": "La leyenda del buscador",
+      "nameEn": "Legend of the Seeker",
+      "poster": "https://image.tmdb.org/t/p/w500/3Ij15ma3gSVTWFgm1M5lWgILFKf.jpg",
+      "synopsis": "Narra el viaje épico de Richard Cypher, un joven guía de bosques, una  misteriosa mujer llamada Kahlan Amnell y el mago  Zeddicus Zu'l  Zorander. Su misión consiste en detener al temible mago Rahl el Oscuro  para que no se apodere de un antiguo y terrible poder.",
+      "year": 2008,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=Qsofpiny7d0",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "no-canon",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_new_1222298_mvh5ggc5_1",
+          "character": "Kahlan Amnell"
+        },
+        {
+          "actressId": "tmdb_new_221150_mvh5ggc5_4",
+          "character": "Cara Mason"
+        }
+      ],
+      "couples": [],
+      "sideCouples": [],
+      "fanCouples": [
+        [
+          "tmdb_new_1222298_mvh5ggc5_1",
+          "tmdb_new_221150_mvh5ggc5_4"
+        ]
+      ],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 42,
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "7704",
+      "tmdbKind": "tv",
+      "tmdbRating": 7.4,
+      "tmdbVoteCount": 377,
+      "streaming": {
+        "AT": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "AU": [
+          {
+            "name": "7plus",
+            "url": "",
+            "type": "ads",
+            "providerId": 246,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "DE": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "FR": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GG": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "JP": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "FOD",
+            "url": "",
+            "type": "rent",
+            "providerId": 2683,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "flatrate",
+            "providerId": 9,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Google Play Movies",
+            "url": "",
+            "type": "buy",
+            "providerId": 3,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "buy",
+            "providerId": 7,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AT": {
+          "link": "https://www.themoviedb.org/tv/7704-legend-of-the-seeker/watch?locale=AT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AU": {
+          "link": "https://www.themoviedb.org/tv/7704-legend-of-the-seeker/watch?locale=AU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/tv/7704-legend-of-the-seeker/watch?locale=CA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DE": {
+          "link": "https://www.themoviedb.org/tv/7704-legend-of-the-seeker/watch?locale=DE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "FR": {
+          "link": "https://www.themoviedb.org/tv/7704-legend-of-the-seeker/watch?locale=FR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/tv/7704-legend-of-the-seeker/watch?locale=GB",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GG": {
+          "link": "https://www.themoviedb.org/tv/7704-legend-of-the-seeker/watch?locale=GG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "JP": {
+          "link": "https://www.themoviedb.org/tv/7704-legend-of-the-seeker/watch?locale=JP",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/7704-legend-of-the-seeker/watch?locale=US",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        }
+      },
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2008-11-01",
+          "totalEpisodes": 22,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2008-11-01",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2008-11-01",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2008-11-08",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2008-11-15",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2008-11-22",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2008-11-29",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2008-12-06",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2009-01-10",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2009-01-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2009-01-24",
+              "source": "tmdb"
+            },
+            {
+              "num": 11,
+              "skipped": false,
+              "date": "2009-01-31",
+              "source": "tmdb"
+            },
+            {
+              "num": 12,
+              "skipped": false,
+              "date": "2009-02-21",
+              "source": "tmdb"
+            },
+            {
+              "num": 13,
+              "skipped": false,
+              "date": "2009-02-28",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 14,
+              "skipped": false,
+              "date": "2009-03-07",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 15,
+              "skipped": false,
+              "date": "2009-03-14",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 16,
+              "skipped": false,
+              "date": "2009-03-21",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 17,
+              "skipped": false,
+              "date": "2009-03-28",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 18,
+              "skipped": false,
+              "date": "2009-04-25",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 19,
+              "skipped": false,
+              "date": "2009-05-02",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 20,
+              "skipped": false,
+              "date": "2009-05-09",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 21,
+              "skipped": false,
+              "date": "2009-05-16",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 22,
+              "skipped": false,
+              "date": "2009-05-23",
+              "source": "tmdb",
+              "duration": 42
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2009-11-07",
+          "totalEpisodes": 22,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2009-11-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 2,
+              "date": "2009-11-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 3,
+              "date": "2009-11-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 4,
+              "date": "2009-11-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 5,
+              "date": "2009-12-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 6,
+              "date": "2009-12-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 7,
+              "date": "2010-01-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 8,
+              "date": "2010-01-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 9,
+              "date": "2010-01-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 10,
+              "date": "2010-01-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 11,
+              "date": "2010-02-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 12,
+              "date": "2010-02-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 13,
+              "date": "2010-02-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 14,
+              "date": "2010-03-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 15,
+              "date": "2010-03-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 16,
+              "date": "2010-04-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 17,
+              "date": "2010-04-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 18,
+              "date": "2010-04-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 19,
+              "date": "2010-05-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 20,
+              "date": "2010-05-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 21,
+              "date": "2010-05-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 22,
+              "date": "2010-05-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-10-20T20:42:56.243Z"
+    },
+    {
+      "id": "1792529153197",
+      "name": "Jane the Virgin",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/DRRHgvsNEfBloMgIP8bBw4zi4E.jpg",
+      "synopsis": "Una joven devota descubre que ha sido inseminada artificialmente por error. Cuando Jane Villanueva era niña, su abuela le dejó claras dos cosas: las telenovelas son la mejor forma de entretenimiento y perder la virginidad es lo peor que le puede pasar a una mujer. A sus 23 años y en el corazón de Miami, Jane es una chica responsable y piadosa, ilusionada por labrarse un futuro con un novio perfecto con el que, por supuesto, no tiene relación. Pero todos sus planes se van al traste cuando es inseminada accidentalmente por error de un ginecólogo que atraviesa una mala racha. Paradojas del destino, Rafael, antiguo enamorado de Jane, ahora casado con una mujer retorcida y dueña del hotel donde ella trabaja. Jane se ve entonces obligada a cambiar radicalmente de perspectiva: ahora su vida es la mejor telenovela y ella es la protagonista.",
+      "year": 2014,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=3JPNVHRNCrY",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Comedia",
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-secundaria",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_new_572195_mvh5jfiw_2",
+          "character": "Petra Solano"
+        },
+        {
+          "actressId": "tmdb_new_204723_mvh5jfix_8",
+          "character": "Dr. Luisa Alver"
+        },
+        {
+          "actressId": "tmdb_new_1222298_mvh5ggc5_1",
+          "character": "Rose Solano"
+        },
+        {
+          "actressId": "tmdb_new_5916_mvh5jfix_23",
+          "character": "Jane Ramos"
+        }
+      ],
+      "couples": [],
+      "sideCouples": [
+        [
+          "tmdb_new_572195_mvh5jfiw_2",
+          "tmdb_new_5916_mvh5jfix_23"
+        ],
+        [
+          "tmdb_new_204723_mvh5jfix_8",
+          "tmdb_new_1222298_mvh5ggc5_1"
+        ]
+      ],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": 40,
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraId": "",
+      "tmdbId": "61418",
+      "tmdbKind": "tv",
+      "tmdbRating": 7.9,
+      "tmdbVoteCount": 919,
+      "streaming": {
+        "AD": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "flatrate",
+            "providerId": 119,
+            "source": "tmdb"
+          }
+        ],
+        "AR": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount+ Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 582,
+            "source": "tmdb"
+          }
+        ],
+        "AT": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "AU": [
+          {
+            "name": "Stan",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 21,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "BO": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          }
+        ],
+        "BR": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Globoplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 307,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount+ Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 582,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Premium",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2303,
+            "source": "tmdb"
+          }
+        ],
+        "CA": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount+ Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 582,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Premium",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2303,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "CL": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount+ Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 582,
+            "source": "tmdb"
+          }
+        ],
+        "CO": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount+ Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 582,
+            "source": "tmdb"
+          }
+        ],
+        "CR": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          }
+        ],
+        "CZ": [
+          {
+            "name": "Oneplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2536,
+            "source": "tmdb"
+          }
+        ],
+        "DE": [
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "DK": [
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 76,
+            "source": "tmdb"
+          }
+        ],
+        "DO": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          }
+        ],
+        "EC": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          }
+        ],
+        "FI": [
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 76,
+            "source": "tmdb"
+          }
+        ],
+        "FR": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "flatrate",
+            "providerId": 119,
+            "source": "tmdb"
+          },
+          {
+            "name": "Molotov TV",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1967,
+            "source": "tmdb"
+          },
+          {
+            "name": "SFR Play",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 193,
+            "source": "tmdb"
+          },
+          {
+            "name": "M6+",
+            "url": "",
+            "type": "ads",
+            "providerId": 147,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          }
+        ],
+        "GB": [
+          {
+            "name": "ITVX Premium",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2300,
+            "source": "tmdb"
+          },
+          {
+            "name": "ITVX",
+            "url": "",
+            "type": "ads",
+            "providerId": 41,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GF": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "flatrate",
+            "providerId": 119,
+            "source": "tmdb"
+          }
+        ],
+        "GG": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          }
+        ],
+        "GT": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          }
+        ],
+        "IN": [
+          {
+            "name": "JioHotstar",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2336,
+            "source": "tmdb"
+          }
+        ],
+        "IS": [
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 76,
+            "source": "tmdb"
+          }
+        ],
+        "MC": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "flatrate",
+            "providerId": 119,
+            "source": "tmdb"
+          }
+        ],
+        "MX": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount+ Amazon Channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 582,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Premium",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 2303,
+            "source": "tmdb"
+          }
+        ],
+        "NI": [
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          }
+        ],
+        "NL": [
+          {
+            "name": "Videoland",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 72,
+            "source": "tmdb"
+          }
+        ],
+        "NO": [
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 76,
+            "source": "tmdb"
+          },
+          {
+            "name": "Strim",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 578,
+            "source": "tmdb"
+          }
+        ],
+        "PA": [
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          }
+        ],
+        "PE": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          }
+        ],
+        "PF": [
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "flatrate",
+            "providerId": 119,
+            "source": "tmdb"
+          }
+        ],
+        "PY": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          }
+        ],
+        "SE": [
+          {
+            "name": "Viaplay",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 76,
+            "source": "tmdb"
+          }
+        ],
+        "SK": [
+          {
+            "name": "Voyo",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 627,
+            "source": "tmdb"
+          }
+        ],
+        "SV": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          }
+        ],
+        "US": [
+          {
+            "name": "Pluto TV",
+            "url": "",
+            "type": "ads",
+            "providerId": 300,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "Apple TV Store",
+            "url": "",
+            "type": "buy",
+            "providerId": 2,
+            "source": "tmdb"
+          },
+          {
+            "name": "Google Play Movies",
+            "url": "",
+            "type": "buy",
+            "providerId": 3,
+            "source": "tmdb"
+          },
+          {
+            "name": "Fandango At Home",
+            "url": "",
+            "type": "buy",
+            "providerId": 7,
+            "source": "tmdb"
+          }
+        ],
+        "UY": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          }
+        ],
+        "VE": [
+          {
+            "name": "Paramount Plus",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 531,
+            "source": "tmdb"
+          },
+          {
+            "name": "Paramount Plus Apple TV channel",
+            "url": "",
+            "type": "flatrate",
+            "providerId": 1853,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "AD": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=AD",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AR": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=AR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AT": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=AT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "AU": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=AU",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BO": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=BO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "BR": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=BR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CA": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=CA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CL": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=CL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CO": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=CO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CR": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=CR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "CZ": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=CZ",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DE": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=DE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DK": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=DK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "DO": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=DO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "EC": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=EC",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "FI": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=FI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "FR": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=FR",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GB": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=GB",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GF": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=GF",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GG": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=GG",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "GT": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=GT",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IN": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=IN",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "IS": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=IS",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MC": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=MC",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "MX": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=MX",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NI": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=NI",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NL": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=NL",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "NO": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=NO",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PA": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=PA",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PE": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=PE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PF": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=PF",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "PY": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=PY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SE": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=SE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SK": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=SK",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "SV": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=SV",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "US": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=US",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "UY": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=UY",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        },
+        "VE": {
+          "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=VE",
+          "fetchedAt": "2026-10-20",
+          "status": "ok"
+        }
+      },
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2014-10-13",
+          "totalEpisodes": 22,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2014-10-13",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2014-10-20",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2014-10-27",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2014-11-03",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2014-11-10",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2014-11-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2014-11-24",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2014-12-08",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2014-12-15",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2015-01-19",
+              "source": "tmdb"
+            },
+            {
+              "num": 11,
+              "skipped": false,
+              "date": "2015-01-26",
+              "source": "tmdb"
+            },
+            {
+              "num": 12,
+              "skipped": false,
+              "date": "2015-02-02",
+              "source": "tmdb"
+            },
+            {
+              "num": 13,
+              "skipped": false,
+              "date": "2015-02-09",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 14,
+              "skipped": false,
+              "date": "2015-02-16",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 15,
+              "skipped": false,
+              "date": "2015-03-09",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 16,
+              "skipped": false,
+              "date": "2015-03-16",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 17,
+              "skipped": false,
+              "date": "2015-04-06",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 18,
+              "skipped": false,
+              "date": "2015-04-13",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 19,
+              "skipped": false,
+              "date": "2015-04-20",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 20,
+              "skipped": false,
+              "date": "2015-04-27",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 21,
+              "skipped": false,
+              "date": "2015-05-04",
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 22,
+              "skipped": false,
+              "date": "2015-05-11",
+              "source": "tmdb",
+              "duration": 43
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 2",
+          "startDate": "2015-10-12",
+          "totalEpisodes": 22,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2015-10-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 2,
+              "date": "2015-10-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 3,
+              "date": "2015-10-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 4,
+              "date": "2015-11-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 5,
+              "date": "2015-11-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 6,
+              "date": "2015-11-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 7,
+              "date": "2015-11-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 8,
+              "date": "2015-12-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 9,
+              "date": "2016-01-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 10,
+              "date": "2016-02-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 11,
+              "date": "2016-02-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 12,
+              "date": "2016-02-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 13,
+              "date": "2016-02-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 14,
+              "date": "2016-03-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 15,
+              "date": "2016-03-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 16,
+              "date": "2016-03-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 17,
+              "date": "2016-04-11",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 18,
+              "date": "2016-04-18",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 19,
+              "date": "2016-04-25",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 20,
+              "date": "2016-05-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 21,
+              "date": "2016-05-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 22,
+              "date": "2016-05-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 3",
+          "startDate": "2016-10-17",
+          "totalEpisodes": 20,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2016-10-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 2,
+              "date": "2016-10-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 3,
+              "date": "2016-10-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 4,
+              "date": "2016-11-07",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 5,
+              "date": "2016-11-14",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 6,
+              "date": "2016-11-21",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 7,
+              "date": "2016-11-28",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 8,
+              "date": "2017-01-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 9,
+              "date": "2017-01-30",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 10,
+              "date": "2017-02-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 11,
+              "date": "2017-02-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 12,
+              "date": "2017-02-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 13,
+              "date": "2017-02-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 14,
+              "date": "2017-03-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 15,
+              "date": "2017-03-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 16,
+              "date": "2017-04-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41
+            },
+            {
+              "num": 17,
+              "date": "2017-05-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 18,
+              "date": "2017-05-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 19,
+              "date": "2017-05-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 20,
+              "date": "2017-05-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 4",
+          "startDate": "2017-10-13",
+          "totalEpisodes": 17,
+          "emissionDays": [
+            4
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2017-10-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 2,
+              "date": "2017-10-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 3,
+              "date": "2017-10-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 4,
+              "date": "2017-11-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 5,
+              "date": "2017-11-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 6,
+              "date": "2017-11-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 7,
+              "date": "2017-12-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 8,
+              "date": "2018-01-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 9,
+              "date": "2018-02-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 10,
+              "date": "2018-02-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 11,
+              "date": "2018-03-02",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 12,
+              "date": "2018-03-09",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 13,
+              "date": "2018-03-16",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 14,
+              "date": "2018-03-23",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 15,
+              "date": "2018-04-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 16,
+              "date": "2018-04-13",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 17,
+              "date": "2018-04-20",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            }
+          ],
+          "premiereSchedule": []
+        },
+        {
+          "label": "Temporada 5",
+          "startDate": "2019-03-27",
+          "totalEpisodes": 19,
+          "emissionDays": [
+            2
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2019-03-27",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            },
+            {
+              "num": 2,
+              "date": "2019-04-03",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 3,
+              "date": "2019-04-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 4,
+              "date": "2019-04-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 5,
+              "date": "2019-04-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 6,
+              "date": "2019-05-01",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 7,
+              "date": "2019-05-08",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 8,
+              "date": "2019-05-15",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 9,
+              "date": "2019-05-22",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 10,
+              "date": "2019-05-29",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 11,
+              "date": "2019-06-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 12,
+              "date": "2019-06-12",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 13,
+              "date": "2019-06-19",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 14,
+              "date": "2019-06-26",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 15,
+              "date": "2019-07-10",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 41
+            },
+            {
+              "num": 16,
+              "date": "2019-07-17",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 17,
+              "date": "2019-07-24",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 43
+            },
+            {
+              "num": 18,
+              "date": "2019-07-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 42
+            },
+            {
+              "num": 19,
+              "date": "2019-07-31",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 44
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-10-20T20:45:53.197Z"
     }
   ],
   "movies": [
@@ -264369,29 +270048,40 @@
     {
       "id": "1700000000073",
       "name": "Writers Retreat",
-      "synopsis": "En un retiro de escritores en una isla aislada, la novelista Zandra se une a un grupo de extraños que enfrentan sus secretos más oscuros. Pero cuando un miembro del partido desaparece misteriosamente, se dan cuenta de que hay algo más en la isla.\n\n(Source: TMDB)",
+      "synopsis": "En un retiro de escritores en una isla aislada, la novelista Zandra se une a un grupo de extraños que enfrentan sus secretos más oscuros. Pero cuando un miembro del partido desaparece misteriosamente, se dan cuenta de que hay algo más en la isla.",
       "year": 2015,
-      "country": "Reino Unido",
-      "date": "2018-04-12",
+      "country": "Estados Unidos",
+      "date": "2015-10-16",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
       "trailerUrl": "https://www.youtube.com/watch?v=-3wFuQtNEZE",
       "genres": [
+        "Crimen",
+        "Terror",
         "Thriller"
       ],
-      "poster": "https://m.media-amazon.com/images/M/MV5BMjA0MTMwMzI1M15BMl5BanBnXkFtZTgwMjU1Nzk5NjE@._V1_.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/qvRtjzsuHjNiXL95aFAi9T6YigR.jpg",
       "basedOnBook": false,
       "bookSource": "",
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
       "category": "movie",
-      "updatedAt": "2026-05-13T12:10:15.168Z",
+      "updatedAt": "2026-10-20T20:31:37.265Z",
       "movieType": "film",
       "duration": 89,
-      "cast": [],
-      "tmdbId": 383348,
+      "cast": [
+        {
+          "actressId": "tmdb_new_1541266_mvh4hsng_5",
+          "character": "Jo"
+        },
+        {
+          "actressId": "tmdb_new_1253362_mvh51oat_3",
+          "character": "Zandra"
+        }
+      ],
+      "tmdbId": "383348",
       "tmdbKind": "movie",
       "tmdbRating": 5.5,
       "tmdbVoteCount": 8,
@@ -264468,7 +270158,25 @@
           "fetchedAt": "2026-10-17",
           "status": "ok"
         }
-      }
+      },
+      "nameEn": "",
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "romance-secundario-protagonista",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "biFormat": false,
+      "couples": [
+        [
+          "tmdb_new_1541266_mvh4hsng_5",
+          "tmdb_new_1253362_mvh51oat_3"
+        ]
+      ],
+      "sideCouples": [],
+      "fanCouples": [],
+      "productoraId": ""
     },
     {
       "id": "1700000000074",
@@ -440836,6 +446544,150 @@
       "country": "",
       "birthdate": "",
       "notes": ""
+    },
+    {
+      "id": "tmdb_new_1253362_mvh51oat_3",
+      "name": "Camilla Beeput",
+      "tmdbPersonId": 1253362,
+      "photo": "https://image.tmdb.org/t/p/w200/aBSKZPc2zyaYqMxdFrBD433A1xP.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_1256118_mvh5404m_4",
+      "name": "Bebe Wood",
+      "tmdbPersonId": 1256118,
+      "photo": "https://image.tmdb.org/t/p/w200/AmWu9Aeq915Gw1jK2AIAcia8556.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_2050728_mvh5404n_11",
+      "name": "Ava Capri",
+      "tmdbPersonId": 2050728,
+      "photo": "https://image.tmdb.org/t/p/w200/lcZ0CFQm18l5G5mTsaL57Jrt3rJ.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_2071463_mvh55xsh_2",
+      "name": "Maia Reficco",
+      "tmdbPersonId": 2071463,
+      "photo": "https://image.tmdb.org/t/p/w200/brPJjB7K3zkqKhmKkCTr5cGZXUy.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_4673280_mvh5a6bh_3",
+      "name": "Ora Duplass",
+      "tmdbPersonId": 4673280,
+      "photo": "https://image.tmdb.org/t/p/w200/aUb9KQDx5NN3yTXjuYr0ixRFeKe.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_2390813_mvh5a6bh_7",
+      "name": "Swayam Bhatia",
+      "tmdbPersonId": 2390813,
+      "photo": "https://image.tmdb.org/t/p/w200/bls6jlbG5pvIo8OKPQNvWwwdpgk.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_5812087_mvh5dwqm_5",
+      "name": "Kang Sin",
+      "tmdbPersonId": 5812087,
+      "photo": "https://image.tmdb.org/t/p/w200/o2QN21nvmHtsw10qyy68heU36le.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "Corea del Sur",
+      "birthdate": "1998-06-08",
+      "notes": "Actriz"
+    },
+    {
+      "id": "tmdb_new_1261197_mvh5dwqm_8",
+      "name": "Kim Min Seo",
+      "tmdbPersonId": 1261197,
+      "photo": "https://image.tmdb.org/t/p/w200/wjpyb7tJ4LrYUgucr1Rto7b7B6g.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "Corea del Sur",
+      "birthdate": "1996-04-09",
+      "notes": "Actriz"
+    },
+    {
+      "id": "tmdb_new_1222298_mvh5ggc5_1",
+      "name": "Bridget Regan",
+      "tmdbPersonId": 1222298,
+      "photo": "https://image.tmdb.org/t/p/w200/ri1kEBkWa9ShTYbV2iJAFa0V4VU.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_221150_mvh5ggc5_4",
+      "name": "Tabrett Bethell",
+      "tmdbPersonId": 221150,
+      "photo": "https://image.tmdb.org/t/p/w200/mEvE6urdcPzfTdAJ0aOjXL5ibBf.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_572195_mvh5jfiw_2",
+      "name": "Yael Grobglas",
+      "tmdbPersonId": 572195,
+      "photo": "https://image.tmdb.org/t/p/w200/oAoQcDX3zbf7DG6yP20fDfroduf.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "Francia",
+      "birthdate": "1984-05-31",
+      "notes": "Actriz",
+      "height": 170
+    },
+    {
+      "id": "tmdb_new_204723_mvh5jfix_8",
+      "name": "Yara Martinez",
+      "tmdbPersonId": 204723,
+      "photo": "https://image.tmdb.org/t/p/w200/h7FcuyLMJ96EMqzcyjzrS5cYg34.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_5916_mvh5jfix_23",
+      "name": "Rosario Dawson",
+      "tmdbPersonId": 5916,
+      "photo": "https://image.tmdb.org/t/p/w200/siTzOI810a0K46wv1TORXMw5N7J.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
     }
   ],
   "ships": [
@@ -443295,5 +449147,5 @@
       ]
     }
   },
-  "exportedAt": "2026-10-20T20:28:36.080Z"
+  "exportedAt": "2026-10-20T20:47:09.741Z"
 }
