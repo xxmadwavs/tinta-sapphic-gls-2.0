@@ -741,6 +741,168 @@ h3.salud-title{margin:0;font-size:15px;font-weight:700}
   .salud-rows .series-actions .btn{min-height:44px;width:100%}
   .salud-cats{grid-template-columns:minmax(0,1fr)}
 }
+/* ═══ FASE 11.1 · Buscador rápido (Ctrl+K). Solo añade reglas con prefijo .qsrch-; no altera ninguna regla existente. ═══ */
+.qsrch-btn{display:inline-flex;align-items:center;gap:6px}
+.qsrch-kbd{font-family:inherit;font-size:10.5px;font-weight:700;padding:0 6px;border:1px solid var(--border2);border-radius:6px;background:var(--surface2);color:var(--muted);line-height:17px}
+.qsrch-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.qsrch-bg{position:fixed;inset:0;z-index:400;display:none;align-items:flex-start;justify-content:center;padding:12vh 12px 12px;background:rgba(58,37,53,.5);backdrop-filter:blur(2px)}
+.qsrch-bg.open{display:flex}
+.qsrch-panel{width:100%;max-width:640px;max-height:76vh;display:flex;flex-direction:column;background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;box-shadow:0 20px 60px rgba(212,96,138,.2);overflow:hidden}
+.qsrch-panel:focus{outline:none}
+.qsrch-head{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--border2)}
+.qsrch-input{flex:1;min-width:0;padding:10px 14px;font-size:16px;font-family:'Nunito',sans-serif;border:1.5px solid var(--border2);border-radius:12px;background:var(--surface2);color:var(--text);outline:none}
+.qsrch-input:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.qsrch-close{flex:none}
+.qsrch-status{padding:6px 16px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)}
+.qsrch-list{list-style:none;margin:0;padding:6px;overflow-y:auto;flex:1;min-height:0}
+.qsrch-opt{display:flex;gap:10px;align-items:center;padding:8px 10px;min-height:44px;border:2px solid transparent;border-radius:12px;cursor:pointer}
+.qsrch-opt[aria-selected="true"]{background:var(--lavender-soft);border-color:var(--lavender)}
+.qsrch-type{flex:none;min-width:86px;text-align:center;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;border:1px solid transparent}
+.qsrch-type.t-serie,.qsrch-type.t-webserie{background:#fce8f1;color:#a63a63;border-color:rgba(166,58,99,.3)}
+.qsrch-type.t-pelicula,.qsrch-type.t-corto{background:var(--lavender-soft);color:#6a4bb0;border-color:rgba(106,75,176,.3)}
+.qsrch-type.t-anime{background:#e9e3f7;color:#5a3fa0;border-color:rgba(90,63,160,.3)}
+.qsrch-type.t-reality{background:var(--teal-soft);color:#1f6b62;border-color:rgba(31,107,98,.3)}
+.qsrch-type.t-actriz{background:var(--surface2);color:var(--text);border-color:var(--border2)}
+.qsrch-main{min-width:0;flex:1}
+.qsrch-name{font-weight:700;overflow-wrap:anywhere}
+.qsrch-meta{font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
+.qsrch-foot{display:flex;gap:4px 14px;flex-wrap:wrap;padding:8px 16px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--border2)}
+@media(max-width:899px){
+  .qsrch-bg{padding-top:8px}
+  .qsrch-panel{max-height:calc(100vh - 16px)}
+  .qsrch-kbd,.qsrch-keys{display:none}
+  .qsrch-btn,.qsrch-close{min-height:36px}
+}
+@media(forced-colors:active){ .qsrch-opt[aria-selected="true"]{outline:2px solid Highlight} }
+/* ═══ FASE 11.2 · Resumen antes de exportar. Solo reglas con prefijo .qsum-; no altera ninguna regla existente. ═══ */
+.modal-bg.qsum-bg{z-index:350}
+.qsum-panel{width:100%;max-width:860px;max-height:92vh;display:flex;flex-direction:column;background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;box-shadow:0 20px 60px rgba(212,96,138,.15);overflow:hidden}
+.qsum-panel:focus{outline:none}
+.qsum-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border2)}
+.qsum-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--text);margin:0;font-weight:400}
+.qsum-title:focus{outline:none}
+.qsum-title:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.qsum-body{overflow-y:auto;padding:14px 20px;flex:1;min-height:0}
+.qsum-state{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border2);border-left-width:5px;border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:13.5px}
+.qsum-state strong{display:block;font-size:14.5px}
+.qsum-state.ok{border-left-color:var(--teal);background:var(--teal-soft)}
+.qsum-state.err{border-left-color:#c94040;background:#fde8e8}
+.qsum-state-ico{font-weight:800;font-size:16px;line-height:1.3}
+.qsum-ref{font-size:12px;color:var(--muted);margin:0 0 10px}
+.qsum-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.qsum-chip{border:1px solid var(--border2);border-radius:12px;padding:6px 12px;background:var(--surface2);font-size:12px;color:var(--muted)}
+.qsum-chip b{display:block;font-size:20px;line-height:1.1;color:var(--text)}
+.qsum-chip.is-err b{color:#c94040}
+.qsum-table-wrap{overflow-x:auto;margin-bottom:12px}
+.qsum-table{border-collapse:collapse;width:100%;font-size:12.5px}
+.qsum-table caption{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;padding-bottom:4px}
+.qsum-table th,.qsum-table td{padding:5px 8px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap}
+.qsum-table th:first-child,.qsum-table td:first-child{text-align:left;white-space:normal}
+.qsum-table thead th{color:var(--muted);font-weight:700}
+.qsum-sec{border:1px solid var(--border2);border-radius:12px;margin-bottom:8px;background:var(--surface)}
+.qsum-sec>summary{cursor:pointer;padding:8px 12px;font-weight:700;font-size:13px;list-style-position:inside}
+.qsum-sec>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
+.qsum-sec.is-err{border-color:rgba(201,64,64,.5)}
+.qsum-sec.is-err>summary{color:#c94040}
+.qsum-sec-in{padding:0 12px 10px}
+.qsum-sec-in h4{margin:8px 0 2px;font-size:12px;color:var(--muted);font-weight:700}
+.qsum-sec-in ul{margin:0 0 4px 1.1rem;padding:0;font-size:12.5px}
+.qsum-sec-in li{margin:2px 0;overflow-wrap:anywhere}
+.qsum-id{color:var(--muted);font-size:11px}
+.qsum-sub{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin:8px 0 2px}
+.qsum-empty{font-size:12.5px;color:var(--muted);margin:2px 0 8px}
+.qsum-foot{display:flex;gap:10px 16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px 20px;border-top:1px solid var(--border2)}
+.qsum-note{margin:0;font-size:12px;color:var(--muted);flex:1 1 260px}
+.qsum-actions{display:flex;gap:8px;margin-left:auto}
+.qsum-actions .btn[disabled]{opacity:.45;cursor:not-allowed}
+@media(max-width:899px){
+  .modal-bg.qsum-bg{padding:8px}
+  .qsum-panel{max-height:calc(100vh - 16px)}
+  .qsum-head,.qsum-body,.qsum-foot{padding-left:14px;padding-right:14px}
+  .qsum-actions{width:100%}.qsum-actions .btn{flex:1;min-height:44px}
+}
+@media(forced-colors:active){ .qsum-state{border:2px solid CanvasText} .qsum-actions .btn[disabled]{opacity:1;border-style:dashed} }
+/* ═══ FASE 11.3 · Normalizador de valores. Solo reglas con prefijo .norm-; no altera ninguna regla existente. ═══ */
+.norm-state{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border2);border-left-width:5px;border-radius:12px;padding:10px 12px;margin:0 0 12px;font-size:13.5px;background:var(--surface2)}
+.norm-state strong{display:block;font-size:14.5px}
+.norm-state.ok{border-left-color:var(--teal);background:var(--teal-soft)}
+.norm-state.warn{border-left-color:var(--yellow);background:#fdf3d8}
+.norm-state.err{border-left-color:#c94040;background:#fde8e8}
+.norm-help{font-size:12.5px;color:var(--muted);margin:0 0 12px}
+.norm-help summary{cursor:pointer;font-weight:700;color:var(--text);padding:4px 0}
+.norm-help pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:8px 10px;font-size:12px;color:var(--text)}
+.norm-label{display:block;font-size:12px;font-weight:700;margin:10px 0 4px}
+.norm-text{width:100%;min-height:150px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;padding:8px 10px;border:1.5px solid var(--border2);border-radius:12px;background:var(--surface2);color:var(--text);box-sizing:border-box}
+.norm-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.norm-list{margin:4px 0 8px 1.2rem;padding:0;font-size:12.5px}
+.norm-list li{margin:2px 0;overflow-wrap:anywhere}
+.norm-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.norm-chip{border:1px solid var(--border2);border-radius:12px;padding:6px 12px;background:var(--surface2);font-size:12px;color:var(--muted)}
+.norm-chip b{display:block;font-size:20px;line-height:1.1;color:var(--text)}
+.norm-wrap{overflow-x:auto;margin-bottom:12px}
+.norm-table{border-collapse:collapse;width:100%;font-size:12.5px}
+.norm-table caption{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;padding-bottom:4px}
+.norm-table th,.norm-table td{padding:5px 8px;border-bottom:1px solid var(--border);text-align:left;overflow-wrap:anywhere}
+.norm-table th{color:var(--muted);font-weight:700}
+.norm-table td.n,.norm-table th.n{text-align:right;white-space:nowrap}
+.norm-from{background:#fde8e8;border-radius:6px;padding:0 4px}
+.norm-to{background:var(--teal-soft);border-radius:6px;padding:0 4px}
+.norm-h{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin:1rem 0 .4rem}
+.norm-confirm{border:1.5px solid #c94040;border-radius:12px;padding:12px 14px;margin:12px 0;background:var(--surface)}
+.norm-confirm[hidden],#normPreview[hidden],#normErrors[hidden]{display:none}
+.norm-confirm label{display:flex;gap:8px;align-items:flex-start;font-size:13px;margin:8px 0;cursor:pointer}
+.norm-confirm input{width:auto;margin-top:3px}
+.norm-row .btn[disabled],.norm-confirm .btn[disabled]{opacity:.45;cursor:not-allowed}
+@media(max-width:899px){
+  .norm-row .btn,.norm-confirm .btn{min-height:44px;flex:1 1 100%}
+}
+@media(forced-colors:active){ .norm-state{border:2px solid CanvasText} .norm-row .btn[disabled],.norm-confirm .btn[disabled]{opacity:1;border-style:dashed} }
+/* ═══ FASE 11.5 · Calendario de estrenos (solo lectura). Solo reglas con prefijo .cal-; no altera ninguna regla existente. ═══ */
+.cal-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px}
+.cal-bar .cal-month{font-family:'Playfair Display',serif;font-size:22px;margin:0 8px;min-width:10ch;text-align:center;text-transform:capitalize}
+.cal-bar .cal-month:focus{outline:none}
+.cal-bar .cal-month:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.cal-pick{padding:6px 10px;border:1.5px solid var(--border2);border-radius:12px;background:var(--surface2);color:var(--text);font:600 13px 'Nunito',sans-serif}
+.cal-sp{flex:1}
+.cal-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.cal-chip{border:1px solid var(--border2);border-radius:12px;padding:6px 12px;background:var(--surface2);font-size:12px;color:var(--muted)}
+.cal-chip b{display:block;font-size:20px;line-height:1.1;color:var(--text)}
+.cal-chip.w b{color:#b08a00}.cal-chip.e b{color:#c94040}
+.cal-note{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.cal-wd{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;text-align:center;margin-bottom:4px}
+.cal-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal-day,.cal-blank{min-height:92px;border:1px solid var(--border);border-radius:10px;padding:4px 5px;background:var(--surface);min-width:0}
+.cal-blank{background:transparent;border-color:transparent}
+.cal-day.has{background:var(--surface2);border-color:var(--border2)}
+.cal-day.clash{border:2px solid #b08a00;background:#fdf3d8}
+.cal-day.today{box-shadow:inset 0 0 0 2px var(--accent)}
+.cal-dn{display:flex;flex-wrap:wrap;align-items:center;gap:2px 6px;font-size:12px;font-weight:800;color:var(--text)}
+.cal-dw{display:none;font-weight:600;color:var(--muted);text-transform:capitalize}
+.cal-badge{font-size:10px;font-weight:800;padding:0 6px;border-radius:20px;background:#fdf3d8;color:#8a6a00;border:1px solid rgba(176,138,0,.4)}
+.cal-ev{list-style:none;margin:3px 0 0;padding:0;display:grid;gap:3px}
+.cal-t{display:block;width:100%;text-align:left;font:600 11.5px/1.25 'Nunito',sans-serif;color:var(--text);background:var(--lavender-soft);border:1px solid var(--border2);border-radius:7px;padding:3px 5px;cursor:pointer;overflow-wrap:anywhere}
+.cal-t:hover{border-color:var(--accent)}
+.cal-t:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.cal-t small{display:block;font-weight:600;color:var(--muted);font-size:10.5px}
+.cal-h{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin:1.2rem 0 .4rem}
+.cal-det{border:1px solid var(--border2);border-radius:12px;margin-bottom:8px;background:var(--surface)}
+.cal-det>summary{cursor:pointer;padding:8px 12px;font-weight:700;font-size:13px}
+.cal-det>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
+.cal-det.e{border-color:rgba(201,64,64,.5)}.cal-det.e>summary{color:#c94040}
+.cal-list{list-style:none;margin:0;padding:0 12px 10px;display:grid;gap:6px;font-size:12.5px}
+.cal-list li{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;border-bottom:1px solid var(--border);padding-bottom:6px;overflow-wrap:anywhere}
+.cal-list .cal-why{color:var(--muted);flex:1 1 200px}
+.cal-list code{background:#fde8e8;border-radius:6px;padding:0 4px}
+@media(max-width:899px){
+  .cal-wd,.cal-blank{display:none}
+  .cal-grid{grid-template-columns:minmax(0,1fr)}
+  .cal-day:not(.has){display:none}
+  .cal-day{min-height:0}
+  .cal-dw{display:inline}
+  .cal-t{min-height:44px;font-size:13px}
+  .cal-bar .btn,.cal-pick{min-height:44px}
+}
+@media(forced-colors:active){ .cal-day.clash{border:3px double CanvasText} .cal-day.today{outline:2px solid Highlight} }
 </style>
 </head>
 <body>
@@ -749,6 +911,7 @@ h3.salud-title{margin:0;font-size:15px;font-weight:700}
   <button type="button" class="btn small nav-toggle" id="navToggle" aria-expanded="false" aria-controls="quicknav"><span aria-hidden="true">☰&nbsp;</span>Secciones</button>
   <span class="logo">GL Series Calendar <span class="logo-badge">ADMIN</span></span>
   <div class="topbar-actions">
+    <button type="button" class="btn small qsrch-btn" id="qsrchOpenBtn" aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K" title="Buscador rápido de series, películas y actrices (Ctrl+K)"><span aria-hidden="true">🔎</span> Buscar <kbd class="qsrch-kbd" aria-hidden="true">Ctrl K</kbd></button>
     <button type="button" class="btn small" onclick="document.getElementById('importFile').click()">Importar data.json</button>
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
     <button type="button" class="btn small" onclick="tmdbBulkLinkAll(this)" title="Busca en TMDB cada serie/película sin vincular y guarda solo su ID, tipo y valoración — no toca sinopsis, póster ni reparto">🔗 Vincular todas a TMDB</button>
@@ -775,6 +938,7 @@ h3.salud-title{margin:0;font-size:15px;font-weight:700}
     <a class="qnav-btn" href="#movies" data-panel="movies">Películas</a>
     <a class="qnav-btn" href="#anime" data-panel="anime">Anime</a>
     <a class="qnav-btn" href="#realities" data-panel="realities">Realities</a>
+    <a class="qnav-btn" href="#calendario" data-panel="calendario">Calendario</a>
   </div>
   <div class="qnav-group" role="group" aria-labelledby="qg-biblioteca">
     <span class="qnav-group-label" id="qg-biblioteca">Biblioteca</span>
@@ -796,6 +960,7 @@ h3.salud-title{margin:0;font-size:15px;font-weight:700}
     <span class="qnav-group-label" id="qg-sistema">Sistema</span>
     <a class="qnav-btn" href="#platform-logos" data-panel="platform-logos">Logos</a>
     <a class="qnav-btn" href="#salud" data-panel="salud">Salud de datos<span class="salud-nav-badge" id="saludNavBadge" hidden></span></a>
+    <a class="qnav-btn" href="#normalizar" data-panel="normalizar">Normalizador</a>
     <a class="qnav-btn" href="#publicar" data-panel="publicar">Publicar</a>
   </div>
   <div class="qnav-group" role="group" aria-labelledby="qg-crear">
@@ -829,7 +994,7 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
 (function(){
   var root=document.documentElement;
   root.classList.add('panels-on');
-  var TOK={series:'section-series',movies:'section-movies',anime:'section-anime',realities:'section-realities',books:'section-books',actresses:'section-actresses',ships:'section-ships',mascotas:'section-mascotas',listas:'section-listas',productoras:'section-productoras','platform-logos':'section-platform-logos',checklist:'section-checklist',salud:'section-salud',publicar:'section-publicar'};
+  var TOK={series:'section-series',movies:'section-movies',anime:'section-anime',realities:'section-realities',calendario:'section-calendario',books:'section-books',actresses:'section-actresses',ships:'section-ships',mascotas:'section-mascotas',listas:'section-listas',productoras:'section-productoras','platform-logos':'section-platform-logos',checklist:'section-checklist',salud:'section-salud',normalizar:'section-normalizar',publicar:'section-publicar'};
   var DEF='series', active=null, ready=false;
   var $=function(id){return document.getElementById(id);};
   var reduce=function(){return window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;};
@@ -1286,6 +1451,84 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
     <div id="saludOk" class="salud-ok"></div>
     </div>
     <div id="saludDetail" hidden></div>
+  </div>
+
+  <div class="card" id="section-calendario">
+    <div class="card-title">Calendario de estrenos</div>
+    <p class="page-sub" style="margin-bottom:1rem">Vista mensual de solo lectura con las fechas reales guardadas en el catálogo: estreno de cada película, de cada temporada y de las series sin temporadas. No inventa fechas ni modifica ningún registro. Pulsa un título para abrir su ficha de edición.</p>
+    <div class="cal-bar" role="group" aria-label="Cambiar de mes">
+      <button type="button" class="btn small" id="calPrev" aria-label="Mes anterior">← Anterior</button>
+      <h3 class="cal-month" id="calTitle" tabindex="-1" aria-live="polite"></h3>
+      <button type="button" class="btn small" id="calNext" aria-label="Mes siguiente">Siguiente →</button>
+      <span class="cal-sp"></span>
+      <label for="calPick" class="qsrch-sr">Ir a un mes</label>
+      <input type="month" class="cal-pick" id="calPick" min="1000-01" max="9999-12">
+      <button type="button" class="btn small" id="calToday">Hoy</button>
+      <button type="button" class="btn small" id="calLast" title="Va al mes de la fecha de estreno más reciente guardada">Último estreno guardado</button>
+    </div>
+    <div class="cal-chips" id="calChips"></div>
+    <p class="cal-note" id="calNote" aria-live="polite"></p>
+    <div class="cal-wd" aria-hidden="true"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+    <ol class="cal-grid" id="calGrid"></ol>
+    <div class="cal-h">Coincidencias en este mes</div>
+    <div id="calClashes"></div>
+    <div class="cal-h">Fechas pendientes o inválidas (todo el catálogo)</div>
+    <div id="calIssues"></div>
+  </div>
+
+  <div class="card" id="section-normalizar">
+    <div class="card-title">Normalizador de valores</div>
+    <p class="page-sub" style="margin-bottom:1rem">Sustituye valores de campos del catálogo (series, anime, realities y películas) usando <strong>únicamente</strong> un mapa de equivalencias aprobado. Cargar el mapa solo muestra una vista previa: no cambia nada hasta que confirmes de forma explícita. Los valores que no estén en el mapa se conservan tal cual.</p>
+    <div class="norm-state" id="normState" role="status" aria-live="polite"></div>
+    <details class="norm-help">
+      <summary>Formato del mapa y reglas</summary>
+      <p>Un archivo JSON con este formato (los valores de abajo son solo marcadores de posición, no equivalencias reales):</p>
+<pre><code>{
+  "version": 1,
+  "aprobado": { "por": "NOMBRE", "fecha": "AAAA-MM-DD" },
+  "campos": {
+    "country": { "VALOR_ORIGEN": "VALOR_DESTINO" }
+  }
+}</code></pre>
+      <ul class="norm-list">
+        <li>Campos admitidos: <span id="normFieldsList"></span>.</li>
+        <li>La coincidencia es <strong>exacta</strong> (mayúsculas, tildes y espacios incluidos). Nada se deduce por parecido: «Netflix» y «Netflix Standard with Ads», o «Paramount+» y «Paramount Plus Premium», solo se unen si el mapa lo dice explícitamente.</li>
+        <li>En <code>country</code> (separador « / ») y <code>network</code> (separador «,») se compara primero el valor completo y, si no coincide, cada elemento por separado; si cambia alguno, el valor se reescribe con el separador estándar (« / » o «, ») y sin elementos repetidos.</li>
+        <li>En los campos de lista se compara cada elemento; si cambia alguno, se eliminan los repetidos que resulten.</li>
+        <li>El destino no puede estar vacío ni tener espacios al inicio o al final, y no puede ser a la vez origen de otra equivalencia (sin cadenas).</li>
+        <li>Sin <code>aprobado.por</code> y <code>aprobado.fecha</code> válidos el mapa se considera sin aprobar: se puede ver la vista previa, pero no aplicar. La herramienta no puede comprobar la aprobación; solo exige que conste en el mapa.</li>
+        <li>No se modifica <code>updatedAt</code> ni ningún otro campo.</li>
+      </ul>
+    </details>
+    <label class="norm-label" for="normFile">Archivo del mapa (.json)</label>
+    <input type="file" id="normFile" accept=".json,application/json">
+    <label class="norm-label" for="normText">O pega aquí el mapa</label>
+    <textarea class="norm-text" id="normText" spellcheck="false" placeholder="Pega aquí el mapa de equivalencias aprobado (JSON)"></textarea>
+    <div class="norm-row">
+      <button type="button" class="btn primary" id="normLoad">Cargar mapa y ver vista previa</button>
+      <button type="button" class="btn" id="normClear">Descartar mapa</button>
+    </div>
+    <div id="normErrors" hidden></div>
+    <div id="normPreview" hidden>
+      <div class="norm-chips" id="normChips"></div>
+      <div id="normNotes"></div>
+      <div class="norm-wrap" id="normTable"></div>
+      <div id="normRecords"></div>
+      <div class="norm-row">
+        <button type="button" class="btn primary" id="normApply" disabled>Aplicar cambios…</button>
+        <button type="button" class="btn" id="normRefresh">Actualizar vista previa</button>
+      </div>
+      <div class="norm-confirm" id="normConfirm" hidden role="group" aria-labelledby="normConfirmTitle">
+        <strong id="normConfirmTitle" tabindex="-1">Confirmar normalización</strong>
+        <p id="normConfirmText" style="margin:6px 0;font-size:13px"></p>
+        <label><input type="checkbox" id="normChk"><span>He revisado la vista previa y confirmo que quiero aplicar estos cambios a los datos cargados.</span></label>
+        <div class="norm-row" style="margin-bottom:0">
+          <button type="button" class="btn primary" id="normConfirmBtn" disabled>Sí, aplicar ahora</button>
+          <button type="button" class="btn" id="normCancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    <div id="normResult" role="status" aria-live="polite"></div>
   </div>
 
   <div class="card" id="section-publicar">
@@ -2996,12 +3239,13 @@ function formHtml(s, forcedCategory=null){
       <button type="button" class="platform-add-btn" onclick="addCastMember(null)" style="margin-bottom:8px">+ Añadir actriz al reparto</button>
       <div id="castList" style="margin-bottom:8px;overflow:visible;position:relative"></div>
       <div class="form-section-hd" style="margin-top:14px">Parejas</div>
-      <div class="form-hint" style="margin-bottom:8px">Marca qué actrices del reparto forman pareja/ship</div>
+      <div class="form-hint" style="margin-bottom:8px">Marca qué actrices del reparto forman pareja/ship. Elige el tipo: <b>principal</b> (canon), <b>side couple</b> (pareja secundaria dentro de la historia) o <b>no canon</b> (no son pareja en la obra, pero el fandom las shippea).</div>
       <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
         <select id="coupleSelA" onfocus="refreshCoupleSelects('series')" style="flex:1;min-width:110px;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"></select>
         <span style="color:var(--muted)">+</span>
         <select id="coupleSelB" onfocus="refreshCoupleSelects('series')" style="flex:1;min-width:110px;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"></select>
-        <button type="button" class="platform-add-btn" onclick="addCoupleFromSelects('series')">💕 Marcar pareja</button>
+        <select id="coupleTypeSel" title="Tipo de pareja" style="padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"><option value="main">💕 Principal (canon)</option><option value="side">💞 Side couple (secundaria)</option><option value="fan">✨ No canon (shippeada)</option></select>
+        <button type="button" class="platform-add-btn" onclick="addCoupleFromSelects('series')">Marcar pareja</button>
       </div>
       <div id="couplesList"></div>
     </div>
@@ -3169,7 +3413,7 @@ function openEdit(si){
   initCountries('countriesList', series[si].country||'');
   initSeasons(getSeasons(series[si]));
   initCast(series[si].cast||[]);
-  initCouples('series', series[si].couples||[]);
+  initCouples('series', series[si].couples||[], series[si]);
   populateAwards('awardsAdminList', series[si].awards||[]);
   syncTroposDinamica('f_tropos','f_dinamica');
 }
@@ -3436,7 +3680,7 @@ function openEditAnime(si){
   initCountries('countriesList', s.country||'');
   initSeasons(getSeasons(s));
   initCast(s.cast||[]);
-  initCouples('series', s.couples||[]);
+  initCouples('series', s.couples||[], s);
   populateAwards('awardsAdminList', s.awards||[]);
 }
 function openEpsAnime(si){ openEps(si); } // reuse same modal
@@ -3472,7 +3716,7 @@ function openEditReality(si){
   initCountries('countriesList', s.country||'');
   initSeasons(getSeasons(s));
   initCast(s.cast||[]);
-  initCouples('series', s.couples||[]);
+  initCouples('series', s.couples||[], s);
   populateAwards('awardsAdminList', s.awards||[]);
 }
 
@@ -3628,6 +3872,7 @@ async function saveSeries(si, forcedCategory=null){
   const seriesType=document.getElementById('f_seriesType')?.value||'serie';
   const cast=getCastData();
   const couples=getCouplesData('series');
+  const {sideCouples,fanCouples}=getCouplesExtra('series');
   const animeSeason=(category==='anime'||category==='reality')?getAnimeSeason():'';
   const renewedNextSeason=document.getElementById('f_renewed')?.checked||false;
   const nameEn=document.getElementById('f_nameEn')?.value.trim()||'';
@@ -3647,7 +3892,7 @@ async function saveSeries(si, forcedCategory=null){
   const tmdbRating=tmdbRatingRaw?parseFloat(tmdbRatingRaw):'';
   const tmdbVoteCount=parseInt(document.getElementById('f_tmdbVoteCount')?.value||'0')||0;
   const stp=streamingSavePayload(si>=0&&series[si]?series[si]:null,'f_streamingPending');   // 1C.3.2: se conserva tal cual · 6.7: + streaming global pendiente (fusión) y streamingMeta
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,couples,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,biFormat,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount,...stp};
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,couples,sideCouples,fanCouples,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,biFormat,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount,...stp};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -4135,12 +4380,13 @@ function movieFormHtml(mv){
   <button type="button" class="platform-add-btn" onclick="addMovieCastMember(null)" style="margin-bottom:8px">+ Añadir actriz</button>
   <div id="movieCastList" style="margin-bottom:8px;overflow:visible;position:relative"></div>
   <div class="form-section-hd" style="margin-top:14px">Parejas</div>
-  <div class="form-hint" style="margin-bottom:8px">Marca qué actrices del reparto forman pareja/ship</div>
+  <div class="form-hint" style="margin-bottom:8px">Marca qué actrices del reparto forman pareja/ship. Elige el tipo: <b>principal</b> (canon), <b>side couple</b> (pareja secundaria dentro de la historia) o <b>no canon</b> (no son pareja en la obra, pero el fandom las shippea).</div>
   <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
     <select id="mCoupleSelA" onfocus="refreshCoupleSelects('movie')" style="flex:1;min-width:110px;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"></select>
     <span style="color:var(--muted)">+</span>
     <select id="mCoupleSelB" onfocus="refreshCoupleSelects('movie')" style="flex:1;min-width:110px;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"></select>
-    <button type="button" class="platform-add-btn" onclick="addCoupleFromSelects('movie')">💕 Marcar pareja</button>
+    <select id="mCoupleTypeSel" title="Tipo de pareja" style="padding:6px 8px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:12px;font-family:'Nunito',sans-serif"><option value="main">💕 Principal (canon)</option><option value="side">💞 Side couple (secundaria)</option><option value="fan">✨ No canon (shippeada)</option></select>
+        <button type="button" class="platform-add-btn" onclick="addCoupleFromSelects('movie')">Marcar pareja</button>
   </div>
   <div id="movieCouplesList"></div>
   </div>`;
@@ -4289,7 +4535,7 @@ function openEditMovie(mi){
   populateAwards('movieAwardsAdminList', mv.awards||[]);
   initCountries('movieCountriesList', mv.country||'');
   initMovieCast(mv.cast||[]);
-  initCouples('movie', mv.couples||[]);
+  initCouples('movie', mv.couples||[], mv);
   syncTroposDinamica('mf_tropos','mf_dinamica');
 }
 function initMoviePlatforms(links){
@@ -4365,6 +4611,7 @@ async function saveMovie(mi){
     duration:parseDurationInput(document.getElementById('mf_duration')?.value||''),
     cast:getMovieCastData(),
     couples:getCouplesData('movie'),
+    ...getCouplesExtra('movie'),
     productoraId:document.getElementById('mf_productora')?.value||'',
     tmdbId:document.getElementById('mf_tmdbId')?.value.trim()||'',
     tmdbKind:document.getElementById('mf_tmdbKind')?.value.trim()||'',
@@ -7441,47 +7688,73 @@ function refreshCoupleSelects(kind){
   if(opts.some(o=>o.id===prevB)) selB.value=prevB;
 }
 
-function initCouples(kind, couplesData){
-  const varName = kind==='movie' ? '_movieCouples' : '_seriesCouples';
-  window[varName] = (couplesData||[]).filter(c=>Array.isArray(c)&&c.length===2).map(c=>c.slice());
+/* Tipos de pareja: main → couples (canon) · side → sideCouples (secundaria) · fan → fanCouples (no canon / shippeada) */
+const COUPLE_TYPES={
+  main:{icon:'💕',label:'',                  varSuffix:'Couples'},
+  side:{icon:'💞',label:'Side couple',        varSuffix:'SideCouples'},
+  fan: {icon:'✨',label:'No canon',           varSuffix:'FanCouples'}
+};
+function _coupleVar(kind,type){ return (kind==='movie'?'_movie':'_series')+(COUPLE_TYPES[type]||COUPLE_TYPES.main).varSuffix; }
+function _cleanPairs(arr){ return (arr||[]).filter(c=>Array.isArray(c)&&c.length===2).map(c=>c.slice()); }
+
+function initCouples(kind, couplesData, item){
+  window[_coupleVar(kind,'main')] = _cleanPairs(couplesData);
+  window[_coupleVar(kind,'side')] = _cleanPairs(item&&item.sideCouples);
+  window[_coupleVar(kind,'fan')]  = _cleanPairs(item&&item.fanCouples);
   refreshCoupleSelects(kind);
   renderCouplesList(kind);
 }
 
 function renderCouplesList(kind){
-  const varName = kind==='movie' ? '_movieCouples' : '_seriesCouples';
   const container = document.getElementById(kind==='movie'?'movieCouplesList':'couplesList');
   if(!container) return;
-  const couples = window[varName]||[];
-  if(!couples.length){ container.innerHTML='<div class="form-hint">Todavía no hay parejas marcadas.</div>'; return; }
-  container.innerHTML = couples.map((pair,idx)=>{
-    const names = pair.map(id=>{ const a=actresses.find(x=>x.id===id); return a?escapeHtml(a.name):'?'; }).join(' + ');
-    return `<div style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1.5px solid var(--border2);border-radius:20px;padding:5px 10px;margin:0 6px 6px 0;font-size:12px;font-weight:600">💕 ${names}<button type="button" onclick="removeCouple('${kind}',${idx})" style="border:none;background:none;color:var(--muted);cursor:pointer;font-size:13px;line-height:1;padding:0">✕</button></div>`;
-  }).join('');
+  let html='', total=0;
+  ['main','side','fan'].forEach(type=>{
+    const T=COUPLE_TYPES[type];
+    (window[_coupleVar(kind,type)]||[]).forEach((pair,idx)=>{
+      total++;
+      const names = pair.map(id=>{ const a=actresses.find(x=>x.id===id); return a?escapeHtml(a.name):'?'; }).join(' + ');
+      const tag = T.label?`<span style="font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.75">${T.label}</span>`:'';
+      const border = type==='main'?'var(--border2)':(type==='side'?'var(--lavender)':'var(--muted)');
+      const dash = type==='fan'?'dashed':'solid';
+      html += `<div style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1.5px ${dash} ${border};border-radius:20px;padding:5px 10px;margin:0 6px 6px 0;font-size:12px;font-weight:600">${T.icon} ${names} ${tag}<button type="button" onclick="removeCouple('${kind}','${type}',${idx})" style="border:none;background:none;color:var(--muted);cursor:pointer;font-size:13px;line-height:1;padding:0">✕</button></div>`;
+    });
+  });
+  container.innerHTML = total ? html : '<div class="form-hint">Todavía no hay parejas marcadas.</div>';
 }
 
 function addCoupleFromSelects(kind){
   const isMovie = kind==='movie';
   const a=document.getElementById(isMovie?'mCoupleSelA':'coupleSelA')?.value||'';
   const b=document.getElementById(isMovie?'mCoupleSelB':'coupleSelB')?.value||'';
+  const type=document.getElementById(isMovie?'mCoupleTypeSel':'coupleTypeSel')?.value||'main';
   if(!a||!b){ alert('Selecciona las dos actrices de la pareja.'); return; }
   if(a===b){ alert('Selecciona dos actrices distintas.'); return; }
-  const varName = isMovie ? '_movieCouples' : '_seriesCouples';
-  const couples = window[varName] = window[varName]||[];
-  if(couples.some(p=>(p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a))){ alert('Esa pareja ya está marcada.'); return; }
-  couples.push([a,b]);
+  const same=p=>(p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a);
+  for(const t of ['main','side','fan']){
+    if((window[_coupleVar(kind,t)]||[]).some(same)){
+      alert('Esa pareja ya está marcada'+(COUPLE_TYPES[t].label?' como «'+COUPLE_TYPES[t].label+'»':' como principal')+'. Quítala primero si quieres cambiarle el tipo.');
+      return;
+    }
+  }
+  const v=_coupleVar(kind,type);
+  (window[v]=window[v]||[]).push([a,b]);
   renderCouplesList(kind);
 }
 
-function removeCouple(kind, idx){
-  const varName = kind==='movie' ? '_movieCouples' : '_seriesCouples';
-  (window[varName]||[]).splice(idx,1);
+function removeCouple(kind, type, idx){
+  (window[_coupleVar(kind,type)]||[]).splice(idx,1);
   renderCouplesList(kind);
 }
 
 function getCouplesData(kind){
-  const varName = kind==='movie' ? '_movieCouples' : '_seriesCouples';
-  return (window[varName]||[]).map(p=>p.slice());
+  return (window[_coupleVar(kind,'main')]||[]).map(p=>p.slice());
+}
+function getCouplesExtra(kind){
+  return {
+    sideCouples:(window[_coupleVar(kind,'side')]||[]).map(p=>p.slice()),
+    fanCouples:(window[_coupleVar(kind,'fan')]||[]).map(p=>p.slice())
+  };
 }
 
 /* ─── Cast functions for MOVIES (uses #movieCastList) ─── */
@@ -8413,8 +8686,8 @@ async function delProductora(pi){
       if(!mv&&!(it.seasons&&it.seasons.length)&&it.startDate&&it.totalEpisodes) add('c7e',ty,it.id,nm,kd,'startDate '+it.startDate+', totalEpisodes '+it.totalEpisodes+' solo en la raíz.');
       /* 9 */
       var cids=(it.cast||[]).map(function(m){return m&&String(m.actressId);}),cd=[];
-      (it.couples||[]).forEach(function(pr,i){ (pr||[]).forEach(function(x){ x=String(x);
-        if(!aid[x]) cd.push('par '+(i+1)+': actriz inexistente (id '+x+')'); else if(cids.indexOf(x)<0) cd.push('par '+(i+1)+': «'+T(aname[x])+'» no está en el reparto de la obra'); }); });
+      [['couples','par '],['sideCouples','side couple '],['fanCouples','pareja no canon ']].forEach(function(k){ (it[k[0]]||[]).forEach(function(pr,i){ (pr||[]).forEach(function(x){ x=String(x);
+        if(!aid[x]) cd.push(k[1]+(i+1)+': actriz inexistente (id '+x+')'); else if(cids.indexOf(x)<0) cd.push(k[1]+(i+1)+': «'+T(aname[x])+'» no está en el reparto de la obra'); }); }); });
       if(cd.length) add('c9',ty,it.id,nm,kd,cd.join(' · '));
       /* 10: nombres de watchLinks como en la web pública */
       (it.watchLinks||[]).forEach(function(l){ if(!l||!T(l.name)) return;
@@ -8620,6 +8893,904 @@ async function delProductora(pi){
   window.saludAnalizar=analyze;
   window.saludExportar=exportar;
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+<!-- FASE 11.1 · Buscador rápido (Ctrl+K): diálogo accesible; la lógica está en el script que sigue. -->
+<div class="qsrch-bg" id="qsrchBg">
+  <div class="qsrch-panel" id="qsrchPanel" role="dialog" aria-modal="true" aria-labelledby="qsrchTitle" tabindex="-1">
+    <h2 class="qsrch-sr" id="qsrchTitle">Buscador rápido</h2>
+    <div class="qsrch-head">
+      <input type="text" class="qsrch-input" id="qsrchInput" role="combobox" aria-expanded="false" aria-controls="qsrchList" aria-autocomplete="list" aria-haspopup="listbox" aria-label="Buscar series, películas y actrices" placeholder="Buscar series, películas y actrices…" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go">
+      <button type="button" class="btn small qsrch-close" id="qsrchClose">Cerrar</button>
+    </div>
+    <div class="qsrch-status" id="qsrchStatus" role="status" aria-live="polite"></div>
+    <ul class="qsrch-list" id="qsrchList" role="listbox" aria-label="Resultados"></ul>
+    <div class="qsrch-foot"><span class="qsrch-keys">↑ ↓ navegar · Enter abrir ficha · Esc cerrar</span><span id="qsrchMore"></span></div>
+  </div>
+</div>
+
+<script>
+/* FASE 11.1 · Buscador rápido (Ctrl+K / ⌘K) para series (incl. anime y reality), películas y actrices.
+   Solo LEE los arrays globales series/movies/actresses: no los modifica, no llama a save() ni toca la lógica de edición.
+   Al elegir un resultado cambia de panel (hash, como el menú) y reutiliza openEditByCat / openEditMovie / openEditActress. */
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  var bg=$('qsrchBg'),panel=$('qsrchPanel'),input=$('qsrchInput'),list=$('qsrchList'),status=$('qsrchStatus'),more=$('qsrchMore'),closeBtn=$('qsrchClose'),openBtn=$('qsrchOpenBtn');
+  if(!bg||!panel||!input||!list||!status||!closeBtn) return;
+  var MAX=60,isOpen=false,index=[],results=[],active=-1,prevFocus=null,prevOverflow='',inerted=[];
+  var isMac=/Mac|iPhone|iPad|iPod/.test((navigator.platform||'')+' '+(navigator.userAgent||''));
+  var LABEL={serie:'Serie',webserie:'Webserie',anime:'Anime',reality:'Reality',pelicula:'Película',corto:'Cortometraje',actriz:'Actriz'};
+  var ORDER={series:0,movie:1,actress:2};
+  if(openBtn){ var kb=openBtn.querySelector('.qsrch-kbd'); if(kb) kb.textContent=isMac?'⌘K':'Ctrl K'; }
+
+  function norm(s){
+    return String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{M}\p{N}]+/gu,' ').trim();
+  }
+  function arr(name){ try{ var a=(name==='series'?series:name==='movies'?movies:actresses); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+  function year(v,fallback){ var y=String(v||'').trim(); if(!y&&fallback) y=String(fallback).slice(0,4); return /^\d{4}$/.test(y)?y:''; }
+  function seriesType(s){ return s.category==='anime'?'anime':s.category==='reality'?'reality':s.seriesType==='webserie'?'webserie':'serie'; }
+  function build(){
+    var out=[];
+    arr('series').forEach(function(s){ if(!s||!s.name) return;
+      out.push({kind:'series',id:String(s.id),type:seriesType(s),name:String(s.name),alt:s.nameEn?String(s.nameEn):'',year:year(s.year,s.startDate),country:s.country||''}); });
+    arr('movies').forEach(function(m){ if(!m||!m.name) return;
+      out.push({kind:'movie',id:String(m.id),type:m.movieType==='short'?'corto':'pelicula',name:String(m.name),alt:m.nameEn?String(m.nameEn):'',year:year(m.year,m.date),country:m.country||''}); });
+    arr('actresses').forEach(function(a){ if(!a||!a.name) return;
+      var by=year('',a.birthdate); out.push({kind:'actress',id:String(a.id),type:'actriz',name:String(a.name),alt:'',year:'',born:by,country:a.country||''}); });
+    out.forEach(function(it){ it.n=norm(it.name); it.ne=norm(it.alt); it.nid=it.id.toLowerCase(); });
+    index=out;
+  }
+  /* rango por token (menor = mejor); -1 = no coincide */
+  function rank(it,t){
+    if(it.n.indexOf(t)===0) return 0;
+    if((' '+it.n).indexOf(' '+t)>=0) return 1;
+    if(it.n.indexOf(t)>=0) return 2;
+    if(it.ne&&((' '+it.ne).indexOf(' '+t)>=0)) return 3;
+    if(it.ne&&it.ne.indexOf(t)>=0) return 4;
+    if(t.length>=3&&it.nid.indexOf(t)===0) return 3;
+    if(t.length>=4&&it.nid.indexOf(t)>=0) return 5;
+    return -1;
+  }
+  function search(q){
+    var tokens=norm(q).split(' ').filter(Boolean); if(!tokens.length) return [];
+    var whole=tokens.join(' '),hits=[];
+    index.forEach(function(it){
+      var sc=0; for(var i=0;i<tokens.length;i++){ var r=rank(it,tokens[i]); if(r<0) return; sc+=r; }
+      if(it.n===whole) sc-=10; else if(it.n.indexOf(whole)===0) sc-=3;
+      hits.push({it:it,sc:sc});
+    });
+    hits.sort(function(a,b){ return a.sc-b.sc||ORDER[a.it.kind]-ORDER[b.it.kind]||a.it.name.localeCompare(b.it.name,'es')||a.it.id.localeCompare(b.it.id); });
+    return hits.map(function(h){return h.it;});
+  }
+  function metaText(it){
+    var p=[]; if(it.alt&&norm(it.alt)!==it.n) p.push(it.alt);
+    if(it.kind==='actress'){ if(it.born) p.push('nac. '+it.born); } else if(it.year) p.push(it.year);
+    if(it.country) p.push(it.country);
+    p.push('ID '+it.id); return p.join(' · ');
+  }
+  function render(total,q){
+    list.textContent=''; active=-1;
+    results.forEach(function(it,i){
+      var li=document.createElement('li'); li.id='qsrchOpt'+i; li.className='qsrch-opt'; li.setAttribute('role','option'); li.setAttribute('aria-selected','false'); li.setAttribute('data-i',String(i));
+      var ty=document.createElement('span'); ty.className='qsrch-type t-'+it.type; ty.textContent=LABEL[it.type];
+      var main=document.createElement('div'); main.className='qsrch-main';
+      var nm=document.createElement('div'); nm.className='qsrch-name'; nm.textContent=it.name;
+      var mt=document.createElement('div'); mt.className='qsrch-meta'; mt.textContent=metaText(it);
+      main.appendChild(nm); main.appendChild(mt); li.appendChild(ty); li.appendChild(main); list.appendChild(li);
+    });
+    input.setAttribute('aria-expanded',results.length?'true':'false');
+    more.textContent=total>results.length?('Mostrando '+results.length+' de '+total+'. Afina la búsqueda.'):'';
+    if(results.length) setActive(0,false); else input.removeAttribute('aria-activedescendant');
+  }
+  function update(){
+    var q=input.value,tokens=norm(q);
+    if(!index.length){ results=[]; render(0,q); status.textContent='No hay datos cargados todavía. Espera a que termine la carga de data.json.'; return; }
+    if(!tokens){
+      results=[]; render(0,q);
+      var c={series:0,movie:0,actress:0}; index.forEach(function(it){c[it.kind]++;});
+      status.textContent='Escribe para buscar entre '+c.series+' series, '+c.movie+' películas y '+c.actress+' actrices.'; return;
+    }
+    var all=search(q); results=all.slice(0,MAX); render(all.length,q);
+    status.textContent=all.length?(all.length+(all.length===1?' resultado':' resultados')):('Sin resultados para «'+q.trim()+'».');
+  }
+  function setActive(i,scroll){
+    var prev=list.children[active]; if(prev) prev.setAttribute('aria-selected','false');
+    active=i; var cur=list.children[i];
+    if(!cur){ input.removeAttribute('aria-activedescendant'); return; }
+    cur.setAttribute('aria-selected','true'); input.setAttribute('aria-activedescendant',cur.id);
+    if(scroll!==false&&cur.scrollIntoView) cur.scrollIntoView({block:'nearest'});
+  }
+  function move(d){ if(!results.length) return; setActive(((active<0?(d>0?-1:0):active)+d+results.length)%results.length,true); }
+  function blocked(){
+    if(document.querySelector('.modal-bg.open,.confirm-modal-bg.open')) return true;   /* hay una ficha/aviso abierto: no se pisa un formulario a medias */
+    var nav=$('quicknav'); return !!(nav&&nav.classList.contains('open'));
+  }
+  function show(){
+    if(isOpen){ input.focus(); input.select(); return true; }
+    if(blocked()) return false;
+    prevFocus=document.activeElement; build(); isOpen=true;
+    inerted=[$('stickyStack'),document.querySelector('.container'),$('quicknav'),$('navScrim')].filter(function(e){return e&&!e.hasAttribute('inert');});
+    inerted.forEach(function(e){e.setAttribute('inert','');e.setAttribute('aria-hidden','true');});
+    prevOverflow=document.body.style.overflow; document.body.style.overflow='hidden';
+    bg.classList.add('open'); input.value=''; update(); input.focus();
+    return true;
+  }
+  function close(restore){
+    if(!isOpen) return; isOpen=false;
+    bg.classList.remove('open'); input.setAttribute('aria-expanded','false'); input.removeAttribute('aria-activedescendant');
+    inerted.forEach(function(e){e.removeAttribute('inert');e.removeAttribute('aria-hidden');}); inerted=[];
+    document.body.style.overflow=prevOverflow;
+    if(restore){ var f=prevFocus&&document.contains(prevFocus)?prevFocus:openBtn; if(f&&f.focus) try{f.focus();}catch(e){} }
+    prevFocus=null;
+  }
+  /* cambia de panel con el mismo mecanismo que el menú (location.hash) y, cuando el controlador de paneles ya ha reaccionado, abre la ficha */
+  function goAndOpen(panel,opener,titleId){
+    var done=false,tm=0;
+    function run(){
+      if(done) return; done=true; window.removeEventListener('hashchange',onHash); clearTimeout(tm);
+      try{ opener(); }catch(err){ if(window.console) console.error('Buscador rápido: no se pudo abrir la ficha',err); return; }
+      var t=$(titleId); if(t){ t.setAttribute('tabindex','-1'); try{t.focus({preventScroll:true});}catch(e){t.focus();} }
+    }
+    function onHash(){ setTimeout(run,0); }
+    if(location.hash==='#'+panel){ run(); return; }
+    window.addEventListener('hashchange',onHash); tm=setTimeout(run,500);
+    location.hash='#'+panel;
+  }
+  function choose(i){
+    var it=results[i]; if(!it) return;
+    var a=arr(it.kind==='series'?'series':it.kind==='movie'?'movies':'actresses');
+    var pos=a.findIndex(function(x){return x&&String(x.id)===it.id;});
+    if(pos<0){ build(); update(); status.textContent='Ese registro ya no existe. Resultados actualizados.'; return; }
+    var rec=a[pos],panelName,opener,titleId;
+    if(it.kind==='series'){
+      var cat=rec.category; panelName=cat==='anime'?'anime':cat==='reality'?'realities':'series';
+      titleId=cat==='anime'?'animeModalTitle':cat==='reality'?'realityModalTitle':'seriesModalTitle';
+      opener=function(){ openEditByCat(pos); };
+    } else if(it.kind==='movie'){ panelName='movies'; titleId='movieModalTitle'; opener=function(){ openEditMovie(pos); }; }
+    else { panelName='actresses'; titleId='actressModalTitle'; opener=function(){ openEditActress(pos); }; }
+    close(false); goAndOpen(panelName,opener,titleId);
+  }
+  function isShortcut(e){
+    if(!(e.ctrlKey||e.metaKey)||e.altKey||e.shiftKey) return false;
+    var k=e.key; return (k&&k.length===1&&/[a-z]/i.test(k))?k.toLowerCase()==='k':e.code==='KeyK';
+  }
+  /* no se secuestra Ctrl+K donde tiene significado propio: áreas de texto/contenteditable, y Ctrl+K en Mac dentro de un campo (borrar hasta fin de línea) */
+  function canHijack(e){
+    var t=e.target,tag=t&&t.tagName;
+    if(t&&(t.isContentEditable||tag==='TEXTAREA')) return false;
+    if((tag==='INPUT'||tag==='SELECT')&&isMac&&e.ctrlKey&&!e.metaKey) return false;
+    return true;
+  }
+  document.addEventListener('keydown',function(e){
+    if(e.defaultPrevented||e.isComposing) return;
+    if(isShortcut(e)){
+      if(isOpen){ e.preventDefault(); input.focus(); input.select(); return; }
+      if(!canHijack(e)||blocked()) return;
+      e.preventDefault(); show(); return;
+    }
+    if(!isOpen) return;
+    if(e.key==='Escape'){ e.preventDefault(); e.stopPropagation(); close(true); return; }
+    if(e.key==='Tab'){
+      var a=document.activeElement;
+      if(!panel.contains(a)){ e.preventDefault(); input.focus(); }
+      else if(e.shiftKey&&a===input){ e.preventDefault(); closeBtn.focus(); }
+      else if(!e.shiftKey&&a===closeBtn){ e.preventDefault(); input.focus(); }
+      return;
+    }
+    if(e.target!==input) return;
+    if(e.key==='ArrowDown'){ e.preventDefault(); move(1); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); move(-1); }
+    else if(e.key==='PageDown'){ e.preventDefault(); if(results.length) setActive(Math.min(results.length-1,Math.max(active,0)+5),true); }
+    else if(e.key==='PageUp'){ e.preventDefault(); if(results.length) setActive(Math.max(0,active-5),true); }
+    else if(e.key==='Enter'){ e.preventDefault(); if(active>=0) choose(active); }
+  },true);
+  input.addEventListener('input',update);
+  list.addEventListener('mousedown',function(e){ e.preventDefault(); });   /* el foco se queda en el campo */
+  list.addEventListener('mousemove',function(e){ var li=e.target.closest&&e.target.closest('[data-i]'); if(li){ var i=+li.getAttribute('data-i'); if(i!==active) setActive(i,false); } });
+  list.addEventListener('click',function(e){ var li=e.target.closest&&e.target.closest('[data-i]'); if(li) choose(+li.getAttribute('data-i')); });
+  bg.addEventListener('mousedown',function(e){ if(e.target===bg) close(true); });
+  closeBtn.addEventListener('click',function(){ close(true); });
+  if(openBtn) openBtn.addEventListener('click',function(){ show(); });
+})();
+</script>
+
+<!-- FASE 11.2 · Resumen antes de exportar: diálogo accesible; reutiliza .modal-bg (así el buscador de la Fase 11.1 también lo trata como ficha abierta). -->
+<div class="modal-bg qsum-bg" id="qsumBg">
+  <div class="qsum-panel" id="qsumPanel" role="dialog" aria-modal="true" aria-labelledby="qsumTitle" tabindex="-1">
+    <div class="qsum-head">
+      <h2 class="qsum-title" id="qsumTitle" tabindex="-1">Resumen antes de exportar</h2>
+      <button type="button" class="btn small" id="qsumCloseX">Cerrar</button>
+    </div>
+    <div class="qsum-body" id="qsumBody"></div>
+    <div class="qsum-foot">
+      <p class="qsum-note" id="qsumNote">Descargar solo guarda un archivo en tu equipo: no publica nada. Sube <code>data.json</code> a GitHub tú mismo.</p>
+      <div class="qsum-actions">
+        <button type="button" class="btn" id="qsumCancel">Cancelar</button>
+        <button type="button" class="btn primary" id="qsumDownload">Descargar data.json</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* FASE 11.2 · Resumen antes de exportar.
+   - Envuelve exportData(): los dos botones de exportar abren un resumen; el exportador original sigue intacto y es el que descarga (botón «Descargar data.json»).
+   - Compara el estado inicial cargado (data.json o primer archivo importado) con el estado actual: añadidos, editados, eliminados.
+   - Valida estructura/JSON, registros y referencias. Bloquea la descarga ante errores nuevos; lo que ya venía roto en el archivo cargado se avisa, pero no bloquea.
+   - Solo LEE los datos: no los modifica, no llama a save() y no hace ninguna petición de red. Exportar sigue siendo solo una descarga. */
+(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  var bg=$('qsumBg'),panel=$('qsumPanel'),body=$('qsumBody'),title=$('qsumTitle'),dl=$('qsumDownload'),cancel=$('qsumCancel'),closeX=$('qsumCloseX'),note=$('qsumNote');
+  if(!bg||!panel||!body||!dl||typeof window.exportData!=='function') return;
+  var origExport=window.exportData;     /* exportador existente, sin tocar */
+  var LIST_CAP=200,COUNTRIES=['thai','china','japan','korea'];
+  var REC=[
+    {k:'series',label:'Series, anime y reality',nameKey:'name',arrays:['cast','couples','sideCouples','fanCouples','watchLinks','bookLinks','genres','seasons','episodes','emissionDays','skipDates','awards','moods','tropos','dinamica'],dateKeys:['startDate']},
+    {k:'movies',label:'Películas',nameKey:'name',arrays:['cast','couples','sideCouples','fanCouples','watchLinks','bookLinks','genres','awards','moods','tropos','dinamica'],dateKeys:['date']},
+    {k:'actresses',label:'Actrices',nameKey:'name',arrays:[],dateKeys:[]},
+    {k:'ships',label:'Ships',nameKey:'name',arrays:['actressIds'],dateKeys:[]},
+    {k:'shipPets',label:'Mascotas de ships',nameKey:'name',arrays:[],dateKeys:[]},
+    {k:'productoras',label:'Productoras',nameKey:'name',arrays:['actressIds'],dateKeys:[]},
+    {k:'listas',label:'Listas',nameKey:'title',arrays:['seriesIds','movieIds'],dateKeys:[]}
+  ];
+  function state(){
+    var s={}; try{ s.series=series; s.movies=movies; s.actresses=actresses; s.ships=ships; s.shipPets=shipPets; s.productoras=productoras; s.listas=listas; s.platformLogos=platformLogos; s.checklist=checklist; }catch(e){}
+    return s;
+  }
+  function isObj(v){ return v!==null&&typeof v==='object'&&!Array.isArray(v); }
+  function canon(v,d){
+    d=d||0; if(d>60) return '"…"';
+    if(v===null||typeof v!=='object'){ var j=JSON.stringify(v); return j===undefined?'null':j; }
+    if(Array.isArray(v)) return '['+v.map(function(x){return canon(x,d+1);}).join(',')+']';
+    var ks=Object.keys(v).filter(function(k){return v[k]!==undefined;}).sort();
+    return '{'+ks.map(function(k){return JSON.stringify(k)+':'+canon(v[k],d+1);}).join(',')+'}';
+  }
+  function idOf(r){ return (isObj(r)&&r.id!=null&&String(r.id).trim()!=='')?String(r.id):''; }
+  function nameOf(r,nk){ if(!isObj(r)) return '(registro inválido)'; var n=r[nk]; return (typeof n==='string'&&n.trim())?n:(idOf(r)||'(sin nombre)'); }
+  function keyed(arr,nk,extra){
+    var seen={},list=[];
+    arr.forEach(function(r,i){
+      var id=idOf(r),k=id||('(sin ID #'+(i+1)+')');
+      if(seen[k]){ seen[k]++; k=k+'#'+seen[k]; } else seen[k]=1;
+      list.push({key:k,id:id,name:nameOf(r,nk),canon:canon(r)});
+    });
+    return list;
+  }
+  function countryLabel(c){ try{ return (CHK_COUNTRIES[c]&&CHK_COUNTRIES[c].label)||c; }catch(e){ return c; } }
+  /* colecciones comparables: id → {label, list:[{key,id,name,canon,meta?}]} */
+  function unitsOf(st){
+    var out={};
+    REC.forEach(function(c){ out[c.k]={label:c.label,list:Array.isArray(st[c.k])?keyed(st[c.k],c.nameKey):[]}; });
+    var lg=st.platformLogos,ll=[];
+    if(isObj(lg)) Object.keys(lg).forEach(function(k){ ll.push({key:k,id:k,name:k,canon:canon(lg[k])}); });
+    out.platformLogos={label:'Logos de plataformas',list:ll};
+    var ck=isObj(st.checklist)?st.checklist:{},cs=COUNTRIES.slice();
+    Object.keys(ck).forEach(function(c){ if(cs.indexOf(c)<0) cs.push(c); });
+    cs.forEach(function(c){
+      var o=isObj(ck[c])?ck[c]:{},list=[];
+      list.push({key:'__cabecera',id:'',name:'Título y subtítulo del checklist',canon:canon({t:o.titulo||'',s:o.subtitulo||''}),meta:true});
+      keyed(Array.isArray(o.items)?o.items:[],'title').forEach(function(x){list.push(x);});
+      out['chk:'+c]={label:'Checklist '+countryLabel(c),list:list};
+    });
+    return out;
+  }
+  /* ── validación ── */
+  function validate(st){
+    var out=[];
+    function add(kind,fatal,col,r,code,msg,extra,nk){
+      var id=idOf(r);
+      out.push({kind:kind,fatal:fatal,col:col,id:id,name:isObj(r)?nameOf(r,nk||'name'):'',msg:msg,key:[kind,col,id||(isObj(r)?'':'?'),code,extra||''].join('|')});
+    }
+    var ids={};
+    REC.forEach(function(c){
+      var a=st[c.k];
+      if(!Array.isArray(a)){ add('val',true,c.label,null,'noarray','«'+c.k+'» no es una lista: el archivo exportado quedaría inválido.'); ids[c.k]={}; return; }
+      var set={}; a.forEach(function(r){ var i=idOf(r); if(i) set[i]=1; }); ids[c.k]=set;
+    });
+    function walkNum(v,path,cb,d){
+      if(d>60) return;
+      if(typeof v==='number'){ if(!isFinite(v)) cb(path); return; }
+      if(Array.isArray(v)){ v.forEach(function(x,i){ walkNum(x,path+'['+i+']',cb,d+1); }); return; }
+      if(isObj(v)) Object.keys(v).forEach(function(k){ walkNum(v[k],path?path+'.'+k:k,cb,d+1); });
+    }
+    function refs(col,r,code,label,list,target,tl){
+      if(!Array.isArray(list)) return;
+      list.forEach(function(x){
+        var v=(x==null?'':String(x));
+        if(!v||!ids[target]||!ids[target][v]) add('ref',false,col,r,code,label+' apunta a '+tl+' que no existe (ID '+(v||'vacío')+').',v,'name');
+      });
+    }
+    REC.forEach(function(c){
+      var a=st[c.k]; if(!Array.isArray(a)) return;
+      var seen={};
+      a.forEach(function(r){
+        if(!isObj(r)){ add('val',true,c.label,null,'noobj','Hay un registro que no es un objeto.',String(a.indexOf(r))); return; }
+        var id=idOf(r);
+        if(!id) add('val',false,c.label,r,'noid','Falta el ID.','',c.nameKey);
+        else if(seen[id]) add('val',false,c.label,r,'dupid','ID duplicado: ya lo usa «'+seen[id]+'».',id,c.nameKey);
+        else seen[id]=nameOf(r,c.nameKey);
+        var nm=r[c.nameKey]; if(typeof nm!=='string'||!nm.trim()) add('val',false,c.label,r,'noname','Falta el '+(c.nameKey==='title'?'título':'nombre')+'.','',c.nameKey);
+        c.arrays.forEach(function(f){ if(r[f]!=null&&!Array.isArray(r[f])) add('val',false,c.label,r,'type-'+f,'El campo «'+f+'» debe ser una lista.',f,c.nameKey); });
+        c.dateKeys.forEach(function(f){ var v=r[f]; if(v&&!(typeof v==='string'&&(typeof _validDate==='function'?_validDate(v):/^\d{4}-\d{2}-\d{2}$/.test(v)))) add('val',false,c.label,r,'date-'+f,'Fecha no válida en «'+f+'»: '+JSON.stringify(v)+'.',f,c.nameKey); });
+        if(c.k==='series'&&Array.isArray(r.seasons)) r.seasons.forEach(function(s,i){ if(isObj(s)&&s.startDate&&!(typeof s.startDate==='string'&&(typeof _validDate==='function'?_validDate(s.startDate):true))) add('val',false,c.label,r,'date-season'+i,'Fecha no válida en la temporada '+(i+1)+': '+JSON.stringify(s.startDate)+'.','s'+i,c.nameKey); });
+        walkNum(r,'',function(p){ add('val',false,c.label,r,'nan-'+p,'Valor numérico no válido (NaN/infinito) en «'+p+'»; se exportaría como null.',p,c.nameKey); },0);
+        /* referencias */
+        if(c.k==='series'||c.k==='movies'){
+          if(Array.isArray(r.cast)) r.cast.forEach(function(m){ var v=isObj(m)&&m.actressId!=null?String(m.actressId):''; if(!v||!ids.actresses[v]) add('ref',false,c.label,r,'cast',"El reparto apunta a una actriz que no existe (ID "+(v||'vacío')+').',v,'name'); });
+          ['couples','sideCouples','fanCouples'].forEach(function(ck){ if(Array.isArray(r[ck])) r[ck].forEach(function(p){ (Array.isArray(p)?p:[p]).forEach(function(x){ var v=x==null?'':String(x); if(!v||!ids.actresses[v]) add('ref',false,c.label,r,ck,'Una pareja apunta a una actriz que no existe (ID '+(v||'vacío')+').',v,'name'); }); }); });
+          if(r.productoraId!=null&&String(r.productoraId)!==''&&!ids.productoras[String(r.productoraId)]) add('ref',false,c.label,r,'productoraId','La productora asignada no existe (ID '+r.productoraId+').',String(r.productoraId),'name');
+        }
+        if(c.k==='ships') refs(c.label,r,'actressIds','Las actrices del ship',r.actressIds,'actresses','una actriz');
+        if(c.k==='productoras') refs(c.label,r,'actressIds','Las actrices de la productora',r.actressIds,'actresses','una actriz');
+        if(c.k==='shipPets'){ var sv=r.shipId==null?'':String(r.shipId); if(!sv||!ids.ships[sv]) add('ref',false,c.label,r,'shipId','La mascota apunta a un ship que no existe (ID '+(sv||'vacío')+').',sv,'name'); }
+        if(c.k==='listas'){ refs(c.label,r,'seriesIds','La lista',r.seriesIds,'series','una serie'); refs(c.label,r,'movieIds','La lista',r.movieIds,'movies','una película'); }
+      });
+    });
+    if(!isObj(st.platformLogos)) add('val',true,'Logos de plataformas',null,'noobj','«platformLogos» no es un objeto.');
+    else Object.keys(st.platformLogos).forEach(function(k){ if(typeof st.platformLogos[k]!=='string') add('val',false,'Logos de plataformas',{id:k,name:k},'logo-type','La URL del logo «'+k+'» no es texto.',k); });
+    if(!isObj(st.checklist)) add('val',true,'Checklist',null,'noobj','«checklist» no es un objeto.');
+    else Object.keys(st.checklist).forEach(function(cc){
+      var o=st.checklist[cc],col='Checklist '+countryLabel(cc);
+      if(!isObj(o)||!Array.isArray(o.items)){ add('val',true,col,null,'noitems','El checklist «'+cc+'» no tiene una lista de títulos.',cc); return; }
+      var seen={};
+      o.items.forEach(function(it){
+        if(!isObj(it)){ add('val',true,col,null,'noobj','Hay un título del checklist que no es un objeto.',cc); return; }
+        var id=idOf(it);
+        if(!id) add('val',false,col,it,'noid','Falta el ID.','','title'); else if(seen[id]) add('val',false,col,it,'dupid','ID duplicado: ya lo usa «'+seen[id]+'».',id,'title'); else seen[id]=nameOf(it,'title');
+        if(typeof it.title!=='string'||!it.title.trim()) add('val',false,col,it,'noname','Falta el título.','','title');
+      });
+    });
+    return out;
+  }
+  /* ── estado inicial ── */
+  var base=null,baseIssues={},baseLoaded=false,baseWhen=null;
+  function capture(loaded){
+    var st=state(),u=unitsOf(st); base={};
+    Object.keys(u).forEach(function(k){ var m={},o=[]; u[k].list.forEach(function(x){ m[x.key]={canon:x.canon,name:x.name,id:x.id,meta:!!x.meta}; o.push(x.key); }); base[k]={label:u[k].label,map:m,order:o}; });
+    baseIssues={}; validate(st).forEach(function(i){ if(!i.fatal) baseIssues[i.key]=1; });
+    baseLoaded=!!loaded; baseWhen=new Date();
+  }
+  capture(false);
+  try{ if(typeof _unsavedCount==='number'&&_unsavedCount===0&&(series.length+movies.length+actresses.length)>0) capture(true); }catch(e){}
+  var origMig=window.migrateAllCastCouples;
+  if(typeof origMig==='function') window.migrateAllCastCouples=function(){ var r=origMig.apply(this,arguments); if(!baseLoaded) capture(true); return r; };
+
+  function changedFields(baseCanon,curCanon){
+    var a,b; try{ a=JSON.parse(baseCanon); b=JSON.parse(curCanon); }catch(e){ return []; }
+    if(!isObj(a)||!isObj(b)) return [];
+    var ks={}; Object.keys(a).concat(Object.keys(b)).forEach(function(k){ks[k]=1;});
+    return Object.keys(ks).filter(function(k){ return canon(a[k])!==canon(b[k]); }).sort();
+  }
+  function analyze(){
+    var st=state(),res={cols:[],totals:{added:0,edited:0,removed:0},val:[],ref:[],preVal:[],preRef:[],fatal:[],blockers:0,compared:true};
+    var whole=null;
+    try{ whole=JSON.stringify({series:st.series,movies:st.movies,actresses:st.actresses,ships:st.ships,shipPets:st.shipPets,productoras:st.productoras,listas:st.listas,platformLogos:st.platformLogos,checklist:st.checklist,exportedAt:new Date().toISOString()}); JSON.parse(whole); }
+    catch(e){ res.fatal.push('Los datos no se pueden convertir a JSON válido ('+(e&&e.message?e.message:e)+').'); res.compared=false; }
+    if(res.compared){
+      var u=unitsOf(st);
+      Object.keys(u).forEach(function(k){
+        var cur=u[k],b=base[k]||{label:cur.label,map:{},order:[]},cm={},co=[];
+        cur.list.forEach(function(x){ cm[x.key]=x; co.push(x.key); });
+        var col={k:k,label:cur.label,before:0,after:0,added:[],edited:[],removed:[],reordered:false};
+        Object.keys(b.map).forEach(function(x){ if(!b.map[x].meta) col.before++; });
+        cur.list.forEach(function(x){ if(!x.meta) col.after++; });
+        cur.list.forEach(function(x){
+          var o=b.map[x.key];
+          if(!o){ if(!x.meta) col.added.push({name:x.name,id:x.id}); }
+          else if(o.canon!==x.canon) col.edited.push({name:x.meta?x.name:x.name,id:x.id,fields:x.meta?['título/subtítulo']:changedFields(o.canon,x.canon)});
+        });
+        b.order.forEach(function(x){ if(!cm[x]&&!b.map[x].meta) col.removed.push({name:b.map[x].name,id:b.map[x].id}); });
+        var common=b.order.filter(function(x){return cm[x]&&!b.map[x].meta;}),cur2=co.filter(function(x){return b.map[x]&&!b.map[x].meta;});
+        col.reordered=common.join('\u0001')!==cur2.join('\u0001');
+        res.totals.added+=col.added.length; res.totals.edited+=col.edited.length; res.totals.removed+=col.removed.length;
+        res.cols.push(col);
+      });
+    }
+    validate(st).forEach(function(i){
+      if(i.fatal){ res.fatal.push(i.col+': '+i.msg); return; }
+      var pre=!!baseIssues[i.key];
+      (i.kind==='ref'?(pre?res.preRef:res.ref):(pre?res.preVal:res.val)).push(i);
+    });
+    res.blockers=res.fatal.length+res.val.length+res.ref.length;
+    return res;
+  }
+  /* ── interfaz ── */
+  function el(tag,cls,text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+  function plural(n,s,p){ return n+' '+(n===1?s:p); }
+  function listItem(x,extra){
+    var li=el('li'); li.appendChild(el('strong',null,x.name||'(sin nombre)'));
+    if(x.id){ li.appendChild(document.createTextNode(' ')); li.appendChild(el('span','qsum-id','ID '+x.id)); }
+    if(extra) li.appendChild(document.createTextNode(' — '+extra));
+    return li;
+  }
+  function section(titleText,n,openIt,isErr){
+    var d=el('details','qsum-sec'+(isErr?' is-err':'')),s=el('summary',null,titleText+' ('+n+')'); if(openIt) d.open=true;
+    d.appendChild(s); var inn=el('div','qsum-sec-in'); d.appendChild(inn); return {d:d,inn:inn};
+  }
+  function changeSection(res,field,titleText){
+    var n=res.totals[field],sec=section(titleText,n,n>0&&n<=15,false);
+    if(!n){ sec.inn.appendChild(el('p','qsum-empty','Ninguno.')); return sec.d; }
+    res.cols.forEach(function(c){
+      var L=c[field]; if(!L.length) return;
+      sec.inn.appendChild(el('h4',null,c.label+' ('+L.length+')'));
+      var ul=el('ul'); L.slice(0,LIST_CAP).forEach(function(x){ ul.appendChild(listItem(x,field==='edited'&&x.fields&&x.fields.length?'campos: '+x.fields.slice(0,12).join(', ')+(x.fields.length>12?'…':''):'')); });
+      sec.inn.appendChild(ul);
+      if(L.length>LIST_CAP) sec.inn.appendChild(el('p','qsum-empty','… y '+(L.length-LIST_CAP)+' más.'));
+    });
+    return sec.d;
+  }
+  function issueSection(titleText,list,isErr,openIt){
+    var sec=section(titleText,list.length,openIt,isErr&&list.length>0);
+    if(!list.length){ sec.inn.appendChild(el('p','qsum-empty','Ninguno.')); return sec.d; }
+    var by={}; list.forEach(function(i){ (by[i.col]=by[i.col]||[]).push(i); });
+    Object.keys(by).forEach(function(c){
+      sec.inn.appendChild(el('h4',null,c+' ('+by[c].length+')'));
+      var ul=el('ul'); by[c].slice(0,LIST_CAP).forEach(function(i){ ul.appendChild(listItem({name:i.name||'(sin nombre)',id:i.id},i.msg)); }); sec.inn.appendChild(ul);
+      if(by[c].length>LIST_CAP) sec.inn.appendChild(el('p','qsum-empty','… y '+(by[c].length-LIST_CAP)+' más.'));
+    });
+    return sec.d;
+  }
+  function render(res){
+    body.textContent='';
+    var blocked=res.blockers>0;
+    var stt=el('div','qsum-state '+(blocked?'err':'ok')); stt.id='qsumState'; stt.setAttribute('role','status'); stt.setAttribute('data-state',blocked?'blocked':'ok');
+    stt.appendChild(el('span','qsum-state-ico',blocked?'✕':'✓')); stt.firstChild.setAttribute('aria-hidden','true');
+    var tx=el('div'); tx.appendChild(el('strong',null,blocked?'No se puede exportar todavía':'Listo para descargar'));
+    if(blocked){
+      var parts=[]; if(res.fatal.length) parts.push(plural(res.fatal.length,'error grave','errores graves')); if(res.val.length) parts.push(plural(res.val.length,'error de validación','errores de validación')); if(res.ref.length) parts.push(plural(res.ref.length,'referencia rota nueva','referencias rotas nuevas'));
+      tx.appendChild(document.createTextNode('Hay '+parts.join(', ')+'. Corrígelos y vuelve a exportar: la descarga está desactivada para no generar un archivo inválido.'));
+    } else {
+      var pre=res.preVal.length+res.preRef.length;
+      tx.appendChild(document.createTextNode('No hay errores nuevos.'+(pre?' Se avisan '+plural(pre,'problema que ya venía','problemas que ya venían')+' en el archivo cargado (no bloquean).':'')));
+    }
+    stt.appendChild(tx); body.appendChild(stt);
+    var other=document.querySelectorAll('.modal-bg.open'),openOther=0; for(var i=0;i<other.length;i++) if(other[i]!==bg) openOther++;
+    if(openOther) body.appendChild(el('p','qsum-ref','⚠ Hay una ficha abierta: lo que tengas sin guardar en ella no está en este resumen ni se exportará.'));
+    body.appendChild(el('p','qsum-ref',baseLoaded?('Comparado con el estado cargado al iniciar (data.json o archivo importado), a las '+baseWhen.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})+'. Si importas otro archivo, sus diferencias también aparecen como cambios.'):'Comparado con un estado inicial vacío: no se cargó ningún data.json.'));
+    if(res.compared){
+      var chips=el('div','qsum-chips');
+      [['added','Añadidos',res.totals.added],['edited','Editados',res.totals.edited],['removed','Eliminados',res.totals.removed],['val','Errores de validación',res.val.length+res.fatal.length],['ref','Referencias rotas nuevas',res.ref.length]].forEach(function(c){
+        var ch=el('div','qsum-chip'+((c[0]==='val'||c[0]==='ref')&&c[2]>0?' is-err':'')); var b=el('b',null,String(c[2])); b.setAttribute('data-k',c[0]); ch.appendChild(b); ch.appendChild(document.createTextNode(c[1])); chips.appendChild(ch);
+      });
+      body.appendChild(chips);
+      var rows=res.cols.filter(function(c){return c.added.length||c.edited.length||c.removed.length||c.reordered||c.before!==c.after;});
+      var wrap=el('div','qsum-table-wrap'),tb=el('table','qsum-table'),cap=el('caption',null,'Cambios por colección'); tb.appendChild(cap);
+      var th=el('thead'),trh=el('tr'); ['Colección','Antes','Ahora','Añadidos','Editados','Eliminados'].forEach(function(h){ var c=el('th',null,h); c.setAttribute('scope','col'); trh.appendChild(c); }); th.appendChild(trh); tb.appendChild(th);
+      var tbd=el('tbody');
+      if(!rows.length){ var tr0=el('tr'),td0=el('td','', 'Sin cambios respecto al estado inicial.'); td0.colSpan=6; tr0.appendChild(td0); tbd.appendChild(tr0); }
+      rows.forEach(function(c){ var tr=el('tr'),h=el('th',null,c.label+(c.reordered?' (orden modificado)':'')); h.setAttribute('scope','row'); h.style.textAlign='left'; h.style.fontWeight='600'; tr.appendChild(h); [c.before,c.after,c.added.length,c.edited.length,c.removed.length].forEach(function(n){ tr.appendChild(el('td',null,String(n))); }); tbd.appendChild(tr); });
+      tb.appendChild(tbd); wrap.appendChild(tb); body.appendChild(wrap);
+      body.appendChild(changeSection(res,'added','Registros añadidos'));
+      body.appendChild(changeSection(res,'edited','Registros editados'));
+      body.appendChild(changeSection(res,'removed','Registros eliminados'));
+    }
+    var fatalSec=null;
+    if(res.fatal.length){ fatalSec=section('Errores graves',res.fatal.length,true,true); var ul=el('ul'); res.fatal.forEach(function(m){ ul.appendChild(el('li',null,m)); }); fatalSec.inn.appendChild(ul); body.appendChild(fatalSec.d); }
+    body.appendChild(issueSection('Errores de validación',res.val,true,res.val.length>0));
+    body.appendChild(issueSection('Referencias rotas nuevas',res.ref,true,res.ref.length>0));
+    var pre=res.preVal.concat(res.preRef);
+    if(pre.length){ var ps=issueSection('Ya estaban en el archivo cargado (no bloquean)',pre,false,false); body.appendChild(ps); }
+    dl.disabled=blocked; dl.setAttribute('aria-disabled',blocked?'true':'false');
+    if(blocked) dl.setAttribute('aria-describedby','qsumState'); else dl.removeAttribute('aria-describedby');
+    note.textContent=blocked?'Descarga desactivada: corrige los errores indicados. Exportar nunca publica nada; solo descarga un archivo.':'Descargar solo guarda un archivo en tu equipo: no publica nada. Sube data.json a GitHub tú mismo.';
+  }
+  /* ── apertura / cierre ── */
+  var isOpen=false,prevFocus=null,prevOverflow='',inerted=[];
+  function openSummary(){
+    if(isOpen) return;
+    prevFocus=document.activeElement;
+    var res=analyze(); render(res);
+    isOpen=true;
+    inerted=[$('stickyStack'),document.querySelector('.container'),$('quicknav'),$('navScrim')].concat([].slice.call(document.querySelectorAll('.modal-bg.open'))).filter(function(e){return e&&e!==bg&&!e.hasAttribute('inert');});
+    inerted.forEach(function(e){e.setAttribute('inert','');e.setAttribute('aria-hidden','true');});
+    prevOverflow=document.body.style.overflow; document.body.style.overflow='hidden';
+    bg.classList.add('open'); body.scrollTop=0;
+    try{ title.focus({preventScroll:true}); }catch(e){ title.focus(); }
+  }
+  function cleanup(restore){
+    if(!isOpen) return; isOpen=false;
+    bg.classList.remove('open');
+    inerted.forEach(function(e){e.removeAttribute('inert');e.removeAttribute('aria-hidden');}); inerted=[];
+    document.body.style.overflow=prevOverflow;
+    if(restore){ var f=prevFocus&&document.contains(prevFocus)?prevFocus:$('exportTopBtn'); if(f&&f.focus) try{f.focus();}catch(e){} }
+    prevFocus=null;
+  }
+  function download(){
+    if(!isOpen||dl.disabled) return;
+    var res=analyze();                 /* se revalida justo antes de descargar */
+    if(res.blockers>0){ render(res); try{ title.focus({preventScroll:true}); }catch(e){} return; }
+    cleanup(true);
+    origExport();                      /* el exportador de siempre: valida, descarga y limpia el aviso de cambios */
+  }
+  window.exportData=function(){ openSummary(); };
+  dl.addEventListener('click',download);
+  cancel.addEventListener('click',function(){ cleanup(true); });
+  closeX.addEventListener('click',function(){ cleanup(true); });
+  bg.addEventListener('mousedown',function(e){ if(e.target===bg) cleanup(true); });
+  if(window.MutationObserver) new MutationObserver(function(){ if(isOpen&&!bg.classList.contains('open')) cleanup(false); }).observe(bg,{attributes:true,attributeFilter:['class']});   /* p. ej. closeAll() */
+  document.addEventListener('keydown',function(e){
+    if(!isOpen) return;
+    if(e.key==='Escape'){ e.preventDefault(); e.stopPropagation(); cleanup(true); return; }
+    if(e.key==='Tab'){
+      var f=[].slice.call(panel.querySelectorAll('button:not([disabled]),summary,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')).filter(function(x){return !x.closest('details:not([open])')||x.tagName==='SUMMARY';});
+      var a=document.activeElement;
+      if(!f.length){ e.preventDefault(); return; }
+      if(!panel.contains(a)||a===title||a===panel){ e.preventDefault(); (e.shiftKey?f[f.length-1]:f[0]).focus(); }
+      else if(e.shiftKey&&a===f[0]){ e.preventDefault(); f[f.length-1].focus(); }
+      else if(!e.shiftKey&&a===f[f.length-1]){ e.preventDefault(); f[0].focus(); }
+    }
+  },true);
+})();
+</script>
+
+<script>
+/* FASE 11.3 · Normalizador de valores.
+   - Sustituye valores de campos del catálogo (series/anime/reality y películas) usando SOLO un mapa de equivalencias aprobado que se carga a mano.
+   - No incluye ningún mapa: sin mapa cargado no hay vista previa ni cambios posibles. Al abrir el panel no se lee ni se toca ningún dato.
+   - Flujo: cargar mapa → vista previa (solo lectura) → «Aplicar cambios…» → confirmación explícita (casilla + botón) → aplicar. «Cancelar» y «Descartar mapa» no modifican datos.
+   - Coincidencia exacta; lo que no esté en el mapa se conserva. Aplicar vuelve a calcular el plan y se niega si los datos cambiaron desde lo que se confirmó.
+   - Al aplicar solo cambia los campos listados en NORM_FIELDS de los registros afectados (no toca updatedAt), llama una vez a save() y vuelve a pintar las listas. No exporta ni publica nada. */
+(function(){
+  'use strict';
+  /* NORMALIZADOR:CORE:BEGIN (lógica pura, sin DOM: es lo que ejecutan las pruebas) */
+  var NORM_FIELDS={
+    country:{label:'País',kind:'str',sep:'/',join:' / '},
+    network:{label:'Plataforma o canal (network)',kind:'str',sep:',',join:', '},
+    genres:{label:'Géneros',kind:'arr'},
+    tropos:{label:'Tropos',kind:'arr'},
+    dinamica:{label:'Dinámicas',kind:'arr'}
+  };
+  var NORM_COLLS=[{k:'series',label:'Series, anime y reality'},{k:'movies',label:'Películas'}];
+  function isObj(v){ return v!==null&&typeof v==='object'&&!Array.isArray(v); }
+  function hasOwn(o,k){ return Object.prototype.hasOwnProperty.call(o,k); }
+  function validDate(s){
+    if(typeof s!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(s)) return false;
+    var d=new Date(s+'T00:00:00Z'); return !isNaN(d.getTime())&&d.toISOString().slice(0,10)===s;
+  }
+  /* Texto → mapa validado. Nunca lanza; devuelve errores/avisos en español. */
+  function normParseMap(text){
+    var res={ok:false,errors:[],warnings:[],approved:false,by:'',date:'',fields:{},pairCount:0};
+    if(typeof text!=='string'||!text.trim()){ res.errors.push('El mapa está vacío.'); return res; }
+    var raw;
+    try{ raw=JSON.parse(text); }catch(e){ res.errors.push('El mapa no es un JSON válido ('+(e&&e.message?e.message:e)+').'); return res; }
+    if(!isObj(raw)){ res.errors.push('La raíz del mapa debe ser un objeto JSON.'); return res; }
+    if(raw.version!==1) res.errors.push('Falta «version»: 1 (o tiene otro valor).');
+    var a=raw.aprobado;
+    if(isObj(a)&&typeof a.por==='string'&&a.por.trim()&&validDate(a.fecha)){ res.approved=true; res.by=a.por.trim(); res.date=a.fecha; }
+    else res.warnings.push('El mapa no indica quién lo aprobó ni cuándo («aprobado»: {«por», «fecha»}). Se puede ver la vista previa, pero no aplicar.');
+    if(!isObj(raw.campos)){ res.errors.push('Falta «campos»: un objeto con un mapa de equivalencias por campo.'); return res; }
+    Object.keys(raw.campos).forEach(function(f){
+      if(!hasOwn(NORM_FIELDS,f)){ res.errors.push('Campo no admitido: «'+f+'». Admitidos: '+Object.keys(NORM_FIELDS).join(', ')+'.'); return; }
+      var m=raw.campos[f];
+      if(!isObj(m)){ res.errors.push('«'+f+'» debe ser un objeto {origen: destino}.'); return; }
+      var pairs=new Map(),sources=Object.create(null);
+      Object.keys(m).forEach(function(k){ sources[k]=1; });
+      Object.keys(m).forEach(function(k){
+        var v=m[k];
+        if(!k.trim()){ res.errors.push('«'+f+'»: hay un valor de origen vacío.'); return; }
+        if(typeof v!=='string'||!v.trim()){ res.errors.push('«'+f+'»: el destino de «'+k+'» debe ser un texto no vacío.'); return; }
+        if(v!==v.trim()){ res.errors.push('«'+f+'»: el destino «'+v+'» tiene espacios al inicio o al final.'); return; }
+        if(k===v){ res.warnings.push('«'+f+'»: «'+k+'» → «'+v+'» no cambia nada y se ignora.'); return; }
+        if(hasOwn(sources,v)&&m[v]!==v){ res.errors.push('«'+f+'»: «'+k+'» → «'+v+'», pero «'+v+'» es a su vez origen de otra equivalencia (cadena). Indica el destino final directamente.'); return; }
+        pairs.set(k,v);
+      });
+      res.fields[f]=pairs; res.pairCount+=pairs.size;
+    });
+    if(!res.errors.length&&!res.pairCount) res.errors.push('El mapa no contiene ninguna equivalencia.');
+    res.ok=!res.errors.length;
+    return res;
+  }
+  function normCanApply(parsed){ return !!(parsed&&parsed.ok&&parsed.approved); }
+  function dedupe(list){
+    var seen={},out=[],n=0;
+    list.forEach(function(x){
+      if(typeof x==='string'&&x!==''){ if(hasOwn(seen,'$'+x)){ n++; return; } seen['$'+x]=1; }
+      out.push(x);
+    });
+    return {list:out,removed:n};
+  }
+  /* Un valor → null si no cambia, o {value,hits:[[origen,destino]],dedup}. No muta el original. */
+  function normTransform(def,val,mp){
+    var hits=[],d;
+    if(def.kind==='str'){
+      if(typeof val!=='string') return null;
+      if(mp.has(val)){ return {value:mp.get(val),hits:[[val,mp.get(val)]],dedup:0}; }
+      if(val.indexOf(def.sep)<0) return null;
+      var toks=val.split(def.sep).map(function(t){ return t.trim(); });
+      var mapped=toks.map(function(t){ if(mp.has(t)){ hits.push([t,mp.get(t)]); return mp.get(t); } return t; });
+      if(!hits.length) return null;
+      d=dedupe(mapped);
+      return {value:d.list.join(def.join),hits:hits,dedup:d.removed};
+    }
+    if(!Array.isArray(val)) return null;
+    var out=val.map(function(x){ if(typeof x==='string'&&mp.has(x)){ hits.push([x,mp.get(x)]); return mp.get(x); } return x; });
+    if(!hits.length) return null;
+    d=dedupe(out);
+    return {value:d.list,hits:hits,dedup:d.removed};
+  }
+  /* Calcula qué cambiaría. Solo lectura. data={series:[],movies:[]} */
+  function normPlan(data,parsed){
+    var plan={changes:[],summary:[],totals:{records:0,values:0,dedup:0,byField:{}},unused:[],signature:'[]'};
+    if(!parsed||!parsed.ok) return plan;
+    var sum={},seenSrc={};
+    NORM_COLLS.forEach(function(c){
+      var list=data&&Array.isArray(data[c.k])?data[c.k]:[];
+      list.forEach(function(rec,idx){
+        if(!isObj(rec)) return;
+        var fch=[],rk=c.k+'#'+idx;
+        Object.keys(parsed.fields).forEach(function(f){
+          if(!hasOwn(rec,f)) return;
+          var t=normTransform(NORM_FIELDS[f],rec[f],parsed.fields[f]);
+          if(!t) return;
+          fch.push({field:f,before:rec[f],after:t.value});
+          var bf=plan.totals.byField[f]||(plan.totals.byField[f]={records:0,values:0});
+          bf.records++; bf.values+=t.hits.length;
+          plan.totals.values+=t.hits.length; plan.totals.dedup+=t.dedup;
+          t.hits.forEach(function(h){
+            var key=f+'\u0000'+h[0]+'\u0000'+h[1];
+            var s=sum[key]||(sum[key]={field:f,from:h[0],to:h[1],values:0,records:0,last:''});
+            s.values++; if(s.last!==rk+'|'+f){ s.records++; s.last=rk+'|'+f; }
+            seenSrc[f+'\u0000'+h[0]]=1;
+          });
+        });
+        if(fch.length) plan.changes.push({coll:c.k,collLabel:c.label,idx:idx,id:(rec.id==null?'':String(rec.id)),name:(typeof rec.name==='string'&&rec.name)?rec.name:'(sin nombre)',fields:fch});
+      });
+    });
+    plan.totals.records=plan.changes.length;
+    plan.summary=Object.keys(sum).map(function(k){ return sum[k]; }).sort(function(a,b){ return a.field<b.field?-1:a.field>b.field?1:(b.values-a.values)||(a.from<b.from?-1:1); });
+    Object.keys(parsed.fields).forEach(function(f){ parsed.fields[f].forEach(function(to,from){ if(!seenSrc[f+'\u0000'+from]) plan.unused.push({field:f,from:from,to:to}); }); });
+    plan.signature=JSON.stringify(plan.changes.map(function(c){ return [c.coll,c.idx,c.id,c.fields.map(function(x){ return [x.field,x.before,x.after]; })]; }));
+    return plan;
+  }
+  /* Aplica el plan. Solo si el mapa está aprobado y los datos siguen siendo los que se confirmaron (misma firma). Todo o nada. */
+  function normApply(data,parsed,signature){
+    if(!normCanApply(parsed)) return {ok:false,reason:'El mapa no está aprobado o tiene errores: no se aplica nada.'};
+    var plan=normPlan(data,parsed);
+    if(!plan.changes.length) return {ok:false,reason:'No hay nada que cambiar.'};
+    if(plan.signature!==signature) return {ok:false,stale:true,reason:'Los datos han cambiado desde la vista previa confirmada: no se aplica nada. Revisa la vista previa actualizada.'};
+    plan.changes.forEach(function(c){ var rec=data[c.coll][c.idx]; c.fields.forEach(function(f){ rec[f.field]=f.after; }); });
+    return {ok:true,records:plan.totals.records,values:plan.totals.values,dedup:plan.totals.dedup};
+  }
+  /* NORMALIZADOR:CORE:END */
+
+  var $=function(id){ return document.getElementById(id); };
+  var el={state:$('normState'),file:$('normFile'),text:$('normText'),load:$('normLoad'),clear:$('normClear'),errors:$('normErrors'),preview:$('normPreview'),chips:$('normChips'),notes:$('normNotes'),table:$('normTable'),records:$('normRecords'),apply:$('normApply'),refresh:$('normRefresh'),confirm:$('normConfirm'),confirmTitle:$('normConfirmTitle'),confirmText:$('normConfirmText'),chk:$('normChk'),confirmBtn:$('normConfirmBtn'),cancel:$('normCancel'),result:$('normResult'),fields:$('normFieldsList')};
+  for(var k in el){ if(!el[k]) return; }
+  var REC_CAP=200,SUM_CAP=500;
+  var st={parsed:null,plan:null,confirmSig:null};
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+  function q(v){ return '«'+esc(Array.isArray(v)?v.join(' | '):v)+'»'; }
+  function data(){ var d={}; try{ d.series=series; d.movies=movies; }catch(e){} return d; }
+  function setState(kind,title,msg){ el.state.className='norm-state '+kind; el.state.innerHTML='<div><strong>'+esc(title)+'</strong>'+msg+'</div>'; }
+  function hideConfirm(){ el.confirm.hidden=true; el.chk.checked=false; el.confirmBtn.disabled=true; st.confirmSig=null; }
+  function fieldLabel(f){ return NORM_FIELDS[f]?NORM_FIELDS[f].label:f; }
+  el.fields.textContent=Object.keys(NORM_FIELDS).map(function(f){ return f+' ('+NORM_FIELDS[f].label+')'; }).join(', ');
+
+  function render(){
+    hideConfirm();
+    var p=st.parsed;
+    if(!p){
+      setState('warn','Sin mapa cargado','No hay ningún mapa de equivalencias aprobado cargado, así que no se puede normalizar nada. No se ha modificado ningún dato.');
+      el.errors.hidden=true; el.preview.hidden=true; el.apply.disabled=true; return;
+    }
+    if(!p.ok){
+      setState('err','El mapa no es válido','No se puede mostrar la vista previa ni aplicar nada. No se ha modificado ningún dato.');
+      el.errors.hidden=false; el.errors.innerHTML='<ul class="norm-list">'+p.errors.map(function(e){ return '<li>'+esc(e)+'</li>'; }).join('')+'</ul>';
+      el.preview.hidden=true; el.apply.disabled=true; return;
+    }
+    el.errors.hidden=true;
+    var plan=st.plan=normPlan(data(),p),t=plan.totals,can=normCanApply(p)&&t.records>0;
+    if(!p.approved) setState('warn','Mapa sin aprobar: solo vista previa','Esta vista previa es informativa. Para poder aplicar, el mapa debe indicar quién lo aprobó y cuándo. No se ha modificado ningún dato.');
+    else if(!t.records) setState('ok','Mapa aprobado por '+esc(p.by)+' ('+esc(p.date)+')','Ningún valor del catálogo coincide con el mapa: no hay nada que aplicar. No se ha modificado ningún dato.');
+    else setState('ok','Mapa aprobado por '+esc(p.by)+' ('+esc(p.date)+')','Vista previa lista. Todavía no se ha modificado ningún dato: nada cambia hasta que confirmes.');
+    el.preview.hidden=false;
+    el.chips.innerHTML='<div class="norm-chip"><b>'+t.records+'</b>registros se modificarán</div><div class="norm-chip"><b>'+t.values+'</b>valores cambiarán</div>'+(t.dedup?'<div class="norm-chip"><b>'+t.dedup+'</b>repetidos se eliminarán</div>':'');
+    var notes='';
+    if(p.warnings.length) notes+='<ul class="norm-list">'+p.warnings.map(function(w){ return '<li>'+esc(w)+'</li>'; }).join('')+'</ul>';
+    var perField=Object.keys(t.byField);
+    if(perField.length) notes+='<p class="norm-help" style="margin:0 0 8px">'+perField.map(function(f){ return esc(fieldLabel(f))+': '+t.byField[f].records+' registro'+(t.byField[f].records===1?'':'s')+', '+t.byField[f].values+' valor'+(t.byField[f].values===1?'':'es'); }).join(' · ')+'</p>';
+    if(plan.unused.length) notes+='<details class="norm-help"><summary>'+plan.unused.length+' equivalencia'+(plan.unused.length===1?'':'s')+' del mapa sin coincidencias en los datos (no hacen nada)</summary><ul class="norm-list">'+plan.unused.slice(0,SUM_CAP).map(function(u){ return '<li>'+esc(fieldLabel(u.field))+': '+q(u.from)+' → '+q(u.to)+'</li>'; }).join('')+'</ul></details>';
+    el.notes.innerHTML=notes;
+    el.table.innerHTML=plan.summary.length?'<table class="norm-table"><caption>Valores que cambiarán</caption><thead><tr><th>Campo</th><th>Antes</th><th>Después</th><th class="n">Valores</th><th class="n">Registros</th></tr></thead><tbody>'+plan.summary.slice(0,SUM_CAP).map(function(s){ return '<tr><td>'+esc(fieldLabel(s.field))+'</td><td><span class="norm-from">'+esc(s.from)+'</span></td><td><span class="norm-to">'+esc(s.to)+'</span></td><td class="n">'+s.values+'</td><td class="n">'+s.records+'</td></tr>'; }).join('')+'</tbody></table>':'';
+    el.records.innerHTML=t.records?'<details class="norm-help"><summary>Ver registros afectados ('+t.records+')</summary><ul class="norm-list">'+plan.changes.slice(0,REC_CAP).map(function(c){ return '<li><strong>'+esc(c.name)+'</strong> <span class="norm-help">('+esc(c.collLabel)+(c.id?' · ID '+esc(c.id):'')+')</span><ul class="norm-list">'+c.fields.map(function(f){ return '<li>'+esc(fieldLabel(f.field))+': <span class="norm-from">'+esc(Array.isArray(f.before)?f.before.join(' | '):f.before)+'</span> → <span class="norm-to">'+esc(Array.isArray(f.after)?f.after.join(' | '):f.after)+'</span></li>'; }).join('')+'</ul></li>'; }).join('')+(t.records>REC_CAP?'<li>… y '+(t.records-REC_CAP)+' más (el recuento de arriba los incluye todos).</li>':'')+'</ul></details>':'';
+    el.apply.disabled=!can;
+  }
+  function load(){
+    el.result.innerHTML='';
+    st.parsed=normParseMap(el.text.value); st.plan=null;
+    render();
+  }
+  function discard(){
+    st.parsed=null; st.plan=null; el.text.value=''; el.file.value=''; el.result.innerHTML='';
+    render();
+  }
+  function startConfirm(){
+    if(!st.parsed||!normCanApply(st.parsed)) return;
+    var prev=st.plan?st.plan.signature:null,plan=normPlan(data(),st.parsed);
+    if(plan.signature!==prev){ render(); el.result.innerHTML='<div class="norm-state warn"><div><strong>Los datos han cambiado</strong>La vista previa se ha actualizado. Revísala y vuelve a pulsar «Aplicar cambios…».</div></div>'; return; }
+    if(!plan.totals.records) return;
+    el.result.innerHTML='';
+    st.confirmSig=plan.signature;
+    el.confirmText.textContent='Vas a modificar '+plan.totals.records+' registro'+(plan.totals.records===1?'':'s')+' ('+plan.totals.values+' valor'+(plan.totals.values===1?'':'es')+') en el catálogo cargado. Se aplica en este panel; no se publica nada hasta que exportes data.json.';
+    el.confirm.hidden=false; el.chk.checked=false; el.confirmBtn.disabled=true;
+    try{ el.confirmTitle.focus(); }catch(e){}
+  }
+  function cancelConfirm(){ hideConfirm(); try{ el.apply.focus(); }catch(e){} }
+  function doApply(){
+    if(!el.chk.checked||!st.confirmSig) return;
+    el.confirmBtn.disabled=true;
+    var res=normApply(data(),st.parsed,st.confirmSig);
+    if(!res.ok){ render(); el.result.innerHTML='<div class="norm-state err"><div><strong>No se ha aplicado nada</strong>'+esc(res.reason)+'</div></div>'; return; }
+    try{ if(typeof save==='function') save(); }catch(e){}
+    ['render','renderMovies','renderAnimeGrid','renderRealitiesGrid'].forEach(function(fn){ try{ if(typeof window[fn]==='function') window[fn](); }catch(e){} });
+    render();
+    el.result.innerHTML='<div class="norm-state ok"><div><strong>Normalización aplicada</strong>Se modificaron '+res.records+' registro'+(res.records===1?'':'s')+' ('+res.values+' valor'+(res.values===1?'':'es')+(res.dedup?', '+res.dedup+' repetido'+(res.dedup===1?'':'s')+' eliminado'+(res.dedup===1?'':'s'):'')+'). Los cambios están solo en este panel: exporta data.json para guardarlos.</div></div>';
+  }
+  el.file.addEventListener('change',function(){
+    var f=el.file.files&&el.file.files[0]; if(!f) return;
+    var r=new FileReader();
+    r.onload=function(ev){ el.text.value=String(ev.target.result||''); };
+    r.onerror=function(){ st.parsed={ok:false,errors:['No se pudo leer el archivo.'],warnings:[],fields:{}}; render(); };
+    r.readAsText(f);
+  });
+  el.load.addEventListener('click',load);
+  el.clear.addEventListener('click',discard);
+  el.apply.addEventListener('click',startConfirm);
+  el.refresh.addEventListener('click',function(){ el.result.innerHTML=''; render(); });
+  el.chk.addEventListener('change',function(){ el.confirmBtn.disabled=!el.chk.checked; });
+  el.confirmBtn.addEventListener('click',doApply);
+  el.cancel.addEventListener('click',cancelConfirm);
+  window.addEventListener('hashchange',function(){ if(location.hash==='#normalizar'&&st.parsed&&st.parsed.ok&&el.confirm.hidden) render(); });
+  render();   /* solo pinta el estado «sin mapa»: no lee ni modifica datos */
+})();
+</script>
+
+<script>
+/* FASE 11.5 · Calendario de estrenos (SOLO LECTURA).
+   - Fuente de fechas (sin inventar ninguna): película → date; serie con temporadas → startDate de cada temporada; serie sin temporadas → startDate.
+     (El startDate antiguo de una serie que sí tiene temporadas, y las fechas de episodios, no se usan como estreno.)
+   - Fecha vacía → «pendiente»; texto/valor que no es una fecha AAAA-MM-DD real (p. ej. 2026-02-31) → «inválida». Solo se informa: nunca se corrige.
+   - Nunca escribe en los datos ni llama a save(). Abrir la ficha de un título usa los mismos abridores que el buscador rápido (cambia al panel correspondiente). */
+(function(){
+  'use strict';
+  /* CALENDARIO:CORE:BEGIN (lógica pura, sin DOM: es lo que ejecutan las pruebas) */
+  function isObj(v){ return v!==null&&typeof v==='object'&&!Array.isArray(v); }
+  function pad(n,w){ n=String(n); while(n.length<w) n='0'+n; return n; }
+  /* 'AAAA-MM-DD' estricto y real (con comprobación de ida y vuelta). Devuelve {y,m,d} o null. */
+  function calParse(s){
+    if(typeof s!=='string') return null;
+    var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s); if(!m) return null;
+    var y=+m[1],mo=+m[2],d=+m[3]; if(y<1000||mo<1||mo>12||d<1) return null;
+    var dt=new Date(Date.UTC(y,mo-1,d));
+    if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==mo-1||dt.getUTCDate()!==d) return null;
+    return {y:y,m:mo,d:d};
+  }
+  function calKind(coll,rec){
+    if(coll==='movies') return rec.movieType==='short'?'Corto':'Película';
+    return rec.category==='anime'?'Anime':rec.category==='reality'?'Reality':'Serie';
+  }
+  function rawText(v){ try{ return typeof v==='string'?v:JSON.stringify(v); }catch(e){ return String(v); } }
+  /* data={series:[],movies:[]} → {events,issues,range}. Solo lectura. */
+  function calBuild(data){
+    var out={events:[],issues:[],range:null};
+    function handle(coll,rec,idx,raw,label,isSeason){
+      var base={coll:coll,idx:idx,id:(rec.id==null?'':String(rec.id)),name:(typeof rec.name==='string'&&rec.name.trim())?rec.name:'(sin nombre)',kind:calKind(coll,rec),label:label||''};
+      var p=calParse(raw),o;
+      if(p){ o={date:raw,y:p.y,m:p.m,d:p.d,key:raw}; Object.keys(base).forEach(function(k){ o[k]=base[k]; }); out.events.push(o); return; }
+      var empty=raw==null||(typeof raw==='string'&&!raw.trim());
+      o={level:empty?'pending':'invalid',raw:empty?'':rawText(raw)}; Object.keys(base).forEach(function(k){ o[k]=base[k]; });
+      o.why=empty?(isSeason?'Temporada sin fecha de estreno.':(coll==='series'&&rec.upcoming===true?'Próximamente, sin fecha de estreno.':'Sin fecha de estreno.')):'No es una fecha válida AAAA-MM-DD.';
+      out.issues.push(o);
+    }
+    (data&&Array.isArray(data.series)?data.series:[]).forEach(function(rec,idx){
+      if(!isObj(rec)) return;
+      var ss=Array.isArray(rec.seasons)?rec.seasons.filter(isObj):[];
+      if(ss.length) ss.forEach(function(s,i){ handle('series',rec,idx,s.startDate,ss.length>1?((typeof s.label==='string'&&s.label.trim())?s.label:'Temporada '+(i+1)):'',true); });
+      else handle('series',rec,idx,rec.startDate,'',false);
+    });
+    (data&&Array.isArray(data.movies)?data.movies:[]).forEach(function(rec,idx){ if(isObj(rec)) handle('movies',rec,idx,rec.date,'',false); });
+    out.events.sort(function(a,b){ return a.key<b.key?-1:a.key>b.key?1:a.name.localeCompare(b.name,'es'); });
+    if(out.events.length) out.range={min:out.events[0].key,max:out.events[out.events.length-1].key};
+    return out;
+  }
+  /* Rejilla de un mes (m = 1..12). lead = huecos antes del día 1 con semana que empieza en lunes. */
+  function calMonth(events,y,m){
+    var dim=new Date(Date.UTC(y,m,0)).getUTCDate(),lead=(new Date(Date.UTC(y,m-1,1)).getUTCDay()+6)%7;
+    var days=[],i,by={};
+    (events||[]).forEach(function(e){ if(e.y===y&&e.m===m){ (by[e.d]||(by[e.d]=[])).push(e); } });
+    var res={y:y,m:m,dim:dim,lead:lead,days:days,total:0,clashDays:0};
+    for(i=1;i<=dim;i++){
+      var ev=by[i]||[],recs={};
+      ev.forEach(function(e){ recs[e.coll+'#'+e.idx]=1; });
+      var clash=Object.keys(recs).length>=2;
+      days.push({d:i,key:y+'-'+pad(m,2)+'-'+pad(i,2),weekday:((lead+i-1)%7),events:ev,clash:clash});
+      res.total+=ev.length; if(clash) res.clashDays++;
+    }
+    return res;
+  }
+  function calShift(y,m,delta){ var t=y*12+(m-1)+delta; return {y:Math.floor(t/12),m:(t%12+12)%12+1}; }
+  /* CALENDARIO:CORE:END */
+
+  var $=function(id){ return document.getElementById(id); };
+  var root=$('section-calendario');
+  if(!root) return;
+  var el={title:$('calTitle'),prev:$('calPrev'),next:$('calNext'),pick:$('calPick'),today:$('calToday'),last:$('calLast'),chips:$('calChips'),note:$('calNote'),grid:$('calGrid'),clashes:$('calClashes'),issues:$('calIssues')};
+  for(var k in el){ if(!el[k]) return; }
+  var MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var WD=['lun','mar','mié','jue','vie','sáb','dom'];
+  var ISSUE_CAP=300;
+  var now=new Date(),cur={y:now.getFullYear(),m:now.getMonth()+1},todayKey=now.getFullYear()+'-'+pad(now.getMonth()+1,2)+'-'+pad(now.getDate(),2);
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+  function data(){ var d={}; try{ d.series=series; d.movies=movies; }catch(e){} return d; }
+  function monthName(y,m){ return MONTHS[m-1]+' '+y; }
+  function evBtn(e){
+    return '<button type="button" class="cal-t" data-coll="'+e.coll+'" data-idx="'+e.idx+'" data-id="'+esc(e.id)+'" aria-label="Abrir ficha: '+esc(e.name)+(e.label?' ('+esc(e.label)+')':'')+'">'+esc(e.name)+'<small>'+esc(e.kind)+(e.label?' · '+esc(e.label):'')+'</small></button>';
+  }
+  function render(){
+    var b=calBuild(data()),mo=calMonth(b.events,cur.y,cur.m);
+    el.title.textContent=monthName(cur.y,cur.m);
+    if(el.pick.value!==cur.y+'-'+pad(cur.m,2)) el.pick.value=cur.y+'-'+pad(cur.m,2);
+    var inv=b.issues.filter(function(i){return i.level==='invalid';}),pen=b.issues.filter(function(i){return i.level==='pending';});
+    el.chips.innerHTML='<div class="cal-chip"><b>'+mo.total+'</b>estreno'+(mo.total===1?'':'s')+' este mes</div>'
+      +'<div class="cal-chip'+(mo.clashDays?' w':'')+'"><b>'+mo.clashDays+'</b>día'+(mo.clashDays===1?'':'s')+' con coincidencias</div>'
+      +'<div class="cal-chip'+(inv.length?' e':'')+'"><b>'+inv.length+'</b>fecha'+(inv.length===1?'':'s')+' inválida'+(inv.length===1?'':'s')+'</div>'
+      +'<div class="cal-chip"><b>'+pen.length+'</b>fecha'+(pen.length===1?'':'s')+' pendiente'+(pen.length===1?'':'s')+'</div>';
+    el.note.innerHTML=b.range?(mo.total?'':'No hay estrenos guardados en este mes. ')+'Fechas guardadas: de '+esc(b.range.min)+' a '+esc(b.range.max)+'.':'No hay ninguna fecha de estreno válida guardada.';
+    el.last.disabled=!b.range;
+    var h='',i;
+    for(i=0;i<mo.lead;i++) h+='<li class="cal-blank" aria-hidden="true"></li>';
+    mo.days.forEach(function(d){
+      var n=d.events.length,cls='cal-day'+(n?' has':'')+(d.clash?' clash':'')+(d.key===todayKey?' today':'');
+      var lab=d.d+' de '+MONTHS[mo.m-1]+': '+(n?n+' estreno'+(n===1?'':'s')+(d.clash?', coincidencia':''):'sin estrenos');
+      h+='<li class="'+cls+'" aria-label="'+esc(lab)+'"><div class="cal-dn"><span>'+d.d+'</span><span class="cal-dw">'+WD[d.weekday]+'</span>'+(d.clash?'<span class="cal-badge">⚠ Coincidencia · '+n+'</span>':'')+'</div>'+(n?'<ul class="cal-ev">'+d.events.map(function(e){ return '<li>'+evBtn(e)+'</li>'; }).join('')+'</ul>':'')+'</li>';
+    });
+    el.grid.innerHTML=h;
+    var cd=mo.days.filter(function(d){return d.clash;});
+    el.clashes.innerHTML=cd.length?'<ul class="cal-list">'+cd.map(function(d){ return '<li><strong>'+d.d+' de '+MONTHS[mo.m-1]+'</strong> <span class="cal-why">'+d.events.length+' estrenos el mismo día:</span>'+d.events.map(evBtn).join(' ')+'</li>'; }).join('')+'</ul>':'<p class="cal-note">Ningún día de este mes tiene varios estrenos.</p>';
+    function list(arr,title,cls,open){
+      if(!arr.length) return '';
+      var shown=arr.slice().sort(function(a,b){ return a.name.localeCompare(b.name,'es'); }).slice(0,ISSUE_CAP);
+      return '<details class="cal-det '+cls+'"'+(open?' open':'')+'><summary>'+title+' ('+arr.length+')</summary><ul class="cal-list">'+shown.map(function(i){
+        return '<li><strong>'+esc(i.name)+'</strong><span class="cal-why">'+esc(i.kind)+(i.label?' · '+esc(i.label):'')+' — '+esc(i.why)+(i.raw?' Valor guardado: <code>'+esc(i.raw)+'</code>':'')+'</span><button type="button" class="btn small cal-t-open" data-coll="'+i.coll+'" data-idx="'+i.idx+'" data-id="'+esc(i.id)+'">Abrir ficha</button></li>';
+      }).join('')+(arr.length>ISSUE_CAP?'<li>… y '+(arr.length-ISSUE_CAP)+' más (los recuentos de arriba los incluyen todos).</li>':'')+'</ul></details>';
+    }
+    el.issues.innerHTML=(list(inv,'Fechas inválidas','e',true)+list(pen,'Fechas pendientes (sin fecha de estreno)','',false))||'<p class="cal-note">Todas las fichas tienen fecha de estreno válida.</p>';
+  }
+  function go(y,m){ cur={y:y,m:m}; render(); }
+  /* cambia de panel con el mismo mecanismo que el menú (location.hash) y, cuando el controlador de paneles ya ha reaccionado, abre la ficha (igual que el buscador rápido) */
+  function goAndOpen(panel,opener){
+    var done=false,tm=0;
+    function run(){ if(done) return; done=true; window.removeEventListener('hashchange',onHash); clearTimeout(tm); try{ opener(); }catch(err){ if(window.console) console.error('Calendario: no se pudo abrir la ficha',err); } }
+    function onHash(){ setTimeout(run,0); }
+    if(location.hash==='#'+panel){ run(); return; }
+    window.addEventListener('hashchange',onHash); tm=setTimeout(run,500);
+    location.hash='#'+panel;
+  }
+  function openRec(coll,idx,id){
+    var a=data()[coll]||[],pos=-1;
+    if(id){ pos=a.findIndex(function(x){ return x&&String(x.id)===id; }); } else if(a[idx]) pos=idx;
+    if(pos<0){ render(); el.note.textContent='Ese registro ya no existe. Calendario actualizado.'; return; }
+    if(coll==='movies') goAndOpen('movies',function(){ openEditMovie(pos); });
+    else { var c=a[pos].category; goAndOpen(c==='anime'?'anime':c==='reality'?'realities':'series',function(){ openEditByCat(pos); }); }
+  }
+  root.addEventListener('click',function(e){
+    var t=e.target.closest&&e.target.closest('button[data-coll]'); if(!t||!root.contains(t)) return;
+    openRec(t.getAttribute('data-coll'),+t.getAttribute('data-idx'),t.getAttribute('data-id'));
+  });
+  el.prev.addEventListener('click',function(){ var s=calShift(cur.y,cur.m,-1); go(s.y,s.m); });
+  el.next.addEventListener('click',function(){ var s=calShift(cur.y,cur.m,1); go(s.y,s.m); });
+  el.today.addEventListener('click',function(){ var d=new Date(); go(d.getFullYear(),d.getMonth()+1); });
+  el.last.addEventListener('click',function(){ var r=calBuild(data()).range; if(r){ var p=calParse(r.max); go(p.y,p.m); } });
+  el.pick.addEventListener('change',function(){ var m=/^(\d{4})-(\d{2})$/.exec(el.pick.value); if(m&&+m[1]>=1000) go(+m[1],+m[2]); });
+  /* se redibuja al entrar en el panel y (con retardo) tras guardar cambios mientras está visible */
+  var tm2=0;
+  function later(){ clearTimeout(tm2); tm2=setTimeout(function(){ if(location.hash==='#calendario') render(); },300); }
+  window.addEventListener('hashchange',function(){ if(location.hash==='#calendario') render(); });
+  var _sv=window.save; if(typeof _sv==='function') window.save=function(){ var r=_sv.apply(this,arguments); later(); return r; };
+  render();
+  if(location.hash==='#calendario') setTimeout(render,1000);   /* por si el catálogo termina de cargarse después */
 })();
 </script>
 </body>

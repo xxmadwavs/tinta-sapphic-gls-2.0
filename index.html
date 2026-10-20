@@ -1266,6 +1266,7 @@ html[data-theme="dark"] .ship-retired{background:rgba(180,140,160,.08);color:#a0
 }
 .ship-type-main{background:color-mix(in srgb,var(--accent) 9%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 18%,transparent)}
 .ship-type-secondary{background:color-mix(in srgb,var(--teal) 8%,transparent);color:var(--teal);border:1px solid color-mix(in srgb,var(--teal) 18%,transparent)}
+.ship-type-fan{background:color-mix(in srgb,var(--lavender) 9%,transparent);color:var(--lavender);border:1px dashed color-mix(in srgb,var(--lavender) 35%,transparent)}
 /* ── Actrices en productoras ── */
 .prod-actresses-section{
   padding:10px 0 2px;
@@ -1698,6 +1699,49 @@ html[data-theme="dark"] .ship-retired-note{color:#a08090}
 .fside-more:hover{text-decoration:underline}
 .fside-clear-all{font-size:12px;color:var(--muted);cursor:pointer;background:none;border:1.5px solid var(--border2);border-radius:20px;padding:7px 12px;font-family:var(--font-body);margin-bottom:18px;width:100%;text-align:center;transition:all .15s}
 .fside-clear-all:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ── Filtro de fecha: slider doble con burbujas ── */
+.yr-group .yr-head{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;padding:0;margin:0 0 4px;cursor:pointer;font-family:var(--font-body);color:var(--muted)}
+.yr-caret{font-size:13px;transition:transform .18s;color:var(--muted)}
+.yr-caret.closed{transform:rotate(-90deg)}
+.yr-slider{--blue:#3d9be0;--p0:0;--p1:1;position:relative;height:72px;margin:4px 2px 0}
+.yr-track{position:absolute;left:10px;right:10px;top:32px;height:5px;border-radius:3px;background:var(--border2)}
+.yr-fill{position:absolute;top:0;bottom:0;left:calc(var(--p0) * 100%);right:calc((1 - var(--p1)) * 100%);border-radius:3px;background:var(--blue)}
+.yr-in{position:absolute;left:0;top:25px;width:100%;height:20px;margin:0;padding:0;background:none;pointer-events:none;-webkit-appearance:none;appearance:none;outline:none}
+.yr-in::-webkit-slider-runnable-track{background:transparent;height:20px;border:none}
+.yr-in::-moz-range-track{background:transparent;height:20px;border:none}
+.yr-in::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;pointer-events:auto;width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:grab}
+.yr-in::-moz-range-thumb{pointer-events:auto;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:grab}
+.yr-in:active::-webkit-slider-thumb{cursor:grabbing}
+.yr-in:focus-visible::-webkit-slider-thumb{outline:2px solid var(--accent);outline-offset:2px}
+.yr-bubble{position:absolute;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:12px;font-weight:700;line-height:1.3;padding:3px 9px;border-radius:4px;pointer-events:none;font-variant-numeric:tabular-nums}
+.yr-bubble::after{content:'';position:absolute;left:50%;margin-left:-5px;border:5px solid transparent}
+.yr-bubble-max{top:0;left:calc(10px + (100% - 20px) * var(--p1))}
+.yr-bubble-max::after{top:100%;border-top-color:var(--blue)}
+.yr-bubble-min{bottom:0;left:calc(10px + (100% - 20px) * var(--p0))}
+.yr-bubble-min::after{bottom:100%;border-bottom-color:var(--blue)}
+
+/* ── Buscador de tropos y dinámicas ── */
+.ts-input{width:100%;box-sizing:border-box;padding:8px 11px;border:1.5px solid var(--border2);border-radius:10px;background:var(--surface);color:var(--text);font-size:13px;font-family:var(--font-body)}
+.ts-input:focus{outline:none;border-color:var(--accent)}
+.ts-drop{display:none;margin-top:4px;max-height:230px;overflow:auto;background:var(--surface);border:1.5px solid var(--border2);border-radius:10px}
+.ts-drop.open{display:block}
+.ts-opt{display:flex;align-items:center;gap:8px;width:100%;box-sizing:border-box;padding:7px 10px;background:none;border:none;color:var(--text);font-size:12.5px;line-height:1.3;text-align:left;cursor:pointer;font-family:var(--font-body)}
+.ts-opt>span:first-child{flex:1;min-width:0}
+.ts-opt:hover,.ts-opt:focus-visible{background:var(--accent-soft);outline:none}
+.ts-opt-kind{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);flex-shrink:0}
+.ts-opt-count{font-size:11px;color:var(--muted);flex-shrink:0;min-width:16px;text-align:right}
+.ts-empty{padding:9px 11px;font-size:12px;color:var(--muted)}
+.ts-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.ts-chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:20px;cursor:pointer;font-family:var(--font-body);background:var(--accent-soft);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent)}
+.ts-chip.din{background:var(--teal-soft);color:var(--teal);border-color:color-mix(in srgb,var(--teal) 25%,transparent)}
+.ts-chip:hover{filter:brightness(.95)}
+
+/* ── Etiqueta de pareja secundaria / no canon en la ficha ── */
+.couple-card.side-couple,.couple-card.fan-couple{padding-top:20px;margin-top:6px}
+.couple-tag{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:20px;white-space:nowrap;background:var(--surface);}
+.couple-tag-side{color:var(--teal);border:1px solid color-mix(in srgb,var(--teal) 40%,transparent)}
+.couple-tag-fan{color:var(--lavender);border:1px dashed color-mix(in srgb,var(--lavender) 55%,transparent)}
 .fside-mobile-toggle{display:none;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--text);background:var(--surface);border:1.5px solid var(--border2);border-radius:20px;padding:7px 14px;margin-bottom:1rem;cursor:pointer;font-family:var(--font-body)}
 @media(max-width:900px){
   .filters-layout{flex-direction:column;align-items:stretch}
@@ -2244,6 +2288,9 @@ html[data-theme="dark"] .detail-hero:not(.ship-hero) .detail-poster,html[data-th
 .couple-card:hover{box-shadow:0 4px 18px rgba(212,96,138,0.13)}
 .couple-card.main-couple{border-color:rgba(212,96,138,0.25)}
 .couple-card.sec-couple{border-color:color-mix(in srgb,var(--lavender) 25%,transparent)}
+.couple-card.side-couple{border-color:color-mix(in srgb,var(--teal) 30%,transparent)}
+.couple-card.fan-couple{border-style:dashed;border-color:color-mix(in srgb,var(--lavender) 45%,transparent)}
+.cast-section-note{font-size:11.5px;color:var(--muted);margin:-2px 0 8px;line-height:1.4}
 /* Cada actriz dentro de la tarjeta */
 .cast-card{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;cursor:pointer;padding:6px 8px;border-radius:10px;transition:background .15s;flex:1;min-width:0}
 .cast-card:hover{background:rgba(212,96,138,0.06)}
@@ -6193,7 +6240,7 @@ function buildCountryPicker(id, onChange, availableCountries){
 
 let seriesSubtab='all';
 let seriesFinishedSubtab='all';
-let seriesFilters={q:'',countries:[],sort:'recent',book:'all',years:[],genres:[],types:[],region:'',tropos:[],dinamicas:[],moods:[],wlwFocus:[],networks:[]};
+let seriesFilters={q:'',countries:[],sort:'recent',book:'all',years:[],yearMin:null,yearMax:null,genres:[],types:[],region:'',tropos:[],dinamicas:[],moods:[],wlwFocus:[],networks:[]};
 let seriesFilterExpanded={};
 
 /** Alterna un valor dentro de un array de filtro (multi-select tipo checkbox). */
@@ -6253,6 +6300,125 @@ function _countByGetter(arr,getter){
   return map;
 }
 
+/* ── Filtro de fecha (slider doble). Mantiene f.years (lista de años) para no tocar los filtros existentes ── */
+const yrOpen={};   // ns → false si el grupo está plegado
+function yrFilters(ns){ return ns==='series'?seriesFilters:FILTER_NS_REGISTRY[ns].filters; }
+function buildYearSlider(ns,yearList){
+  const ys=(yearList||[]).map(Number).filter(n=>n>0).sort((a,b)=>a-b);
+  if(ys.length<2) return '';
+  const dmin=ys[0], dmax=ys[ys.length-1], span=(dmax-dmin)||1;
+  const f=yrFilters(ns);
+  let lo=dmin, hi=dmax;
+  if(f.years&&f.years.length){
+    const sel=f.years.map(Number).filter(n=>n>0);
+    lo=f.yearMin!=null?f.yearMin:(sel.length?Math.min(...sel):dmin);
+    hi=f.yearMax!=null?f.yearMax:(sel.length?Math.max(...sel):dmax);
+    lo=Math.max(dmin,Math.min(lo,dmax)); hi=Math.min(dmax,Math.max(hi,dmin));
+    if(lo>hi) lo=hi;
+  }
+  const open=yrOpen[ns]!==false;
+  return `<div class="fside-group yr-group" data-ns="${ns}">
+    <button type="button" class="yr-head" onclick="yrToggle('${ns}')" aria-expanded="${open}"><span class="fside-title" style="margin:0">Fecha de estreno</span><span class="yr-caret${open?'':' closed'}" aria-hidden="true">▾</span></button>
+    <div class="yr-body"${open?'':' hidden'}>
+      <div class="yr-slider" data-ns="${ns}" data-min="${dmin}" data-max="${dmax}" data-years="${ys.join(',')}" style="--p0:${(lo-dmin)/span};--p1:${(hi-dmin)/span}">
+        <div class="yr-track"><div class="yr-fill"></div></div>
+        <input type="range" class="yr-in yr-in-min" min="${dmin}" max="${dmax}" step="1" value="${lo}" aria-label="Año desde" oninput="yrInput(this)" onchange="yrCommit(this)" style="z-index:${lo===hi&&lo===dmin?1:2}">
+        <input type="range" class="yr-in yr-in-max" min="${dmin}" max="${dmax}" step="1" value="${hi}" aria-label="Año hasta" oninput="yrInput(this)" onchange="yrCommit(this)" style="z-index:${lo===hi&&lo===dmin?2:1}">
+        <span class="yr-bubble yr-bubble-max">${hi}</span>
+        <span class="yr-bubble yr-bubble-min">${lo}</span>
+      </div>
+    </div>
+  </div>`;
+}
+function yrToggle(ns){
+  yrOpen[ns]=(yrOpen[ns]===false);
+  const g=document.querySelector(`.yr-group[data-ns="${ns}"]`); if(!g) return;
+  const open=yrOpen[ns]!==false;
+  g.querySelector('.yr-body').hidden=!open;
+  g.querySelector('.yr-caret').classList.toggle('closed',!open);
+  g.querySelector('.yr-head').setAttribute('aria-expanded',open);
+}
+function yrInput(el){
+  const w=el.closest('.yr-slider'); if(!w) return;
+  const mn=w.querySelector('.yr-in-min'), mx=w.querySelector('.yr-in-max');
+  const dmin=+w.dataset.min, dmax=+w.dataset.max, span=(dmax-dmin)||1;
+  let lo=+mn.value, hi=+mx.value;
+  if(el===mn&&lo>hi){ lo=hi; mn.value=lo; }
+  if(el===mx&&hi<lo){ hi=lo; mx.value=hi; }
+  w.style.setProperty('--p0',(lo-dmin)/span);
+  w.style.setProperty('--p1',(hi-dmin)/span);
+  w.querySelector('.yr-bubble-min').textContent=lo;
+  w.querySelector('.yr-bubble-max').textContent=hi;
+  const minTop=!(lo===hi&&lo===dmin);   // si ambos están en el mínimo, el de «hasta» queda encima para poder moverlo
+  mn.style.zIndex=minTop?2:1; mx.style.zIndex=minTop?1:2;
+}
+function yrCommit(el){
+  yrInput(el);
+  const w=el.closest('.yr-slider'); if(!w) return;
+  const ns=w.dataset.ns, f=yrFilters(ns);
+  const lo=+w.querySelector('.yr-in-min').value, hi=+w.querySelector('.yr-in-max').value;
+  if(lo<=+w.dataset.min&&hi>=+w.dataset.max){ f.years=[]; f.yearMin=null; f.yearMax=null; }
+  else{
+    const inRange=w.dataset.years.split(',').filter(y=>+y>=lo&&+y<=hi);
+    f.years=inRange.length?inRange:['__sin_resultados__'];
+    f.yearMin=lo; f.yearMax=hi;
+  }
+  if(ns==='series'){ resetSeriesPages(); renderListResults(); }
+  else{ const cfg=FILTER_NS_REGISTRY[ns]; cfg.resetPage(); cfg.render(); }
+}
+
+/* ── Buscador de tropos y dinámicas (sustituye a las dos listas de casillas) ── */
+const TS_OPTIONS={};   // ns → [{k:'tropos'|'dinamicas', kind, value, label, count}]
+function _tsNorm(s){ return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim(); }
+function buildTropeSearch(ns,tropoOpts,dinamicaOpts){
+  const opts=tropoOpts.map(o=>({k:'tropos',kind:'Tropo',value:o.value,label:o.label,count:o.count}))
+    .concat(dinamicaOpts.map(o=>({k:'dinamicas',kind:'Dinámica',value:o.value,label:o.label,count:o.count})));
+  if(!opts.length) return '';
+  TS_OPTIONS[ns]=opts;
+  const f=yrFilters(ns), e=escapeHtmlChk;
+  const chip=(k,v)=>`<button type="button" class="ts-chip${k==='dinamicas'?' din':''}" data-k="${k}" data-v="${e(v)}" onclick="tsRemove('${ns}',this)" title="Quitar filtro">${e(k==='tropos'?tropoLabel(v):dinamicaLabel(v))} <span aria-hidden="true">✕</span></button>`;
+  const chips=(f.tropos||[]).map(v=>chip('tropos',v)).concat((f.dinamicas||[]).map(v=>chip('dinamicas',v))).join('');
+  return `<div class="fside-group ts-group" data-ns="${ns}">
+    <div class="fside-title">Tropos y dinámicas</div>
+    <input type="search" class="ts-input" placeholder="Buscar tropo o dinámica…" autocomplete="off" aria-label="Buscar tropo o dinámica" oninput="tsSearch('${ns}',this)" onfocus="tsSearch('${ns}',this)" onkeydown="tsKey(event,this)" onblur="setTimeout(()=>tsClose(this),180)">
+    <div class="ts-drop" role="listbox"></div>
+    <div class="ts-chips">${chips}</div>
+  </div>`;
+}
+function tsSearch(ns,input){
+  const drop=input.parentElement.querySelector('.ts-drop'); if(!drop) return;
+  const q=_tsNorm(input.value);
+  if(!q){ drop.innerHTML=''; drop.classList.remove('open'); return; }
+  const f=yrFilters(ns);
+  const hits=(TS_OPTIONS[ns]||[]).map((o,i)=>({o,i}))
+    .filter(({o})=>!(f[o.k]||[]).includes(o.value)&&_tsNorm(o.label).includes(q))
+    .sort((a,b)=>(_tsNorm(a.o.label).startsWith(q)?0:1)-(_tsNorm(b.o.label).startsWith(q)?0:1))
+    .slice(0,10);
+  drop.innerHTML=hits.length
+    ?hits.map(({o,i})=>`<button type="button" class="ts-opt" onclick="tsPick('${ns}',${i})"><span>${escapeHtmlChk(o.label)}</span><span class="ts-opt-kind">${o.kind}</span><span class="ts-opt-count">${o.count}</span></button>`).join('')
+    :'<div class="ts-empty">Sin coincidencias</div>';
+  drop.classList.add('open');
+}
+function tsKey(ev,input){
+  if(ev.key==='Enter'){ const first=input.parentElement.querySelector('.ts-opt'); if(first){ ev.preventDefault(); first.click(); } }
+  else if(ev.key==='Escape'){ input.value=''; tsSearch('',input); input.blur(); }
+}
+function tsClose(input){
+  if(document.activeElement===input) return;
+  const drop=input.parentElement&&input.parentElement.querySelector('.ts-drop');
+  if(drop){ drop.classList.remove('open'); drop.innerHTML=''; }
+  input.value='';
+}
+function _tsToggle(ns,k,v){
+  if(ns==='series') toggleSeriesFilterValue(k,v); else toggleNsFilterValue(ns,k,v);
+}
+function tsPick(ns,idx){
+  const o=(TS_OPTIONS[ns]||[])[idx]; if(!o) return;
+  _tsToggle(ns,o.k,o.value);
+  setTimeout(()=>{ const el=document.querySelector(`.ts-group[data-ns="${ns}"] .ts-input`); if(el) el.focus(); },0);
+}
+function tsRemove(ns,btn){ _tsToggle(ns,btn.dataset.k,btn.dataset.v); }
+
 /** Construye el panel lateral de filtros (checkboxes con contador) a partir del set base "active". */
 function buildSeriesSidebarHtml(active){
   const az=(a,b)=>a.label.localeCompare(b.label,'es');
@@ -6293,17 +6459,16 @@ function buildSeriesSidebarHtml(active){
   return `<button class="fside-clear-all" onclick="clearAllSeriesFilters()">Limpiar filtros</button>
     ${buildSideCheckGroup('wlwFocus','Foco sáfico',wlwOpts)}
     ${buildSideCheckGroup('genres','Género',genreOpts)}
-    ${buildSideCheckGroup('years','Año',yearOpts)}
+    ${buildYearSlider('series',Object.keys(yearMap))}
     ${buildSideCheckGroup('types','Tipo',typeOpts)}
     ${buildSideCheckGroup('countries','País',countryOpts)}
     ${buildSideCheckGroup('networks','Cadena',networkOpts)}
-    ${buildSideCheckGroup('tropos','Tropo',tropoOpts)}
-    ${buildSideCheckGroup('dinamicas','Dinámica',dinamicaOpts)}
+    ${buildTropeSearch('series',tropoOpts,dinamicaOpts)}
     ${buildSideCheckGroup('moods','Mood',moodOpts)}`;
 }
 
 function clearAllSeriesFilters(){
-  seriesFilters.countries=[];seriesFilters.book='all';seriesFilters.years=[];seriesFilters.genres=[];
+  seriesFilters.countries=[];seriesFilters.book='all';seriesFilters.years=[];seriesFilters.yearMin=null;seriesFilters.yearMax=null;seriesFilters.genres=[];
   seriesFilters.types=[];seriesFilters.tropos=[];seriesFilters.dinamicas=[];seriesFilters.moods=[];
   seriesFilters.wlwFocus=[];seriesFilters.networks=[];
   const bookSel=document.getElementById('seriesBookSel'); if(bookSel) bookSel.value='all';
@@ -6347,10 +6512,10 @@ function buildNsCheckGroup(ns,filterKey,title,options){
   return `<div class="fside-group"><div class="fside-title">${title}</div>${rows}${moreBtn}</div>`;
 }
 const NS_DEFAULTS={
-  movies:{q:'',countries:[],sort:'date',book:'all',wlwFocus:[],genres:[],years:[],networks:[],tropos:[],dinamicas:[],moods:[]},
-  anime:{q:'',countries:[],sort:'az',book:'all',wlwFocus:[],genres:[],years:[],networks:[],tropos:[],dinamicas:[],moods:[]},
-  realities:{q:'',countries:[],sort:'az',wlwFocus:[],genres:[],years:[],networks:[],tropos:[],dinamicas:[],moods:[],biFormat:false},
-  documentales:{q:'',countries:[],sort:'az',wlwFocus:[],genres:[],years:[],networks:[],tropos:[],dinamicas:[],moods:[]}
+  movies:{q:'',countries:[],sort:'date',book:'all',wlwFocus:[],genres:[],years:[],yearMin:null,yearMax:null,networks:[],tropos:[],dinamicas:[],moods:[]},
+  anime:{q:'',countries:[],sort:'az',book:'all',wlwFocus:[],genres:[],years:[],yearMin:null,yearMax:null,networks:[],tropos:[],dinamicas:[],moods:[]},
+  realities:{q:'',countries:[],sort:'az',wlwFocus:[],genres:[],years:[],yearMin:null,yearMax:null,networks:[],tropos:[],dinamicas:[],moods:[],biFormat:false},
+  documentales:{q:'',countries:[],sort:'az',wlwFocus:[],genres:[],years:[],yearMin:null,yearMax:null,networks:[],tropos:[],dinamicas:[],moods:[]}
 };
 function clearNsFilters(ns){
   const cfg=FILTER_NS_REGISTRY[ns];
@@ -6393,11 +6558,10 @@ function buildNsSidebarHtml(ns,active){
   return `<button class="fside-clear-all" onclick="clearNsFilters('${ns}')">Limpiar filtros</button>
     ${buildNsCheckGroup(ns,'wlwFocus','Foco sáfico',wlwOpts)}
     ${buildNsCheckGroup(ns,'genres','Género',genreOpts)}
-    ${buildNsCheckGroup(ns,'years','Año',yearOpts)}
+    ${buildYearSlider(ns,Object.keys(yearMap))}
     ${buildNsCheckGroup(ns,'countries','País',countryOpts)}
     ${buildNsCheckGroup(ns,'networks','Cadena',networkOpts)}
-    ${buildNsCheckGroup(ns,'tropos','Tropo',tropoOpts)}
-    ${buildNsCheckGroup(ns,'dinamicas','Dinámica',dinamicaOpts)}
+    ${buildTropeSearch(ns,tropoOpts,dinamicaOpts)}
     ${buildNsCheckGroup(ns,'moods','Mood',moodOpts)}
     ${biFormatGroup}`;
 }
@@ -7267,25 +7431,30 @@ function castPhotoHtml(a){
   const pos=a.photoPosition||'center 15%', zoom=a.photoZoom||1;
   return `<div class="cast-photo" style="overflow:hidden;padding:0"><img src="${a.photo}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;object-position:${pos};transform:scale(${zoom});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=cast-photo-ph></div>'"></div>`;
 }
-function buildCastHtml(cast, couples){
+function buildCastHtml(cast, couples, extra){
   if(!cast||!cast.length) return '<div style="color:var(--muted);font-size:13px;padding:8px 0">Sin información de reparto.</div>';
   const actresses=state.actresses||[];
-  couples=(couples||[]).filter(p=>Array.isArray(p)&&p.length===2);
+  const _pairs=list=>(list||[]).filter(p=>Array.isArray(p)&&p.length===2);
+  couples=_pairs(couples);
+  const sideCouples=_pairs(extra&&extra.side);   // side couples (parejas secundarias dentro de la historia)
+  const fanCouples=_pairs(extra&&extra.fan);     // parejas no canon (shippeadas por el fandom)
 
   // Miembros del reparto que forman parte de alguna pareja marcada
   const pairedIds=new Set();
-  couples.forEach(p=>{ pairedIds.add(p[0]); pairedIds.add(p[1]); });
-  const coupleGroups=couples.map(p=>p.map(id=>cast.find(m=>m.actressId===id)).filter(Boolean)).filter(g=>g.length===2);
+  couples.concat(sideCouples,fanCouples).forEach(p=>{ pairedIds.add(p[0]); pairedIds.add(p[1]); });
+  const toGroups=list=>list.map(p=>p.map(id=>cast.find(m=>m.actressId===id)).filter(Boolean)).filter(g=>g.length===2);
+  const coupleGroups=toGroups(couples), sideGroups=toGroups(sideCouples), fanGroups=toGroups(fanCouples);
   const soloMembers=cast.filter(m=>!pairedIds.has(m.actressId));
 
   // Construye la tarjeta de una pareja (o actriz solitaria si solo hay 1)
   function coupleCardHtml(members, cardClass){
     const valid=members.map(m=>({m, a:actresses.find(x=>x.id===m.actressId)})).filter(x=>x.a);
     if(!valid.length) return '';
+    const tagHtml=cardClass==='side-couple'?'<span class="couple-tag couple-tag-side">Side couple</span>':(cardClass==='fan-couple'?'<span class="couple-tag couple-tag-fan">No canon</span>':'');
     if(valid.length===1){
       const {m,a}=valid[0];
       const photo=castPhotoHtml(a);
-      return `<div class="couple-card ${cardClass}">
+      return `<div class="couple-card ${cardClass}">${tagHtml}
         <div class="cast-card" onclick="openActressProfile('${a.id}')">${photo}<div class="cast-name">${a.name}</div>${m.character?`<div class="cast-char">${m.character}</div>`:''}</div>
       </div>`;
     }
@@ -7305,7 +7474,7 @@ function buildCastHtml(cast, couples){
       }).join('');
       inner+=`<div style="display:flex;flex-wrap:wrap;justify-content:center;width:100%;margin-top:6px">${extraHtml}</div>`;
     }
-    return `<div class="couple-card ${cardClass}">${inner}</div>`;
+    return `<div class="couple-card ${cardClass}">${tagHtml}${inner}</div>`;
   }
 
   let html='';
@@ -7315,6 +7484,20 @@ function buildCastHtml(cast, couples){
     const title=coupleGroups.length>1?'Parejas':'Pareja';
     html+=`<div class="cast-section"><div class="cast-section-title">${title}</div><div class="cast-couples-grid">`;
     coupleGroups.forEach(members=>{ html+=coupleCardHtml(members,'main-couple'); });
+    html+=`</div></div>`;
+  }
+
+  // ── Side couples (secundarias dentro de la historia) ──
+  if(sideGroups.length){
+    html+=`<div class="cast-section"><div class="cast-section-title">${sideGroups.length>1?'Parejas secundarias':'Pareja secundaria'}</div><div class="cast-couples-grid">`;
+    sideGroups.forEach(members=>{ html+=coupleCardHtml(members,'side-couple'); });
+    html+=`</div></div>`;
+  }
+
+  // ── No canon (no son pareja en la obra, pero el fandom las shippea) ──
+  if(fanGroups.length){
+    html+=`<div class="cast-section"><div class="cast-section-title">${fanGroups.length>1?'Shippeadas (no canon)':'Shippeada (no canon)'}</div><div class="cast-section-note">No son pareja en la historia, pero el fandom las shippea.</div><div class="cast-couples-grid">`;
+    fanGroups.forEach(members=>{ html+=coupleCardHtml(members,'fan-couple'); });
     html+=`</div></div>`;
   }
 
@@ -7529,7 +7712,7 @@ function openSeries(si){
     });
   }
 
-  const castHtml=buildCastHtml(s.cast||[], s.couples||[]);
+  const castHtml=buildCastHtml(s.cast||[], s.couples||[], {side:s.sideCouples, fan:s.fanCouples});
   const hasCast=s.cast&&s.cast.length>0;
   const castCount=hasCast?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
@@ -7643,7 +7826,7 @@ function openUpcoming(si){
   const availHtml=buildAvailabilitySection(s,'Ver serie','','');   // 6.8
   const watchLinksHtml=availHtml?'':buildWatchLinksHtml(links,'','','');
 
-  const castHtml=buildCastHtml(s.cast||[], s.couples||[]);
+  const castHtml=buildCastHtml(s.cast||[], s.couples||[], {side:s.sideCouples, fan:s.fanCouples});
   const castCount=s.cast&&s.cast.length?s.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
   const upBookHtml=s.basedOnBook?(()=>{
@@ -7760,7 +7943,7 @@ function openMovie(mi){
   const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver película');
   const availHtml=buildAvailabilitySection(mv,'Ver película','var(--movie-accent)','rgba(124,92,191,0.28)');   // 6.8
   const watchLinksHtml=availHtml?'':buildWatchLinksHtml(links,'var(--movie-accent)','rgba(124,92,191,0.28)','var(--movie-bar)');
-  const castHtml=buildCastHtml(mv.cast||[], mv.couples||[]);
+  const castHtml=buildCastHtml(mv.cast||[], mv.couples||[], {side:mv.sideCouples, fan:mv.fanCouples});
   const castCount=mv.cast&&mv.cast.length?mv.cast.filter(m=>(state.actresses||[]).find(a=>a.id===m.actressId)).length:0;
 
   let detailsLines='';
@@ -9658,7 +9841,7 @@ function renderShipsResults(){
       }
       const chipsHtml=shared.slice(0,3).map(s=>{
         const sIdx=(state.series||[]).indexOf(s);
-        return `<span class="ship-series-chip-sm" onclick="event.stopPropagation();openSeries(${sIdx})">${s.name}</span>`;
+        return `<span class="ship-series-chip-sm" onclick="event.stopPropagation();openSeries(${sIdx})">${s.name}${(()=>{const r=shipPairRelation(s,members);return r&&SHIP_REL[r].short?' · '+SHIP_REL[r].short:'';})()}</span>`;
       }).join('')+(shared.length>3?`<span class="ship-series-chip-sm">+${shared.length-3}</span>`:'');
       return `<div class="ship-card${isRetired?' is-retired':''}" onclick="${clickHandler}">
         ${coupleBanner}
@@ -9786,6 +9969,22 @@ function openShipById(shipId){
 }
 function openPetShip(shipId){ openShipById(shipId); }
 
+// Relación de un ship con una serie: 'main' (canon) · 'side' (secundaria) · 'fan' (no canon) · '' (sin marcar)
+const SHIP_REL={
+  main:{label:'Pareja principal',short:'',        cls:'ship-type-main'},
+  side:{label:'Side couple',     short:'side',    cls:'ship-type-secondary'},
+  fan: {label:'No canon',        short:'no canon',cls:'ship-type-fan'}
+};
+function shipPairRelation(s, members){
+  const ids=new Set((members||[]).map(a=>String(a.id)));
+  if(ids.size<2||!s) return '';
+  const has=list=>(list||[]).some(p=>Array.isArray(p)&&p.length===2&&ids.has(String(p[0]))&&ids.has(String(p[1])));
+  if(has(s.couples)) return 'main';
+  if(has(s.sideCouples)) return 'side';
+  if(has(s.fanCouples)) return 'fan';
+  return '';
+}
+
 // Modal de detalle de ship manual
 function openShipDetail(idx){
   const view=document.getElementById('viewShips');
@@ -9835,10 +10034,12 @@ function openShipDetail(idx){
   const seriesRows=shared.map(s=>{
     const si=(state.series||[]).indexOf(s);
     const sst=seriesStatus(s);
+    const rel=shipPairRelation(s,members);
+    const relBadge=rel?` <span class="ship-type-badge ${SHIP_REL[rel].cls}">${SHIP_REL[rel].label}</span>`:'';
     return `<div class="ship-row" role="button" tabindex="0" onclick="closeShipDetail();openSeries(${si})">
       ${avatar(s.poster,'50% 20%',1,s.name)}
       <span class="ship-row-text"><span class="ship-row-name">${e(s.name)}</span>
-        <span class="ship-row-meta">${s.year?e(s.year)+' · ':''}<span class="ship-status-badge ${statusClass[sst]}">${statusLabel[sst]}</span></span></span>
+        <span class="ship-row-meta">${s.year?e(s.year)+' · ':''}<span class="ship-status-badge ${statusClass[sst]}">${statusLabel[sst]}</span>${relBadge}</span></span>
     </div>`;
   }).join('');
   const seriesHtml=shared.length?`<section class="ship-sec"><h3 class="ship-sec-title">Series <span class="ship-sec-count">${shared.length}</span></h3><div class="ship-sec-list">${seriesRows}</div></section>`:'';
