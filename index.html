@@ -4601,15 +4601,24 @@ const DINAMICAS=[
 const WLW_FOCUS=[
   {value:'pareja-principal',label:'Pareja principal'},
   {value:'pareja-secundaria',label:'Pareja secundaria'},
+  {value:'side-couple',label:'Side couple'},
   {value:'romance-secundario-protagonista',label:'Romance secundario de protagonista'},
   {value:'subplot',label:'Subplot (pareja secundaria sin especificar)'},
+  {value:'pareja-1-episodio',label:'Pareja de 1 episodio'},
   {value:'personaje',label:'Personaje'},
   {value:'presencia-sin-desarrollo',label:'Presencia sin desarrollo'},
   {value:'subtexto',label:'Subtexto'},
+  {value:'no-canon',label:'No canon'},
   {value:'sin-etiquetar',label:'Sin etiquetar'},
 ];
 function seriesWlwFocus(s){ return s.wlwFocus||'sin-etiquetar'; }
 function wlwFocusLabel(v){const o=WLW_FOCUS.find(x=>x.value===v);return o?o.label:v;}
+// Texto del foco para las fichas: «Pareja de 1 episodio (ep. 5)» si hay episodio indicado
+function wlwFocusText(item){
+  const v=seriesWlwFocus(item), base=wlwFocusLabel(v);
+  const ep=v==='pareja-1-episodio'?String(item.wlwFocusEpisode||'').trim():'';
+  return ep?`${base} (${/^\d/.test(ep)?'ep. ':''}${escapeHtmlChk(ep)})`:base;
+}
 
 // Valoración y enlace de TMDB (se actualiza cada vez que se refresca desde el admin)
 function tmdbUrl(item,kindDefault){
@@ -7739,7 +7748,7 @@ function openSeries(si){
   detailsLines+=`<div class="details-line"><span class="details-line-key">Episodios</span><span class="details-line-val">${totalEps}${seasons.length>1?` (${seasons.length}T)`:''}</span></div>`;
   if(durInfo.epDuration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span></div>`;
   if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
-  detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();seriesFilters.wlwFocus=['${seriesWlwFocus(s)}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(s))}</span></span></div>`;
+  detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();seriesFilters.wlwFocus=['${seriesWlwFocus(s)}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusText(s)}</span></span></div>`;
   detailsLines+=tmdbDetailsLineHtml(s,'tv');
   const _ft=filtrarTropos(s.tropos||[],s.dinamica||[]);
   if(_ft.length) detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Tropos</span><span class="details-line-val">${_ft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
@@ -7850,7 +7859,7 @@ function openUpcoming(si){
   detailsLines+=productoraDetailsLineHtml(s);
   if(s.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año aprox.</span><span class="details-line-val">${s.year}</span></div>`;
   if(s.genres&&s.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${s.genres.join(', ')}</span></div>`;
-  detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();seriesFilters.wlwFocus=['${seriesWlwFocus(s)}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(s))}</span></span></div>`;
+  detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();seriesFilters.wlwFocus=['${seriesWlwFocus(s)}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusText(s)}</span></span></div>`;
   detailsLines+=tmdbDetailsLineHtml(s,'tv');
   const _uft=filtrarTropos(s.tropos||[],s.dinamica||[]);
   if(_uft.length) detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Tropos</span><span class="details-line-val">${_uft.map(t=>`<span onclick="closeModal();seriesFilters.tropos=['${t.replace(/'/g,"\\'")}'];switchTab('list');renderList();renderListResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este tropo">${tropoLabel(t)}</span>`).join(', ')}</span></div>`;
@@ -7955,7 +7964,7 @@ function openMovie(mi){
   else if(mv.year) detailsLines+=`<div class="details-line"><span class="details-line-key">Año</span><span class="details-line-val">${mv.year}</span></div>`;
   if(mv.duration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${fmtDuration(mv.duration)}</span></div>`;
   if(mv.genres&&mv.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${mv.genres.join(', ')}</span></div>`;
-  detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();moviesFilters.wlwFocus=['${seriesWlwFocus(mv)}'];switchTab('movies');renderMovies();renderMoviesResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusLabel(seriesWlwFocus(mv))}</span></span></div>`;
+  detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Foco sáfico</span><span class="details-line-val"><span onclick="closeModal();moviesFilters.wlwFocus=['${seriesWlwFocus(mv)}'];switchTab('movies');renderMovies();renderMoviesResults()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Filtrar por este foco sáfico">${wlwFocusText(mv)}</span></span></div>`;
   detailsLines+=tmdbDetailsLineHtml(mv,'movie');
   if(mv.basedOnBook){
     const _btypes={'novela':'Novela','webnovel':'Webnovel','manhwa':'Manhwa','manga':'Manga','manhua':'Manhua','novela-grafica':'Nov. gráfica','webtoon':'Webtoon','libro':'Libro'};
@@ -8819,7 +8828,7 @@ function openRichDetail(item, opts){
   if(item.totalEpisodes) detailsLines+=`<div class="details-line"><span class="details-line-key">Episodios</span><span class="details-line-val">${item.totalEpisodes}${item.seasons&&item.seasons.length>1?` (${item.seasons.length}T)`:''}</span></div>`;
   if(durInfo.epDuration) detailsLines+=`<div class="details-line"><span class="details-line-key">Duración</span><span class="details-line-val">${durInfo.source==='average'?'≈ ':''}${fmtDuration(durInfo.epDuration)}/ep</span></div>`;
   if(item.genres&&item.genres.length) detailsLines+=`<div class="details-line"><span class="details-line-key">Géneros</span><span class="details-line-val">${item.genres.join(', ')}</span></div>`;
-  detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Foco sáfico</span><span class="details-line-val">${wlwFocusLabel(seriesWlwFocus(item))}</span></div>`;
+  detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Foco sáfico</span><span class="details-line-val">${wlwFocusText(item)}</span></div>`;
   detailsLines+=tmdbDetailsLineHtml(item,'tv');
   const _rft=filtrarTropos(item.tropos||[],item.dinamica||[]);
   if(_rft.length) detailsLines+=`<div class="details-line details-line--wide"><span class="details-line-key">Tropos</span><span class="details-line-val">${_rft.map(t=>tropoLabel(t)).join(', ')}</span></div>`;

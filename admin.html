@@ -1126,11 +1126,14 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
           <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="side-couple">Side couple</option>
           <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
           <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
+          <option value="pareja-1-episodio">Pareja de 1 episodio</option>
           <option value="personaje">Personaje</option>
           <option value="presencia-sin-desarrollo">Presencia sin desarrollo</option>
           <option value="subtexto">Subtexto</option>
+          <option value="no-canon">No canon</option>
         </select>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
@@ -1170,11 +1173,14 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
           <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="side-couple">Side couple</option>
           <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
           <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
+          <option value="pareja-1-episodio">Pareja de 1 episodio</option>
           <option value="personaje">Personaje</option>
           <option value="presencia-sin-desarrollo">Presencia sin desarrollo</option>
           <option value="subtexto">Subtexto</option>
+          <option value="no-canon">No canon</option>
         </select>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
@@ -1213,11 +1219,14 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
           <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="side-couple">Side couple</option>
           <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
           <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
+          <option value="pareja-1-episodio">Pareja de 1 episodio</option>
           <option value="personaje">Personaje</option>
           <option value="presencia-sin-desarrollo">Presencia sin desarrollo</option>
           <option value="subtexto">Subtexto</option>
+          <option value="no-canon">No canon</option>
         </select>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
@@ -1256,11 +1265,14 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
           <option value="pareja-secundaria">Pareja secundaria</option>
+          <option value="side-couple">Side couple</option>
           <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
           <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
+          <option value="pareja-1-episodio">Pareja de 1 episodio</option>
           <option value="personaje">Personaje</option>
           <option value="presencia-sin-desarrollo">Presencia sin desarrollo</option>
           <option value="subtexto">Subtexto</option>
+          <option value="no-canon">No canon</option>
         </select>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
@@ -1777,18 +1789,42 @@ const SOURCE_TYPES=[
 const WLW_FOCUS=[
   {value:'pareja-principal',label:'Pareja principal'},
   {value:'pareja-secundaria',label:'Pareja secundaria'},
+  {value:'side-couple',label:'Side couple'},
   {value:'romance-secundario-protagonista',label:'Romance secundario de protagonista'},
   {value:'subplot',label:'Subplot (pareja secundaria sin especificar)'},
+  {value:'pareja-1-episodio',label:'Pareja de 1 episodio'},
   {value:'personaje',label:'Personaje'},
   {value:'presencia-sin-desarrollo',label:'Presencia sin desarrollo'},
   {value:'subtexto',label:'Subtexto'},
+  {value:'no-canon',label:'No canon'},
 ];
 function wlwFocusChipsHtml(selected=''){
   return WLW_FOCUS.map(w=>`<span class="wlw-focus-chip${selected===w.value?' selected':''}" data-value="${w.value}" onclick="selectWlwFocus(this)">${w.label}</span>`).join('');
 }
 function selectWlwFocus(el){
-  el.closest('.wlw-focus-grid').querySelectorAll('.wlw-focus-chip').forEach(c=>c.classList.remove('selected'));
+  const grid=el.closest('.wlw-focus-grid');
+  grid.querySelectorAll('.wlw-focus-chip').forEach(c=>c.classList.remove('selected'));
   el.classList.toggle('selected');
+  syncWlwEpisodeRow(grid);
+}
+// Campo «¿En qué episodio?»: solo visible si el foco es «Pareja de 1 episodio»
+function wlwEpisodeRowHtml(inputId, focus, ep){
+  const show=focus==='pareja-1-episodio';
+  return `<div class="wlw-ep-row" style="margin-top:10px;${show?'':'display:none'}">
+    <label class="form-label">¿En qué episodio aparece la pareja? <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(obligatorio)</span></label>
+    <input id="${inputId}" placeholder="Ej: 5 · 3-4 · T2 E5" value="${escapeHtml(ep||'')}" style="max-width:260px"/>
+  </div>`;
+}
+function syncWlwEpisodeRow(grid){
+  const row=grid&&grid.parentElement&&grid.parentElement.querySelector('.wlw-ep-row'); if(!row) return;
+  const sel=grid.querySelector('.wlw-focus-chip.selected');
+  const show=!!sel&&sel.dataset.value==='pareja-1-episodio';
+  row.style.display=show?'':'none';
+  if(show){ const inp=row.querySelector('input'); if(inp&&!inp.value) inp.focus(); }
+}
+function getWlwFocusEpisode(inputId){
+  const el=_findInModal(inputId)||document.getElementById(inputId);
+  return el?String(el.value||'').trim():'';
 }
 function getSelectedWlwFocus(containerId){
   const _el=_findInModal(containerId)||document.getElementById(containerId);
@@ -1800,12 +1836,19 @@ function getSelectedWlwFocus(containerId){
 function wlwQuickSelectHtml(kind, idx, current){
   const opts=['<option value=""'+(current?'':' selected')+'>Foco sáfico…</option>']
     .concat(WLW_FOCUS.map(w=>`<option value="${w.value}" ${current===w.value?'selected':''}>${w.label}</option>`));
-  return `<select class="wlw-quick-select" onclick="event.stopPropagation()" onchange="quickSetWlwFocus('${kind}',${idx},this.value)">${opts.join('')}</select>`;
+  return `<select class="wlw-quick-select" onclick="event.stopPropagation()" onchange="quickSetWlwFocus('${kind}',${idx},this.value,this)">${opts.join('')}</select>`;
 }
-function quickSetWlwFocus(kind, idx, value){
+function quickSetWlwFocus(kind, idx, value, selectEl){
   const arr=kind==='movie'?movies:series;
   const item=arr[idx];
   if(!item) return;
+  if(value==='pareja-1-episodio'){
+    const ep=(prompt('¿En qué episodio aparece la pareja?', item.wlwFocusEpisode||'')||'').trim();
+    if(!ep){ if(selectEl) selectEl.value=item.wlwFocus||''; return; }   // sin episodio no se guarda
+    item.wlwFocusEpisode=ep;
+  } else {
+    delete item.wlwFocusEpisode;
+  }
   item.wlwFocus=value;
   item.updatedAt=new Date().toISOString();
   save();
@@ -3233,6 +3276,7 @@ function formHtml(s, forcedCategory=null){
       <div class="form-row" style="margin-bottom:14px">
         <label class="form-label">Foco sáfico <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(qué peso tiene la relación/personaje WLW)</span></label>
         <div class="wlw-focus-grid" id="f_wlwFocus">${wlwFocusChipsHtml(s&&s.wlwFocus?s.wlwFocus:'')}</div>
+        ${wlwEpisodeRowHtml('f_wlwFocusEp', s&&s.wlwFocus?s.wlwFocus:'', s&&s.wlwFocusEpisode)}
       </div>
       <div class="form-section-hd">Reparto GL</div>
       <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas en la sección Actrices. Indica el personaje y a qué pareja pertenece (P1, P2…)</div>
@@ -3867,6 +3911,8 @@ async function saveSeries(si, forcedCategory=null){
   const dinamica=getSelectedDinamica('f_dinamica');
   const sourceType=getSelectedSourceType('f_sourceType');
   const wlwFocus=getSelectedWlwFocus('f_wlwFocus');
+  const wlwFocusEpisode=wlwFocus==='pareja-1-episodio'?getWlwFocusEpisode('f_wlwFocusEp'):'';
+  if(wlwFocus==='pareja-1-episodio'&&!wlwFocusEpisode){ alert('Indica en qué episodio aparece la pareja (Foco sáfico: Pareja de 1 episodio).'); return; }
   const awards=getAwards('awardsAdminList');
   const category=forcedCategory||(document.getElementById('f_category')?.value||'series');
   const seriesType=document.getElementById('f_seriesType')?.value||'serie';
@@ -3892,7 +3938,7 @@ async function saveSeries(si, forcedCategory=null){
   const tmdbRating=tmdbRatingRaw?parseFloat(tmdbRatingRaw):'';
   const tmdbVoteCount=parseInt(document.getElementById('f_tmdbVoteCount')?.value||'0')||0;
   const stp=streamingSavePayload(si>=0&&series[si]?series[si]:null,'f_streamingPending');   // 1C.3.2: se conserva tal cual · 6.7: + streaming global pendiente (fusión) y streamingMeta
-  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,awards,category,seriesType,cast,couples,sideCouples,fanCouples,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,biFormat,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount,...stp};
+  let payload={name,nameEn,poster,synopsis,year:year?parseInt(year):'',country,network:net,networkUrl,watchLinks,trailerUrl,bookSource,basedOnBook,sourceType,bookCoverUrl,bookLinks,bookUrl,upcoming,genres,moods,tropos,dinamica,wlwFocus,wlwFocusEpisode,awards,category,seriesType,cast,couples,sideCouples,fanCouples,animeSeason,renewedNextSeason,episodeDuration,myPick,myPick2026,biFormat,cancelStatus,cancelNote,sinNovedades,snLastUpdate,snNote,productoraId,tmdbId,tmdbKind,tmdbRating,tmdbVoteCount,...stp};
   if(!upcoming){
     const seasons=getSeasonsData();
     if(!seasons) return;
@@ -3938,7 +3984,7 @@ async function convertSeriesToMovie(si){
     basedOnBook:s.basedOnBook||false, bookSource:s.bookSource||'', sourceType:s.sourceType||'',
     bookCoverUrl:s.bookCoverUrl||'', bookLinks:s.bookLinks||[], bookUrl:s.bookUrl||'',
     genres:s.genres||[], moods:s.moods||[], tropos:s.tropos||[], dinamica:s.dinamica||[],
-    wlwFocus:s.wlwFocus||[], awards:s.awards||[], cast:s.cast||[],
+    wlwFocus:s.wlwFocus||[], wlwFocusEpisode:s.wlwFocusEpisode||'', awards:s.awards||[], cast:s.cast||[],
     category:'movie', productoraId:s.productoraId||'',
     streaming:streamingClone(s.streaming),   // 1C.3.2
     ...(s.streamingMeta?{streamingMeta:streamingClone(s.streamingMeta)}:{}),   // 6.7
@@ -3965,7 +4011,7 @@ async function convertMovieToSeries(mi){
     basedOnBook:mv.basedOnBook||false, bookSource:mv.bookSource||'', sourceType:mv.sourceType||'',
     bookCoverUrl:mv.bookCoverUrl||'', bookLinks:mv.bookLinks||[], bookUrl:mv.bookUrl||'',
     genres:mv.genres||[], moods:mv.moods||[], tropos:mv.tropos||[], dinamica:mv.dinamica||[],
-    wlwFocus:mv.wlwFocus||[], awards:mv.awards||[], cast:mv.cast||[],
+    wlwFocus:mv.wlwFocus||[], wlwFocusEpisode:mv.wlwFocusEpisode||'', awards:mv.awards||[], cast:mv.cast||[],
     category:'series', seriesType:'serie', productoraId:mv.productoraId||'',
     streaming:streamingClone(mv.streaming),   // 1C.3.2
     ...(mv.streamingMeta?{streamingMeta:streamingClone(mv.streamingMeta)}:{}),   // 6.7
@@ -4374,6 +4420,7 @@ function movieFormHtml(mv){
   <div class="form-row" style="margin-bottom:14px">
     <label class="form-label">Foco sáfico <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(qué peso tiene la relación/personaje WLW)</span></label>
     <div class="wlw-focus-grid" id="mf_wlwFocus">${wlwFocusChipsHtml(mv&&mv.wlwFocus?mv.wlwFocus:'')}</div>
+    ${wlwEpisodeRowHtml('mf_wlwFocusEp', mv&&mv.wlwFocus?mv.wlwFocus:'', mv&&mv.wlwFocusEpisode)}
   </div>
   <div class="form-section-hd" style="padding:0 0 8px">Reparto GL</div>
   <div class="form-hint" style="margin-bottom:10px">Selecciona actrices ya guardadas. Indica el personaje si quieres.</div>
@@ -4579,6 +4626,8 @@ async function saveMovie(mi){
   const dinamica=getSelectedDinamica('mf_dinamica');
   const sourceType=getSelectedSourceType('mf_sourceType');
   const wlwFocus=getSelectedWlwFocus('mf_wlwFocus');
+  const wlwFocusEpisode=wlwFocus==='pareja-1-episodio'?getWlwFocusEpisode('mf_wlwFocusEp'):'';
+  if(wlwFocus==='pareja-1-episodio'&&!wlwFocusEpisode){ alert('Indica en qué episodio aparece la pareja (Foco sáfico: Pareja de 1 episodio).'); return; }
   const awards=getAwards('movieAwardsAdminList');
   const movieCategory=document.getElementById('mf_category')?.value||'movie';
   const payload={
@@ -4604,6 +4653,7 @@ async function saveMovie(mi){
     dinamica,
     sourceType,
     wlwFocus,
+    wlwFocusEpisode,
     awards,
     category:movieCategory,
     biFormat:(movieCategory==='reality')?(document.getElementById('mf_biFormat')?.checked||false):false,
