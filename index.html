@@ -4600,8 +4600,7 @@ const DINAMICAS=[
 // Foco sáfico: qué papel juega la relación/personaje WLW en la obra
 const WLW_FOCUS=[
   {value:'pareja-principal',label:'Pareja principal'},
-  {value:'pareja-secundaria',label:'Pareja secundaria'},
-  {value:'side-couple',label:'Side couple'},
+  {value:'pareja-secundaria',label:'Pareja secundaria (side couple)'},
   {value:'romance-secundario-protagonista',label:'Romance secundario de protagonista'},
   {value:'subplot',label:'Subplot (pareja secundaria sin especificar)'},
   {value:'pareja-1-episodio',label:'Pareja de 1 episodio'},
@@ -4611,7 +4610,7 @@ const WLW_FOCUS=[
   {value:'no-canon',label:'No canon'},
   {value:'sin-etiquetar',label:'Sin etiquetar'},
 ];
-function seriesWlwFocus(s){ return s.wlwFocus||'sin-etiquetar'; }
+function seriesWlwFocus(s){ const v=s.wlwFocus; return v==='side-couple'?'pareja-secundaria':(v||'sin-etiquetar'); }   // «side-couple» = «pareja-secundaria»
 function wlwFocusLabel(v){const o=WLW_FOCUS.find(x=>x.value===v);return o?o.label:v;}
 // Texto del foco para las fichas: «Pareja de 1 episodio (ep. 5)» si hay episodio indicado
 function wlwFocusText(item){

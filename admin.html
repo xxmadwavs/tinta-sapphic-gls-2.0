@@ -1125,8 +1125,7 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
           <option value="">Todos</option>
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
-          <option value="pareja-secundaria">Pareja secundaria</option>
-          <option value="side-couple">Side couple</option>
+          <option value="pareja-secundaria">Pareja secundaria (side couple)</option>
           <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
           <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
           <option value="pareja-1-episodio">Pareja de 1 episodio</option>
@@ -1172,8 +1171,7 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
           <option value="">Todos</option>
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
-          <option value="pareja-secundaria">Pareja secundaria</option>
-          <option value="side-couple">Side couple</option>
+          <option value="pareja-secundaria">Pareja secundaria (side couple)</option>
           <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
           <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
           <option value="pareja-1-episodio">Pareja de 1 episodio</option>
@@ -1218,8 +1216,7 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
           <option value="">Todos</option>
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
-          <option value="pareja-secundaria">Pareja secundaria</option>
-          <option value="side-couple">Side couple</option>
+          <option value="pareja-secundaria">Pareja secundaria (side couple)</option>
           <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
           <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
           <option value="pareja-1-episodio">Pareja de 1 episodio</option>
@@ -1264,8 +1261,7 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
           <option value="">Todos</option>
           <option value="sin-asignar">Sin asignar</option>
           <option value="pareja-principal">Pareja principal</option>
-          <option value="pareja-secundaria">Pareja secundaria</option>
-          <option value="side-couple">Side couple</option>
+          <option value="pareja-secundaria">Pareja secundaria (side couple)</option>
           <option value="romance-secundario-protagonista">Romance secundario de protagonista</option>
           <option value="subplot">Subplot (pareja secundaria sin especificar)</option>
           <option value="pareja-1-episodio">Pareja de 1 episodio</option>
@@ -1787,19 +1783,21 @@ const SOURCE_TYPES=[
 
 // Foco sáfico: qué papel juega la relación/personaje WLW en la obra
 const WLW_FOCUS=[
-  {value:'pareja-principal',label:'Pareja principal'},
-  {value:'pareja-secundaria',label:'Pareja secundaria'},
-  {value:'side-couple',label:'Side couple'},
-  {value:'romance-secundario-protagonista',label:'Romance secundario de protagonista'},
-  {value:'subplot',label:'Subplot (pareja secundaria sin especificar)'},
-  {value:'pareja-1-episodio',label:'Pareja de 1 episodio'},
-  {value:'personaje',label:'Personaje'},
-  {value:'presencia-sin-desarrollo',label:'Presencia sin desarrollo'},
-  {value:'subtexto',label:'Subtexto'},
-  {value:'no-canon',label:'No canon'},
+  {value:'pareja-principal',label:'Pareja principal',desc:'La relación WLW es el eje de la historia.'},
+  {value:'pareja-secundaria',label:'Pareja secundaria (side couple)',desc:'Pareja WLW con historia propia que no es la protagonista (side couple). Si no sabes cuál es o cuánto pesa, usa Subplot.'},
+  {value:'romance-secundario-protagonista',label:'Romance secundario de protagonista',desc:'La protagonista tiene un romance WLW, pero no es el centro de la trama.'},
+  {value:'subplot',label:'Subplot (pareja secundaria sin especificar)',desc:'Hay una pareja secundaria WLW sin especificar cuál ni cuánto peso tiene.'},
+  {value:'pareja-1-episodio',label:'Pareja de 1 episodio',desc:'Pareja que solo aparece en un episodio (indica cuál).'},
+  {value:'personaje',label:'Personaje',desc:'Hay un personaje WLW, pero sin una relación desarrollada.'},
+  {value:'presencia-sin-desarrollo',label:'Presencia sin desarrollo',desc:'Hay representación WLW, pero sin desarrollo.'},
+  {value:'subtexto',label:'Subtexto',desc:'No es explícito: la relación solo está en el subtexto.'},
+  {value:'no-canon',label:'No canon',desc:'No son pareja en la obra, pero el fandom las shippea.'},
 ];
+// «side-couple» fue un valor provisional: es lo mismo que «pareja-secundaria»
+function wlwFocusNorm(v){ return v==='side-couple'?'pareja-secundaria':(v||''); }
 function wlwFocusChipsHtml(selected=''){
-  return WLW_FOCUS.map(w=>`<span class="wlw-focus-chip${selected===w.value?' selected':''}" data-value="${w.value}" onclick="selectWlwFocus(this)">${w.label}</span>`).join('');
+  selected=wlwFocusNorm(selected);
+  return WLW_FOCUS.map(w=>`<span class="wlw-focus-chip${selected===w.value?' selected':''}" data-value="${w.value}" title="${w.desc}" onclick="selectWlwFocus(this)">${w.label}</span>`).join('');
 }
 function selectWlwFocus(el){
   const grid=el.closest('.wlw-focus-grid');
@@ -1807,18 +1805,25 @@ function selectWlwFocus(el){
   el.classList.toggle('selected');
   syncWlwEpisodeRow(grid);
 }
-// Campo «¿En qué episodio?»: solo visible si el foco es «Pareja de 1 episodio»
+// Ayuda del foco elegido + campo «¿En qué episodio?» (solo visible con «Pareja de 1 episodio»)
 function wlwEpisodeRowHtml(inputId, focus, ep){
+  focus=wlwFocusNorm(focus);
   const show=focus==='pareja-1-episodio';
-  return `<div class="wlw-ep-row" style="margin-top:10px;${show?'':'display:none'}">
+  const f=WLW_FOCUS.find(x=>x.value===focus);
+  return `<div class="wlw-focus-hint form-hint" style="margin-top:8px">${f?f.desc:''}</div>
+  <div class="wlw-ep-row" style="margin-top:10px;${show?'':'display:none'}">
     <label class="form-label">¿En qué episodio aparece la pareja? <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(obligatorio)</span></label>
     <input id="${inputId}" placeholder="Ej: 5 · 3-4 · T2 E5" value="${escapeHtml(ep||'')}" style="max-width:260px"/>
   </div>`;
 }
 function syncWlwEpisodeRow(grid){
-  const row=grid&&grid.parentElement&&grid.parentElement.querySelector('.wlw-ep-row'); if(!row) return;
+  const box=grid&&grid.parentElement; if(!box) return;
   const sel=grid.querySelector('.wlw-focus-chip.selected');
-  const show=!!sel&&sel.dataset.value==='pareja-1-episodio';
+  const val=sel?sel.dataset.value:'';
+  const hint=box.querySelector('.wlw-focus-hint');
+  if(hint){ const f=WLW_FOCUS.find(x=>x.value===val); hint.textContent=f?f.desc:''; }
+  const row=box.querySelector('.wlw-ep-row'); if(!row) return;
+  const show=val==='pareja-1-episodio';
   row.style.display=show?'':'none';
   if(show){ const inp=row.querySelector('input'); if(inp&&!inp.value) inp.focus(); }
 }
@@ -1834,6 +1839,7 @@ function getSelectedWlwFocus(containerId){
 
 // Selector rápido de Foco sáfico directamente sobre la tarjeta del listado (sin abrir el modal)
 function wlwQuickSelectHtml(kind, idx, current){
+  current=wlwFocusNorm(current);
   const opts=['<option value=""'+(current?'':' selected')+'>Foco sáfico…</option>']
     .concat(WLW_FOCUS.map(w=>`<option value="${w.value}" ${current===w.value?'selected':''}>${w.label}</option>`));
   return `<select class="wlw-quick-select" onclick="event.stopPropagation()" onchange="quickSetWlwFocus('${kind}',${idx},this.value,this)">${opts.join('')}</select>`;
@@ -1858,7 +1864,7 @@ function applyWlwFilter(list, selectId){
   const val=document.getElementById(selectId)?.value||'';
   if(!val) return list;
   if(val==='sin-asignar') return list.filter(x=>!x.wlwFocus);
-  return list.filter(x=>x.wlwFocus===val);
+  return list.filter(x=>wlwFocusNorm(x.wlwFocus)===val);
 }
 // ¿Tiene esta serie/película al menos un enlace de plataforma guardado (watchLinks o networkUrl)?
 function hasWatchLink(item){
