@@ -709,6 +709,10 @@ footer{
 .gcal-link{display:inline-block;margin-top:2px;padding:4px 0;font-size:12px;font-weight:600;color:var(--accent);text-decoration:none}
 .gcal-link:hover{text-decoration:underline}
 .gcal-miss{display:block;margin-top:2px;font-size:12px;color:var(--muted);font-style:italic}
+/* Exportar el mes como PNG */
+.cal-png-row{margin-top:12px}
+.png-status{margin-top:8px;font-size:12px;line-height:1.5;color:var(--muted)}
+.png-status.err{color:var(--danger)}
 .btn.ics-download-btn{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .btn.ics-download-btn:hover{background:var(--accent-strong);color:var(--on-accent);border-color:var(--accent-strong)}
 .btn.ics-download-btn:disabled,.btn.ics-download-btn:disabled:hover{opacity:.45;cursor:not-allowed;transform:none;background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
@@ -4429,6 +4433,10 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
         <div id="weekPanel"></div>
         <div id="calInner"></div>
         <div id="calLegend"></div>
+        <div class="cal-png-row">
+          <button type="button" class="month-toggle-btn" id="pngExportBtn" onclick="exportMonthPng()" title="Descargar el mes seleccionado como imagen PNG">Descargar este mes (PNG)</button>
+          <div class="png-status" id="pngStatus" role="status" aria-live="polite"></div>
+        </div>
       </div>
     </div>
     <!-- ── Últimas añadidas (solo calendario) ── -->
@@ -7073,6 +7081,179 @@ function gcalLinkHtml(it){
   const r=gcalBuild(it);
   return r.url?`<a class="gcal-link" href="${r.url.replace(/&/g,'&amp;')}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Añadir a Google Calendar</a>`
               :`<span class="gcal-miss">No se puede crear el evento: ${r.error}.</span>`;
+}
+
+// ═══ EXPORTAR EL MES COMO PNG ═══
+// Dibuja con Canvas 2D fuera del DOM (sin html2canvas y sin tocar la vista). Los datos salen de getEpMap() (lo mismo que
+// ve el calendario) y de icsEpLabel(). Colores de marca fijos del tema claro: el PNG no depende del modo oscuro.
+// Pósteres con crossOrigin='anonymous': solo se dibujan los que permiten CORS (el canvas nunca queda «tainted»);
+// los que no cargan se sustituyen por un recuadro con la inicial del título.
+const PNG_BRAND={bg:'#fcf7f9',surface:'#ffffff',surface2:'#fdf0f6',surface3:'#f7e6f0',text:'#2b1c2a',muted:'#6c5063',accent:'#b53a68',accentSoft:'#fbe4ee',lavender:'#6a4fa3',lavenderSoft:'#ece6f7',teal:'#1d7468',border:'rgba(181,58,104,0.20)'};
+const PNG_MAX_PIXELS=12e6, PNG_IMG_TIMEOUT=8000;
+
+// Modelo del mes: solo lo que muestra el calendario; episodios de una serie el mismo día → una entrada
+function pngBuildModel(y,m){
+  const map=getEpMap(y,m), dim=new Date(y,m+1,0).getDate(), days=[];
+  let total=0, omitted=0;
+  for(let d=1;d<=dim;d++){
+    const ds=toStr(y,m,d), ev=[], bySeries={};
+    (map[ds]||[]).forEach(({s,ep,si,type})=>{
+      if(!s||typeof s.name!=='string'||!s.name.trim()){ omitted++; return; }
+      const poster=typeof s.poster==='string'&&s.poster.trim()?s.poster.trim():null;
+      if(type==='movie'){ ev.push({name:s.name,poster,label:'Estreno · Película',premiere:true,movie:true,si}); return; }
+      if(!bySeries[si]){ bySeries[si]={name:s.name,poster,s,si,eps:[]}; ev.push(bySeries[si]); }
+      bySeries[si].eps.push(ep);
+    });
+    ev.forEach(e=>{
+      if(!e.eps) return;
+      e.premiere=e.eps.some(x=>x.seasonNum===1);
+      e.label=e.eps.every(x=>Number.isFinite(x.seasonNum))?(e.premiere?'Estreno · ':'')+icsEpLabel(e.eps,getSeasons(e.s)):(e.premiere?'Estreno':'');
+    });
+    total+=ev.length; days.push({d,ds,ev});
+  }
+  return {y,m,days,startDow:(new Date(y,m,1).getDay()+6)%7,dim,total,omitted};
+}
+// Carga un póster con CORS; null si falla, no es imagen, no permite CORS o tarda demasiado
+function pngLoadImg(url,ms){
+  return new Promise(res=>{
+    const img=new Image(); let done=false;
+    const fin=ok=>{ if(done) return; done=true; clearTimeout(t); res(ok&&img.naturalWidth>0?img:null); };
+    const t=setTimeout(()=>fin(false),ms);
+    img.onload=()=>fin(true); img.onerror=()=>fin(false);
+    img.crossOrigin='anonymous'; img.src=url;
+  });
+}
+async function pngFonts(){
+  const cs=getComputedStyle(document.documentElement), FD=cs.getPropertyValue('--font-display').trim(), FB=cs.getPropertyValue('--font-body').trim();
+  try{ await Promise.race([Promise.all([`700 30px ${FD}`,`italic 600 30px ${FD}`,`600 13px ${FB}`].map(f=>document.fonts.load(f))),new Promise(r=>setTimeout(r,3000))]); }catch(e){}
+}
+// Ajuste de texto por palabras (y por caracteres si una palabra no cabe); abrevia con «…» al pasar de maxLines
+function pngWrap(ctx,text,maxW,maxLines){
+  const out=[], fits=t=>ctx.measureText(t).width<=maxW; let cur='';
+  for(const word of String(text).split(/\s+/).filter(Boolean)){
+    const cand=cur?cur+' '+word:word;
+    if(fits(cand)){ cur=cand; continue; }
+    if(cur){ out.push(cur); cur=''; }
+    let chunk='';
+    for(const ch of Array.from(word)){ if(fits(chunk+ch)) chunk+=ch; else { if(chunk) out.push(chunk); chunk=ch; } }
+    cur=chunk;
+  }
+  if(cur) out.push(cur);
+  if(out.length<=maxLines) return {lines:out,truncated:false};
+  const keep=out.slice(0,maxLines); let last=keep[maxLines-1];
+  while(last&&!fits(last+'…')) last=Array.from(last).slice(0,-1).join('');
+  keep[maxLines-1]=last+'…'; return {lines:keep,truncated:true};
+}
+function pngRR(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+function pngSpaced(ctx,text,x,y,sp){ for(const ch of Array.from(text)){ ctx.fillText(ch,x,y); x+=ctx.measureText(ch).width+sp; } return x-sp; }
+
+// Dibuja el mes. imgs: Map(url → Image|null). Devuelve {canvas,scale,w,h,truncated}
+function pngRender(model,imgs){
+  const B=PNG_BRAND, W=1600, PAD=48, GAP=6, COLW=(W-2*PAD-6*GAP)/7, PW=34, PH=51, BAR=4;
+  const cs=getComputedStyle(document.documentElement);
+  const FD=cs.getPropertyValue('--font-display').trim()||'Georgia,serif', FB=cs.getPropertyValue('--font-body').trim()||'system-ui,sans-serif';
+  const fT=`600 13px ${FB}`, fL=`600 11.5px ${FB}`, TXW=COLW-12-BAR-4-PW-8-6;
+  const mc=document.createElement('canvas').getContext('2d');
+  let truncated=0;
+  model.days.forEach(d=>d.ev.forEach(e=>{
+    mc.font=fT; const t=pngWrap(mc,e.name,TXW,3); e.tl=t.lines; if(t.truncated) truncated++;
+    mc.font=fL; e.ll=e.label?pngWrap(mc,e.label,TXW,2).lines:[];
+    e.h=Math.max(PH,e.tl.length*16+(e.ll.length?4+e.ll.length*14:0))+10;
+  }));
+  const prevDim=new Date(model.y,model.m,0).getDate(), cells=[];
+  for(let i=0;i<model.startDow;i++) cells.push({n:prevDim-model.startDow+1+i,out:true,ev:[]});
+  model.days.forEach(d=>cells.push({n:d.d,ev:d.ev}));
+  for(let nx=1;cells.length%7;nx++) cells.push({n:nx,out:true,ev:[]});
+  const weeks=[]; for(let i=0;i<cells.length;i+=7) weeks.push(cells.slice(i,i+7));
+  const rowH=weeks.map(w=>Math.max(118,...w.map(c=>34+c.ev.reduce((a,e)=>a+e.h+4,0)+6)));
+  const HEAD=214, WD=36, FOOT=84, H=HEAD+WD+GAP+rowH.reduce((a,b)=>a+b,0)+(weeks.length-1)*GAP+FOOT;
+  const scale=Math.min(2,Math.sqrt(PNG_MAX_PIXELS/(W*H)));
+  const canvas=document.createElement('canvas'); canvas.width=Math.round(W*scale); canvas.height=Math.round(H*scale);
+  const ctx=canvas.getContext('2d'); if(!ctx) throw new Error('el navegador no puede crear un lienzo tan grande');
+  ctx.scale(scale,scale); ctx.textBaseline='alphabetic';
+  // fondo
+  const bg=ctx.createLinearGradient(0,0,0,H); bg.addColorStop(0,B.bg); bg.addColorStop(1,B.surface2); ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+  // marca: TINTA Sapphic + subrayado degradado (como el logotipo de la web)
+  ctx.font=`700 30px ${FD}`; ctx.fillStyle=B.text; let x=pngSpaced(ctx,'TINTA',PAD,72,4);
+  ctx.font=`italic 600 33px ${FD}`; ctx.fillStyle=B.accent; ctx.fillText('Sapphic',x+10,72); const bw=x+10+ctx.measureText('Sapphic').width-PAD;
+  const ug=ctx.createLinearGradient(PAD,0,PAD+bw,0); ug.addColorStop(0,B.accent); ug.addColorStop(0.55,B.lavender); ug.addColorStop(1,'rgba(29,116,104,0.4)');
+  ctx.fillStyle=ug; pngRR(ctx,PAD,82,bw,2.5,1.2); ctx.fill();
+  const sub=((document.querySelector('.logo-sub')||{}).textContent||'').trim();
+  if(sub){ ctx.font=`500 13px ${FB}`; ctx.fillStyle=B.muted; ctx.textAlign='right'; ctx.fillText(sub.toUpperCase(),W-PAD,70); ctx.textAlign='left'; }
+  // mes y año
+  const mn=MONTHS[model.m], yr=' '+model.y;
+  ctx.font=`italic 600 68px ${FD}`; const wM=ctx.measureText(mn).width; ctx.font=`700 68px ${FD}`; const wY=ctx.measureText(yr).width;
+  let tx=(W-wM-wY)/2; ctx.font=`italic 600 68px ${FD}`; ctx.fillStyle=B.accent; ctx.fillText(mn,tx,170); ctx.font=`700 68px ${FD}`; ctx.fillStyle=B.text; ctx.fillText(yr,tx+wM,170);
+  // cabecera de días
+  ctx.font=`700 13px ${FB}`; ctx.fillStyle=B.muted; ctx.textAlign='center';
+  DAYS_SHORT.forEach((d,i)=>ctx.fillText(d.toUpperCase(),PAD+i*(COLW+GAP)+COLW/2,HEAD+23));
+  ctx.textAlign='left';
+  // semanas
+  let y0=HEAD+WD+GAP;
+  weeks.forEach((w,wi)=>{
+    w.forEach((c,ci)=>{
+      const cx=PAD+ci*(COLW+GAP), h=rowH[wi];
+      ctx.fillStyle=c.out?'rgba(247,230,240,0.45)':B.surface; pngRR(ctx,cx,y0,COLW,h,10); ctx.fill();
+      ctx.strokeStyle=B.border; ctx.lineWidth=1; ctx.stroke();
+      ctx.font=`700 14px ${FB}`; ctx.fillStyle=c.out?'rgba(108,80,99,0.45)':B.text; ctx.fillText(String(c.n),cx+10,y0+22);
+      let ey=y0+32;
+      c.ev.forEach(e=>{
+        const col=e.movie?B.lavender:PALETTE[e.si%PALETTE.length], soft=e.movie?B.lavenderSoft:PALETTE_SOFT[e.si%PALETTE_SOFT.length];
+        const ex=cx+6, ew=COLW-12, eh=e.h;
+        ctx.save(); pngRR(ctx,ex,ey,ew,eh,8); ctx.clip(); ctx.fillStyle=e.premiere&&!e.movie?B.accentSoft:(e.movie?B.lavenderSoft:B.surface2); ctx.fillRect(ex,ey,ew,eh); ctx.fillStyle=col; ctx.fillRect(ex,ey,BAR,eh); ctx.restore();
+        if(e.premiere&&!e.movie){ ctx.strokeStyle=B.accent; ctx.lineWidth=1.5; pngRR(ctx,ex,ey,ew,eh,8); ctx.stroke(); }
+        const px=ex+BAR+4, py=ey+5, img=e.poster?imgs.get(e.poster):null;
+        if(img){ ctx.save(); pngRR(ctx,px,py,PW,PH,4); ctx.clip(); const s=Math.max(PW/img.naturalWidth,PH/img.naturalHeight), dw=img.naturalWidth*s, dh=img.naturalHeight*s; ctx.drawImage(img,px+(PW-dw)/2,py,dw,dh); ctx.restore(); }
+        else { ctx.fillStyle=soft; pngRR(ctx,px,py,PW,PH,4); ctx.fill(); ctx.font=`700 18px ${FD}`; ctx.fillStyle=col; ctx.textAlign='center'; ctx.fillText(Array.from(e.name.trim())[0].toUpperCase(),px+PW/2,py+PH/2+6); ctx.textAlign='left'; }
+        const tx2=px+PW+8; let ty=ey+5+12;
+        ctx.font=fT; ctx.fillStyle=B.text; e.tl.forEach(l=>{ ctx.fillText(l,tx2,ty); ty+=16; });
+        ctx.font=fL; ctx.fillStyle=e.movie?B.lavender:(e.premiere?B.accent:B.muted); ty+=0; e.ll.forEach(l=>{ ctx.fillText(l,tx2,ty); ty+=14; });
+        ey+=eh+4;
+      });
+    });
+    y0+=rowH[wi]+GAP;
+  });
+  // pie
+  const site=(((document.querySelector('meta[property="og:url"]')||{}).content)||'').replace(/^https?:\/\//,'').replace(/\/$/,'');
+  ctx.font=`500 15px ${FB}`; ctx.fillStyle=B.muted; ctx.textAlign='center'; ctx.fillText(site?`TINTA Sapphic · ${site}`:'TINTA Sapphic',W/2,H-34); ctx.textAlign='left';
+  return {canvas,scale,w:W,h:H,truncated};
+}
+function pngToBlob(canvas){
+  return new Promise((res,rej)=>{ try{ canvas.toBlob(b=>b?res(b):rej(new Error('el navegador no devolvió ninguna imagen')),'image/png'); }catch(e){ rej(e); } });
+}
+// Evita descargas vacías o incompletas: tipo, tamaño mínimo y que decodifique con las dimensiones del lienzo
+async function pngCheck(blob,canvas){
+  if(!blob||blob.type!=='image/png'||blob.size<2048) throw new Error('el PNG generado está vacío o es demasiado pequeño');
+  if(typeof createImageBitmap==='function'){
+    const bm=await createImageBitmap(blob), ok=bm.width===canvas.width&&bm.height===canvas.height; if(bm.close) bm.close();
+    if(!ok) throw new Error('el PNG generado está incompleto (dimensiones inesperadas)');
+  }
+}
+async function exportMonthPng(){
+  const btn=document.getElementById('pngExportBtn'), st=document.getElementById('pngStatus');
+  if(!btn||btn.disabled) return;
+  const y=state.year, m=state.month, label=MONTHS[m]+' '+y, say=(t,err)=>{ st.textContent=t; st.classList.toggle('err',!!err); };
+  const txt=btn.textContent; btn.disabled=true; btn.textContent='Generando imagen…'; say('');
+  try{
+    const model=pngBuildModel(y,m);
+    if(!model.total){ say(`No hay estrenos con fecha en ${label}: no se genera la imagen.`,true); return; }
+    await pngFonts();
+    const urls=[...new Set(model.days.flatMap(d=>d.ev.map(e=>e.poster)).filter(Boolean))], imgs=new Map();
+    await Promise.all(urls.map(async u=>imgs.set(u,await pngLoadImg(u,PNG_IMG_TIMEOUT))));
+    const r=pngRender(model,imgs), blob=await pngToBlob(r.canvas);
+    await pngCheck(blob,r.canvas);
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`tinta-sapphic-calendario-${y}-${String(m+1).padStart(2,'0')}.png`;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+    const failed=urls.filter(u=>!imgs.get(u)).length, none=model.days.reduce((n,d)=>n+d.ev.filter(e=>!e.poster).length,0), pl=(n,s,p)=>n+' '+(n===1?s:p);
+    say([`Imagen de ${label} descargada: ${pl(model.total,'entrada','entradas')}.`,
+      failed?`${pl(failed,'póster no se pudo cargar o no permite exportarse (CORS)','pósteres no se pudieron cargar o no permiten exportarse (CORS)')}; se muestran como recuadro.`:'',
+      none?`${pl(none,'entrada sin póster','entradas sin póster')}.`:'',
+      r.truncated?`${pl(r.truncated,'título largo abreviado','títulos largos abreviados')} con «…».`:'',
+      model.omitted?`${pl(model.omitted,'entrada sin título omitida','entradas sin título omitidas')}.`:'',
+      r.scale<1?'Imagen reducida por el tamaño del mes.':''].filter(Boolean).join(' '));
+  }catch(e){
+    say('No se pudo generar la imagen: '+(e&&e.name==='SecurityError'?'un póster bloquea la exportación (CORS)':(e&&e.message)||'error desconocido')+'. No se ha descargado nada.',true);
+  }finally{ btn.disabled=false; btn.textContent=txt; }
 }
 
 function daysUntil(dateStr){
