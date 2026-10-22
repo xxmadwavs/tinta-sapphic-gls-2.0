@@ -5994,9 +5994,9 @@
     {
       "id": "1776971297117",
       "name": "Oxytoxin",
-      "poster": "https://image.tmdb.org/t/p/w500/mcjgiKrhHldOqRs7bmfIyCc3cfJ.jpg",
-      "synopsis": "En St. Cecilia hay un influyente y temido grupo de amigas del instituto conocido como Toxxxxin, liderado por Aidao, Gale, Chelsea y Meimei. Cuando Junjai, una estudiante becada que sufre acoso, entra en su círculo, Aidao descubre que se parece mucho a la chica que la persigue en sus sueños. Las chicas la acogen y mejoran su estatus social mientras persiguen sus sueños de convertirse en modelos y diseñadoras. Sin embargo, el mundo real no es ningún sueño, y las chicas se ven sumidas en pruebas a las que nunca antes habían tenido que enfrentarse.",
-      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w500/3ureFluaEBW49JdpRmtTRlf6whP.jpg",
+      "synopsis": "La historia de un influyente grupo de amigos del instituto conocido como Toxxxxin.",
+      "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
@@ -6007,7 +6007,7 @@
       "bookCoverUrl": "",
       "bookLinks": [],
       "bookUrl": "",
-      "upcoming": false,
+      "upcoming": true,
       "skipDates": [],
       "episodes": [],
       "genres": [
@@ -6038,15 +6038,11 @@
         {
           "actressId": "1778784337814",
           "character": "Meimei"
-        },
-        {
-          "actressId": "1778667475076",
-          "character": ""
         }
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-10-22T12:38:44.086Z",
+      "updatedAt": "2026-09-12T13:16:49.657Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -6071,87 +6067,7 @@
       "tropos": [],
       "dinamica": [],
       "wlwFocus": "pareja-principal",
-      "awards": [],
-      "wlwFocusEpisode": "",
-      "sideCouples": [],
-      "fanCouples": [],
-      "biFormat": false,
-      "streaming": {},
-      "seasons": [
-        {
-          "label": "Temporada 1",
-          "startDate": "2026-11-07",
-          "totalEpisodes": 10,
-          "emissionDays": [
-            5
-          ],
-          "allInOneDay": false,
-          "skipDates": [],
-          "episodes": [
-            {
-              "num": 1,
-              "skipped": false,
-              "date": "2026-11-07",
-              "source": "tmdb"
-            },
-            {
-              "num": 2,
-              "skipped": false,
-              "date": "2026-11-14",
-              "source": "tmdb"
-            },
-            {
-              "num": 3,
-              "skipped": false,
-              "date": "2026-11-21",
-              "source": "tmdb"
-            },
-            {
-              "num": 4,
-              "skipped": false,
-              "date": "2026-11-28",
-              "source": "tmdb"
-            },
-            {
-              "num": 5,
-              "skipped": false,
-              "date": "2026-12-05",
-              "source": "tmdb"
-            },
-            {
-              "num": 6,
-              "skipped": false,
-              "date": "2026-12-12",
-              "source": "tmdb"
-            },
-            {
-              "num": 7,
-              "skipped": false,
-              "date": "2026-12-19",
-              "source": "tmdb"
-            },
-            {
-              "num": 8,
-              "skipped": false,
-              "date": "2026-12-26",
-              "source": "tmdb"
-            },
-            {
-              "num": 9,
-              "skipped": false,
-              "date": "2027-01-02",
-              "source": "tmdb"
-            },
-            {
-              "num": 10,
-              "skipped": false,
-              "date": "2027-01-09",
-              "source": "tmdb"
-            }
-          ],
-          "premiereSchedule": []
-        }
-      ]
+      "awards": []
     },
     {
       "id": "1776971352334",
@@ -150238,13 +150154,13 @@
       "name": "Resonance: Our Song of Love",
       "nameEn": "จังหวะรัก เพลงของเรา",
       "poster": "https://pbs.twimg.com/media/HSayjQoWgAAhsm3?format=jpg&name=small",
-      "synopsis": "La serie gira en torno a Fame, interpretada por Friend, una mujer reservada que mantiene a la mayoría de la gente a distancia, pero que tiene una profunda conexión con la música. Palm interpreta a Aing-Aei, una música independiente y optimista que viaja a Japón en busca de una nueva oportunidad para su carrera.\n\nSus personalidades no podrían ser más diferentes.\n\nFame es reservada y difícil de descifrar, mientras que Aing-Aei afronta la vida con mucha más energía y franqueza. Su encuentro va cambiando poco a poco el rumbo tanto de sus vidas personales como de sus sueños.\n\nPero la música no es simplemente un telón de fondo. La historia también explora la presión a la que se ven sometidos los artistas en una industria cada vez más influenciada por las opiniones, las tendencias y la atención del público. A medida que Fame y Aing-Aei se van acercando, los secretos relacionados con su música comienzan a complicar su relación.",
+      "synopsis": "La serie narra la historia de Fame, interpretada por Friend, una mujer reservada que mantiene a la mayoría de la gente a distancia, pero que tiene una profunda conexión con la música. Palm interpreta a Aing-Aei, una música independiente y optimista que viaja a Japón en busca de una nueva oportunidad para su carrera.\n\nSus personalidades no podrían ser más diferentes.\n\nFame es reservada y difícil de descifrar, mientras que Aing-Aei afronta la vida con mucha más energía y franqueza. Su encuentro va cambiando poco a poco el rumbo tanto de sus vidas personales como de sus sueños.\n\nPero la música no es simplemente un telón de fondo. La historia también explora la presión a la que se ven sometidos los artistas en una industria cada vez más influenciada por las opiniones, las tendencias y la atención del público. A medida que Fame y Aing-Aei se van acercando, los secretos relacionados con su música comienzan a complicar su relación.",
       "year": "",
       "country": "Tailandia",
       "network": "",
       "networkUrl": "",
       "watchLinks": [],
-      "trailerUrl": "https://www.youtube.com/watch?v=FoVP2y29_Tk",
+      "trailerUrl": "https://youtu.be/FoVP2y29_Tk?si=tu_mLF8Mmu24_mtT",
       "bookSource": "",
       "basedOnBook": false,
       "sourceType": "",
@@ -150282,7 +150198,7 @@
       "snLastUpdate": "",
       "snNote": "",
       "productoraId": "1779136135118",
-      "updatedAt": "2026-10-22T12:38:04.774Z",
+      "updatedAt": "2026-09-19T12:40:46.602Z",
       "wlwFocus": "pareja-principal",
       "couples": [
         [
@@ -150294,11 +150210,7 @@
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0,
-      "biFormat": false,
-      "wlwFocusEpisode": "",
-      "sideCouples": [],
-      "fanCouples": [],
-      "streaming": {}
+      "biFormat": false
     },
     {
       "id": "1787683435426",
@@ -449235,5 +449147,5 @@
       ]
     }
   },
-  "exportedAt": "2026-10-22T12:39:24.976Z"
+  "exportedAt": "2026-10-20T20:47:09.741Z"
 }

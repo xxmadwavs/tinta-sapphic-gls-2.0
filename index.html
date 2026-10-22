@@ -4286,6 +4286,18 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
 .card-lnk:focus-visible{outline:2px solid var(--focus-ring,var(--accent));outline-offset:-2px}
 :where(.has-lnk) :where(a:not(.card-lnk),button,select,input,textarea,[onclick]){position:relative;z-index:2}
 </style>
+<style id="i18nStyle">
+/* I18N_PUBLIC (13.6 + 13.6.1) */
+.lang-switch{display:inline-flex;align-items:center;gap:2px;padding:2px;flex-shrink:0;background:var(--surface);border:1.5px solid var(--border2);border-radius:20px}
+.lang-switch button{font:inherit;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--muted);background:transparent;border:0;border-radius:16px;min-width:30px;height:28px;padding:0 8px;cursor:pointer;transition:background .15s,color .15s}
+.lang-switch button:hover{color:var(--accent)}
+.lang-switch button.active{background:var(--accent);color:var(--on-accent)}
+.lang-switch button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:639px){.lang-switch button{min-width:26px;height:26px;padding:0 6px;font-size:11px}}
+html[lang="en"] .detail-hero:not(.ship-hero)~.synopsis::before{content:'Synopsis'}
+.ts-tagline{font-style:italic;color:var(--muted);font-size:14px;margin:14px 0 -6px;line-height:1.5}
+html[lang="en"] #viewCal .week-item-today-dot{padding:1px 1px;letter-spacing:0;white-space:nowrap}   /* 13.6.1: «NOW» cabe en la miniatura de 36 px (el tamaño de fuente no baja de 11 px) */
+</style>
 </head>
 <body>
 <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
@@ -4389,6 +4401,10 @@ html[data-theme="dark"]{ --flt-selected:var(--accent); }
       </div>
       <!-- 6.8 — El selector de país de streaming ya no está en la navegación: vive en la sección «Dónde ver» de cada ficha -->
       <button class="navbar-search-btn" id="navSearchBtn" type="button" onclick="openSearch()" title="Buscar" aria-label="Buscar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+      <div class="lang-switch" role="group" aria-label="Idioma / Language" data-i18n-skip>
+        <button type="button" data-lang="es" lang="es" title="Español" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" lang="en" title="English" aria-pressed="false">EN</button>
+      </div>
       <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()" title="Cambiar modo oscuro/claro" aria-label="Cambiar entre modo claro y oscuro"></button>
       <a class="navbar-x-btn" href="https://x.com/xxmadwavs" target="_blank" rel="noopener" title="@xxmadwavs en X" aria-label="X / Twitter">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -10917,6 +10933,7 @@ document.addEventListener('keydown',e=>{
 
 (async()=>{
   if(await loadData()){
+    if(window.__tsI18nBoot) window.__tsI18nBoot();   // 13.6: idioma guardado (proyecta fichas antes del primer render)
     document.getElementById('loadingSpinner').style.display='none';
     document.getElementById('mainContainer').style.display='';
     renderStats();
@@ -11185,6 +11202,298 @@ document.addEventListener('keydown', e => {
 });
 </script>
 
+<script>
+/* ═══ I18N_PUBLIC:BEGIN v2 — FASE 13.6 (+13.6.1): selector de idioma ES/EN (sin segundo catálogo, sin tocar la región de streaming) ═══
+   · Idioma propio: localStorage 'tsLang' ('es'|'en'), <html lang>. NO usa ni modifica 'streamingRegion' / state.streamingRegion.
+   · Interfaz: diccionario ES→EN aplicado al DOM de forma reversible (cada nodo recuerda su texto original en español).
+   · Fichas: se proyectan i18n.{es,en}.{title,overview,tagline,trailerUrl} sobre name/synopsis/trailerUrl (con copia de los originales).
+     Sin traducción EN: título = el de siempre; sinopsis = texto español con marca explícita «[Spanish original — no English translation yet]».
+   · Sin diccionario para un texto de interfaz: se deja en español (nunca se inventa una traducción).
+   · 13.6.1: placeholder/aria-label/title de <input> y <textarea> también se traducen (el texto que escribe la usuaria, nunca); cadenas largas y estados vacíos;
+     patrones para textos compuestos (PAT); aria-label de los enlaces-tarjeta recalculado con el texto ya traducido; «HOY» de la miniatura del calendario → «NOW» (36 px). */
+(function(){
+  'use strict';
+  var KEY='tsLang', MARK='[Spanish original \u2014 no English translation yet] ';
+  var D={
+    'Calendario':'Calendar','Explorar':'Explore','Series & Pelis':'Series & Movies','Series':'Series','Películas':'Movies','Próximamente':'Coming soon',
+    'Canceladas':'Cancelled','Más contenido':'More','Realities':'Reality shows','Documentales':'Documentaries','Libros':'Books','Personas':'People',
+    'Actrices':'Actresses','Productoras':'Production companies','Ships Thais':'Thai ships','Ships':'Ships','Rupturas':'Break-ups','Mascotas':'Pets','Extra':'Extra',
+    'Picks generales':'General picks','Picks {n}':'Picks {n}','Mis picks':'My picks','Checklist':'Checklist','Listas GL':'GL lists','Ruleta GL':'GL roulette','Ruleta':'Roulette',
+    'Cargando TINTA Sapphic…':'Loading TINTA Sapphic…','GL Series & Películas':'GL Series & Movies','Series & películas GL de todo el mundo':'GL series & movies from around the world',
+    'series GL':'GL series','en emisión':'airing','películas':'movies','próximamente':'coming soon','países':'countries','basadas en libro':'based on books',
+    'Haz CheckList series':'Do the series checklist','Marca las series, películas y novelas GL Thai, China y Japón que ya has visto o leído':'Tick the Thai, Chinese and Japanese GL series, movies and novels you have already watched or read',
+    '← Semana anterior':'← Previous week','Esta semana':'This week','Semana siguiente →':'Next week →','Ver calendario mensual':'View monthly calendar','Exportar .ics':'Export .ics',
+    '← Anterior':'← Previous','Siguiente →':'Next →','Anterior':'Previous','Siguiente':'Next','Hoy':'Today','HOY':'TODAY','Descargar este mes (PNG)':'Download this month (PNG)',
+    'Últimas añadidas':'Recently added','Novedades en la base de datos':'What\u2019s new in the database','Ir a un mes':'Go to month','Sobre nosotras':'About us','Política de privacidad':'Privacy policy','Términos de uso':'Terms of use',
+    'Estreno · Ep. {n}':'Premiere · Ep. {n}','Ep. {n}':'Ep. {n}','Ep. {n} · mañana':'Ep. {n} · tomorrow','Hoy · Ep. {n}':'Today · Ep. {n}','Estreno · Película':'Premiere · Movie',
+    'Buscar':'Search','Buscar series, películas…':'Search series, movies…','Buscar series y películas':'Search series and movies','Buscar serie, país, plataforma…':'Search series, country, platform…',
+    'Buscar película, país, plataforma…':'Search movie, country, platform…','Buscar anime, país, plataforma…':'Search anime, country, platform…','Buscar libro o serie…':'Search book or series…',
+    'Buscar reality, docuserie, país, red…':'Search reality show, docuseries, country, network…','Buscar documental, país, plataforma…':'Search documentary, country, platform…','Buscar actriz…':'Search actress…',
+    'Buscar ship o actriz…':'Search ship or actress…','Buscar productora…':'Search production company…','Buscar título…':'Search title…','Buscar país…':'Search country…','Buscar país':'Search country',
+    'Buscar tropo o dinámica…':'Search trope or dynamic…','Buscar tropo o dinámica':'Search trope or dynamic','Cambiar a modo oscuro':'Switch to dark mode','Cambiar entre modo claro y oscuro':'Switch between light and dark mode',
+    'Cerrar':'Close','Cancelar':'Cancel','Menú':'Menu','Inicio':'Home','Filtros':'Filters','Orden':'Sort','Todos':'All','Todas':'All','Libro':'Book','Sección':'Section',
+    'A → Z':'A → Z','Z → A':'Z → A','+ Episodios':'+ Episodes','Más reciente primero':'Newest first','Más antiguo primero':'Oldest first','Más antiguas primero':'Oldest first','Actualizado recientemente':'Recently updated',
+    'Con libro':'With book','Sin libro':'No book','Limpiar filtros':'Clear filters','Limpiar':'Clear','Limpiar todo':'Clear all','Más filtros':'More filters','Tropos y dinámicas':'Tropes & dynamics',
+    'Foco sáfico':'Sapphic focus','Pareja principal':'Main couple','Pareja secundaria (side couple)':'Secondary couple (side couple)','Romance secundario de protagonista':'Lead\u2019s secondary romance',
+    'Subplot (pareja secundaria sin especificar)':'Subplot (unspecified secondary couple)','Pareja de {n} episodio':'{n}-episode couple','Personaje':'Character','Presencia sin desarrollo':'Presence without development','Subtexto':'Subtext','No canon':'Non-canon',
+    'Ver todas ({n})':'See all ({n})','Género':'Genre','Géneros':'Genres','Fecha de estreno':'Release date','Tipo':'Type','Web serie':'Web series','País':'Country','Cadena':'Network','Año':'Year','Año desde':'Year from','Año hasta':'Year to',
+    'Emisión':'Airing','Emitidas':'Aired','Mostrando':'Showing','de':'of','Ver más →':'See more →','✓ Finalizada':'✓ Finished','Finalizada':'Finished','En emisión':'Airing','Basado en novela':'Based on a novel','Basado en libro':'Based on a book','Basado en manga':'Based on a manga',
+    'Web':'Web','Sin etiquetar':'Untagged','Próximos estrenos':'Upcoming releases','Película':'Movie','Cortos':'Shorts','Corto':'Short','Serie':'Series','✓ Ya estrenadas':'✓ Already released','Fecha por confirmar':'Date to be confirmed','Sin detalles aún':'No details yet','Sin detalles':'No details',
+    'Anime GL':'GL anime','Libro/Manga':'Book/Manga','Origen':'Source','Con manga/novela':'With manga/novel','Original':'Original','¿Falta algún anime?':'Missing an anime?',
+    'Series anunciadas que aún no tienen fecha de emisión confirmada.':'Announced series that don\u2019t have a confirmed air date yet.','Con novedades':'With news','Sin novedades':'No news',
+    'Series anunciadas de las que no hay noticias recientes. Pueden estar retrasadas o esperando confirmación.':'Announced series with no recent news. They may be delayed or awaiting confirmation.',
+    '{n} series':'{n} series','Cancelada':'Cancelled','En limbo':'In limbo','Sin info hace {n}m':'No news for {n}mo','Sin info hace {n}d':'No news for {n}d','Sin info hace +1 año':'No news for over a year','Actualizada hace {n}d':'Updated {n}d ago',
+    'Fuentes literarias':'Literary sources','Libros, novelas y manhwas en los que se basan las series y películas de la lista.':'Books, novels and manhwas the listed series and movies are based on.','Idioma':'Language','Por serie':'By series','Orden de la lista':'List order','libros':'books','película':'movie','animes':'anime',
+    'Adaptada en':'Adapted in','Sin ediciones enlazadas':'No linked editions','Realities GL':'GL reality shows','Reality shows y docuseries con protagonismo lésbico, bisexual o queer':'Reality shows and docuseries with lesbian, bisexual or queer leads',
+    'Series & Realities':'Series & Reality shows','Formato':'Format','programas':'shows','documentales':'documentaries','Documentales GL':'GL documentaries','Documentales con protagonismo lésbico, bisexual o queer':'Documentaries with lesbian, bisexual or queer leads',
+    '{n} actrices en {n} países':'{n} actresses in {n} countries','Agrupar por país':'Group by country','Orden: A–Z':'Sort: A–Z','Orden: Z–A':'Sort: Z–A','Orden: más obras':'Sort: most works','Otros':'Other',
+    'Título':'Title','Título original':'Original title','Fecha de inicio':'Start date','Fecha final':'End date','Episodios':'Episodes','Duración':'Duration','Tropos':'Tropes','Dinámica':'Dynamic','Basado en':'Based on','Productora':'Production company','Sinopsis':'Synopsis',
+    'Inicio:':'Start:','Final:':'End:','Dónde ver':'Where to watch','Enlaces generales':'General links','Disponibilidad por país':'Availability by country','Ver trailer':'Watch trailer','Ver ficha →':'View page →','Ver ahora':'Watch now','Ver productora':'View production company',
+    'Copiar enlace a esta ficha':'Copy link to this page','¡Copiado!':'Copied!','Sin información de reparto.':'No cast information.','Reparto':'Cast','Biografía':'Biography','Cargar más':'Load more',
+    '✓ Serie finalizada':'✓ Series finished','Streaming':'Streaming','Gratis':'Free','Con anuncios':'With ads','Alquiler':'Rent','Compra':'Buy','Suscripción':'Subscription','GRATIS':'FREE','ALQ.':'RENT','COMPRA':'BUY','SUB':'SUB','Otros':'Other',
+    'Con disponibilidad registrada':'With recorded availability','Resto de países':'Other countries','Ningún país coincide con tu búsqueda.':'No country matches your search.','Con datos':'With data','Países':'Countries',
+    'Ruleta GL':'GL roulette','¿No sabes qué ver? Gira la ruleta y deja que el destino decida.':'Not sure what to watch? Spin the wheel and let fate decide.','Incluir cortos':'Include shorts','¡Girar!':'Spin!','Girar de nuevo':'Spin again','¡Te ha tocado!':'You got:','Otra':'Another',
+    'Progreso':'Progress','Marca las que ya has visto o leído':'Tick the ones you have already watched or read','↺ Reiniciar':'↺ Reset','Descargar imagen':'Download image','Descargar PDF':'Download PDF','Novela':'Novel','Web serie':'Web series',
+    'Nov. gráfica':'Graphic novel','Selecciones curadas por temáticas, mood y estilo.':'Curated selections by theme, mood and style.','Listas':'Lists',
+    'Tailandia':'Thailand','Corea del Sur':'South Korea','Japón':'Japan','Estados Unidos':'United States','Reino Unido':'United Kingdom','España':'Spain','Francia':'France','Alemania':'Germany','Brasil':'Brazil','Bélgica':'Belgium','Canadá':'Canada','México':'Mexico','Taiwán':'Taiwan','Filipinas':'Philippines',
+    'Países Bajos':'Netherlands','Italia':'Italy','Suecia':'Sweden','Noruega':'Norway','Dinamarca':'Denmark','Finlandia':'Finland','Polonia':'Poland','Rusia':'Russia','Turquía':'Türkiye','Irlanda':'Ireland','Lituania':'Lithuania','Singapur':'Singapore','Nueva Zelanda':'New Zealand','Perú':'Peru','Malasia':'Malaysia',
+    'Acción':'Action','Animación':'Animation','Aventura':'Adventure','Ciencia Ficción':'Science fiction','Comedia':'Comedy','Comedia romántica':'Romantic comedy','Crimen':'Crime','Deportes':'Sports','Escolar':'School','Familia':'Family','Fantasía':'Fantasy','Histórico':'Historical',
+    'Idols / Entretenimiento':'Idols / Entertainment','Misterio':'Mystery','Médico':'Medical','Navidad':'Christmas','Oficina / Trabajo':'Office / Work','Político':'Political','Psicológico':'Psychological','Sobrenatural':'Supernatural','Terror':'Horror','Vampiros':'Vampires','Viaje en el tiempo':'Time travel','Vida cotidiana':'Everyday life',
+    'Universitario':'University','Amistad':'Friendship','Artes marciales':'Martial arts','Militar':'Military','Misterio sobrenatural':'Supernatural mystery','Reencarnación':'Reincarnation','Legal':'Legal','Negocios':'Business','Entretenimiento':'Entertainment','Historia':'History','Arte':'Art','Música':'Music','Deporte':'Sport','Naturaleza':'Nature','Social':'Social','Competencia':'Competition',
+    'Pareja principal':'Main couple','Última modificación':'Last modified','Sin ánimo de lucro':'Non-profit','100% gratuita':'100% free','Hecho con amor':'Made with love','Contenido global GL':'Global GL content','Actualización continua':'Continuously updated',
+    'Datos que NO recopilamos':'Data we do NOT collect','Almacenamiento local':'Local storage','Contenido externo':'External content','Contenido informativo':'Informational content','Fuentes de datos':'Data sources','Sin uso comercial':'No commercial use','Enlaces de terceros':'Third-party links','Comunidad respetuosa':'Respectful community','Modificaciones':'Changes',
+    'Fuentes de datos e imágenes':'Data and image sources','Nombre, email o información personal':'Name, email or personal information','Contraseñas o datos de acceso':'Passwords or login data','Información de pago':'Payment information','Historial de navegación personal':'Personal browsing history',
+    'No hay series con esos filtros.':'No series match those filters.','No hay películas todavía.':'No movies yet.','No se encontró ninguna serie con esos filtros.':'No series found with those filters.','No se encontró ninguna película con esos filtros.':'No movies found with those filters.',
+    'No se encontró ninguna actriz.':'No actress found.','No se encontró ningún libro con esos criterios.':'No book found with those criteria.','No hay series en emisión con esos filtros.':'No airing series match those filters.','No hay series emitidas con esos filtros.':'No aired series match those filters.',
+    'No hay series próximamente con esos filtros.':'No upcoming series match those filters.','No se pudo cargar el calendario.':'The calendar could not be loaded.','Página anterior':'Previous page','Página siguiente':'Next page','Días anteriores':'Previous days','Días siguientes':'Next days',
+    'Abrir en YouTube':'Open on YouTube','Filtrar por este foco sáfico':'Filter by this sapphic focus','Filtrar por este tropo':'Filter by this trope','Filtrar por esta dinámica':'Filter by this dynamic','Haz clic para saltar a otro mes':'Click to jump to another month','Cerrar selector de mes':'Close month picker',
+    'Exportar estrenos a tu calendario (.ics)':'Export premieres to your calendar (.ics)','Descargar el mes seleccionado como imagen PNG':'Download the selected month as a PNG image','Últimas añadidas por categoría':'Recently added by category',
+    '¿Conoces más realities con representación GL?':'Know more reality shows with GL representation?','Escríbenos en X':'Message us on X','y lo añadimos':'and we\u2019ll add them','¿Conoces más documentales GL?':'Know more GL documentaries?',
+    '{n} fichas · agrupadas por país, de más a menos fichas':'{n} profiles · grouped by country, most to fewest','Ver {n} más':'See {n} more','Parejas oficiales de series tailandesas: protagonistas y secundarias.':'Official couples from Thai series: leads and supporting characters.',
+    '{n} productoras y estudios, con las actrices que han pasado por ellos':'{n} production companies and studios, with the actresses who have worked with them','Orden: más contenidos':'Sort: most titles','Orden: más actrices':'Sort: most actresses',
+    '{n} títulos':'{n} titles','{n} título':'{n} title','GL Japón':'GL Japan','GL Corea':'GL Korea','GL Japón ~ Checklist':'GL Japan ~ Checklist','GL Corea ~ Checklist':'GL Korea ~ Checklist',
+    'Nuevo':'New','Función':'Feature','Corrección':'Fix','Diseño':'Design'
+  };
+
+  /* ── 13.6.1: cadenas añadidas tras la auditoría de textos en español (solo se usan si la clave no existía) ── */
+  var D2={
+    'TINTA SAPPHIC ~ GL Series & Películas':'TINTA SAPPHIC ~ GL Series & Movies','Ver en TMDB ↗':'View on TMDB ↗','Ver menos':'See less','Todos los servicios ↗':'All services ↗',
+    'Todavía no hay plataformas guardadas para este país. Eso no significa que no esté disponible: solo que no consta en TINTA.':'No platforms are saved for this country yet. That doesn\u2019t mean it isn\u2019t available \u2014 it just isn\u2019t recorded in TINTA.',
+    '⚠ Dato pendiente de revisión: puede estar desactualizado.':'⚠ Data pending review: it may be out of date.','con datos':'with data',
+    'Sin país asignado: no se sabe en qué países funcionan.':'No country assigned: it is unknown in which countries they work.',
+    'Asegúrate de que':'Make sure that','está en la misma carpeta.':'is in the same folder.','+{n} más':'+{n} more','Premios y festivales':'Awards & festivals','Sin coincidencias':'No matches',
+    'No hay series próximamente de momento. ¡Pronto habrá novedades!':'No upcoming series right now. There will be news soon!','No hay series marcadas sin novedades. ¡Buenas noticias!':'No series are marked as having no news. Good news!',
+    'Exportar a tu calendario':'Export to your calendar','Archivo .ics para Google Calendar, Apple Calendario, Outlook y similares.':'.ics file for Google Calendar, Apple Calendar, Outlook and similar apps.',
+    'Estrenos y episodios':'Premieres & episodes','Desde hoy ({n})':'From today ({n})','Añadir a Google Calendar':'Add to Google Calendar',
+    'falta el título':'the title is missing','falta una fecha válida':'a valid date is missing','falta el número de episodio':'the episode number is missing','el título contiene caracteres no válidos':'the title contains invalid characters',
+    'No son pareja en la historia, pero el fandom las shippea.':'They aren\u2019t a couple in the story, but the fandom ships them.','Sin series ni películas registradas.':'No series or movies registered.','Por episodio':'Per episode',
+    'Ficha técnica':'Details','Año aprox.':'Approx. year','Sinopsis no disponible aún':'Synopsis not available yet','Fecha de estreno por confirmar':'Release date to be confirmed',
+    'No hay películas en esta categoría con esos filtros.':'No movies in this category match those filters.','Tu navegador no soporta vídeo HTML5.':'Your browser does not support HTML5 video.',
+    'Todavía no hay libros. Marca series como "basada en libro" en el admin para que aparezcan aquí.':'No books yet. Mark series as \u201Cbased on a book\u201D in the admin so they appear here.',
+    'Series y películas de anime con historias de amor entre chicas (yuri, GL y subtexto sáfico)':'Anime series and movies with love stories between girls (yuri, GL and sapphic subtext)',
+    'Esta sección crece con el tiempo. Puedes sugerir animes GL a través de la cuenta de X':'This section grows over time. You can suggest GL anime through the X account',
+    'No se encontró ningún anime con esos filtros.':'No anime found with those filters.','No se encontró ninguna película de anime con esos filtros.':'No anime movie found with those filters.',
+    'No se encontró ningún reality con esos filtros.':'No reality show found with those filters.','No se encontró ningún documental con esos filtros.':'No documentary found with those filters.',
+    'Formato bi (posible)':'Bi format (possible)','Mis':'My','serie':'series',
+    'Series GL que recomiendo especialmente. Sin orden concreto, solo las que más me han gustado.':'GL series I especially recommend. In no particular order, just the ones I liked the most.',
+    'Lo mejor de este año hasta ahora. Series GL de {n} que no me puedo dejar de recomendar.':'The best of this year so far. {n} GL series I can\u2019t stop recommending.',
+    'Todavía no hay picks':'No picks yet','Marca series en el admin con "Mis picks" para que aparezcan aquí.':'Mark series as \u201CMy picks\u201D in the admin so they appear here.',
+    'Marca series en el admin con "Picks {n}" para que aparezcan aquí.':'Mark series as \u201CPicks {n}\u201D in the admin so they appear here.',
+    'Ships Oficiales Thais':'Official Thai ships','No hay ships registrados.':'No ships registered.','No se encontraron ships con esa búsqueda.':'No ships found for that search.',
+    'Todavía no hay mascotas registradas.':'No pets registered yet.','Este ship ya no está activo como dúo oficial':'This ship is no longer active as an official duo',
+    'Canceladas & Limbo':'Cancelled & Limbo','Series canceladas, pausadas indefinidamente o productoras cerradas.':'Cancelled series, indefinitely paused ones, or closed production companies.',
+    'No hay series marcadas como canceladas todavía.':'No series are marked as cancelled yet.','Series anunciadas cuya información no se ha actualizado recientemente.':'Announced series whose information hasn\u2019t been updated recently.',
+    'Estas series están marcadas como':'These series are marked as','pero llevan días sin actualizaciones. Puede que estén retrasadas, sin fecha confirmada, o simplemente esperando noticias.':'but have had no updates for days. They may be delayed, without a confirmed date, or simply awaiting news.',
+    '{n} series sin fecha confirmada ·':'{n} series without a confirmed date ·','{n} productoras':'{n} production companies','{n} productora':'{n} production company','{n} actrices':'{n} actresses','{n} actriz':'{n} actress',
+    'Aún no se han añadido productoras. Puedes gestionarlas desde el panel de administración.':'No production companies have been added yet. You can manage them from the admin panel.',
+    'Sin resultados':'No results','Sin resultados.':'No results.','Sin contenidos':'No titles','Sin contenidos asignados aún.':'No titles assigned yet.','Sin novedades en los últimos 30 días.':'No news in the last 30 days.',
+    '{n} títulos en el pool':'{n} titles in the pool','Sin listas todavía':'No lists yet','Las listas temáticas curadas aparecerán aquí cuando las crees desde el panel de administración.':'Curated thematic lists will appear here once you create them from the admin panel.',
+    'Esta lista no tiene títulos asignados todavía.':'This list has no titles assigned yet.','Si te gustó esta, prueba…':'If you liked this one, try\u2026',
+    'Todavía no hay títulos en esta checklist. Añádelos desde el panel de administración.':'There are no titles in this checklist yet. Add them from the admin panel.','Sin resultados para esa búsqueda.':'No results for that search.',
+    '@xxmadwavs en X':'@xxmadwavs on X','Ver disponibilidad en TMDB / JustWatch':'See availability on TMDB / JustWatch','Código regional de TMDB':'TMDB region code','Ver detalles':'View details',
+    'Año anterior':'Previous year','Año siguiente':'Next year','Datos de streaming proporcionados por JustWatch':'Streaming data provided by JustWatch','Datos:':'Data:','vía TMDB.':'via TMDB.',
+    'Emitido':'Aired','Pendiente':'Pending','¡Hoy!':'Today!','Compartir':'Share','Estrenada':'Released','✓ Estrenada':'✓ Released','Estreno':'Premiere','Info completa':'Complete info','Info parcial':'Partial info','Info básica':'Basic info',
+    '{n} / {n} emitidos':'{n} / {n} aired','{n}/{n} emitidos':'{n}/{n} aired','Generado el':'Generated on','Abrir':'Open',
+    ', entre otras, solo con fines informativos para la comunidad.':', among others, for informational purposes only for the community.',
+    ', vía la API de TMDB. Todas las marcas, logos e imágenes pertenecen a sus respectivos propietarios.':', via the TMDB API. All brands, logos and images belong to their respective owners.',
+    'Última actualización: mayo {n}. ¿Dudas? Escríbenos por':'Last updated: May {n}. Questions? Message us on',
+    'Al usar TINTA Sapphic aceptas las siguientes condiciones. Son sencillas — básicamente: úsalo bien y con respeto.':'By using TINTA Sapphic you accept the following terms. They\u2019re simple \u2014 basically: use it well and with respect.',
+    ', entre otras. La disponibilidad en plataformas de streaming se obtiene a través de':', among others. Streaming platform availability is obtained through','¿Tienes alguna pregunta? Contáctanos en':'Do you have any questions? Contact us on',
+    'Haz CheckList series Marca las series, películas y novelas GL Thai, China y Japón que ya has visto o leído':'Do the series checklist Tick the Thai, Chinese and Japanese GL series, movies and novels you have already watched or read'
+  };
+  Object.keys(D2).forEach(function(k){ if(D[k]==null) D[k]=D2[k]; });
+  var DAYRX='(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)';
+  function cap(x){ return x.charAt(0).toUpperCase()+x.slice(1); }
+  /* PAT: textos compuestos (se aplican tras el diccionario; rec() traduce una parte con las mismas reglas) */
+  var PAT=[
+    [new RegExp('^'+DAYRX+'(?: y '+DAYRX+')*$','i'),function(m){ return m[0].split(' y ').map(cap).join(' and '); }],
+    [/^(\d+) \/ (\d+) emitidos(?: · (.+))?$/,function(m,rec){ return m[1]+' / '+m[2]+' aired'+(m[3]?' · '+rec(m[3]):''); }],
+    [/^(\d+)\/(\d+) emitidos · (\d+)%(.*)$/,function(m,rec){ return m[1]+'/'+m[2]+' aired · '+m[3]+'%'+(m[4]?rec(m[4]):''); }],
+    [/^Sin disponibilidad en (.+)$/,function(m){ return 'Not available in '+m[1]; }],
+    [/^(✓ )?Estrenada el (.+)$/,function(m){ return (m[1]||'')+'Released on '+m[2]; }],
+    [/^Basado en (.+)$/,function(m,rec){ return 'Based on '+rec(m[1]); }],
+    [/^No se puede crear el evento: (.+)\.$/,function(m,rec){ return 'Cannot create the event: '+rec(m[1])+'.'; }],
+    [/^Cambiar de país · (\d+) (país con datos|países con datos)$/,function(m){ return 'Change country · '+m[1]+(m[2]==='país con datos'?' country with data':' countries with data'); }],
+    [/^Sin resultados para "(.*)"$/,function(m){ return 'No results for \u201C'+m[1]+'\u201D'; }],
+    [/^Generado el (\d{1,2}) de ([a-záéíóú]+) de (\d{4})$/i,function(m){ var i=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'].indexOf(m[2].toLowerCase()); return i<0?null:'Generated on '+EN_ARR.MONTHS[i]+' '+(+m[1])+', '+m[3]; }]
+  ];
+  var ES_ARR={}, EN_ARR={
+    MONTHS:['January','February','March','April','May','June','July','August','September','October','November','December'],
+    MONTHS_SHORT:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    DAYS_L:['monday','tuesday','wednesday','thursday','friday','saturday','sunday'],
+    DAYS_SHORT:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    DAYS:['M','T','W','T','F','S','S'],
+    MONTH_NAMES_CL:['january','february','march','april','may','june','july','august','september','october','november','december']
+  };
+  function arrRef(n){ try{ return (0,eval)('typeof '+n+"!=='undefined'?"+n+':null'); }catch(e){ return null; } }
+  function setArrays(l){
+    Object.keys(EN_ARR).forEach(function(n){
+      var a=arrRef(n); if(!Array.isArray(a)) return;
+      if(!ES_ARR[n]) ES_ARR[n]=a.slice();
+      var src=l==='en'?EN_ARR[n]:ES_ARR[n]; for(var i=0;i<src.length;i++) a[i]=src[i];
+    });
+  }
+  function mergeExtra(){
+    ['TROPOS_EN','DINAMICAS_EN'].forEach(function(n){ var o=arrRef(n); if(!o||typeof o!=='object') return;
+      Object.keys(o).forEach(function(k){ if(D[k]==null&&typeof o[k]==='string'&&o[k]) D[k]=o[k]; }); });
+  }
+  var lang='es', obs=null, busy=false, LAST=null, BAK=new WeakMap(), SKIP={SCRIPT:1,STYLE:1,TEXTAREA:1,INPUT:1,NOSCRIPT:1}, ATTRS=['title','aria-label','placeholder'];
+  function norm(s){ return s.replace(/\s+/g,' ').trim(); }
+  function look(t){
+    if(Object.prototype.hasOwnProperty.call(D,t)) return D[t];
+    var nums=[], k=t.replace(/\d+/g,function(m){ nums.push(m); return '{n}'; });
+    if(k!==t&&Object.prototype.hasOwnProperty.call(D,k)){ var i=0; return D[k].replace(/\{n\}/g,function(){ return nums[i++]||''; }); }
+    return null;
+  }
+  var FLAGS=/^((?:[\uD83C][\uDDE6-\uDDFF]){2,}\s*)/;
+  function trText(t,depth){
+    var r=look(t); if(r!=null) return r;
+    for(var pi=0;pi<PAT.length;pi++){ var pm=t.match(PAT[pi][0]); if(pm){ var pr=PAT[pi][1](pm,function(x){ var y=trText(x,depth+1); return y==null?x:y; }); if(pr!=null) return pr; } }
+    if(depth>2||t.length>140) return null;
+    var m=t.match(FLAGS); if(m){ var rest=t.slice(m[1].length), x=trText(rest,depth+1); return x==null?null:m[1]+x; }
+    var seps=[' · ',' / ',', ',' — '];
+    for(var s=0;s<seps.length;s++){
+      if(t.indexOf(seps[s])<0) continue;
+      var parts=t.split(seps[s]), hit=0, out=parts.map(function(p){ var y=trText(p.trim(),depth+1); if(y!=null){ hit++; return y; } return p; });
+      if(hit) return out.join(seps[s]);
+    }
+    return null;
+  }
+  function tr(raw){
+    var t=norm(raw); if(!t) return null; var r=trText(t,0); if(r==null||r===t) return null;
+    return raw.match(/^\s*/)[0]+r+raw.match(/\s*$/)[0];
+  }
+  function skipAttrEl(el){ for(var e=el;e&&e!==document.documentElement;e=e.parentElement){ if(e.tagName==='SCRIPT'||e.tagName==='STYLE'||(e.hasAttribute&&e.hasAttribute('data-i18n-skip'))) return true; } return false; }
+  function skipEl(el){ for(var e=el;e&&e!==document.documentElement;e=e.parentElement){ if(SKIP[e.tagName]||(e.hasAttribute&&e.hasAttribute('data-i18n-skip'))) return true; } return false; }
+  function doTree(root){
+    if(!root) return; busy=true;
+    try{
+      if(root.nodeType===3){ if(!skipEl(root.parentElement)) txt(root); }
+      else if(root.nodeType===1){
+        if(skipEl(root)) return;
+        var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null), n; while((n=w.nextNode())){ if(!skipEl(n.parentElement)) txt(n); }
+        var els=[root].concat([].slice.call(root.querySelectorAll('[title],[aria-label],[placeholder]')));
+        els.forEach(function(el){ if(skipAttrEl(el)) return; ATTRS.forEach(function(a){ var v=el.getAttribute&&el.getAttribute(a); if(!v) return; var bak=el.__es||(el.__es={}); if(bak[a]===undefined){ var r=tr(v); if(r!=null){ bak[a]=v; el.setAttribute(a,r); } } }); });
+      }
+    } finally{ if(obs) obs.takeRecords(); busy=false; }
+  }
+  function txt(n){ if(n.__es!==undefined) return; var r=tr(n.nodeValue);
+    if(r!=null&&n.parentElement&&n.parentElement.classList&&n.parentElement.classList.contains('week-item-today-dot')&&norm(n.nodeValue)==='HOY') r=n.nodeValue.replace('HOY','NOW');   /* miniatura de 36 px: «TODAY» no cabe */ if(r!=null){ n.__es=n.nodeValue; n.nodeValue=r; } }
+  function undoTree(){
+    busy=true;
+    try{
+      var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null), n; while((n=w.nextNode())){ if(n.__es!==undefined){ n.nodeValue=n.__es; n.__es=undefined; } }
+      [].slice.call(document.querySelectorAll('[title],[aria-label],[placeholder]')).forEach(function(el){ if(!el.__es) return; Object.keys(el.__es).forEach(function(a){ el.setAttribute(a,el.__es[a]); }); el.__es=null; });
+    } finally{ if(obs) obs.takeRecords(); busy=false; }
+  }
+  function fixLabels(root){
+    if(!root||root.nodeType!==1) return; var as=[].slice.call(root.querySelectorAll('a.card-lnk')); if(root.matches&&root.matches('a.card-lnk')) as.push(root);
+    as.forEach(function(a){ var el=a.parentElement; if(!el) return; var v=(el.getAttribute('aria-label')||el.getAttribute('title')||el.textContent||'').replace(/\s+/g,' ').trim().slice(0,100); a.setAttribute('aria-label',v||(lang==='en'?'Open':'Abrir')); });
+  }
+  function startObs(){
+    if(obs) return;
+    obs=new MutationObserver(function(ms){
+      if(busy||lang!=='en') return;
+      ms.forEach(function(m){
+        if(m.type==='childList') m.addedNodes.forEach(function(x){ doTree(x); fixLabels(x); });
+        else if(m.type==='characterData'){ m.target.__es=undefined; doTree(m.target); }
+        else if(m.type==='attributes'){ if(m.target.__es) m.target.__es[m.attributeName]=undefined; doTree(m.target); }
+      });
+    });
+    obs.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:ATTRS});
+  }
+  function stopObs(){ if(obs){ obs.disconnect(); obs=null; } }
+  /* ── Fichas ── */
+  function isObj(v){ return v!==null&&typeof v==='object'&&!Array.isArray(v); }
+  function s(v){ return typeof v==='string'?v.trim():''; }
+  function own(it,l,f){ return isObj(it.i18n)&&isObj(it.i18n[l])?s(it.i18n[l][f]):''; }
+  function project(it,l){
+    if(!isObj(it)) return;
+    if(!BAK.has(it)) BAK.set(it,{name:it.name,synopsis:it.synopsis,trailerUrl:it.trailerUrl});
+    var b=BAK.get(it), t=own(it,l,'title'), o=own(it,l,'overview'), tr_=own(it,l,'trailerUrl');
+    it.name=t||b.name;
+    if(o) it.synopsis=o; else it.synopsis=(l==='en'&&s(b.synopsis))?MARK+b.synopsis:b.synopsis;
+    if(tr_) it.trailerUrl=tr_; else it.trailerUrl=b.trailerUrl;
+  }
+  function projectAll(l){ if(typeof state==='undefined') return; (state.series||[]).forEach(function(x){ project(x,l); }); (state.movies||[]).forEach(function(x){ project(x,l); }); }
+  function findItem(kind,key){ var a=(kind==='series'?state.series:state.movies)||[]; for(var i=0;i<a.length;i++){ if(String(a[i].id)===String(key)||a[i].name===key||(BAK.get(a[i])||{}).name===key) return a[i]; } return null; }
+  function addTagline(it){
+    var root=document.getElementById('modalBg'); if(!root||!it) return; var t=own(it,lang,'tagline'); var old=root.querySelector('.ts-tagline'); if(old) old.remove();
+    if(!t) return; var syn=root.querySelector('.synopsis'); if(!syn) return;
+    var d=document.createElement('div'); d.className='ts-tagline'; d.setAttribute('lang',lang); d.textContent=t; syn.parentNode.insertBefore(d,syn);
+  }
+  var OPENERS={ openSeries:function(a){ return state.series[a[0]]; }, openUpcoming:function(a){ return state.series[a[0]]; }, openMovie:function(a){ return state.movies[a[0]]; },
+    openAnimeDetail:function(a){ return findItem(a[0],a[1]); }, openRealityDetail:function(a){ return findItem(a[0],a[1]); } };
+  function wrapOpeners(){
+    Object.keys(OPENERS).forEach(function(n){
+      var f=window[n]; if(typeof f!=='function'||f.__tsI18n) return;
+      var w=function(){ var args=[].slice.call(arguments); LAST={n:n,a:args}; var r=f.apply(this,args); try{ addTagline(OPENERS[n](args)); }catch(e){} return r; };
+      w.__tsI18n=true; window[n]=w;
+    });
+    var rn=window.availCountryName; if(typeof rn==='function'&&!rn.__tsI18n){ var w2=function(c,l){ return rn(c,lang==='en'?'en':l); }; w2.__tsI18n=true; window.availCountryName=w2; }
+  }
+  var RENDER={cal:'renderWeekView',list:'renderList',movies:'renderMovies',upcoming:'renderUpcoming',books:'renderBooks',anime:'renderAnime',realities:'renderRealities',documentales:'renderDocumentales',actresses:'renderActressesTab',top10:'renderTop10',picks2026:'renderPicks2026',ships:'renderShips',canceladas:'renderCanceladas',productoras:'renderProductoras',listas:'renderListas',checklist:'renderChecklist'};
+  function rerender(){
+    var sc=(typeof pageScroller==='function')?pageScroller():null, top=sc?sc.scrollTop:0, mb=document.querySelector('#modalBg .modal-body, #modalBg'), mtop=mb?mb.scrollTop:0;
+    var fn=RENDER[state.tab]; try{ if(fn&&typeof window[fn]==='function') window[fn](); }catch(e){ console.error('i18n rerender',e); }
+    ['renderStats','renderRecentlyAdded','renderChangelog'].forEach(function(n){ try{ if(typeof window[n]==='function') window[n](); }catch(e){} });
+    var modalOpen=document.getElementById('modalBg')&&document.getElementById('modalBg').classList.contains('open');
+    if(modalOpen&&LAST&&typeof window[LAST.n]==='function'){
+      var ps=history.pushState, rs=history.replaceState; history.pushState=function(){}; history.replaceState=function(){};
+      try{ window[LAST.n].apply(null,LAST.a); } catch(e){ console.error('i18n modal',e); } finally{ history.pushState=ps; history.replaceState=rs; }
+      var mb2=document.querySelector('#modalBg .modal-body, #modalBg'); if(mb2) mb2.scrollTop=mtop;
+    }
+    if(sc) sc.scrollTop=top;
+  }
+  function syncUi(){
+    document.documentElement.setAttribute('lang',lang);
+    [].forEach.call(document.querySelectorAll('.lang-switch [data-lang]'),function(b){ var on=b.getAttribute('data-lang')===lang; b.setAttribute('aria-pressed',on?'true':'false'); b.classList.toggle('active',on); });
+  }
+  function setLang(l,opts){
+    if(l!=='es'&&l!=='en') return false; var o=opts||{};
+    if(l===lang&&!o.force){ syncUi(); return true; }
+    var prev=lang; lang=l; window.tsLang=l;
+    try{ localStorage.setItem(KEY,l); }catch(e){}
+    if(prev==='en') undoTree();
+    setArrays(l); projectAll(l); syncUi();
+    if(!o.noRender) rerender();
+    if(l==='en'){ startObs(); doTree(document.body); } else stopObs();
+    fixLabels(document.body);
+    try{ document.dispatchEvent(new CustomEvent('tslangchange',{detail:{lang:l,previous:prev}})); }catch(e){}
+    return true;
+  }
+  function saved(){ try{ var v=localStorage.getItem(KEY); return v==='en'||v==='es'?v:'es'; }catch(e){ return 'es'; } }
+  /* Arranque: lo llama el flujo de carga tras cargar data.json y antes del primer render. */
+  window.__tsI18nBoot=function(){ wrapOpeners(); var l=saved(); if(l==='en') setLang('en',{noRender:true,force:true}); else syncUi(); };
+  window.tsI18n={get lang(){ return lang; },setLang:setLang,tr:function(x){ var r=tr(x); return r==null?x:r; },dict:D,MARK:MARK,
+    missing:function(){ var out={}; var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n; while((n=w.nextNode())){ if(n.__es!==undefined||skipEl(n.parentElement)) continue; var t=norm(n.nodeValue); if(/[a-záéíóúñ]{3}/i.test(t)&&t.length<80) out[t]=1; } return Object.keys(out); }};
+  mergeExtra(); lang=saved(); window.tsLang=lang;
+  document.addEventListener('click',function(e){ var b=e.target.closest&&e.target.closest('.lang-switch [data-lang]'); if(b){ e.preventDefault(); setLang(b.getAttribute('data-lang')); } });
+  if(document.readyState!=='loading') syncUi(); else document.addEventListener('DOMContentLoaded',syncUi);
+  if(lang==='en'){ document.documentElement.setAttribute('lang','en'); setArrays('en'); startObs(); doTree(document.body); }
+})();
+/* ═══ I18N_PUBLIC:END ═══ */
+</script>
 </body>
 </html>
 <script>

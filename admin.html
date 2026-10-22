@@ -917,6 +917,7 @@ h3.salud-title{margin:0;font-size:15px;font-weight:700}
     <button type="button" class="btn small" onclick="tmdbBulkLinkAll(this)" title="Busca en TMDB cada serie/película sin vincular y guarda solo su ID, tipo y valoración — no toca sinopsis, póster ni reparto">🔗 Vincular todas a TMDB</button>
     <button type="button" class="btn small" onclick="tmdbBulkRefreshRatings(this)" title="Vuelve a consultar TMDB para todas las series y películas ya vinculadas, actualiza su valoración y rellena las portadas de episodios que aún falten (sin tocar las que ya tienen)">🔄 Actualizar valoraciones TMDB</button>
     <button type="button" class="btn small" onclick="tmdbBulkUpdateStreaming(this)" title="Consulta TMDB para las series y películas vinculadas y trae todas las regiones de streaming. Primero hace un simulacro con resumen: no guarda nada hasta que pulses Aplicar. No toca watchLinks, network ni networkUrl">🌍 Actualizar streaming regional</button>
+    <button type="button" class="btn small" id="i18bOpenBtn" onclick="tmdbBulkUpdateI18n(this)" title="Consulta TMDB para las series y películas vinculadas y trae los textos disponibles en español e inglés (título, sinopsis, eslogan, tráiler). Primero hace un simulacro con vista previa: no guarda nada hasta que pulses Aplicar. No sobrescribe nada ni toca los datos originales en español">🌐 Actualizar idiomas ES/EN</button>
     <button type="button" class="btn small" onclick="window.open('index.html','_blank')">Ver público</button>
     <div class="export-btn-wrap">
       <button type="button" class="btn export small" id="exportTopBtn" onclick="exportData()">Exportar data.json</button>
@@ -3994,6 +3995,7 @@ async function convertSeriesToMovie(si){
     category:'movie', productoraId:s.productoraId||'',
     streaming:streamingClone(s.streaming),   // 1C.3.2
     ...(s.streamingMeta?{streamingMeta:streamingClone(s.streamingMeta)}:{}),   // 6.7
+    ...(i18nClone(s.i18n)?{i18n:i18nClone(s.i18n)}:{}),   // 13.2: conserva los textos ES/EN al convertir
     updatedAt:new Date().toISOString(),
   };
   movies.push(moviePayload);
@@ -4021,6 +4023,7 @@ async function convertMovieToSeries(mi){
     category:'series', seriesType:'serie', productoraId:mv.productoraId||'',
     streaming:streamingClone(mv.streaming),   // 1C.3.2
     ...(mv.streamingMeta?{streamingMeta:streamingClone(mv.streamingMeta)}:{}),   // 6.7
+    ...(i18nClone(mv.i18n)?{i18n:i18nClone(mv.i18n)}:{}),   // 13.2: conserva los textos ES/EN al convertir
     episodeDuration:mv.duration||'',
     seasons:[{label:'Temporada 1', startDate:mv.date||'', totalEpisodes:1, emissionDays:mv.date?[getDow(mv.date)]:[1], allInOneDay:false, skipDates:[], episodes:[], premiereSchedule:[]}],
     updatedAt:new Date().toISOString(),
@@ -5573,6 +5576,111 @@ function tmdbImpCountExisting(id,kind){   // N.3: cuántas obras comparten ese t
   const f=(arr,def)=>(arr||[]).filter(x=>x&&x.tmdbId!==undefined&&x.tmdbId!==null&&x.tmdbId!==''&&String(x.tmdbId)===sid&&(x.tmdbKind||def)===kind).length;
   return f(series,'tv')+f(movies,'movie');
 }
+/* ═══ I18N_FICHA:BEGIN v1 ═══════════════════════════════════════════════════════════════════════════════════
+   FASE 13.2 — ESTRUCTURA ES/EN DE LAS FICHAS. Solo estructura y funciones puras: NO llama a TMDB, NO migra data.json,
+   NO toca la web pública. Los datos actuales en español siguen en sus campos de siempre.
+
+   Esquema (opcional y aditivo, en series y películas):
+     item.i18n = {
+       es: { title, overview, tagline, trailerUrl, source, fetchedAt },
+       en: { title, overview, tagline, trailerUrl, source, fetchedAt }
+     }
+   - Todos los campos son texto y opcionales. Una ficha sin «i18n» es válida (es el estado de las 786 fichas actuales).
+   - «es» se LEE con respaldo a los campos actuales (name → title, synopsis → overview, trailerUrl). «en» no tiene respaldo.
+   - «nameEn» NO es el título en inglés: es el título en idioma original. Nunca se usa como respaldo de i18n.en.title.
+   - source ('tmdb' | 'manual') y fetchedAt (AAAA-MM-DD o ISO) documentan el origen de cada idioma.
+   - Los episodios (seasons[].episodes[]) quedan FUERA de esta fase.
+   - Identidad de la obra: tmdbKind + tmdbId (nunca el nombre). tmdbId puede estar guardado como número o como texto. */
+const I18N_LANGS=['es','en'];
+const I18N_TEXT_FIELDS=['title','overview','tagline','trailerUrl'];
+const I18N_META_FIELDS=['source','fetchedAt'];
+const I18N_LEGACY={es:{title:'name',overview:'synopsis',trailerUrl:'trailerUrl'}};
+function _i18nIsObj(v){ return v!==null&&typeof v==='object'&&!Array.isArray(v); }
+function _i18nHas(o,k){ return Object.prototype.hasOwnProperty.call(o,k); }
+function _i18nStr(v){ return typeof v==='string'?v.trim():''; }
+/* Lectura: i18n[lang][field]; solo para «es», respaldo a los campos actuales. Nunca lanza ni modifica. */
+function i18nGet(item,lang,field){
+  if(!_i18nIsObj(item)||I18N_LANGS.indexOf(lang)<0||I18N_TEXT_FIELDS.indexOf(field)<0) return '';
+  const own=(_i18nIsObj(item.i18n)&&_i18nIsObj(item.i18n[lang]))?_i18nStr(item.i18n[lang][field]):'';
+  if(own) return own;
+  const lg=I18N_LEGACY[lang]&&I18N_LEGACY[lang][field];
+  return lg?_i18nStr(item[lg]):'';
+}
+/* Escritura SIN sobrescribir: solo rellena campos que ahora mismo están vacíos (contando el respaldo de «es»).
+   - opts.overwrite===true permite reemplazar (solo i18n; los campos actuales name/synopsis/trailerUrl no se tocan nunca).
+   - Valores vacíos o no-texto, idiomas o campos desconocidos: se rechazan sin escribir nada.
+   - Si nada se aplica, la ficha queda exactamente igual (no se crea un «i18n» vacío).
+   - Si «i18n» ya existe pero está mal formado, no se pisa: se rechaza.
+   Devuelve {applied:[], skipped:[], rejected:[]}. */
+function i18nSet(item,lang,values,opts){
+  const o=opts||{}, res={applied:[],skipped:[],rejected:[]};
+  if(!_i18nIsObj(item)||I18N_LANGS.indexOf(lang)<0||!_i18nIsObj(values)){ res.rejected.push('argumentos'); return res; }
+  const patch={};
+  Object.keys(values).forEach(f=>{
+    if(I18N_TEXT_FIELDS.indexOf(f)<0){ res.rejected.push('campo desconocido: '+f); return; }
+    const v=values[f];
+    if(typeof v!=='string'||!v.trim()){ res.rejected.push(f+' vacío o no es texto'); return; }
+    if(i18nGet(item,lang,f)&&o.overwrite!==true){ res.skipped.push(f); return; }
+    patch[f]=v.trim();
+  });
+  const keys=Object.keys(patch);
+  if(!keys.length) return res;
+  if(item.i18n!==undefined&&item.i18n!==null&&!_i18nIsObj(item.i18n)){ res.rejected.push('i18n existente mal formado'); return res; }
+  if(item.i18n&&item.i18n[lang]!==undefined&&item.i18n[lang]!==null&&!_i18nIsObj(item.i18n[lang])){ res.rejected.push('i18n.'+lang+' existente mal formado'); return res; }
+  if(!_i18nIsObj(item.i18n)) item.i18n={};
+  if(!_i18nIsObj(item.i18n[lang])) item.i18n[lang]={};
+  const t=item.i18n[lang];
+  keys.forEach(f=>{ t[f]=patch[f]; res.applied.push(f); });
+  if(typeof o.source==='string'&&o.source) t.source=o.source;
+  if(typeof o.fetchedAt==='string'&&o.fetchedAt) t.fetchedAt=o.fetchedAt;
+  return res;
+}
+/* Validación de forma (solo lectura). Devuelve [{code,msg,path}]; vacío = válido. Ausente (undefined/null) = válido. */
+function i18nValidate(item){
+  const out=[];
+  if(!_i18nIsObj(item)||item.i18n===undefined||item.i18n===null) return out;
+  const add=(code,msg,path)=>out.push({code:code,msg:msg,path:path||''});
+  if(!_i18nIsObj(item.i18n)){ add('type','«i18n» debe ser un objeto {es, en}.','i18n'); return out; }
+  Object.keys(item.i18n).forEach(l=>{
+    if(I18N_LANGS.indexOf(l)<0){ add('lang','Idioma no admitido en «i18n»: «'+l+'» (solo es, en).','i18n.'+l); return; }
+    const t=item.i18n[l];
+    if(!_i18nIsObj(t)){ add('type-'+l,'«i18n.'+l+'» debe ser un objeto.','i18n.'+l); return; }
+    Object.keys(t).forEach(f=>{
+      const known=I18N_TEXT_FIELDS.indexOf(f)>=0||I18N_META_FIELDS.indexOf(f)>=0;
+      if(!known){ add('field','Campo no admitido «i18n.'+l+'.'+f+'».','i18n.'+l+'.'+f); return; }
+      if(typeof t[f]!=='string'){ add('text','«i18n.'+l+'.'+f+'» debe ser texto.','i18n.'+l+'.'+f); return; }
+      if(f==='fetchedAt'&&t[f]&&!/^\d{4}-\d{2}-\d{2}(T[\w:.+\-]+)?$/.test(t[f])) add('date','«i18n.'+l+'.fetchedAt» no es una fecha válida (AAAA-MM-DD).','i18n.'+l+'.fetchedAt');
+    });
+  });
+  return out;
+}
+/* Copia profunda para conversiones serie↔película. Devuelve undefined si no hay nada válido que copiar. */
+function i18nClone(i18n){
+  if(!_i18nIsObj(i18n)) return undefined;
+  try{ return JSON.parse(JSON.stringify(i18n)); }catch(e){ return undefined; }
+}
+/* Identidad de la obra: «tv:123» / «movie:456». '' si no hay tmdbId válido. Acepta número o texto numérico. */
+function i18nTmdbKey(item,defKind){
+  if(!_i18nIsObj(item)) return '';
+  const raw=item.tmdbId;
+  let n=NaN;
+  if(typeof raw==='number') n=raw; else if(typeof raw==='string'&&/^\s*\d{1,12}\s*$/.test(raw)) n=Number(raw.trim());
+  if(!Number.isSafeInteger(n)||n<=0) return '';
+  const k=String(item.tmdbKind||'').trim().toLowerCase();
+  const kind=(k==='tv'||k==='movie')?k:defKind;
+  return (kind==='tv'||kind==='movie')?kind+':'+n:'';
+}
+/* Grupos de fichas que comparten tmdbKind+tmdbId. Solo lectura. */
+function i18nFindTmdbDuplicates(seriesArr,moviesArr){
+  const map={};
+  const scan=(arr,coll,def)=>(Array.isArray(arr)?arr:[]).forEach(x=>{
+    const k=i18nTmdbKey(x,def); if(!k) return;
+    (map[k]=map[k]||[]).push({coll:coll,id:_i18nIsObj(x)&&x.id!=null?String(x.id):'',name:_i18nIsObj(x)?String(x.name||''):''});
+  });
+  scan(seriesArr,'series','tv'); scan(moviesArr,'movies','movie');
+  return Object.keys(map).filter(k=>map[k].length>1).map(k=>({key:k,items:map[k]}));
+}
+/* ═══ I18N_FICHA:END ═══ */
 /* ═══ 1C.2 — Normalización de plataformas y URL estándar (aislado) ═══
    Fuente de verdad de URLs: PLATFORMS. Sin includes() indiscriminado: coincidencia exacta de nombre normalizado + alias explícitos. */
 const TMDB_PROVIDER_ALIASES={amazonprimevideo:'Prime Video',primevideo:'Prime Video',amazonvideo:'Prime Video',disneyplus:'Disney+',appletvplus:'Apple TV+',rakutenviki:'Viki'};
@@ -6987,6 +7095,368 @@ function streamBatchApplyClick(){
   streamBatchRender();
 }
 /* ═══ FIN S7 ═══ */
+
+/* ═══ I18N_BATCH:BEGIN v1 ═══════════════════════════════════════════════════════════════════════════════════
+   FASE 13.3 — ACTUALIZACIÓN DE IDIOMAS (ES/EN) DESDE ADMIN. Botón «🌐 Actualizar idiomas ES/EN».
+   Mismo recorrido que S7 (streaming): 1) intro con las fichas y campos que se pueden completar, 2) SIMULACRO (consulta TMDB, no escribe
+   nada en las fichas), 3) vista previa por ficha y campo, 4) «Aplicar» (solo si el usuario confirma) con un único save().
+   - Una petición por ficha vinculada (kind+id válidos) a /tv|movie/{id}?append_to_response=translations,videos. Las traducciones de TMDB
+     son la fuente: así un título «en inglés» nunca es el título original de otro idioma que TMDB devuelve como respaldo.
+   - Escribe SOLO item.i18n.es / item.i18n.en a través de i18nSet (13.2) y SIN overwrite: un campo que ya tiene valor no se toca.
+   - name, nameEn, synopsis, trailerUrl, valoraciones, miniaturas, streaming, watchLinks, network, updatedAt y la exportación no se modifican.
+   - Una respuesta vacía de TMDB nunca escribe nada («no disponible»). Los textos originales en español (name/synopsis/trailerUrl) se conservan:
+     si TMDB propone otro texto en español se muestra como «original conservado» y no se guarda.
+   - Errores por ficha (red, 404, 429, 401) visibles en la vista previa; «Detener»/«Cancelar»/«Cerrar sin aplicar» no modifican ninguna ficha.
+   - Aplicar es todo-o-nada: se recalcula contra el estado ACTUAL de cada ficha y, si algo falla, se restaura lo ya tocado. Nada se exporta ni se publica. */
+let I18B_PAUSE_MS=250, I18B_MAX_RETRIES=3, I18B_WAIT_SCALE=1;
+const I18B_FIELD_LABEL={title:'Título',overview:'Sinopsis',tagline:'Eslogan',trailerUrl:'Tráiler'};
+const I18B_LANG_LABEL={es:'Español',en:'Inglés'};
+const I18B_STATUS_LABEL={new:'encontrado · se guardará',same:'ya igual',kept:'original en español conservado',differs:'ya tiene otro valor · no se sobrescribe',missing:'no disponible en TMDB'};
+const I18B_REGION_PREF={es:['ES','MX','AR','CO','CL','PE','US'],en:['US','GB','CA','AU']};
+let _i18b=null;
+const i18bSleep=ms=>new Promise(res=>setTimeout(res,ms));
+function i18bNorm(s){ return String(s==null?'':s).replace(/\s+/g,' ').trim(); }
+function i18bYtId(u){
+  const m=String(u||'').match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:[^#]*&)?v=|embed\/|shorts\/))([\w-]{6,20})/i);
+  return m?m[1]:'';
+}
+/* Objetivos: fichas con tmdbId válido (kind del campo tmdbKind, o tv/movie según la colección). */
+function i18bTargets(){
+  const list=[]; let noId=0;
+  [['series',series,'tv'],['movies',movies,'movie']].forEach(([coll,arr,def])=>{
+    (Array.isArray(arr)?arr:[]).forEach(item=>{
+      if(!_i18nIsObj(item)) return;
+      const id=streamBatchValidId(item.tmdbId);
+      if(!id){ noId++; return; }
+      const k=String(item.tmdbKind||'').trim().toLowerCase(), kind=(k==='tv'||k==='movie')?k:def;
+      list.push({item,coll,kind,id});
+    });
+  });
+  return {list,noId};
+}
+/* Huecos actuales de una ficha (el español cuenta su respaldo name/synopsis/trailerUrl). Solo lectura. */
+function i18bGaps(item){
+  const g={es:[],en:[]};
+  I18N_LANGS.forEach(l=>I18N_TEXT_FIELDS.forEach(f=>{ if(!i18nGet(item,l,f)) g[l].push(f); }));
+  return g;
+}
+function i18bHasGap(item){ const g=i18bGaps(item); return g.es.length>0||g.en.length>0; }
+/* Traducción de TMDB por campo: {title:{value,region},overview:{…},tagline:{…}}. null = estructura ausente/ilegible; {} = sin traducción en ese idioma. */
+function i18bPickTranslation(d,lang){
+  const arr=(d&&_i18nIsObj(d.translations)&&Array.isArray(d.translations.translations))?d.translations.translations:null;
+  if(!arr) return null;
+  const cand=arr.filter(t=>_i18nIsObj(t)&&t.iso_639_1===lang&&_i18nIsObj(t.data));
+  const pref=I18B_REGION_PREF[lang]||[];
+  const rank=t=>{ const i=pref.indexOf(String(t.iso_3166_1||'').toUpperCase()); return i<0?pref.length:i; };
+  const sorted=cand.map((t,i)=>({t,i})).sort((a,b)=>rank(a.t)-rank(b.t)||a.i-b.i).map(x=>x.t);
+  const out={};
+  ['title','overview','tagline'].forEach(f=>{
+    for(const t of sorted){
+      const raw=f==='title'?(t.data.title||t.data.name):t.data[f];
+      const v=typeof raw==='string'?raw.trim():'';
+      if(v){ out[f]={value:v,region:String(t.iso_3166_1||'').toUpperCase()}; break; }
+    }
+  });
+  return out;
+}
+/* Tráiler de YouTube en ese idioma (nunca uno de otro idioma). null = sin lista de vídeos; '' = sin tráiler en ese idioma. */
+function i18bPickTrailer(d,lang){
+  const vids=(d&&_i18nIsObj(d.videos)&&Array.isArray(d.videos.results))?d.videos.results:null;
+  if(!vids) return null;
+  const c=vids.filter(v=>_i18nIsObj(v)&&v.site==='YouTube'&&typeof v.key==='string'&&/^[\w-]{6,20}$/.test(v.key)&&v.iso_639_1===lang);
+  const v=c.find(x=>x.type==='Trailer'&&x.official)||c.find(x=>x.type==='Trailer')||c.find(x=>x.type==='Teaser');
+  return v?'https://www.youtube.com/watch?v='+v.key:'';
+}
+/* ¿El título de la ficha se parece a ALGÚN título que TMDB conoce (nombre de la respuesta, original o cualquier traducción)? Evita marcar como
+   dudosa una ficha con título en español solo porque la respuesta principal viene en inglés. Sin nombres comparables → no se marca. */
+function i18bNameMatches(item,d){
+  if(streamBatchNameCheck(item,d)) return true;
+  const arr=(_i18nIsObj(d.translations)&&Array.isArray(d.translations.translations))?d.translations.translations:[];
+  return arr.some(t=>{
+    if(!_i18nIsObj(t)||!_i18nIsObj(t.data)) return false;
+    const n=t.data.title||t.data.name; if(typeof n!=='string'||!n.trim()) return false;
+    return streamBatchNameCheck(item,{name:n});
+  });
+}
+/* PURA: evalúa la respuesta de TMDB para una ficha sin escribir nada.
+   outcome: update | unchanged | nodata | dubious | blocked.  fields[lang][campo] = {status,found,region,current}
+   status: new (se guardará) | same | kept (original en español) | differs (otro valor, no se sobrescribe) | missing (TMDB no lo tiene) */
+function i18bEvaluate(item,d){
+  const rec={outcome:'nodata',reason:'',fields:{es:{},en:{}},counts:{new:0,same:0,kept:0,differs:0,missing:0},include:false};
+  const bad=i18nValidate(item);
+  if(bad.length){ rec.outcome='blocked'; rec.reason='la ficha tiene un «i18n» no válido y no se toca: '+bad[0].msg; return rec; }
+  const tr={es:i18bPickTranslation(d,'es'),en:i18bPickTranslation(d,'en')};
+  const vi={es:i18bPickTrailer(d,'es'),en:i18bPickTrailer(d,'en')};
+  if(tr.es===null&&tr.en===null&&vi.es===null&&vi.en===null){ rec.reason='TMDB no devolvió traducciones ni vídeos (estructura ausente o no válida)'; return rec; }
+  I18N_LANGS.forEach(l=>{
+    I18N_TEXT_FIELDS.forEach(f=>{
+      let found='', region='';
+      if(f==='trailerUrl'){ found=vi[l]||''; }
+      else if(tr[l]&&tr[l][f]){ found=tr[l][f].value; region=tr[l][f].region; }
+      const cur=i18nGet(item,l,f);
+      const own=(_i18nIsObj(item.i18n)&&_i18nIsObj(item.i18n[l]))?_i18nStr(item.i18n[l][f]):'';
+      let st;
+      if(!found) st='missing';
+      else if(!cur) st='new';
+      else if(f==='trailerUrl'?(i18bYtId(cur)&&i18bYtId(cur)===i18bYtId(found))||i18bNorm(cur)===i18bNorm(found):i18bNorm(cur)===i18bNorm(found)) st='same';
+      else if(l==='es'&&!own) st='kept';
+      else st='differs';
+      rec.fields[l][f]={status:st,found,region,current:cur};
+      rec.counts[st]++;
+    });
+  });
+  if(rec.counts.new>0){
+    if(!i18bNameMatches(item,d||{})){
+      rec.outcome='dubious'; rec.include=false;
+      rec.reason='el título de TMDB («'+((d&&(d.name||d.title||d.original_name||d.original_title))||'?')+'») no se parece al de la ficha: posible vínculo erróneo';
+    } else { rec.outcome='update'; rec.include=true; }
+    return rec;
+  }
+  const found=rec.counts.same+rec.counts.kept+rec.counts.differs;
+  if(!found){ rec.reason='TMDB no tiene traducción ni tráiler en español ni en inglés para esta obra'; return rec; }
+  rec.outcome='unchanged';
+  rec.reason=rec.counts.differs?'sin campos nuevos; '+rec.counts.differs+' campo(s) ya tienen otro valor y no se sobrescriben':'todo lo disponible ya estaba guardado';
+  return rec;
+}
+async function i18bFetch(kind,id,key){
+  for(let attempt=0;;attempt++){
+    let r;
+    try{ r=await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=en-US&append_to_response=translations,videos&include_video_language=es,en`); }
+    catch(e){ return {error:'error de red'}; }
+    if(r.status===401){ const e=new Error('401'); e.fatal=true; throw e; }
+    if(r.status===429){
+      if(attempt>=I18B_MAX_RETRIES) return {error:'límite de peticiones de TMDB (429) tras '+I18B_MAX_RETRIES+' reintentos'};
+      const ra=parseFloat(r.headers.get('Retry-After'));
+      await i18bSleep(Math.min(Math.max(isFinite(ra)?ra:2*(attempt+1),1),30)*1000*I18B_WAIT_SCALE);
+      continue;
+    }
+    if(r.status===404) return {error:'no encontrada en TMDB (404): id o tipo incorrectos'};
+    if(!r.ok) return {error:'error HTTP '+r.status};
+    try{ return {d:await r.json()}; }catch(e){ return {error:'respuesta ilegible'}; }
+  }
+}
+/* Fusiona valores en tmp.i18n[lang] SIN sobrescribir (i18nSet). source/fetchedAt solo se tocan si el bloque es nuevo o ya era de TMDB. */
+function i18bMergeLang(tmp,lang,values,today){
+  const blk=(_i18nIsObj(tmp.i18n)&&_i18nIsObj(tmp.i18n[lang]))?tmp.i18n[lang]:null;
+  const hadOwn=!!blk&&I18N_TEXT_FIELDS.some(f=>_i18nStr(blk[f]));
+  const res=i18nSet(tmp,lang,values,{});
+  if(res.applied.length){
+    const t=tmp.i18n[lang];
+    if(!hadOwn){ t.source='tmdb'; t.fetchedAt=today; }
+    else if(t.source==='tmdb'){ t.fetchedAt=today; }
+  }
+  return res;
+}
+/* Aplica todo o nada. Recalcula con el estado ACTUAL de cada ficha: lo que ya tenga valor se salta (i18nSet sin overwrite). */
+function i18bApply(results,today){
+  const plan=[], skipped=[];
+  results.forEach(r=>{
+    if(!((r.outcome==='update'||r.outcome==='dubious')&&r.include)) return;
+    const item=r.t.item, arr=r.t.coll==='series'?series:movies;
+    if(arr.indexOf(item)<0||streamBatchValidId(item.tmdbId)!==r.t.id){ skipped.push({r,why:'la ficha cambió durante el simulacro'}); return; }
+    if(i18nValidate(item).length){ skipped.push({r,why:'«i18n» existente no válido'}); return; }
+    const tmp={name:item.name,synopsis:item.synopsis,trailerUrl:item.trailerUrl,i18n:i18nClone(item.i18n)};
+    let applied=0; const rejected=[];
+    I18N_LANGS.forEach(l=>{
+      const vals={};
+      I18N_TEXT_FIELDS.forEach(f=>{ const x=r.fields[l][f]; if(x&&x.status==='new'&&typeof x.found==='string'&&x.found.trim()) vals[f]=x.found; });
+      if(!Object.keys(vals).length) return;
+      const res=i18bMergeLang(tmp,l,vals,today);
+      applied+=res.applied.length; res.rejected.forEach(x=>rejected.push(x));
+    });
+    if(rejected.length){ skipped.push({r,why:'rechazada ('+rejected.join('; ')+')'}); return; }
+    if(!applied){ skipped.push({r,why:'ya estaba al día'}); return; }
+    if(i18nValidate(tmp).length){ skipped.push({r,why:'el resultado no cumple la estructura ES/EN'}); return; }
+    plan.push({item,i18n:tmp.i18n,applied,keep:{name:item.name,nameEn:item.nameEn,synopsis:item.synopsis,trailerUrl:item.trailerUrl,updatedAt:item.updatedAt}});
+  });
+  const snap=plan.map(p=>({item:p.item,had:Object.prototype.hasOwnProperty.call(p.item,'i18n'),v:p.item.i18n}));
+  try{
+    plan.forEach(p=>{ p.item.i18n=p.i18n; });
+    plan.forEach(p=>{
+      if(streamBatchStable(p.item.i18n)!==streamBatchStable(p.i18n)) throw new Error('verificación fallida');
+      Object.keys(p.keep).forEach(k=>{ if(p.item[k]!==p.keep[k]) throw new Error('un campo original cambió: '+k); });
+    });
+  }catch(e){
+    snap.forEach(x=>{ if(x.had) x.item.i18n=x.v; else delete x.item.i18n; });
+    throw e;
+  }
+  return {applied:plan.length,fields:plan.reduce((n,p)=>n+p.applied,0),skipped};
+}
+/* ── Interfaz ── */
+function i18bEnsureModal(){
+  let bg=document.getElementById('i18bBg');
+  if(!bg){
+    bg=document.createElement('div'); bg.id='i18bBg'; bg.className='modal-bg';
+    bg.innerHTML='<div class="modal" role="dialog" aria-modal="true" aria-labelledby="i18bTitle" tabindex="-1" style="max-width:820px"><div class="modal-header"><div style="font-size:18px;font-weight:800" id="i18bTitle"></div></div><div id="i18bBody" style="padding:1rem 1.75rem;font-size:13px;line-height:1.5"></div><div id="i18bBtns" class="btn-row" style="padding:10px 1.75rem 1.1rem;margin-top:0;flex-wrap:wrap;position:sticky;bottom:0;background:var(--surface);border-top:1px solid var(--border2)"></div></div>';
+    document.body.appendChild(bg);
+    document.addEventListener('keydown',function(e){
+      if(e.key!=='Escape'||!_i18b||!bg.classList.contains('open')) return;
+      e.preventDefault(); e.stopPropagation();
+      if(_i18b.phase==='running') i18bStop(); else i18bClose();
+    },true);
+  }
+  return bg;
+}
+function i18bCounts(S){
+  const c={update:0,unchanged:0,nodata:0,dubious:0,blocked:0,error:0};
+  const f={}; I18N_LANGS.forEach(l=>I18N_TEXT_FIELDS.forEach(k=>{ f[l+'.'+k]={new:0,same:0,kept:0,differs:0,missing:0}; }));
+  S.results.forEach(r=>{
+    c[r.outcome]++;
+    if(r.fields&&r.outcome!=='error'&&r.outcome!=='blocked') I18N_LANGS.forEach(l=>I18N_TEXT_FIELDS.forEach(k=>{ const x=r.fields[l][k]; if(x) f[l+'.'+k][x.status]++; }));
+  });
+  return {c,f};
+}
+function i18bShort(v,n){ const s=i18bNorm(v); return s.length>n?s.slice(0,n-1)+'…':s; }
+function i18bFichaLabel(r){ const E=escapeHtml; return '<b>'+E(r.t.item.name||'(sin nombre)')+'</b> <span style="color:var(--muted)">['+(r.t.coll==='series'?'serie':'película')+' · '+E(r.t.kind)+'/'+E(r.t.id)+']</span>'; }
+function i18bFichaDetail(r){
+  const E=escapeHtml, col={new:'var(--success)',same:'var(--muted)',kept:'#b06a00',differs:'#b06a00',missing:'var(--muted)'};
+  let rows='', miss=[];
+  I18N_LANGS.forEach(l=>I18N_TEXT_FIELDS.forEach(f=>{
+    const x=r.fields[l][f]; if(!x) return;
+    if(x.status==='missing'){ miss.push(I18B_FIELD_LABEL[f]+' ('+l.toUpperCase()+')'); return; }
+    rows+='<div style="margin:3px 0"><b>'+E(I18B_LANG_LABEL[l])+' · '+E(I18B_FIELD_LABEL[f])+'</b> — <span style="color:'+col[x.status]+';font-weight:700">'+E(I18B_STATUS_LABEL[x.status])+'</span>'
+      +(x.region?' <span style="color:var(--muted)">('+E(l+'-'+x.region)+')</span>':'')
+      +'<div style="color:var(--text)">TMDB: '+E(i18bShort(x.found,160))+'</div>'
+      +((x.status==='kept'||x.status==='differs')?'<div style="color:var(--muted)">Guardado: '+E(i18bShort(x.current,160))+'</div>':'')+'</div>';
+  }));
+  if(miss.length) rows+='<div style="margin:3px 0;color:var(--muted)"><b>No disponible en TMDB:</b> '+E(miss.join(', '))+'</div>';
+  return rows;
+}
+function i18bNewCount(r,l){ return I18N_TEXT_FIELDS.filter(f=>r.fields[l][f]&&r.fields[l][f].status==='new').length; }
+function i18bNApply(S){ return S.results.filter(r=>(r.outcome==='update'||r.outcome==='dubious')&&r.include).length; }
+function i18bRender(){
+  const S=_i18b; if(!S) return;
+  const bg=i18bEnsureModal(), title=document.getElementById('i18bTitle'), body=document.getElementById('i18bBody'), btns=document.getElementById('i18bBtns');
+  const E=escapeHtml; bg.classList.add('open'); if(S.phase!=='running') delete btns.dataset.k;
+  const btn=(label,fn,cls,dis,id)=>'<button type="button" class="btn '+(cls||'')+'"'+(id?' id="'+id+'"':'')+(dis?' disabled':'')+' onclick="'+fn+'">'+label+'</button>';
+  if(S.phase==='intro'){
+    title.textContent='🌐 Actualizar idiomas ES/EN';
+    const T=S.targets, st={}; I18N_TEXT_FIELDS.forEach(f=>{ st[f]={es:0,en:0}; });
+    let withGap=0, withEn=0; const gapList=[];
+    T.forEach(t=>{ const g=i18bGaps(t.item); if(g.es.length||g.en.length){ withGap++; gapList.push({t,g}); } g.es.forEach(f=>st[f].es++); g.en.forEach(f=>st[f].en++); if(_i18nIsObj(t.item.i18n)&&_i18nIsObj(t.item.i18n.en)) withEn++; });
+    const dup=i18nFindTmdbDuplicates(series,movies).length;
+    let h='<p>Se consultará TMDB (una petición por ficha, con pausa) para traer los <b>textos disponibles en español e inglés</b>. Cada ficha guardará dos bloques dentro de sí misma: <code>i18n.es</code> e <code>i18n.en</code>. <b>No se guarda nada todavía</b>: primero verás, ficha por ficha y campo por campo, qué se ha encontrado y qué no, y decides si aplicarlo.</p>';
+    h+='<p>Fichas vinculadas a TMDB con id válido: <b>'+T.length+'</b> ('+T.filter(t=>t.coll==='series').length+' series, '+T.filter(t=>t.coll==='movies').length+' películas)'+(S.noId?' · sin id válido (se ignoran): '+S.noId:'')+' · con bloque inglés ya creado: <b>'+withEn+'</b>'+(dup?' · obras repetidas por id: '+dup+' (se consultan una vez)':'')+'.</p>';
+    h+='<div style="overflow-x:auto;margin:6px 0"><table style="border-collapse:collapse;width:100%;min-width:360px;font-size:12px"><thead><tr><th style="text-align:left;padding:3px 6px;border-bottom:1.5px solid var(--border2)">Campo que se puede completar</th><th style="padding:3px 6px;border-bottom:1.5px solid var(--border2)">Español: fichas con hueco</th><th style="padding:3px 6px;border-bottom:1.5px solid var(--border2)">Inglés: fichas con hueco</th></tr></thead><tbody>'
+      +I18N_TEXT_FIELDS.map(f=>'<tr><td style="padding:3px 6px">'+E(I18B_FIELD_LABEL[f])+'</td><td style="text-align:center;padding:3px 6px">'+st[f].es+'</td><td style="text-align:center;padding:3px 6px">'+st[f].en+'</td></tr>').join('')+'</tbody></table></div>';
+    h+='<p style="color:var(--muted)">En español, título, sinopsis y tráiler ya existen en cada ficha (<code>name</code>, <code>synopsis</code>, <code>trailerUrl</code>): <b>se conservan tal cual</b> y solo se completarán los huecos. Nada se sobrescribe: un campo con valor no se toca y una respuesta vacía de TMDB no escribe nada.</p>';
+    h+='<p>Solo se tocan <code>i18n.es</code> e <code>i18n.en</code>. Valoraciones, miniaturas, streaming, <code>watchLinks</code>, <code>network</code>, <code>networkUrl</code> y la exportación no se modifican. Nada se exporta ni se publica.</p>';
+    if(gapList.length) h+='<details style="margin:6px 0"><summary style="cursor:pointer"><b>Fichas con algún hueco ('+gapList.length+')</b></summary><div style="max-height:180px;overflow:auto;margin-top:4px;font-size:12px">'+gapList.slice(0,200).map(x=>'<div>'+E(x.t.item.name||'(sin nombre)')+' <span style="color:var(--muted)">— ES: '+(x.g.es.map(f=>I18B_FIELD_LABEL[f]).join(', ')||'completo')+' · EN: '+(x.g.en.map(f=>I18B_FIELD_LABEL[f]).join(', ')||'completo')+'</span></div>').join('')+(gapList.length>200?'<div style="color:var(--muted)">… y '+(gapList.length-200)+' más</div>':'')+'</div></details>';
+    h+='<label style="display:block;margin-top:8px"><input type="checkbox" id="i18bOnlyGaps" checked> Consultar solo las fichas con algún hueco (omite las ya completas)</label>';
+    h+='<label style="display:block;margin-top:6px">Procesar solo las primeras <input type="number" id="i18bLimit" min="1" max="'+Math.max(T.length,1)+'" placeholder="todas" style="width:90px;padding:4px 8px;border-radius:8px;border:1.5px solid var(--border2)"> fichas (vacío = todas; recomendado: prueba piloto de 3–5)</label>';
+    if(S.msg) h+='<p style="color:var(--danger);font-weight:700">'+E(S.msg)+'</p>';
+    body.innerHTML=h;
+    btns.innerHTML=btn('Cancelar','i18bClose()')+btn('Iniciar simulacro','i18bStart()','primary',!T.length,'i18bPrimary');
+  } else if(S.phase==='running'){
+    title.textContent='Simulacro en curso…';
+    const n=S.run.length, d=S.results.length;
+    body.innerHTML='<p>Consultando ficha <b>'+Math.min(d+1,n)+'</b> de <b>'+n+'</b>. Todavía no se ha modificado ninguna ficha.</p><div style="height:8px;border-radius:6px;background:var(--surface2);overflow:hidden"><div style="height:100%;width:'+(n?Math.round(d/n*100):0)+'%;background:var(--accent)"></div></div>';
+    const bk='running'+(S.stop?'1':'0'); if(btns.dataset.k!==bk){ btns.dataset.k=bk; btns.innerHTML=btn(S.stop?'Deteniendo…':'Detener','i18bStop()','',S.stop,'i18bStopBtn'); }
+  } else if(S.phase==='preview'||S.phase==='done'){
+    const {c,f}=i18bCounts(S), done=S.phase==='done', total=S.results.length;
+    title.textContent=done?'✓ Idiomas aplicados':'Vista previa — sin guardar';
+    let h='';
+    if(S.fatal) h+='<p style="color:var(--danger);font-weight:700">⛔ '+E(S.fatal)+'</p>';
+    if(S.stopped) h+='<p style="color:var(--danger)">Simulacro detenido: solo se muestran las '+total+' fichas ya consultadas.</p>';
+    h+='<p><b>Fichas consultadas: '+total+'</b> = '+c.update+' con datos nuevos · '+c.unchanged+' sin cambios · '+c.nodata+' sin datos de TMDB · '+c.dubious+' con vínculo dudoso · '+c.blocked+' bloqueadas · '+c.error+' con error.</p>';
+    h+='<div style="overflow-x:auto;margin:6px 0"><table style="border-collapse:collapse;width:100%;min-width:360px;font-size:12px"><thead><tr><th style="text-align:left;padding:3px 6px;border-bottom:1.5px solid var(--border2)">Idioma · campo</th><th style="padding:3px 6px;border-bottom:1.5px solid var(--border2);color:var(--success)">Nuevos</th><th style="padding:3px 6px;border-bottom:1.5px solid var(--border2)">Ya iguales</th><th style="padding:3px 6px;border-bottom:1.5px solid var(--border2)">Original ES</th><th style="padding:3px 6px;border-bottom:1.5px solid var(--border2)">Otro valor</th><th style="padding:3px 6px;border-bottom:1.5px solid var(--border2)">No disponible</th></tr></thead><tbody>'
+      +I18N_LANGS.map(l=>I18N_TEXT_FIELDS.map(k=>{ const x=f[l+'.'+k]; return '<tr><td style="padding:3px 6px">'+E(I18B_LANG_LABEL[l])+' · '+E(I18B_FIELD_LABEL[k])+'</td><td style="text-align:center;padding:3px 6px;color:var(--success);font-weight:700">'+x.new+'</td><td style="text-align:center;padding:3px 6px">'+x.same+'</td><td style="text-align:center;padding:3px 6px">'+x.kept+'</td><td style="text-align:center;padding:3px 6px">'+x.differs+'</td><td style="text-align:center;padding:3px 6px">'+x.missing+'</td></tr>'; }).join('')).join('')+'</tbody></table></div><p style="font-size:11.5px;color:var(--muted);margin:0 0 6px"><b>Original ES</b>: el texto español de la ficha se conserva y TMDB propone otro. <b>Otro valor</b>: ya hay un texto distinto guardado y no se sobrescribe. <b>No disponible</b>: TMDB no lo tiene (no se escribe nada).</p>';
+    if(done){
+      h+='<p style="padding:8px 12px;border-radius:10px;background:var(--surface2)"><b>Aplicado a '+S.applied.applied+' ficha(s) ('+S.applied.fields+' campo(s) nuevos)</b>'+(S.applied.skipped.length?' · '+S.applied.skipped.length+' omitida(s) ('+E(S.applied.skipped.map(x=>(x.r.t.item.name||'(sin nombre)')+': '+x.why).join('; '))+')':'')+'. Los cambios están solo en memoria: <b>exporta data.json</b> para conservarlos. No se ha publicado nada.</p>';
+    }
+    const ups=S.results.map((r,i)=>[r,i]).filter(([r])=>r.outcome==='update'||r.outcome==='dubious');
+    if(ups.length){
+      h+='<div style="margin:8px 0 4px"><b>Fichas con datos para guardar ('+ups.length+')</b>'+(done?'':' <button type="button" class="btn small" onclick="i18bToggleAll(true)">Marcar todas</button> <button type="button" class="btn small" onclick="i18bToggleAll(false)">Desmarcar todas</button>')+'</div>';
+      h+='<div style="max-height:300px;overflow:auto;border:1.5px solid var(--border2);border-radius:10px;padding:4px 8px">'+ups.map(([r,i])=>{
+        const sum='EN +'+i18bNewCount(r,'en')+' · ES +'+i18bNewCount(r,'es')+(r.counts.missing?' · '+r.counts.missing+' no disponible(s)':'');
+        return '<details style="margin:4px 0"><summary style="cursor:pointer">'
+          +(done?'':'<input type="checkbox" class="i18b-chk" data-i="'+i+'" '+(r.include?'checked ':'')+'onclick="event.stopPropagation()" onchange="i18bToggle('+i+',this.checked)" aria-label="Aplicar a '+E(r.t.item.name||'')+'"> ')
+          +i18bFichaLabel(r)+' — '+E(sum)+(r.outcome==='dubious'?' <span style="color:var(--danger);font-weight:700">⚠ vínculo dudoso</span>':'')+'</summary>'
+          +'<div style="margin:4px 0 6px 22px;font-size:12px">'+(r.outcome==='dubious'?'<div style="color:var(--danger)">'+E(r.reason)+'. Desmarcada por defecto.</div>':'')+i18bFichaDetail(r)+'</div></details>';
+      }).join('')+'</div>';
+    }
+    const probs=S.results.filter(r=>r.outcome==='nodata'||r.outcome==='unchanged'||r.outcome==='blocked'||r.outcome==='error');
+    if(probs.length){
+      const lab={nodata:'sin datos',unchanged:'sin cambios',blocked:'bloqueada',error:'error'};
+      const errs=probs.filter(r=>r.outcome==='error').length, openIt=probs.some(r=>r.outcome!=='unchanged');
+      h+='<details'+(openIt?' open':'')+' style="margin:6px 0"><summary style="cursor:pointer"><b>Fichas sin nada que guardar / con incidencias ('+probs.length+')</b>'+(errs?' · <span style="color:var(--danger)">'+errs+' con error</span>':'')+'</summary><div style="max-height:220px;overflow:auto;margin-top:4px;font-size:12px">'
+        +probs.map(r=>'<div style="margin:3px 0">'+i18bFichaLabel(r)+' — <i>'+lab[r.outcome]+'</i>: '+E(r.reason||r.msg||'')+'</div>').join('')+'</div></details>';
+    }
+    if(!done) h+='<p style="color:var(--muted)">«Aplicar» solo escribe los campos marcados como «encontrado · se guardará» de las fichas marcadas, y únicamente si siguen vacíos en ese momento; si algo falla, no se escribe ninguna ficha.</p>';
+    body.innerHTML=h;
+    btns.innerHTML=done?btn('Cerrar','i18bClose()','primary',false,'i18bPrimary'):btn('Cerrar sin aplicar','i18bClose()')+btn('Aplicar a '+i18bNApply(S)+' ficha(s)','i18bApplyClick()','primary',!i18bNApply(S),'i18bPrimary');
+  }
+}
+function i18bRefreshApplyBtn(){
+  const S=_i18b, b=document.getElementById('i18bPrimary'); if(!S||S.phase!=='preview'||!b) return;
+  const n=i18bNApply(S); b.textContent='Aplicar a '+n+' ficha(s)'; b.disabled=!n;
+}
+function i18bToggle(i,on){ const r=_i18b&&_i18b.phase==='preview'&&_i18b.results[i]; if(r&&(r.outcome==='update'||r.outcome==='dubious')){ r.include=!!on; i18bRefreshApplyBtn(); } }
+function i18bToggleAll(on){
+  const S=_i18b; if(!S||S.phase!=='preview') return;
+  S.results.forEach(r=>{ if(r.outcome==='update'||r.outcome==='dubious') r.include=!!on; });
+  document.querySelectorAll('#i18bBody .i18b-chk').forEach(cb=>{ cb.checked=!!on; });
+  i18bRefreshApplyBtn();
+}
+function i18bClose(){
+  const S=_i18b; if(S&&S.phase==='running'){ S.stop=true; S.discard=true; }
+  const bg=document.getElementById('i18bBg'); if(bg) bg.classList.remove('open');
+  if(S&&S.phase!=='running') _i18b=null;
+}
+function i18bStop(){ if(_i18b&&_i18b.phase==='running'){ _i18b.stop=true; i18bRender(); } }
+async function tmdbBulkUpdateI18n(btn){
+  if(_i18b&&_i18b.phase==='running'){ if(_i18b.discard){ alert('El simulacro anterior se está deteniendo; espera unos segundos y vuelve a pulsar.'); return; } i18bRender(); return; }
+  let key=tmdbGetKey();
+  if(!key){ key=tmdbConfigureKey(); if(!key) return; }
+  const T=i18bTargets();
+  if(!T.list.length){ alert('Todavía no hay ninguna ficha vinculada a TMDB con un id válido.'); return; }
+  _i18b={phase:'intro',targets:T.list,noId:T.noId,run:[],results:[],stop:false,key,msg:''};
+  i18bRender();
+}
+async function i18bStart(){
+  const S=_i18b; if(!S||S.phase!=='intro') return;
+  const onlyGaps=!!(document.getElementById('i18bOnlyGaps')||{}).checked;
+  const lim=parseInt((document.getElementById('i18bLimit')||{}).value,10);
+  let run=S.targets.filter(t=>!onlyGaps||i18bHasGap(t.item));
+  if(lim>0) run=run.slice(0,lim);
+  if(!run.length){ S.msg='No hay fichas que consultar con esas opciones.'; i18bRender(); return; }
+  S.msg=''; S.run=run; S.phase='running'; S.results=[]; S.stop=false;
+  const cache=new Map();
+  i18bRender();
+  for(let i=0;i<S.run.length;i++){
+    if(S.stop) break;
+    const t=S.run[i]; let res;
+    try{
+      const ck=t.kind+'/'+t.id; let f=cache.get(ck);
+      if(!f){ f=await i18bFetch(t.kind,t.id,S.key); if(f.d) cache.set(ck,f); await i18bSleep(I18B_PAUSE_MS*I18B_WAIT_SCALE); }
+      if(f.error) res={outcome:'error',msg:f.error};
+      else if(!_i18nIsObj(f.d)) res={outcome:'error',msg:'respuesta ilegible'};
+      else if(f.d.id!==undefined&&String(f.d.id)!==t.id) res={outcome:'error',msg:'TMDB devolvió otro id ('+f.d.id+')'};
+      else res=i18bEvaluate(t.item,f.d);
+    }catch(e){
+      if(e&&e.fatal){ S.fatal='Clave de TMDB no válida (401): el simulacro se detuvo en la primera petición fallida. Revisa la clave y vuelve a intentarlo.'; break; }
+      res={outcome:'error',msg:'error inesperado: '+(e&&e.message||e)};
+    }
+    res.t=t; S.results.push(res);
+    if(!S.discard) i18bRender();
+  }
+  if(S.discard){ _i18b=null; return; }
+  S.stopped=S.stop&&S.results.length<S.run.length; S.phase='preview'; i18bRender();
+}
+function i18bApplyClick(){
+  const S=_i18b; if(!S||S.phase!=='preview') return;
+  let out;
+  try{ out=i18bApply(S.results,tmdbToday()); }
+  catch(e){ S.fatal='No se pudo aplicar ('+(e&&e.message||e)+'). No se ha modificado ninguna ficha.'; i18bRender(); return; }
+  if(out.applied) save();
+  S.applied=out; S.phase='done';
+  try{ render(); }catch(e){}
+  try{ renderMovies(); }catch(e){}
+  try{ renderAnimeGrid(); }catch(e){}
+  try{ renderRealitiesGrid(); }catch(e){}
+  i18bRender();
+}
+/* ═══ I18N_BATCH:END ═══ */
 
 async function tmdbRefreshRating(type, btn){
   const isMovie = type==='movie';
@@ -9258,6 +9728,7 @@ async function delProductora(pi){
         if(!v||!ids[target]||!ids[target][v]) add('ref',false,col,r,code,label+' apunta a '+tl+' que no existe (ID '+(v||'vacío')+').',v,'name');
       });
     }
+    var tmdbSeen={};   /* 13.2 */
     REC.forEach(function(c){
       var a=st[c.k]; if(!Array.isArray(a)) return;
       var seen={};
@@ -9269,6 +9740,11 @@ async function delProductora(pi){
         else seen[id]=nameOf(r,c.nameKey);
         var nm=r[c.nameKey]; if(typeof nm!=='string'||!nm.trim()) add('val',false,c.label,r,'noname','Falta el '+(c.nameKey==='title'?'título':'nombre')+'.','',c.nameKey);
         c.arrays.forEach(function(f){ if(r[f]!=null&&!Array.isArray(r[f])) add('val',false,c.label,r,'type-'+f,'El campo «'+f+'» debe ser una lista.',f,c.nameKey); });
+        if((c.k==='series'||c.k==='movies')&&typeof i18nValidate==='function'){   /* 13.2: forma de i18n y obra repetida por tmdbKind+tmdbId */
+          i18nValidate(r).forEach(function(e){ add('val',false,c.label,r,'i18n-'+e.code,'Estructura ES/EN no válida: '+e.msg,e.path,c.nameKey); });
+          var tk=typeof i18nTmdbKey==='function'?i18nTmdbKey(r,c.k==='series'?'tv':'movie'):'';
+          if(tk){ if(tmdbSeen[tk]) add('val',false,c.label,r,'dup-tmdb','Obra repetida: «'+tmdbSeen[tk]+'» ya usa el mismo TMDB ('+tk+').',tk,c.nameKey); else tmdbSeen[tk]=nameOf(r,c.nameKey); }
+        }
         c.dateKeys.forEach(function(f){ var v=r[f]; if(v&&!(typeof v==='string'&&(typeof _validDate==='function'?_validDate(v):/^\d{4}-\d{2}-\d{2}$/.test(v)))) add('val',false,c.label,r,'date-'+f,'Fecha no válida en «'+f+'»: '+JSON.stringify(v)+'.',f,c.nameKey); });
         if(c.k==='series'&&Array.isArray(r.seasons)) r.seasons.forEach(function(s,i){ if(isObj(s)&&s.startDate&&!(typeof s.startDate==='string'&&(typeof _validDate==='function'?_validDate(s.startDate):true))) add('val',false,c.label,r,'date-season'+i,'Fecha no válida en la temporada '+(i+1)+': '+JSON.stringify(s.startDate)+'.','s'+i,c.nameKey); });
         walkNum(r,'',function(p){ add('val',false,c.label,r,'nan-'+p,'Valor numérico no válido (NaN/infinito) en «'+p+'»; se exportaría como null.',p,c.nameKey); },0);
