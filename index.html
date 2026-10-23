@@ -4862,7 +4862,8 @@ function _streamingRegionFromLanguages(langs){
 // 2) timezone (cualquier país del catálogo), 3) idioma es-XX, 4) fallback 'ES'. No escribe en localStorage.
 function getVisitorStreamingRegion(){
   try{
-    const saved=String(localStorage.getItem(STREAMING_REGION_KEY)||'').trim().toUpperCase();
+    try{ localStorage.removeItem(STREAMING_REGION_KEY); }catch(e){}   // elección antigua guardada para siempre: se descarta (ahora manda la localización)
+    const saved=String(sessionStorage.getItem(STREAMING_REGION_KEY)||'').trim().toUpperCase();
     if(streamingIsKnownRegion(saved)) return saved;   // 6.8: cualquier país del catálogo global
   }catch(e){}
   try{
@@ -4894,7 +4895,7 @@ function setVisitorStreamingRegion(region){
   if(!streamingIsKnownRegion(r)) return false;   // 6.8: catálogo global
   const prev=state.streamingRegion;
   state.streamingRegion=r;
-  try{ localStorage.setItem(STREAMING_REGION_KEY,r); }catch(e){}
+  try{ sessionStorage.setItem(STREAMING_REGION_KEY,r); }catch(e){}   // solo esta pestaña/sesión; la próxima visita vuelve a la localización
   _syncStreamingRegionSelector();
   if(prev!==r){
     try{ document.dispatchEvent(new CustomEvent('streamingregionchange',{detail:{region:r,previous:prev}})); }catch(e){}
@@ -5095,7 +5096,7 @@ function availBodyHtml(item,code){
   const tmdb=availTmdbLinkFor(item,code), who=availWho(code);
   const tmdbHtml=tmdb?`<a class="avail-tmdb" href="${availEsc(tmdb)}" target="_blank" rel="noopener" title="Ver disponibilidad en TMDB / JustWatch">Todos los servicios ↗</a>`:'';
   if(!entries.length){
-    return `<div class="avail-empty" role="status"><div class="avail-empty-title">Sin disponibilidad en ${who}</div><div class="avail-empty-txt">Todavía no hay plataformas guardadas para este país. Eso no significa que no esté disponible: solo que no consta en TINTA.</div>${tmdbHtml}</div>`;
+    return `<div class="avail-empty" role="status"><div class="avail-empty-title">Sin disponibilidad en ${who}</div>${tmdbHtml}</div>`;
   }
   const stale=(meta&&meta.status==='review')?'<div class="avail-note">⚠ Dato pendiente de revisión: puede estar desactualizado.</div>':'';
   return `${availRowsHtml(item,code,tmdb)}${stale}${tmdbHtml}`;
