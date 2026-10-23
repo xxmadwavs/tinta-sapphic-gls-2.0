@@ -903,6 +903,19 @@ h3.salud-title{margin:0;font-size:15px;font-weight:700}
   .cal-bar .btn,.cal-pick{min-height:44px}
 }
 @media(forced-colors:active){ .cal-day.clash{border:3px double CanvasText} .cal-day.today{outline:2px solid Highlight} }
+/* I18N_FORM:CSS v2 — 13.3.2/13.3.3: selector ES/EN dentro de la ficha (edición y creación). Mismo aspecto que el selector público. */
+.i18n-switch-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.i18n-switch{display:inline-flex;align-items:center;gap:2px;padding:2px;flex-shrink:0;background:var(--surface);border:1.5px solid var(--border2);border-radius:20px}
+.i18n-switch button{font:inherit;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--muted);background:transparent;border:0;border-radius:16px;min-width:34px;height:28px;padding:0 10px;cursor:pointer;transition:background .15s,color .15s}
+.i18n-switch button:hover{color:var(--accent)}
+.i18n-switch button.active{background:var(--accent);color:#fff}
+.i18n-switch button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.i18n-switch-hint{font-size:11.5px;color:var(--muted)}
+.i18n-switch-hint.warn{color:#b06a00;font-weight:600}
+.i18n-pend{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:8px;font-size:9.5px;font-weight:800;letter-spacing:.3px;text-transform:none;background:#fdebd0;color:#b06a00}
+.i18n-pend[hidden]{display:none}
+[data-i18n-active="en"] [data-i18n-lang="es"]{display:none!important}
+[data-i18n-active="es"] [data-i18n-lang="en"]{display:none!important}
 </style>
 </head>
 <body>
@@ -3026,14 +3039,14 @@ function formHtml(s, forcedCategory=null){
   <div class="form-2col-layout">
 
     <!-- ══ COLUMNA IZQUIERDA: datos básicos ══ -->
-    <div class="form-col-left">
-      <div class="form-section-hd">Datos básicos</div>
+    <div class="form-col-left" id="f_i18nScope" data-i18n-active="es">
+      <div class="form-section-hd">Datos básicos</div>${i18fSwitchHtml('f_',s)}
 
-      <div class="form-row">
+      <div class="form-row" data-i18n-lang="es">
         <label class="form-label">Nombre *</label>
-        <input id="f_name" placeholder="Ej: Bloom Into You" value="${s?s.name:''}" data-original="${s?s.name.replace(/"/g,'&quot;'):''}" oninput="checkDupName(this)"/>
+        <input id="f_name" placeholder="Ej: Bloom Into You" value="${s?escapeHtml(s.name):''}" data-original="${s?s.name.replace(/"/g,'&quot;'):''}" oninput="checkDupName(this)"/>
         <div id="f_name_dup_warn" style="display:none;margin-top:6px;padding:8px 12px;border-radius:10px;background:#fff3cd;border:1.5px solid #f0c040;font-size:12px;color:#7a5a00;line-height:1.6"></div>
-      </div>
+      </div>${i18fRowsHtml('f_',s,'title')}
 
       <div class="form-row">
         <label class="form-label">Título original <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(opcional — si el nombre principal ya es el original, déjalo vacío)</span></label>
@@ -3109,15 +3122,15 @@ function formHtml(s, forcedCategory=null){
         <input type="hidden" id="f_poster_value" value="${s&&s.poster?s.poster:''}">
       </div>
 
-      <div class="form-row">
+      <div class="form-row" data-i18n-lang="es">
         <label class="form-label">Sinopsis</label>
-        <textarea id="f_synopsis" placeholder="Breve descripción…" style="min-height:75px">${s&&s.synopsis?s.synopsis:''}</textarea>
-      </div>
+        <textarea id="f_synopsis" placeholder="Breve descripción…" style="min-height:75px">${s&&s.synopsis?s.synopsis:i18fEsFill(s,'overview')}</textarea>
+      </div>${i18fRowsHtml('f_',s,'overview')}
 
-      <div class="form-row">
+      <div class="form-row" data-i18n-lang="es">
         <label class="form-label">Trailer (YouTube URL)</label>
-        <input id="f_trailer" placeholder="https://youtu.be/..." value="${s&&s.trailerUrl?s.trailerUrl:''}"/>
-      </div>
+        <input id="f_trailer" placeholder="https://youtu.be/..." value="${s&&s.trailerUrl?s.trailerUrl:i18fEsFill(s,'trailerUrl')}"/>
+      </div>${i18fRowsHtml('f_',s,'trailer')}
 
       <div class="form-row">
         <label class="form-label">Valoración TMDB</label>
@@ -3900,7 +3913,7 @@ async function saveSeries(si, forcedCategory=null){
   const basedOnBook=document.getElementById('f_book').checked;
   const bookCoverUrl=document.getElementById('f_bookcoverurl')?.value.trim()||'';
   const upcoming=document.getElementById('f_upcoming').checked;
-  if(!name){alert('El nombre es obligatorio');return;}
+  if(!name){i18fSwitch('f_','es');alert('El nombre es obligatorio');document.getElementById('f_name').focus();return;}
   // Comprobación de duplicados
   const dupSeries=series.find((s,i)=>i!==si&&s.name.trim().toLowerCase()===name.toLowerCase());
   const dupMovie=(movies||[]).find(mv=>mv.name.trim().toLowerCase()===name.toLowerCase());
@@ -3961,8 +3974,9 @@ async function saveSeries(si, forcedCategory=null){
     payload={...payload,seasons};
   }
   const updatedAt=new Date().toISOString();
-  if(si===-1) series.push({id:Date.now().toString(),...payload,updatedAt});
-  else series[si]={...series[si],...payload,updatedAt};
+  const i18nRes=(si>=0&&series[si])?i18fCollect(series[si],'f_',payload):(si===-1?i18fCollect({},'f_',payload):null);   // 13.3.2/13.3.3: textos ES/EN (ficha existente o nueva; puede ajustar payload, no toca la ficha)
+  if(si===-1){ const created={id:Date.now().toString(),...payload,updatedAt}; series.push(created); i18fCommit(created,i18nRes); }
+  else{ series[si]={...series[si],...payload,updatedAt}; i18fCommit(series[si],i18nRes); }
   save(); closeAll(); render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid();
 }
 
@@ -4233,10 +4247,10 @@ function resetEp(si, sIdx, epNum){
 function movieFormHtml(mv){
   const today=new Date().toISOString().slice(0,10);
   return `
-  <div style="padding:1.25rem 1.75rem">
-  <div class="form-row"><label class="form-label">Nombre *</label><input id="mf_name" placeholder="Ej: The Hidden Moon" value="${mv?mv.name:''}" data-original="${mv?mv.name.replace(/"/g,'&quot;'):''}" oninput="checkDupName(this)"/>
+  <div style="padding:1.25rem 1.75rem" id="mf_i18nScope" data-i18n-active="es">${i18fSwitchHtml('mf_',mv)}
+  <div class="form-row" data-i18n-lang="es"><label class="form-label">Nombre *</label><input id="mf_name" placeholder="Ej: The Hidden Moon" value="${mv?escapeHtml(mv.name):''}" data-original="${mv?mv.name.replace(/"/g,'&quot;'):''}" oninput="checkDupName(this)"/>
   <div id="f_name_dup_warn" style="display:none;margin-top:6px;padding:8px 12px;border-radius:10px;background:#fff3cd;border:1.5px solid #f0c040;font-size:12px;color:#7a5a00;line-height:1.6"></div>
-  </div>
+  </div>${i18fRowsHtml('mf_',mv,'title')}
   <div class="form-row">
     <label class="form-label">Título original <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(opcional — si el nombre principal ya es el original, déjalo vacío)</span></label>
     <input id="mf_nameEn" placeholder="Ej: 이태원 클라쓰 / Itaewon Class / 深夜食堂…" value="${mv&&mv.nameEn?mv.nameEn:''}"/>
@@ -4303,7 +4317,7 @@ function movieFormHtml(mv){
     </div><!-- /poster-editor-wrap -->
     <input type="hidden" id="f_poster_value" value="${mv&&mv.poster?mv.poster:''}">
   </div><!-- /form-row portada -->
-  <div class="form-row"><label class="form-label">Sinopsis / Descripción</label><textarea id="mf_synopsis" placeholder="Breve descripción…">${mv&&mv.synopsis?mv.synopsis:''}</textarea></div>
+  <div class="form-row" data-i18n-lang="es"><label class="form-label">Sinopsis / Descripción</label><textarea id="mf_synopsis" placeholder="Breve descripción…">${mv&&mv.synopsis?mv.synopsis:i18fEsFill(mv,'overview')}</textarea></div>${i18fRowsHtml('mf_',mv,'overview')}
   <div class="form-row-half">
     <div class="form-row" style="margin-bottom:0"><label class="form-label">Año</label><input id="mf_year" type="number" placeholder="2026" min="2000" max="2030" value="${mv&&mv.year?mv.year:''}"/></div>
     <div class="form-row" style="margin-bottom:0"><label class="form-label">País</label>
@@ -4399,9 +4413,9 @@ function movieFormHtml(mv){
     <div id="mf_streamingSummary" style="font-size:13px;color:var(--muted)">${streamingAdminSummaryHtml(mv&&mv.streaming,mv&&mv.streamingMeta,null)}</div>
     <div class="form-hint">Solo lectura. Se importa con 🔎 Buscar en TMDB → «Guardar streaming global en la ficha». Esta importación no modifica «Dónde ver» (watchLinks), network ni networkUrl.</div>
   </div>
-  <div class="form-row"><label class="form-label">URL del trailer (YouTube)</label><input id="mf_trailer" placeholder="https://www.youtube.com/watch?v=..." value="${mv&&mv.trailerUrl?mv.trailerUrl:''}"/>
+  <div class="form-row" data-i18n-lang="es"><label class="form-label">URL del trailer (YouTube)</label><input id="mf_trailer" placeholder="https://www.youtube.com/watch?v=..." value="${mv&&mv.trailerUrl?mv.trailerUrl:i18fEsFill(mv,'trailerUrl')}"/>
     <div class="form-hint">Pega la URL normal de YouTube. Si no tiene trailer, déjalo vacío.</div>
-  </div>
+  </div>${i18fRowsHtml('mf_',mv,'trailer')}
   <div class="form-row"><label class="form-label">Fecha de estreno</label><input id="mf_date" type="date" value="${mv&&mv.date?mv.date:''}"/>
     <div class="form-hint">Déjalo vacío si aún no tiene fecha confirmada.</div>
   </div>
@@ -4619,7 +4633,7 @@ function getMovieWatchLinks(){
 }
 async function saveMovie(mi){
   const name=document.getElementById('mf_name').value.trim();
-  if(!name){alert('El nombre es obligatorio');return;}
+  if(!name){i18fSwitch('mf_','es');alert('El nombre es obligatorio');document.getElementById('mf_name').focus();return;}
   const dupMovie=movies.find((mv,i)=>i!==mi&&mv.name.trim().toLowerCase()===name.toLowerCase());
   const dupSeries=(series||[]).find(s=>s.name.trim().toLowerCase()===name.toLowerCase());
   if(dupMovie){
@@ -4679,8 +4693,9 @@ async function saveMovie(mi){
     ...streamingSavePayload(mi>=0&&movies[mi]?movies[mi]:null,'mf_streamingPending'),   // 1C.3.2: se conserva tal cual · 6.7: + streaming global pendiente (fusión) y streamingMeta
   };
   const movieUpdatedAt=new Date().toISOString();
-  if(mi===-1) movies.push({id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt});
-  else movies[mi]={...movies[mi],...payload,updatedAt:movieUpdatedAt};
+  const i18nRes=(mi>=0&&movies[mi])?i18fCollect(movies[mi],'mf_',payload):(mi===-1?i18fCollect({},'mf_',payload):null);   // 13.3.2/13.3.3: textos ES/EN (ficha existente o nueva; puede ajustar payload, no toca la ficha)
+  if(mi===-1){ const created={id:Date.now().toString(),...payload,updatedAt:movieUpdatedAt}; movies.push(created); i18fCommit(created,i18nRes); }
+  else{ movies[mi]={...movies[mi],...payload,updatedAt:movieUpdatedAt}; i18fCommit(movies[mi],i18nRes); }
   save(); closeAll(); render(); renderMovies(); renderBooks();
 }
 async function delMovie(mi){
@@ -5681,6 +5696,117 @@ function i18nFindTmdbDuplicates(seriesArr,moviesArr){
   return Object.keys(map).filter(k=>map[k].length>1).map(k=>({key:k,items:map[k]}));
 }
 /* ═══ I18N_FICHA:END ═══ */
+/* ═══ I18N_FORM:BEGIN v1 ═══════════════════════════════════════════════════════════════════════════════════
+   FASES 13.3.2 y 13.3.3 — SELECTOR ES/EN EN LA EDICIÓN Y CREACIÓN DE FICHAS (series, anime, reality y películas).
+   13.3.3: en una ficha NUEVA los campos EN y el eslogan ES salen vacíos («Pendiente») y se guardan al crear (i18fCollect contra un i18n vacío).
+   No llama a TMDB. No toca la web pública ni data.json.
+   Reparto de campos (propuesta 13.3.1):
+     · ES  → name / synopsis / trailerUrl siguen siendo la fuente de verdad (mismos inputs de siempre). El eslogan ES vive en i18n.es.tagline.
+     · EN  → i18n.en.{title,overview,tagline,trailerUrl}. NUNCA se rellena con texto español: si no hay traducción, el campo sale vacío + «Pendiente».
+   Cambiar de idioma solo muestra/oculta filas (todos los inputs siguen en el DOM), así que no se pierde nada escrito sin guardar.
+   Guardado (i18fCollect + i18fCommit, llamados desde saveSeries/saveMovie solo con si/mi >= 0):
+     · Solo se escribe lo que la usuaria cambió respecto a lo guardado. Sin cambios → la ficha no recibe ni crea «i18n».
+     · Vaciar un campo lo elimina de i18n; si un idioma se queda sin textos se quita su bloque; si no queda ninguno, se quita «i18n».
+     · Bloque tocado → source:'manual' (fetchedAt no se toca). Los bloques no tocados quedan idénticos.
+     · Si i18n.es.X ya existe y se edita el campo ES equivalente, i18n.es.X se sincroniza (la web pública prioriza i18n.es sobre name/synopsis).
+     · Si el campo ES legacy está vacío pero i18n.es lo tiene, el formulario lo muestra (como la web) y, si no se edita, NO se copia al campo legacy.
+     · Si «i18n» de la ficha no es válido (i18nValidate) los campos EN/eslogan se bloquean y no se escribe nada en i18n. */
+const I18F_SUF={title:'title',overview:'overview',tagline:'tagline',trailerUrl:'trailer'};
+const I18F_ES_INPUT={title:'name',overview:'synopsis',trailerUrl:'trailer'};   /* sufijo del input ES existente (f_name / mf_name…) */
+function i18fOwn(item,lang,field){   /* valor propio de i18n[lang][field]; nunca usa respaldo de otro idioma */
+  if(!_i18nIsObj(item)||!_i18nIsObj(item.i18n)||!_i18nIsObj(item.i18n[lang])) return '';
+  return _i18nStr(item.i18n[lang][field]);
+}
+function i18fBroken(item){ return _i18nIsObj(item)&&i18nValidate(item).length>0; }
+/* Texto ES a mostrar cuando el campo legacy está vacío pero i18n.es lo tiene (igual que la web pública). Ya escapado. */
+function i18fEsFill(item,field){ return item?escapeHtml(i18fOwn(item,'es',field)):''; }
+function i18fStatus(vals,broken){
+  if(broken) return {t:'⚠ El «i18n» de esta ficha no es válido: los campos EN y el eslogan están bloqueados y no se guardarán.',warn:true};
+  const n=['title','overview','trailerUrl'].filter(f=>vals[f]).length;
+  if(n===0&&!vals.tagline) return {t:'EN: sin traducción todavía (campos pendientes).',warn:true};
+  if(n<3) return {t:'EN: traducción parcial.',warn:true};
+  return {t:'EN: título, sinopsis y tráiler rellenos.',warn:false};
+}
+function i18fSwitchHtml(p,item){
+  const vals={}; I18N_TEXT_FIELDS.forEach(f=>{ vals[f]=i18fOwn(item,'en',f); });
+  const st=i18fStatus(vals,i18fBroken(item));
+  return `<div class="i18n-switch-bar"><div class="i18n-switch" role="group" aria-label="Idioma de los textos de la ficha">`
+    +`<button type="button" class="active" data-lang="es" lang="es" title="Español" aria-pressed="true" onclick="i18fSwitch('${p}','es')">ES</button>`
+    +`<button type="button" data-lang="en" lang="en" title="English" aria-pressed="false" onclick="i18fSwitch('${p}','en')">EN</button></div>`
+    +`<span class="i18n-switch-hint${st.warn?' warn':''}" id="${p}i18nHint">${escapeHtml(st.t)}</span></div>`;
+}
+/* Filas extra según el punto del formulario: 'title' | 'overview' | 'trailer'. Solo para fichas existentes. */
+function i18fRowsHtml(p,item,which){
+  const lock=i18fBroken(item)?' disabled':'';
+  const enRow=(f,label,tag)=>{
+    const id=p+'en_'+I18F_SUF[f], v=i18fOwn(item,'en',f);
+    const ph=f==='trailerUrl'?'https://youtu.be/… (pendiente)':'English text — pendiente';
+    const ctl=tag==='textarea'
+      ?`<textarea id="${id}" lang="en" placeholder="${ph}" style="min-height:75px" oninput="i18fRefresh('${p}')"${lock}>${escapeHtml(v)}</textarea>`
+      :`<input id="${id}" lang="en" placeholder="${ph}" value="${escapeHtml(v)}" oninput="i18fRefresh('${p}')"${lock}/>`;
+    return `<div class="form-row" data-i18n-lang="en"><label class="form-label" for="${id}">${label}<span class="i18n-pend" data-i18n-pend="${id}"${v?' hidden':''}>Pendiente</span></label>${ctl}</div>`;
+  };
+  if(which==='title') return enRow('title','Título (EN)','input');
+  if(which==='trailer') return enRow('trailerUrl','Tráiler (EN) <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(YouTube URL)</span>','input');
+  if(which==='overview'){
+    const esId=p+'es_tagline';
+    const esTag=`<div class="form-row" data-i18n-lang="es"><label class="form-label" for="${esId}">Eslogan (ES) <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(opcional)</span></label><input id="${esId}" lang="es" placeholder="Frase corta bajo el título…" value="${escapeHtml(i18fOwn(item,'es','tagline'))}"${lock}/></div>`;
+    return enRow('overview','Sinopsis (EN)','textarea')+esTag+enRow('tagline','Eslogan (EN) <span style="font-size:10px;opacity:.6;font-weight:400;text-transform:none">(opcional)</span>','input');
+  }
+  return '';
+}
+function i18fSwitch(p,lang){
+  const scope=_findInModal(p+'i18nScope'); if(!scope||(lang!=='es'&&lang!=='en')) return;
+  scope.setAttribute('data-i18n-active',lang);
+  scope.querySelectorAll('.i18n-switch button[data-lang]').forEach(b=>{ const on=b.getAttribute('data-lang')===lang; b.classList.toggle('active',on); b.setAttribute('aria-pressed',on?'true':'false'); });
+}
+function i18fRead(p,suffix){ const el=_findInModal(p+suffix); return el?String(el.value||'').trim():null; }
+/* Actualiza las marcas «Pendiente» y el resumen según lo que hay ahora en los inputs EN (sin guardar nada). */
+function i18fRefresh(p){
+  const scope=_findInModal(p+'i18nScope'); if(!scope) return;
+  const vals={};
+  I18N_TEXT_FIELDS.forEach(f=>{ const v=i18fRead(p,'en_'+I18F_SUF[f]); vals[f]=v||''; const b=scope.querySelector('[data-i18n-pend="'+p+'en_'+I18F_SUF[f]+'"]'); if(b) b.hidden=!!v; });
+  const hint=_findInModal(p+'i18nHint'), broken=!!scope.querySelector('#'+p+'en_title[disabled]');
+  if(hint){ const st=i18fStatus(vals,broken); hint.textContent=st.t; hint.classList.toggle('warn',st.warn); }
+}
+/* Recoge los cambios de i18n del formulario. Puede ajustar `payload` (solo para no copiar al campo legacy un texto que viene de i18n.es sin editar). No modifica la ficha. */
+function i18fCollect(item,p,payload){
+  const out={changed:false,blocked:false,i18n:null,error:''};
+  if(!_i18nIsObj(item)||!_i18nIsObj(payload)) return out;
+  if(!_findInModal(p+'i18nScope')) return out;           /* formulario sin selector bilingüe: no se toca nada */
+  if(i18nValidate(item).length){ out.blocked=true; return out; }
+  const LG={title:'name',overview:'synopsis',trailerUrl:'trailerUrl'};
+  const esChanged={};
+  ['title','overview','trailerUrl'].forEach(f=>{
+    const v=i18fRead(p,I18F_ES_INPUT[f]); if(v===null){ esChanged[f]=false; return; }
+    const lg=_i18nStr(item[LG[f]]), own=i18fOwn(item,'es',f);
+    esChanged[f]=v!==(lg||own);
+    if(f!=='title'&&!lg&&own&&!esChanged[f]) payload[LG[f]]=(typeof item[LG[f]]==='string')?item[LG[f]]:'';   /* no copiar el respaldo de i18n.es al campo legacy */
+  });
+  const base=i18nClone(item.i18n)||{}, touched={}, man={}, tm={};   /* 13.3.4: man[l] = hubo texto escrito/borrado a mano; tm[l] = fecha del texto importado de TMDB sin editar */
+  const fromTmdb=(sfx,v)=>{ const el=_findInModal(p+sfx), dt=el&&el.dataset?String(el.dataset.tmdbDate||''):''; return (el&&v&&el.dataset&&el.dataset.tmdbVal===v&&/^\d{4}-\d{2}-\d{2}$/.test(dt))?dt:''; };
+  const put=(lang,f,val,tmdbDate)=>{ if(!_i18nIsObj(base[lang])) base[lang]={}; if(val) base[lang][f]=val; else delete base[lang][f]; touched[lang]=true; if(val&&tmdbDate) tm[lang]=tmdbDate; else man[lang]=true; };
+  I18N_TEXT_FIELDS.forEach(f=>{ const v=i18fRead(p,'en_'+I18F_SUF[f]); if(v!==null&&v!==i18fOwn(item,'en',f)) put('en',f,v,fromTmdb('en_'+I18F_SUF[f],v)); });
+  { const v=i18fRead(p,'es_tagline'); if(v!==null&&v!==i18fOwn(item,'es','tagline')) put('es','tagline',v,fromTmdb('es_tagline',v)); }
+  ['title','overview','trailerUrl'].forEach(f=>{ if(esChanged[f]&&i18fOwn(item,'es',f)) put('es',f,_i18nStr(payload[LG[f]])); });   /* sincroniza i18n.es.X ya existente */
+  Object.keys(touched).forEach(l=>{
+    const has=I18N_TEXT_FIELDS.some(f=>_i18nStr(base[l][f]));
+    if(!has){ delete base[l]; return; }
+    const hadOwn=I18N_TEXT_FIELDS.some(f=>i18fOwn(item,l,f)), prevSrc=(_i18nIsObj(item.i18n)&&_i18nIsObj(item.i18n[l]))?_i18nStr(item.i18n[l].source):'';
+    if(tm[l]&&!man[l]&&(!hadOwn||prevSrc==='tmdb')){ base[l].source='tmdb'; base[l].fetchedAt=tm[l]; }   /* solo TMDB sin tocar a mano, y bloque nuevo o ya de TMDB */
+    else base[l].source='manual';
+  });
+  if(!Object.keys(touched).length) return out;
+  out.i18n=Object.keys(base).length?base:null;
+  const chk=out.i18n?i18nValidate({i18n:out.i18n}):[];
+  if(chk.length){ out.error=chk[0].msg; return out; }
+  out.changed=true; return out;
+}
+function i18fCommit(item,res){
+  if(!_i18nIsObj(item)||!res||!res.changed) return;
+  if(res.i18n) item.i18n=res.i18n; else delete item.i18n;
+}
+/* ═══ I18N_FORM:END ═══ */
 /* ═══ 1C.2 — Normalización de plataformas y URL estándar (aislado) ═══
    Fuente de verdad de URLs: PLATFORMS. Sin includes() indiscriminado: coincidencia exacta de nombre normalizado + alias explícitos. */
 const TMDB_PROVIDER_ALIASES={amazonprimevideo:'Prime Video',primevideo:'Prime Video',amazonvideo:'Prime Video',disneyplus:'Disney+',appletvplus:'Apple TV+',rakutenviki:'Viki'};
@@ -6107,20 +6233,65 @@ function tmdbImpCastInfoHtml(dr){
   const sk=dr.creditsSkipped?` <i>(${Number(dr.creditsSkipped)} crédito(s) ilegibles omitidos)</i>`:'';
   return `<div class="tmdbimp-info">${head}${list}${sk}</div>`;
 }
+/* ═══ I18N_TMDB_FORM:BEGIN v1 ═══════════════════════════════════════════════════════════════════════════════
+   FASE 13.3.4 — TEXTOS ES/EN DE TMDB EN LA IMPORTACIÓN DE UNA FICHA (vista previa → «Aplicar lo marcado al formulario»).
+   - Una sola petición es-ES con append_to_response=watch/providers,videos,translations + include_video_language=es,en. Las cadenas en inglés salen
+     SIEMPRE de translations (iso_639_1==='en') y los vídeos de iso_639_1==='en'; nunca de name/original_name ni de un texto en español.
+   - ES: la sinopsis ES solo puede ser texto en español (respuesta es-ES u otra variante del español de translations). Si TMDB solo la tiene en inglés,
+     el campo ES queda sin proponer y el texto inglés se ofrece en la fila «Sinopsis (EN)». (Antes se copiaba el inglés al campo español.)
+   - Tráiler ES: comportamiento anterior (vídeo en español; si no hay ninguno, el inglés como respaldo). Tráiler EN: solo vídeos marcados «en».
+   - Las filas EN (y el eslogan ES) rellenan los campos EN del formulario; por defecto solo se marcan si el campo está vacío. Sustituir un texto existente
+     exige marcar la casilla a mano. Nada se guarda hasta pulsar Guardar; no se crea ni se modifica ninguna otra ficha.
+   - Procedencia: lo importado queda marcado en el input (data-tmdb-val/data-tmdb-date). Al guardar, i18fCollect pone source:'tmdb' + fetchedAt solo si
+     el bloque era nuevo o ya era de TMDB y el texto no se editó a mano; en cualquier otro caso source:'manual'. */
+/* Texto en español que TMDB propone, sin mezclar idiomas. PURA: no lee el DOM ni modifica nada. */
+function tmdbImpBuildI18n(d){
+  d=_i18nIsObj(d)?d:{};
+  const T=v=>typeof v==='string'?v.trim():'';
+  const trEs=i18bPickTranslation(d,'es'), trEn=i18bPickTranslation(d,'en');   /* null = TMDB no devolvió la estructura; {} = sin traducción en ese idioma */
+  const pick=(tr,f)=>(tr&&tr[f]&&T(tr[f].value))?{value:T(tr[f].value),region:String(tr[f].region||'')}:null;
+  const vids=(_i18nIsObj(d.videos)&&Array.isArray(d.videos.results))?d.videos.results:null;
+  const out={translationsOk:trEs!==null||trEn!==null,trailerListOk:vids!==null,esOverview:'',esOverviewFrom:'',esFallbackDiscarded:[],es:{tagline:null},en:{title:null,overview:null,tagline:null,trailerUrl:null}};
+  ['title','overview','tagline'].forEach(f=>{ out.en[f]=pick(trEn,f); });
+  /* Español: respuesta es-ES; si no, otra variante del español. Salvaguarda: un texto idéntico a la traducción inglesa y sin ninguna traducción española
+     igual se considera un respaldo en inglés de TMDB y se descarta (nunca se presenta inglés como español). */
+  const esOf=(f,own)=>{
+    const ownV=T(own), esT=pick(trEs,f), enT=pick(trEn,f);
+    if(ownV){
+      const sameAsEn=!!enT&&i18bNorm(ownV)===i18bNorm(enT.value), sameAsEs=!!esT&&i18bNorm(ownV)===i18bNorm(esT.value);
+      if(sameAsEn&&!sameAsEs){ out.esFallbackDiscarded.push(f); }
+      else return {value:ownV,region:'ES'};
+    }
+    return esT;
+  };
+  const eo=esOf('overview',d.overview); if(eo){ out.esOverview=eo.value; out.esOverviewFrom=eo.region; }
+  out.es.tagline=esOf('tagline',d.tagline);
+  if(vids){ const t=i18bPickTrailer(d,'en'); if(t) out.en.trailerUrl={value:t,region:'EN'}; }
+  return out;
+}
+/* Tráiler para el campo ES (comportamiento anterior): vídeo en español y, si no hay ninguno, el inglés. PURA. */
+function tmdbImpLegacyTrailer(vids){
+  const a=Array.isArray(vids)?vids.filter(v=>_i18nIsObj(v)):[];
+  const es=a.filter(v=>v.iso_639_1==='es'), en=a.filter(v=>v.iso_639_1==='en'), other=a.filter(v=>!v.iso_639_1);
+  const pool=es.length?es:(en.length?en:other);
+  return pool.find(v=>v.site==='YouTube'&&v.type==='Trailer')||pool.find(v=>v.site==='YouTube')||null;
+}
+/* ═══ I18N_TMDB_FORM:END ═══ */
 async function tmdbImpBuildDraft(id,kind,type,key){
   const region=tmdbGetRegion();
-  const r=await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=es-ES&append_to_response=watch/providers,videos`);
+  const r=await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=es-ES&append_to_response=watch/providers,videos,translations&include_video_language=es,en`);
   if(r.status===401) throw new Error('401');
   if(!r.ok) throw new Error('http');
   const d=await r.json();
-  let synopsis=d.overview||'', vids=(d.videos||{}).results||[];
-  if(!synopsis||!vids.length){
+  let vids=(d.videos||{}).results||[];
+  if(!vids.some(v=>v&&(v.iso_639_1==='es'||v.iso_639_1==='en'))){   /* respaldo anterior: si no llegó ningún vídeo es/en, se pide la lista en inglés (solo vídeos) */
     try{
       const d2=await (await fetch(`${TMDB_API_BASE}/${kind}/${id}?api_key=${encodeURIComponent(key)}&language=en-US&append_to_response=videos`)).json();
-      if(!synopsis) synopsis=d2.overview||'';
-      if(!vids.length) vids=(d2.videos||{}).results||[];
+      const v2=(d2.videos||{}).results||[];
+      if(v2.length){ vids=vids.concat(v2); d.videos=Object.assign({},d.videos||{},{results:vids}); }
     }catch(e){}
   }
+  const i18n=tmdbImpBuildI18n(d), synopsis=i18n.esOverview;   /* 13.3.4: la sinopsis ES es solo texto en español */
   const name=d.name||d.title||'', orig=d.original_name||d.original_title||'', lang=d.original_language||'';
   const nameEn=(orig&&lang!=='en'&&lang!=='es'&&orig.toLowerCase()!==name.toLowerCase())?orig:'';
   const dateStr=d.first_air_date||d.release_date||'';
@@ -6130,12 +6301,12 @@ async function tmdbImpBuildDraft(id,kind,type,key){
   prov=tmdbNormalizeProviders(prov);
   const regionProviders=tmdbBuildRegionProviders(rwp);   // 1C.3.2: región + type (dr.providers queda igual)
   const allRegions=tmdbBuildAllRegionProviders(d['watch/providers']);   // 6.7: TODAS las regiones de la misma respuesta (sin peticiones extra)
-  const tr=vids.find(v=>v.site==='YouTube'&&v.type==='Trailer')||vids.find(v=>v.site==='YouTube');
+  const tr=tmdbImpLegacyTrailer(vids);
   const codes=d.origin_country||(d.production_countries||[]).map(c=>c.iso_3166_1)||[];
   const genres=[]; (d.genres||[]).forEach(g=>(TMDB_GENRE_MAP[g.name]||[]).forEach(n=>{ if(!genres.includes(n)) genres.push(n); }));
   const cr=await tmdbImpFetchCredits(id,kind,key);   // 1D.2-N.2: créditos completos + estado explícito (solo lectura)
   const cast=tmdbImpLegacyCast(cr.credits);          // mismo filtro/orden/corte que antes (solo para la línea informativa)
-  return {id:String(id),kind,type,name,nameEn,synopsis,year:dateStr?parseInt(dateStr.slice(0,4)):'',
+  return {id:String(id),kind,type,name,nameEn,synopsis,i18n,year:dateStr?parseInt(dateStr.slice(0,4)):'',
     credits:cr.credits,creditsStatus:cr.status,creditsHttpStatus:cr.httpStatus,creditsSkipped:cr.skipped,creditsRaw:cr.raw,
     poster:d.poster_path?'https://image.tmdb.org/t/p/w500'+d.poster_path:'',
     country:codes.map(c=>TMDB_COUNTRY_MAP[c]).filter(Boolean).join(' / '),genres,
@@ -6443,6 +6614,26 @@ async function tmdbImpOpen(id,kind,type){
   txt('dur',mv?'Duración':'Duración por episodio',durTxt,cur.dur);
   if(mv) txt('date','Fecha de estreno',dr.date,cur.date);
   txt('trailer','Tráiler',dr.trailerUrl,cur.trailer);
+  { const syn=rows.find(x=>x.k==='synopsis');   // 13.3.4: nota cuando TMDB no tiene sinopsis en español
+    if(syn&&!syn.tm){ const en=dr.i18n&&dr.i18n.en&&dr.i18n.en.overview; syn.note=(dr.i18n&&dr.i18n.esFallbackDiscarded.indexOf('overview')>=0?'TMDB devolvió un texto idéntico al inglés: se descarta como sinopsis española. ':'TMDB no tiene sinopsis en español. ')+(en?'No se usa el inglés aquí; está disponible en la fila «Sinopsis (EN)».':'Queda pendiente (no se rellena con otro idioma).'); } }
+  dr.i18nCur={};   // 13.3.4: filas de textos EN (y eslogan ES). Solo si el formulario tiene el selector bilingüe; nunca se rellenan con español.
+  [['en','title','Título (EN)','en_title'],['en','overview','Sinopsis (EN)','en_overview'],['en','tagline','Eslogan (EN)','en_tagline'],['en','trailerUrl','Tráiler (EN)','en_trailer'],['es','tagline','Eslogan (ES)','es_tagline']].forEach(([lg,f,label,sfx])=>{
+    const el=_findInModal(p+sfx); if(!el) return;
+    const k='i18n:'+lg+':'+f, x=dr.i18n&&dr.i18n[lg]?dr.i18n[lg][f]:null, tm=x?x.value:'', cu=T(el.value), blocked=!!el.disabled;
+    const eq=!!tm&&(f==='trailerUrl'?(i18bYtId(tm)&&i18bYtId(tm)===i18bYtId(cu))||i18bNorm(tm)===i18bNorm(cu):i18bNorm(tm).toLowerCase()===i18bNorm(cu).toLowerCase());
+    let note='';
+    if(blocked) note='El «i18n» de esta ficha no es válido: el campo está bloqueado y no se modifica.';
+    else if(!tm){
+      const lang=lg==='en'?'inglés':'español';
+      if(f==='trailerUrl') note=dr.i18n.trailerListOk?'TMDB no tiene tráiler marcado en inglés. Queda pendiente.':'TMDB no devolvió la lista de vídeos: no se puede comprobar.';
+      else if(!dr.i18n.translationsOk) note='TMDB no devolvió traducciones: no se puede comprobar. Queda pendiente.';
+      else note='TMDB no tiene este dato en '+lang+'. Queda pendiente (no se rellena con texto en otro idioma).';
+    }
+    else if(cu&&!eq) note='⚠ Ya hay texto en este campo. Marcar la casilla lo sustituiría; por defecto no se toca.';
+    else if(!cu&&x.region&&f!=='trailerUrl') note='Traducción de TMDB ('+x.region+').';
+    dr.i18nCur[k]=cu;
+    rows.push({k,l:label+' · TMDB',tm,cu,dis:blocked||!tm||eq,eq,on:!!tm&&!cu&&!blocked,note});
+  });
   rows.push({k:'prov',l:'Plataformas (solo se añaden las que falten; nunca se borra nada)',tm:dr.providers.join(', ')||'',cu:curProv.join(', '),dis:!missingProv.length,eq:!!dr.providers.length&&!missingProv.length,on:false,note:missingProv.length?'Se añadirían: '+missingProv.map(n=>n+(tmdbGetPlatformStandardUrl(n)?' → '+tmdbGetPlatformStandardUrl(n):' (sin URL estándar)')).join(' · '):''});
   const rNum=(k,l,tm,cu)=>{ const has=T(tm)!==''&&T(tm)!=='0'; const eq=has&&T(tm)===T(cu); rows.push({k,l,tm:T(tm),cu:T(cu),dis:!has||eq,eq,on:has&&!eq}); };
   rNum('rating','Rating TMDB',dr.rating,cur.rating); rNum('votes','Votos TMDB',dr.votes,cur.votes);
@@ -6481,6 +6672,7 @@ function tmdbImpApply(){
   tmdbImpClose();   // cerrar primero: _findInModal vuelve a apuntar al modal de la ficha
   const mv=dr.type==='movie', p=mv?'mf_':'f_';
   const set=(i,v)=>{ const el=_findInModal(i); if(el) el.value=v; };
+  let i18nApplied=0, i18nSkipped=0;
   keys.forEach(k=>{
     if(k==='name') set(p+'name',dr.name);
     else if(k==='nameEn') set(p+'nameEn',dr.nameEn);
@@ -6498,6 +6690,12 @@ function tmdbImpApply(){
       const disp=_findInModal(p+'tmdbRatingDisplay'); if(disp&&rv) disp.textContent=`★ ${rv}/10 (${vv} votos)`;
     }
     else if(k==='link'){ set(p+'tmdbId',dr.id); set(p+'tmdbKind',dr.kind); }
+    else if(k.indexOf('i18n:')===0){   // 13.3.4: texto EN / eslogan ES de TMDB → input del formulario (sin guardar). Nunca pisa lo que haya cambiado desde la vista previa.
+      const mm=/^i18n:(es|en):(title|overview|tagline|trailerUrl)$/.exec(k), x=mm&&dr.i18n&&dr.i18n[mm[1]]?dr.i18n[mm[1]][mm[2]]:null;
+      const el=mm?_findInModal(p+(mm[1]==='es'?'es_':'en_')+I18F_SUF[mm[2]]):null;
+      if(!x||!el||el.disabled||String(el.value||'').trim()!==String((dr.i18nCur||{})[k]||'')){ i18nSkipped++; return; }
+      el.value=x.value; el.dataset.tmdbVal=x.value; el.dataset.tmdbDate=dr.fetchedAt; i18nApplied++;
+    }
     else if(k==='prov'&&dr.missingProv&&dr.missingProv.length){
       const list=mv?document.getElementById('moviePlatformsList'):_findInModal('platformsList');
       if(list){
@@ -6508,6 +6706,7 @@ function tmdbImpApply(){
       if(net){ const have=net.value.split(',').map(s=>s.trim()).filter(Boolean); dr.missingProv.forEach(n=>{ if(!have.some(h=>tmdbImpNorm(tmdbNormalizeProviderName(h))===tmdbImpNorm(n))) have.push(n); }); net.value=have.join(', '); }
     }
   });
+  if(i18nApplied) { try{ i18fRefresh(p); }catch(e){} }
   const nS=tmdbImpApplySeasons(sKeys,dr);   // 1E.1
   const nSt=allKeys.indexOf('streamingRegion')>=0?tmdbImpStashStreaming(dr,p):0;   // 6.7: streaming global del draft, pendiente hasta Guardar
   let stInfo=''; if(nSt){ try{ stInfo=streamingApplyInfo(p); streamingAdminRefresh(p); }catch(e){} }   // S5: solo lectura (resumen del formulario + mensaje)
@@ -6516,8 +6715,9 @@ function tmdbImpApply(){
   const crDetails=cr.items&&cr.items.length?` ${(()=>{ const groups=[['Ya estaba en el reparto',cr.items.filter(x=>x.why==='la ficha ya estaba en el reparto')],['Duplicada entre filas',cr.items.filter(x=>x.why==='otra fila seleccionada ya vinculó esta ficha')],['No aplicada',cr.items.filter(x=>!['la ficha ya estaba en el reparto','otra fila seleccionada ya vinculó esta ficha','ficha nueva creada y asociada al formulario','ficha existente asociada al formulario'].includes(x.why))]]; const parts=[]; groups.forEach(([title,items])=>{ if(!items.length)return; const shown=items.slice(0,5).map(x=>`${x.label} — ${x.why}`); if(items.length>5) shown.push(`y ${items.length-5} más`); parts.push(`${title}: ${shown.join('; ')}.`); }); return parts.join(' '); })()}`:'';
   const st=_findInModal('tmdbStatus');
   const hasRejects=cr.rejected>0||cr.blocked;
-  const anyApplied=keys.length+nS+nSt>0||cr.added>0;
-  if(st){ st.className='tmdb-bar-status '+(hasRejects?'err':(anyApplied?'ok':'')); st.textContent=(anyApplied?`${hasRejects?'⚠':'✓'} ${keys.length+nS+nSt} campo(s) aplicados al formulario. Revisa y pulsa Guardar.`+(cr.added&&!keys.length&&!nS&&!nSt?' Reparto aplicado al formulario. Revisa y pulsa Guardar.':''):(hasRejects?'No se ha incorporado ninguna actriz ni aplicado ningún campo.':'No se ha aplicado ningún campo.'))+stInfo+crTxt+crDetails+(cr.added||cr.created?' Recuerda guardar la ficha y después exportar data.json; todavía no se ha publicado ningún cambio.':''); }
+  const nKeysOk=keys.length-i18nSkipped;   // 13.3.5: los campos de idioma omitidos no cuentan como aplicados
+  const anyApplied=nKeysOk+nS+nSt>0||cr.added>0;
+  if(st){ st.className='tmdb-bar-status '+(hasRejects?'err':(anyApplied?'ok':'')); st.textContent=(anyApplied?`${hasRejects?'⚠':'✓'} ${nKeysOk+nS+nSt} campo(s) aplicados al formulario. Revisa y pulsa Guardar.`+(cr.added&&!nKeysOk&&!nS&&!nSt?' Reparto aplicado al formulario. Revisa y pulsa Guardar.':''):(hasRejects?'No se ha incorporado ninguna actriz ni aplicado ningún campo.':'No se ha aplicado ningún campo.'))+stInfo+crTxt+crDetails+(cr.added||cr.created?' Recuerda guardar la ficha y después exportar data.json; todavía no se ha publicado ningún cambio.':'')+(i18nSkipped?` ${i18nSkipped} campo(s) de idioma no se aplicaron (bloqueados o modificados tras la vista previa).`:''); }
   _tmdbImpDraft=null;
 }
 
