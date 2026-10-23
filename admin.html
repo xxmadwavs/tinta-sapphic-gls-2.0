@@ -6253,6 +6253,7 @@ function tmdbImpBuildI18n(d){
   const vids=(_i18nIsObj(d.videos)&&Array.isArray(d.videos.results))?d.videos.results:null;
   const out={translationsOk:trEs!==null||trEn!==null,trailerListOk:vids!==null,esOverview:'',esOverviewFrom:'',esFallbackDiscarded:[],es:{tagline:null},en:{title:null,overview:null,tagline:null,trailerUrl:null}};
   ['title','overview','tagline'].forEach(f=>{ out.en[f]=pick(trEn,f); });
+  if(!out.en.title&&d.original_language==='en'&&T(d.original_name||d.original_title)) out.en.title={value:T(d.original_name||d.original_title),region:'EN'};   /* original ya en inglés: TMDB no lo repite en translations */
   /* Español: respuesta es-ES; si no, otra variante del español. Salvaguarda: un texto idéntico a la traducción inglesa y sin ninguna traducción española
      igual se considera un respaldo en inglés de TMDB y se descarta (nunca se presenta inglés como español). */
   const esOf=(f,own)=>{
@@ -7393,6 +7394,8 @@ function i18bEvaluate(item,d){
       let found='', region='';
       if(f==='trailerUrl'){ found=vi[l]||''; }
       else if(tr[l]&&tr[l][f]){ found=tr[l][f].value; region=tr[l][f].region; }
+      /* TMDB deja vacío el título EN en /translations cuando el original ya está en inglés: en ese caso (y solo en ese) el título EN es el original. */
+      else if(l==='en'&&f==='title'&&d&&d.original_language==='en'){ found=String(d.original_name||d.original_title||'').trim(); region='EN'; }
       const cur=i18nGet(item,l,f);
       const own=(_i18nIsObj(item.i18n)&&_i18nIsObj(item.i18n[l]))?_i18nStr(item.i18n[l][f]):'';
       let st;
