@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <script>
 // Ejecutar ANTES del CSS para evitar el flash del menú abierto en móvil.
 // html.is-mobile se mantiene sincronizado con el breakpoint (max-width:899px) mediante
@@ -698,6 +698,73 @@ footer{
 .cal-actions-row .month-toggle-btn{width:auto;flex:1 1 auto;min-width:0}
 .cal-actions-row .ics-export-btn{flex:0 0 auto;padding:10px 16px;white-space:nowrap}
 @media(max-width:480px){.cal-actions-row{flex-direction:column}}
+/* ═══ Fase 3 — calendario: cabecera, filtros y lista ═══ */
+.cal-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 20px;margin-bottom:14px}
+.cal-head-nav{display:flex;align-items:center;gap:8px;min-width:0}
+.cal-title{margin:0;min-width:0;font-family:var(--font-display);font-size:34px;line-height:1.15;font-weight:700;letter-spacing:-.02em;color:var(--text)}
+.cal-title span{color:var(--accent);font-style:italic}
+.cal-title-btn{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;padding:2px 8px;margin:0 -8px;border-radius:12px;cursor:pointer;text-align:left}
+.cal-title-btn::after{content:' ▾';font-size:16px;opacity:.4;font-family:var(--font-body);font-weight:400}
+.cal-title-btn:hover{background:var(--accent-soft)}
+.cal-arrow{flex:0 0 auto;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--border2);border-radius:50%;background:var(--surface);color:var(--muted);font-size:24px;line-height:1;padding:0 0 3px;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.cal-arrow:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent)}
+.cal-head-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cal-seg{display:inline-flex;gap:2px;padding:3px;border:1.5px solid var(--border2);border-radius:999px;background:var(--surface2)}
+.cal-seg-btn{min-height:34px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:600 13px var(--font-body);cursor:pointer}
+.cal-seg-btn:hover{color:var(--text)}
+.cal-seg-btn[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.cal-today-btn{min-height:40px;padding:0 18px;border:1.5px solid var(--border2);border-radius:999px;background:var(--surface);color:var(--text);font:600 13px var(--font-body);cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.cal-today-btn:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent)}
+:is(.cal-arrow,.cal-seg-btn,.cal-today-btn,.cal-title-btn,.cal-filter-btn,.cal-filter-opt,.cal-filters-clear,.cal-list-item):focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+
+.cal-filters{display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;margin:0 0 18px}
+.cal-filter-wrap{position:relative}
+.cal-filter-btn{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px 0 14px;border:1.5px solid var(--border2);border-radius:999px;background:var(--surface);color:var(--muted);font:500 13px var(--font-body);cursor:pointer}
+.cal-filter-btn b{font-weight:700;color:var(--text)}
+.cal-filter-btn::after{content:'';flex:none;width:6px;height:6px;margin:0 2px 3px;border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+.cal-filter-btn:hover{border-color:var(--accent2)}
+.cal-filter-btn.has-value{background:var(--accent-soft);border-color:var(--accent2)}
+.cal-filter-btn.has-value b{color:var(--accent)}
+.cal-filter-btn[aria-expanded="true"]{border-color:var(--accent);color:var(--accent)}
+.cal-filter-btn[aria-expanded="true"]::after{transform:rotate(-135deg);margin-bottom:-2px}
+.cal-filter-menu{position:absolute;z-index:40;top:calc(100% + 6px);left:0;min-width:220px;max-width:min(320px,calc(100vw - 32px));max-height:300px;overflow-y:auto;padding:6px;background:var(--surface);border:1.5px solid var(--border2);border-radius:14px;box-shadow:var(--shadow-md)}
+.cal-filter-menu[hidden]{display:none}
+.cal-filter-opt{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:var(--text);font:500 13px var(--font-body);text-align:left;cursor:pointer}
+.cal-filter-opt:hover{background:var(--surface2)}
+.cal-filter-check{position:relative;flex:0 0 16px;width:16px;height:16px;border:1.5px solid var(--border2);border-radius:4px;background:var(--surface)}
+.cal-filter-opt[aria-checked="true"] .cal-filter-check{background:var(--accent);border-color:var(--accent)}
+.cal-filter-opt[aria-checked="true"] .cal-filter-check::after{content:'';position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid var(--on-accent);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.cal-filter-opt[aria-checked="true"] .cal-filter-lbl{font-weight:700;color:var(--accent)}
+.cal-filter-lbl{flex:1;min-width:0}
+.cal-filter-n{font-size:11.5px;color:var(--muted)}
+.cal-filters-status{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.cal-filters-clear{padding:4px 2px;border:0;background:none;color:var(--accent);font:700 13px var(--font-body);cursor:pointer}
+.cal-filters-clear:hover{text-decoration:underline}
+
+.cal-list{display:flex;flex-direction:column;gap:16px}
+.cal-list[hidden]{display:none}
+.cal-list-day{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:start}
+.cal-list-date{margin:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;border-radius:var(--radius);background:var(--surface2);color:var(--muted);font:700 11px var(--font-body);letter-spacing:.08em;text-transform:uppercase}
+.cal-list-num{font:700 24px/1 var(--font-display);letter-spacing:0;color:var(--text)}
+.cal-list-day.is-today .cal-list-date{background:var(--accent-soft);color:var(--accent)}
+.cal-list-day.is-today .cal-list-num{color:var(--accent)}
+.cal-list-today{font-size:9px;letter-spacing:.06em}
+.cal-list-items{display:flex;flex-direction:column;gap:6px;min-width:0}
+.cal-list-item{display:flex;align-items:center;gap:12px;width:100%;padding:6px 10px 6px 6px;border:1px solid var(--border);border-left:3px solid var(--item-col);border-radius:12px;background:var(--surface);color:inherit;font-family:var(--font-body);text-align:left;cursor:pointer}
+.cal-list-item:hover{border-color:var(--accent2);background:var(--surface2)}
+.cal-list-poster-wrap{flex:0 0 36px;width:36px;aspect-ratio:2/3;border-radius:6px;overflow:hidden}
+.cal-list-poster{display:block;width:100%;height:100%;object-fit:cover}
+.cal-list-body{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cal-list-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;font-size:14px;color:var(--text)}
+.cal-list-ep{font-size:12px;font-weight:600;color:var(--item-col)}
+@media(max-width:600px){
+  .cal-title{font-size:28px}
+  .cal-head-tools{width:100%}
+  .cal-seg{flex:1}
+  .cal-seg-btn{flex:1;padding:0 8px}
+  .cal-list-day{grid-template-columns:52px minmax(0,1fr);gap:10px}
+}
+
 .ics-group-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:1.1rem 0 6px}
 .ics-summary{margin:1.25rem 0 .75rem;padding:10px 14px;border-radius:12px;background:var(--surface2);border:1.5px solid var(--border);font-size:13px;color:var(--text)}
 .ics-notes{margin:0 0 1.25rem;padding:0 0 0 1.1rem;font-size:12px;color:var(--muted);line-height:1.6}
@@ -3974,6 +4041,48 @@ html[data-theme="dark"]{ --nav-active-text:var(--accent); }
 #mainNavbar .explore-item.active,
 #mainNavbar .nav-picks-item.active{background:var(--nav-active-bg);color:var(--nav-active-text)}
 
+/* ═══ Fase 2 — navegación: Calendario · Explorar▾ · Personas▾ · Para ti▾ ═══ */
+#mainNavbar .nav-picks-drop{min-width:220px}
+#mainNavbar .nav-picks-item{white-space:nowrap}
+.nav-sub-row{display:flex;align-items:stretch;gap:2px}
+.nav-sub-row>.nav-picks-item{flex:1 1 auto;width:auto}
+.nav-sub-toggle{
+  flex:0 0 36px;display:flex;align-items:center;justify-content:center;
+  border:none;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;
+}
+.nav-sub-toggle:hover{background:var(--surface2);color:var(--accent)}
+.nav-sub-toggle svg{transition:transform .15s}
+.nav-sub-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-sub-toggle.has-active{color:var(--nav-active-text)}
+#mainNavbar .nav-sub-toggle:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.nav-sub{display:flex;flex-direction:column;gap:1px;margin:1px 0 4px 14px;padding-left:8px;border-left:1.5px solid var(--border2)}
+.nav-sub[hidden]{display:none}
+#mainNavbar .nav-picks-item.nav-sub-item{font-size:12.5px;font-weight:500;padding:7px 12px;margin-left:14px;width:calc(100% - 14px)}
+#mainNavbar .nav-sub .nav-picks-item.nav-sub-item{margin-left:0;width:100%}
+
+/* ═══ Fase 2 — buscador global agrupado ═══ */
+#mainNavbar .navbar-search-results{max-height:min(70vh,520px)}
+.nsearch-group+.nsearch-group{border-top:1px solid var(--border2)}
+.nsearch-group-title{
+  position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;
+  padding:8px 14px 4px;background:var(--surface);
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
+}
+.nsearch-group-count{font-weight:500;letter-spacing:0}
+.nsearch-item-meta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ═══ Fase 2 — migas de pan en fichas de detalle ═══ */
+.crumbs{margin:-12px 0 10px;min-height:38px;display:flex;align-items:center}   /* alineadas con el ✕ fijo (16–54 px) */
+.crumbs-list{display:flex;align-items:center;flex-wrap:nowrap;gap:0;min-width:0;margin:0;padding:0;list-style:none;font-size:12.5px;line-height:1.3}
+.crumbs-item{display:flex;align-items:center;min-width:0;flex:0 0 auto}
+.crumbs-item+.crumbs-item::before{content:"›";content:"›" / "";margin:0 7px;color:var(--muted);opacity:.7}
+.crumbs-item[aria-current="page"]{flex:1 1 auto}
+.crumbs-link{color:var(--muted);font-weight:600;text-decoration:none;border-radius:6px;padding:2px 3px;margin:0 -3px;white-space:nowrap}
+.crumbs-link:hover{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.crumbs-link:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.crumbs-current{color:var(--text);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+@media(max-width:900px){.crumbs{padding-left:44px}}   /* deja libre el botón ✕ fijo */
+
 /* Búsqueda: foco coherente con el tema (antes #fff fijo) */
 #mainNavbar .navbar-search-wrap:focus-within{background:var(--surface)}
 
@@ -4008,6 +4117,49 @@ html[data-theme="dark"]{ --nav-active-text:var(--accent); }
 @media(min-width:640px) and (max-width:899px){
   #mainNavbar .navbar-links{left:auto;right:0;width:380px;max-width:100%;border-left:1.5px solid var(--border2)}
 }
+
+/* ═══ Fase 2 — barra inferior móvil y tablet (≤899 px): sustituye al menú de la cabecera ═══ */
+:root{--bnav-h:56px}
+.bottom-nav{display:none}
+@media(max-width:899px){
+  .bottom-nav{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;   /* sobre la cabecera (50), bajo fichas (200) y buscador ⌕ (300) */
+    padding:0 env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);
+    background:var(--nav-bg);border-top:1px solid var(--border2);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  }
+  .bottom-nav-item{
+    flex:1 1 0;min-width:0;height:var(--bnav-h);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    border:none;background:transparent;color:var(--muted);cursor:pointer;
+    font-family:var(--font-body);font-size:11px;font-weight:600;line-height:1;text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .bn-ico{display:flex;align-items:center;justify-content:center;width:48px;height:28px;border-radius:14px;transition:background .15s}
+  .bottom-nav-item.active{color:var(--nav-active-text)}
+  .bottom-nav-item.active .bn-ico{background:var(--nav-active-bg)}
+  .bottom-nav-item.active .bn-label{font-weight:700}
+  .bottom-nav-item:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-4px;border-radius:12px}
+  /* el contenido y el pie no quedan tapados por la barra */
+  body::after{content:'';flex:0 0 calc(var(--bnav-h) + env(safe-area-inset-bottom,0px))}
+  /* Cabecera sin ☰, sin ⌕ (ya está «Buscar» abajo) y sin Calendario (ya está abajo) */
+  #mainNavbar .navbar-hamburger,#mainNavbar .navbar-search-btn,#mainNavbar #tabCal{display:none}
+  /* «Más» abre el panel de siempre (Explorar▾ · Personas▾ · Para ti▾) como hoja inferior sobre la barra.
+     Sin backdrop-filter en la cabecera: con él, position:fixed se calcularía respecto a la cabecera y no al viewport */
+  #mainNavbar{backdrop-filter:none;-webkit-backdrop-filter:none}
+  #mainNavbar .navbar-links{
+    position:fixed;top:auto;left:0;right:0;margin:0 auto;width:min(100%,520px);max-width:none;
+    bottom:calc(var(--bnav-h) + env(safe-area-inset-bottom,0px));
+    max-height:calc(100vh - var(--nav-h) - var(--bnav-h) - env(safe-area-inset-bottom,0px) - 24px);
+    max-height:calc(100dvh - var(--nav-h) - var(--bnav-h) - env(safe-area-inset-bottom,0px) - 24px);
+    padding:10px 12px 12px;border:1.5px solid var(--border2);border-bottom:none;border-radius:18px 18px 0 0;
+    box-shadow:0 0 0 100vmax rgba(10,5,12,.45);   /* velo sobre el resto de la página */
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+  }
+  #mainNavbar .navbar-links::before{content:'';flex:0 0 4px;width:36px;height:4px;margin:0 auto 8px;border-radius:2px;background:var(--border2)}
+}
+/* con viewport-fit=cover: respeta las muescas laterales (0 en pantallas sin muesca) */
+body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
 
 /* ── Búsqueda ⌕: campo sobre la cabecera con «Cancelar» y resultados debajo ── */
 @media(max-width:899px){
@@ -4328,63 +4480,55 @@ html[lang="en"] #viewCal .week-item-today-dot{padding:1px 1px;letter-spacing:0;w
       <!-- Buscador (solo visible en móvil dentro del menú) -->
       <div class="navbar-search-wrap mobile-menu-search" id="navSearchWrapMobile" style="display:none">
         <svg class="navbar-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="navbar-search-inp" id="navSearchInpMobile" aria-label="Buscar series y películas" placeholder="Buscar series, películas…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
+        <input class="navbar-search-inp" id="navSearchInpMobile" aria-label="Buscar series, películas, actrices, ships y productoras" placeholder="Buscar series, actrices…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResultsMobile" style="display:none"></div>
       </div>
-      <a class="nav-link active" id="tabCal"None href="?tab=cal" onclick="if(!_plainClick(event))return;event.preventDefault();switchTab('cal');closeMobileMenu()">Calendario</a>
+      <a class="nav-link active" id="tabCal" href="?tab=cal" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('cal');closeMobileMenu()">Calendario</a>
 
-      <!-- Explorar (mega-dropdown de catálogo) -->
-      <div class="nav-explore-wrap" id="navExploreWrap">
-        <button class="nav-link" id="tabExplore" type="button" onclick="toggleExploreDrop(event)" aria-haspopup="true" aria-expanded="false">
-          Explorar <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
-        </button>
-        <div class="nav-explore-drop" id="navExploreDrop" role="menu">
-          <div class="explore-col">
-            <span class="explore-col-title">Series & Pelis</span>
-            <a class="explore-item" id="tabList" role="menuitem" href="?tab=list" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('list');closeMobileMenu()">Series</a>
-            <a class="explore-item" id="tabMovies" role="menuitem" href="?tab=movies" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('movies');closeMobileMenu()">Películas</a>
-            <a class="explore-item" id="tabUpcoming" role="menuitem" href="?tab=upcoming" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('upcoming');closeMobileMenu()">Próximamente</a>
-            <a class="explore-item" id="tabCanceladas" role="menuitem" href="?tab=canceladas" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('canceladas');closeMobileMenu()">Canceladas</a>
+      <!-- Explorar ▾ -->
+      <div class="nav-picks-wrap" id="navExploreWrap">
+        <button class="nav-link" id="tabExplore" type="button" onclick="toggleNavMenu('explore',event)" aria-haspopup="true" aria-expanded="false" aria-controls="navExploreDrop">Explorar <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6" aria-hidden="true"><path d="M1 3l4 4 4-4"/></svg></button>
+        <div class="nav-picks-drop" id="navExploreDrop" role="menu">
+          <div class="nav-sub-row">
+            <a class="nav-picks-item" id="tabList" role="menuitem" href="?tab=list" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();seriesNavGo('all');closeMobileMenu()">Series</a>
+            <button class="nav-sub-toggle" id="tabSeriesGroup" type="button" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="navSeriesSub" aria-label="Mostrar apartados de Series" onclick="toggleSeriesSub(event)"><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6" aria-hidden="true"><path d="M1 3l4 4 4-4"/></svg></button>
           </div>
-          <div class="explore-col">
-            <span class="explore-col-title">Más contenido</span>
-            <a class="explore-item" id="tabAnime" role="menuitem" href="?tab=anime" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('anime');closeMobileMenu()">Anime</a>
-            <a class="explore-item" id="tabRealities" role="menuitem" href="?tab=realities" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('realities');closeMobileMenu()">Realities</a>
-            <a class="explore-item" id="tabDocumentales" role="menuitem" href="?tab=documentales" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('documentales');closeMobileMenu()">Documentales</a>
-            <a class="explore-item" id="tabBooks" role="menuitem" href="?tab=books" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('books');closeMobileMenu()">Libros</a>
+          <div class="nav-sub" id="navSeriesSub" role="group" aria-label="Series" hidden>
+            <a class="nav-picks-item nav-sub-item" id="tabUpcoming" role="menuitem" href="?tab=upcoming" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();upcomingNavGo('normal');closeMobileMenu()">Próximamente</a>
+            <a class="nav-picks-item nav-sub-item" id="tabSeriesAiring" role="menuitem" href="?tab=list&amp;sub=airing" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();seriesNavGo('airing');closeMobileMenu()">En emisión</a>
+            <a class="nav-picks-item nav-sub-item" id="tabCanceladas" role="menuitem" href="?tab=canceladas" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('canceladas');closeMobileMenu()">Canceladas</a>
+            <a class="nav-picks-item nav-sub-item" id="tabSinNovedad" role="menuitem" href="?tab=upcoming&amp;sub=stale" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();upcomingNavGo('stale');closeMobileMenu()">Sin novedad</a>
           </div>
-          <div class="explore-col">
-            <span class="explore-col-title">Personas</span>
-            <a class="explore-item" id="tabActresses" role="menuitem" href="?tab=actresses" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('actresses');closeMobileMenu()">Actrices</a>
-            <a class="explore-item" id="tabProductoras" role="menuitem" href="?tab=productoras" onclick="if(!_plainClick(event))return;event.preventDefault();closeExploreDrop();switchTab('productoras');closeMobileMenu()">Productoras</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ships Thais: desplegable de apartados (Ships / Rupturas / Mascotas) -->
-      <div class="nav-picks-wrap" id="navShipsWrap">
-        <button class="nav-link" id="tabShips" type="button" onclick="toggleShipsDrop(event)" aria-haspopup="true" aria-expanded="false">
-          Ships Thais <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
-        </button>
-        <div class="nav-picks-drop" id="navShipsDrop" role="menu">
-          <a class="nav-picks-item" id="navShipsItem-ships" role="menuitem" href="?tab=ships&amp;ships=ships" onclick="if(!_plainClick(event))return;event.preventDefault();shipsNavGo('ships')">Ships</a>
-          <a class="nav-picks-item" id="navShipsItem-rupturas" role="menuitem" href="?tab=ships&amp;ships=rupturas" onclick="if(!_plainClick(event))return;event.preventDefault();shipsNavGo('rupturas')">Rupturas</a>
-          <a class="nav-picks-item" id="navShipsItem-mascotas" role="menuitem" href="?tab=ships&amp;ships=mascotas" onclick="if(!_plainClick(event))return;event.preventDefault();shipsNavGo('mascotas')">Mascotas</a>
-        </div>
-      </div>
-
-      <!-- Mis Picks: subtabs de picks + herramientas personales -->
-      <div class="nav-picks-wrap" id="navPicksWrap">
-        <button class="nav-link nav-picks-btn" id="tabPicksGroup" type="button" onclick="togglePicksDrop(event)" aria-haspopup="true" aria-expanded="false">
-          Extra <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6"><path d="M1 3l4 4 4-4"/></svg>
-        </button>
-        <div class="nav-picks-drop" id="navPicksDrop" role="menu">
-          <a class="nav-picks-item" id="tabTop10" role="menuitem" href="?tab=top10" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('top10');closeMobileMenu()">Picks generales</a>
-          <a class="nav-picks-item" id="tabPicks2026" role="menuitem" href="?tab=picks2026" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('picks2026');closeMobileMenu()">Picks 2026</a>
+          <a class="nav-picks-item" id="tabMovies" role="menuitem" href="?tab=movies" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('movies');closeMobileMenu()">Películas</a>
+          <a class="nav-picks-item" id="tabAnime" role="menuitem" href="?tab=anime" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('anime');closeMobileMenu()">Anime</a>
+          <a class="nav-picks-item" id="tabDocumentales" role="menuitem" href="?tab=documentales" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('documentales');closeMobileMenu()">Documentales</a>
+          <a class="nav-picks-item" id="tabRealities" role="menuitem" href="?tab=realities" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('realities');closeMobileMenu()">Realities</a>
           <div class="nav-picks-sep"></div>
-          <a class="nav-picks-item" id="tabChecklist" role="menuitem" href="?tab=checklist" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('checklist');closeMobileMenu()">Checklist</a>
-          <a class="nav-picks-item" id="tabListas" role="menuitem" href="?tab=listas" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('listas');closeMobileMenu()">Listas GL</a>
-          <a class="nav-picks-item" id="tabRuleta" role="menuitem" href="?tab=ruleta" onclick="if(!_plainClick(event))return;event.preventDefault();closePicksDrop();switchTab('ruleta');closeMobileMenu()">Ruleta GL</a>
+          <a class="nav-picks-item" id="tabBooks" role="menuitem" href="?tab=books" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('books');closeMobileMenu()">Libros</a>
+        </div>
+      </div>
+
+      <!-- Personas ▾ -->
+      <div class="nav-picks-wrap" id="navPersonasWrap">
+        <button class="nav-link" id="tabPersonas" type="button" onclick="toggleNavMenu('people',event)" aria-haspopup="true" aria-expanded="false" aria-controls="navPersonasDrop">Personas <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6" aria-hidden="true"><path d="M1 3l4 4 4-4"/></svg></button>
+        <div class="nav-picks-drop" id="navPersonasDrop" role="menu">
+          <a class="nav-picks-item" id="tabActresses" role="menuitem" href="?tab=actresses" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('actresses');closeMobileMenu()">Actrices</a>
+          <a class="nav-picks-item" id="tabShips" role="menuitem" href="?tab=ships&amp;ships=ships" onclick="if(!_plainClick(event))return;event.preventDefault();shipsNavGo('ships')">Ships</a>
+          <a class="nav-picks-item nav-sub-item" id="navShipsItem-rupturas" role="menuitem" href="?tab=ships&amp;ships=rupturas" onclick="if(!_plainClick(event))return;event.preventDefault();shipsNavGo('rupturas')">Rupturas</a>
+          <a class="nav-picks-item nav-sub-item" id="navShipsItem-mascotas" role="menuitem" href="?tab=ships&amp;ships=mascotas" onclick="if(!_plainClick(event))return;event.preventDefault();shipsNavGo('mascotas')">Mascotas</a>
+          <a class="nav-picks-item" id="tabProductoras" role="menuitem" href="?tab=productoras" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('productoras');closeMobileMenu()">Productoras</a>
+        </div>
+      </div>
+
+      <!-- Para ti ▾ -->
+      <div class="nav-picks-wrap" id="navParaTiWrap">
+        <button class="nav-link" id="tabParaTi" type="button" onclick="toggleNavMenu('foryou',event)" aria-haspopup="true" aria-expanded="false" aria-controls="navParaTiDrop">Para ti <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px;opacity:.6" aria-hidden="true"><path d="M1 3l4 4 4-4"/></svg></button>
+        <div class="nav-picks-drop" id="navParaTiDrop" role="menu">
+          <a class="nav-picks-item" id="tabListas" role="menuitem" href="?tab=listas" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('listas');closeMobileMenu()">Listas</a>
+          <a class="nav-picks-item" id="tabTop10" role="menuitem" href="?tab=top10" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('top10');closeMobileMenu()">Mis picks</a>
+          <a class="nav-picks-item nav-sub-item" id="tabPicks2026" role="menuitem" href="?tab=picks2026" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('picks2026');closeMobileMenu()">Picks 2026</a>
+          <a class="nav-picks-item" id="tabRuleta" role="menuitem" href="?tab=ruleta" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('ruleta');closeMobileMenu()">Ruleta</a>
+          <a class="nav-picks-item" id="tabChecklist" role="menuitem" href="?tab=checklist" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('checklist');closeMobileMenu()">Checklist</a>
         </div>
       </div>
     </div>
@@ -4393,7 +4537,7 @@ html[lang="en"] #viewCal .week-item-today-dot{padding:1px 1px;letter-spacing:0;w
     <div class="navbar-right">
       <div class="navbar-search-wrap" id="navSearchWrap">
         <svg class="navbar-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="navbar-search-inp" id="navSearchInp" aria-label="Buscar series y películas" placeholder="Buscar series, películas…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
+        <input class="navbar-search-inp" id="navSearchInp" aria-label="Buscar series, películas, actrices, ships y productoras" placeholder="Buscar series, actrices…" oninput="debounceRender(this.id,()=>navSearchHandler(this.value))" onfocus="navSearchFocus(event)" onblur="navSearchBlur()" autocomplete="off">
         <div class="navbar-search-results" id="navSearchResults" style="display:none"></div>
       </div>
       <!-- 6.8 — El selector de país de streaming ya no está en la navegación: vive en la sección «Dónde ver» de cada ficha -->
@@ -4423,8 +4567,6 @@ html[lang="en"] #viewCal .week-item-today-dot{padding:1px 1px;letter-spacing:0;w
 </div>
 
 <div class="container" id="mainContainer" style="display:none">
-  <!-- ── Stats banner ── -->
-  <div id="statsBarInner" class="stats-banner"></div>
 
   <!-- ── CTA: Checklist GL Thai ── -->
   <div class="chk-cta-banner" id="checklistCtaBanner" onclick="switchTab('checklist')">
@@ -4455,16 +4597,27 @@ html[lang="en"] #viewCal .week-item-today-dot{padding:1px 1px;letter-spacing:0;w
   <div id="viewChecklist" style="display:none"></div>
 
   <div id="viewCal">
-    <!-- Week view (primary) -->
-    <div class="week-view">
-      <div class="week-nav">
-        <div class="week-nav-title" id="weekNavTitle"></div>
-        <div class="nav-btns">
-          <button class="nav-btn" id="prevWeekBtn">← Semana anterior</button>
-          <button class="nav-btn" id="todayWeekBtn">Esta semana</button>
-          <button class="nav-btn" id="nextWeekBtn">Semana siguiente →</button>
-        </div>
+    <!-- Fase 3 · Cabecera: mes (Playfair 34 px), flechas, Mes/Semana/Lista y Hoy -->
+    <div class="cal-head">
+      <div class="cal-head-nav">
+        <button type="button" class="cal-arrow" id="calPrevBtn" onclick="calStep(-1)" aria-label="Semana anterior">&#8249;</button>
+        <h2 class="cal-title" id="calTitle"></h2>
+        <button type="button" class="cal-arrow" id="calNextBtn" onclick="calStep(1)" aria-label="Semana siguiente">&#8250;</button>
       </div>
+      <div class="cal-head-tools">
+        <div class="cal-seg" role="group" aria-label="Vista del calendario">
+          <button type="button" class="cal-seg-btn" data-view="month" aria-pressed="false" onclick="setCalView('month')">Mes</button>
+          <button type="button" class="cal-seg-btn" data-view="week" aria-pressed="true" onclick="setCalView('week')">Semana</button>
+          <button type="button" class="cal-seg-btn" data-view="list" aria-pressed="false" onclick="setCalView('list')">Lista</button>
+        </div>
+        <button type="button" class="cal-today-btn" id="calTodayBtn" onclick="calGoToday()">Hoy</button>
+      </div>
+    </div>
+    <!-- Filtros: Origen · Tipo (+ «N filtros activos · Limpiar») -->
+    <div class="cal-filters" id="calFilters" role="group" aria-label="Filtros del calendario"></div>
+
+    <!-- Semana -->
+    <div class="week-view" id="calWeekWrap">
       <div class="week-strip-head">
         <div class="strip-nav" id="weekDaysStrip_nav">
           <button class="strip-nav-btn" id="weekDaysStrip_prev" onclick="scrollStripBy('weekDaysStrip',-1)" title="Días anteriores" aria-label="Días anteriores">&#8592;</button>
@@ -4473,31 +4626,23 @@ html[lang="en"] #viewCal .week-item-today-dot{padding:1px 1px;letter-spacing:0;w
       </div>
       <div class="week-days-strip" id="weekDaysStrip" onscroll="updateStripArrows('weekDaysStrip')"></div>
     </div>
-    <!-- Month calendar toggle -->
+
+    <!-- Mes -->
+    <div class="month-cal-wrap" id="monthCalWrap">
+      <div id="weekPanel"></div>
+      <div id="calInner"></div>
+      <div id="calLegend"></div>
+    </div>
+
+    <!-- Lista -->
+    <div class="cal-list" id="calListWrap" hidden></div>
+
     <div class="month-toggle-wrap">
       <div class="cal-actions-row">
-      <button class="month-toggle-btn" id="monthToggleBtn" onclick="toggleMonthCal()">
-        <span id="monthToggleIcon"></span> Ver calendario mensual
-      </button>
-      <button type="button" class="month-toggle-btn ics-export-btn" id="icsExportBtn" onclick="openIcsExport()" title="Exportar estrenos a tu calendario (.ics)">Exportar .ics</button>
+        <button type="button" class="month-toggle-btn ics-export-btn" id="icsExportBtn" onclick="openIcsExport()" title="Exportar estrenos a tu calendario (.ics)">Exportar .ics</button>
+        <button type="button" class="month-toggle-btn" id="pngExportBtn" onclick="exportMonthPng()" title="Descargar el mes seleccionado como imagen PNG">Descargar este mes (PNG)</button>
       </div>
-      <div class="month-cal-wrap" id="monthCalWrap">
-        <div class="cal-nav" style="margin-top:1rem">
-          <div class="month-display" id="monthDisplay" onclick="openMonthPicker()" title="Haz clic para saltar a otro mes" style="cursor:pointer;user-select:none"></div>
-          <div class="nav-btns">
-            <button class="nav-btn" id="prevBtn">← Anterior</button>
-            <button class="nav-btn" id="todayBtn">Hoy</button>
-            <button class="nav-btn" id="nextBtn">Siguiente →</button>
-          </div>
-        </div>
-        <div id="weekPanel"></div>
-        <div id="calInner"></div>
-        <div id="calLegend"></div>
-        <div class="cal-png-row">
-          <button type="button" class="month-toggle-btn" id="pngExportBtn" onclick="exportMonthPng()" title="Descargar el mes seleccionado como imagen PNG">Descargar este mes (PNG)</button>
-          <div class="png-status" id="pngStatus" role="status" aria-live="polite"></div>
-        </div>
-      </div>
+      <div class="png-status" id="pngStatus" role="status" aria-live="polite"></div>
     </div>
     <!-- ── Últimas añadidas (solo calendario) ── -->
     <div id="recentlyAddedSection" class="recently-added-section" style="display:none">
@@ -4541,6 +4686,14 @@ html[lang="en"] #viewCal .week-item-today-dot{padding:1px 1px;letter-spacing:0;w
   <button class="modal-close-btn" onclick="closeActressModal()" title="Cerrar" aria-label="Cerrar">✕</button>
   <div class="actress-modal" id="actressModalBox"></div>
 </div>
+
+<!-- ═══ Barra inferior móvil y tablet (≤899 px): fuera de #mainNavbar para no depender de su stacking context ═══ -->
+<nav class="bottom-nav" id="bottomNav" aria-label="Navegación principal móvil">
+  <a class="bottom-nav-item" id="bnavCal" href="?tab=cal" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();switchTab('cal');closeMobileMenu()"><span class="bn-ico"><svg class="bn-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="bn-label">Calendario</span></a>
+  <a class="bottom-nav-item" id="bnavCatalog" href="?tab=list" onclick="if(!_plainClick(event))return;event.preventDefault();closeNavMenus();seriesNavGo('all');closeMobileMenu()"><span class="bn-ico"><svg class="bn-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="bn-label">Catálogo</span></a>
+  <button class="bottom-nav-item" id="bnavSearch" type="button" onclick="closeNavMenus();closeMobileMenu();openSearch()"><span class="bn-ico"><svg class="bn-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span><span class="bn-label">Buscar</span></button>
+  <button class="bottom-nav-item" id="bnavMore" type="button" aria-expanded="false" aria-controls="navbarLinks" onclick="toggleNavMobile()"><span class="bn-ico"><svg class="bn-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span><span class="bn-label">Más</span></button>
+</nav>
 
 <script>
 const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
@@ -5661,7 +5814,7 @@ function renderStats(){
 
 function getEpMap(y,m){
   const map={};
-  state.series.filter(s=>!s.upcoming).forEach((s)=>{
+  state.series.filter(s=>!s.upcoming&&calKeep(s,'series')).forEach((s)=>{
     const si=state.series.indexOf(s);
     genEps(s).forEach(ep=>{
       if(ep.skipped) return;
@@ -5673,7 +5826,7 @@ function getEpMap(y,m){
     });
   });
   state.movies.forEach((mv,mi)=>{
-    if(!mv.date) return;
+    if(!mv.date||!calKeep(mv,'movie')) return;
     const d=new Date(mv.date+'T12:00:00');
     if(d.getFullYear()===y&&d.getMonth()===m){
       if(!map[mv.date]) map[mv.date]=[];
@@ -5708,19 +5861,12 @@ function renderWeekView(){
   const todayStr=toStr(now.getFullYear(),now.getMonth(),now.getDate());
   const dates=getWeekDates(weekOffset);
 
-  // Nav title
-  const first=new Date(dates[0]+'T12:00:00'), last=new Date(dates[6]+'T12:00:00');
-  const navTitle=document.getElementById('weekNavTitle');
-  if(first.getMonth()===last.getMonth()){
-    navTitle.innerHTML=`<span>${MONTHS[first.getMonth()]}</span> ${first.getFullYear()}`;
-  } else {
-    navTitle.innerHTML=`<span>${MONTHS_SHORT[first.getMonth()]}</span> – <span>${MONTHS_SHORT[last.getMonth()]}</span> ${last.getFullYear()}`;
-  }
+  renderCalHeader();
 
   // Build episode map — one entry per series per day (deduplicated)
   const epMap={};
   dates.forEach(d=>{epMap[d]=[];});
-  state.series.filter(s=>!s.upcoming).forEach(s=>{
+  state.series.filter(s=>!s.upcoming&&calKeep(s,'series')).forEach(s=>{
     const si=state.series.indexOf(s);
     const seenDates=new Set();
     genEps(s).forEach(ep=>{
@@ -5730,7 +5876,7 @@ function renderWeekView(){
     });
   });
   state.movies.forEach((mv,mi)=>{
-    if(mv.date&&epMap.hasOwnProperty(mv.date))
+    if(mv.date&&epMap.hasOwnProperty(mv.date)&&calKeep(mv,'movie'))
       epMap[mv.date].push({type:'movie',s:mv,ep:{date:mv.date},si:mi});
   });
 
@@ -5789,19 +5935,161 @@ function renderWeekView(){
   setTimeout(()=>updateStripArrows('weekDaysStrip'), 30);
 }
 
-function toggleMonthCal(){
-  const wrap=document.getElementById('monthCalWrap');
-  const btn=document.getElementById('monthToggleBtn');
-  const icon=document.getElementById('monthToggleIcon');
-  const isOpen=wrap.classList.contains('open');
-  wrap.classList.toggle('open');
-  btn.classList.toggle('open');
-  icon.textContent=isOpen?'':'';
-  btn.childNodes[1].textContent=isOpen?' Ver calendario mensual':' Ocultar calendario';
-  if(!isOpen){
-    // Render month cal on first open
-    renderCal();
+// ── Fase 3 · Calendario: cabecera (mes · flechas · Mes/Semana/Lista · Hoy) y filtros Origen / Tipo ──
+let calView='week';                 // 'month' | 'week' | 'list'
+const calFilters={origen:[],tipo:[]};
+let calOpenMenu=null;               // 'origen' | 'tipo' | null (menú de filtro desplegado)
+const CAL_TIPOS=[['serie','Serie'],['webserie','Webserie'],['pelicula','Película'],['anime','Anime'],['reality','Reality']];
+
+function calTipoOf(item,type){
+  if(item.category==='anime') return 'anime';
+  if(item.category==='reality') return 'reality';
+  if(type==='movie') return 'pelicula';
+  return item.seriesType==='webserie'?'webserie':'serie';
+}
+function calOrigenesOf(item){ return String(item.country||'').split('/').map(c=>c.trim()).filter(Boolean); }
+// ¿Pasa el título los filtros activos? (sin filtros: siempre)
+function calKeep(item,type){
+  if(calFilters.tipo.length && !calFilters.tipo.includes(calTipoOf(item,type))) return false;
+  if(calFilters.origen.length && !calOrigenesOf(item).some(c=>calFilters.origen.includes(c))) return false;
+  return true;
+}
+function calFiltersCount(){ return calFilters.origen.length+calFilters.tipo.length; }
+
+function calFilterOptions(){
+  const origen=new Map(), tipo=new Map();
+  const add=(item,type)=>{
+    calOrigenesOf(item).forEach(c=>origen.set(c,(origen.get(c)||0)+1));
+    const t=calTipoOf(item,type); tipo.set(t,(tipo.get(t)||0)+1);
+  };
+  state.series.forEach(s=>{ if(!s.upcoming) add(s,'series'); });
+  state.movies.forEach(mv=>{ if(mv.date) add(mv,'movie'); });
+  return {
+    origen:[...origen].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'es')).map(([v,n])=>({v,label:v,n})),
+    tipo:CAL_TIPOS.filter(([k])=>tipo.has(k)).map(([k,l])=>({v:k,label:l,n:tipo.get(k)}))
+  };
+}
+function renderCalFilters(){
+  const box=document.getElementById('calFilters'); if(!box) return;
+  const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const opts=calFilterOptions();
+  const group=(key,label,list)=>{
+    const sel=calFilters[key], open=calOpenMenu===key;
+    const val=!sel.length?'Todos':sel.length===1?((list.find(o=>o.v===sel[0])||{}).label||sel[0]):sel.length+' seleccionados';
+    const items=list.map(o=>`<button type="button" class="cal-filter-opt" role="menuitemcheckbox" aria-checked="${sel.includes(o.v)}" data-k="${key}" data-v="${esc(o.v)}"><span class="cal-filter-check" aria-hidden="true"></span><span class="cal-filter-lbl">${esc(o.label)}</span><span class="cal-filter-n">${o.n}</span></button>`).join('');
+    return `<div class="cal-filter-wrap"><button type="button" class="cal-filter-btn${sel.length?' has-value':''}" data-toggle="${key}" aria-haspopup="true" aria-expanded="${open}"><span>${label}</span> <b>${esc(val)}</b></button><div class="cal-filter-menu" role="menu" aria-label="${label}"${open?'':' hidden'}>${items}</div></div>`;
+  };
+  const n=calFiltersCount();
+  const status=n?`<span class="cal-filters-status" role="status"><span>${n===1?'1 filtro activo':n+' filtros activos'}</span> <span aria-hidden="true">·</span> <button type="button" class="cal-filters-clear" data-act="clear">Limpiar</button></span>`:'';
+  box.innerHTML=group('origen','Origen',opts.origen)+group('tipo','Tipo',opts.tipo)+status;
+}
+function calToggleFilter(key,val){
+  const a=calFilters[key], i=a.indexOf(val);
+  if(i<0) a.push(val); else a.splice(i,1);
+  renderCalendar();
+}
+function calClearFilters(){
+  calFilters.origen.length=0; calFilters.tipo.length=0; calOpenMenu=null;
+  renderCalendar();
+}
+(function(){
+  const box=document.getElementById('calFilters'); if(!box) return;
+  const refocus=(sel)=>{ const el=[...box.querySelectorAll(sel.q)].find(e=>sel.test(e)); if(el) el.focus(); };
+  box.addEventListener('click',e=>{
+    const t=e.target.closest('[data-toggle],[data-v],[data-act]'); if(!t) return;
+    if(t.dataset.act==='clear'){ calClearFilters(); return; }
+    if(t.dataset.toggle){
+      const k=t.dataset.toggle; calOpenMenu=calOpenMenu===k?null:k; renderCalFilters();
+      refocus({q:'[data-toggle]',test:b=>b.dataset.toggle===k}); return;
+    }
+    const k=t.dataset.k, v=t.dataset.v; calToggleFilter(k,v);
+    refocus({q:'.cal-filter-opt',test:b=>b.dataset.k===k&&b.dataset.v===v});
+  });
+  // Cerrar el menú al hacer clic fuera (composedPath: el nodo pulsado puede haberse re-renderizado) o con Escape
+  document.addEventListener('click',e=>{
+    if(calOpenMenu && !e.composedPath().includes(box)){ calOpenMenu=null; renderCalFilters(); }
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key!=='Escape'||!calOpenMenu) return;
+    const k=calOpenMenu; calOpenMenu=null; renderCalFilters();
+    refocus({q:'[data-toggle]',test:b=>b.dataset.toggle===k});
+  });
+})();
+
+function weekOffsetOf(d){   // getWeekDates() cuenta bloques de 7 días desde hoy
+  const t=new Date();
+  return Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())-Date.UTC(t.getFullYear(),t.getMonth(),t.getDate()))/604800000);
+}
+function renderCalHeader(){
+  const title=document.getElementById('calTitle'); if(!title) return;
+  if(calView==='week'){
+    const dates=getWeekDates(weekOffset);
+    const first=new Date(dates[0]+'T12:00:00'), last=new Date(dates[6]+'T12:00:00');
+    title.innerHTML=first.getMonth()===last.getMonth()
+      ?`<span>${MONTHS[first.getMonth()]}</span> ${first.getFullYear()}`
+      :`<span>${MONTHS_SHORT[first.getMonth()]}</span> – <span>${MONTHS_SHORT[last.getMonth()]}</span> ${last.getFullYear()}`;
+  } else {
+    title.innerHTML=`<button type="button" class="cal-title-btn" onclick="openMonthPicker()" title="Haz clic para saltar a otro mes"><span>${MONTHS[state.month]}</span> ${state.year}</button>`;
   }
+  const unit=calView==='week'?'Semana':'Mes';
+  document.getElementById('calPrevBtn')?.setAttribute('aria-label',unit+' anterior');
+  document.getElementById('calNextBtn')?.setAttribute('aria-label',unit+' siguiente');
+  document.querySelectorAll('.cal-seg-btn').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===calView)));
+  const wk=document.getElementById('calWeekWrap'), mo=document.getElementById('monthCalWrap'), li=document.getElementById('calListWrap'), png=document.getElementById('pngExportBtn');
+  if(wk) wk.style.display=calView==='week'?'':'none';
+  if(mo) mo.classList.toggle('open',calView==='month');
+  if(li) li.hidden=calView!=='list';
+  if(png) png.style.display=calView==='week'?'none':'';
+}
+function renderCalendar(){
+  renderCalFilters();
+  if(calView==='week') renderWeekView(); else if(calView==='month') renderCal(); else renderCalList();
+}
+function setCalView(v){
+  if(v===calView) return;
+  if(calView==='week'){            // semana → mes/lista: el mes del día central de la semana
+    const mid=new Date(getWeekDates(weekOffset)[3]+'T12:00:00');
+    state.month=mid.getMonth(); state.year=mid.getFullYear(); saveSession();
+  } else if(v==='week'){           // mes/lista → semana: la semana de hoy (si es el mes actual) o la del día 1
+    const now=new Date();
+    weekOffset=(state.year===now.getFullYear()&&state.month===now.getMonth())?0:weekOffsetOf(new Date(state.year,state.month,1));
+  }
+  calView=v; renderCalendar();
+}
+function calStep(dir){
+  if(calView==='week'){ weekOffset+=dir; renderWeekView(); return; }
+  state.month+=dir;
+  if(state.month<0){state.month=11;state.year--;} else if(state.month>11){state.month=0;state.year++;}
+  saveSession(); if(calView==='month') renderCal(); else renderCalList();
+}
+function calGoToday(){
+  if(calView==='week'){ weekOffset=0; renderWeekView(); return; }
+  const n=new Date(); state.month=n.getMonth(); state.year=n.getFullYear();
+  saveSession(); if(calView==='month') renderCal(); else renderCalList();
+}
+// Lista: estrenos del mes agrupados por día
+function renderCalList(){
+  renderCalHeader();
+  const wrap=document.getElementById('calListWrap'); if(!wrap) return;
+  const map=getEpMap(state.year,state.month), dates=Object.keys(map).sort();
+  const now=new Date(), todayStr=toStr(now.getFullYear(),now.getMonth(),now.getDate());
+  if(!dates.length){
+    wrap.innerHTML=calFiltersCount()
+      ?`<div class="empty"><span>Sin estrenos con estos filtros</span> <span aria-hidden="true">·</span> <button type="button" class="cal-filters-clear" onclick="calClearFilters()">Limpiar</button></div>`
+      :`<div class="empty">Sin estrenos este mes.</div>`;
+    return;
+  }
+  wrap.innerHTML=dates.map(ds=>{
+    const d=new Date(ds+'T12:00:00'), isToday=ds===todayStr;
+    const items=map[ds].map(({s,ep,si,type})=>{
+      const col=type==='movie'?'var(--lavender)':PALETTE[si%PALETTE.length];
+      const bg=type==='movie'?'var(--lavender-soft)':PALETTE_SOFT[si%PALETTE_SOFT.length];
+      const lbl=type==='movie'?'Película':(ep.seasonNum===1?'Estreno · ':'')+epLabel(ep,getSeasons(s));
+      const poster=s.poster?`<img class="cal-list-poster" src="${s.poster}" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
+      return `<button type="button" class="cal-list-item" onclick="${type==='movie'?`openMovie(${si})`:`openSeries(${si})`}" style="--item-col:${col}"><span class="cal-list-poster-wrap" style="background:${bg}">${poster}</span><span class="cal-list-body"><span class="cal-list-name">${s.name}</span><span class="cal-list-ep">${lbl}</span></span></button>`;
+    }).join('');
+    return `<section class="cal-list-day${isToday?' is-today':''}"><h3 class="cal-list-date"><span>${DAYS_SHORT[(d.getDay()+6)%7]}</span><span class="cal-list-num">${d.getDate()}</span>${isToday?'<span class="cal-list-today">HOY</span>':''}</h3><div class="cal-list-items">${items}</div></section>`;
+  }).join('');
 }
 
 function renderWeekPanel(){
@@ -5810,7 +6098,7 @@ function renderWeekPanel(){
   const now=new Date();
   const todayStr=toStr(now.getFullYear(),now.getMonth(),now.getDate());
   const items=[];
-  state.series.filter(s=>!s.upcoming).forEach((s)=>{
+  state.series.filter(s=>!s.upcoming&&calKeep(s,'series')).forEach((s)=>{
     const si=state.series.indexOf(s);
     genEps(s).forEach(ep=>{
       if(!ep.skipped && ep.date===todayStr)
@@ -5818,7 +6106,7 @@ function renderWeekPanel(){
     });
   });
   state.movies.forEach((mv,mi)=>{
-    if(mv.date && mv.date===todayStr)
+    if(mv.date && mv.date===todayStr && calKeep(mv,'movie'))
       items.push({type:'movie',s:mv,ep:{date:mv.date},si:mi});
   });
   const panel=document.getElementById('weekPanel');
@@ -5882,7 +6170,7 @@ function renderCalLegend(){
 
 function renderCal(){
   const {month:m,year:y}=state;
-  document.getElementById('monthDisplay').innerHTML=`<span>${MONTHS[m]}</span> ${y}`;
+  renderCalHeader();
   const epMap=getEpMap(y,m);
   const first=new Date(y,m,1), startDow=(first.getDay()+6)%7;
   const dim=new Date(y,m+1,0).getDate(), prevDim=new Date(y,m,0).getDate();
@@ -5946,7 +6234,7 @@ function renderMonthPicker(){
       <button class="month-picker-arr" onclick="monthPickerYear++;renderMonthPicker()" aria-label="Año siguiente">→</button>
     </div>
     <div class="month-picker-grid">
-      ${MONTHS.map((mn,i)=>`<button class="month-picker-btn${state.year===monthPickerYear&&state.month===i?' active':''}" onclick="state.month=${i};state.year=monthPickerYear;closeMonthPicker();renderCal()">${mn.slice(0,3)}</button>`).join('')}
+      ${MONTHS.map((mn,i)=>`<button class="month-picker-btn${state.year===monthPickerYear&&state.month===i?' active':''}" onclick="state.month=${i};state.year=monthPickerYear;closeMonthPicker();renderCalendar()">${mn.slice(0,3)}</button>`).join('')}
     </div>`;
   document.getElementById('monthPickerInner').innerHTML=html;
 }
@@ -6840,7 +7128,7 @@ function renderList(){
   renderListResults();
 }
 
-function switchSeriesSubtab(sub){ seriesSubtab=sub; paginationState.series[sub]=1; saveSession(); renderListResults(); }
+function switchSeriesSubtab(sub){ seriesSubtab=sub; paginationState.series[sub]=1; saveSession(); renderListResults(); updateNavActive(); }
 
 let upcomingFilters={q:'',countries:[],sort:'recent',book:'all',year:'',genre:'',subview:'normal'};
 
@@ -6882,8 +7170,8 @@ function renderUpcoming(){
     view.innerHTML=`<div class="section-heading" style="margin-bottom:.25rem">Próximamente</div>
     <p class="section-desc" style="margin-bottom:.6rem">Series anunciadas que aún no tienen fecha de emisión confirmada.</p>
     <div style="display:flex;gap:4px;margin-bottom:1rem;flex-wrap:wrap">
-      <button class="ships-subtab active" id="upSubNormal" onclick="upcomingFilters.subview='normal';document.getElementById('upSubNormal').className='ships-subtab active';document.getElementById('upSubStale').className='ships-subtab';renderUpcomingResults()">Con novedades</button>
-      <button class="ships-subtab" id="upSubStale" onclick="upcomingFilters.subview='stale';document.getElementById('upSubStale').className='ships-subtab active';document.getElementById('upSubNormal').className='ships-subtab';renderUpcomingResults()">Sin novedades${staleTotal?` <span style="background:var(--danger);color:var(--on-accent);border-radius:20px;font-size:10px;padding:1px 6px;margin-left:3px;font-weight:700">${staleTotal}</span>`:''}</button>
+      <button class="ships-subtab active" id="upSubNormal" onclick="upcomingFilters.subview='normal';document.getElementById('upSubNormal').className='ships-subtab active';document.getElementById('upSubStale').className='ships-subtab';renderUpcomingResults();updateNavActive()">Con novedades</button>
+      <button class="ships-subtab" id="upSubStale" onclick="upcomingFilters.subview='stale';document.getElementById('upSubStale').className='ships-subtab active';document.getElementById('upSubNormal').className='ships-subtab';renderUpcomingResults();updateNavActive()">Sin novedades${staleTotal?` <span style="background:var(--danger);color:var(--on-accent);border-radius:20px;font-size:10px;padding:1px 6px;margin-left:3px;font-weight:700">${staleTotal}</span>`:''}</button>
     </div>
     <div class="upcoming-toolbar-shell books-toolbar">
       <div class="toolbar-search-row">
@@ -7609,7 +7897,7 @@ function openActressProfile(actressId){
   if(chineseZodiacStr) detailsLines+=_row('Zodiaco chino',chineseZodiacStr);
   if(a.height) detailsLines+=_row('Altura',`${a.height} cm`);
 
-  const html=`<div class="modal-body ship-detail fx-detail">
+  const html=`<div class="modal-body ship-detail fx-detail">${crumbsHtml(['actresses'],a.name,'closeActressModal()')}
   <div class="fx-hero">
     ${photo}
     <div>
@@ -7777,7 +8065,7 @@ function openSeries(si){
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
-  let html=`<div class="modal-body">
+  let html=`<div class="modal-body">${crumbsHtml(crumbKeysSeries(s),s.name,'closeModal()')}
   <div class="detail-hero">
     <div class="detail-poster-col">
       ${posterEl.replace('modal-poster-full','detail-poster').replace('modal-poster-full-ph','detail-poster-ph')}
@@ -7888,7 +8176,7 @@ function openUpcoming(si){
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
-  let html=`<div class="modal-body">
+  let html=`<div class="modal-body">${crumbsHtml(['series','upcoming'],s.name,'closeModal()')}
   <div class="detail-hero">
     <div class="detail-poster-col">
       ${posterEl}
@@ -7990,7 +8278,7 @@ function openMovie(mi){
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
-  let html=`<div class="modal-body">
+  let html=`<div class="modal-body">${crumbsHtml(crumbKeysMovie(mv),mv.name,'closeModal()')}
   <div class="detail-hero">
     <div class="detail-poster-col">
       ${posterEl}
@@ -8895,7 +9183,7 @@ function openRichDetail(item, opts){
     }
   }
 
-  document.getElementById('modalBox').innerHTML=`<div class="modal-body">
+  document.getElementById('modalBox').innerHTML=`<div class="modal-body">${crumbsHtml(item.category==='anime'?['anime']:isSeries?['realities']:['documentales'],item.name,'closeModal()')}
     <div class="detail-hero">
       <div class="detail-poster-col">
         ${posterEl}
@@ -9560,6 +9848,7 @@ function tabUrl(tab, hash){
   const p=new URLSearchParams(location.search);
   p.set('tab',tab);
   p.delete('ships');
+  p.delete('sub');
   return location.pathname+'?'+p.toString()+(hash||'');
 }
 
@@ -9634,34 +9923,15 @@ function switchTab(tab, fromPopstate=false){
   if(tabChanged && _curTabKey) _scrollMemo.set(_curTabKey, pageScroller().scrollTop); // entrada que se abandona
   state.tab=tab;
   saveSession();
-  const exploreTabs=['list','movies','upcoming','books','actresses','anime','realities','documentales','productoras','canceladas'];
-  const picksTabs=['top10','picks2026','listas','ruleta','checklist'];
   const allTabs=['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','productoras','canceladas','listas','ruleta','checklist'];
 
   allTabs.forEach(t=>{
     const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
     if(view) view.style.display=tab===t?'':'none';
-    const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
-    if(!btn) return;
-    const isActive=tab===t;
-    if(exploreTabs.includes(t)){
-      btn.className='explore-item'+(isActive?' active':'');
-    } else if(picksTabs.includes(t)){
-      btn.className='nav-picks-item'+(isActive?' active':'');
-    } else {
-      btn.className='nav-link'+(isActive?' active':'');
-    }
   });
 
-  updateShipsNavActive();
-
-  // "Explorar" button highlight
-  const exploreBtn=document.getElementById('tabExplore');
-  if(exploreBtn) exploreBtn.className='nav-link'+(exploreTabs.includes(tab)?' active':'');
-
-  // "Mis picks" button highlight
-  const picksBtn=document.getElementById('tabPicksGroup');
-  if(picksBtn) picksBtn.className='nav-link nav-picks-btn'+(picksTabs.includes(tab)?' active':'');
+  // Fase 2: resaltado de la barra (enlaces, grupos y apartados) en un único sitio
+  updateNavActive();
 
   // Push history state so Android back button navigates tabs instead of leaving
   // (9.3) Si la entrada actual ya es esta pestaña (pulsar la pestaña activa), no se añade otra igual.
@@ -9671,7 +9941,7 @@ function switchTab(tab, fromPopstate=false){
   }
   if(fromPopstate && history.state && history.state.k) _curTabKey=history.state.k;
 
-  if(tab==='cal'){renderWeekView();}
+  if(tab==='cal'){renderCalendar();}
   if(tab==='list') renderList();
   if(tab==='movies') renderMovies();
   if(tab==='upcoming') renderUpcoming();
@@ -10077,7 +10347,7 @@ function openShipDetail(idx){
     ?`<section class="ship-sec"><h3 class="ship-sec-title">${petsOfShip.length>1?'Mascotas':'Mascota'} <span class="ship-sec-count">${petsOfShip.length}</span></h3><div class="ship-sec-list">${petsOfShip.map(buildPetChip).join('')}</div></section>`
     :'';
 
-  const html=`<div class="modal-body ship-detail">
+  const html=`<div class="modal-body ship-detail">${crumbsHtml(isRetiredModal?['ships','rupturas']:['ships'],shipName,'closeShipDetail()')}
   <div class="detail-hero ship-hero">
     ${photoHtml}
     <div class="detail-info">
@@ -10392,7 +10662,7 @@ function openProductoraDetail(id){
   }).join('');
   const logo=p.logo?`<img src="${axEsc(p.logo)}" alt="" onerror="this.remove()">`:'';
   const sub=[p.country||'',p.founded?`desde ${p.founded}`:''].filter(Boolean).join(' · ');
-  const html=`<div class="modal-body ship-detail fx-detail">
+  const html=`<div class="modal-body ship-detail fx-detail">${crumbsHtml(['productoras'],p.name,'closeActressModal()')}
     <div class="fx-hero">
       <div class="px-logo px-logo-lg" style="--h:${axHue(p.name)}"><span aria-hidden="true">${axEsc(axInitials(p.name))}</span>${logo}</div>
       <div>
@@ -10669,61 +10939,141 @@ window.addEventListener('popstate', function(e){
   closeMobileMenu();
 });
 
-function toggleExploreDrop(e){
-  e.stopPropagation();
-  const drop=document.getElementById('navExploreDrop');
-  const btn=document.getElementById('tabExplore');
-  const isOpen=drop.classList.contains('open');
-  drop.classList.toggle('open',!isOpen);
-  if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
-  // close picks
-  document.getElementById('navPicksDrop')?.classList.remove('open');
-  closeShipsDrop();
-}
-function closeExploreDrop(){
-  document.getElementById('navExploreDrop')?.classList.remove('open');
-  document.getElementById('tabExplore')?.setAttribute('aria-expanded','false');
-}
-function togglePicksDrop(e){
-  e.stopPropagation();
-  const drop=document.getElementById('navPicksDrop');
-  const btn=document.getElementById('tabPicksGroup');
-  const isOpen=drop.classList.contains('open');
-  drop.classList.toggle('open',!isOpen);
-  if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
-  // close explorar
-  document.getElementById('navExploreDrop')?.classList.remove('open');
-  closeShipsDrop();
-}
-function closePicksDrop(){
-  document.getElementById('navPicksDrop')?.classList.remove('open');
-  document.getElementById('tabPicksGroup')?.setAttribute('aria-expanded','false');
-}
-function toggleShipsDrop(e){
-  e.stopPropagation();
-  const drop=document.getElementById('navShipsDrop');
-  const btn=document.getElementById('tabShips');
-  const isOpen=drop.classList.contains('open');
-  drop.classList.toggle('open',!isOpen);
-  if(btn) btn.setAttribute('aria-expanded',String(!isOpen));
-  document.getElementById('navExploreDrop')?.classList.remove('open');
-  document.getElementById('navPicksDrop')?.classList.remove('open');
-}
-function closeShipsDrop(){
-  document.getElementById('navShipsDrop')?.classList.remove('open');
-  document.getElementById('tabShips')?.setAttribute('aria-expanded','false');
-}
-// Marca en el desplegable el apartado visible (solo mientras se está en Ships Thais)
-function updateShipsNavActive(){
-  const cur=shipsNormView(shipsState.view), onShips=(state.tab==='ships');
-  Object.keys(SHIPS_VIEWS).forEach(k=>{
-    const it=document.getElementById('navShipsItem-'+k);
-    if(it) it.className='nav-picks-item'+(onShips&&k===cur?' active':'');
+// ── Fase 2 · Navegación superior: Calendario · Explorar▾ · Personas▾ · Para ti▾ ──
+const NAV_MENUS={
+  explore:{wrap:'navExploreWrap',  drop:'navExploreDrop',  btn:'tabExplore'},
+  people: {wrap:'navPersonasWrap', drop:'navPersonasDrop', btn:'tabPersonas'},
+  foryou: {wrap:'navParaTiWrap',   drop:'navParaTiDrop',   btn:'tabParaTi'}
+};
+const NAV_GROUPS={
+  explore:['list','movies','upcoming','books','anime','realities','documentales','canceladas'],
+  people: ['actresses','ships','productoras'],
+  foryou: ['top10','picks2026','listas','ruleta','checklist']
+};
+const NAV_SERIES_TABS=['list','upcoming','canceladas'];
+function closeNavMenus(except){
+  Object.keys(NAV_MENUS).forEach(k=>{
+    if(k===except) return;
+    document.getElementById(NAV_MENUS[k].drop)?.classList.remove('open');
+    document.getElementById(NAV_MENUS[k].btn)?.setAttribute('aria-expanded','false');
   });
 }
-// Elige apartado desde la barra superior. Cada apartado conserva su propio listado.
+function toggleNavMenu(key,e){
+  if(e) e.stopPropagation();
+  const m=NAV_MENUS[key];
+  const drop=document.getElementById(m.drop), btn=document.getElementById(m.btn);
+  if(!drop) return;
+  const willOpen=!drop.classList.contains('open');
+  closeNavMenus(key);
+  drop.classList.toggle('open',willOpen);
+  if(btn) btn.setAttribute('aria-expanded',String(willOpen));
+  // Al abrir Explorar, «Series» aparece desplegado si ya se está dentro de ese grupo
+  if(key==='explore' && willOpen) toggleSeriesSub(null, NAV_SERIES_TABS.includes(state.tab));
+}
+function toggleSeriesSub(e,force){
+  if(e) e.stopPropagation();
+  const sub=document.getElementById('navSeriesSub'), btn=document.getElementById('tabSeriesGroup');
+  if(!sub) return;
+  const open=(force===undefined||force===null)?sub.hidden:!!force;
+  sub.hidden=!open;
+  if(btn) btn.setAttribute('aria-expanded',String(open));
+}
+// ── Fase 2 · Migas de pan en las fichas de detalle (p. ej. Series › Girl Rules) ──
+// Los antecesores son enlaces reales (?tab=…): cierran la ficha y llevan a su sección; el último es la ficha actual.
+const CRUMB_SECTIONS={
+  series:      {label:'Series',       href:'?tab=list',                go:"seriesNavGo('all')"},
+  upcoming:    {label:'Próximamente', href:'?tab=upcoming',            go:"upcomingNavGo('normal')"},
+  movies:      {label:'Películas',    href:'?tab=movies',              go:"switchTab('movies')"},
+  anime:       {label:'Anime',        href:'?tab=anime',               go:"switchTab('anime')"},
+  realities:   {label:'Realities',    href:'?tab=realities',           go:"switchTab('realities')"},
+  documentales:{label:'Documentales', href:'?tab=documentales',        go:"switchTab('documentales')"},
+  actresses:   {label:'Actrices',     href:'?tab=actresses',           go:"switchTab('actresses')"},
+  ships:       {label:'Ships',        href:'?tab=ships&ships=ships',   go:"shipsNavGo('ships')"},
+  rupturas:    {label:'Rupturas',     href:'?tab=ships&ships=rupturas',go:"shipsNavGo('rupturas')"},
+  productoras: {label:'Productoras',  href:'?tab=productoras',         go:"switchTab('productoras')"}
+};
+function crumbsHtml(keys,name,close){
+  const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const links=keys.map(k=>{
+    const c=CRUMB_SECTIONS[k];
+    return `<li class="crumbs-item"><a class="crumbs-link" href="${esc(c.href)}" onclick="if(!_plainClick(event))return;event.preventDefault();${close};${c.go}">${c.label}</a></li>`;
+  }).join('');
+  return `<nav class="crumbs" aria-label="Migas de pan"><ol class="crumbs-list">${links}<li class="crumbs-item" aria-current="page"><span class="crumbs-current">${esc(name)}</span></li></ol></nav>`;
+}
+function crumbKeysSeries(s){ return s.category==='anime'?['anime']:s.category==='reality'?['realities']:s.upcoming?['series','upcoming']:['series']; }
+function crumbKeysMovie(m){  return m.category==='anime'?['anime']:m.category==='reality'?['documentales']:['movies']; }
+
+// Resalta enlaces, grupos y apartados según state.tab (+ subvista de Series / Próximamente / Ships)
+function updateNavActive(){
+  const tab=state.tab;
+  const subSeries=(typeof seriesSubtab!=='undefined')?seriesSubtab:'all';
+  const stale=(typeof upcomingFilters!=='undefined')&&upcomingFilters.subview==='stale';
+  const shipsView=(typeof shipsNormView==='function')?shipsNormView(shipsState.view):'ships';
+  const set=(id,on)=>{
+    const el=document.getElementById(id); if(!el) return;
+    el.classList.toggle('active',!!on);
+    if(on) el.setAttribute('aria-current','page'); else el.removeAttribute('aria-current');
+  };
+  ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','productoras','canceladas','listas','ruleta','checklist']
+    .forEach(t=>set('tab'+t.charAt(0).toUpperCase()+t.slice(1), tab===t));
+  set('tabList',         tab==='list' && subSeries!=='airing');
+  set('tabSeriesAiring', tab==='list' && subSeries==='airing');
+  set('tabUpcoming',     tab==='upcoming' && !stale);
+  set('tabSinNovedad',   tab==='upcoming' && stale);
+  set('tabShips',                 tab==='ships' && shipsView==='ships');
+  set('navShipsItem-rupturas',    tab==='ships' && shipsView==='rupturas');
+  set('navShipsItem-mascotas',    tab==='ships' && shipsView==='mascotas');
+  set('tabExplore',  NAV_GROUPS.explore.includes(tab));
+  set('tabPersonas', NAV_GROUPS.people.includes(tab));
+  set('tabParaTi',   NAV_GROUPS.foryou.includes(tab));
+  document.getElementById('tabSeriesGroup')?.classList.toggle('has-active',NAV_SERIES_TABS.includes(tab));
+  // Barra inferior móvil: Calendario · Catálogo · Buscar · Más (Más = menú actual abierto o vista de Personas / Para ti)
+  const menuOpen=!!document.getElementById('navbarLinks')?.classList.contains('open');
+  set('bnavCal',     tab==='cal');
+  set('bnavCatalog', NAV_GROUPS.explore.includes(tab));
+  set('bnavMore',    menuOpen || NAV_GROUPS.people.includes(tab) || NAV_GROUPS.foryou.includes(tab));
+  document.getElementById('bnavMore')?.setAttribute('aria-expanded',String(menuOpen));
+}
+// Mantiene ?sub= en la URL (compartible) sin añadir entradas al historial
+function navSyncSub(sub){
+  const p=new URLSearchParams(location.search);
+  if(sub) p.set('sub',sub); else p.delete('sub');
+  history.replaceState(history.state,'',location.pathname+'?'+p.toString()+location.hash);
+}
+// Series: 'all' | 'airing'
+function seriesNavGo(sub){
+  seriesSubtab=sub; paginationState.series[sub]=1;
+  if(state.tab!=='list') switchTab('list'); else { saveSession(); renderListResults(); }
+  navSyncSub(sub==='airing'?'airing':null);
+  updateNavActive();
+}
+// Próximamente: 'normal' | 'stale' (Sin novedad)
+function syncUpcomingSubviewButtons(){
+  const st=upcomingFilters.subview==='stale';
+  const a=document.getElementById('upSubNormal'), b=document.getElementById('upSubStale');
+  if(a) a.className='ships-subtab'+(st?'':' active');
+  if(b) b.className='ships-subtab'+(st?' active':'');
+}
+function upcomingNavGo(v){
+  upcomingFilters.subview=v;
+  if(state.tab!=='upcoming') switchTab('upcoming'); else renderUpcomingResults();
+  syncUpcomingSubviewButtons();
+  navSyncSub(v==='stale'?'stale':null);
+  updateNavActive();
+}
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape') return;
+  if(document.getElementById('navbarLinks')?.classList.contains('open')){ closeMobileMenu(); document.getElementById('bnavMore')?.focus(); return; }
+  const k=Object.keys(NAV_MENUS).find(k=>document.getElementById(NAV_MENUS[k].drop)?.classList.contains('open'));
+  if(!k) return;
+  closeNavMenus();
+  document.getElementById(NAV_MENUS[k].btn)?.focus();
+});
+// Marca en el menú el apartado de Ships visible (se conserva el nombre por compatibilidad)
+function updateShipsNavActive(){ updateNavActive(); }
+// Elige apartado de Ships desde la barra superior. Cada apartado conserva su propio listado.
 function shipsNavGo(v){
-  closeShipsDrop();
+  closeNavMenus();
   shipsState.view=shipsNormView(v);
   if(state.tab!=='ships') switchTab('ships'); else shipsSetView(shipsState.view);
   closeMobileMenu();
@@ -10733,6 +11083,7 @@ function closeMobileMenu(){
   const mobileSearch=document.getElementById('navSearchWrapMobile');
   if(links) links.classList.remove('open');
   if(mobileSearch) mobileSearch.style.display='none';
+  updateNavActive();
 }
 
 function toggleNavMobile(){
@@ -10746,41 +11097,23 @@ function toggleNavMobile(){
     if(inp) inp.value='';
     document.getElementById('navSearchResultsMobile')?.style && (document.getElementById('navSearchResultsMobile').style.display='none');
   }
+  updateNavActive();
 }
 document.addEventListener('click',e=>{
-  if(!document.getElementById('navExploreWrap')?.contains(e.target)) closeExploreDrop();
-  if(!document.getElementById('navPicksWrap')?.contains(e.target)) closePicksDrop();
-  if(!document.getElementById('navShipsWrap')?.contains(e.target)) closeShipsDrop();
-  if(!document.getElementById('mainNavbar')?.contains(e.target)) document.getElementById('navbarLinks')?.classList.remove('open');
+  if(!Object.values(NAV_MENUS).some(m=>document.getElementById(m.wrap)?.contains(e.target))) closeNavMenus();
+  // la barra inferior tampoco cuenta como «fuera»: «Más» abre la hoja y no debe cerrarla al instante
+  if(!document.getElementById('navbarLinks')?.contains(e.target) && !document.getElementById('bottomNav')?.contains(e.target)){
+    document.getElementById('navbarLinks')?.classList.remove('open'); updateNavActive();
+  }
 });
 
 function navSearchHandler(q){
   const boxes=[document.getElementById('navSearchResults'), document.getElementById('navSearchResultsMobile')].filter(Boolean);
   q=(q||'').trim();
   if(q.length<2){ boxes.forEach(b=>b.style.display='none'); return; }
-  const ql=q.toLowerCase();
-  const results=[];
-  (state.series||[]).forEach((s,i)=>{
-    if((s.name||'').toLowerCase().includes(ql)||(s.nameEn||'').toLowerCase().includes(ql))
-      results.push({type:s.category==='anime'?'anime':s.category==='reality'?'reality':'serie', name:s.name, year:s.year, poster:s.poster, si:i});
-  });
-  (state.movies||[]).forEach((m,i)=>{
-    if((m.name||'').toLowerCase().includes(ql)||(m.nameEn||'').toLowerCase().includes(ql))
-      results.push({type:'pelicula', name:m.name, year:m.year, poster:m.poster, si:i});
-  });
-  const typeLabel={serie:'Serie',anime:'Anime',reality:'Reality',pelicula:'Película'};
-  const html=results.length
-    ? results.slice(0,8).map(r=>{
-        const poster=r.poster?`<img src="${r.poster}" onerror="this.outerHTML='<div class=nsearch-item-ph></div>'" loading="lazy">`:'<div class="nsearch-item-ph"></div>';
-        let onclick='';
-        if(r.type==='serie') onclick=`navSearchPick();switchTab('list');setTimeout(()=>openSeries(${r.si}),60)`;
-        else if(r.type==='pelicula') onclick=`navSearchPick();switchTab('movies');setTimeout(()=>openMovie(${r.si}),60)`;
-        else if(r.type==='anime') onclick=`navSearchPick();switchTab('anime');setTimeout(()=>openAnimeDetail('series','${r.si}'),60)`;
-        else if(r.type==='reality') onclick=`navSearchPick();switchTab('realities');setTimeout(()=>openRealityDetail('series','${r.si}'),60)`;
-        return `<div class="nsearch-item" onclick="${onclick}">${poster}<div class="nsearch-item-info"><div class="nsearch-item-name">${r.name}</div><div class="nsearch-item-meta">${typeLabel[r.type]||''}${r.year?' · '+r.year:''}</div></div></div>`;
-      }).join('')
-    : '<div class="nsearch-empty">Sin resultados</div>';
-  boxes.forEach(b=>{ b.innerHTML=html; b.style.display='flex'; b.style.flexDirection='column'; });
+  // Fase 2: resultados agrupados por tipo (Series, Películas, Actrices, Ships, Productoras)
+  renderSearchResults(q,{grouped:true,boxes,close:'navSearchPick()'});
+  boxes.forEach(b=>{ b.style.display='flex'; b.style.flexDirection='column'; });
 }
 function navSearchFocus(e){ const q=(e?.target)?.value; if(q&&q.length>=2) navSearchHandler(q); }
 function navSearchBlur(){
@@ -10800,12 +11133,6 @@ function navSearchPick(){
 
 
 
-document.getElementById('prevBtn').onclick=()=>{state.month--;if(state.month<0){state.month=11;state.year--;}saveSession();renderCal();};
-document.getElementById('nextBtn').onclick=()=>{state.month++;if(state.month>11){state.month=0;state.year++;}saveSession();renderCal();};
-document.getElementById('todayBtn').onclick=()=>{state.month=new Date().getMonth();state.year=new Date().getFullYear();saveSession();renderCal();};
-document.getElementById('prevWeekBtn').onclick=()=>{weekOffset--;renderWeekView();};
-document.getElementById('todayWeekBtn').onclick=()=>{weekOffset=0;renderWeekView();};
-document.getElementById('nextWeekBtn').onclick=()=>{weekOffset++;renderWeekView();};
 
 function openSearch(){
   document.getElementById('searchOverlay').classList.add('open');
@@ -10843,10 +11170,9 @@ function openProductoraFromSearch(prodId){
   },80);
 }
 
-function renderSearchResults(q){
-  const box=document.getElementById('searchOverlayResults');
-  const term=q.toLowerCase().trim();
-  if(!term){box.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:1rem">Escribe para buscar series, películas, actrices, ships…</div>';return;}
+// ── Buscador global: lo comparten la barra de escritorio (resultados agrupados) y el overlay ⌕ ──
+// Búsqueda (sin cambios de criterio): devuelve [{type,s,si}] de series, películas, anime, realities, actrices, ships y productoras.
+function searchCollect(term){
   const results=[];
   state.series.forEach((s,si)=>{
     const castNames=(s.cast||[]).map(m=>{const a=(state.actresses||[]).find(x=>x.id===m.actressId);return a?a.name.toLowerCase():'';}).join(' ');
@@ -10891,36 +11217,99 @@ function renderSearchResults(q){
     if((p.name||'').toLowerCase().includes(term)||(p.country||'').toLowerCase().includes(term))
       results.push({type:'productora',s:p});
   });
+  return results;
+}
+// Acción al elegir un resultado; `close` es la expresión que cierra el buscador de origen (closeSearch() / navSearchPick()).
+function searchResultOnclick(r,close){
+  let onclick='';
+  if(r.type==='serie') onclick=`${close};switchTab('list');setTimeout(()=>openSeries(${r.si}),50)`;
+  else if(r.type==='pelicula') onclick=`${close};switchTab('movies');setTimeout(()=>openMovie(${r.si}),50)`;
+  else if(r.type==='anime') onclick=`${close};switchTab('anime');setTimeout(()=>openAnimeDetail('series','${r.si}'),50)`;
+  else if(r.type==='anime-movie') onclick=`${close};switchTab('anime');setTimeout(()=>{animeSubtab='movies';renderAnime();openAnimeDetail('movie','${r.si}')},50)`;
+  else if(r.type==='reality') onclick=`${close};switchTab('realities');setTimeout(()=>openRealityDetail('series','${r.si}'),50)`;
+  else if(r.type==='reality-movie') onclick=`${close};switchTab('documentales');setTimeout(()=>{paginationDocumentales={page:1};renderDocumentalesResults();openRealityDetail('movie','${r.si}')},50)`;
+  else if(r.type==='actress') onclick=`${close};openActressProfile('${r.s.id}')`;
+  else if(r.type==='ship') onclick=`${close};openShipFromSearch('${r.s.id}')`;
+  else if(r.type==='productora') onclick=`${close};openProductoraFromSearch('${r.s.id}')`;
+  return onclick;
+}
+// Icono, etiqueta, imagen y meta de un resultado.
+function searchResultInfo(r){
+  const icons={serie:'',pelicula:'',anime:'','anime-movie':'',reality:'','reality-movie':'',actress:'',ship:'',productora:''};
+  const labels={serie:'Serie GL',pelicula:'Película GL',anime:'Anime GL','anime-movie':'Película Anime',reality:'Reality/Docuserie','reality-movie':'Documental GL',actress:'Actriz',ship:'Ship',productora:'Productora'};
+  const icon=icons[r.type]||'';
+  const label=labels[r.type]||r.type;
+  const imgSrc=r.s.poster||r.s.photo||r.s.couplePhoto||r.s.logo||'';
+  let metaExtra='';
+  if(r.type==='ship'){
+    const names=(r.s.actressIds||[]).map(id=>{const a=(state.actresses||[]).find(x=>x.id===id);return a?a.name:'';}).filter(Boolean);
+    metaExtra=names.length?' · '+names.join(' & '):'';
+  }
+  const meta=`${label}${r.s.country?' · '+countryFlag(r.s.country)+' '+r.s.country:''}${r.s.network?' · '+r.s.network:''}${metaExtra}`;
+  return {icon,label,imgSrc,meta};
+}
+// Barra de escritorio: 5 grupos. Anime y reality (que viven en state.series/state.movies) se reclasifican y sin duplicados.
+const SEARCH_GROUPS=[
+  {label:'Series',      types:['serie','anime','reality']},
+  {label:'Películas',   types:['pelicula','anime-movie','reality-movie']},
+  {label:'Actrices',    types:['actress']},
+  {label:'Ships',       types:['ship']},
+  {label:'Productoras', types:['productora']}
+];
+const SEARCH_PER_GROUP=5;
+function searchNormalize(results){
+  const seen=new Set(), out=[];
+  results.forEach(r=>{
+    const cat=r.s&&r.s.category;
+    if((r.type==='serie'||r.type==='pelicula')&&(cat==='anime'||cat==='reality')){
+      r={type:(cat==='anime'?'anime':'reality')+(r.type==='pelicula'?'-movie':''),s:r.s,si:r.s.id||r.s.name};
+    }
+    if(seen.has(r.s)) return;
+    seen.add(r.s); out.push(r);
+  });
+  return out;
+}
+function searchGroupedHtml(term,close){
+  const rows=searchNormalize(searchCollect(term));
+  const rank=r=>((r.s.name||'').toLowerCase().includes(term)||(r.s.nameEn||'').toLowerCase().includes(term))?0:1;
+  const html=SEARCH_GROUPS.map(g=>{
+    const items=rows.filter(r=>g.types.includes(r.type)).sort((x,y)=>rank(x)-rank(y));
+    if(!items.length) return '';
+    const list=items.slice(0,SEARCH_PER_GROUP).map(r=>{
+      const info=searchResultInfo(r);
+      const poster=info.imgSrc
+        ?`<img src="${info.imgSrc}" alt="" onerror="this.outerHTML='<div class=nsearch-item-ph>${info.icon}</div>'" loading="lazy">`
+        :`<div class="nsearch-item-ph">${info.icon}</div>`;
+      return `<div class="nsearch-item" onclick="${searchResultOnclick(r,close)}">${poster}<div class="nsearch-item-info"><div class="nsearch-item-name">${r.s.name}</div><div class="nsearch-item-meta">${info.meta}${r.s.year?' · '+r.s.year:''}</div></div></div>`;
+    }).join('');
+    return `<div class="nsearch-group" role="group" aria-label="${g.label}"><div class="nsearch-group-title">${g.label}<span class="nsearch-group-count">${items.length}</span></div>${list}</div>`;
+  }).join('');
+  return html||'<div class="nsearch-empty">Sin resultados</div>';
+}
+
+function renderSearchResults(q,opts){
+  // Modo agrupado (barra de escritorio): lo invoca navSearchHandler
+  if(opts&&opts.grouped){
+    const html=searchGroupedHtml(q.toLowerCase().trim(),opts.close||'closeSearch()');
+    (opts.boxes||[]).forEach(b=>{b.innerHTML=html;});
+    return;
+  }
+  const box=document.getElementById('searchOverlayResults');
+  const term=q.toLowerCase().trim();
+  if(!term){box.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:1rem">Escribe para buscar series, películas, actrices, ships…</div>';return;}
+  const results=searchCollect(term);
   if(!results.length){box.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:1rem">Sin resultados para "'+q+'"</div>';return;}
   box.innerHTML=results.slice(0,12).map(r=>{
-    const icons={serie:'',pelicula:'',anime:'','anime-movie':'',reality:'','reality-movie':'',actress:'',ship:'',productora:''};
-    const labels={serie:'Serie GL',pelicula:'Película GL',anime:'Anime GL','anime-movie':'Película Anime',reality:'Reality/Docuserie','reality-movie':'Documental GL',actress:'Actriz',ship:'Ship',productora:'Productora'};
-    const icon=icons[r.type]||'';
-    const label=labels[r.type]||r.type;
-    const imgSrc=r.s.poster||r.s.photo||r.s.couplePhoto||r.s.logo||'';
+    const {icon,label,imgSrc,meta}=searchResultInfo(r);
     const thumb=imgSrc
       ?`<img class="search-result-thumb" src="${imgSrc}" alt="" loading="lazy" onerror="this.outerHTML='<div class=search-result-thumb-ph>${icon}</div>'">`
       :`<div class="search-result-thumb-ph">${icon}</div>`;
-    let onclick='';
-    if(r.type==='serie') onclick=`closeSearch();switchTab('list');setTimeout(()=>openSeries(${r.si}),50)`;
-    else if(r.type==='pelicula') onclick=`closeSearch();switchTab('movies');setTimeout(()=>openMovie(${r.si}),50)`;
-    else if(r.type==='anime') onclick=`closeSearch();switchTab('anime');setTimeout(()=>openAnimeDetail('series','${r.si}'),50)`;
-    else if(r.type==='anime-movie') onclick=`closeSearch();switchTab('anime');setTimeout(()=>{animeSubtab='movies';renderAnime();openAnimeDetail('movie','${r.si}')},50)`;
-    else if(r.type==='reality') onclick=`closeSearch();switchTab('realities');setTimeout(()=>openRealityDetail('series','${r.si}'),50)`;
-    else if(r.type==='reality-movie') onclick=`closeSearch();switchTab('documentales');setTimeout(()=>{paginationDocumentales={page:1};renderDocumentalesResults();openRealityDetail('movie','${r.si}')},50)`;
-    else if(r.type==='actress') onclick=`closeSearch();openActressProfile('${r.s.id}')`;
-    else if(r.type==='ship') onclick=`closeSearch();openShipFromSearch('${r.s.id}')`;
-    else if(r.type==='productora') onclick=`closeSearch();openProductoraFromSearch('${r.s.id}')`;
-    let metaExtra='';
-    if(r.type==='ship'){
-      const names=(r.s.actressIds||[]).map(id=>{const a=(state.actresses||[]).find(x=>x.id===id);return a?a.name:'';}).filter(Boolean);
-      metaExtra=names.length?' · '+names.join(' & '):'';
-    }
+    const onclick=searchResultOnclick(r,'closeSearch()');
     return `<div class="search-result-row" onclick="${onclick}">
       ${thumb}
       <div>
         <div class="search-result-name">${r.s.name}</div>
-        <div class="search-result-meta">${label}${r.s.country?' · '+countryFlag(r.s.country)+' '+r.s.country:''}${r.s.network?' · '+r.s.network:''}${metaExtra}</div>
+        <div class="search-result-meta">${meta}</div>
       </div>
     </div>`;
   }).join('');
@@ -10955,15 +11344,17 @@ document.addEventListener('keydown',e=>{
     // (10.2) ?tab=ships&ships=ships|rupturas|mascotas: apartado de Ships Thais al abrir el enlace en otra pestaña
     const urlShips=new URLSearchParams(location.search).get('ships');
     if(urlShips && Object.prototype.hasOwnProperty.call(SHIPS_VIEWS,urlShips)) shipsState.view=urlShips;
+    // (Fase 2) ?tab=list&sub=airing → Series en emisión · ?tab=upcoming&sub=stale → Sin novedad
+    const urlSub=new URLSearchParams(location.search).get('sub');
+    if(state.tab==='list' && urlSub==='airing') seriesSubtab='airing';
+    if(state.tab==='upcoming') upcomingFilters.subview=(urlSub==='stale')?'stale':'normal';
     const savedTab=state.tab;
     // Show the saved tab's view, hide others
     ['cal','list','movies','upcoming','books','anime','realities','documentales','actresses','top10','picks2026','ships','canceladas','productoras','listas','ruleta','checklist'].forEach(t=>{
-      const btn=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1));
       const view=document.getElementById('view'+t.charAt(0).toUpperCase()+t.slice(1));
-      if(btn) btn.className='tab'+(savedTab===t?' active':'');
       if(view) view.style.display=savedTab===t?'':'none';
     });
-    if(savedTab==='cal'){renderWeekView();}
+    if(savedTab==='cal'){renderCalendar();}
     else if(savedTab==='list') renderList();
     else if(savedTab==='movies') renderMovies();
     else if(savedTab==='upcoming') renderUpcoming();
@@ -10980,7 +11371,9 @@ document.addEventListener('keydown',e=>{
     else if(savedTab==='listas') renderListas();
     else if(savedTab==='ruleta') renderRuleta();
     else if(savedTab==='checklist') renderChecklist();
-    else renderWeekView();
+    else renderCalendar();
+    syncUpcomingSubviewButtons();
+    updateNavActive();
     // Seed history so the very first back press doesn't exit the page
     // (conservamos location.hash para no perder los deep-links #serie-/#pelicula-)
     _curTabKey=_newTabKey();
@@ -11218,7 +11611,7 @@ document.addEventListener('keydown', e => {
   'use strict';
   var KEY='tsLang', MARK='[Spanish original \u2014 no English translation yet] ';
   var D={
-    'Calendario':'Calendar','Explorar':'Explore','Series & Pelis':'Series & Movies','Series':'Series','Películas':'Movies','Próximamente':'Coming soon',
+    'Calendario':'Calendar','Origen':'Origin','Tipo':'Type','Mes':'Month','Semana':'Week','Lista':'List','Webserie':'Web series','Reality':'Reality','Seleccionados':'Selected','{n} seleccionados':'{n} selected','1 filtro activo':'1 active filter','{n} filtros activos':'{n} active filters','Sin estrenos con estos filtros':'No releases match these filters','Sin estrenos este mes.':'No releases this month.','Vista del calendario':'Calendar view','Filtros del calendario':'Calendar filters','Mes anterior':'Previous month','Mes siguiente':'Next month','Semana anterior':'Previous week','Semana siguiente':'Next week','Migas de pan':'Breadcrumb','Catálogo':'Catalog','Más':'More','Navegación principal móvil':'Main mobile navigation','Explorar':'Explore','Para ti':'For you','Sin novedad':'No news','Mostrar apartados de Series':'Show Series sections','Series & Pelis':'Series & Movies','Series':'Series','Películas':'Movies','Próximamente':'Coming soon',
     'Canceladas':'Cancelled','Más contenido':'More','Realities':'Reality shows','Documentales':'Documentaries','Libros':'Books','Personas':'People',
     'Actrices':'Actresses','Productoras':'Production companies','Ships Thais':'Thai ships','Ships':'Ships','Rupturas':'Break-ups','Mascotas':'Pets','Extra':'Extra',
     'Picks generales':'General picks','Picks {n}':'Picks {n}','Mis picks':'My picks','Checklist':'Checklist','Listas GL':'GL lists','Ruleta GL':'GL roulette','Ruleta':'Roulette',
@@ -11229,7 +11622,7 @@ document.addEventListener('keydown', e => {
     '← Anterior':'← Previous','Siguiente →':'Next →','Anterior':'Previous','Siguiente':'Next','Hoy':'Today','HOY':'TODAY','Descargar este mes (PNG)':'Download this month (PNG)',
     'Últimas añadidas':'Recently added','Novedades en la base de datos':'What\u2019s new in the database','Ir a un mes':'Go to month','Sobre nosotras':'About us','Política de privacidad':'Privacy policy','Términos de uso':'Terms of use',
     'Estreno · Ep. {n}':'Premiere · Ep. {n}','Ep. {n}':'Ep. {n}','Ep. {n} · mañana':'Ep. {n} · tomorrow','Hoy · Ep. {n}':'Today · Ep. {n}','Estreno · Película':'Premiere · Movie',
-    'Buscar':'Search','Buscar series, películas…':'Search series, movies…','Buscar series y películas':'Search series and movies','Buscar serie, país, plataforma…':'Search series, country, platform…',
+    'Buscar':'Search','Buscar series, actrices…':'Search series, actresses…','Buscar series, películas, actrices, ships y productoras':'Search series, movies, actresses, ships and production companies','Buscar series, películas…':'Search series, movies…','Buscar series y películas':'Search series and movies','Buscar serie, país, plataforma…':'Search series, country, platform…',
     'Buscar película, país, plataforma…':'Search movie, country, platform…','Buscar anime, país, plataforma…':'Search anime, country, platform…','Buscar libro o serie…':'Search book or series…',
     'Buscar reality, docuserie, país, red…':'Search reality show, docuseries, country, network…','Buscar documental, país, plataforma…':'Search documentary, country, platform…','Buscar actriz…':'Search actress…',
     'Buscar ship o actriz…':'Search ship or actress…','Buscar productora…':'Search production company…','Buscar título…':'Search title…','Buscar país…':'Search country…','Buscar país':'Search country',
