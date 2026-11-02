@@ -6371,7 +6371,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-09-12T13:16:42.977Z",
+      "updatedAt": "2026-10-28T12:55:48.242Z",
       "sourceType": "",
       "moods": [],
       "tropos": [
@@ -6392,7 +6392,7 @@
         {
           "label": "Temporada 1",
           "startDate": "2026-09-05",
-          "totalEpisodes": 10,
+          "totalEpisodes": 8,
           "emissionDays": [
             5
           ],
@@ -6479,8 +6479,8 @@
       ],
       "tmdbId": "315142",
       "tmdbKind": "tv",
-      "tmdbRating": "",
-      "tmdbVoteCount": 0,
+      "tmdbRating": 10,
+      "tmdbVoteCount": 1,
       "wlwFocus": "pareja-principal",
       "i18n": {
         "en": {
@@ -6489,7 +6489,12 @@
           "source": "tmdb",
           "fetchedAt": "2026-10-22"
         }
-      }
+      },
+      "wlwFocusEpisode": "",
+      "sideCouples": [],
+      "fanCouples": [],
+      "biFormat": false,
+      "streaming": {}
     },
     {
       "id": "1776971502360",
@@ -456739,5 +456744,5 @@
       ]
     }
   },
-  "exportedAt": "2026-10-23T20:36:36.096Z"
+  "exportedAt": "2026-10-28T12:55:52.785Z"
 }
