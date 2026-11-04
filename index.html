@@ -4083,6 +4083,95 @@ html[data-theme="dark"]{ --nav-active-text:var(--accent); }
 .crumbs-current{color:var(--text);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 @media(max-width:900px){.crumbs{padding-left:44px}}   /* deja libre el botón ✕ fijo */
 
+/* ═══ Fase 5 — catálogo unificado (Series · Películas · Anime · Realities · Documentales · Libros) ═══ */
+.catalog-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin-bottom:14px}
+.catalog-title{margin:0;font-family:var(--font-display);font-size:34px;line-height:1.15;font-weight:700;letter-spacing:-.02em;color:var(--text)}
+.catalog-count{font-size:14px;font-weight:600;color:var(--muted)}
+.catalog-sort{margin-left:auto;display:inline-flex;align-items:center;gap:8px;align-self:center}
+.catalog-sort-lbl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.catalog-sort-sel{height:36px;max-width:100%;padding:0 10px;border:1px solid var(--border2);border-radius:var(--r-md,8px);background:var(--surface);color:var(--text);font:500 13px var(--font-body);cursor:pointer}
+.catalog-tabs:not(:empty){margin-bottom:12px}
+.catalog-tabs .subtabs{margin:0}
+.catalog-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:0 0 16px}
+.catalog-after:not(:empty){margin:0 0 14px}
+.catalog-foot:not(:empty){margin-top:2rem}
+.catalog-status{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.catalog-clear{padding:4px 2px;border:0;background:none;color:var(--accent);font:700 13px var(--font-body);cursor:pointer}
+.catalog-clear:hover{text-decoration:underline}
+
+/* .select-filter: botón «Etiqueta  Valor ▾» + menú con casillas (multi) o radios (una elección) */
+.select-filter-wrap{position:relative;display:inline-block;max-width:100%}
+.select-filter{display:inline-flex;align-items:center;gap:6px;min-height:36px;max-width:100%;padding:0 12px;border:1px solid var(--border2);border-radius:var(--r-md,8px);background:var(--surface);color:var(--muted);font:500 13px var(--font-body);cursor:pointer;transition:border-color .15s,background .15s}
+.select-filter>span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.select-filter b{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;color:var(--text)}
+.select-filter::after{content:'';flex:none;width:6px;height:6px;margin:0 1px 3px 2px;border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+.select-filter:hover{border-color:var(--accent2)}
+.select-filter.has-value{background:var(--accent-soft);border-color:var(--accent2)}
+.select-filter.has-value b{color:var(--accent)}
+.select-filter[aria-expanded="true"]{border-color:var(--accent);color:var(--accent)}
+.select-filter[aria-expanded="true"]::after{transform:rotate(-135deg);margin-bottom:-2px}
+.select-filter-menu{position:absolute;z-index:40;top:calc(100% + 6px);left:0;display:flex;flex-direction:column;min-width:230px;max-width:min(340px,calc(100vw - 2rem));padding:6px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-lg,12px);box-shadow:var(--shadow-md)}
+.select-filter-menu[hidden]{display:none}
+.select-filter-find{width:100%;height:34px;margin:0 0 6px;padding:0 10px;border:1px solid var(--border2);border-radius:var(--r-md,8px);background:var(--surface2);color:var(--text);font:500 13px var(--font-body)}
+.select-filter-list{max-height:280px;overflow-y:auto}
+.select-filter-opt{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;color:var(--text);font:500 13px var(--font-body);text-align:left;cursor:pointer}
+.select-filter-opt[hidden]{display:none}
+.select-filter-opt:hover{background:var(--surface2)}
+.sf-check{position:relative;flex:0 0 16px;width:16px;height:16px;border:1.5px solid var(--border2);border-radius:4px;background:var(--surface)}
+.sf-check.sf-radio{border-radius:50%}
+.select-filter-opt[aria-checked="true"] .sf-check{background:var(--accent);border-color:var(--accent)}
+.select-filter-opt[aria-checked="true"] .sf-check:not(.sf-radio)::after{content:'';position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid var(--on-accent);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.select-filter-opt[aria-checked="true"] .sf-radio::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--on-accent)}
+.select-filter-opt[aria-checked="true"] .sf-lbl{font-weight:700;color:var(--accent)}
+.sf-lbl{flex:1;min-width:0}
+.sf-n{font-size:11.5px;color:var(--muted)}
+:is(.select-filter,.select-filter-opt,.catalog-clear,.catalog-sort-sel):focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+
+/* Cuadrícula: 6 columnas en escritorio, 3 en tablet, 2 en móvil */
+.catalog-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;align-items:stretch}
+@media(max-width:899px){.catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:639px){
+  .catalog-title{font-size:28px}
+  .catalog-sort{margin-left:0;width:100%}
+  .catalog-sort-sel{flex:1}
+  .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  /* menús como hoja inferior, sobre la barra de navegación */
+  .select-filter-wrap{position:static}
+  .select-filter-menu{position:fixed;left:8px;right:8px;top:auto;bottom:calc(var(--bnav-h,56px) + env(safe-area-inset-bottom,0px) + 8px);max-width:none;z-index:80}
+  .select-filter-list{max-height:min(46vh,340px)}
+}
+
+/* ═══ Fase 5 — tarjeta mínima ═══ */
+.catalog-grid{gap:22px 14px}
+.ccard{display:flex;flex-direction:column;gap:7px;min-width:0;outline:none;-webkit-tap-highlight-color:transparent}
+.ccard-open{cursor:pointer}
+.ccard-poster{position:relative;aspect-ratio:2/3;border-radius:4px;overflow:hidden;background:var(--surface2);transition:box-shadow .18s}
+.ccard-poster>img,.ccard-ph{display:block;width:100%;height:100%;object-fit:cover}
+.ccard-ph{background:linear-gradient(135deg,var(--accent-soft) 0%,var(--lavender-soft) 100%)}
+.ccard-hover{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:3px;padding:34px 9px 9px;color:#fff;background:linear-gradient(to top,rgba(12,5,18,.94) 0%,rgba(12,5,18,.72) 55%,transparent 100%);opacity:0;transform:translateY(4px);transition:opacity .16s,transform .16s;pointer-events:none}
+.ccard:hover .ccard-hover,.ccard:focus-within .ccard-hover{opacity:1;transform:none;pointer-events:auto}
+.ccard-status{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.ccard-status::before{content:'';flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.ccard-status[data-tone="upcoming"]::before{background:var(--lavender)}
+.ccard-status[data-tone="done"]::before{background:var(--teal)}
+.ccard-status[data-tone="cancelled"]::before{background:var(--danger)}
+.ccard-detail{font-size:11.5px;line-height:1.3;color:rgba(255,255,255,.85)}
+.ccard-platform{font-size:11.5px;font-weight:600;line-height:1.3;color:#fff;overflow-wrap:anywhere}
+.ccard-hover .book-editions-row,.ccard-hover .ccard-editions{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.ccard-open:hover .ccard-poster,.ccard:focus-visible .ccard-poster{box-shadow:var(--shadow-md)}
+.ccard:focus-visible .ccard-poster{outline:2px solid var(--focus-ring);outline-offset:2px}
+.ccard-title{margin:0;min-height:2.6em;font:600 13.5px/1.3 var(--font-body);color:var(--text);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.ccard-meta{margin:-2px 0 0;font-size:11.5px;line-height:1.3;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ccard-star{font-weight:700;color:var(--gold)}
+@media(max-width:639px){.catalog-grid{gap:18px 10px}.ccard-title{font-size:13px}}
+
+/* «Cargar más» del catálogo */
+.catalog-more{display:flex;flex-direction:column;align-items:center;gap:12px;margin:32px 0 8px}
+.catalog-more-count{margin:0;font-size:13px;color:var(--muted)}
+.catalog-more-btn{min-height:44px;padding:0 32px;border:1.5px solid var(--accent2);border-radius:var(--r-md,8px);background:var(--surface);color:var(--accent);font:700 14px var(--font-body);cursor:pointer;transition:background .15s,color .15s}
+.catalog-more-btn:hover{background:var(--accent);color:var(--on-accent)}
+.catalog-more-btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+
 /* Búsqueda: foco coherente con el tema (antes #fff fijo) */
 #mainNavbar .navbar-search-wrap:focus-within{background:var(--surface)}
 
@@ -5904,7 +5993,7 @@ function renderWeekView(){
 
         // Poster
         const posterHtml=s.poster
-          ?`<img class="week-item-poster" src="${s.poster}" alt="${s.name}" onerror="this.parentElement.style.background='${bg}';this.style.display='none'">`
+          ?`<img loading="lazy" decoding="async" class="week-item-poster" src="${s.poster}" alt="${s.name}" onerror="this.parentElement.style.background='${bg}';this.style.display='none'">`
           :`<div class="week-item-poster-ph" style="background:${bg}">${icon}</div>`;
 
         itemsHtml+=`<div class="week-item${prem?' is-premiere':''}" onclick="${clickFn}" style="border-color:${isToday?'color-mix(in srgb,var(--accent) 30%,transparent)':''}" title="${s.name}">
@@ -6555,7 +6644,7 @@ function buildCountryPicker(id, onChange, availableCountries){
 
 let seriesSubtab='all';
 let seriesFinishedSubtab='all';
-let seriesFilters={q:'',countries:[],sort:'recent',book:'all',years:[],yearMin:null,yearMax:null,genres:[],types:[],region:'',tropos:[],dinamicas:[],moods:[],wlwFocus:[],networks:[]};
+let seriesFilters={q:'',countries:[],sort:'added',book:'all',years:[],yearMin:null,yearMax:null,genres:[],types:[],region:'',tropos:[],dinamicas:[],moods:[],wlwFocus:[],networks:[]};
 let seriesFilterExpanded={};
 
 /** Alterna un valor dentro de un array de filtro (multi-select tipo checkbox). */
@@ -6881,20 +6970,365 @@ function buildNsSidebarHtml(ns,active){
     ${biFormatGroup}`;
 }
 
+function scrollToResults(id){
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function getCountries(arr){
+  // Expandir países compuestos ('A / B') en atómicos para el picker
+  const atomic=[];
+  arr.forEach(s=>{
+    parseCountryParts(s.country||'').forEach(p=>{if(p&&!atomic.includes(p))atomic.push(p);});
+  });
+  return atomic.sort((a,b)=>a.localeCompare(b,'es'));
+}
+
+function getSeriesLastActivity(s){
+  const eps=genEps(s);
+  const now=new Date();
+  const aired=eps.filter(e=>!e.skipped&&new Date(e.date+'T12:00:00')<=now).map(e=>e.date);
+  if(aired.length) return aired[aired.length-1];
+  const upcoming=eps.filter(e=>!e.skipped&&new Date(e.date+'T12:00:00')>now).map(e=>e.date);
+  if(upcoming.length) return upcoming[0];
+  const seasons=getSeasons(s);
+  return (seasons[0]&&seasons[0].startDate)||s.startDate||'';
+}
+
+
+/** Comprueba si un item (con campo country) pertenece a alguno de los países seleccionados.
+ *  Funciona con valores compuestos: 'Tailandia / Japón' matchea tanto 'Tailandia' como 'Japón'.
+ */
+function itemMatchesCountries(item, selectedCountries){
+  if(!selectedCountries||!selectedCountries.length) return true;
+  const parts=parseCountryParts(item.country||'');
+  return selectedCountries.some(c=>parts.includes(c));
+}
+
+// ══════════════ Fase 5 · Catálogo unificado ══════════════
+// Un único componente para Series · Películas · Anime · Realities · Documentales · Libros.
+// Cabecera (título + «N títulos» + orden) · fila de .select-filter · cuadrícula 6 / 3 / 2 columnas · paginación.
+// Cada vista conserva sus datos, sus funciones apply*Filters y sus tarjetas; solo le pasa una config:
+//   key, view, resultsId, title        identidad (key = prefijo de ids; view = contenedor; resultsId = destino de scrollToResults)
+//   base[]                             títulos del apartado SIN filtrar (de ellos salen las opciones y sus contadores)
+//   shown[]                            títulos a mostrar (ya filtrados, ordenados y recortados por «Estado»)
+//   cardHtml(item)                     HTML de una tarjeta
+//   filters                            objeto de estado de la vista (countries, networks, years, tropos, wlwFocus…)
+//   fields[]                           qué .select-filter estándar mostrar: origen · plataforma · anio · estado · tropos · foco
+//   src(item)                          (opcional) obra de la que salen país/plataforma/año/tropos/foco (Libros → serie/película)
+//   estado {value,options,set}         (opcional) «Estado» de una sola elección
+//   extras[{id,label,value,options,set,def}]   (opcional) selectores de una sola elección propios de la vista
+//   sort {value,options,set}           orden;  tabs {value,options,set}  (opcional) cambio de conjunto de datos
+//   page {value,set,size}              (opcional) paginación;  resetPage()  vuelve a la página 1
+//   afterHtml / footHtml               (opcional) HTML bajo la fila de filtros / al pie
+//   onClear() · extraActive()          (opcional) «Limpiar» y contador de filtros propios de la vista
+//   render()                           repinta la vista (la función renderXResults de siempre)
+const CATALOG_UI={};                 // estado efímero: menú abierto, texto de búsqueda de cada menú, foco a recuperar
+const CATALOG_PAGE_SIZE=24;          // 6 columnas × 4 filas (también múltiplo de 3 y de 2)
+const CATALOG_ARRAY_KEYS=['countries','networks','years','tropos','wlwFocus','genres','dinamicas','moods','types'];
+const CATALOG_DEFAULT_FIELDS=['origen','plataforma','anio','estado','tropos','foco'];
+const _catAz=(a,b)=>a.label.localeCompare(b.label,'es');
+const _catYear=s=>String(s.startDate||s.date||(s.year?String(s.year):'')||'').substring(0,4);
+const CATALOG_FIELDS={
+  origen:{label:'Origen',key:'countries',opts:(items,src)=>{
+    const m={}; items.forEach(i=>parseCountryParts(src(i).country||'').forEach(c=>{ if(c) m[c]=(m[c]||0)+1; }));
+    return Object.keys(m).map(c=>({v:c,label:`${countryFlag(c)} ${c}`,n:m[c]})).sort(_catAz);
+  }},
+  plataforma:{label:'Plataforma',key:'networks',opts:(items,src)=>{
+    const m=_countByGetter(items,i=>parseNetworkParts(src(i).network));
+    return Object.keys(m).map(n=>({v:n,label:n,n:m[n]})).sort(_catAz);
+  }},
+  anio:{label:'Año',key:'years',opts:(items,src)=>{
+    const m={}; items.forEach(i=>{ const y=_catYear(src(i)); if(y) m[y]=(m[y]||0)+1; });
+    return Object.keys(m).sort((a,b)=>b.localeCompare(a)).map(y=>({v:y,label:y,n:m[y]}));
+  }},
+  tropos:{label:'Tropos',key:'tropos',opts:(items,src)=>{
+    const m=_countByGetter(items,i=>src(i).tropos||[]);
+    return TROPOS.map(t=>({v:t,label:tropoLabel(t),n:m[t]||0})).filter(o=>o.n>0).sort(_catAz);
+  }},
+  foco:{label:'Foco WLW',key:'wlwFocus',opts:(items,src)=>{
+    const m=_countByGetter(items,i=>seriesWlwFocus(src(i)));
+    return WLW_FOCUS.map(o=>({v:o.value,label:o.label,n:m[o.value]||0})).filter(o=>o.n>0);
+  }}
+};
+function _catEsc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function _catNorm(s){ return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+
+// Filtros activos (incluye los que ya no tienen selector propio: género, mood, dinámica, tipo…, para que nunca queden ocultos)
+function catalogActiveCount(cfg){
+  const f=cfg.filters||{}; let n=0;
+  CATALOG_ARRAY_KEYS.forEach(k=>{ if(Array.isArray(f[k])) n+=f[k].length; });
+  if(f.book&&f.book!=='all') n++;
+  if(f.biFormat) n++;
+  if(f.region) n++;
+  if(f.q&&String(f.q).trim()) n++;
+  if(cfg.estado&&cfg.estado.value!==(cfg.estado.def||'all')) n++;
+  if(cfg.extraActive) n+=cfg.extraActive();
+  return n;
+}
+function _catSelectHtml(ui,o){
+  // o: {id,label,multi,options:[{v,label,n}],selected:[],def}
+  const sel=o.selected||[], open=ui.open===o.id;
+  let val;
+  if(o.multi) val=!sel.length?'Todos':sel.length===1?((o.options.find(x=>x.v===sel[0])||{}).label||sel[0]):sel.length+' seleccionados';
+  else val=(o.options.find(x=>x.v===sel[0])||o.options[0]||{}).label||'Todos';
+  const active=o.multi?sel.length>0:(sel[0]!==undefined&&sel[0]!==(o.def===undefined?'':o.def));
+  const find=ui.find[o.id]||'', nf=_catNorm(find);
+  const search=o.options.length>10?`<input type="search" class="select-filter-find" data-sf-find="${o.id}" placeholder="Buscar…" aria-label="Buscar en ${_catEsc(o.label)}" value="${_catEsc(find)}" autocomplete="off">`:'';
+  const items=o.options.map(x=>{
+    const on=sel.includes(x.v), hide=nf&&!_catNorm(x.label).includes(nf);
+    return `<button type="button" class="select-filter-opt" role="${o.multi?'menuitemcheckbox':'menuitemradio'}" aria-checked="${on}" data-f="${o.id}" data-v="${_catEsc(x.v)}"${hide?' hidden':''}><span class="sf-check${o.multi?'':' sf-radio'}" aria-hidden="true"></span><span class="sf-lbl">${_catEsc(x.label)}</span>${x.n!==undefined?`<span class="sf-n">${x.n}</span>`:''}</button>`;
+  }).join('');
+  return `<div class="select-filter-wrap"><button type="button" class="select-filter${active?' has-value':''}" data-sf-toggle="${o.id}" aria-haspopup="true" aria-expanded="${open}"><span>${_catEsc(o.label)}</span> <b>${_catEsc(val)}</b></button><div class="select-filter-menu" role="menu" aria-label="${_catEsc(o.label)}"${open?'':' hidden'}>${search}<div class="select-filter-list">${items}</div></div></div>`;
+}
+function _catFiltersHtml(cfg,ui){
+  const f=cfg.filters, src=cfg.src||(x=>x), parts=[];
+  (cfg.fields||CATALOG_DEFAULT_FIELDS).forEach(id=>{
+    if(id==='estado'){
+      if(cfg.estado) parts.push(_catSelectHtml(ui,{id:'estado',label:'Estado',multi:false,options:cfg.estado.options,selected:[cfg.estado.value],def:cfg.estado.def||'all'}));
+      return;
+    }
+    const spec=CATALOG_FIELDS[id], options=spec.opts(cfg.base,src);
+    if(!options.length) return;                       // sin opciones no hay selector
+    parts.push(_catSelectHtml(ui,{id,label:spec.label,multi:true,options,selected:f[spec.key]||[]}));
+  });
+  (cfg.extras||[]).forEach(e=>parts.push(_catSelectHtml(ui,{id:e.id,label:e.label,multi:false,options:e.options,selected:[e.value()],def:e.def===undefined?'':e.def})));
+  const n=catalogActiveCount(cfg);
+  parts.push(`<span class="catalog-status" role="status">${n?`<span>${n===1?'1 filtro activo':n+' filtros activos'}</span> <span aria-hidden="true">·</span> <button type="button" class="catalog-clear" data-cat-clear>Limpiar</button>`:''}</span>`);
+  return parts.join('');
+}
+function _catPaintFilters(root,cfg){
+  const ui=CATALOG_UI[cfg.key];
+  root.querySelector('.catalog-filters').innerHTML=_catFiltersHtml(cfg,ui);
+  const fo=ui.focus; ui.focus=null;
+  if(fo){
+    const el=[...root.querySelectorAll(fo.sel)].find(e=>fo.test(e));
+    if(el) el.focus();
+  }
+}
+function _catFindOpt(id,v){ return {sel:'.select-filter-opt',test:e=>e.dataset.f===id&&e.dataset.v===v}; }
+function _catFindToggle(id){ return {sel:'[data-sf-toggle]',test:e=>e.dataset.sfToggle===id}; }
+
+// Pie de «Cargar más»: contador + botón. Con una sola tanda no se pinta nada.
+function _catMoreHtml(shown,total,size){
+  if(total<=size) return '';
+  return `<div class="catalog-more"><p class="catalog-more-count" role="status" aria-live="polite">${shown<total?`<span>Mostrando</span> ${shown} <span>de</span> ${total}`:`<span>Mostrando</span> <span>todos</span> (${total})`}</p>${shown<total?'<button type="button" class="catalog-more-btn" data-cat-more>Cargar más</button>':''}</div>`;
+}
+function renderCatalog(cfg){
+  const root=document.getElementById(cfg.view); if(!root) return;
+  const ui=CATALOG_UI[cfg.key]||(CATALOG_UI[cfg.key]={open:null,find:{},focus:null});
+  ui.cfg=cfg;                                          // los manejadores delegados usan siempre la última config
+  let cat=root.querySelector(':scope>.catalog');
+  if(!cat){
+    root.innerHTML=`<section class="catalog" data-catalog="${cfg.key}">
+      <header class="catalog-head">
+        <h2 class="catalog-title"></h2>
+        <span class="catalog-count" role="status" aria-live="polite"></span>
+        <label class="catalog-sort"><span class="catalog-sort-lbl">Orden</span><select class="catalog-sort-sel" aria-label="Orden"></select></label>
+      </header>
+      <div class="catalog-tabs"></div>
+      <div class="catalog-filters" role="group" aria-label="Filtros"></div>
+      <div class="catalog-after"></div>
+      <div class="catalog-results"></div>
+      <div class="catalog-foot"></div>
+    </section>`;
+    cat=root.querySelector(':scope>.catalog');
+    _catWire(cat,cfg.key);
+  }
+  // Cabecera
+  const n=cfg.shown.length;
+  cat.querySelector('.catalog-title').textContent=cfg.title;
+  cat.querySelector('.catalog-count').textContent=n+(n===1?' título':' títulos');
+  const sortSel=cat.querySelector('.catalog-sort-sel');
+  sortSel.innerHTML=cfg.sort.options.map(o=>`<option value="${_catEsc(o.v)}">${_catEsc(o.label)}</option>`).join('');
+  sortSel.value=cfg.sort.value;
+  // Conjuntos de datos (Anime: Series / Películas) — solo si hay más de uno
+  const tabs=cfg.tabs&&cfg.tabs.options.length>1?cfg.tabs:null;
+  cat.querySelector('.catalog-tabs').innerHTML=tabs?`<div class="subtabs">${tabs.options.map(o=>`<button type="button" class="subtab${o.v===tabs.value?' active':''}" data-cat-tab="${_catEsc(o.v)}">${_catEsc(o.label)}<span class="subtab-count">${o.n}</span></button>`).join('')}</div>`:'';
+  // Filtros
+  _catPaintFilters(cat,cfg);
+  cat.querySelector('.catalog-after').innerHTML=cfg.afterHtml||'';
+  cat.querySelector('.catalog-foot').innerHTML=cfg.footHtml||'';
+  // Resultados
+  const res=cat.querySelector('.catalog-results'); res.id=cfg.resultsId||(cfg.key+'Results');
+  if(!n){
+    const act=catalogActiveCount(cfg);
+    res.innerHTML=`<div class="search-empty">${_catEsc(cfg.empty||'No se encontró ningún título con esos filtros.')}${act?` <button type="button" class="catalog-clear" data-cat-clear>Limpiar</button>`:''}</div>`;
+    return;
+  }
+  let list=cfg.shown, pager='';
+  if(cfg.page){
+    const size=cfg.page.size||CATALOG_PAGE_SIZE, pages=Math.ceil(n/size)||1, cur=Math.min(Math.max(cfg.page.value||1,1),pages);
+    if(cur!==cfg.page.value) cfg.page.set(cur);
+    if(cfg.pager==='pages'){                     // paginación numerada (opcional)
+      list=cfg.shown.slice((cur-1)*size,cur*size);
+      window['catalogPage_'+cfg.key]=p=>{ const c=CATALOG_UI[cfg.key].cfg; c.page.set(p); c.render(); scrollToResults(c.resultsId||(c.key+'Results')); };
+      pager=paginationHtml(cur,pages,'catalogPage_'+cfg.key);
+    } else {                                     // «Cargar más» (por defecto): `page.value` = tandas ya cargadas
+      list=cfg.shown.slice(0,cur*size);
+      pager=_catMoreHtml(list.length,n,size);
+    }
+  }
+  res.innerHTML=`<div class="catalog-grid">${list.map(cfg.cardHtml).join('')}</div>${pager}`;
+}
+
+// Eventos: una sola vez por .catalog, siempre contra la última config de CATALOG_UI[key]
+function _catWire(cat,key){
+  const C=()=>CATALOG_UI[key].cfg, U=()=>CATALOG_UI[key];
+  cat.addEventListener('click',e=>{
+    const cfg=C(), ui=U();
+    const tg=e.target.closest('[data-sf-toggle]');
+    if(tg){
+      const id=tg.dataset.sfToggle; ui.open=ui.open===id?null:id;
+      ui.focus=_catFindToggle(id);
+      _catPaintFilters(cat,cfg);
+      if(ui.open){ const find=cat.querySelector(`[data-sf-find="${id}"]`); if(find) find.focus(); }   // menús largos: el foco va al buscador
+      return;
+    }
+    const op=e.target.closest('.select-filter-opt');
+    if(op){
+      const id=op.dataset.f, v=op.dataset.v;
+      const spec=CATALOG_FIELDS[id];
+      if(spec){                                         // multi-selección sobre el estado de la vista
+        const f=cfg.filters, arr=f[spec.key]||(f[spec.key]=[]), i=arr.indexOf(v);
+        if(i<0) arr.push(v); else arr.splice(i,1);
+        if(spec.key==='years'){ f.yearMin=null; f.yearMax=null; }
+        if(cfg.resetPage) cfg.resetPage();
+        ui.focus=_catFindOpt(id,v);
+      } else {                                          // una sola elección: Estado o extras
+        const tgt=id==='estado'?cfg.estado:(cfg.extras||[]).find(x=>x.id===id);
+        if(tgt) tgt.set(v);
+        if(cfg.resetPage) cfg.resetPage();
+        ui.open=null; ui.focus=_catFindToggle(id);
+      }
+      cfg.render();
+      return;
+    }
+    if(e.target.closest('[data-cat-clear]')){ catalogClear(cfg); return; }
+    if(e.target.closest('[data-cat-more]')){ catalogLoadMore(cfg,e.detail===0); return; }
+    const tab=e.target.closest('[data-cat-tab]');
+    if(tab){ cfg.tabs.set(tab.dataset.catTab); if(cfg.resetPage) cfg.resetPage(); cfg.render(); }
+  });
+  cat.addEventListener('input',e=>{                     // buscador dentro de un menú largo (Origen, Plataforma, Año, Tropos…)
+    const inp=e.target.closest('[data-sf-find]'); if(!inp) return;
+    const id=inp.dataset.sfFind, q=_catNorm(inp.value); U().find[id]=inp.value;
+    inp.closest('.select-filter-menu').querySelectorAll('.select-filter-opt').forEach(b=>{ b.hidden=!!q&&!_catNorm(b.querySelector('.sf-lbl').textContent).includes(q); });
+  });
+  cat.addEventListener('change',e=>{
+    if(!e.target.classList.contains('catalog-sort-sel')) return;
+    const cfg=C(); cfg.sort.set(e.target.value); if(cfg.resetPage) cfg.resetPage(); cfg.render();
+  });
+}
+// «Cargar más»: añade la siguiente tanda al final de la cuadrícula (sin repintar lo ya cargado) y guarda cuántas tandas hay.
+// Si se activó con teclado, el foco pasa a la primera tarjeta nueva.
+function catalogLoadMore(cfg,focusNew){
+  const cat=document.querySelector(`.catalog[data-catalog="${cfg.key}"]`), grid=cat&&cat.querySelector('.catalog-grid'); if(!grid) return;
+  const size=cfg.page.size||CATALOG_PAGE_SIZE, n=cfg.shown.length;
+  const from=grid.children.length, to=Math.min(from+size,n);
+  cfg.page.value=(cfg.page.value||1)+1; cfg.page.set(cfg.page.value);
+  grid.insertAdjacentHTML('beforeend',cfg.shown.slice(from,to).map(cfg.cardHtml).join(''));
+  const more=cat.querySelector('.catalog-more'); if(more) more.outerHTML=_catMoreHtml(to,n,size);
+  if(focusNew&&grid.children[from]) grid.children[from].focus();
+}
+// Limpiar: vacía todos los filtros de la vista (también los que no tienen selector) y vuelve a la página 1. No toca el orden.
+function catalogClear(cfg){
+  const f=cfg.filters;
+  CATALOG_ARRAY_KEYS.forEach(k=>{ if(Array.isArray(f[k])) f[k]=[]; });
+  if('book' in f) f.book='all';
+  if('biFormat' in f) f.biFormat=false;
+  if('region' in f) f.region='';
+  if('yearMin' in f){ f.yearMin=null; f.yearMax=null; }
+  if('q' in f) f.q='';
+  if(cfg.onClear) cfg.onClear();
+  CATALOG_UI[cfg.key].open=null;
+  if(cfg.resetPage) cfg.resetPage();
+  cfg.render();
+}
+// Menús: cierre al pulsar fuera (composedPath: el nodo pulsado puede haberse repintado) o con Escape
+document.addEventListener('click',e=>{
+  Object.keys(CATALOG_UI).forEach(k=>{
+    const ui=CATALOG_UI[k]; if(!ui.open) return;
+    const cat=document.querySelector(`.catalog[data-catalog="${k}"]`);
+    if(cat&&!e.composedPath().includes(cat.querySelector('.catalog-filters'))){ ui.open=null; _catPaintFilters(cat,ui.cfg); }
+  });
+});
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape') return;
+  Object.keys(CATALOG_UI).forEach(k=>{
+    const ui=CATALOG_UI[k]; if(!ui.open) return;
+    const cat=document.querySelector(`.catalog[data-catalog="${k}"]`); if(!cat) return;
+    const id=ui.open; ui.open=null; ui.focus=_catFindToggle(id); _catPaintFilters(cat,ui.cfg);
+  });
+});
+
+// ───── Tarjeta mínima (la misma en las seis vistas) ─────
+// Póster 2:3 (radio 4 px) · título (máx. 2 líneas) · «año · país · ★ nota».
+// El estado y la plataforma salen sobre el póster al pasar el cursor (o al enfocar la tarjeta, para teclado y táctil).
+function _catJs(v){ return "'"+String(v==null?'':v).replace(/\\/g,'\\\\').replace(/'/g,"\\'")+"'"; }   // literal JS seguro para un onclick
+function catalogSeriesStatus(s){
+  if(s.cancelStatus) return {label:{cancelled:'Cancelada',limbo:'En limbo',closed:'Prod. cerrada'}[s.cancelStatus]||'Cancelada',tone:'cancelled'};
+  const now=new Date(), todayStr=toStr(now.getFullYear(),now.getMonth(),now.getDate());
+  const eps=genEps(s).filter(e=>!e.skipped), seasons=getSeasons(s);
+  const today=eps.find(e=>e.date===todayStr);
+  const next=eps.find(e=>new Date(e.date+'T12:00:00')>now);
+  const aired=eps.some(e=>new Date(e.date+'T12:00:00')<=now);
+  if(today) return {label:'En emisión',tone:'airing',detail:'Hoy · '+epLabel(today,seasons)};
+  if(next){
+    if(!aired) return {label:'Próximamente',tone:'upcoming',detail:fmtDate(next.date)};
+    const du=daysUntil(next.date), when=du===1?'mañana':du>1&&du<=7?`en ${du} d`:'';
+    return {label:'En emisión',tone:'airing',detail:epLabel(next,seasons)+(when?' · '+when:'')};
+  }
+  return {label:'Finalizada',tone:'done',detail:s.renewedNextSeason?'Renovada':''};
+}
+function catalogMovieStatus(m){
+  const short=m.movieType==='short'?'Corto · ':'';
+  if(!m.date) return {label:'Próximamente',tone:'upcoming',detail:short+'Fecha por confirmar'};
+  if(new Date(m.date+'T12:00:00')>new Date()) return {label:'Próximo estreno',tone:'upcoming',detail:short+fmtDate(m.date)};
+  return {label:'Estrenada',tone:'done',detail:short+fmtDate(m.date)};
+}
+// item: serie o película · o:{kind:'series'|'movie', open:'expresión JS'|null, title?, poster?, detail?, noRating?, hoverExtra?}
+function catalogCardHtml(item,o){
+  const title=o.title||item.name||'', poster=o.poster!==undefined?o.poster:item.poster;
+  const year=_catYear(item);
+  const cp=parseCountryParts(item.country||'');
+  const country=cp.length?`${countryFlag(item.country)} ${cp[0]}${cp.length>1?' +'+(cp.length-1):''}`:'';
+  const rating=!o.noRating&&item.tmdbRating?`<span class="ccard-star" title="Nota TMDB ${_catEsc(item.tmdbRating)}/10${item.tmdbVoteCount?' ('+item.tmdbVoteCount+' votos)':''}">★ ${Number(item.tmdbRating).toFixed(1)}</span>`:'';
+  const meta=[year?`<span>${year}</span>`:'',country?`<span title="${_catEsc(item.country)}">${country}</span>`:'',rating].filter(Boolean).join(' · ');
+  const st=o.kind==='movie'?catalogMovieStatus(item):catalogSeriesStatus(item);
+  const detail=o.detail||st.detail||'';
+  const platform=parseNetworkParts(item.network).join(', ');
+  const hover=`<div class="ccard-hover"><span class="ccard-status" data-tone="${st.tone}">${st.label}</span>${detail?`<span class="ccard-detail">${_catEsc(detail)}</span>`:''}${platform?`<span class="ccard-platform">${_catEsc(platform)}</span>`:''}${o.hoverExtra||''}</div>`;
+  const img=poster?`<img src="${_catEsc(poster)}" alt="" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=ccard-ph></div>'">`:'<div class="ccard-ph"></div>';
+  const act=o.open?` role="button" onclick="${_catEsc(o.open)}" onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();this.click()}"`:'';
+  return `<article class="ccard${o.open?' ccard-open':''}" tabindex="0"${act} aria-label="${_catEsc(title)}"><div class="ccard-poster">${img}${hover}</div><h3 class="ccard-title">${_catEsc(title)}</h3><p class="ccard-meta">${meta}</p></article>`;
+}
+function bookEditionPillsHtml(b){
+  return b.editions.map(e=>{
+    const isActive=booksState.lang&&e.lang===booksState.lang;
+    return `<a class="book-edition-pill${isActive?' book-edition-pill-active':''}" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`;
+  }).join('');
+}
+
+// ───── Cada vista del catálogo construye su config y llama a renderCatalog ─────
+const _CAT_SORT_AZ=[{v:'az',label:'A → Z'},{v:'za',label:'Z → A'},{v:'date',label:'Más reciente primero'},{v:'dateold',label:'Más antiguo primero'}];
+const _CAT_BOOK_SERIES=[{v:'all',label:'Todos'},{v:'yes',label:'Con libro'},{v:'no',label:'Sin libro'}];
+const CATALOG_FOOT_ANIME=`<div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,color-mix(in srgb,var(--lavender) 7%,transparent),color-mix(in srgb,var(--accent) 5%,transparent));border:1.5px dashed color-mix(in srgb,var(--lavender) 25%,transparent);border-radius:var(--radius-lg);text-align:center">
+          <div style="font-size:13px;font-weight:700;color:var(--lavender);margin-bottom:4px">¿Falta algún anime?</div>
+          <div style="font-size:12px;color:var(--muted)">Esta sección crece con el tiempo. Puedes sugerir animes GL a través de la cuenta de X <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);font-weight:600">@xxmadwavs</a></div>
+        </div>`;
+const CATALOG_FOOT_REALITIES=`<div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,color-mix(in srgb,var(--teal) 7%,transparent),color-mix(in srgb,var(--accent) 5%,transparent));border:1.5px dashed color-mix(in srgb,var(--teal) 25%,transparent);border-radius:var(--radius-lg);text-align:center">
+          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">¿Conoces más realities con representación GL?</div>
+          <div style="font-size:12px;color:var(--muted)">Escríbenos en X <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);font-weight:600">@xxmadwavs</a> y lo añadimos</div>
+        </div>`;
+const CATALOG_FOOT_DOCUMENTALES=`<div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,color-mix(in srgb,var(--teal) 7%,transparent),color-mix(in srgb,var(--accent) 5%,transparent));border:1.5px dashed color-mix(in srgb,var(--teal) 25%,transparent);border-radius:var(--radius-lg);text-align:center">
+          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">¿Conoces más documentales GL?</div>
+          <div style="font-size:12px;color:var(--muted)">Escríbenos en X <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);font-weight:600">@xxmadwavs</a> y lo añadimos</div>
+        </div>`;
+
+// ═══ SERIES ═══
+function renderList(){ renderListResults(); }
 function renderListResults(){
-  const resultsEl=document.getElementById('listResults');
-  if(!resultsEl) return;
-  const sortSel=document.getElementById('seriesSortSel');
-  const bookSel=document.getElementById('seriesBookSel');
-  if(sortSel) sortSel.value=seriesFilters.sort;
-  if(bookSel) bookSel.value=seriesFilters.book;
-
   const active=state.series.filter(s=>!s.upcoming&&s.category!=='anime'&&s.category!=='reality');
-
-  // Panel lateral: se reconstruye en cada render para reflejar el estado actual de los checkboxes
-  const sidebarEl=document.getElementById('seriesFiltersSidebar');
-  if(sidebarEl) sidebarEl.innerHTML=buildSeriesSidebarHtml(active);
-
   const filtered=applySeriesFilters(active);
   const now=new Date();
 
@@ -6941,114 +7375,220 @@ function renderListResults(){
     seriesSubtab = filtered.length ? 'all' : seriesSubtab;
   }
 
-  if(!filtered.length){
-    const pillbarEl=document.getElementById('seriesStatusPillbar');
-    if(pillbarEl) pillbarEl.innerHTML='';
-    resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna serie con esos filtros.</div>';
-    return;
-  }
 
-  // Píldoras de estado rápido (arriba, independientes del panel lateral)
-  const pillbarEl=document.getElementById('seriesStatusPillbar');
-  if(pillbarEl){
-    let pillsHtml=`<button class="status-pill${seriesSubtab==='all'?' active':''}" onclick="switchSeriesSubtab('all')">Todas<span class="subtab-count">${filtered.length}</span></button>
-      <button class="status-pill${seriesSubtab==='airing'?' active':''}" onclick="switchSeriesSubtab('airing')">Emisión<span class="subtab-count">${airing.length}</span></button>`;
-    if(notStarted.length) pillsHtml+=`<button class="status-pill${seriesSubtab==='notstarted'?' active':''}" onclick="switchSeriesSubtab('notstarted')">Próximamente<span class="subtab-count">${notStarted.length}</span></button>`;
-    pillsHtml+=`<button class="status-pill${seriesSubtab==='finished'?' active':''}" onclick="switchSeriesSubtab('finished')">Emitidas<span class="subtab-count">${finished.length}</span></button>`;
-    if(cancelled.length) pillsHtml+=`<button class="status-pill${seriesSubtab==='cancelled'?' active':''}" onclick="switchSeriesSubtab('cancelled')">Canceladas<span class="subtab-count">${cancelled.length}</span></button>`;
-    pillbarEl.innerHTML=`<div class="status-pillbar">${pillsHtml}</div>`;
-  }
-
-  let html='';
-
-  function renderSubtabGrid(list, emptyMsg, pageKey){
-    if(!list.length){ return '<div class="search-empty">'+emptyMsg+'</div>'; }
-    const key=pageKey||seriesSubtab;
-    const page=paginationState.series[key]||1;
-    const totalPages=Math.ceil(list.length/PAGE_SIZE);
-    const safePage=Math.min(page,totalPages);
-    if(paginationState.series[key]!==safePage) paginationState.series[key]=safePage;
-    const slice=list.slice((safePage-1)*PAGE_SIZE, safePage*PAGE_SIZE);
-    let out=`<div class="books-count">Mostrando <strong>${(safePage-1)*PAGE_SIZE+1}–${Math.min(safePage*PAGE_SIZE,list.length)}</strong> de <strong>${list.length}</strong> serie${list.length!==1?'s':''}</div><div class="series-grid">`;
-    slice.forEach(s=>{ out+=seriesCardHtml(s, state.series.indexOf(s)); });
-    out+='</div>';
-    out+=paginationHtml(safePage, totalPages, `setSeriesPage_${key}`);
-    return out;
-  }
-
-  // Expose page setters globally
-  window.setSeriesPage_all=p=>{paginationState.series.all=p;saveSession();renderListResults();scrollToResults('listResults');};
-  window.setSeriesPage_airing=p=>{paginationState.series.airing=p;saveSession();renderListResults();scrollToResults('listResults');};
-  window.setSeriesPage_notstarted=p=>{paginationState.series.notstarted=p;saveSession();renderListResults();scrollToResults('listResults');};
-  window.setSeriesPage_finished=p=>{paginationState.series.finished=p;saveSession();renderListResults();scrollToResults('listResults');};
-  window.setSeriesPage_finished_serie=p=>{paginationState.series.finished_serie=p;saveSession();renderListResults();scrollToResults('listResults');};
-  window.setSeriesPage_finished_webserie=p=>{paginationState.series.finished_webserie=p;saveSession();renderListResults();scrollToResults('listResults');};
-  window.setSeriesPage_cancelled=p=>{paginationState.series.cancelled=p;saveSession();renderListResults();scrollToResults('listResults');};
-
-  if(seriesSubtab==='all'){
-    html+=renderSubtabGrid(filtered,'No hay series con esos filtros.','all');
-  } else if(seriesSubtab==='airing'){
-    html+=renderSubtabGrid(airing,'No hay series en emisión con esos filtros.','airing');
-  } else if(seriesSubtab==='notstarted'){
-    html+=renderSubtabGrid(notStarted,'No hay series próximamente con esos filtros.','notstarted');
-  } else if(seriesSubtab==='cancelled'){
-    html+=renderSubtabGrid(cancelled,'No hay series canceladas con esos filtros.','cancelled');
-  } else {
-    // Emitidas: sub-subtabs Serie / Web Serie siempre visibles
+  // Qué cubo se muestra («Estado») y en qué página
+  let shown, pageKey, empty, afterHtml='';
+  if(seriesSubtab==='all'){ shown=filtered; pageKey='all'; empty='No hay series con esos filtros.'; }
+  else if(seriesSubtab==='airing'){ shown=airing; pageKey='airing'; empty='No hay series en emisión con esos filtros.'; }
+  else if(seriesSubtab==='notstarted'){ shown=notStarted; pageKey='notstarted'; empty='No hay series próximamente con esos filtros.'; }
+  else if(seriesSubtab==='cancelled'){ shown=cancelled; pageKey='cancelled'; empty='No hay series canceladas con esos filtros.'; }
+  else {
+    // Emitidas: sub-subtabs Serie / Web serie
     if(seriesFinishedSubtab==='webserie'&&!finishedWebseries.length) seriesFinishedSubtab='all';
     if(seriesFinishedSubtab==='serie'&&!finishedSeries.length) seriesFinishedSubtab='all';
-    html+=`<div class="subtabs" style="margin-top:10px;margin-bottom:14px">
-      <button class="subtab${seriesFinishedSubtab==='all'?' active':''}" onclick="seriesFinishedSubtab='all';saveSession();renderListResults()">
-        Todas<span class="subtab-count">${finished.length}</span>
-      </button>
-      <button class="subtab${seriesFinishedSubtab==='serie'?' active':''}" onclick="seriesFinishedSubtab='serie';saveSession();renderListResults()">
-        Serie<span class="subtab-count">${finishedSeries.length}</span>
-      </button>
-      <button class="subtab${seriesFinishedSubtab==='webserie'?' active':''}" onclick="seriesFinishedSubtab='webserie';saveSession();renderListResults()">
-        Web serie<span class="subtab-count">${finishedWebseries.length}</span>
-      </button>
+    afterHtml=`<div class="subtabs">
+      <button class="subtab${seriesFinishedSubtab==='all'?' active':''}" onclick="seriesFinishedSubtab='all';saveSession();renderListResults()">Todas<span class="subtab-count">${finished.length}</span></button>
+      <button class="subtab${seriesFinishedSubtab==='serie'?' active':''}" onclick="seriesFinishedSubtab='serie';saveSession();renderListResults()">Serie<span class="subtab-count">${finishedSeries.length}</span></button>
+      <button class="subtab${seriesFinishedSubtab==='webserie'?' active':''}" onclick="seriesFinishedSubtab='webserie';saveSession();renderListResults()">Web serie<span class="subtab-count">${finishedWebseries.length}</span></button>
     </div>`;
-    const shownFinished=seriesFinishedSubtab==='serie'?finishedSeries:seriesFinishedSubtab==='webserie'?finishedWebseries:finished;
-    const finishedKey=seriesFinishedSubtab==='serie'?'finished_serie':seriesFinishedSubtab==='webserie'?'finished_webserie':'finished';
-    html+=renderSubtabGrid(shownFinished,'No hay series emitidas con esos filtros.',finishedKey);
+    shown=seriesFinishedSubtab==='serie'?finishedSeries:seriesFinishedSubtab==='webserie'?finishedWebseries:finished;
+    pageKey=seriesFinishedSubtab==='serie'?'finished_serie':seriesFinishedSubtab==='webserie'?'finished_webserie':'finished';
+    empty='No hay series emitidas con esos filtros.';
   }
+  if(!filtered.length) empty='No se encontró ninguna serie con esos filtros.';
 
-  resultsEl.innerHTML=html;
-}
-
-function scrollToResults(id){
-  const el=document.getElementById(id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function getCountries(arr){
-  // Expandir países compuestos ('A / B') en atómicos para el picker
-  const atomic=[];
-  arr.forEach(s=>{
-    parseCountryParts(s.country||'').forEach(p=>{if(p&&!atomic.includes(p))atomic.push(p);});
+  renderCatalog({
+    key:'series', view:'viewList', resultsId:'listResults', title:'Series',
+    base:active, shown, cardHtml:s=>catalogCardHtml(s,{kind:'series',open:`openSeries(${state.series.indexOf(s)})`}),
+    filters:seriesFilters, fields:['origen','plataforma','anio','estado','tropos','foco'],
+    estado:{value:seriesSubtab, options:[
+      {v:'all',label:'Todas',n:filtered.length},
+      {v:'airing',label:'En emisión',n:airing.length},
+      ...(notStarted.length?[{v:'notstarted',label:'Próximamente',n:notStarted.length}]:[]),
+      {v:'finished',label:'Emitidas',n:finished.length},
+      ...(cancelled.length?[{v:'cancelled',label:'Canceladas',n:cancelled.length}]:[])
+    ], set:v=>{ seriesSubtab=v; paginationState.series[v]=1; saveSession(); updateNavActive(); }},
+    extras:[{id:'libro',label:'Libro',value:()=>seriesFilters.book,def:'all',options:_CAT_BOOK_SERIES,set:v=>{ seriesFilters.book=v; }}],
+    sort:{value:seriesFilters.sort, options:[
+      {v:'added',label:'Orden de añadido'},{v:'addedrev',label:'Últimas añadidas primero'},
+      {v:'az',label:'A → Z'},{v:'za',label:'Z → A'},{v:'eps',label:'+ Episodios'},
+      {v:'date',label:'Más reciente primero'},{v:'dateold',label:'Más antiguo primero'},{v:'recent',label:'Actualizado recientemente'}
+    ], set:v=>{ seriesFilters.sort=v; }},
+    page:{value:paginationState.series[pageKey]||1, set:p=>{ paginationState.series[pageKey]=p; saveSession(); }},
+    resetPage:resetSeriesPages, afterHtml, empty, render:renderListResults
   });
-  return atomic.sort((a,b)=>a.localeCompare(b,'es'));
 }
 
-function getSeriesLastActivity(s){
-  const eps=genEps(s);
+// ═══ PELÍCULAS ═══
+function renderMovies(){
+  const view=document.getElementById('viewMovies');
+  if(!state.movies.length){view.innerHTML='<div class="empty">No hay películas todavía.</div>';return;}
+  registerFilterNs('movies',{filters:moviesFilters,expanded:moviesFilterExpanded,resetPage:resetMoviesPage,render:renderMoviesResults});
+  renderMoviesResults();
+}
+function switchMoviesSubtab(sub){ moviesSubtab=sub; resetMoviesPage(); saveSession(); renderMoviesResults(); }
+function renderMoviesResults(){
+  const baseMovies=state.movies.filter(m=>m.category!=='anime'&&m.category!=='reality');
   const now=new Date();
-  const aired=eps.filter(e=>!e.skipped&&new Date(e.date+'T12:00:00')<=now).map(e=>e.date);
-  if(aired.length) return aired[aired.length-1];
-  const upcoming=eps.filter(e=>!e.skipped&&new Date(e.date+'T12:00:00')>now).map(e=>e.date);
-  if(upcoming.length) return upcoming[0];
-  const seasons=getSeasons(s);
-  return (seasons[0]&&seasons[0].startDate)||s.startDate||'';
+  const filtered=applyMoviesFilters(baseMovies);
+  const inTheaters=filtered.filter(mv=>mv.date&&new Date(mv.date+'T12:00:00')<=now);
+  const comingSoon=filtered.filter(mv=>!mv.date||new Date(mv.date+'T12:00:00')>now);
+  const shorts=filtered.filter(mv=>mv.movieType==='short');
+  const films=filtered.filter(mv=>!mv.movieType||mv.movieType==='film');
+  if(moviesSubtab==='theaters'&&!inTheaters.length) moviesSubtab='all';
+  if(moviesSubtab==='soon'&&!comingSoon.length) moviesSubtab='all';
+  if(moviesSubtab==='shorts'&&!shorts.length) moviesSubtab='all';
+  if(moviesSubtab==='films'&&!films.length) moviesSubtab='all';
+  const shown=moviesSubtab==='theaters'?inTheaters:moviesSubtab==='soon'?comingSoon:moviesSubtab==='shorts'?shorts:moviesSubtab==='films'?films:filtered;
+
+
+  renderCatalog({
+    key:'movies', view:'viewMovies', resultsId:'moviesResults', title:'Películas',
+    base:baseMovies, shown, cardHtml:mv=>catalogCardHtml(mv,{kind:'movie',open:`openMovie(${state.movies.indexOf(mv)})`}),
+    filters:moviesFilters, fields:['origen','plataforma','anio','estado','tropos','foco'],
+    estado:{value:moviesSubtab, options:[
+      {v:'all',label:'Todas',n:filtered.length},
+      {v:'soon',label:'Próximos estrenos',n:comingSoon.length},
+      {v:'films',label:'Película',n:films.length},
+      {v:'shorts',label:'Cortos',n:shorts.length},
+      {v:'theaters',label:'Ya estrenadas',n:inTheaters.length}
+    ], set:v=>{ moviesSubtab=v; saveSession(); }},
+    extras:[{id:'libro',label:'Libro',value:()=>moviesFilters.book,def:'all',options:_CAT_BOOK_SERIES,set:v=>{ moviesFilters.book=v; }}],
+    sort:{value:moviesFilters.sort, options:[
+      {v:'date',label:'Más reciente primero'},{v:'dateold',label:'Más antiguo primero'},
+      {v:'az',label:'A → Z'},{v:'za',label:'Z → A'},{v:'recent',label:'Actualizado recientemente'}
+    ], set:v=>{ moviesFilters.sort=v; }},
+    page:{value:paginationState.movies, set:p=>{ paginationState.movies=p; saveSession(); }},
+    resetPage:resetMoviesPage,
+    empty:filtered.length?'No hay películas en esta categoría con esos filtros.':'No se encontró ninguna película con esos filtros.',
+    render:renderMoviesResults
+  });
 }
 
+// ═══ ANIME ═══
+function renderAnime(){
+  const view=document.getElementById('viewAnime'); if(!view) return;
+  registerFilterNs('anime',{filters:animeFilters,expanded:animeFilterExpanded,resetPage:()=>{paginationAnime={series:1,movies:1};},render:renderAnimeResults});
+  renderAnimeResults();
+}
+function renderAnimeResults(){
+  const sub=animeSubtab, isMovies=sub==='movies';
+  const allSeries=getAnimeSeriesData(), allMovies=getAnimeMoviesData();
+  const base=isMovies?allMovies:allSeries;
+  renderCatalog({
+    key:'anime', view:'viewAnime', resultsId:'animeResults', title:'Anime',
+    base, shown:applyAnimeFilters(base), cardHtml:isMovies?mv=>catalogCardHtml(mv,{kind:'movie',open:`openAnimeDetail('movie',${_catJs(mv.id||mv.name)})`}):s=>catalogCardHtml(s,{kind:'series',open:`openAnimeDetail('series',${_catJs(s.id||s.name)})`}),
+    filters:animeFilters, fields:['origen','plataforma','anio','tropos','foco'],
+    tabs:{value:sub, options:[{v:'series',label:'Series',n:allSeries.length},{v:'movies',label:'Películas',n:allMovies.length}], set:v=>{ animeSubtab=v; saveSession(); }},
+    extras:[{id:'libro',label:'Manga/novela',value:()=>animeFilters.book,def:'all',options:[{v:'all',label:'Todos'},{v:'yes',label:'Con manga/novela'},{v:'no',label:'Original'}],set:v=>{ animeFilters.book=v; }}],
+    sort:{value:animeFilters.sort, options:_CAT_SORT_AZ, set:v=>{ animeFilters.sort=v; }},
+    page:{value:paginationAnime[sub], set:p=>{ paginationAnime[sub]=p; saveSession(); }},
+    resetPage:()=>{ paginationAnime={series:1,movies:1}; },
+    empty:isMovies?'No se encontró ninguna película de anime con esos filtros.':'No se encontró ningún anime con esos filtros.',
+    footHtml:CATALOG_FOOT_ANIME, render:renderAnimeResults
+  });
+}
 
-/** Comprueba si un item (con campo country) pertenece a alguno de los países seleccionados.
- *  Funciona con valores compuestos: 'Tailandia / Japón' matchea tanto 'Tailandia' como 'Japón'.
- */
-function itemMatchesCountries(item, selectedCountries){
-  if(!selectedCountries||!selectedCountries.length) return true;
-  const parts=parseCountryParts(item.country||'');
-  return selectedCountries.some(c=>parts.includes(c));
+// ═══ REALITIES ═══
+function renderRealities(){
+  const view=document.getElementById('viewRealities'); if(!view) return;
+  registerFilterNs('realities',{filters:realitiesFilters,expanded:realitiesFilterExpanded,resetPage:()=>{paginationRealities={series:1,movies:1};},render:renderRealitiesResults});
+  renderRealitiesResults();
+}
+function renderRealitiesResults(){
+  const sub=realitiesSubtab, isMovies=sub==='movies';
+  const allSeries=getRealitiesSeriesData();
+  const base=isMovies?getRealitiesMoviesData():allSeries;
+  renderCatalog({
+    key:'realities', view:'viewRealities', resultsId:'realitiesResults', title:'Realities',
+    base, shown:applyRealitiesFilters(base), cardHtml:isMovies?mv=>catalogCardHtml(mv,{kind:'movie',open:`openRealityDetail('movie',${_catJs(mv.id||mv.name)})`}):s=>catalogCardHtml(s,{kind:'series',open:`openRealityDetail('series',${_catJs(s.id||s.name)})`}),
+    filters:realitiesFilters, fields:['origen','plataforma','anio','tropos','foco'],
+    tabs:{value:sub, options:[{v:'series',label:'Series & Realities',n:allSeries.length}], set:v=>{ realitiesSubtab=v; saveSession(); }},
+    extras:[{id:'formato',label:'Formato',value:()=>realitiesFilters.biFormat?'bi':'',def:'',options:[{v:'',label:'Todos'},{v:'bi',label:'Formato bi (posible)'}],set:v=>{ realitiesFilters.biFormat=(v==='bi'); }}],
+    sort:{value:realitiesFilters.sort, options:_CAT_SORT_AZ, set:v=>{ realitiesFilters.sort=v; }},
+    page:{value:paginationRealities[sub], set:p=>{ paginationRealities[sub]=p; saveSession(); }},
+    resetPage:()=>{ paginationRealities={series:1,movies:1}; },
+    empty:isMovies?'No se encontró ningún documental con esos filtros.':'No se encontró ningún reality con esos filtros.',
+    footHtml:CATALOG_FOOT_REALITIES, render:renderRealitiesResults
+  });
+}
+
+// ═══ DOCUMENTALES ═══
+function renderDocumentales(){
+  const view=document.getElementById('viewDocumentales'); if(!view) return;
+  registerFilterNs('documentales',{filters:documentalesFilters,expanded:documentalesFilterExpanded,resetPage:()=>{paginationDocumentales={page:1};},render:renderDocumentalesResults});
+  renderDocumentalesResults();
+}
+function renderDocumentalesResults(){
+  const base=getDocumentalesData();
+  renderCatalog({
+    key:'documentales', view:'viewDocumentales', resultsId:'documentalesResults', title:'Documentales',
+    base, shown:applyDocumentalesFilters(base), cardHtml:mv=>catalogCardHtml(mv,{kind:'movie',open:`openRealityDetail('movie',${_catJs(mv.id||mv.name)})`}),
+    filters:documentalesFilters, fields:['origen','plataforma','anio','tropos','foco'],
+    sort:{value:documentalesFilters.sort, options:_CAT_SORT_AZ, set:v=>{ documentalesFilters.sort=v; }},
+    page:{value:paginationDocumentales.page||1, set:p=>{ paginationDocumentales.page=p; saveSession(); }},
+    resetPage:()=>{ paginationDocumentales={page:1}; },
+    empty:'No se encontró ningún documental con esos filtros.',
+    footHtml:CATALOG_FOOT_DOCUMENTALES, render:renderDocumentalesResults
+  });
+}
+
+// ═══ LIBROS ═══
+// País, plataforma, año, tropos y foco WLW de un libro son los de la serie/película en la que se adapta (b.src).
+function applyBooksFilters(arr){
+  let books=[...arr];
+  const q=booksState.q.toLowerCase().trim();
+  if(q) books=books.filter(b=>b.title.toLowerCase().includes(q)||b.seriesName.toLowerCase().includes(q));
+  if(booksState.type!=='all') books=books.filter(b=>b.type===booksState.type);
+  if(booksState.letter) books=books.filter(b=>b.title[0]?.toUpperCase()===booksState.letter);
+  if(booksState.lang) books=books.filter(b=>b.editions.some(e=>e.lang===booksState.lang));
+  const s=b=>b.src||{};
+  if(booksState.countries.length) books=books.filter(b=>itemMatchesCountries(s(b),booksState.countries));
+  if(booksState.networks.length) books=books.filter(b=>parseNetworkParts(s(b).network).some(n=>booksState.networks.includes(n)));
+  if(booksState.years.length) books=books.filter(b=>booksState.years.includes(_catYear(s(b))));
+  if(booksState.tropos.length) books=books.filter(b=>(s(b).tropos||[]).some(t=>booksState.tropos.includes(t)));
+  if(booksState.wlwFocus.length) books=books.filter(b=>booksState.wlwFocus.includes(seriesWlwFocus(s(b))));
+  if(booksState.sort==='az') books.sort((a,b)=>a.title.localeCompare(b.title,'es'));
+  else if(booksState.sort==='za') books.sort((a,b)=>b.title.localeCompare(a.title,'es'));
+  else if(booksState.sort==='serie') books.sort((a,b)=>a.seriesName.localeCompare(b.seriesName,'es'));
+  else if(booksState.sort==='pub') books.sort((a,b)=>a.order-b.order);
+  return books;
+}
+function renderBooks(){
+  const view=document.getElementById('viewBooks');
+  if(!getAllBooks().length){
+    view.innerHTML='<div class="empty">Todavía no hay libros. Marca series como "basada en libro" en el admin para que aparezcan aquí.</div>';
+    return;
+  }
+  renderBooksResults();
+}
+function renderBooksResults(){
+  const allBooks=getAllBooks();
+  const allLangs=[...new Set(allBooks.flatMap(b=>b.editions.map(e=>e.lang)).filter(Boolean))].sort();
+  const usedLetters=new Set(allBooks.map(b=>b.title[0]?.toUpperCase()).filter(Boolean));
+  const ALPHABET='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const alphaBtns=`<button class="alpha-btn${!booksState.letter?' alpha-active':''}" onclick="booksState.letter='';booksState.page=1;renderBooksResults()" title="Todos">Todas</button>`
+      +ALPHABET.map(l=>{
+        const has=usedLetters.has(l);
+        return `<button class="alpha-btn${booksState.letter===l?' alpha-active':''}${!has?' alpha-disabled':''}" onclick="${has?`booksState.letter=booksState.letter==='${l}'?'':'${l}';booksState.page=1;renderBooksResults()`:''}" title="${l}">${l}</button>`;
+      }).join('');
+  renderCatalog({
+    key:'books', view:'viewBooks', resultsId:'booksResults', title:'Libros',
+    base:allBooks, src:b=>b.src||{}, shown:applyBooksFilters(allBooks),
+    // Libro: portada, título del libro y los datos de la obra que lo adapta; las ediciones salen al pasar el cursor
+    cardHtml:b=>catalogCardHtml(b.src||{},{kind:b.type==='serie'?'series':'movie',title:b.title,poster:b.cover,noRating:true,detail:'Adaptada en '+b.seriesName,hoverExtra:b.editions.length?`<div class="ccard-editions">${bookEditionPillsHtml(b)}</div>`:''}),
+    filters:booksState, fields:['origen','plataforma','anio','tropos','foco'],
+    extras:[
+      {id:'tipo',label:'Tipo',value:()=>booksState.type,def:'all',options:[{v:'all',label:'Todos'},{v:'serie',label:'Series'},{v:'película',label:'Películas'}],set:v=>{ booksState.type=v; }},
+      ...(allLangs.length?[{id:'idioma',label:'Idioma',value:()=>booksState.lang,def:'',options:[{v:'',label:'Todos'},...allLangs.map(l=>({v:l,label:`${langFlag(l)} ${langLabel(l)}`}))],set:v=>{ booksState.lang=v; }}]:[])
+    ],
+    sort:{value:booksState.sort, options:[{v:'az',label:'A → Z'},{v:'za',label:'Z → A'},{v:'serie',label:'Por serie'},{v:'pub',label:'Orden de la lista'}], set:v=>{ booksState.sort=v; }},
+    page:{value:booksState.page||1, set:p=>{ booksState.page=p; }}, resetPage:()=>{ booksState.page=1; },
+    extraActive:()=>(booksState.type!=='all'?1:0)+(booksState.lang?1:0)+(booksState.letter?1:0),
+    onClear:()=>{ booksState.type='all'; booksState.lang=''; booksState.letter=''; },
+    afterHtml:`<div class="alpha-bar">${alphaBtns}</div>`,
+    empty:'No se encontró ningún libro con esos criterios.', render:renderBooksResults
+  });
 }
 
 function applySeriesFilters(arr){
@@ -7075,58 +7615,17 @@ function applySeriesFilters(arr){
   else if(seriesFilters.sort==='eps') r.sort((a,b)=>b.totalEpisodes-a.totalEpisodes);
   else if(seriesFilters.sort==='date') r.sort((a,b)=>{ const da=(getSeasons(a)[0]?.startDate||a.startDate||''); const db=(getSeasons(b)[0]?.startDate||b.startDate||''); return db.localeCompare(da); });
   else if(seriesFilters.sort==='dateold') r.sort((a,b)=>{ const da=(getSeasons(a)[0]?.startDate||a.startDate||''); const db=(getSeasons(b)[0]?.startDate||b.startDate||''); return da.localeCompare(db); });
+  else if(seriesFilters.sort==='added'||seriesFilters.sort==='addedrev'){
+    // Orden de añadido al data (el admin añade al final del array): no depende de updatedAt
+    const pos=new Map(state.series.map((s,i)=>[s,i])), dir=seriesFilters.sort==='added'?1:-1;
+    r.sort((a,b)=>(pos.get(a)-pos.get(b))*dir);
+  }
   else if(seriesFilters.sort==='recent') r.sort((a,b)=>{const ua=a.updatedAt||'';const ub=b.updatedAt||'';return ub.localeCompare(ua);});
   return r;
 }
 function resetSeriesPages(){ paginationState.series.all=1; paginationState.series.airing=1; paginationState.series.notstarted=1; paginationState.series.finished=1; paginationState.series.cancelled=1; }
 function resetMoviesPage(){ paginationState.movies=1; }
 function resetUpcomingPage(){ paginationState.upcoming=1; }
-
-function renderList(){
-  const view=document.getElementById('viewList');
-  // First render: build the static shell (barra de búsqueda + layout de sidebar)
-  if(!view.querySelector('.list-toolbar-shell')){
-    view.innerHTML=`<div class="list-toolbar-shell books-toolbar">
-      <div class="toolbar-search-row">
-        <div class="search-wrap" style="position:relative;margin-bottom:0;flex:1">
-          <span class="search-icon"></span>
-          <input id="seriesSearchInput" class="search-input" placeholder="Buscar serie, país, plataforma…" value="${seriesFilters.q}" oninput="seriesFilters.q=this.value;resetSeriesPages();debounceRender('series',renderListResults)" autocomplete="off">
-        </div>
-      </div>
-      <div class="toolbar-filters-row">
-        <div class="filter-group">
-          <span class="filter-label">Orden</span>
-          <select id="seriesSortSel" class="filter-select" title="Orden" onchange="seriesFilters.sort=this.value;resetSeriesPages();renderListResults()">
-            <option value="az"${seriesFilters.sort==='az'?' selected':''}>A → Z</option>
-            <option value="za"${seriesFilters.sort==='za'?' selected':''}>Z → A</option>
-            <option value="eps"${seriesFilters.sort==='eps'?' selected':''}>+ Episodios</option>
-            <option value="date"${seriesFilters.sort==='date'?' selected':''}>Más reciente primero</option>
-            <option value="dateold"${seriesFilters.sort==='dateold'?' selected':''}>Más antiguo primero</option>
-            <option value="recent"${seriesFilters.sort==='recent'?' selected':''}>Actualizado recientemente</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Libro</span>
-          <select id="seriesBookSel" class="filter-select" title="Libro" onchange="seriesFilters.book=this.value;resetSeriesPages();renderListResults()">
-            <option value="all">Todos</option>
-            <option value="yes">Con libro</option>
-            <option value="no">Sin libro</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="filters-layout">
-      <aside class="filters-sidebar" id="seriesFiltersSidebar"></aside>
-      <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('seriesFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
-        <div id="seriesStatusPillbar"></div>
-        <div id="listResults"></div>
-      </div>
-    </div>`;
-    _initMobileFilterToggle(view.querySelector('.list-toolbar-shell'));
-  }
-  renderListResults();
-}
 
 function switchSeriesSubtab(sub){ seriesSubtab=sub; paginationState.series[sub]=1; saveSession(); renderListResults(); updateNavActive(); }
 
@@ -7272,7 +7771,7 @@ function renderUpcomingResults(){
     manualStale.forEach(s=>{
       const si=state.series.indexOf(s);
       const poster=s.poster
-        ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph></div>'">`
+        ?`<img loading="lazy" decoding="async" class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph></div>'">`
         :`<div class="sn-poster-ph"></div>`;
       const cancelLabels={cancelled:'Cancelada',limbo:'En limbo',closed:'Prod. cerrada'};
       const lastInfo=s.cancelStatus
@@ -7297,7 +7796,7 @@ function renderUpcomingResults(){
     // Luego las detectadas automáticamente por antigüedad
     autoStale.forEach(({s,si,days})=>{
       const poster=s.poster
-        ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph></div>'">`
+        ?`<img loading="lazy" decoding="async" class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph></div>'">`
         :`<div class="sn-poster-ph"></div>`;
       snHtml+=`<div class="sn-card" onclick="openUpcoming(${si})">
         ${poster}
@@ -7330,7 +7829,7 @@ function renderUpcomingResults(){
   upSlice.forEach((s)=>{
     const si=state.series.indexOf(s);
     const posterEl=s.poster
-      ?`<div class="upcoming-poster-wrap"><img class="upcoming-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=upcoming-poster-ph></div>'"></div>`
+      ?`<div class="upcoming-poster-wrap"><img class="upcoming-poster" src="${s.poster}" alt="${s.name}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=upcoming-poster-ph></div>'"></div>`
       :`<div class="upcoming-poster-wrap"><div class="upcoming-poster-ph"></div></div>`;
     const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver');
     const watchRow=links.length?`<div class="upcoming-watch-row">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
@@ -7359,7 +7858,7 @@ function openDay(dateStr){
     if(type==='movie'){
       const isPast=new Date(ep.date+'T12:00:00')<=now;
       const st=isPast?'aired':'pending', lb=isPast?'Estrenada':'Pendiente';
-      const thumb=s.poster?`<img class="day-ep-thumb" src="${s.poster}" alt="" onerror="this.outerHTML='<div class=day-ep-thumb-ph></div>'">`:`<div class="day-ep-thumb-ph"></div>`;
+      const thumb=s.poster?`<img loading="lazy" decoding="async" class="day-ep-thumb" src="${s.poster}" alt="" onerror="this.outerHTML='<div class=day-ep-thumb-ph></div>'">`:`<div class="day-ep-thumb-ph"></div>`;
       html+=`<div class="day-ep-row" onclick="openMovie(${si})">${thumb}
         <div class="day-ep-info"><div class="day-ep-name" style="color:var(--lavender)">${s.name}</div>
         <div class="day-ep-meta">Película${s.network?' · '+s.network:''}</div>${gcalLinkHtml({s,ep,type})}</div>
@@ -7367,7 +7866,7 @@ function openDay(dateStr){
     } else {
       const col=PALETTE[si%PALETTE.length], isPast=new Date(ep.date+'T12:00:00')<=now;
       const st=ep.skipped?'skipped':isPast?'aired':'pending', lb=ep.skipped?'No emitido':isPast?'Emitido':'Pendiente';
-      const thumb=s.poster?`<img class="day-ep-thumb" src="${s.poster}" alt="" onerror="this.outerHTML='<div class=day-ep-thumb-ph></div>'">`:`<div class="day-ep-thumb-ph"></div>`;
+      const thumb=s.poster?`<img loading="lazy" decoding="async" class="day-ep-thumb" src="${s.poster}" alt="" onerror="this.outerHTML='<div class=day-ep-thumb-ph></div>'">`:`<div class="day-ep-thumb-ph"></div>`;
       const daySeasons=getSeasons(s);
       const dayLbl=epLabel(ep,daySeasons);
       html+=`<div class="day-ep-row" onclick="openSeries(${si})">${thumb}
@@ -7744,7 +8243,7 @@ function daysUntil(dateStr){
 function castPhotoHtml(a){
   if(!a.photo) return '<div class="cast-photo-ph"></div>';
   const pos=a.photoPosition||'center 15%', zoom=a.photoZoom||1;
-  return `<div class="cast-photo" style="overflow:hidden;padding:0"><img src="${a.photo}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;object-position:${pos};transform:scale(${zoom});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=cast-photo-ph></div>'"></div>`;
+  return `<div class="cast-photo" style="overflow:hidden;padding:0"><img loading="lazy" decoding="async" src="${a.photo}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;object-position:${pos};transform:scale(${zoom});transform-origin:center center;display:block" onerror="this.parentElement.outerHTML='<div class=cast-photo-ph></div>'"></div>`;
 }
 function buildCastHtml(cast, couples, extra){
   if(!cast||!cast.length) return '<div style="color:var(--muted);font-size:13px;padding:8px 0">Sin información de reparto.</div>';
@@ -8371,122 +8870,6 @@ let moviesFilters={...NS_DEFAULTS.movies};
 let moviesFilterExpanded={};
 let moviesSubtab='all';
 
-function renderMovies(){
-  const view=document.getElementById('viewMovies');
-  if(!state.movies.length){view.innerHTML='<div class="empty">No hay películas todavía.</div>';return;}
-
-  if(!view.querySelector('.movies-toolbar-shell')){
-    view.innerHTML=`<div class="movies-toolbar-shell books-toolbar">
-      <div class="toolbar-search-row">
-        <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
-          <span class="search-icon"></span>
-          <input id="moviesSearchInput" class="search-input" placeholder="Buscar película, país, plataforma…" value="${moviesFilters.q}" oninput="moviesFilters.q=this.value;resetMoviesPage();debounceRender('movies',renderMoviesResults)" autocomplete="off">
-        </div>
-      </div>
-      <div class="toolbar-filters-row">
-        <div class="filter-group">
-          <span class="filter-label">Orden</span>
-          <select id="moviesSortSel" class="filter-select" onchange="moviesFilters.sort=this.value;resetMoviesPage();renderMoviesResults()">
-            <option value="date">Más reciente primero</option>
-            <option value="dateold">Más antiguo primero</option>
-            <option value="az">A → Z</option>
-            <option value="za">Z → A</option>
-            <option value="recent">Actualizado recientemente</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Libro</span>
-          <select id="moviesBookSel" class="filter-select" onchange="moviesFilters.book=this.value;resetMoviesPage();renderMoviesResults()">
-            <option value="all">Todos</option>
-            <option value="yes">Con libro</option>
-            <option value="no">Sin libro</option>
-          </select>
-        </div>
-        <button id="moviesClearBtn" class="filter-clear-btn" style="display:none" onclick="clearNsFilters('movies')">Limpiar</button>
-      </div>
-    </div>
-    <div class="filters-layout">
-      <aside class="filters-sidebar" id="moviesFiltersSidebar"></aside>
-      <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('moviesFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
-        <div id="moviesResults"></div>
-      </div>
-    </div>`;
-    registerFilterNs('movies',{filters:moviesFilters,expanded:moviesFilterExpanded,resetPage:resetMoviesPage,render:renderMoviesResults});
-    _initMobileFilterToggle(view.querySelector('.movies-toolbar-shell'));
-  }
-  renderMoviesResults();
-}
-
-function switchMoviesSubtab(sub){ moviesSubtab=sub; resetMoviesPage(); saveSession(); renderMoviesResults(); }
-
-function renderMoviesResults(){
-  const resultsEl=document.getElementById('moviesResults');
-  if(!resultsEl) return;
-  const sortSel=document.getElementById('moviesSortSel');
-  const clearBtn=document.getElementById('moviesClearBtn');
-  if(sortSel) sortSel.value=moviesFilters.sort;
-  const hasActiveFilter=['wlwFocus','genres','years','countries','networks','tropos','dinamicas','moods'].some(k=>moviesFilters[k]&&moviesFilters[k].length);
-  if(clearBtn) clearBtn.style.display=(hasActiveFilter||moviesFilters.book!=='all')?'':'none';
-
-  const baseMovies=state.movies.filter(m=>m.category!=='anime'&&m.category!=='reality');
-  const sidebarEl=document.getElementById('moviesFiltersSidebar');
-  if(sidebarEl) sidebarEl.innerHTML=buildNsSidebarHtml('movies',baseMovies);
-
-  const now=new Date();
-  const filtered=applyMoviesFilters(baseMovies);
-  const inTheaters=filtered.filter(mv=>mv.date&&new Date(mv.date+'T12:00:00')<=now);
-  const comingSoon=filtered.filter(mv=>!mv.date||new Date(mv.date+'T12:00:00')>now);
-  const shorts=filtered.filter(mv=>mv.movieType==='short');
-  const films=filtered.filter(mv=>!mv.movieType||mv.movieType==='film');
-  if(moviesSubtab==='theaters'&&!inTheaters.length) moviesSubtab='all';
-  if(moviesSubtab==='soon'&&!comingSoon.length) moviesSubtab='all';
-  if(moviesSubtab==='shorts'&&!shorts.length) moviesSubtab='all';
-  if(moviesSubtab==='films'&&!films.length) moviesSubtab='all';
-  const shown=moviesSubtab==='theaters'?inTheaters:moviesSubtab==='soon'?comingSoon:moviesSubtab==='shorts'?shorts:moviesSubtab==='films'?films:filtered;
-
-
-  if(!filtered.length){
-    resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna película con esos filtros.</div>';
-    return;
-  }
-  let html=`<div class="subtabs" style="margin-bottom:1.25rem">
-    <button class="subtab${moviesSubtab==='all'?' active':''}" onclick="switchMoviesSubtab('all')">
-      Todas<span class="subtab-count">${filtered.length}</span>
-    </button>
-    <button class="subtab${moviesSubtab==='soon'?' active':''}" onclick="switchMoviesSubtab('soon')">
-      Próximos estrenos<span class="subtab-count">${comingSoon.length}</span>
-    </button>
-    <button class="subtab${moviesSubtab==='films'?' active':''}" onclick="switchMoviesSubtab('films')">
-      Película<span class="subtab-count">${films.length}</span>
-    </button>
-    <button class="subtab${moviesSubtab==='shorts'?' active':''}" onclick="switchMoviesSubtab('shorts')">
-      Cortos<span class="subtab-count">${shorts.length}</span>
-    </button>
-    <button class="subtab${moviesSubtab==='theaters'?' active':''}" onclick="switchMoviesSubtab('theaters')">
-      ✓ Ya estrenadas<span class="subtab-count">${inTheaters.length}</span>
-    </button>
-    <button class="subtab" onclick="switchTab('anime');setTimeout(()=>{animeSubtab='movies';renderAnimeResults();},50)">
-      Anime<span class="subtab-count">${getAnimeMoviesData().length}</span>
-    </button>
-  </div>`;
-  if(!shown.length){
-    html+='<div class="search-empty">No hay películas en esta categoría con esos filtros.</div>';
-    resultsEl.innerHTML=html; return;
-  }
-  // Expose page setter
-  window.setMoviesPage=p=>{paginationState.movies=p;saveSession();renderMoviesResults();scrollToResults('moviesResults');};
-  const mvPage=Math.min(paginationState.movies,Math.ceil(shown.length/PAGE_SIZE))||1;
-  paginationState.movies=mvPage;
-  const mvSlice=shown.slice((mvPage-1)*PAGE_SIZE, mvPage*PAGE_SIZE);
-  const mvTotalPages=Math.ceil(shown.length/PAGE_SIZE);
-  html+=`<div class="books-count">Mostrando <strong>${(mvPage-1)*PAGE_SIZE+1}–${Math.min(mvPage*PAGE_SIZE,shown.length)}</strong> de <strong>${shown.length}</strong> película${shown.length!==1?'s':''}</div>
-  <div class="movies-grid">`;
-  mvSlice.forEach(mv=>{ html+=movieCardHtml(mv); });
-  html+='</div>';
-  html+=paginationHtml(mvPage, mvTotalPages, 'setMoviesPage');
-  resultsEl.innerHTML=html;
-}
 
 function switchMovieModalTab(tab){
   ['info','cast'].forEach(p=>{
@@ -8742,140 +9125,25 @@ const LANG_META={es:{flag:'🇪🇸',label:'Español'},en:{flag:'🇬🇧',label
 function langFlag(val){return (LANG_META[val]||{flag:''}).flag;}
 function langLabel(val){return (LANG_META[val]||{label:val}).label;}
 
-let booksState={q:'',sort:'az',type:'all',letter:'',lang:''};
+let booksState={q:'',sort:'az',type:'all',letter:'',lang:'',page:1,countries:[],networks:[],years:[],tropos:[],wlwFocus:[]};
 
 function getAllBooks(){
   const books=[];
   state.series.forEach((s,i)=>{
     if(s.basedOnBook){
       const editions=s.bookLinks&&s.bookLinks.length?s.bookLinks:(s.bookUrl?[{lang:'es',store:'Amazon',url:s.bookUrl}]:[]);
-      books.push({title:s.bookSource||'Sin título',cover:s.bookCoverUrl||'',editions,seriesName:s.name,type:'serie',order:i});
+      books.push({title:s.bookSource||'Sin título',cover:s.bookCoverUrl||'',editions,seriesName:s.name,type:'serie',order:i,src:s});
     }
   });
   (state.movies||[]).forEach((mv,i)=>{
     if(mv.basedOnBook){
       const editions=mv.bookLinks&&mv.bookLinks.length?mv.bookLinks:(mv.bookUrl?[{lang:'es',store:'Amazon',url:mv.bookUrl}]:[]);
-      books.push({title:mv.bookSource||'Sin título',cover:mv.bookCoverUrl||'',editions,seriesName:mv.name,type:'película',order:1000+i});
+      books.push({title:mv.bookSource||'Sin título',cover:mv.bookCoverUrl||'',editions,seriesName:mv.name,type:'película',order:1000+i,src:mv});
     }
   });
   return books;
 }
 
-function renderBooks(){
-  const view=document.getElementById('viewBooks');
-  const allBooks=getAllBooks();
-  if(!allBooks.length){
-    view.innerHTML='<div class="empty">Todavía no hay libros. Marca series como "basada en libro" en el admin para que aparezcan aquí.</div>';
-    return;
-  }
-
-  if(!view.querySelector('.books-toolbar-shell')){
-    const allLangs=[...new Set(allBooks.flatMap(b=>b.editions.map(e=>e.lang)).filter(Boolean))].sort();
-    const langOpts=allLangs.map(l=>`<option value="${l}">${langFlag(l)} ${langLabel(l)}</option>`).join('');
-    view.innerHTML=`<div class="section-heading" style="margin-bottom:.25rem">Fuentes literarias</div>
-    <p class="section-desc" style="margin-bottom:.85rem">Libros, novelas y manhwas en los que se basan las series y películas de la lista.</p>
-    <div class="books-toolbar-shell books-toolbar">
-      <div class="search-wrap" style="position:relative">
-        <span class="search-icon"></span>
-        <input id="booksSearchInput" class="search-input" placeholder="Buscar libro o serie…" value="${booksState.q}" oninput="booksState.q=this.value;debounceRender('books',renderBooksResults)" autocomplete="off">
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Tipo</span>
-        <select id="booksTypeSel" class="filter-select" onchange="booksState.type=this.value;renderBooksResults()">
-          <option value="all">Todos</option>
-          <option value="serie">Series</option>
-          <option value="película">Películas</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Idioma</span>
-        <select id="booksLangSel" class="filter-select" onchange="booksState.lang=this.value;renderBooksResults()">
-          <option value="">Idioma</option>${langOpts}
-        </select>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Orden</span>
-        <select id="booksSortSel" class="filter-select" onchange="booksState.sort=this.value;renderBooksResults()">
-          <option value="az">A → Z</option>
-          <option value="za">Z → A</option>
-          <option value="serie">Por serie</option>
-          <option value="pub">Orden de la lista</option>
-        </select>
-      </div>
-      <button id="booksClearBtn" class="filter-clear-btn" style="display:none"
-        onclick="booksState.type='all';booksState.lang='';booksState.letter='';document.getElementById('booksTypeSel').value='all';document.getElementById('booksLangSel').value='';renderBooksResults()">Limpiar</button>
-    </div>
-    <div id="booksAlphaBar"></div>
-    <div id="booksResults"></div>`;
-    _initMobileFilterToggle(view.querySelector('.books-toolbar'));
-  }
-  renderBooksResults();
-}
-
-function renderBooksResults(){
-  const resultsEl=document.getElementById('booksResults');
-  const alphaEl=document.getElementById('booksAlphaBar');
-  if(!resultsEl) return;
-
-  // Sync selects
-  const typeSel=document.getElementById('booksTypeSel');
-  const langSel=document.getElementById('booksLangSel');
-  const sortSel=document.getElementById('booksSortSel');
-  const clearBtn=document.getElementById('booksClearBtn');
-  if(typeSel) typeSel.value=booksState.type;
-  if(langSel) langSel.value=booksState.lang;
-  if(sortSel) sortSel.value=booksState.sort;
-  if(clearBtn) clearBtn.style.display=(booksState.type!=='all'||booksState.lang||booksState.letter)?'':'none';
-
-  const allBooks=getAllBooks();
-  const usedLetters=new Set(allBooks.map(b=>b.title[0]?.toUpperCase()).filter(Boolean));
-  const ALPHABET='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-
-  // Render alpha bar (lightweight, no inputs)
-  if(alphaEl){
-    alphaEl.className='alpha-bar';
-    alphaEl.innerHTML=`<button class="alpha-btn${!booksState.letter?' alpha-active':''}" onclick="booksState.letter='';renderBooksResults()" title="Todos">Todas</button>`
-      +ALPHABET.map(l=>{
-        const has=usedLetters.has(l);
-        return `<button class="alpha-btn${booksState.letter===l?' alpha-active':''}${!has?' alpha-disabled':''}" onclick="${has?`booksState.letter=booksState.letter==='${l}'?'':'${l}';renderBooksResults()`:''}" title="${l}">${l}</button>`;
-      }).join('');
-  }
-
-  let books=[...allBooks];
-  const q=booksState.q.toLowerCase().trim();
-  if(q) books=books.filter(b=>b.title.toLowerCase().includes(q)||b.seriesName.toLowerCase().includes(q));
-  if(booksState.type!=='all') books=books.filter(b=>b.type===booksState.type);
-  if(booksState.letter) books=books.filter(b=>b.title[0]?.toUpperCase()===booksState.letter);
-  if(booksState.lang) books=books.filter(b=>b.editions.some(e=>e.lang===booksState.lang));
-  if(booksState.sort==='az') books.sort((a,b)=>a.title.localeCompare(b.title,'es'));
-  else if(booksState.sort==='za') books.sort((a,b)=>b.title.localeCompare(a.title,'es'));
-  else if(booksState.sort==='serie') books.sort((a,b)=>a.seriesName.localeCompare(b.seriesName,'es'));
-  else if(booksState.sort==='pub') books.sort((a,b)=>a.order-b.order);
-
-  if(!books.length){
-    resultsEl.innerHTML='<div class="search-empty">No se encontró ningún libro con esos criterios.</div>';
-    return;
-  }
-  let html=`<div class="books-count">Mostrando <strong>${books.length}</strong> de <strong>${allBooks.length}</strong> libro${allBooks.length!==1?'s':''}</div>`;
-  html+='<div class="books-grid">';
-  books.forEach(b=>{
-    const coverEl=b.cover?`<img class="book-card-cover" src="${b.cover}" alt="${b.title}" onerror="this.outerHTML='<div class=book-card-cover-ph></div>'">`:`<div class="book-card-cover-ph"></div>`;
-    const editionPills=b.editions.map(e=>{
-      const isActive=booksState.lang&&e.lang===booksState.lang;
-      return `<a class="book-edition-pill${isActive?' book-edition-pill-active':''}" href="${e.url}" target="_blank" rel="noopener"><span class="book-edition-flag">${langFlag(e.lang)}</span><span class="book-edition-store">${e.store}</span></a>`;
-    }).join('');
-    html+=`<div class="book-card">
-      ${coverEl}
-      <div class="book-card-body">
-        <div class="book-card-title">${b.title}</div>
-        <div class="book-card-series">Adaptada en <strong>${b.seriesName}</strong> <span class="book-type-tag">${b.type}</span></div>
-        ${b.editions.length?`<div class="book-editions-row">${editionPills}</div>`:'<div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:4px">Sin ediciones enlazadas</div>'}
-      </div>
-    </div>`;
-  });
-  html+='</div>';
-  resultsEl.innerHTML=html;
-}
 // ═══ ANIME ═══
 let animeFilters={...NS_DEFAULTS.anime};
 let animeFilterExpanded={};
@@ -8909,147 +9177,6 @@ function applyAnimeFilters(arr){
   else if(animeFilters.sort==='date') r.sort((a,b)=>((b.startDate||b.date||'')).localeCompare((a.startDate||a.date||'')));
   else if(animeFilters.sort==='dateold') r.sort((a,b)=>((a.startDate||a.date||'')).localeCompare((b.startDate||b.date||'')));
   return r;
-}
-
-function renderAnime(){
-  const view=document.getElementById('viewAnime');
-  if(!view) return;
-
-  const allSeries=getAnimeSeriesData();
-  const allMovies=getAnimeMoviesData();
-
-  const seriesCount=allSeries.length, moviesCount=allMovies.length;
-
-  view.innerHTML=`
-    <div style="margin-bottom:1.25rem">
-      <div class="section-heading">Anime GL</div>
-      <div class="section-desc">Series y películas de anime con historias de amor entre chicas (yuri, GL y subtexto sáfico)</div>
-    </div>
-    <div class="subtabs" id="animeSubtabs">
-      <button class="subtab${animeSubtab==='series'?' active':''}" onclick="animeSubtab='series';saveSession();renderAnimeResults()">Series <span class="subtab-count">${seriesCount}</span></button>
-      <button class="subtab${animeSubtab==='movies'?' active':''}" onclick="animeSubtab='movies';saveSession();renderAnimeResults()">Películas <span class="subtab-count">${moviesCount}</span></button>
-    </div>
-    <div class="books-toolbar" id="animeToolbar">
-      <div class="toolbar-search-row">
-        <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
-          <span class="search-icon"></span>
-          <input id="animeSearchInput" class="search-input" placeholder="Buscar anime, país, plataforma…" value="${animeFilters.q}" oninput="animeFilters.q=this.value;paginationAnime={series:1,movies:1};debounceRender('anime',renderAnimeResults)" autocomplete="off">
-        </div>
-      </div>
-      <div class="toolbar-filters-row">
-        <div class="filter-group">
-          <span class="filter-label">Libro/Manga</span>
-          <select id="animeBookSel" class="filter-select" onchange="animeFilters.book=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()">
-            <option value="all">Origen</option>
-            <option value="yes">Con manga/novela</option>
-            <option value="no">Original</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Orden</span>
-          <select id="animeSortSel" class="filter-select" onchange="animeFilters.sort=this.value;paginationAnime={series:1,movies:1};renderAnimeResults()">
-            <option value="az">A → Z</option>
-            <option value="za">Z → A</option>
-            <option value="date">Más reciente primero</option>
-            <option value="dateold">Más antiguo primero</option>
-          </select>
-        </div>
-        <button class="filter-clear-btn" id="animeClearBtn" style="display:none" onclick="clearNsFilters('anime')">Limpiar</button>
-      </div>
-    </div>
-    <div class="filters-layout">
-      <aside class="filters-sidebar" id="animeFiltersSidebar"></aside>
-      <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('animeFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
-        <div id="animeResults"></div>
-        <div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,color-mix(in srgb,var(--lavender) 7%,transparent),color-mix(in srgb,var(--accent) 5%,transparent));border:1.5px dashed color-mix(in srgb,var(--lavender) 25%,transparent);border-radius:var(--radius-lg);text-align:center">
-          <div style="font-size:13px;font-weight:700;color:var(--lavender);margin-bottom:4px">¿Falta algún anime?</div>
-          <div style="font-size:12px;color:var(--muted)">Esta sección crece con el tiempo. Puedes sugerir animes GL a través de la cuenta de X <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);font-weight:600">@xxmadwavs</a></div>
-        </div>
-      </div>
-    </div>`;
-    registerFilterNs('anime',{filters:animeFilters,expanded:animeFilterExpanded,resetPage:()=>{paginationAnime={series:1,movies:1};},render:renderAnimeResults});
-    _initMobileFilterToggle(view.querySelector('.books-toolbar'));
-  renderAnimeResults();
-}
-
-function renderAnimeResults(){
-  const resultsEl=document.getElementById('animeResults');
-  if(!resultsEl) return;
-
-  // Sync subtab buttons
-  document.querySelectorAll('#animeSubtabs .subtab').forEach((btn,i)=>{
-    const tabs=['series','movies'];
-    btn.className='subtab'+(animeSubtab===tabs[i]?' active':'');
-  });
-
-  const clearBtn=document.getElementById('animeClearBtn');
-  const hasActiveFilter=['wlwFocus','genres','years','countries','networks','tropos','dinamicas','moods'].some(k=>animeFilters[k]&&animeFilters[k].length);
-  if(clearBtn) clearBtn.style.display=(hasActiveFilter||animeFilters.book!=='all')?'':'none';
-
-  const activeBase=animeSubtab==='movies'?getAnimeMoviesData():getAnimeSeriesData();
-  const sidebarEl=document.getElementById('animeFiltersSidebar');
-  if(sidebarEl) sidebarEl.innerHTML=buildNsSidebarHtml('anime',activeBase);
-
-  if(animeSubtab==='series'){
-    const all=getAnimeSeriesData();
-    const filtered=applyAnimeFilters(all);
-    const page=paginationAnime.series;
-    const totalPages=Math.ceil(filtered.length/PAGE_SIZE)||1;
-    const paged=filtered.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
-    window.setAnimePage=p=>{paginationAnime.series=p;saveSession();renderAnimeResults();scrollToResults('animeResults');};
-    if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún anime con esos filtros.</div>';return;}
-    let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> anime${filtered.length!==1?'s':''}</div><div class="movies-grid">`;
-    paged.forEach((s,i)=>{
-      const si=i;
-      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph"></div></div>`;
-      const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver');
-      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
-      const genrePills=s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${s.genres.slice(0,3).map(g=>`<span style="font-size:11px;padding:2px 7px;border-radius:20px;background:var(--lavender-soft);border:1px solid color-mix(in srgb,var(--lavender) 20%,transparent);color:var(--lavender);font-weight:600">${g}</span>`).join('')}</div>`:'';
-      const year=s.year||(s.startDate||'').substring(0,4)||'';
-      html+=`<div class="series-card" onclick="openAnimeDetail('series','${s.id||s.name}')">
-        ${posterEl}
-        <div class="series-card-body">
-          <div class="card-badges">${sourceTypeBadge(s)}${s.country?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${countryFlag(s.country)} ${s.country}</span>`:''}</div>
-          <div class="series-card-name">${s.name}</div>
-          <div class="series-card-meta">${[s.network,year?''+year:null,s.totalEpisodes?''+s.totalEpisodes+' ep.':null].filter(Boolean).join(' · ')}</div>
-          ${genrePills}
-          ${watchRow}
-        </div>
-      </div>`;
-    });
-    html+='</div>'+paginationHtml(page,totalPages,'setAnimePage');
-    resultsEl.innerHTML=html;
-  } else {
-    // Movies
-    const all=getAnimeMoviesData();
-    const filtered=applyAnimeFilters(all);
-    const page=paginationAnime.movies;
-    const totalPages=Math.ceil(filtered.length/PAGE_SIZE)||1;
-    const paged=filtered.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
-    window.setAnimeMoviePage=p=>{paginationAnime.movies=p;saveSession();renderAnimeResults();scrollToResults('animeResults');};
-    if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ninguna película de anime con esos filtros.</div>';return;}
-    let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> película${filtered.length!==1?'s':''}</div><div class="movies-grid">`;
-    paged.forEach((mv,mi)=>{
-      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'">`:`<div class="movie-card-poster-ph"></div>`;
-      const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
-      const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver');
-      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
-      const genrePills=mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:11px;padding:2px 7px;border-radius:20px;background:var(--lavender-soft);border:1px solid color-mix(in srgb,var(--lavender) 20%,transparent);color:var(--lavender);font-weight:600">${g}</span>`).join('')}</div>`:'';
-      html+=`<div class="movie-card" onclick="openAnimeDetail('movie','${mv.id||mv.name}')">
-        ${posterEl}
-        <div class="movie-card-body">
-          <div class="card-badges">${sourceTypeBadge(mv)}${mv.country?`<span class="badge" style="background:var(--lavender-soft);color:var(--lavender)">${countryFlag(mv.country)} ${mv.country}</span>`:''}</div>
-          <div class="movie-card-name">${mv.name}</div>
-          <div class="movie-card-meta">Película · ${dateStr}</div>
-          ${genrePills}
-          ${watchRow}
-        </div>
-      </div>`;
-    });
-    html+='</div>'+paginationHtml(page,totalPages,'setAnimeMoviePage');
-    resultsEl.innerHTML=html;
-  }
 }
 
 // ═══ SHARED RICH DETAIL MODAL (anime, realities) ═══
@@ -9257,133 +9384,6 @@ function applyRealitiesFilters(arr){
 
 const REALITIES_GENRES=['Reality Show','Docuserie','Documental','Entretenimiento','Romance','Familia','Coming of Age','LGBTQ+','Historia','Competencia'];
 
-function renderRealities(){
-  const view=document.getElementById('viewRealities');
-  if(!view) return;
-
-  const allSeries=getRealitiesSeriesData();
-
-  view.innerHTML=`
-    <div style="margin-bottom:1.25rem">
-      <div class="section-heading">Realities GL</div>
-      <div class="section-desc">Reality shows y docuseries con protagonismo lésbico, bisexual o queer</div>
-    </div>
-    <div class="subtabs" id="realitiesSubtabs">
-      <button class="subtab${realitiesSubtab==='series'?' active':''}" onclick="realitiesSubtab='series';saveSession();renderRealitiesResults()">Series & Realities <span class="subtab-count">${allSeries.length}</span></button>
-    </div>
-    <div class="books-toolbar" id="realitiesToolbar">
-      <div class="toolbar-search-row">
-        <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
-          <span class="search-icon"></span>
-          <input id="realitiesSearchInput" class="search-input" placeholder="Buscar reality, docuserie, país, red…" value="${realitiesFilters.q}" oninput="realitiesFilters.q=this.value;paginationRealities={series:1,movies:1};debounceRender('realities',renderRealitiesResults)" autocomplete="off">
-        </div>
-      </div>
-      <div class="toolbar-filters-row">
-        <div class="filter-group">
-          <span class="filter-label">Orden</span>
-          <select id="realitiesSortSel" class="filter-select" onchange="realitiesFilters.sort=this.value;paginationRealities={series:1,movies:1};renderRealitiesResults()">
-            <option value="az">A → Z</option>
-            <option value="za">Z → A</option>
-            <option value="date">Más reciente primero</option>
-            <option value="dateold">Más antiguo primero</option>
-          </select>
-        </div>
-        <button class="filter-clear-btn" id="realitiesClearBtn" style="display:none" onclick="clearNsFilters('realities')">Limpiar</button>
-      </div>
-    </div>
-    <div class="filters-layout">
-      <aside class="filters-sidebar" id="realitiesFiltersSidebar"></aside>
-      <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('realitiesFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
-        <div id="realitiesResults"></div>
-        <div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,color-mix(in srgb,var(--teal) 7%,transparent),color-mix(in srgb,var(--accent) 5%,transparent));border:1.5px dashed color-mix(in srgb,var(--teal) 25%,transparent);border-radius:var(--radius-lg);text-align:center">
-          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">¿Conoces más realities con representación GL?</div>
-          <div style="font-size:12px;color:var(--muted)">Escríbenos en X <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);font-weight:600">@xxmadwavs</a> y lo añadimos</div>
-        </div>
-      </div>
-    </div>`;
-    registerFilterNs('realities',{filters:realitiesFilters,expanded:realitiesFilterExpanded,resetPage:()=>{paginationRealities={series:1,movies:1};},render:renderRealitiesResults});
-    _initMobileFilterToggle(view.querySelector('.books-toolbar'));
-  renderRealitiesResults();
-}
-
-function renderRealitiesResults(){
-  const resultsEl=document.getElementById('realitiesResults');
-  if(!resultsEl) return;
-
-  document.querySelectorAll('#realitiesSubtabs .subtab').forEach((btn,i)=>{
-    const tabs=['series','movies'];
-    btn.className='subtab'+(realitiesSubtab===tabs[i]?' active':'');
-  });
-
-  const clearBtn=document.getElementById('realitiesClearBtn');
-  const hasActiveFilter=['wlwFocus','genres','years','countries','networks','tropos','dinamicas','moods'].some(k=>realitiesFilters[k]&&realitiesFilters[k].length)||!!realitiesFilters.biFormat;
-  if(clearBtn) clearBtn.style.display=hasActiveFilter?'':'none';
-
-  const activeBase=realitiesSubtab==='movies'?getRealitiesMoviesData():getRealitiesSeriesData();
-  const sidebarEl=document.getElementById('realitiesFiltersSidebar');
-  if(sidebarEl) sidebarEl.innerHTML=buildNsSidebarHtml('realities',activeBase);
-
-  if(realitiesSubtab==='series'){
-    const all=getRealitiesSeriesData();
-    const filtered=applyRealitiesFilters(all);
-    const page=paginationRealities.series;
-    const totalPages=Math.ceil(filtered.length/PAGE_SIZE)||1;
-    const paged=filtered.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
-    window.setRealitiesPage=p=>{paginationRealities.series=p;saveSession();renderRealitiesResults();scrollToResults('realitiesResults');};
-    if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún reality con esos filtros.</div>';return;}
-    let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> programa${filtered.length!==1?'s':''}</div><div class="series-grid">`;
-    paged.forEach((s,i)=>{
-      const posterEl=s.poster?`<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" loading="lazy" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'"></div>`:`<div class="series-card-poster-wrap"><div class="series-card-poster-ph"></div></div>`;
-      const links=_wlDisplayLinks(resolveWatchLinks(s),s,'Ver');
-      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
-      const genrePills=s.genres&&s.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${s.genres.slice(0,3).map(g=>`<span style="font-size:11px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid color-mix(in srgb,var(--teal) 20%,transparent);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
-      const year=s.year||(s.startDate||'').substring(0,4)||'';
-      const seasonsCount=s.seasons&&s.seasons.length>1?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">T${s.seasons.length}</span>`:'';
-      html+=`<div class="series-card" onclick="openRealityDetail('series','${s.id||s.name}')">
-        ${posterEl}
-        <div class="series-card-body">
-          <div class="card-badges">${seasonsCount}${s.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(s.country)} ${s.country}</span>`:''}${s.biFormat?'<span class="badge" style="background:#fce8f1;color:#c94f7c">Formato bi</span>':''}</div>
-          <div class="series-card-name">${s.name}</div>
-          <div class="series-card-meta">${[s.network,year?''+year:null,s.totalEpisodes?''+s.totalEpisodes+' ep.':null].filter(Boolean).join(' · ')}</div>
-          ${genrePills}
-          ${watchRow}
-        </div>
-      </div>`;
-    });
-    html+='</div>'+paginationHtml(page,totalPages,'setRealitiesPage');
-    resultsEl.innerHTML=html;
-  } else {
-    const all=getRealitiesMoviesData();
-    const filtered=applyRealitiesFilters(all);
-    const page=paginationRealities.movies;
-    const totalPages=Math.ceil(filtered.length/PAGE_SIZE)||1;
-    const paged=filtered.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
-    window.setRealitiesMoviePage=p=>{paginationRealities.movies=p;saveSession();renderRealitiesResults();scrollToResults('realitiesResults');};
-    if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún documental con esos filtros.</div>';return;}
-    let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> documental${filtered.length!==1?'es':''}</div><div class="movies-grid">`;
-    paged.forEach((mv,mi)=>{
-      const posterEl=mv.poster?`<img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'">`:`<div class="movie-card-poster-ph"></div>`;
-      const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
-      const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver');
-      const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
-      const genrePills=mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:11px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid color-mix(in srgb,var(--teal) 20%,transparent);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
-      html+=`<div class="movie-card" onclick="openRealityDetail('movie','${mv.id||mv.name}')">
-        ${posterEl}
-        <div class="movie-card-body">
-          <div class="card-badges">${mv.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(mv.country)} ${mv.country}</span>`:''}${mv.biFormat?'<span class="badge" style="background:#fce8f1;color:#c94f7c">Formato bi</span>':''}</div>
-          <div class="movie-card-name">${mv.name}</div>
-          <div class="movie-card-meta">Documental · ${dateStr}${mv.totalEpisodes?' · '+mv.totalEpisodes+' ep.':''}</div>
-          ${genrePills}
-          ${watchRow}
-        </div>
-      </div>`;
-    });
-    html+='</div>'+paginationHtml(page,totalPages,'setRealitiesMoviePage');
-    resultsEl.innerHTML=html;
-  }
-}
-
 function openRealityDetail(type,key){
   const arr=type==='series'?getRealitiesSeriesData():getRealitiesMoviesData();
   const item=arr.find(x=>x.id===key||x.name===key)||arr[key];
@@ -9430,94 +9430,6 @@ function applyDocumentalesFilters(arr){
 }
 
 const DOCUMENTALES_GENRES=['Documental','Docuserie','LGBTQ+','Historia','Arte','Música','Deporte','Naturaleza','Biografía','Crimen','Social','Entretenimiento'];
-
-function renderDocumentales(){
-  const view=document.getElementById('viewDocumentales');
-  if(!view) return;
-
-  view.innerHTML=`
-    <div style="margin-bottom:1.25rem">
-      <div class="section-heading">Documentales GL</div>
-      <div class="section-desc">Documentales con protagonismo lésbico, bisexual o queer</div>
-    </div>
-    <div class="books-toolbar" id="documentalesToolbar">
-      <div class="toolbar-search-row">
-        <div class="search-wrap" style="position:relative;margin-bottom:0;width:100%">
-          <span class="search-icon"></span>
-          <input id="documentalesSearchInput" class="search-input" placeholder="Buscar documental, país, plataforma…" value="${documentalesFilters.q}" oninput="documentalesFilters.q=this.value;paginationDocumentales={page:1};debounceRender('documentales',renderDocumentalesResults)" autocomplete="off">
-        </div>
-      </div>
-      <div class="toolbar-filters-row">
-        <div class="filter-group">
-          <span class="filter-label">Orden</span>
-          <select id="documentalesSortSel" class="filter-select" onchange="documentalesFilters.sort=this.value;paginationDocumentales={page:1};renderDocumentalesResults()">
-            <option value="az">A → Z</option>
-            <option value="za">Z → A</option>
-            <option value="date">Más reciente primero</option>
-            <option value="dateold">Más antiguo primero</option>
-          </select>
-        </div>
-        <button class="filter-clear-btn" id="documentalesClearBtn" style="display:none" onclick="clearNsFilters('documentales')">Limpiar</button>
-      </div>
-    </div>
-    <div class="filters-layout">
-      <aside class="filters-sidebar" id="documentalesFiltersSidebar"></aside>
-      <div class="filters-main">
-        <button class="fside-mobile-toggle" onclick="document.getElementById('documentalesFiltersSidebar').classList.toggle('mob-open')">Más filtros</button>
-        <div id="documentalesResults"></div>
-        <div style="margin-top:2.5rem;padding:1.25rem;background:linear-gradient(135deg,color-mix(in srgb,var(--teal) 7%,transparent),color-mix(in srgb,var(--accent) 5%,transparent));border:1.5px dashed color-mix(in srgb,var(--teal) 25%,transparent);border-radius:var(--radius-lg);text-align:center">
-          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:4px">¿Conoces más documentales GL?</div>
-          <div style="font-size:12px;color:var(--muted)">Escríbenos en X <a href="https://x.com/xxmadwavs" target="_blank" style="color:var(--accent);font-weight:600">@xxmadwavs</a> y lo añadimos</div>
-        </div>
-      </div>
-    </div>`;
-    registerFilterNs('documentales',{filters:documentalesFilters,expanded:documentalesFilterExpanded,resetPage:()=>{paginationDocumentales={page:1};},render:renderDocumentalesResults});
-    _initMobileFilterToggle(view.querySelector('.books-toolbar'));
-  renderDocumentalesResults();
-}
-
-function renderDocumentalesResults(){
-  const resultsEl=document.getElementById('documentalesResults');
-  if(!resultsEl) return;
-
-  const clearBtn=document.getElementById('documentalesClearBtn');
-  const hasActiveFilter=['wlwFocus','genres','years','countries','networks','tropos','dinamicas','moods'].some(k=>documentalesFilters[k]&&documentalesFilters[k].length);
-  if(clearBtn) clearBtn.style.display=hasActiveFilter?'':'none';
-
-  const all=getDocumentalesData();
-  const sidebarEl=document.getElementById('documentalesFiltersSidebar');
-  if(sidebarEl) sidebarEl.innerHTML=buildNsSidebarHtml('documentales',all);
-
-  const filtered=applyDocumentalesFilters(all);
-  const page=paginationDocumentales.page||1;
-  const totalPages=Math.ceil(filtered.length/PAGE_SIZE)||1;
-  const paged=filtered.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
-  window.setDocumentalesPage=p=>{paginationDocumentales.page=p;saveSession();renderDocumentalesResults();scrollToResults('documentalesResults');};
-
-  if(!filtered.length){resultsEl.innerHTML='<div class="search-empty">No se encontró ningún documental con esos filtros.</div>';return;}
-  let html=`<div class="books-count">Mostrando <strong>${paged.length}</strong> de <strong>${filtered.length}</strong> documental${filtered.length!==1?'es':''}</div><div class="movies-grid">`;
-  paged.forEach((mv,mi)=>{
-    const posterEl=mv.poster?`<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" loading="lazy" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'"></div>`:`<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph"></div></div>`;
-    const dateStr=mv.date?fmtDate(mv.date):(mv.year?String(mv.year):'Fecha por confirmar');
-    const links=_wlDisplayLinks(resolveWatchLinks(mv),mv,'Ver');
-    const watchRow=links.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${links.map(l=>`<a class="card-watch-pill" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${l.name}</a>`).join('')}</div>`:'';
-    const genrePills=mv.genres&&mv.genres.length?`<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:5px">${mv.genres.slice(0,3).map(g=>`<span style="font-size:11px;padding:2px 7px;border-radius:20px;background:var(--teal-soft);border:1px solid color-mix(in srgb,var(--teal) 20%,transparent);color:var(--teal);font-weight:600">${g}</span>`).join('')}</div>`:'';
-    const allDocs=getDocumentalesData();
-    const realIdx=allDocs.indexOf(mv);
-    html+=`<div class="movie-card" onclick="openRealityDetail('movie','${mv.id||mv.name}')">
-      ${posterEl}
-      <div class="movie-card-body">
-        <div class="card-badges">${mv.country?`<span class="badge" style="background:var(--teal-soft);color:var(--teal)">${countryFlag(mv.country)} ${mv.country}</span>`:''}${mv.biFormat?'<span class="badge" style="background:#fce8f1;color:#c94f7c">Formato bi</span>':''}</div>
-        <div class="movie-card-name">${mv.name}</div>
-        <div class="movie-card-meta">Documental · ${dateStr}${mv.totalEpisodes?' · '+mv.totalEpisodes+' ep.':''}</div>
-        ${genrePills}
-        ${watchRow}
-      </div>
-    </div>`;
-  });
-  html+='</div>'+paginationHtml(page,totalPages,'setDocumentalesPage');
-  resultsEl.innerHTML=html;
-}
 
 /* ═══ ACTRICES — maqueta «Actrices y Productoras» ═══ */
 function axEsc(s){ return escapeHtmlChk(s); }
@@ -9769,7 +9681,7 @@ function _picksCardHtml(s, si, is2026=false){
     totalEps?`${totalEps} ep.`:'',
   ].filter(Boolean);
   const posterEl=s.poster
-    ?`<img class="pick-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=pick-card-poster-ph></div>'">`
+    ?`<img loading="lazy" decoding="async" class="pick-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=pick-card-poster-ph></div>'">`
     :`<div class="pick-card-poster-ph"></div>`;
   const openFn=`switchTab('list');setTimeout(()=>openSeries(${si}),80)`;
   return `<div class="pick-card${cls}" onclick="${openFn}">
@@ -10416,7 +10328,7 @@ function renderCanceladasGrid(list){
     const si=state.series.indexOf(s);
     const st=s.cancelStatus||'cancelled';
     const poster=s.poster
-      ?`<div class="cancelled-poster-wrap"><img class="cancelled-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=cancelled-poster-ph></div>'"></div>`
+      ?`<div class="cancelled-poster-wrap"><img loading="lazy" decoding="async" class="cancelled-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=cancelled-poster-ph></div>'"></div>`
       :`<div class="cancelled-poster-wrap"><div class="cancelled-poster-ph"></div></div>`;
     const reason=s.cancelNote?`<div class="cancelled-reason">${s.cancelNote}</div>`:'';
     html+=`<div class="cancelled-card" onclick="openSeries(${si})">
@@ -10489,7 +10401,7 @@ function renderSinNovedades(){
 
   sorted.forEach(({s,si,days})=>{
     const poster=s.poster
-      ?`<img class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph></div>'">`
+      ?`<img loading="lazy" decoding="async" class="sn-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=sn-poster-ph></div>'">`
       :`<div class="sn-poster-ph"></div>`;
     html+=`<div class="sn-card" onclick="openUpcoming(${si})">
       ${poster}
@@ -11278,7 +11190,7 @@ function searchGroupedHtml(term,close){
     const list=items.slice(0,SEARCH_PER_GROUP).map(r=>{
       const info=searchResultInfo(r);
       const poster=info.imgSrc
-        ?`<img src="${info.imgSrc}" alt="" onerror="this.outerHTML='<div class=nsearch-item-ph>${info.icon}</div>'" loading="lazy">`
+        ?`<img loading="lazy" decoding="async" src="${info.imgSrc}" alt="" onerror="this.outerHTML='<div class=nsearch-item-ph>${info.icon}</div>'" loading="lazy">`
         :`<div class="nsearch-item-ph">${info.icon}</div>`;
       return `<div class="nsearch-item" onclick="${searchResultOnclick(r,close)}">${poster}<div class="nsearch-item-info"><div class="nsearch-item-name">${r.s.name}</div><div class="nsearch-item-meta">${info.meta}${r.s.year?' · '+r.s.year:''}</div></div></div>`;
     }).join('');
@@ -11611,7 +11523,7 @@ document.addEventListener('keydown', e => {
   'use strict';
   var KEY='tsLang', MARK='[Spanish original \u2014 no English translation yet] ';
   var D={
-    'Calendario':'Calendar','Origen':'Origin','Tipo':'Type','Mes':'Month','Semana':'Week','Lista':'List','Webserie':'Web series','Reality':'Reality','Seleccionados':'Selected','{n} seleccionados':'{n} selected','1 filtro activo':'1 active filter','{n} filtros activos':'{n} active filters','Sin estrenos con estos filtros':'No releases match these filters','Sin estrenos este mes.':'No releases this month.','Vista del calendario':'Calendar view','Filtros del calendario':'Calendar filters','Mes anterior':'Previous month','Mes siguiente':'Next month','Semana anterior':'Previous week','Semana siguiente':'Next week','Migas de pan':'Breadcrumb','Catálogo':'Catalog','Más':'More','Navegación principal móvil':'Main mobile navigation','Explorar':'Explore','Para ti':'For you','Sin novedad':'No news','Mostrar apartados de Series':'Show Series sections','Series & Pelis':'Series & Movies','Series':'Series','Películas':'Movies','Próximamente':'Coming soon',
+    'Calendario':'Calendar','Cargar más':'Load more','todos':'all','Estrenada':'Released','Finalizada':'Finished','Cancelada':'Cancelled','En limbo':'On hold','Prod. cerrada':'Production closed','Próximo estreno':'Coming soon','Renovada':'Renewed','Plataforma':'Platform','Año':'Year','Estado':'Status','Tropos':'Tropes','Foco WLW':'WLW focus','Orden':'Sort','Libro':'Book','Idioma':'Language','Formato':'Format','Manga/novela':'Manga/novel','Buscar…':'Search…','{n} títulos':'{n} titles','1 título':'1 title','Filtros':'Filters','Origen':'Origin','Tipo':'Type','Mes':'Month','Semana':'Week','Lista':'List','Webserie':'Web series','Reality':'Reality','Seleccionados':'Selected','{n} seleccionados':'{n} selected','1 filtro activo':'1 active filter','{n} filtros activos':'{n} active filters','Sin estrenos con estos filtros':'No releases match these filters','Sin estrenos este mes.':'No releases this month.','Vista del calendario':'Calendar view','Filtros del calendario':'Calendar filters','Mes anterior':'Previous month','Mes siguiente':'Next month','Semana anterior':'Previous week','Semana siguiente':'Next week','Migas de pan':'Breadcrumb','Catálogo':'Catalog','Más':'More','Navegación principal móvil':'Main mobile navigation','Explorar':'Explore','Para ti':'For you','Sin novedad':'No news','Mostrar apartados de Series':'Show Series sections','Series & Pelis':'Series & Movies','Series':'Series','Películas':'Movies','Próximamente':'Coming soon',
     'Canceladas':'Cancelled','Más contenido':'More','Realities':'Reality shows','Documentales':'Documentaries','Libros':'Books','Personas':'People',
     'Actrices':'Actresses','Productoras':'Production companies','Ships Thais':'Thai ships','Ships':'Ships','Rupturas':'Break-ups','Mascotas':'Pets','Extra':'Extra',
     'Picks generales':'General picks','Picks {n}':'Picks {n}','Mis picks':'My picks','Checklist':'Checklist','Listas GL':'GL lists','Ruleta GL':'GL roulette','Ruleta':'Roulette',
@@ -11985,7 +11897,7 @@ function _renderListaOpen(view, l){
     const seasons = getSeasons(s);
     const totalEps = seasons.reduce((a,t)=>a+t.totalEpisodes,0);
     const poster = s.poster
-      ? `<div class="series-card-poster-wrap"><img class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'">${s.country?`<span class="sc-country-flag">${countryFlag(s.country)}</span>`:''}</div>`
+      ? `<div class="series-card-poster-wrap"><img loading="lazy" decoding="async" class="series-card-poster" src="${s.poster}" alt="${s.name}" onerror="this.outerHTML='<div class=series-card-poster-ph></div>'">${s.country?`<span class="sc-country-flag">${countryFlag(s.country)}</span>`:''}</div>`
       : `<div class="series-card-poster-wrap"><div class="series-card-poster-ph"></div></div>`;
     const moodsPills = moodPillsHtml(s.moods, 2);
     return `<div class="series-card" onclick="openSeries(${si})">
@@ -12005,7 +11917,7 @@ function _renderListaOpen(view, l){
     if(!mv) return '';
     const mi = allMovies.indexOf(mv);
     const poster = mv.poster
-      ? `<div class="movie-card-poster-wrap"><img class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'"></div>`
+      ? `<div class="movie-card-poster-wrap"><img loading="lazy" decoding="async" class="movie-card-poster" src="${mv.poster}" alt="${mv.name}" onerror="this.outerHTML='<div class=movie-card-poster-ph></div>'"></div>`
       : `<div class="movie-card-poster-wrap"><div class="movie-card-poster-ph"></div></div>`;
     return `<div class="movie-card" onclick="openMovie(${mi})">
       ${poster}
@@ -12704,7 +12616,7 @@ function _chkRenderList(){
     listEl.innerHTML=filtered.map(i=>{
       const isChecked=checkedSet.has(i.id);
       const poster=i.poster
-        ? `<img class="chk-poster" src="${escapeHtmlChk(i.poster)}" alt="" onerror="this.outerHTML='<div class=chk-poster-ph></div>'">`
+        ? `<img loading="lazy" decoding="async" class="chk-poster" src="${escapeHtmlChk(i.poster)}" alt="" onerror="this.outerHTML='<div class=chk-poster-ph></div>'">`
         : `<div class="chk-poster-ph"></div>`;
       const meta=[i.year,CHK_TYPE_LABELS[i.type]||i.type].filter(Boolean).join(' · ');
       return `<div class="chk-item-row${isChecked?' checked':''}" onclick="chkToggle('${i.id}')">
