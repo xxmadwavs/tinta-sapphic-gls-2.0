@@ -6644,7 +6644,7 @@ function buildCountryPicker(id, onChange, availableCountries){
 
 let seriesSubtab='all';
 let seriesFinishedSubtab='all';
-let seriesFilters={q:'',countries:[],sort:'added',book:'all',years:[],yearMin:null,yearMax:null,genres:[],types:[],region:'',tropos:[],dinamicas:[],moods:[],wlwFocus:[],networks:[]};
+let seriesFilters={q:'',countries:[],sort:'addedrev',book:'all',years:[],yearMin:null,yearMax:null,genres:[],types:[],region:'',tropos:[],dinamicas:[],moods:[],wlwFocus:[],networks:[]};
 let seriesFilterExpanded={};
 
 /** Alterna un valor dentro de un array de filtro (multi-select tipo checkbox). */
@@ -7024,7 +7024,7 @@ function itemMatchesCountries(item, selectedCountries){
 //   onClear() · extraActive()          (opcional) «Limpiar» y contador de filtros propios de la vista
 //   render()                           repinta la vista (la función renderXResults de siempre)
 const CATALOG_UI={};                 // estado efímero: menú abierto, texto de búsqueda de cada menú, foco a recuperar
-const CATALOG_PAGE_SIZE=24;          // 6 columnas × 4 filas (también múltiplo de 3 y de 2)
+const CATALOG_PAGE_SIZE=50;          // ítems por página
 const CATALOG_ARRAY_KEYS=['countries','networks','years','tropos','wlwFocus','genres','dinamicas','moods','types'];
 const CATALOG_DEFAULT_FIELDS=['origen','plataforma','anio','estado','tropos','foco'];
 const _catAz=(a,b)=>a.label.localeCompare(b.label,'es');
@@ -7160,11 +7160,11 @@ function renderCatalog(cfg){
   if(cfg.page){
     const size=cfg.page.size||CATALOG_PAGE_SIZE, pages=Math.ceil(n/size)||1, cur=Math.min(Math.max(cfg.page.value||1,1),pages);
     if(cur!==cfg.page.value) cfg.page.set(cur);
-    if(cfg.pager==='pages'){                     // paginación numerada (opcional)
+    if(cfg.pager!=='more'){                      // paginación numerada (por defecto); pager:'more' → «Cargar más»
       list=cfg.shown.slice((cur-1)*size,cur*size);
       window['catalogPage_'+cfg.key]=p=>{ const c=CATALOG_UI[cfg.key].cfg; c.page.set(p); c.render(); scrollToResults(c.resultsId||(c.key+'Results')); };
       pager=paginationHtml(cur,pages,'catalogPage_'+cfg.key);
-    } else {                                     // «Cargar más» (por defecto): `page.value` = tandas ya cargadas
+    } else {                                     // «Cargar más» (opcional): `page.value` = tandas ya cargadas
       list=cfg.shown.slice(0,cur*size);
       pager=_catMoreHtml(list.length,n,size);
     }
@@ -7410,7 +7410,7 @@ function renderListResults(){
     ], set:v=>{ seriesSubtab=v; paginationState.series[v]=1; saveSession(); updateNavActive(); }},
     extras:[{id:'libro',label:'Libro',value:()=>seriesFilters.book,def:'all',options:_CAT_BOOK_SERIES,set:v=>{ seriesFilters.book=v; }}],
     sort:{value:seriesFilters.sort, options:[
-      {v:'added',label:'Orden de añadido'},{v:'addedrev',label:'Últimas añadidas primero'},
+      {v:'addedrev',label:'Últimas añadidas primero'},{v:'added',label:'Orden de añadido'},
       {v:'az',label:'A → Z'},{v:'za',label:'Z → A'},{v:'eps',label:'+ Episodios'},
       {v:'date',label:'Más reciente primero'},{v:'dateold',label:'Más antiguo primero'},{v:'recent',label:'Actualizado recientemente'}
     ], set:v=>{ seriesFilters.sort=v; }},
@@ -8064,10 +8064,13 @@ function gcalLinkHtml(it){
 // ═══ EXPORTAR EL MES COMO PNG ═══
 // Dibuja con Canvas 2D fuera del DOM (sin html2canvas y sin tocar la vista). Los datos salen de getEpMap() (lo mismo que
 // ve el calendario) y de icsEpLabel(). Colores de marca fijos del tema claro: el PNG no depende del modo oscuro.
-// Pósteres con crossOrigin='anonymous': solo se dibujan los que permiten CORS (el canvas nunca queda «tainted»);
-// los que no cargan se sustituyen por un recuadro con la inicial del título.
+// Pósteres: el canvas solo puede dibujar imágenes que permitan CORS (si no, queda «tainted» y no se puede exportar).
+// Cada póster se intenta en tres pasos (ver pngLoadImg); el que no cargue se sustituye por un recuadro con la inicial.
 const PNG_BRAND={bg:'#fcf7f9',surface:'#ffffff',surface2:'#fdf0f6',surface3:'#f7e6f0',text:'#2b1c2a',muted:'#6c5063',accent:'#b53a68',accentSoft:'#fbe4ee',lavender:'#6a4fa3',lavenderSoft:'#ece6f7',teal:'#1d7468',border:'rgba(181,58,104,0.20)'};
 const PNG_MAX_PIXELS=12e6, PNG_IMG_TIMEOUT=8000;
+// Último recurso para pósteres cuyo servidor no envía cabeceras CORS (p. ej. image.tmdb.org): un proxy de imágenes que sí las envía.
+// Solo se usa al exportar y solo para los pósteres que fallan en los pasos 1 y 2. '' = sin proxy.
+const PNG_IMG_PROXY='https://wsrv.nl/?w=240&we&url=';
 
 // Modelo del mes: solo lo que muestra el calendario; episodios de una serie el mismo día → una entrada
 function pngBuildModel(y,m){
@@ -8091,15 +8094,35 @@ function pngBuildModel(y,m){
   }
   return {y,m,days,startDow:(new Date(y,m,1).getDay()+6)%7,dim,total,omitted};
 }
-// Carga un póster con CORS; null si falla, no es imagen, no permite CORS o tarda demasiado
-function pngLoadImg(url,ms){
+// Un intento de carga de imagen; null si falla, no es imagen o tarda demasiado. cors:true → crossOrigin='anonymous'
+function pngLoadOne(url,ms,cors){
   return new Promise(res=>{
     const img=new Image(); let done=false;
     const fin=ok=>{ if(done) return; done=true; clearTimeout(t); res(ok&&img.naturalWidth>0?img:null); };
     const t=setTimeout(()=>fin(false),ms);
     img.onload=()=>fin(true); img.onerror=()=>fin(false);
-    img.crossOrigin='anonymous'; img.src=url;
+    if(cors) img.crossOrigin='anonymous';
+    img.src=url;
   });
+}
+// 2.º intento: fetch con CORS saltándose la caché. Si el póster ya se cargó en la página como <img> normal, el navegador puede
+// reutilizar esa copia (sin cabecera CORS) y rechazar la petición con crossOrigin; con cache:'reload' se vuelve a pedir al servidor.
+async function pngFetchImg(url,ms){
+  const ctl=new AbortController(), t=setTimeout(()=>ctl.abort(),ms);
+  try{
+    const r=await fetch(url,{mode:'cors',cache:'reload',signal:ctl.signal});
+    if(!r.ok) return null;
+    const b=await r.blob(); if(!/^image\//.test(b.type)) return null;
+    const obj=URL.createObjectURL(b);
+    try{ return await pngLoadOne(obj,ms,false); } finally{ URL.revokeObjectURL(obj); }
+  }catch(e){ return null; }
+  finally{ clearTimeout(t); }
+}
+// Carga un póster dibujable en el canvas: 1) <img crossOrigin> · 2) fetch CORS sin caché · 3) proxy de imágenes (PNG_IMG_PROXY). null si ninguno funciona.
+async function pngLoadImg(url,ms){
+  return (await pngLoadOne(url,ms,true))
+      || (await pngFetchImg(url,ms))
+      || (PNG_IMG_PROXY?await pngLoadOne(PNG_IMG_PROXY+encodeURIComponent(url),ms,true):null);
 }
 async function pngFonts(){
   const cs=getComputedStyle(document.documentElement), FD=cs.getPropertyValue('--font-display').trim(), FB=cs.getPropertyValue('--font-body').trim();
