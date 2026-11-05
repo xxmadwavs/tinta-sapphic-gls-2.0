@@ -7024,7 +7024,7 @@ function itemMatchesCountries(item, selectedCountries){
 //   onClear() · extraActive()          (opcional) «Limpiar» y contador de filtros propios de la vista
 //   render()                           repinta la vista (la función renderXResults de siempre)
 const CATALOG_UI={};                 // estado efímero: menú abierto, texto de búsqueda de cada menú, foco a recuperar
-const CATALOG_PAGE_SIZE=50;          // ítems por página
+const CATALOG_PAGE_SIZE=60;          // ítems por página: múltiplo de 5, de 3 y par (y de 6: filas completas en escritorio)
 const CATALOG_ARRAY_KEYS=['countries','networks','years','tropos','wlwFocus','genres','dinamicas','moods','types'];
 const CATALOG_DEFAULT_FIELDS=['origen','plataforma','anio','estado','tropos','foco'];
 const _catAz=(a,b)=>a.label.localeCompare(b.label,'es');
