@@ -4035,7 +4035,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-12T11:32:37.140Z",
+      "updatedAt": "2026-11-07T09:35:50.342Z",
       "nameEn": "เพื่อเธออีกครั้ง",
       "episodeDuration": 60,
       "myTop10": false,
@@ -4047,7 +4047,7 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779177125091",
+      "productoraId": "1779136542367",
       "sourceType": "",
       "moods": [],
       "tropos": [
@@ -4080,7 +4080,16 @@
           "source": "tmdb",
           "fetchedAt": "2026-10-22"
         }
-      }
+      },
+      "wlwFocusEpisode": "",
+      "sideCouples": [],
+      "fanCouples": [],
+      "biFormat": false,
+      "productoraIds": [
+        "1779136542367",
+        "1779177125091"
+      ],
+      "streaming": {}
     },
     {
       "id": "1776965794937",
@@ -4207,7 +4216,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-12T11:32:31.283Z",
+      "updatedAt": "2026-11-07T09:36:00.546Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -4216,7 +4225,7 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779177125091",
+      "productoraId": "1779136542367",
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -4240,7 +4249,16 @@
           "source": "tmdb",
           "fetchedAt": "2026-10-22"
         }
-      }
+      },
+      "wlwFocusEpisode": "",
+      "sideCouples": [],
+      "fanCouples": [],
+      "biFormat": false,
+      "productoraIds": [
+        "1779136542367",
+        "1779177125091"
+      ],
+      "streaming": {}
     },
     {
       "id": "1776966024996",
@@ -4766,8 +4784,13 @@
       "year": 2026,
       "country": "Tailandia",
       "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "https://wetv.vip/en/album/z506bchzh793iok",
+      "watchLinks": [
+        {
+          "name": "WeTV",
+          "url": "https://wetv.vip/en/album/z506bchzh793iok"
+        }
+      ],
       "trailerUrl": "https://www.youtube.com/watch?v=3fOkgCnjv5M",
       "bookSource": "BUILT IN LOVE",
       "basedOnBook": true,
@@ -4834,7 +4857,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-10-05T20:44:29.368Z",
+      "updatedAt": "2026-11-07T09:41:30.867Z",
       "sourceType": "novela",
       "moods": [],
       "episodeDuration": "",
@@ -4906,7 +4929,12 @@
           "source": "tmdb",
           "fetchedAt": "2026-10-22"
         }
-      }
+      },
+      "wlwFocusEpisode": "",
+      "sideCouples": [],
+      "fanCouples": [],
+      "productoraIds": [],
+      "streaming": {}
     },
     {
       "id": "1776971232987",
@@ -6959,11 +6987,11 @@
       "year": 2026,
       "country": "Tailandia",
       "network": "",
-      "networkUrl": "https://www.iqiyi.com",
+      "networkUrl": "https://www.iq.com/album/under-her-rules-2026-1g37nef392h",
       "watchLinks": [
         {
           "name": "iQIYI",
-          "url": "https://www.iqiyi.com"
+          "url": "https://www.iq.com/album/under-her-rules-2026-1g37nef392h"
         }
       ],
       "trailerUrl": "https://www.youtube.com/watch?v=Mrm0Ej8e_Yw",
@@ -6996,7 +7024,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-11-05T12:38:17.917Z",
+      "updatedAt": "2026-11-07T09:43:45.065Z",
       "nameEn": "ใต้เงาจันทรา",
       "episodeDuration": "",
       "myPick": false,
@@ -7006,7 +7034,7 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779136191693",
+      "productoraId": "1779136542367",
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -7099,7 +7127,11 @@
       "wlwFocusEpisode": "",
       "sideCouples": [],
       "fanCouples": [],
-      "streaming": {}
+      "streaming": {},
+      "productoraIds": [
+        "1779136542367",
+        "1779136191693"
+      ]
     },
     {
       "id": "1776972237357",
@@ -8732,8 +8764,13 @@
       "year": 2026,
       "country": "Tailandia",
       "network": "WeTV",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "https://wetv.vip/vi/play/4w64qxojf3p58dw/d4102uohzhv",
+      "watchLinks": [
+        {
+          "name": "WeTV",
+          "url": "https://wetv.vip/vi/play/4w64qxojf3p58dw/d4102uohzhv"
+        }
+      ],
       "trailerUrl": "https://www.youtube.com/watch?v=F1l1mAvSmZo",
       "bookSource": "Love on Hire",
       "basedOnBook": true,
@@ -8774,7 +8811,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-10-18T07:31:50.377Z",
+      "updatedAt": "2026-11-07T09:43:28.648Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -8848,7 +8885,14 @@
           "source": "tmdb",
           "fetchedAt": "2026-10-22"
         }
-      }
+      },
+      "wlwFocusEpisode": "",
+      "sideCouples": [],
+      "fanCouples": [],
+      "productoraIds": [
+        "1779135987498",
+        "1779135626732"
+      ]
     },
     {
       "id": "1776976452500",
@@ -149886,9 +149930,9 @@
     {
       "id": "1781802648161",
       "name": "Did You Know",
-      "nameEn": "รักครั้งไหน ก็ใช่เธอ",
-      "poster": "https://pbs.twimg.com/media/HWXAgIsbMAAFLkc?format=jpg&name=medium",
-      "synopsis": "La historia de comedia y romance que gira en torno a Phrae una doctora que tiene la regla estricta de no atarse emocionalmente a nadie, y Keen una chica que ha sido 'heterosexual' toda su vida y no quiere saber nada de las actitudes inmaduras y mujeriegas de Phrae.\n\nAmbas se conocen desde niñas. Al crecer y reencontrarse, la doctora Phrae pierde por completo su habitual control frío y se encapricha con Keen, desatando una intensa persistencia por conquistarla.\n\n(Créditos: X @ElClub4AM)",
+      "nameEn": "รักครั้งไหนก็ใช่เธอ",
+      "poster": "https://image.tmdb.org/t/p/w500/mxfcpmVOFGOpO3nsfxoNRfRUikP.jpg",
+      "synopsis": "La historia gira en torno a una cirujana comprometida y una exitosa empresaria hotelera que se conocen desde sus días de colegio.\n\nSu relación siempre ha oscilado entre la atracción y la rivalidad. Todo cambió tras una noche en particular, dejando preguntas sin respuesta que una de ellas intenta olvidar desesperadamente, mientras que la otra se niega a dejarlas atrás.\n\nAhora, el destino sigue uniéndolas. Entre los pasillos del hospital y los vestíbulos de los hoteles de lujo, ambas mujeres luchan por lidiar con emociones sin resolver, responsabilidades profesionales y sentimientos que llevan años arrastrando.\n\nEn esencia, \"Did You Know\" explora la vulnerabilidad, la madurez emocional y el reto de admitir lo que siempre ha sido evidente.",
       "year": "",
       "country": "Tailandia",
       "network": "",
@@ -149899,7 +149943,7 @@
           "url": "https://www.iqiyi.com"
         }
       ],
-      "trailerUrl": "https://youtu.be/_N7ep1NtUN0?si=-IRILVU4AQHWJ4CA",
+      "trailerUrl": "https://www.youtube.com/watch?v=_N7ep1NtUN0",
       "bookSource": "Did you know",
       "basedOnBook": true,
       "sourceType": "webnovel",
@@ -149908,6 +149952,7 @@
       "bookUrl": "",
       "upcoming": true,
       "genres": [
+        "Drama",
         "Médico",
         "Romance"
       ],
@@ -149938,7 +149983,7 @@
       "snLastUpdate": "",
       "snNote": "",
       "productoraId": "",
-      "updatedAt": "2026-11-05T12:50:54.446Z",
+      "updatedAt": "2026-11-07T09:45:00.973Z",
       "couples": [
         [
           "1781802487411",
@@ -149962,7 +150007,9 @@
       "sideCouples": [],
       "fanCouples": [],
       "biFormat": false,
-      "streaming": {}
+      "streaming": {},
+      "wlwFocusEpisode": "",
+      "productoraIds": []
     },
     {
       "id": "1782903750761",
@@ -153073,7 +153120,7 @@
       "id": "1787683046577",
       "name": "Hello, Stranger",
       "nameEn": "안녕, 낯선 사람",
-      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ6rrh47BRxDFZu1NzPPCBBZgC7xfh57BjzMolvkQVXJmLl5ZzCU4Ike99&s=10",
+      "poster": "https://image.tmdb.org/t/p/w500/dEo5kTtxM7bevyHldyaVwU26OQu.jpg",
       "synopsis": "",
       "year": 2026,
       "country": "Corea del Sur",
@@ -153114,23 +153161,67 @@
       "snLastUpdate": "",
       "snNote": "",
       "productoraId": "",
-      "updatedAt": "2026-09-12T09:09:40.953Z",
+      "updatedAt": "2026-11-07T09:40:11.264Z",
       "seasons": [
         {
           "label": "Temporada 1",
           "startDate": "2026-09-01",
-          "totalEpisodes": 1,
+          "totalEpisodes": 8,
           "emissionDays": [
             1
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2026-09-13",
+              "source": "tmdb",
+              "duration": 11
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2026-09-22",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2026-09-29",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2026-10-06",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2026-10-13",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2026-10-20",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2026-10-27",
+              "source": "tmdb"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
       "wlwFocus": "pareja-principal",
-      "tmdbId": 332237,
+      "tmdbId": "332237",
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0,
@@ -153141,7 +153232,14 @@
           "source": "tmdb",
           "fetchedAt": "2026-10-22"
         }
-      }
+      },
+      "wlwFocusEpisode": "",
+      "couples": [],
+      "sideCouples": [],
+      "fanCouples": [],
+      "biFormat": false,
+      "productoraIds": [],
+      "streaming": {}
     },
     {
       "id": "1787683216934",
@@ -206284,11 +206382,15 @@
       "year": 2026,
       "country": "Tailandia",
       "network": "",
-      "networkUrl": "https://www.iqiyi.com",
+      "networkUrl": "https://www.iq.com/play/1b2n28jkcb4?sh_pltf=4&lang=en_us",
       "watchLinks": [
         {
           "name": "iQIYI",
-          "url": "https://www.iqiyi.com"
+          "url": "https://www.iq.com/play/1b2n28jkcb4?sh_pltf=4&lang=en_us"
+        },
+        {
+          "name": "CH3+",
+          "url": "https://ch3plus.com/drama/1841"
         }
       ],
       "trailerUrl": "https://www.youtube.com/watch?v=qawbKsGSPEE",
@@ -206357,7 +206459,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-11-05T12:46:22.329Z",
+      "updatedAt": "2026-11-07T09:43:00.435Z",
       "i18n": {
         "en": {
           "title": "Love Me To Hurt Me",
@@ -206368,7 +206470,11 @@
       },
       "wlwFocusEpisode": "",
       "sideCouples": [],
-      "fanCouples": []
+      "fanCouples": [],
+      "productoraIds": [
+        "1779135450707",
+        "1779136542367"
+      ]
     },
     {
       "id": "1792527358209",
@@ -215107,14 +215213,18 @@
       "tmdbRating": "",
       "tmdbVoteCount": 0,
       "streaming": {},
-      "updatedAt": "2026-11-05T13:26:45.619Z",
+      "updatedAt": "2026-11-07T09:35:22.738Z",
       "i18n": {
         "en": {
           "title": "Love in the Fast Lane",
           "overview": "\"When Pakwan, a superstitious girl from northern Thailand, has to intern at a luxury car repair shop, she has a terrible day. She spills oil on her own shirt and then ends up in a heated argument with the foul-mouthed mechanic, \"P' Kael\"\n\nWhat Pakwan doesn't know is that this eccentric mechanic is actually Mintra, the mischievous heiress of the shop owner, who holds her fate in her hands.\n\nWill she get badly beaten or will her heart get fixed?\n\nThis love doesn't need fixing",
           "source": "manual"
         }
-      }
+      },
+      "productoraIds": [
+        "1779177933075",
+        "1779136542367"
+      ]
     },
     {
       "id": "1793882711383",
@@ -215169,14 +215279,18 @@
       "tmdbRating": "",
       "tmdbVoteCount": 0,
       "streaming": {},
-      "updatedAt": "2026-11-05T13:26:38.418Z",
+      "updatedAt": "2026-11-07T09:35:28.272Z",
       "i18n": {
         "en": {
           "title": "The Editor’s Midlife Love",
           "source": "manual"
         }
       },
-      "wlwFocusEpisode": ""
+      "wlwFocusEpisode": "",
+      "productoraIds": [
+        "1779135987498",
+        "1779136542367"
+      ]
     },
     {
       "id": "1793882985255",
@@ -215253,19 +215367,23 @@
       "snLastUpdate": "",
       "snNote": "",
       "productoraId": "1779134050424",
-      "tmdbId": 331099,
+      "tmdbId": "331099",
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0,
       "streaming": {},
-      "updatedAt": "2026-11-05T13:13:41.720Z",
+      "updatedAt": "2026-11-07T09:35:31.711Z",
       "i18n": {
         "en": {
           "title": "Married to My Enemy",
           "source": "manual"
         }
       },
-      "wlwFocusEpisode": ""
+      "wlwFocusEpisode": "",
+      "productoraIds": [
+        "1779134050424",
+        "1779136542367"
+      ]
     },
     {
       "id": "1793883366351",
@@ -215324,25 +215442,29 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "1779135760151",
+      "productoraId": "1779136542367",
       "tmdbId": "",
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0,
       "streaming": {},
-      "updatedAt": "2026-11-05T13:26:33.092Z",
+      "updatedAt": "2026-11-07T09:35:35.618Z",
       "i18n": {
         "en": {
           "title": "Sweet Bond",
           "source": "manual"
         }
-      }
+      },
+      "productoraIds": [
+        "1779136542367",
+        "1779135760151"
+      ]
     },
     {
       "id": "1793885047872",
       "name": "Villain Star",
       "nameEn": "",
-      "poster": "",
+      "poster": "https://pbs.twimg.com/media/HWbOEFLbEAA1z7z?format=jpg&name=medium",
       "synopsis": "",
       "year": "",
       "country": "Tailandia",
@@ -215401,11 +215523,676 @@
       "tmdbRating": "",
       "tmdbVoteCount": 0,
       "streaming": {},
-      "updatedAt": "2026-11-05T13:26:26.692Z",
+      "updatedAt": "2026-11-07T09:45:24.072Z",
       "i18n": {
         "en": {
           "title": "Villain Star",
           "source": "manual"
+        }
+      },
+      "productoraIds": [
+        "1779136542367"
+      ]
+    },
+    {
+      "id": "1794044343450",
+      "name": "The Body",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/zksg8e0GZAmg1nLhVP5tKso3QRs.jpg",
+      "synopsis": "La noche de Halloween, un grupo de baile femenino lidia con remordimientos, deseos impuros y visiones fantasmales cuando una novatada sale endemoniadamente mal.",
+      "year": 2026,
+      "country": "Estados Unidos",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=wl7uj7n7DoY",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Drama"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "subplot",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "tmdb_new_5183527_mw67og7k_0",
+          "character": "Anya Butler"
+        },
+        {
+          "actressId": "tmdb_new_4705772_mw67og7l_1",
+          "character": "Elise Zakaria"
+        },
+        {
+          "actressId": "tmdb_new_2850588_mw67og7m_2",
+          "character": "Lisbeth Anderson"
+        }
+      ],
+      "couples": [],
+      "sideCouples": [],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraIds": [],
+      "productoraId": "",
+      "tmdbId": "291507",
+      "tmdbKind": "tv",
+      "tmdbRating": "",
+      "tmdbVoteCount": 0,
+      "streaming": {},
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-11-11",
+          "totalEpisodes": 8,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2026-11-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2026-11-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2026-11-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2026-11-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2026-11-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2026-11-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2026-11-11",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2026-11-11",
+              "source": "tmdb"
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-11-07T09:48:02.346Z",
+      "i18n": {
+        "en": {
+          "title": "The Body",
+          "overview": "After a dance-team initiation gone wrong, a group of badly behaved Catholic school girls begin having prophetic visions that set off mass hysteria in their town.",
+          "tagline": "They pray hard and sin harder.",
+          "trailerUrl": "https://www.youtube.com/watch?v=wl7uj7n7DoY",
+          "source": "tmdb",
+          "fetchedAt": "2026-11-07"
+        },
+        "es": {
+          "tagline": "Rezan con fervor y pecan aún más.",
+          "source": "manual"
+        }
+      }
+    },
+    {
+      "id": "1794044468009",
+      "name": "Rent A Plus-One",
+      "nameEn": "",
+      "poster": "https://image.tmdb.org/t/p/w500/woI4REatFwI0wPfNHM9OqZ252VT.jpg",
+      "synopsis": "Una estudiante chino-canadiense de la Ivy League que trabaja como «novia de alquiler» para pagar sus préstamos estudiantiles. Sin embargo, sus planes se ven trastocados cuando descubre que su último cliente es el hermano de su exnovia.",
+      "year": 2026,
+      "country": "Canadá",
+      "network": "",
+      "networkUrl": "https://www.iq.com/share-short/1ayeq66nf80?isShort=1&sh_pltf=4&lang=en_us",
+      "watchLinks": [
+        {
+          "name": "iQIYI",
+          "url": "https://www.iq.com/share-short/1ayeq66nf80?isShort=1&sh_pltf=4&lang=en_us"
+        }
+      ],
+      "trailerUrl": "",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "couples": [],
+      "sideCouples": [],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraIds": [],
+      "productoraId": "",
+      "tmdbId": "340519",
+      "tmdbKind": "tv",
+      "tmdbRating": "",
+      "tmdbVoteCount": 0,
+      "streaming": {},
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-10-30",
+          "totalEpisodes": 50,
+          "emissionDays": [
+            0
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [
+            {
+              "num": 1,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 11,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 12,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 13,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 14,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 15,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 16,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 17,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 18,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 19,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 20,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 21,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 22,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 23,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 24,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 25,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 26,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 27,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 28,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 29,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 30,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 31,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 32,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 33,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 34,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 35,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 36,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 37,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 38,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 39,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 40,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 41,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 42,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 43,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 44,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 45,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 46,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 47,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 48,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 49,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            },
+            {
+              "num": 50,
+              "skipped": false,
+              "date": "2026-10-30",
+              "source": "tmdb"
+            }
+          ],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-11-07T09:41:08.009Z",
+      "i18n": {
+        "en": {
+          "title": "Rent A Plus-One",
+          "overview": "A Chinese-Canadian Ivy League student who works as a girlfriend for hire to pay off her student loans. However, her plans are upended when she discovers that her latest client is the brother of her ex-girlfriend",
+          "source": "tmdb",
+          "fetchedAt": "2026-11-07"
+        }
+      }
+    },
+    {
+      "id": "1794044858138",
+      "name": "Debut My Beat",
+      "nameEn": "",
+      "poster": "https://pbs.twimg.com/media/HWYOv8IXEAAyxCq?format=jpg&name=large",
+      "synopsis": "Cuanto más cerca estamos, más lo siento. Cuanto más lejos estamos, más te echo de menos. Cuanto más intento controlar mis sentimientos, más te añoro. Porque cada momento que compartimos fue realmente especial, un recuerdo especial que atesoraré para siempre.",
+      "year": 2026,
+      "country": "Tailandia",
+      "network": "",
+      "networkUrl": "https://www.iqiyi.com",
+      "watchLinks": [
+        {
+          "name": "iQIYI",
+          "url": "https://www.iqiyi.com"
+        }
+      ],
+      "trailerUrl": "",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": false,
+      "genres": [
+        "Romance"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "couples": [],
+      "sideCouples": [],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraIds": [],
+      "productoraId": "",
+      "tmdbId": "",
+      "tmdbKind": "tv",
+      "tmdbRating": "",
+      "tmdbVoteCount": 0,
+      "streaming": {},
+      "seasons": [
+        {
+          "label": "Temporada 1",
+          "startDate": "2026-11-14",
+          "totalEpisodes": 12,
+          "emissionDays": [
+            5
+          ],
+          "allInOneDay": false,
+          "skipDates": [],
+          "episodes": [],
+          "premiereSchedule": []
+        }
+      ],
+      "updatedAt": "2026-11-07T09:47:38.138Z",
+      "i18n": {
+        "en": {
+          "title": "Debut My Beat",
+          "overview": "The closer we are, the more I feel it. The further apart we are, the more I miss you. The more I try to control my feelings, the more I yearn for you. Because every moment we shared was truly special, a special memory to cherish forever.",
+          "source": "manual"
+        }
+      }
+    },
+    {
+      "id": "1794045025894",
+      "name": "Starlight Girls",
+      "nameEn": "สตาร์ไลท์ เกิร์ล",
+      "poster": "https://image.tmdb.org/t/p/w500/4TlIgFxs1ke1HQUBKhBGrp0tKed.jpg",
+      "synopsis": "Con solo cinco plazas disponibles para debutar en «Starlight Girls», las aspirantes del programa se enfrentan a una intensa competencia mientras intentan demostrar sus habilidades y hacer realidad sus sueños. Entre las pruebas, la amistad, el amor y las relaciones que surgen a lo largo de su camino, ¿quiénes serán al final las cinco finalistas y qué les costará ganar?",
+      "year": "",
+      "country": "Tailandia",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "",
+      "bookSource": "",
+      "basedOnBook": false,
+      "sourceType": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": true,
+      "genres": [],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [],
+      "couples": [],
+      "sideCouples": [],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraIds": [],
+      "productoraId": "",
+      "tmdbId": "341151",
+      "tmdbKind": "tv",
+      "tmdbRating": "",
+      "tmdbVoteCount": 0,
+      "streaming": {},
+      "updatedAt": "2026-11-07T09:50:30.964Z",
+      "i18n": {
+        "en": {
+          "title": "Starlight Girls",
+          "overview": "With only five debut spots in Starlight Girls, the show's trainees face intense competition as they attempt to prove their abilities and make their dreams come true. With the trials, friendship, love, and relationships that develop along their path, in the end, who be the final five, and what will it cost them to win?",
+          "source": "tmdb",
+          "fetchedAt": "2026-11-07"
         }
       }
     }
@@ -451722,6 +452509,127 @@
           "title": "Shiva Baby"
         }
       }
+    },
+    {
+      "id": "1794044971495",
+      "name": "A Song Sung Blue",
+      "nameEn": "小白船",
+      "poster": "https://image.tmdb.org/t/p/w500/4H608JNo2xek6igNM96IlZWF2jG.jpg",
+      "synopsis": "Xian, de quince años, se va a vivir con su padre mientras su madre, que es médica, acepta un trabajo en África. Al poco tiempo, queda fascinada por la hijastra de su padre, una joven desenfadada, libre y un poco melancólica.",
+      "year": 2024,
+      "country": "China",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "https://www.youtube.com/watch?v=1FpHrYAhFNw",
+      "date": "2024-03-20",
+      "basedOnBook": false,
+      "bookSource": "",
+      "bookCoverUrl": "",
+      "bookLinks": [],
+      "bookUrl": "",
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "sourceType": "",
+      "wlwFocus": "",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "movie",
+      "biFormat": false,
+      "movieType": "film",
+      "duration": 92,
+      "cast": [],
+      "couples": [],
+      "sideCouples": [],
+      "fanCouples": [],
+      "productoraIds": [],
+      "productoraId": "",
+      "tmdbId": "1114777",
+      "tmdbKind": "movie",
+      "tmdbRating": 6.2,
+      "tmdbVoteCount": 3,
+      "streaming": {
+        "FR": [
+          {
+            "name": "Sooner",
+            "url": "",
+            "type": "rent",
+            "providerId": 389,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "rent",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "VIVA by videofutur",
+            "url": "",
+            "type": "rent",
+            "providerId": 2286,
+            "source": "tmdb"
+          },
+          {
+            "name": "Premiere Max",
+            "url": "",
+            "type": "rent",
+            "providerId": 2307,
+            "source": "tmdb"
+          },
+          {
+            "name": "Sooner",
+            "url": "",
+            "type": "buy",
+            "providerId": 389,
+            "source": "tmdb"
+          },
+          {
+            "name": "Prime Video",
+            "url": "https://www.primevideo.com",
+            "type": "buy",
+            "providerId": 10,
+            "source": "tmdb"
+          },
+          {
+            "name": "VIVA by videofutur",
+            "url": "",
+            "type": "buy",
+            "providerId": 2286,
+            "source": "tmdb"
+          },
+          {
+            "name": "Premiere Max",
+            "url": "",
+            "type": "buy",
+            "providerId": 2307,
+            "source": "tmdb"
+          }
+        ]
+      },
+      "streamingMeta": {
+        "FR": {
+          "link": "https://www.themoviedb.org/movie/1114777/watch?locale=FR",
+          "fetchedAt": "2026-11-07",
+          "status": "ok"
+        }
+      },
+      "updatedAt": "2026-11-07T09:49:31.494Z",
+      "i18n": {
+        "en": {
+          "title": "A Song Sung Blue",
+          "overview": "Fifteen year-old Xian goes to live with her father while her mother, a doctor, takes a job in Africa. Soon, she becomes fascinated by her father's stepdaughter, a swaggering, liberated and slightly melancholic young woman.",
+          "trailerUrl": "https://www.youtube.com/watch?v=1FpHrYAhFNw",
+          "source": "tmdb",
+          "fetchedAt": "2026-11-07"
+        }
+      }
     }
   ],
   "actresses": [
@@ -455780,6 +456688,39 @@
       "country": "Tailandia",
       "birthdate": "1998-04-10",
       "notes": "Actriz, Modelo"
+    },
+    {
+      "id": "tmdb_new_5183527_mw67og7k_0",
+      "name": "Kristina Bogic",
+      "tmdbPersonId": 5183527,
+      "photo": "https://image.tmdb.org/t/p/w200/9FxnpTdVWJ64ob2XGLFHDcmEQHK.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_4705772_mw67og7l_1",
+      "name": "Sara Boustany",
+      "tmdbPersonId": 4705772,
+      "photo": "https://image.tmdb.org/t/p/w200/qC5WIuYUHIAToa87QCmzv6rRkTr.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
+    },
+    {
+      "id": "tmdb_new_2850588_mw67og7m_2",
+      "name": "Geena Meszaros",
+      "tmdbPersonId": 2850588,
+      "photo": "https://image.tmdb.org/t/p/w200/kvqWhbM0rYSIhSoDCHhVJMXqma0.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "",
+      "birthdate": "",
+      "notes": ""
     }
   ],
   "ships": [
@@ -458309,5 +459250,5 @@
       ]
     }
   },
-  "exportedAt": "2026-11-05T13:27:56.472Z"
+  "exportedAt": "2026-11-07T09:51:04.186Z"
 }

@@ -4172,6 +4172,27 @@ html[data-theme="dark"]{ --nav-active-text:var(--accent); }
 .catalog-more-btn:hover{background:var(--accent);color:var(--on-accent)}
 .catalog-more-btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
 
+/* ═══ Fase 6 — ficha de título: plantilla única; en móvil, hoja a pantalla completa ═══ */
+.modal-bg{overscroll-behavior:contain}
+#modalBg.is-title>.modal-close-btn{display:none}          /* la barra de la plantilla ya lleva su ✕ */
+@keyframes sheetUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.tsheet-bar{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.tsheet-bar .crumbs{flex:1 1 auto;min-width:0;min-height:0;margin:0;padding-left:0}
+.tsheet-close{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--border2);border-radius:50%;background:var(--surface);color:var(--text);font:400 15px var(--font-body);cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.tsheet-close:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent)}
+.tsheet-share{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 14px;border:1.5px solid var(--border2);border-radius:999px;background:var(--surface);color:var(--muted);font:600 12.5px var(--font-body);cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.tsheet-share:hover{background:var(--accent-soft);border-color:var(--accent2);color:var(--accent)}
+:is(.tsheet-close,.tsheet-share):focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.tsheet .modal-body{padding-top:1.25rem}
+@media(max-width:639px){
+  #modalBg.is-title.open{animation:sheetUp .24s cubic-bezier(.2,.8,.2,1)}
+  #modalBg .modal{min-height:100vh;min-height:100dvh}
+  .tsheet-bar{gap:10px;min-height:calc(54px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) calc(12px + env(safe-area-inset-right,0px)) 0 calc(12px + env(safe-area-inset-left,0px))}
+  .tsheet-share{width:38px;padding:0;border-radius:50%}
+  .tsheet-share span{display:none}
+  #modalBg .modal-body{padding-bottom:calc(2rem + env(safe-area-inset-bottom,0px))}
+}
+
 /* Búsqueda: foco coherente con el tema (antes #fff fijo) */
 #mainNavbar .navbar-search-wrap:focus-within{background:var(--surface)}
 
@@ -5506,14 +5527,21 @@ function splitPlatformNames(raw){
     .map(p=>normalizePlatformName(p))
     .filter(p=>p && p!=='Ver serie' && p!=='Ver película' && p.length>1);
 }
-// Productora / compañía de la ficha (lookup por productoraId). La plataforma NO es la productora: la plataforma de emisión ya está en «Dónde ver».
-function productoraOf(item){
-  const id=item&&item.productoraId; if(!id) return null;
-  return (state.productoras||[]).find(p=>p&&String(p.id)===String(id)&&p.name)||null;
+// Productoras / compañías de la ficha. Una ficha puede tener varias (colaboraciones) y ninguna es «la principal»:
+// admin guarda productoraIds (array); las fichas antiguas solo tienen productoraId. La plataforma NO es la productora: la plataforma de emisión ya está en «Dónde ver».
+function productoraIdsOf(item){
+  if(!item) return [];
+  if(Array.isArray(item.productoraIds)) return item.productoraIds.map(String).filter(Boolean);
+  return item.productoraId?[String(item.productoraId)]:[];
+}
+function productorasOf(item){
+  const ids=productoraIdsOf(item);
+  return (state.productoras||[]).filter(p=>p&&p.name&&ids.includes(String(p.id)));
 }
 function productoraDetailsLineHtml(item){
-  const pr=productoraOf(item); if(!pr) return '';
-  return `<div class="details-line"><span class="details-line-key">Productora</span><span class="details-line-val"><span onclick="closeModal();openProductoraFromSearch('${availEsc(pr.id)}')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Ver productora">${availEsc(pr.name)}</span></span></div>`;
+  const prs=productorasOf(item); if(!prs.length) return '';
+  const links=prs.map(pr=>`<span onclick="closeModal();openProductoraFromSearch('${availEsc(pr.id)}')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px" title="Ver productora">${availEsc(pr.name)}</span>`).join(', ');
+  return `<div class="details-line"><span class="details-line-key">${prs.length>1?'Productoras':'Productora'}</span><span class="details-line-val">${links}</span></div>`;
 }
 
 function buildWatchLinksHtml(links, accentColor, accentBorder, accentSoft, bare){
@@ -8489,7 +8517,7 @@ function openSeries(si){
   let metaGrid='';
   if(s.year) metaGrid+=`<div class="meta-item"><div class="meta-key">Año</div><div class="meta-val">${s.year}</div></div>`;
   if(s.country) metaGrid+=`<div class="meta-item"><div class="meta-key">País</div><div class="meta-val">${countryFlag(s.country)} ${s.country}</div></div>`;
-  if(productoraOf(s)) metaGrid+=`<div class="meta-item"><div class="meta-key">Productora</div><div class="meta-val">${availEsc(productoraOf(s).name)}</div></div>`;
+  { const _prs=productorasOf(s); if(_prs.length) metaGrid+=`<div class="meta-item"><div class="meta-key">${_prs.length>1?'Productoras':'Productora'}</div><div class="meta-val">${_prs.map(p=>availEsc(p.name)).join(', ')}</div></div>`; }
   metaGrid+=`<div class="meta-item"><div class="meta-key">Episodios</div><div class="meta-val">${totalEps}${seasons.length>1?` (${seasons.length}T)`:''}</div></div>`;
   const durInfo=getSeriesDurationInfo(s);
   if(durInfo.epDuration){
@@ -8587,7 +8615,7 @@ function openSeries(si){
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
-  let html=`<div class="modal-body">${crumbsHtml(crumbKeysSeries(s),s.name,'closeModal()')}
+  let html=`<div class="modal-body">
   <div class="detail-hero">
     <div class="detail-poster-col">
       ${posterEl.replace('modal-poster-full','detail-poster').replace('modal-poster-full-ph','detail-poster-ph')}
@@ -8616,12 +8644,8 @@ function openSeries(si){
   <div id="spanel_eps">${epsHtml}</div>
   <div id="spanel_cast" style="display:none">${castHtml}</div>
   ${buildSimilarHtml(s,'serie')}
-  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:1rem">${_buildShareBtnHtml()}<button class="btn" onclick="closeModal()">Cerrar</button></div>
   </div>`;
-  document.getElementById('modalBox').innerHTML=html;
-  document.getElementById('modalBg').classList.add('open');
-  _pushModal('modal');
-  if(s.id) _setModalShareHash('#serie-'+s.id);
+  presentTitle(s,false,html);
 }
 
 
@@ -8698,7 +8722,7 @@ function openUpcoming(si){
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
-  let html=`<div class="modal-body">${crumbsHtml(['series','upcoming'],s.name,'closeModal()')}
+  let html=`<div class="modal-body">
   <div class="detail-hero">
     <div class="detail-poster-col">
       ${posterEl}
@@ -8725,12 +8749,8 @@ function openUpcoming(si){
   </div>
   <div id="uppanel_cast">${castHtml}</div>`:''}
   ${buildSimilarHtml(s,'serie')}
-  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:1rem">${_buildShareBtnHtml()}<button class="btn" onclick="closeModal()">Cerrar</button></div>
   </div>`;
-  document.getElementById('modalBox').innerHTML=html;
-  document.getElementById('modalBg').classList.add('open');
-  _pushModal('modal');
-  if(s.id) _setModalShareHash('#serie-'+s.id);
+  presentTitle(s,false,html);
 }
 
 function switchUpcomingModalTab(tab){
@@ -8800,7 +8820,7 @@ function openMovie(mi){
     detailsLines+=`<div class="details-line"><span class="details-line-key">Basado en</span><span class="details-line-val">${_blabel}</span></div>`;
   }
 
-  let html=`<div class="modal-body">${crumbsHtml(crumbKeysMovie(mv),mv.name,'closeModal()')}
+  let html=`<div class="modal-body">
   <div class="detail-hero">
     <div class="detail-poster-col">
       ${posterEl}
@@ -8826,12 +8846,8 @@ function openMovie(mi){
   </div>
   <div id="mvpanel_cast">${castHtml}</div>`:''}
   ${buildSimilarHtml(mv,'pelicula')}
-  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:1rem">${_buildShareBtnHtml()}<button class="btn" onclick="closeModal()">Cerrar</button></div>
   </div>`;
-  document.getElementById('modalBox').innerHTML=html;
-  document.getElementById('modalBg').classList.add('open');
-  _pushModal('modal');
-  if(mv.id) _setModalShareHash('#pelicula-'+mv.id);
+  presentTitle(mv,true,html);
 }
 
 function applyMoviesFilters(arr){
@@ -8902,17 +8918,78 @@ function switchMovieModalTab(tab){
     if(btn) btn.classList.toggle('active',p===tab);
   });
 }
+// ══════════════ Fase 6 · Ficha de título: plantilla única + dirección propia ══════════════
+// Series, Próximamente, Películas, Anime, Realities y Documentales se abren con la MISMA plantilla (presentTitle):
+//   · barra fija arriba (cerrar · migas de pan · compartir) + el cuerpo que construye cada openX();
+//   · dirección propia y compartible: ?tab=<apartado>&id=<id>  (el id es el del título en el data; sin id, su nombre);
+//   · en móvil (≤639 px) la ficha ocupa toda la pantalla como una hoja.
+// Los enlaces antiguos #serie-ID, #pelicula-ID, #anime-serie-KEY… siguen funcionando (resolveHashDeepLink).
+let _titlePopping=false;          // true mientras Atrás/Adelante repinta una ficha: no se añade entrada al historial
+const TITLE_TABS={series:'list',upcoming:'upcoming',movie:'movies','anime-series':'anime','anime-movie':'anime','reality-series':'realities','reality-movie':'documentales'};
+function titleInfoOf(item,isMovie){
+  const id=item.id!=null?String(item.id):String(item.name||'');
+  const kind=isMovie
+    ?(item.category==='anime'?'anime-movie':item.category==='reality'?'reality-movie':'movie')
+    :(item.upcoming?'upcoming':item.category==='anime'?'anime-series':item.category==='reality'?'reality-series':'series');
+  return {id,kind,tab:TITLE_TABS[kind],crumbs:isMovie?crumbKeysMovie(item):crumbKeysSeries(item)};
+}
+function titleUrl(info){
+  const p=new URLSearchParams(location.search);
+  p.set('tab',info.tab); p.set('id',info.id); p.delete('ships'); p.delete('sub');
+  return location.pathname+'?'+p.toString();
+}
+function titleHref(item,isMovie){ return titleUrl(titleInfoOf(item,isMovie)); }
+// Plantilla: barra fija (✕ · migas · Compartir) + cuerpo
+function titleSheetHtml(info,item,bodyHtml){
+  return `<div class="tsheet" data-kind="${info.kind}"><header class="tsheet-bar"><button type="button" class="tsheet-close" onclick="closeModal()" aria-label="Cerrar">✕</button>${crumbsHtml(info.crumbs,item.name,'closeModal()')}${_buildShareBtnHtml()}</header>${bodyHtml}</div>`;
+}
+// Cada openX() construye solo el cuerpo (.modal-body) y termina aquí.
+function presentTitle(item,isMovie,bodyHtml){
+  const info=titleInfoOf(item,isMovie), bg=document.getElementById('modalBg');
+  document.getElementById('modalBox').innerHTML=titleSheetHtml(info,item,bodyHtml);
+  bg.classList.add('open','is-title'); bg.scrollTop=0;
+  const st={modal:'modal',tab:state.tab,title:{id:info.id}}, url=titleUrl(info);
+  if(_titlePopping) history.replaceState(st,'',url); else history.pushState(st,'',url);
+}
+// Abre la ficha de un título por su id (enlace ?id=, Atrás/Adelante). false si no existe.
+function openTitleById(id,opt){
+  const key=String(id), find=arr=>arr.findIndex(x=>String(x.id)===key||x.name===key);
+  _titlePopping=!!(opt&&opt.replace);
+  try{
+    const si=find(state.series);
+    if(si>-1){
+      const s=state.series[si], k=s.id||s.name;
+      if(s.upcoming) openUpcoming(si);
+      else if(s.category==='anime') openAnimeDetail('series',k);
+      else if(s.category==='reality') openRealityDetail('series',k);
+      else openSeries(si);
+      return true;
+    }
+    const mi=find(state.movies);
+    if(mi>-1){
+      const m=state.movies[mi], k=m.id||m.name;
+      if(m.category==='anime') openAnimeDetail('movie',k);
+      else if(m.category==='reality') openRealityDetail('movie',k);
+      else openMovie(mi);
+      return true;
+    }
+    return false;
+  } finally { _titlePopping=false; }
+}
 function closeModal(){
-  document.getElementById('modalBg').classList.remove('open');
-  // Limpiar hash de la URL sin recargar ni crear entrada en el historial
-  if(location.hash && (location.hash.startsWith('#serie-') || location.hash.startsWith('#pelicula-') || location.hash.startsWith('#dia-'))){
-    history.replaceState(history.state, '', location.pathname + (location.search||''));
+  document.getElementById('modalBg').classList.remove('open','is-title');
+  // Limpia ?id= (o un #serie-/#pelicula-/#dia- antiguo) sin recargar ni crear entrada: la entrada del historial pasa a ser una
+  // entrada normal de la pestaña visible (si conservara state.title, Atrás volvería a abrir una ficha que ya se cerró)
+  if(new URLSearchParams(location.search).has('id') || /^#(serie|pelicula|dia)-/.test(location.hash||'')){
+    history.replaceState({tab:state.tab,k:_curTabKey},'',tabUrl(state.tab));
   }
 }
-
-// ── Compartir ficha ──────────────────────────────────────────────────────────
-function _setModalShareHash(hash){
-  history.replaceState(history.state, '', location.pathname + (location.search||'') + hash);
+// Compartir: en móvil, el menú de compartir del sistema; en escritorio, copia el enlace
+function shareTitle(){
+  const url=location.href, name=(document.querySelector('#modalBox .crumbs-current')||{}).textContent||'';
+  if(navigator.share && matchMedia('(pointer:coarse)').matches){
+    navigator.share({title:name?name+' · TINTA Sapphic':'TINTA Sapphic',url}).catch(e=>{ if(e&&e.name!=='AbortError') copyShareLink(); });
+  } else copyShareLink();
 }
 
 function copyShareLink(){
@@ -8945,10 +9022,7 @@ function _flashShareBtn(msg){
 }
 
 function _buildShareBtnHtml(){
-  return `<button id="shareModalBtn" class="btn" onclick="copyShareLink()" title="Copiar enlace a esta ficha" style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 14px;border:1.5px solid var(--border2);color:var(--muted);background:var(--surface2)">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-    Compartir
-  </button>`;
+  return `<button id="shareModalBtn" class="tsheet-share" type="button" onclick="shareTitle()" title="Copiar o compartir el enlace a esta ficha"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span>Compartir</span></button>`;
 }
 
 function getYoutubeId(url){
@@ -9333,7 +9407,7 @@ function openRichDetail(item, opts){
     }
   }
 
-  document.getElementById('modalBox').innerHTML=`<div class="modal-body">${crumbsHtml(item.category==='anime'?['anime']:isSeries?['realities']:['documentales'],item.name,'closeModal()')}
+  const html=`<div class="modal-body">
     <div class="detail-hero">
       <div class="detail-poster-col">
         ${posterEl}
@@ -9352,10 +9426,8 @@ function openRichDetail(item, opts){
     ${trailerSection}
     ${bookBlock}
     ${epListHtml?`<div class="divider"></div><div class="section-bar">Episodios</div>${epListHtml}`:''}
-    <div style="display:flex;justify-content:flex-end;margin-top:1.25rem"><button class="btn" onclick="closeModal()">Cerrar</button></div>
   </div>`;
-  document.getElementById('modalBg').classList.add('open');
-  _pushModal('modal');
+  presentTitle(item,!isSeries,html);
 }
 
 function openAnimeDetail(type,key){
@@ -9784,6 +9856,7 @@ function tabUrl(tab, hash){
   p.set('tab',tab);
   p.delete('ships');
   p.delete('sub');
+  p.delete('id');
   return location.pathname+'?'+p.toString()+(hash||'');
 }
 
@@ -9797,17 +9870,15 @@ function lnkClick(e){ if(_plainClick(e)) e.preventDefault(); else e.stopPropagat
 function fichaHref(kind,key,tab){ return tabUrl(tab||state.tab,'#'+kind+'-'+encodeURIComponent(key)); }
 function _fichaFromAction(act,el){
   let m;
-  if((m=act.match(/\b(openSeries|openUpcoming)\((\d+)\)/))){
-    const x=state.series[+m[2]]; if(!x||x.id==null) return null;
-    // #serie-ID abre openUpcoming si la serie es «próximamente» y openSeries si no; si la tarjeta usa el otro, se fuerza aquí
-    const dflt=x.upcoming?'openUpcoming':'openSeries';
-    return fichaHref(m[1]===dflt?'serie':(m[1]==='openSeries'?'serie-ficha':'serie-proximamente'),x.id);
+  if((m=act.match(/\b(openSeries|openUpcoming)\((\d+)\)/))){ const x=state.series[+m[2]]; return x?titleHref(x,false):null; }
+  if((m=act.match(/\bopenMovie\((\d+)\)/))){ const x=state.movies[+m[1]]; return x?titleHref(x,true):null; }
+  if((m=act.match(/\bopenAnimeDetail\('(series|movie)','([^']*)'\)/))){
+    const mov=m[1]==='movie', x=(mov?getAnimeMoviesData():getAnimeSeriesData()).find(i=>i.id===m[2]||i.name===m[2]);
+    return x?titleHref(x,mov):null;
   }
-  if((m=act.match(/\bopenMovie\((\d+)\)/))){ const x=state.movies[+m[1]]; return x&&x.id!=null?fichaHref('pelicula',x.id):null; }
-  if((m=act.match(/\bopenAnimeDetail\('(series|movie)','([^']*)'\)/))) return fichaHref('anime-'+(m[1]==='series'?'serie':'pelicula'),m[2],'anime');
   if((m=act.match(/\bopenRealityDetail\('(series|movie)','([^']*)'\)/))){
-    const tab=m[1]==='series'?'realities':((state.tab==='documentales'||/documentales/.test(act))?'documentales':'realities');
-    return fichaHref('reality-'+(m[1]==='series'?'serie':'pelicula'),m[2],tab);
+    const mov=m[1]==='movie', x=(mov?getRealitiesMoviesData():getRealitiesSeriesData()).find(i=>i.id===m[2]||i.name===m[2]);
+    return x?titleHref(x,mov):null;
   }
   if((m=act.match(/\bopenActressProfile\('([^']*)'\)/))) return fichaHref('actriz',m[1]);
   if((m=act.match(/\bopen(?:ShipById|PetShip|ShipFromSearch)\('([^']*)'\)/))) return fichaHref('ship',m[1]);
@@ -10450,7 +10521,7 @@ function toggleProductora(id){ openProductoraDetail(id); }
 function _axProdEntries(){
   const S=state.series||[], M=state.movies||[], A=state.actresses||[];
   return (state.productoras||[]).map(p=>{
-    const series=S.filter(s=>s.productoraId===p.id), movies=M.filter(m=>m.productoraId===p.id);
+    const series=S.filter(s=>productoraIdsOf(s).includes(String(p.id))), movies=M.filter(m=>productoraIdsOf(m).includes(String(p.id)));
     const actresses=(p.actressIds||[]).map(id=>A.find(a=>a.id===id)).filter(Boolean);
     return {p,series,movies,actresses,total:series.length+movies.length};
   });
@@ -10865,12 +10936,14 @@ function _closeTopModal(){
 
 window.addEventListener('popstate', function(e){
   if(e.state && e.state.modal){
+    if(e.state.title && openTitleById(e.state.title.id,{replace:true})) return;   // Atrás/Adelante entre fichas
     _closeTopModal();
     return;
   }
   _closeTopModal(); // asegura que cualquier ficha/ventana abierta se cierre al volver a una pestaña normal
   const tab=(e.state&&e.state.tab)||(new URLSearchParams(location.search).get('tab'))||'cal';
   switchTab(tab, true);
+  if(new URLSearchParams(location.search).has('id')) history.replaceState(history.state,'',tabUrl(tab));   // sin ficha abierta no queda ?id=
   closeMobileMenu();
 });
 
@@ -11281,6 +11354,7 @@ document.addEventListener('keydown',e=>{
     if(urlShips && Object.prototype.hasOwnProperty.call(SHIPS_VIEWS,urlShips)) shipsState.view=urlShips;
     // (Fase 2) ?tab=list&sub=airing → Series en emisión · ?tab=upcoming&sub=stale → Sin novedad
     const urlSub=new URLSearchParams(location.search).get('sub');
+    const urlId=new URLSearchParams(location.search).get('id');     // (Fase 6) dirección propia de cada ficha
     if(state.tab==='list' && urlSub==='airing') seriesSubtab='airing';
     if(state.tab==='upcoming') upcomingFilters.subview=(urlSub==='stale')?'stale':'normal';
     const savedTab=state.tab;
@@ -11314,7 +11388,19 @@ document.addEventListener('keydown',e=>{
     _curTabKey=_newTabKey();
     history.replaceState({tab:savedTab,k:_curTabKey},'',tabUrl(savedTab,location.hash));
 
-    // ── Deep-link: abrir modal si la URL tiene #serie-ID o #pelicula-ID ──────
+    // ── (Fase 6) ?tab=…&id=ID: abre la ficha del título. El ?id= ya se quitó de la entrada sembrada arriba (tabUrl),
+    //    de modo que Atrás desde la ficha deja la pestaña limpia; presentTitle vuelve a poner la dirección de la ficha.
+    (function resolveTitleParam(){
+      if(!urlId) return;
+      const key=String(urlId), match=x=>String(x.id)===key||x.name===key;
+      let item=state.series.find(match), isMovie=false;
+      if(!item){ item=state.movies.find(match); isMovie=!!item; }
+      if(!item) return;                                              // id desconocido: se queda la pestaña
+      switchTab(titleInfoOf(item,isMovie).tab,true);
+      setTimeout(()=>openTitleById(key),80);
+    })();
+
+    // ── Deep-link antiguo: abrir modal si la URL tiene #serie-ID o #pelicula-ID ──────
     (function resolveHashDeepLink(){
       const hash = location.hash; // e.g. "#serie-1748871234567" o "#anime-serie-KEY"
       if(!hash) return;
@@ -11983,14 +12069,14 @@ function getSimilarItems(item, type, limit=6){
   const iMoods     = item.moods||[];
   const iCountry   = item.country||'';
   const iSource    = item.sourceType||'';
-  const iProductora= item.productoraId||'';
+  const iProductoras= productoraIdsOf(item);
 
   function score(candidate, candType){
     if(candidate===item) return -1; // skip self
     if(!candidate.poster) return -1; // sin poster no tiene sentido mostrarlo
     let s = 0;
     // Productora coincide → +4
-    if(iProductora && (candidate.productoraId||'')===iProductora) s += 4;
+    if(iProductoras.length && productoraIdsOf(candidate).some(id=>iProductoras.includes(id))) s += 4;
     // País coincide → +3
     if(iCountry && (candidate.country||'')=== iCountry) s += 3;
     // Moods compartidos → +3 cada uno (máx 2)
