@@ -205765,9 +205765,9 @@
     },
     {
       "id": "1791103423058",
-      "name": "My Madam, My Biggest Fan",
-      "nameEn": "",
-      "poster": "https://pub-d759bfe39b184d4ea262bef1754f4bcc.r2.dev/blog/images/f3566bee-3edf-4527-a66c-d660f98f051f",
+      "name": "My Sugar Lady",
+      "nameEn": "ขวัญใจคุณหนูแม่ยก",
+      "poster": "https://pbs.twimg.com/media/HWwofG1WkAEtowg?format=jpg&name=large",
       "synopsis": "",
       "year": "",
       "country": "",
@@ -205790,8 +205790,22 @@
       "awards": [],
       "category": "series",
       "seriesType": "serie",
-      "cast": [],
-      "couples": [],
+      "cast": [
+        {
+          "actressId": "1778704935711",
+          "character": ""
+        },
+        {
+          "actressId": "1794476447674",
+          "character": ""
+        }
+      ],
+      "couples": [
+        [
+          "1778704935711",
+          "1794476447674"
+        ]
+      ],
       "animeSeason": "",
       "renewedNextSeason": false,
       "episodeDuration": "",
@@ -205803,13 +205817,25 @@
       "sinNovedades": false,
       "snLastUpdate": "",
       "snNote": "",
-      "productoraId": "",
+      "productoraId": "1779135450707",
       "tmdbId": "",
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0,
-      "updatedAt": "2026-10-15T07:29:33.538Z",
-      "streaming": {}
+      "updatedAt": "2026-11-12T09:40:54.983Z",
+      "streaming": {},
+      "wlwFocusEpisode": "",
+      "sideCouples": [],
+      "fanCouples": [],
+      "productoraIds": [
+        "1779135450707"
+      ],
+      "i18n": {
+        "en": {
+          "title": "My Madam, My Biggest Fan",
+          "source": "manual"
+        }
+      }
     },
     {
       "id": "1791103462682",
@@ -456837,6 +456863,16 @@
       "country": "",
       "birthdate": "",
       "notes": ""
+    },
+    {
+      "id": "1794476447674",
+      "name": "\"Gina\" Yeena Salas",
+      "photo": "https://media.themoviedb.org/t/p/w300_and_h450_face/bPbGW0p5kwQhJuS4rNp9RgYYocp.jpg",
+      "photoPosition": "50% 15%",
+      "photoZoom": 1,
+      "country": "Tailandia",
+      "birthdate": "2000-01-05",
+      "notes": "Actriz"
     }
   ],
   "ships": [
@@ -457711,6 +457747,19 @@
         "1793712516397",
         "1793712558246"
       ]
+    },
+    {
+      "id": "1794476528065",
+      "name": "GinaPitcha",
+      "desc": "",
+      "retired": false,
+      "couplePhoto": "",
+      "couplePhotoPosition": "",
+      "couplePhotoZoom": 1,
+      "actressIds": [
+        "1794476447674",
+        "1778704935711"
+      ]
     }
   ],
   "shipPets": [
@@ -457826,11 +457875,13 @@
       "actressIds": [
         "1778672754370",
         "1778761227248",
+        "1794476447674",
         "1789666482551",
         "1778668951822",
         "1778672885792",
         "1778672794035",
         "1778669037769",
+        "1778704935711",
         "1778669135059",
         "1778669089219",
         "1792048931210"
@@ -459446,5 +459497,5 @@
       ]
     }
   },
-  "exportedAt": "2026-11-12T09:36:09.094Z"
+  "exportedAt": "2026-11-12T09:42:26.065Z"
 }
