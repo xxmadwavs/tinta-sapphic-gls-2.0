@@ -8823,7 +8823,7 @@
       ],
       "animeSeason": "",
       "renewedNextSeason": false,
-      "updatedAt": "2026-11-07T09:43:28.648Z",
+      "updatedAt": "2026-11-12T09:44:18.859Z",
       "episodeDuration": "",
       "myPick": false,
       "myPick2026": false,
@@ -8891,6 +8891,42 @@
               "source": "tmdb",
               "duration": 75,
               "still": "https://image.tmdb.org/t/p/w300/gxQ9o82Cp0Ws27Fa9tvSytmQvVx.jpg"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2026-11-12",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2026-11-19",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2026-11-26",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2026-12-03",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2026-12-10",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2026-12-17",
+              "source": "tmdb"
             }
           ],
           "premiereSchedule": []
@@ -459497,5 +459533,5 @@
       ]
     }
   },
-  "exportedAt": "2026-11-12T09:42:26.065Z"
+  "exportedAt": "2026-11-12T09:44:28.405Z"
 }
