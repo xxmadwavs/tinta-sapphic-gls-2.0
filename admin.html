@@ -969,6 +969,7 @@ h3.salud-title{margin:0;font-size:15px;font-weight:700}
   <div class="qnav-group" role="group" aria-labelledby="qg-curacion">
     <span class="qnav-group-label" id="qg-curacion">Curación</span>
     <a class="qnav-btn" href="#listas" data-panel="listas">Listas</a>
+    <a class="qnav-btn" href="#eventos" data-panel="eventos">Eventos</a>
     <a class="qnav-btn" href="#checklist" data-panel="checklist">Checklist</a>
   </div>
   <div class="qnav-group" role="group" aria-labelledby="qg-sistema">
@@ -1009,7 +1010,7 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
 (function(){
   var root=document.documentElement;
   root.classList.add('panels-on');
-  var TOK={series:'section-series',movies:'section-movies',anime:'section-anime',realities:'section-realities',calendario:'section-calendario',books:'section-books',actresses:'section-actresses',ships:'section-ships',mascotas:'section-mascotas',listas:'section-listas',productoras:'section-productoras','platform-logos':'section-platform-logos',checklist:'section-checklist',salud:'section-salud',normalizar:'section-normalizar',publicar:'section-publicar'};
+  var TOK={series:'section-series',movies:'section-movies',anime:'section-anime',realities:'section-realities',calendario:'section-calendario',books:'section-books',actresses:'section-actresses',ships:'section-ships',mascotas:'section-mascotas',listas:'section-listas',eventos:'section-eventos',productoras:'section-productoras','platform-logos':'section-platform-logos',checklist:'section-checklist',salud:'section-salud',normalizar:'section-normalizar',publicar:'section-publicar'};
   var DEF='series', active=null, ready=false;
   var $=function(id){return document.getElementById(id);};
   var reduce=function(){return window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;};
@@ -1341,6 +1342,16 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
     <div id="listasAdminGrid" style="display:grid;gap:10px;margin-top:8px"></div>
   </div>
 
+  <div class="card" id="section-eventos">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+      <div class="card-title" style="margin-bottom:0">Eventos de productoras</div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Registra los eventos donde una productora confirma sus próximas series. Cada evento guarda su fecha, la fuente y las series confirmadas (con la ventana de estreno que dijeron, en texto libre).</p>
+    <button type="button" class="btn primary" style="margin-bottom:1rem;width:100%;background:var(--teal);border-color:var(--teal)" onclick="openAddEvento()">+ Crear evento</button>
+    <div class="series-count-label" id="eventosCountLabel"></div>
+    <div id="eventosAdminGrid" style="display:grid;gap:10px;margin-top:8px"></div>
+  </div>
+
   <div class="card" id="section-ships">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
       <div class="card-title" style="margin-bottom:0">Ships</div>
@@ -1573,6 +1584,14 @@ document.getElementById('quicknav').addEventListener('focusin',function(e){
   <div class="modal">
     <div class="modal-header"><div class="modal-title" id="listaModalTitle" style="margin-bottom:0"></div></div>
     <div id="listaModalBody"></div>
+  </div>
+</div>
+
+<!-- Modal evento de productora -->
+<div class="modal-bg" id="eventoModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="eventoModalTitle" style="margin-bottom:0"></div></div>
+    <div id="eventoModalBody"></div>
   </div>
 </div>
 
@@ -2083,6 +2102,7 @@ let ships = [];   // Ships manuales
 let shipPets = [];  // Mascotas de ships (una por ship, referencia por shipId)
 let productoras = [];  // Productoras
 let listas = [];  // Listas temáticas curadas
+let eventos = [];  // Eventos de productoras (series confirmadas)
 let platformLogos = {};  // Logos personalizados de plataformas
 const CHK_COUNTRIES = {
   thai:  { flag:'🇹🇭', label:'GL Thai',  catalogCountry:'Tailandia',    defaultTitulo:'GL Thai ~ Checklist' },
@@ -2209,10 +2229,11 @@ async function initData(){
         if(Array.isArray(d.shipPets)) shipPets = d.shipPets;
         if(d.productoras) productoras = d.productoras;
         if(d.listas) listas = d.listas;
+        if(Array.isArray(d.eventos)) eventos = d.eventos;
         if(d.platformLogos) platformLogos = d.platformLogos;
         checklist = normalizeChecklist(d.checklist);
         migrateAllCastCouples();
-        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderShipPetsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
+        render(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderShipPetsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderEventosAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
         return;
       }
     } catch(e){ /* sin data.json accesible */ }
@@ -4774,7 +4795,7 @@ function renderBooks(){
 function exportData(){
   try {
     // Validate before exporting
-    const testJson = JSON.stringify({series, movies, actresses, ships, shipPets, productoras, listas, platformLogos, checklist, exportedAt: new Date().toISOString()});
+    const testJson = JSON.stringify({series, movies, actresses, ships, shipPets, productoras, listas, eventos, platformLogos, checklist, exportedAt: new Date().toISOString()});
     JSON.parse(testJson); // verify roundtrip
   } catch(e) {
     alert('Error al validar los datos antes de exportar: ' + e.message);
@@ -4784,7 +4805,7 @@ function exportData(){
   _unsavedCount=0;
   const dot=document.getElementById('exportDot');
   if(dot) dot.classList.remove('visible');
-  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,shipPets,productoras,listas,platformLogos,checklist,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({series,movies,actresses,ships,shipPets,productoras,listas,eventos,platformLogos,checklist,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.json'; a.click();
 }
 
@@ -4801,11 +4822,12 @@ function importData(e){
       shipPets=Array.isArray(d.shipPets)?d.shipPets:[];   // el archivo importado manda: evita mascotas que apunten a ships de otro archivo
       if(d.productoras) productoras=d.productoras;
       if(d.listas) listas=d.listas;
+      if(Array.isArray(d.eventos)) eventos=d.eventos;
       if(d.platformLogos) platformLogos=d.platformLogos;
       checklist=normalizeChecklist(d.checklist);
       migrateAllCastCouples();
       const ib=document.getElementById('importBanner'); if(ib) ib.remove();
-      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderShipPetsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
+      save(); render(); renderMovies(); renderBooks(); renderAnimeGrid(); renderRealitiesGrid(); renderActressesGrid(); renderShipsAdmin(); renderShipPetsAdmin(); renderProductorasAdmin(); renderListasAdmin(); renderEventosAdmin(); renderPlatformLogosSection(); renderChecklistAdmin();
       alert('✓ Datos importados correctamente');
     }catch(err){ alert('Error al leer el archivo: '+err.message); }
   };
@@ -10706,6 +10728,162 @@ async function delLista(listaId){
   if(!ok) return;
   listas.splice(li,1);
   save(); renderListasAdmin();
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// EVENTOS DE PRODUCTORAS
+// Evento = { id, name, date:'YYYY-MM-DD', productoraId, sourceUrl, series:[{name, window, seriesId?, movieId?}] }
+// ══════════════════════════════════════════════════════════════════════════════
+
+function _evNorm(s){ return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim(); }
+
+// Busca en el catálogo por nombre (o nombre en inglés). Devuelve {seriesId} o {movieId} o {}
+function _evResolveCatalog(name){
+  const n=_evNorm(name); if(!n) return {};
+  const s=series.find(x=>_evNorm(x.name)===n||_evNorm(x.nameEn)===n);
+  if(s) return {seriesId:s.id};
+  const m=movies.find(x=>_evNorm(x.name)===n||_evNorm(x.nameEn)===n);
+  if(m) return {movieId:m.id};
+  return {};
+}
+
+function _evFmtDate(d){
+  const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||''); if(!m) return d||'';
+  return m[3]+'/'+m[2]+'/'+m[1];
+}
+
+function renderEventosAdmin(){
+  const grid=document.getElementById('eventosAdminGrid');
+  const label=document.getElementById('eventosCountLabel');
+  if(!grid) return;
+  if(!eventos.length){
+    grid.innerHTML='<div style="color:var(--muted);font-size:13px;font-style:italic;padding:8px 0">No hay eventos creados todavía.</div>';
+    if(label) label.textContent='';
+    return;
+  }
+  if(label) label.textContent=eventos.length+' evento'+(eventos.length!==1?'s':'');
+  const sorted=[...eventos].sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
+  grid.innerHTML=sorted.map(e=>{
+    const prod=(productoras||[]).find(p=>String(p.id)===String(e.productoraId));
+    const n=(e.series||[]).length;
+    const linked=(e.series||[]).filter(x=>x.seriesId||x.movieId).length;
+    const safeId=String(e.id||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    return `<div class="series-item" style="align-items:flex-start;gap:12px">
+      <div style="flex:1;min-width:0">
+        <div class="series-name" style="font-size:14px">${escapeHtml(e.name)}</div>
+        <div class="series-meta" style="margin-top:2px">${escapeHtml(_evFmtDate(e.date))}${prod?' · '+escapeHtml(prod.name):''}</div>
+        <div style="margin-top:4px;font-size:11px;color:var(--muted)">${n} título${n!==1?'s':''} confirmado${n!==1?'s':''}${n?' · '+linked+' en el catálogo':''}</div>
+      </div>
+      <div class="series-actions">
+        <button class="btn small" onclick="openEditEvento('${safeId}')">Editar</button>
+        <button class="btn small danger" onclick="delEvento('${safeId}')">Eliminar</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function _evSerieRowHtml(x){
+  x=x||{};
+  return `<div class="ev-serie-row" style="display:flex;gap:6px;align-items:center">
+    <input class="ev-s-name" list="ev_cat_list" placeholder="Serie o película" value="${escapeHtml(x.name||'')}" style="flex:2;min-width:0"/>
+    <input class="ev-s-win" placeholder="Ventana (ej. 2027, primavera)" value="${escapeHtml(x.window||'')}" style="flex:1;min-width:0"/>
+    <button type="button" class="platform-del-btn" onclick="this.parentElement.remove()" title="Quitar">✕</button>
+  </div>`;
+}
+
+function addEventoSerieRow(){
+  const box=document.getElementById('ef_series'); if(!box) return;
+  box.insertAdjacentHTML('beforeend',_evSerieRowHtml());
+  const rows=box.querySelectorAll('.ev-s-name'); rows[rows.length-1].focus();
+}
+
+function _eventoFormHtml(e){
+  const catOpts=[...series,...movies].map(x=>x.name).filter(Boolean).sort((a,b)=>a.localeCompare(b,'es'))
+    .map(n=>`<option value="${escapeHtml(n)}"></option>`).join('');
+  const prodOpts=[...(productoras||[])].sort((a,b)=>a.name.localeCompare(b.name,'es'))
+    .map(p=>`<option value="${escapeHtml(p.id)}"${e&&String(e.productoraId)===String(p.id)?' selected':''}>${escapeHtml(p.name)}${p.country?' ('+escapeHtml(p.country)+')':''}</option>`).join('');
+  const rows=((e&&e.series)||[]).map(_evSerieRowHtml).join('');
+  return `<div style="padding:1.25rem 1.75rem;display:flex;flex-direction:column;gap:14px">
+    <div class="form-row">
+      <label class="form-label">Nombre del evento <span style="color:var(--danger)">*</span></label>
+      <input id="ef_name" placeholder="Ej: Showcase 2027" value="${e&&e.name?escapeHtml(e.name):''}"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Fecha del evento <span style="color:var(--danger)">*</span></label>
+      <input id="ef_date" type="date" value="${e&&e.date?escapeHtml(e.date):''}" style="width:180px"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Productora <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(opcional)</span></label>
+      <select id="ef_prod"><option value="">— Ninguna / varias —</option>${prodOpts}</select>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Fuente <span style="text-transform:none;letter-spacing:0;font-weight:400;font-size:11px">(enlace, opcional)</span></label>
+      <input id="ef_url" type="url" placeholder="https://…" value="${e&&e.sourceUrl?escapeHtml(e.sourceUrl):''}"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Series confirmadas</label>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Escribe el nombre: si ya está en el catálogo se sugiere y se enlaza al guardar; si no, se guarda solo como texto. La ventana es texto libre y opcional.</div>
+      <datalist id="ev_cat_list">${catOpts}</datalist>
+      <div id="ef_series" style="display:flex;flex-direction:column;gap:6px">${rows}</div>
+      <button type="button" class="platform-add-btn" onclick="addEventoSerieRow()" style="margin-top:6px">+ Serie</button>
+    </div>
+  </div>
+  <div class="modal-footer-btns">
+    <button type="button" class="btn" onclick="closeEvento()">Cancelar</button>
+    <button type="button" class="btn primary" onclick="saveEvento()">Guardar evento</button>
+  </div>`;
+}
+
+function openAddEvento(){
+  document.getElementById('eventoModalTitle').textContent='Nuevo evento';
+  document.getElementById('eventoModalBody').innerHTML=_eventoFormHtml(null);
+  delete document.getElementById('eventoModal').dataset.evId;
+  document.getElementById('eventoModal').classList.add('open');
+}
+
+function openEditEvento(id){
+  const e=eventos.find(x=>String(x.id)===String(id)); if(!e) return;
+  document.getElementById('eventoModalTitle').textContent='Editar evento';
+  document.getElementById('eventoModalBody').innerHTML=_eventoFormHtml(e);
+  document.getElementById('eventoModal').dataset.evId=e.id;
+  document.getElementById('eventoModal').classList.add('open');
+}
+
+function closeEvento(){
+  document.getElementById('eventoModal').classList.remove('open');
+  delete document.getElementById('eventoModal').dataset.evId;
+}
+
+function saveEvento(){
+  const name=document.getElementById('ef_name')?.value.trim();
+  const date=document.getElementById('ef_date')?.value||'';
+  if(!name){ alert('El nombre del evento es obligatorio'); return; }
+  if(!date){ alert('La fecha del evento es obligatoria'); return; }
+  const productoraId=document.getElementById('ef_prod')?.value||'';
+  const sourceUrl=document.getElementById('ef_url')?.value.trim()||'';
+  const list=[];
+  document.querySelectorAll('#ef_series .ev-serie-row').forEach(r=>{
+    const n=r.querySelector('.ev-s-name').value.trim(); if(!n) return;
+    const w=r.querySelector('.ev-s-win').value.trim();
+    const item={name:n,...(w?{window:w}:{}),..._evResolveCatalog(n)};
+    list.push(item);
+  });
+  const editId=document.getElementById('eventoModal').dataset.evId;
+  const idx=editId?eventos.findIndex(x=>String(x.id)===String(editId)):-1;
+  const payload={name,date,productoraId,sourceUrl,series:list};
+  if(idx>=0) eventos[idx]={...eventos[idx],...payload};
+  else eventos.push({id:Date.now().toString(),...payload});
+  save();
+  closeEvento();
+  renderEventosAdmin();
+}
+
+async function delEvento(id){
+  const i=eventos.findIndex(x=>String(x.id)===String(id)); if(i<0) return;
+  const ok=await showConfirm({title:`¿Eliminar "${eventos[i].name}"?`,desc:'Esta acción no se puede deshacer.'});
+  if(!ok) return;
+  eventos.splice(i,1);
+  save(); renderEventosAdmin();
 }
 </script>
 <script>

@@ -3645,8 +3645,8 @@
       ],
       "tmdbId": "316241",
       "tmdbKind": "tv",
-      "tmdbRating": 9.6,
-      "tmdbVoteCount": 5,
+      "tmdbRating": 8.1,
+      "tmdbVoteCount": 7,
       "biFormat": false,
       "i18n": {
         "en": {
@@ -3755,7 +3755,8 @@
               "num": 1,
               "skipped": false,
               "date": "2026-11-08",
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/e4u3uqRXCm9joy5fEpkO7eQmVXl.jpg"
             }
           ],
           "premiereSchedule": []
@@ -4916,6 +4917,14 @@
               "source": "tmdb",
               "duration": 50,
               "still": "https://image.tmdb.org/t/p/w300/rrXTKJIW0WMIZ7hAnWckV5wlIDw.jpg"
+            },
+            {
+              "num": 3,
+              "date": "2026-11-04",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 47,
+              "still": "https://image.tmdb.org/t/p/w300/iRaiGLzdDNEGov0tTTUTt6nDq3A.jpg"
             }
           ],
           "premiereSchedule": []
@@ -6281,8 +6290,8 @@
       ],
       "tmdbId": "306936",
       "tmdbKind": "tv",
-      "tmdbRating": "",
-      "tmdbVoteCount": 0,
+      "tmdbRating": 10,
+      "tmdbVoteCount": 1,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -6323,7 +6332,8 @@
               "num": 1,
               "skipped": false,
               "date": "2026-11-07",
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/yi3MgeO31gbptinejfMBqgKOd74.jpg"
             },
             {
               "num": 2,
@@ -6540,8 +6550,8 @@
       ],
       "tmdbId": "315142",
       "tmdbKind": "tv",
-      "tmdbRating": 9,
-      "tmdbVoteCount": 2,
+      "tmdbRating": 9.3,
+      "tmdbVoteCount": 3,
       "wlwFocus": "pareja-principal",
       "i18n": {
         "en": {
@@ -7055,7 +7065,8 @@
               "num": 1,
               "date": "2026-11-07",
               "skipped": false,
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/fTTwPFSUFN1rxbdbyW1NofGcpR9.jpg"
             },
             {
               "num": 2,
@@ -8091,7 +8102,8 @@
               "num": 10,
               "date": "2026-11-09",
               "skipped": false,
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/wcljW5XHuDg8xpy9nR8SE6M3BVu.jpg"
             }
           ],
           "premiereSchedule": []
@@ -8109,8 +8121,8 @@
       ],
       "tmdbId": "308261",
       "tmdbKind": "tv",
-      "tmdbRating": 9.3,
-      "tmdbVoteCount": 3,
+      "tmdbRating": 9.5,
+      "tmdbVoteCount": 4,
       "wlwFocus": "pareja-principal",
       "biFormat": false,
       "i18n": {
@@ -8602,8 +8614,8 @@
       ],
       "tmdbId": "252621",
       "tmdbKind": "tv",
-      "tmdbRating": 8.7,
-      "tmdbVoteCount": 22,
+      "tmdbRating": 8.6,
+      "tmdbVoteCount": 21,
       "wlwFocus": "",
       "i18n": {
         "en": {
@@ -8871,6 +8883,14 @@
               "source": "tmdb",
               "duration": 78,
               "still": "https://image.tmdb.org/t/p/w300/6A2EAnHmCBVk3wlvDAwLiCLE9Yg.jpg"
+            },
+            {
+              "num": 4,
+              "date": "2026-11-05",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 75,
+              "still": "https://image.tmdb.org/t/p/w300/gxQ9o82Cp0Ws27Fa9tvSytmQvVx.jpg"
             }
           ],
           "premiereSchedule": []
@@ -9731,7 +9751,8 @@
               "num": 9,
               "date": "2026-11-07",
               "skipped": false,
-              "source": "tmdb"
+              "source": "tmdb",
+              "still": "https://image.tmdb.org/t/p/w300/A2IRWfL2q07hJPVAWEvwj94jWCi.jpg"
             },
             {
               "num": 10,
@@ -9751,8 +9772,8 @@
       ],
       "tmdbId": "320695",
       "tmdbKind": "tv",
-      "tmdbRating": "",
-      "tmdbVoteCount": 0,
+      "tmdbRating": 5,
+      "tmdbVoteCount": 1,
       "wlwFocus": "pareja-principal",
       "i18n": {
         "en": {
@@ -12768,7 +12789,7 @@
       "tmdbId": "87689",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 1345,
+      "tmdbVoteCount": 1349,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -14755,7 +14776,7 @@
       "tmdbId": "225171",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 1191,
+      "tmdbVoteCount": 1205,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -21559,8 +21580,8 @@
       "productoraId": "",
       "tmdbId": 83996,
       "tmdbKind": "tv",
-      "tmdbRating": 7.1,
-      "tmdbVoteCount": 28,
+      "tmdbRating": 7.2,
+      "tmdbVoteCount": 29,
       "wlwFocus": "pareja-principal",
       "streaming": {
         "AD": [
@@ -33813,8 +33834,8 @@
       "episodeDuration": 13,
       "tmdbId": "212594",
       "tmdbKind": "tv",
-      "tmdbRating": 6.6,
-      "tmdbVoteCount": 10,
+      "tmdbRating": 6.2,
+      "tmdbVoteCount": 9,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -37498,7 +37519,7 @@
       "tmdbId": "89630",
       "tmdbKind": "tv",
       "tmdbRating": 7.6,
-      "tmdbVoteCount": 128,
+      "tmdbVoteCount": 129,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -43546,7 +43567,7 @@
       "tmdbId": "79732",
       "tmdbKind": "tv",
       "tmdbRating": 8.5,
-      "tmdbVoteCount": 844,
+      "tmdbVoteCount": 845,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -43930,7 +43951,7 @@
       "tmdbId": "111616",
       "tmdbKind": "tv",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 351,
+      "tmdbVoteCount": 352,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -46975,7 +46996,7 @@
       "tmdbId": "1424",
       "tmdbKind": "tv",
       "tmdbRating": 7.6,
-      "tmdbVoteCount": 2946,
+      "tmdbVoteCount": 2955,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -51534,7 +51555,7 @@
       "tmdbId": "62455",
       "tmdbKind": "tv",
       "tmdbRating": 8,
-      "tmdbVoteCount": 2542,
+      "tmdbVoteCount": 2544,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -53447,7 +53468,7 @@
       "tmdbId": "92685",
       "tmdbKind": "tv",
       "tmdbRating": 8.7,
-      "tmdbVoteCount": 1857,
+      "tmdbVoteCount": 1859,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -58477,7 +58498,7 @@
       "tmdbId": "33852",
       "tmdbKind": "tv",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 464,
+      "tmdbVoteCount": 465,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -59420,7 +59441,7 @@
       "tmdbId": "56336",
       "tmdbKind": "tv",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 121,
+      "tmdbVoteCount": 122,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -61059,7 +61080,7 @@
       "tmdbId": "44856",
       "tmdbKind": "tv",
       "tmdbRating": 8,
-      "tmdbVoteCount": 300,
+      "tmdbVoteCount": 301,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -62325,7 +62346,7 @@
       "tmdbId": "48866",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 8860,
+      "tmdbVoteCount": 8879,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -67747,7 +67768,7 @@
       "tmdbId": "62643",
       "tmdbKind": "tv",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 2536,
+      "tmdbVoteCount": 2538,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -70219,7 +70240,7 @@
       "tmdbId": "85552",
       "tmdbKind": "tv",
       "tmdbRating": 8.3,
-      "tmdbVoteCount": 11152,
+      "tmdbVoteCount": 11157,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -78916,7 +78937,7 @@
       "tmdbId": "117488",
       "tmdbKind": "tv",
       "tmdbRating": 7.4,
-      "tmdbVoteCount": 1071,
+      "tmdbVoteCount": 1075,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -82914,7 +82935,7 @@
       "tmdbId": "94605",
       "tmdbKind": "tv",
       "tmdbRating": 8.7,
-      "tmdbVoteCount": 6297,
+      "tmdbVoteCount": 6318,
       "wlwFocus": "romance-secundario-protagonista",
       "sourceType": "",
       "moods": [],
@@ -88170,7 +88191,7 @@
       "tmdbId": "100088",
       "tmdbKind": "tv",
       "tmdbRating": 8.4,
-      "tmdbVoteCount": 7486,
+      "tmdbVoteCount": 7510,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -90553,7 +90574,7 @@
       "tmdbId": "113962",
       "tmdbKind": "tv",
       "tmdbRating": 8.3,
-      "tmdbVoteCount": 1737,
+      "tmdbVoteCount": 1747,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -94331,7 +94352,7 @@
       "tmdbId": 92783,
       "tmdbKind": "tv",
       "tmdbRating": 6.1,
-      "tmdbVoteCount": 2635,
+      "tmdbVoteCount": 2639,
       "wlwFocus": "pareja-principal",
       "i18n": {
         "es": {
@@ -94656,7 +94677,7 @@
       "tmdbId": "125816",
       "tmdbKind": "tv",
       "tmdbRating": 7.6,
-      "tmdbVoteCount": 161,
+      "tmdbVoteCount": 163,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -96710,7 +96731,7 @@
       "tmdbId": "211358",
       "tmdbKind": "tv",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 253,
+      "tmdbVoteCount": 255,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -97815,7 +97836,7 @@
       "tmdbId": "138501",
       "tmdbKind": "tv",
       "tmdbRating": 7.4,
-      "tmdbVoteCount": 1086,
+      "tmdbVoteCount": 1094,
       "sourceType": "",
       "moods": [],
       "tropos": [],
@@ -105071,7 +105092,7 @@
       "tmdbId": 94997,
       "tmdbKind": "tv",
       "tmdbRating": 8.4,
-      "tmdbVoteCount": 7286,
+      "tmdbVoteCount": 7314,
       "wlwFocus": "pareja-principal",
       "i18n": {
         "es": {
@@ -105660,7 +105681,7 @@
       "tmdbId": "72750",
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 1587,
+      "tmdbVoteCount": 1593,
       "wlwFocus": "romance-secundario-protagonista",
       "tropos": [],
       "dinamica": [],
@@ -108146,7 +108167,7 @@
       "tmdbId": 56296,
       "tmdbKind": "tv",
       "tmdbRating": 7.8,
-      "tmdbVoteCount": 1513,
+      "tmdbVoteCount": 1516,
       "wlwFocus": "pareja-secundaria",
       "streaming": {
         "AR": [
@@ -111134,7 +111155,7 @@
       "tmdbId": 61664,
       "tmdbKind": "tv",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 1964,
+      "tmdbVoteCount": 1971,
       "wlwFocus": "romance-secundario-protagonista",
       "streaming": {
         "AD": [
@@ -114357,7 +114378,7 @@
       "tmdbId": 124101,
       "tmdbKind": "tv",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 412,
+      "tmdbVoteCount": 414,
       "wlwFocus": "romance-secundario-protagonista",
       "streaming": {
         "AD": [
@@ -116472,7 +116493,7 @@
       "tmdbId": 280893,
       "tmdbKind": "tv",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 22,
+      "tmdbVoteCount": 23,
       "wlwFocus": "romance-secundario-protagonista",
       "streaming": {
         "ES": [
@@ -116824,7 +116845,7 @@
       "tmdbId": 91977,
       "tmdbKind": "tv",
       "tmdbRating": 7.9,
-      "tmdbVoteCount": 561,
+      "tmdbVoteCount": 564,
       "wlwFocus": "romance-secundario-protagonista",
       "streaming": {
         "AT": [
@@ -117535,7 +117556,7 @@
       "tmdbId": 89247,
       "tmdbKind": "tv",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 1620,
+      "tmdbVoteCount": 1621,
       "streaming": {
         "AR": [
           {
@@ -125618,7 +125639,7 @@
       "tmdbId": 31917,
       "tmdbKind": "tv",
       "tmdbRating": 8,
-      "tmdbVoteCount": 2863,
+      "tmdbVoteCount": 2864,
       "streaming": {
         "AD": [
           {
@@ -128988,7 +129009,7 @@
       "tmdbId": 81357,
       "tmdbKind": "tv",
       "tmdbRating": 7.3,
-      "tmdbVoteCount": 671,
+      "tmdbVoteCount": 673,
       "streaming": {
         "AD": [
           {
@@ -145438,8 +145459,8 @@
       ],
       "tmdbId": 259288,
       "tmdbKind": "tv",
-      "tmdbRating": 8.7,
-      "tmdbVoteCount": 127,
+      "tmdbRating": 8.8,
+      "tmdbVoteCount": 126,
       "streaming": {
         "AE": [
           {
@@ -149181,8 +149202,8 @@
       "wlwFocus": "pareja-principal",
       "tmdbId": 285574,
       "tmdbKind": "tv",
-      "tmdbRating": 8.2,
-      "tmdbVoteCount": 17,
+      "tmdbRating": 8.3,
+      "tmdbVoteCount": 18,
       "streaming": {
         "AR": [
           {
@@ -151309,8 +151330,8 @@
       ],
       "tmdbId": 283297,
       "tmdbKind": "tv",
-      "tmdbRating": 8.1,
-      "tmdbVoteCount": 183,
+      "tmdbRating": 8,
+      "tmdbVoteCount": 188,
       "streaming": {
         "AD": [
           {
@@ -154869,8 +154890,8 @@
       "wlwFocus": "romance-secundario-protagonista",
       "tmdbId": "310890",
       "tmdbKind": "tv",
-      "tmdbRating": 9.4,
-      "tmdbVoteCount": 5,
+      "tmdbRating": 9,
+      "tmdbVoteCount": 8,
       "couples": [],
       "biFormat": false,
       "streaming": {
@@ -156459,7 +156480,7 @@
       "tmdbId": 105136,
       "tmdbKind": "tv",
       "tmdbRating": 8.2,
-      "tmdbVoteCount": 91,
+      "tmdbVoteCount": 93,
       "streaming": {
         "RU": [
           {
@@ -157566,7 +157587,7 @@
       "tmdbId": 126167,
       "tmdbKind": "tv",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 292,
+      "tmdbVoteCount": 294,
       "streaming": {
         "AE": [
           {
@@ -158891,7 +158912,7 @@
       "tmdbId": 128883,
       "tmdbKind": "tv",
       "tmdbRating": 8.2,
-      "tmdbVoteCount": 670,
+      "tmdbVoteCount": 673,
       "i18n": {
         "en": {
           "title": "Hometown Cha-Cha-Cha",
@@ -163256,8 +163277,8 @@
       "productoraId": "",
       "tmdbId": "244447",
       "tmdbKind": "tv",
-      "tmdbRating": 7,
-      "tmdbVoteCount": 112,
+      "tmdbRating": 6.9,
+      "tmdbVoteCount": 117,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -166706,8 +166727,8 @@
       "productoraId": "",
       "tmdbId": "323866",
       "tmdbKind": "tv",
-      "tmdbRating": 7.4,
-      "tmdbVoteCount": 6,
+      "tmdbRating": 7.6,
+      "tmdbVoteCount": 7,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -167854,8 +167875,8 @@
       "productoraId": "",
       "tmdbId": "283151",
       "tmdbKind": "tv",
-      "tmdbRating": 5.9,
-      "tmdbVoteCount": 16,
+      "tmdbRating": 5.7,
+      "tmdbVoteCount": 18,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -174920,7 +174941,7 @@
       "tmdbId": "227192",
       "tmdbKind": "tv",
       "tmdbRating": 8.1,
-      "tmdbVoteCount": 160,
+      "tmdbVoteCount": 161,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -180151,7 +180172,7 @@
       "tmdbId": "71578",
       "tmdbKind": "tv",
       "tmdbRating": 8,
-      "tmdbVoteCount": 1296,
+      "tmdbVoteCount": 1298,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -182411,7 +182432,7 @@
       "tmdbId": "33880",
       "tmdbKind": "tv",
       "tmdbRating": 8.2,
-      "tmdbVoteCount": 2483,
+      "tmdbVoteCount": 2497,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -186484,7 +186505,7 @@
       "tmdbId": "90766",
       "tmdbKind": "tv",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 378,
+      "tmdbVoteCount": 379,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -188473,7 +188494,7 @@
       "tmdbId": "61175",
       "tmdbKind": "tv",
       "tmdbRating": 8.4,
-      "tmdbVoteCount": 1409,
+      "tmdbVoteCount": 1410,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -191311,7 +191332,7 @@
       "tmdbId": "106431",
       "tmdbKind": "tv",
       "tmdbRating": 7.3,
-      "tmdbVoteCount": 165,
+      "tmdbVoteCount": 166,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -195631,7 +195652,7 @@
       "tmdbId": "53128",
       "tmdbKind": "tv",
       "tmdbRating": 8,
-      "tmdbVoteCount": 20,
+      "tmdbVoteCount": 19,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -196153,7 +196174,7 @@
       "tmdbId": "67466",
       "tmdbKind": "tv",
       "tmdbRating": 7.3,
-      "tmdbVoteCount": 1013,
+      "tmdbVoteCount": 1015,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -196861,7 +196882,7 @@
       "tmdbId": "1417",
       "tmdbKind": "tv",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 997,
+      "tmdbVoteCount": 1000,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -199068,7 +199089,7 @@
       "tmdbId": "94904",
       "tmdbKind": "tv",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 112,
+      "tmdbVoteCount": 113,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -201393,7 +201414,7 @@
       "tmdbId": "299939",
       "tmdbKind": "tv",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 244,
+      "tmdbVoteCount": 254,
       "seasons": [
         {
           "label": "Temporada 1",
@@ -206455,7 +206476,16 @@
           ],
           "allInOneDay": false,
           "skipDates": [],
-          "episodes": [],
+          "episodes": [
+            {
+              "num": 1,
+              "date": "2026-11-06",
+              "skipped": false,
+              "source": "tmdb",
+              "duration": 45,
+              "still": "https://image.tmdb.org/t/p/w300/playVyiSSrtE4DyMuPB8YO2myDf.jpg"
+            }
+          ],
           "premiereSchedule": []
         }
       ],
@@ -206547,7 +206577,7 @@
       "tmdbId": "79611",
       "tmdbKind": "tv",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 499,
+      "tmdbVoteCount": 500,
       "streaming": {
         "AT": [
           {
@@ -211027,8 +211057,8 @@
       "productoraId": "",
       "tmdbId": "298505",
       "tmdbKind": "tv",
-      "tmdbRating": 7.6,
-      "tmdbVoteCount": 48,
+      "tmdbRating": 7.4,
+      "tmdbVoteCount": 51,
       "streaming": {
         "CA": [
           {
@@ -212182,7 +212212,7 @@
       "tmdbId": "7704",
       "tmdbKind": "tv",
       "tmdbRating": 7.4,
-      "tmdbVoteCount": 380,
+      "tmdbVoteCount": 381,
       "streaming": {
         "AT": [
           {
@@ -215274,7 +215304,7 @@
       "snLastUpdate": "",
       "snNote": "",
       "productoraId": "1779135987498",
-      "tmdbId": "",
+      "tmdbId": 341154,
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0,
@@ -215443,7 +215473,7 @@
       "snLastUpdate": "",
       "snNote": "",
       "productoraId": "1779136542367",
-      "tmdbId": "",
+      "tmdbId": 341215,
       "tmdbKind": "tv",
       "tmdbRating": "",
       "tmdbVoteCount": 0,
@@ -215536,15 +215566,20 @@
     },
     {
       "id": "1794044343450",
-      "name": "The Body",
-      "nameEn": "",
+      "name": "El cuerpo",
+      "nameEn": "The Body",
       "poster": "https://image.tmdb.org/t/p/w500/zksg8e0GZAmg1nLhVP5tKso3QRs.jpg",
       "synopsis": "La noche de Halloween, un grupo de baile femenino lidia con remordimientos, deseos impuros y visiones fantasmales cuando una novatada sale endemoniadamente mal.",
       "year": 2026,
       "country": "Estados Unidos",
       "network": "",
-      "networkUrl": "",
-      "watchLinks": [],
+      "networkUrl": "https://www.netflix.com/es/title/81983578?source=35&fromWatch=true",
+      "watchLinks": [
+        {
+          "name": "Netflix",
+          "url": "https://www.netflix.com/es/title/81983578?source=35&fromWatch=true"
+        }
+      ],
       "trailerUrl": "https://www.youtube.com/watch?v=wl7uj7n7DoY",
       "bookSource": "",
       "basedOnBook": false,
@@ -215559,7 +215594,7 @@
       "moods": [],
       "tropos": [],
       "dinamica": [],
-      "wlwFocus": "subplot",
+      "wlwFocus": "romance-secundario-protagonista",
       "awards": [],
       "category": "series",
       "seriesType": "serie",
@@ -215577,7 +215612,12 @@
           "character": "Lisbeth Anderson"
         }
       ],
-      "couples": [],
+      "couples": [
+        [
+          "tmdb_new_5183527_mw67og7k_0",
+          "tmdb_new_4705772_mw67og7l_1"
+        ]
+      ],
       "sideCouples": [],
       "fanCouples": [],
       "animeSeason": "",
@@ -215661,7 +215701,7 @@
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-11-07T09:48:02.346Z",
+      "updatedAt": "2026-11-12T09:23:43.917Z",
       "i18n": {
         "en": {
           "title": "The Body",
@@ -215675,7 +215715,8 @@
           "tagline": "Rezan con fervor y pecan aún más.",
           "source": "manual"
         }
-      }
+      },
+      "wlwFocusEpisode": ""
     },
     {
       "id": "1794044468009",
@@ -216195,6 +216236,81 @@
           "fetchedAt": "2026-11-07"
         }
       }
+    },
+    {
+      "id": "1794475279992",
+      "name": "Love Trap",
+      "nameEn": "",
+      "poster": "",
+      "synopsis": "Una legendaria ladrona de joyas y una policía determinada terminan cruzando sus caminos durante una serie de robos millonarios. Mientras una vive en las sombras, ejecutando asaltos casi imposibles, la otra dedica su vida a capturarla.\n\nLo que comienza como una persecución entre cazadora y presa se transforma en un juego peligroso de inteligencia, manipulación y atracción. Conforme nuevos crímenes y conspiraciones salen a la luz, las dos se dan cuenta de que existe una organización mucho mayor detrás de los robos, obligándolas a decidir si continuarán en bandos opuestos o si unirán fuerzas.",
+      "year": "",
+      "country": "Tailandia",
+      "network": "",
+      "networkUrl": "",
+      "watchLinks": [],
+      "trailerUrl": "",
+      "bookSource": "Love Trap",
+      "basedOnBook": true,
+      "sourceType": "novela",
+      "bookCoverUrl": "https://pbs.twimg.com/media/HW53B_UW8AA95O_?format=jpg&name=large",
+      "bookLinks": [],
+      "bookUrl": "",
+      "upcoming": true,
+      "genres": [],
+      "moods": [],
+      "tropos": [],
+      "dinamica": [],
+      "wlwFocus": "pareja-principal",
+      "wlwFocusEpisode": "",
+      "awards": [],
+      "category": "series",
+      "seriesType": "serie",
+      "cast": [
+        {
+          "actressId": "1778669706067",
+          "character": ""
+        },
+        {
+          "actressId": "1778669672693",
+          "character": ""
+        }
+      ],
+      "couples": [
+        [
+          "1778669706067",
+          "1778669672693"
+        ]
+      ],
+      "sideCouples": [],
+      "fanCouples": [],
+      "animeSeason": "",
+      "renewedNextSeason": false,
+      "episodeDuration": "",
+      "myPick": false,
+      "myPick2026": false,
+      "biFormat": false,
+      "cancelStatus": "",
+      "cancelNote": "",
+      "sinNovedades": false,
+      "snLastUpdate": "",
+      "snNote": "",
+      "productoraIds": [
+        "1779135954653"
+      ],
+      "productoraId": "1779135954653",
+      "tmdbId": "",
+      "tmdbKind": "tv",
+      "tmdbRating": "",
+      "tmdbVoteCount": 0,
+      "streaming": {},
+      "updatedAt": "2026-11-12T09:21:19.992Z",
+      "i18n": {
+        "en": {
+          "title": "Love Trap",
+          "overview": "A legendary jewel thief and a determined police officer find their paths crossing during a series of high-profile heists. While one lives in the shadows, pulling off nearly impossible heists, the other dedicates her life to capturing her.\n\nWhat begins as a chase between hunter and prey turns into a dangerous game of wits, manipulation, and attraction. As new crimes and conspiracies come to light, the two realize there is a much larger organization behind the heists, forcing them to decide whether to remain on opposing sides or join forces.",
+          "source": "manual"
+        }
+      }
     }
   ],
   "movies": [
@@ -216249,8 +216365,8 @@
       "productoraId": "",
       "tmdbId": "1397485",
       "tmdbKind": "movie",
-      "tmdbRating": 7.4,
-      "tmdbVoteCount": 88,
+      "tmdbRating": 7.5,
+      "tmdbVoteCount": 90,
       "couples": [
         [
           "tmdb_4658358_mtyay0b4",
@@ -216844,7 +216960,7 @@
       "tmdbId": "1102883",
       "tmdbKind": "movie",
       "tmdbRating": 5.7,
-      "tmdbVoteCount": 225,
+      "tmdbVoteCount": 229,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -218428,7 +218544,7 @@
       "tmdbId": "1240889",
       "tmdbKind": "movie",
       "tmdbRating": 6.1,
-      "tmdbVoteCount": 378,
+      "tmdbVoteCount": 394,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -223126,7 +223242,7 @@
       "tmdbId": "50435",
       "tmdbKind": "movie",
       "tmdbRating": 5.4,
-      "tmdbVoteCount": 114,
+      "tmdbVoteCount": 115,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -223754,7 +223870,7 @@
       "tmdbId": "1633",
       "tmdbKind": "movie",
       "tmdbRating": 7.7,
-      "tmdbVoteCount": 1543,
+      "tmdbVoteCount": 1545,
       "nameEn": "Fried Green Tomatoes",
       "moods": [],
       "tropos": [],
@@ -227894,7 +228010,7 @@
       "tmdbId": "9303",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 1173,
+      "tmdbVoteCount": 1180,
       "nameEn": "Bound",
       "moods": [],
       "tropos": [],
@@ -229569,7 +229685,7 @@
       "tmdbId": "11634",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 620,
+      "tmdbVoteCount": 622,
       "nameEn": "Fucking Åmål",
       "moods": [],
       "tropos": [],
@@ -230782,7 +230898,7 @@
       "tmdbId": "20770",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 908,
+      "tmdbVoteCount": 912,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -233426,7 +233542,7 @@
       "tmdbId": "1018",
       "tmdbKind": "movie",
       "tmdbRating": 7.8,
-      "tmdbVoteCount": 7407,
+      "tmdbVoteCount": 7429,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -235822,7 +235938,7 @@
       "tmdbId": "590",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 1931,
+      "tmdbVoteCount": 1935,
       "nameEn": "The Hours",
       "moods": [],
       "tropos": [],
@@ -238328,7 +238444,7 @@
       "tmdbId": 4911,
       "tmdbKind": "movie",
       "tmdbRating": 6.2,
-      "tmdbVoteCount": 406,
+      "tmdbVoteCount": 407,
       "streaming": {
         "AR": [
           {
@@ -239504,7 +239620,7 @@
       "tmdbId": "504",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 2670,
+      "tmdbVoteCount": 2675,
       "nameEn": "",
       "moods": [],
       "tropos": [],
@@ -240662,7 +240778,7 @@
       "tmdbId": "19316",
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 280,
+      "tmdbVoteCount": 281,
       "nameEn": "Saving Face",
       "moods": [],
       "tropos": [],
@@ -242465,7 +242581,7 @@
       "tmdbId": "9709",
       "tmdbKind": "movie",
       "tmdbRating": 6.2,
-      "tmdbVoteCount": 338,
+      "tmdbVoteCount": 339,
       "nameEn": "My Summer of Love",
       "moods": [],
       "tropos": [],
@@ -245888,7 +246004,7 @@
       "tmdbId": "1544",
       "tmdbKind": "movie",
       "tmdbRating": 7.6,
-      "tmdbVoteCount": 1152,
+      "tmdbVoteCount": 1153,
       "nameEn": "Imagine me and you",
       "moods": [],
       "tropos": [],
@@ -246357,7 +246473,7 @@
       "tmdbId": "17612",
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 545,
+      "tmdbVoteCount": 547,
       "streaming": {
         "CA": [
           {
@@ -250726,7 +250842,7 @@
       "tmdbId": 19994,
       "tmdbKind": "movie",
       "tmdbRating": 6,
-      "tmdbVoteCount": 4482,
+      "tmdbVoteCount": 4498,
       "streaming": {
         "AD": [
           {
@@ -255717,7 +255833,7 @@
       "tmdbId": 39781,
       "tmdbKind": "movie",
       "tmdbRating": 6.6,
-      "tmdbVoteCount": 1654,
+      "tmdbVoteCount": 1656,
       "streaming": {
         "AR": [
           {
@@ -257270,7 +257386,7 @@
       "tmdbId": 48650,
       "tmdbKind": "movie",
       "tmdbRating": 6.4,
-      "tmdbVoteCount": 856,
+      "tmdbVoteCount": 862,
       "streaming": {
         "AD": [
           {
@@ -259433,7 +259549,7 @@
       "tmdbId": 167305,
       "tmdbKind": "movie",
       "tmdbRating": 5.9,
-      "tmdbVoteCount": 125,
+      "tmdbVoteCount": 127,
       "streaming": {
         "AL": [
           {
@@ -261607,7 +261723,7 @@
       "tmdbId": 152584,
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 4989,
+      "tmdbVoteCount": 4996,
       "streaming": {
         "AT": [
           {
@@ -267333,7 +267449,7 @@
       "tmdbId": 250225,
       "tmdbKind": "movie",
       "tmdbRating": 6.3,
-      "tmdbVoteCount": 393,
+      "tmdbVoteCount": 396,
       "streaming": {
         "AE": [
           {
@@ -274524,7 +274640,7 @@
       "tmdbId": 258480,
       "tmdbKind": "movie",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 4070,
+      "tmdbVoteCount": 4075,
       "streaming": {
         "AD": [
           {
@@ -279463,7 +279579,7 @@
       "tmdbId": 382170,
       "tmdbKind": "movie",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 77,
+      "tmdbVoteCount": 78,
       "streaming": {
         "JP": [
           {
@@ -284420,7 +284536,7 @@
       "tmdbId": 370663,
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 1334,
+      "tmdbVoteCount": 1335,
       "streaming": {
         "AT": [
           {
@@ -287412,7 +287528,7 @@
       "tmdbId": 341013,
       "tmdbKind": "movie",
       "tmdbRating": 6.4,
-      "tmdbVoteCount": 6854,
+      "tmdbVoteCount": 6864,
       "streaming": {
         "AD": [
           {
@@ -291492,7 +291608,7 @@
       "tmdbId": 420622,
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 965,
+      "tmdbVoteCount": 970,
       "i18n": {
         "es": {
           "tagline": "¿Alguna vez te has maravillado?",
@@ -295913,7 +296029,7 @@
       "tmdbId": 369192,
       "tmdbKind": "movie",
       "tmdbRating": 6.7,
-      "tmdbVoteCount": 2004,
+      "tmdbVoteCount": 2007,
       "streaming": {
         "AE": [
           {
@@ -298722,7 +298838,7 @@
       "tmdbId": 426338,
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 370,
+      "tmdbVoteCount": 371,
       "streaming": {
         "ES": [
           {
@@ -303273,7 +303389,7 @@
       "tmdbId": 529962,
       "tmdbKind": "movie",
       "tmdbRating": 6.4,
-      "tmdbVoteCount": 1527,
+      "tmdbVoteCount": 1526,
       "streaming": {
         "AD": [
           {
@@ -305232,7 +305348,7 @@
       "tmdbId": 499319,
       "tmdbKind": "movie",
       "tmdbRating": 5.4,
-      "tmdbVoteCount": 235,
+      "tmdbVoteCount": 236,
       "streaming": {
         "AD": [
           {
@@ -308761,7 +308877,7 @@
       "tmdbId": 375262,
       "tmdbKind": "movie",
       "tmdbRating": 7.5,
-      "tmdbVoteCount": 6115,
+      "tmdbVoteCount": 6120,
       "streaming": {
         "AE": [
           {
@@ -319000,7 +319116,7 @@
       "tmdbId": "447034",
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 226,
+      "tmdbVoteCount": 227,
       "streaming": {
         "AE": [
           {
@@ -334077,7 +334193,7 @@
       "tmdbId": 505600,
       "tmdbKind": "movie",
       "tmdbRating": 7,
-      "tmdbVoteCount": 2967,
+      "tmdbVoteCount": 2972,
       "wlwFocus": "subplot",
       "streaming": {
         "AD": [
@@ -345899,7 +346015,7 @@
       "tmdbId": 419743,
       "tmdbKind": "movie",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 1314,
+      "tmdbVoteCount": 1318,
       "streaming": {
         "AR": [
           {
@@ -349077,7 +349193,7 @@
       "tmdbId": 531428,
       "tmdbKind": "movie",
       "tmdbRating": 8.1,
-      "tmdbVoteCount": 3096,
+      "tmdbVoteCount": 3103,
       "streaming": {
         "AE": [
           {
@@ -354761,7 +354877,7 @@
       "tmdbId": 671040,
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 36,
+      "tmdbVoteCount": 37,
       "i18n": {
         "en": {
           "title": "Young Adult Matters",
@@ -359832,7 +359948,7 @@
       "tmdbId": 568467,
       "tmdbKind": "movie",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 662,
+      "tmdbVoteCount": 663,
       "streaming": {
         "AD": [
           {
@@ -363984,7 +364100,7 @@
       "tmdbId": 520172,
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 1364,
+      "tmdbVoteCount": 1366,
       "streaming": {
         "AD": [
           {
@@ -372866,7 +372982,7 @@
       "tmdbId": "601666",
       "tmdbKind": "movie",
       "tmdbRating": 6.6,
-      "tmdbVoteCount": 3112,
+      "tmdbVoteCount": 3120,
       "streaming": {
         "AE": [
           {
@@ -374975,7 +375091,7 @@
       "tmdbId": 506281,
       "tmdbKind": "movie",
       "tmdbRating": 7,
-      "tmdbVoteCount": 428,
+      "tmdbVoteCount": 431,
       "streaming": {
         "AE": [
           {
@@ -377945,8 +378061,8 @@
       "nameEn": "졸업, 선물 + 고백",
       "tmdbId": 829629,
       "tmdbKind": "movie",
-      "tmdbRating": 9,
-      "tmdbVoteCount": 1,
+      "tmdbRating": 8,
+      "tmdbVoteCount": 2,
       "i18n": {
         "en": {
           "title": "Graduation, Present + Propose",
@@ -379520,7 +379636,7 @@
       "tmdbId": 743599,
       "tmdbKind": "movie",
       "tmdbRating": 6.2,
-      "tmdbVoteCount": 113,
+      "tmdbVoteCount": 114,
       "streaming": {
         "AU": [
           {
@@ -379681,7 +379797,7 @@
       "tmdbId": 591273,
       "tmdbKind": "movie",
       "tmdbRating": 6.7,
-      "tmdbVoteCount": 2806,
+      "tmdbVoteCount": 2811,
       "i18n": {
         "es": {
           "tagline": "Enfréntate al mal.",
@@ -379731,7 +379847,7 @@
       "tmdbId": 591274,
       "tmdbKind": "movie",
       "tmdbRating": 7.2,
-      "tmdbVoteCount": 2369,
+      "tmdbVoteCount": 2374,
       "i18n": {
         "en": {
           "overview": "In 1978, two rival groups at Camp Nightwing must band together to solve a terrifying mystery when horrors from their towns' history come alive.",
@@ -379847,8 +379963,8 @@
       "nameEn": "황주황의 유서",
       "tmdbId": 1018569,
       "tmdbKind": "movie",
-      "tmdbRating": "",
-      "tmdbVoteCount": 0,
+      "tmdbRating": 7,
+      "tmdbVoteCount": 1,
       "streaming": {
         "KR": [
           {
@@ -379925,7 +380041,7 @@
       "tmdbId": 591275,
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 2110,
+      "tmdbVoteCount": 2112,
       "i18n": {
         "en": {
           "overview": "In 1666, a colonial town is gripped by a hysterical witch-hunt that has deadly consequences for centuries to come, and it's up to teenagers in 1994 to finally put an end to their town's curse, before it's too late.",
@@ -381086,7 +381202,7 @@
       "tmdbId": 501929,
       "tmdbKind": "movie",
       "tmdbRating": 7.8,
-      "tmdbVoteCount": 3569,
+      "tmdbVoteCount": 3577,
       "streaming": {
         "AD": [
           {
@@ -394763,7 +394879,7 @@
       "tmdbId": 887580,
       "tmdbKind": "movie",
       "tmdbRating": 7,
-      "tmdbVoteCount": 140,
+      "tmdbVoteCount": 143,
       "streaming": {
         "AG": [
           {
@@ -396247,7 +396363,7 @@
       "tmdbId": 860159,
       "tmdbKind": "movie",
       "tmdbRating": 7.4,
-      "tmdbVoteCount": 510,
+      "tmdbVoteCount": 513,
       "streaming": {
         "AR": [
           {
@@ -397575,7 +397691,7 @@
       "tmdbId": "762968",
       "tmdbKind": "movie",
       "tmdbRating": 6.4,
-      "tmdbVoteCount": 1056,
+      "tmdbVoteCount": 1059,
       "wlwFocus": "romance-secundario-protagonista",
       "streaming": {
         "AD": [
@@ -399777,7 +399893,7 @@
       "tmdbId": 1075813,
       "tmdbKind": "movie",
       "tmdbRating": 6.2,
-      "tmdbVoteCount": 21,
+      "tmdbVoteCount": 22,
       "wlwFocus": "pareja-principal",
       "streaming": {
         "AL": [
@@ -400314,7 +400430,7 @@
       "tmdbId": 849869,
       "tmdbKind": "movie",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 582,
+      "tmdbVoteCount": 583,
       "i18n": {
         "es": {
           "tagline": "Una vida de mentiras puede matar.",
@@ -403451,7 +403567,7 @@
       "tmdbId": 1096342,
       "tmdbKind": "movie",
       "tmdbRating": 5.5,
-      "tmdbVoteCount": 324,
+      "tmdbVoteCount": 326,
       "streaming": {
         "AD": [
           {
@@ -406271,7 +406387,7 @@
       "tmdbId": 1113278,
       "tmdbKind": "movie",
       "tmdbRating": 5,
-      "tmdbVoteCount": 210,
+      "tmdbVoteCount": 211,
       "streaming": {
         "AE": [
           {
@@ -410599,7 +410715,7 @@
       "tmdbId": 814776,
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 954,
+      "tmdbVoteCount": 960,
       "streaming": {
         "AR": [
           {
@@ -411881,7 +411997,7 @@
       "tmdbId": 957304,
       "tmdbKind": "movie",
       "tmdbRating": 5.5,
-      "tmdbVoteCount": 638,
+      "tmdbVoteCount": 640,
       "streaming": {
         "AG": [
           {
@@ -417367,7 +417483,7 @@
       "tmdbId": 827931,
       "tmdbKind": "movie",
       "tmdbRating": 5.6,
-      "tmdbVoteCount": 647,
+      "tmdbVoteCount": 648,
       "streaming": {
         "AD": [
           {
@@ -419308,7 +419424,7 @@
       "tmdbId": 948549,
       "tmdbKind": "movie",
       "tmdbRating": 6.6,
-      "tmdbVoteCount": 1065,
+      "tmdbVoteCount": 1069,
       "streaming": {
         "AE": [
           {
@@ -426995,7 +427111,7 @@
       "tmdbId": "1333141",
       "tmdbKind": "movie",
       "tmdbRating": 3.8,
-      "tmdbVoteCount": 246,
+      "tmdbVoteCount": 248,
       "moods": [],
       "tropos": [],
       "dinamica": [],
@@ -430727,7 +430843,7 @@
       "tmdbId": 1144708,
       "tmdbKind": "movie",
       "tmdbRating": 6.5,
-      "tmdbVoteCount": 15,
+      "tmdbVoteCount": 16,
       "streaming": {
         "HK": [
           {
@@ -434183,7 +434299,7 @@
       "tmdbId": 1178620,
       "tmdbKind": "movie",
       "tmdbRating": 6.8,
-      "tmdbVoteCount": 9,
+      "tmdbVoteCount": 10,
       "streaming": {
         "CA": [
           {
@@ -434807,7 +434923,7 @@
       "tmdbId": 329829,
       "tmdbKind": "movie",
       "tmdbRating": 6.2,
-      "tmdbVoteCount": 186,
+      "tmdbVoteCount": 187,
       "streaming": {
         "AR": [
           {
@@ -436219,7 +436335,7 @@
       "tmdbId": 1024,
       "tmdbKind": "movie",
       "tmdbRating": 6.9,
-      "tmdbVoteCount": 1081,
+      "tmdbVoteCount": 1085,
       "streaming": {
         "AT": [
           {
@@ -436604,7 +436720,7 @@
       "tmdbId": 1575337,
       "tmdbKind": "movie",
       "tmdbRating": 8.1,
-      "tmdbVoteCount": 132,
+      "tmdbVoteCount": 133,
       "streaming": {
         "AD": [
           {
@@ -438578,8 +438694,8 @@
       "updatedAt": "2026-06-06T08:00:02.332Z",
       "tmdbId": 1293244,
       "tmdbKind": "movie",
-      "tmdbRating": 6.2,
-      "tmdbVoteCount": 18,
+      "tmdbRating": 5.9,
+      "tmdbVoteCount": 19,
       "i18n": {
         "en": {
           "overview": "Nicholas and Isabel were made for each other but how will they ever know it? As ghosts, fate and the sheer power of true love pull them together, so too does life threaten to tear them apart.",
@@ -438685,7 +438801,7 @@
       "tmdbId": 1110207,
       "tmdbKind": "movie",
       "tmdbRating": 8,
-      "tmdbVoteCount": 8,
+      "tmdbVoteCount": 9,
       "i18n": {
         "en": {
           "overview": "An animated thriller about the romantic tension between a seafood chef and a siren, set in a dark fantasy Philippines.",
@@ -439862,8 +439978,8 @@
       "updatedAt": "2026-08-26T20:50:58.506Z",
       "tmdbId": 1444595,
       "tmdbKind": "movie",
-      "tmdbRating": 7.2,
-      "tmdbVoteCount": 13,
+      "tmdbRating": 7.1,
+      "tmdbVoteCount": 14,
       "streaming": {
         "ES": [
           {
@@ -445373,8 +445489,8 @@
       "productoraId": "",
       "tmdbId": "985602",
       "tmdbKind": "movie",
-      "tmdbRating": 6.1,
-      "tmdbVoteCount": 60,
+      "tmdbRating": 6,
+      "tmdbVoteCount": 61,
       "streaming": {
         "ES": [
           {
@@ -448207,7 +448323,7 @@
       "tmdbId": "14533",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 862,
+      "tmdbVoteCount": 865,
       "streaming": {
         "AD": [
           {
@@ -450414,7 +450530,7 @@
       "tmdbId": "664300",
       "tmdbKind": "movie",
       "tmdbRating": 7.1,
-      "tmdbVoteCount": 843,
+      "tmdbVoteCount": 846,
       "streaming": {
         "AG": [
           {
@@ -458132,6 +458248,86 @@
       "id": "1779437187677"
     }
   ],
+  "eventos": [
+    {
+      "id": "1794475993409",
+      "name": "iQIYI iJOY Thailand 2027",
+      "date": "2026-11-05",
+      "productoraId": "1779136542367",
+      "sourceUrl": "https://www.youtube.com/watch?v=hgQ4ciB3LoM",
+      "series": [
+        {
+          "name": "Love in the Fast Lane",
+          "seriesId": "1793882410796"
+        },
+        {
+          "name": "The Editor’s Midlife Love",
+          "seriesId": "1793882711383"
+        },
+        {
+          "name": "Married to My Enemy",
+          "seriesId": "1793882985255"
+        },
+        {
+          "name": "Sweet Bond",
+          "seriesId": "1793883366351"
+        },
+        {
+          "name": "Did You Know",
+          "seriesId": "1781802648161"
+        },
+        {
+          "name": "Villain Star",
+          "seriesId": "1793885047872"
+        }
+      ]
+    },
+    {
+      "id": "1794476100570",
+      "name": "GMMTV NEXT: GENERATION HAPPY",
+      "date": "2026-11-03",
+      "productoraId": "1779134050424",
+      "sourceUrl": "",
+      "series": [
+        {
+          "name": "Beyond You",
+          "seriesId": "1793708758521"
+        },
+        {
+          "name": "Above her class",
+          "seriesId": "1793708663388"
+        },
+        {
+          "name": "Love's Echoes",
+          "seriesId": "1776972993462"
+        },
+        {
+          "name": "Cherish",
+          "seriesId": "1793708976662"
+        },
+        {
+          "name": "Lost in your eyes",
+          "seriesId": "1793709106597"
+        },
+        {
+          "name": "MY BEAUTIFUL ENEMY",
+          "seriesId": "1793709042982"
+        },
+        {
+          "name": "Be Mine",
+          "seriesId": "1793711241508"
+        },
+        {
+          "name": "Kiss me, Stranger",
+          "seriesId": "1793708920181"
+        },
+        {
+          "name": "Safety Flirt",
+          "seriesId": "1793712096879"
+        }
+      ]
+    }
+  ],
   "platformLogos": {
     "Bilibili": "https://images.steamusercontent.com/ugc/952957720421013101/8A6D57C7DDAFA0D639927DA347FBC5A2CE1FCF6E/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
     "Filmin": "https://play-lh.googleusercontent.com/_5dl3l4z8cAzlt5UDdXTiXjd9vQ5Vc2Ub_TPksjFzxVRNaK1hs6sgb3BzODs8LK1ew",
@@ -459250,5 +459446,5 @@
       ]
     }
   },
-  "exportedAt": "2026-11-07T09:51:04.186Z"
+  "exportedAt": "2026-11-12T09:36:09.094Z"
 }
