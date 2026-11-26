@@ -81312,7 +81312,7 @@
       "synopsis": "Después de un accidente de avión en las profundidades de Ontario, los miembros de un equipo de fútbol femenino son los únicos supervivientes del accidente. Las chicas de secundaria tendrán que luchar por su supervivencia contra los clanes caníbales.",
       "year": 2021,
       "country": "Estados Unidos",
-      "network": "Paramount+, MovistarTV, Claro video, Paramount Plus Apple TV channel, Paramount+ Amazon Channel",
+      "network": "Paramount+, MovistarTV, Claro video, Paramount Plus Apple TV channel, Paramount+ Amazon Channel, Movistar Plus+, Movistar Plus+ Ficción Total",
       "networkUrl": "https://tv.apple.com",
       "watchLinks": [
         {
@@ -81320,7 +81320,7 @@
           "url": "https://tv.apple.com"
         }
       ],
-      "trailerUrl": "https://www.youtube.com/watch?v=Axx9Qhct49w",
+      "trailerUrl": "https://www.youtube.com/watch?v=zDFHivyECDU",
       "genres": [
         "Drama",
         "Misterio"
@@ -81606,7 +81606,7 @@
         {
           "label": "Temporada 4",
           "startDate": "2026-11-22",
-          "totalEpisodes": 1,
+          "totalEpisodes": 10,
           "emissionDays": [
             6
           ],
@@ -81619,12 +81619,66 @@
               "skipped": false,
               "source": "tmdb",
               "still": "https://image.tmdb.org/t/p/w300/tFTE0vdZ7A6bSwuXaqxo4rYMGvm.jpg"
+            },
+            {
+              "num": 2,
+              "skipped": false,
+              "date": "2026-11-29",
+              "source": "tmdb"
+            },
+            {
+              "num": 3,
+              "skipped": false,
+              "date": "2026-12-06",
+              "source": "tmdb"
+            },
+            {
+              "num": 4,
+              "skipped": false,
+              "date": "2026-12-13",
+              "source": "tmdb"
+            },
+            {
+              "num": 5,
+              "skipped": false,
+              "date": "2026-12-20",
+              "source": "tmdb"
+            },
+            {
+              "num": 6,
+              "skipped": false,
+              "date": "2026-12-27",
+              "source": "tmdb"
+            },
+            {
+              "num": 7,
+              "skipped": false,
+              "date": "2027-01-03",
+              "source": "tmdb"
+            },
+            {
+              "num": 8,
+              "skipped": false,
+              "date": "2027-01-10",
+              "source": "tmdb"
+            },
+            {
+              "num": 9,
+              "skipped": false,
+              "date": "2027-01-17",
+              "source": "tmdb"
+            },
+            {
+              "num": 10,
+              "skipped": false,
+              "date": "2027-01-24",
+              "source": "tmdb"
             }
           ],
           "premiereSchedule": []
         }
       ],
-      "updatedAt": "2026-09-12T19:16:55.353Z",
+      "updatedAt": "2026-11-26T19:12:41.339Z",
       "category": "series",
       "animeSeason": "",
       "renewedNextSeason": true,
@@ -83380,12 +83434,16 @@
         "en": {
           "overview": "This equal parts survival epic, psychological horror story and coming-of-age drama tells the saga of a team of wildly talented high school girls soccer players who become the (un)lucky survivors of a plane crash deep in the remote northern wilderness. The series chronicles their descent from a complicated but thriving team to savage clans, while also tracking the lives they’ve attempted to piece back together nearly 25 years later.",
           "tagline": "We hear the wilderness and it hears us.",
-          "trailerUrl": "https://www.youtube.com/watch?v=Axx9Qhct49w",
+          "trailerUrl": "https://www.youtube.com/watch?v=zDFHivyECDU",
           "source": "tmdb",
-          "fetchedAt": "2026-10-23",
+          "fetchedAt": "2026-11-26",
           "title": "Yellowjackets"
         }
-      }
+      },
+      "wlwFocusEpisode": "",
+      "sideCouples": [],
+      "fanCouples": [],
+      "productoraIds": []
     },
     {
       "id": "1700000000142",
@@ -462657,5 +462715,5 @@
       ]
     }
   },
-  "exportedAt": "2026-11-26T19:10:00.156Z"
+  "exportedAt": "2026-11-26T19:14:51.719Z"
 }
